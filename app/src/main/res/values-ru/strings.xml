@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Мудрая йога</string>
+    <string name="tab_practice">Практика</string>
+    <string name="tab_sets">Сеты</string>
+    <string name="tab_progress">Прогресс</string>
+    <string name="tab_profile">Профиль</string>
+    <string name="today">Сегодня</string>
+    <string name="surya">Сурья Намаскар</string>
+    <string name="chandra">Чандра Намаскар</string>
+    <string name="start">Начать</string>
+    <string name="coming_soon">Этот экран появится на следующем этапе.</string>
+    <string name="store_label">Сборка: %1$s</string>
+</resources>
