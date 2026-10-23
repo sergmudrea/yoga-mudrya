@@ -23,8 +23,8 @@ jobs:
 
       - uses: gradle/actions/setup-gradle@v4
 
-      - name: Unit tests (engine + app, both stores)
-        run: ./gradlew --stacktrace :core:engine:test testGoogleDebugUnitTest testRustoreDebugUnitTest
+      - name: Unit tests (engine + catalog + app, both stores)
+        run: ./gradlew --stacktrace :core:engine:test :core:catalog:test testGoogleDebugUnitTest testRustoreDebugUnitTest
 
       - name: Lint
         run: ./gradlew lintGoogleDebug lintRustoreDebug

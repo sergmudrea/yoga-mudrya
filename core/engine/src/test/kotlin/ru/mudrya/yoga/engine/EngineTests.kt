@@ -139,7 +139,7 @@ class PoseMathTest {
     fun `interpolation hits both poses`() {
         val a = Pose(40.0, 66.0, 276.0, 274.0, 186.0, 184.0, 246.0)
         val b = Pose(318.0, 312.0, 316.0, 316.0, 226.0, 226.0, 300.0)
-        assertEquals(a, PoseMath.interpolate(a, b, 0.0))
+        assertEquals(a.toList(), PoseMath.interpolate(a, b, 0.0).toList())
         PoseMath.interpolate(a, b, 1.0).toList().zip(b.toList()).forEach { (x, y) -> close(y, x, 1e-6) }
         // Корпус идёт от 40° к 318° через 0°, а не через 180°.
         val mid = PoseMath.interpolate(a, b, 0.5, eased = false).torso

@@ -43,7 +43,7 @@ object Fixtures {
         Block("entry", steps("tadasana", "arms_up", "uttanasana", "plank")),
         Block("vinyasa", steps("chaturanga", "up_dog", "down_dog")),
         Block("ring", steps("lunge", "crescent", "down_dog")),
-        Block("exit", listOf(Step("uttanasana"), Step("arms_up", enter = Breath.INHALE), Step("tadasana"))),
+        Block("exit", listOf(Step("uttanasana"), Step("arms_up", enter = listOf(Breath.INHALE)), Step("tadasana"))),
         Block("crow_slot", steps("crow", "plank")),
         Block("plow_slot", steps("plow", "down_dog")),
     ).associateBy { it.id }

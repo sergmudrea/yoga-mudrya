@@ -61,6 +61,7 @@ kotlin {
 
 dependencies {
     implementation(project(":core:engine"))
+    implementation(project(":core:catalog"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.activity.compose)

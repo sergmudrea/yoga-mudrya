@@ -36,6 +36,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import ru.mudrya.yoga.R
 import ru.mudrya.yoga.store.StoreModule
+import ru.mudrya.yoga.ui.player.PlayerScreen
 import ru.mudrya.yoga.ui.theme.MudryaColors
 
 enum class Tab(val route: String, @StringRes val label: Int) {
@@ -44,6 +45,8 @@ enum class Tab(val route: String, @StringRes val label: Int) {
     PROGRESS("progress", R.string.tab_progress),
     PROFILE("profile", R.string.tab_profile),
 }
+
+private const val PLAYER_ROUTE = "player/surya"
 
 @Composable
 fun AppRoot() {
@@ -54,7 +57,7 @@ fun AppRoot() {
     Scaffold(
         containerColor = MudryaColors.Ground,
         bottomBar = {
-            NavigationBar(containerColor = MudryaColors.SurfaceHigh) {
+            if (current != PLAYER_ROUTE) NavigationBar(containerColor = MudryaColors.SurfaceHigh) {
                 Tab.entries.forEach { tab ->
                     val selected = current == tab.route
                     NavigationBarItem(
@@ -79,7 +82,8 @@ fun AppRoot() {
         },
     ) { padding ->
         NavHost(nav, startDestination = Tab.PRACTICE.route, modifier = Modifier.padding(padding)) {
-            composable(Tab.PRACTICE.route) { PracticeScreen() }
+            composable(Tab.PRACTICE.route) { PracticeScreen(onStart = { nav.navigate(PLAYER_ROUTE) }) }
+            composable(PLAYER_ROUTE) { PlayerScreen(onClose = { nav.popBackStack() }) }
             composable(Tab.SETS.route) { Placeholder(R.string.tab_sets) }
             composable(Tab.PROGRESS.route) { Placeholder(R.string.tab_progress) }
             composable(Tab.PROFILE.route) { Placeholder(R.string.tab_profile) }
@@ -97,7 +101,7 @@ private fun TabDot(selected: Boolean) {
 }
 
 @Composable
-private fun PracticeScreen() {
+private fun PracticeScreen(onStart: () -> Unit) {
     Column(
         Modifier
             .fillMaxSize()
@@ -119,7 +123,7 @@ private fun PracticeScreen() {
                 fontWeight = FontWeight.Bold,
             )
             Button(
-                onClick = { /* Плеер — этап 2 */ },
+                onClick = onStart,
                 colors = ButtonDefaults.buttonColors(containerColor = MudryaColors.Ground, contentColor = MudryaColors.Text),
                 modifier = Modifier
                     .fillMaxWidth()
