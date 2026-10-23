@@ -25,6 +25,8 @@ data class AdaptationLimits(
     val maxPhaseMs: Long = 9_000,
     val phaseStepMs: Long = 500,
     val easyStreakForSlowerBreath: Int = 3,
+    /** На сколько кругов меняется сессия после «легко» и «тяжело». Для длинных сетов — 1. */
+    val roundStep: Int = 2,
 )
 
 /**
@@ -48,7 +50,7 @@ class Adaptation(private val limits: AdaptationLimits = AdaptationLimits()) {
                 current.copy(rounds = rounds, okCount = ok, easyStreak = 0)
             }
             Feedback.HARD -> current.copy(
-                rounds = (current.rounds - 2).coerceAtLeast(limits.minRounds),
+                rounds = (current.rounds - limits.roundStep).coerceAtLeast(limits.minRounds),
                 enabledSlots = emptyList(),
                 phaseMs = (current.phaseMs - limits.phaseStepMs).coerceAtLeast(limits.minPhaseMs),
                 easyStreak = 0,
@@ -62,8 +64,8 @@ class Adaptation(private val limits: AdaptationLimits = AdaptationLimits()) {
     private fun easier(c: SessionParams, usedMetalDog: Boolean, slots: List<String>, injuries: Set<Injury>): SessionParams {
         var rounds = c.rounds
         var enabled = c.enabledSlots
-        if (rounds + 2 <= limits.maxRounds) {
-            rounds += 2
+        if (rounds + limits.roundStep <= limits.maxRounds) {
+            rounds += limits.roundStep
         } else {
             slots.firstOrNull { it !in enabled }?.let { enabled = enabled + it }
         }

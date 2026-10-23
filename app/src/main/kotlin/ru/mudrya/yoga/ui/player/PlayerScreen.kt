@@ -1,7 +1,11 @@
 package ru.mudrya.yoga.ui.player
 
 import androidx.compose.foundation.background
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -37,15 +41,32 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import ru.mudrya.yoga.R
+import ru.mudrya.yoga.engine.Feedback
 import ru.mudrya.yoga.engine.PhaseKind
+import ru.mudrya.yoga.model.Joint
+import ru.mudrya.yoga.ui.common.Chip
+import ru.mudrya.yoga.ui.common.ChipRow
+import ru.mudrya.yoga.ui.common.ChoiceCard
+import ru.mudrya.yoga.ui.common.PrimaryButton
+import ru.mudrya.yoga.ui.common.SectionLabel
+import ru.mudrya.yoga.ui.common.appContainer
+import ru.mudrya.yoga.ui.common.jointLabel
 import ru.mudrya.yoga.engine.PlayerFrame
 import ru.mudrya.yoga.model.Breath
 import ru.mudrya.yoga.model.Side
 import ru.mudrya.yoga.ui.theme.MudryaColors
 
 @Composable
-fun PlayerScreen(onClose: () -> Unit, vm: PlayerViewModel = viewModel()) {
+fun PlayerScreen(
+    onClose: () -> Unit,
+    vm: PlayerViewModel = viewModel(factory = PlayerViewModel.factory(appContainer().users)),
+) {
     val c = vm.controller
+    val close = {
+        vm.abandon()
+        onClose()
+    }
+    BackHandler(onBack = close)
     var frame by remember { mutableStateOf(vm.frame()) }
 
     val view = LocalView.current
@@ -71,7 +92,10 @@ fun PlayerScreen(onClose: () -> Unit, vm: PlayerViewModel = viewModel()) {
     }
 
     if (frame.finished) {
-        FinishView(frame, onClose)
+        FinishView(frame) { feedback, zones ->
+            vm.finish(feedback, zones)
+            onClose()
+        }
         return
     }
 
@@ -81,7 +105,7 @@ fun PlayerScreen(onClose: () -> Unit, vm: PlayerViewModel = viewModel()) {
             .background(MudryaColors.Ground)
             .padding(horizontal = 16.dp, vertical = 8.dp),
     ) {
-        TopBar(frame, onClose)
+        TopBar(frame, close)
         Spacer(Modifier.height(8.dp))
         ProgressLine(frame.elapsedMs.toFloat() / frame.totalMs.coerceAtLeast(1).toFloat())
         Spacer(Modifier.height(12.dp))
@@ -109,7 +133,7 @@ fun PlayerScreen(onClose: () -> Unit, vm: PlayerViewModel = viewModel()) {
                 onNext = { act { c.nextStep() } },
                 onSpeed = { act { vm.cycleSpeed() } },
                 onPhase = { act { vm.cyclePhaseLength() } },
-                onMetalDog = { act { c.setMetalDog(true) } },
+                onMetalDog = { act { vm.startMetalDog() } },
             )
     }
 }
@@ -163,11 +187,11 @@ private fun StepTitle(f: PlayerFrame) {
     val enter = f.phase.kind == PhaseKind.ENTER
     Column(Modifier.fillMaxWidth()) {
         Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            Chip(
+            Tag(
                 if (enter) stringResource(R.string.player_phase_move) else stringResource(R.string.player_phase_hold),
                 if (enter) MudryaColors.Moon else MudryaColors.Saffron,
             )
-            sideLabel(f.step.side)?.let { Chip(it, MudryaColors.TextMuted) }
+            sideLabel(f.step.side)?.let { Tag(it, MudryaColors.TextMuted) }
         }
         Spacer(Modifier.height(6.dp))
         Text(asana.nameRu, color = MudryaColors.Text, fontSize = 24.sp, fontWeight = FontWeight.Bold)
@@ -190,7 +214,7 @@ private fun sideLabel(side: Side): String? = when (side) {
 }
 
 @Composable
-private fun Chip(text: String, color: Color) {
+private fun Tag(text: String, color: Color) {
     Text(
         text,
         color = color,
@@ -361,30 +385,39 @@ private fun MetalDogOverlay(onDone: () -> Unit) {
     }
 }
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
-private fun FinishView(f: PlayerFrame, onClose: () -> Unit) {
+private fun FinishView(f: PlayerFrame, onSave: (Feedback, Set<Joint>) -> Unit) {
+    var feedback by remember { mutableStateOf<Feedback?>(null) }
+    var zones by remember { mutableStateOf(emptySet<Joint>()) }
     Column(
         Modifier
             .fillMaxSize()
             .background(MudryaColors.Ground)
+            .verticalScroll(rememberScrollState())
             .padding(24.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(14.dp),
     ) {
-        Text(stringResource(R.string.player_done), color = MudryaColors.Saffron, fontSize = 28.sp, fontWeight = FontWeight.Bold)
         Spacer(Modifier.height(12.dp))
+        Text(stringResource(R.string.player_done), color = MudryaColors.Saffron, fontSize = 28.sp, fontWeight = FontWeight.Bold)
         Text(
             stringResource(R.string.player_done_stats, f.stepCount, (f.totalMs / 60_000).toInt()),
             color = MudryaColors.Text,
             fontSize = 16.sp,
-            textAlign = TextAlign.Center,
         )
-        Spacer(Modifier.height(28.dp))
-        Button(
-            onClick = onClose,
-            colors = ButtonDefaults.buttonColors(containerColor = MudryaColors.Saffron, contentColor = MudryaColors.Ground),
-            shape = RoundedCornerShape(16.dp),
-            modifier = Modifier.fillMaxWidth().height(52.dp),
-        ) { Text(stringResource(R.string.player_finish), fontWeight = FontWeight.Bold) }
+        Spacer(Modifier.height(8.dp))
+        SectionLabel(stringResource(R.string.finish_how))
+        ChoiceCard(stringResource(R.string.finish_easy), stringResource(R.string.finish_easy_hint), feedback == Feedback.EASY, { feedback = Feedback.EASY })
+        ChoiceCard(stringResource(R.string.finish_ok), stringResource(R.string.finish_ok_hint), feedback == Feedback.OK, { feedback = Feedback.OK })
+        ChoiceCard(stringResource(R.string.finish_hard), stringResource(R.string.finish_hard_hint), feedback == Feedback.HARD, { feedback = Feedback.HARD })
+        Spacer(Modifier.height(4.dp))
+        SectionLabel(stringResource(R.string.finish_zones))
+        ChipRow {
+            Joint.entries.forEach { j ->
+                Chip(jointLabel(j), j in zones, { zones = if (j in zones) zones - j else zones + j }, accent = MudryaColors.Moon)
+            }
+        }
+        Spacer(Modifier.height(8.dp))
+        PrimaryButton(stringResource(R.string.player_finish), { feedback?.let { onSave(it, zones) } }, enabled = feedback != null)
     }
 }
