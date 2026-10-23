@@ -1,0 +1,156 @@
+package ru.mudrya.yoga.engine
+
+import org.junit.jupiter.api.Test
+import ru.mudrya.yoga.model.Injury
+import ru.mudrya.yoga.model.Joint
+import ru.mudrya.yoga.model.Support
+import kotlin.test.assertEquals
+import kotlin.test.assertNull
+import kotlin.test.assertTrue
+
+class UserStateCodecTest {
+
+    private val full = UserState(
+        profile = UserProfile(Sex.FEMALE, 41, setOf(Goal.JOINTS, Goal.CALM), Level.EXPERIENCED, setOf(Injury.WRISTS, Injury.NECK)),
+        params = SessionParams(3, Support.FISTS, listOf("s1"), 5_500, easyStreak = 2, okCount = 1, easedJoints = setOf(Joint.KNEES)),
+        sessions = listOf(
+            SessionRecord(1_000, 20_000, "surya", 1, 1_200_000, true, Feedback.OK, false),
+            SessionRecord(2_000, 20_001, "surya", 2, 300_000, false, null, true),
+        ),
+        tests = listOf(MovementRecord(5_000, 20_000, 41, 37, mapOf(MovementTest.BALANCE to 8.5, MovementTest.SIT_RISE to 9.0))),
+    )
+
+    @Test
+    fun `round trip keeps everything`() {
+        assertEquals(full, UserStateCodec.decode(UserStateCodec.encode(full)))
+    }
+
+    @Test
+    fun `empty text gives a fresh user`() {
+        val s = UserStateCodec.decode("")
+        assertNull(s.profile)
+        assertEquals(Plan.DEFAULT_PARAMS, s.params)
+        assertTrue(s.sessions.isEmpty())
+    }
+
+    @Test
+    fun `broken lines are skipped, good ones survive`() {
+        val text = UserStateCodec.encode(full) + "garbage\nsession=1;2;x\ntest=;;;\nunknown.key=5\nprofile.level=WIZARD_IGNORED_LATER\n"
+        val s = UserStateCodec.decode(text)
+        assertEquals(2, s.sessions.size)
+        assertEquals(1, s.tests.size)
+        // Испорченное значение уровня делает профиль недействительным — пользователь пройдёт онбординг заново,
+        // но история остаётся.
+        assertNull(s.profile)
+    }
+
+    @Test
+    fun `out of range params are clamped`() {
+        val s = UserStateCodec.decode("params.rounds=99\nparams.phaseMs=100\n")
+        assertEquals(Plan.LIMITS.maxRounds, s.params.rounds)
+        assertEquals(2_000, s.params.phaseMs)
+    }
+}
+
+class PlanTest {
+
+    private fun profile(level: Level, injuries: Set<Injury> = emptySet()) = UserProfile(Sex.MALE, 35, setOf(Goal.SHAPE), level, injuries)
+
+    @Test
+    fun `beginner starts with one round and palms`() {
+        val p = Plan.initial(profile(Level.BEGINNER))
+        assertEquals(1, p.rounds)
+        assertEquals(Support.PALMS, p.support)
+        assertEquals(4_000, p.phaseMs)
+    }
+
+    @Test
+    fun `wrist injury always means fists`() {
+        Level.entries.forEach { assertEquals(Support.FISTS, Plan.initial(profile(it, setOf(Injury.WRISTS))).support) }
+        assertEquals(listOf(Support.FISTS), Plan.allowedSupports(setOf(Injury.WRISTS)))
+    }
+
+    @Test
+    fun `adaptation adds one round at a time and never drops below one`() {
+        val state = UserState(profile(Level.BEGINNER), Plan.initial(profile(Level.BEGINNER)))
+        assertEquals(2, Plan.adapt(state, Feedback.EASY, false, emptySet()).rounds)
+        assertEquals(1, Plan.adapt(state, Feedback.HARD, false, emptySet()).rounds)
+    }
+}
+
+class ProgressStatsTest {
+
+    private fun rec(day: Long, minutes: Long, completed: Boolean = true) =
+        SessionRecord(day * 86_400_000, day, "surya", 1, minutes * 60_000, completed, null, false)
+
+    @Test
+    fun `streak counts consecutive days up to today`() {
+        val s = ProgressStats.of(UserState(sessions = listOf(rec(8, 20), rec(9, 20), rec(10, 20))), today = 10)
+        assertEquals(3, s.currentStreak)
+        assertEquals(3, s.bestStreak)
+    }
+
+    @Test
+    fun `streak survives until today ends`() {
+        val s = ProgressStats.of(UserState(sessions = listOf(rec(8, 20), rec(9, 20))), today = 10)
+        assertEquals(2, s.currentStreak)
+    }
+
+    @Test
+    fun `missed day breaks the streak but best is kept`() {
+        val s = ProgressStats.of(UserState(sessions = listOf(rec(1, 20), rec(2, 20), rec(3, 20), rec(9, 10))), today = 11)
+        assertEquals(0, s.currentStreak)
+        assertEquals(3, s.bestStreak)
+    }
+
+    @Test
+    fun `unfinished practice counts minutes but not sessions or streak`() {
+        val s = ProgressStats.of(UserState(sessions = listOf(rec(10, 7, completed = false))), today = 10)
+        assertEquals(0, s.sessions)
+        assertEquals(7, s.totalMinutes)
+        assertEquals(0, s.currentStreak)
+        assertEquals(listOf(0, 0, 0, 0, 0, 0, 7), s.lastWeekMinutes)
+    }
+
+    @Test
+    fun `movement age first and last`() {
+        val tests = listOf(
+            MovementRecord(2, 2, 40, 38, emptyMap()),
+            MovementRecord(1, 1, 40, 44, emptyMap()),
+        )
+        val s = ProgressStats.of(UserState(tests = tests), today = 2)
+        assertEquals(44, s.firstMovementAge)
+        assertEquals(38, s.lastMovementAge)
+    }
+}
+
+class ProvisionalNormsTest {
+
+    private val calc = MovementAgeCalculator(ProvisionalNorms)
+
+    @Test
+    fun `meeting the norm gives the passport age`() {
+        val results = MovementTest.entries.associateWith { ProvisionalNorms.expected(it, 45, Sex.FEMALE) }
+        assertEquals(45, calc.calculate(45, Sex.FEMALE, results).age)
+    }
+
+    @Test
+    fun `norms decline with age`() {
+        MovementTest.entries.forEach { t ->
+            Sex.entries.forEach { sex ->
+                assertTrue(ProvisionalNorms.expected(t, 30, sex) >= ProvisionalNorms.expected(t, 70, sex), "$t $sex")
+            }
+        }
+    }
+
+    @Test
+    fun `strong results lower the movement age`() {
+        val r = calc.calculate(50, Sex.MALE, mapOf(MovementTest.BALANCE to 15.0, MovementTest.SIT_RISE to 10.0, MovementTest.PUSH_UPS to 30.0))
+        assertTrue(r.age < 50, "age=${r.age}")
+    }
+
+    @Test
+    fun `values outside the anchors are flat`() {
+        assertEquals(ProvisionalNorms.expected(MovementTest.BALANCE, 90, Sex.MALE), ProvisionalNorms.expected(MovementTest.BALANCE, 99, Sex.MALE))
+    }
+}

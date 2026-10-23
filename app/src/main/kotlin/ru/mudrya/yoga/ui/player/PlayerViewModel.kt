@@ -1,25 +1,53 @@
 package ru.mudrya.yoga.ui.player
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewmodel.initializer
+import androidx.lifecycle.viewmodel.viewModelFactory
 import ru.mudrya.yoga.catalog.SuryaCatalog
+import ru.mudrya.yoga.data.UserRepository
 import ru.mudrya.yoga.engine.BuildRequest
+import ru.mudrya.yoga.engine.Constraints
+import ru.mudrya.yoga.engine.Feedback
+import ru.mudrya.yoga.engine.Plan
 import ru.mudrya.yoga.engine.PlayerController
 import ru.mudrya.yoga.engine.PlayerFrame
 import ru.mudrya.yoga.engine.SessionBuilder
-import ru.mudrya.yoga.model.Support
+import ru.mudrya.yoga.engine.SessionRecord
+import ru.mudrya.yoga.model.Joint
 
 /**
  * Держит контроллер плеера, чтобы поворот экрана не сбрасывал практику.
- * Время двигает экран (кадровый цикл), модель только хранит состояние.
+ * Время двигает экран (кадровый цикл), модель хранит состояние и сохраняет итог.
  */
-class PlayerViewModel : ViewModel() {
+class PlayerViewModel(private val users: UserRepository) : ViewModel() {
 
-    private val session = SessionBuilder(SuryaCatalog.catalog)
-        .build(BuildRequest(SuryaCatalog.surya, rounds = 1, support = Support.PALMS))
+    private val startedAt = System.currentTimeMillis()
+    private val startDay = UserRepository.today()
+    private val params = users.state.value.params
+    private val injuries = users.state.value.profile?.injuries.orEmpty()
 
-    val controller = PlayerController(session, phaseMs = DEFAULT_PHASE_MS)
+    private val session = SessionBuilder(SuryaCatalog.catalog).build(
+        BuildRequest(
+            sequence = SuryaCatalog.surya,
+            rounds = params.rounds,
+            support = params.support,
+            constraints = Constraints(injuries),
+        ),
+    )
+
+    val controller = PlayerController(session, phaseMs = params.phaseMs)
+
+    var usedMetalDog = false
+        private set
+
+    private var saved = false
 
     fun frame(): PlayerFrame = controller.frame()
+
+    fun startMetalDog() {
+        usedMetalDog = true
+        controller.setMetalDog(true)
+    }
 
     fun cycleSpeed() {
         val i = SPEEDS.indexOf(controller.speed).let { if (it < 0) 1 else it }
@@ -27,13 +55,48 @@ class PlayerViewModel : ViewModel() {
     }
 
     fun cyclePhaseLength() {
-        val i = PHASE_LENGTHS.indexOf(controller.phaseMs).let { if (it < 0) 1 else it }
+        val i = PHASE_LENGTHS.indexOf(controller.phaseMs).let { if (it < 0) 0 else it }
         controller.setTempo(PHASE_LENGTHS[(i + 1) % PHASE_LENGTHS.size], controller.speed)
     }
 
+    /** Финиш с ответом «как прошло»: сохраняем практику и параметры следующей сессии. */
+    fun finish(feedback: Feedback, problemZones: Set<Joint>) {
+        if (saved) return
+        saved = true
+        val f = frame()
+        users.update { s ->
+            val next = Plan.adapt(s, feedback, usedMetalDog, problemZones)
+            s.copy(
+                params = next,
+                sessions = s.sessions + record(f.totalMs, completed = true, feedback = feedback),
+            )
+        }
+    }
+
+    /** Выход до конца: минуты засчитываем, если позанимались хотя бы минуту. Параметры не меняем. */
+    fun abandon() {
+        if (saved) return
+        val f = frame()
+        if (f.finished || f.elapsedMs < 60_000) return
+        saved = true
+        users.update { it.copy(sessions = it.sessions + record(f.elapsedMs, completed = false, feedback = null)) }
+    }
+
+    private fun record(durationMs: Long, completed: Boolean, feedback: Feedback?) = SessionRecord(
+        startedAtMs = startedAt,
+        localDay = startDay,
+        sequenceId = session.sequenceId,
+        rounds = session.rounds,
+        durationMs = durationMs,
+        completed = completed,
+        feedback = feedback,
+        usedMetalDog = usedMetalDog,
+    )
+
     companion object {
-        const val DEFAULT_PHASE_MS = 4_000L
         val SPEEDS = listOf(0.75, 1.0, 1.25)
-        val PHASE_LENGTHS = listOf(3_000L, 4_000L, 5_000L, 6_000L)
+        val PHASE_LENGTHS = listOf(3_000L, 4_000L, 5_000L, 6_000L, 7_000L, 8_000L)
+
+        fun factory(users: UserRepository) = viewModelFactory { initializer { PlayerViewModel(users) } }
     }
 }

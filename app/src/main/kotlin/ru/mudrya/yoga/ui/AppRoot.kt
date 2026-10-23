@@ -2,20 +2,12 @@ package ru.mudrya.yoga.ui
 
 import androidx.annotation.StringRes
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationBarItemDefaults
@@ -23,20 +15,29 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import androidx.navigation.NavGraph.Companion.findStartDestination
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import ru.mudrya.yoga.R
-import ru.mudrya.yoga.store.StoreModule
+import ru.mudrya.yoga.engine.Plan
+import ru.mudrya.yoga.engine.UserProfile
+import ru.mudrya.yoga.model.Injury
+import ru.mudrya.yoga.model.Support
+import ru.mudrya.yoga.ui.common.appContainer
+import ru.mudrya.yoga.ui.home.PracticeScreen
+import ru.mudrya.yoga.ui.home.ProfileScreen
+import ru.mudrya.yoga.ui.home.ProgressScreen
+import ru.mudrya.yoga.ui.onboarding.OnboardingScreen
 import ru.mudrya.yoga.ui.player.PlayerScreen
+import ru.mudrya.yoga.ui.test.MovementTestScreen
 import ru.mudrya.yoga.ui.theme.MudryaColors
 
 enum class Tab(val route: String, @StringRes val label: Int) {
@@ -46,47 +47,106 @@ enum class Tab(val route: String, @StringRes val label: Int) {
     PROFILE("profile", R.string.tab_profile),
 }
 
-private const val PLAYER_ROUTE = "player/surya"
+private object Routes {
+    const val ONBOARDING = "onboarding"
+    const val EDIT_PROFILE = "profile/edit"
+    const val FIRST_TEST = "test/first"
+    const val TEST = "test"
+    const val PLAYER = "player/surya"
+}
 
 @Composable
 fun AppRoot() {
+    val users = appContainer().users
+    val state by users.state.collectAsStateWithLifecycle()
     val nav = rememberNavController()
     val backStack by nav.currentBackStackEntryAsState()
     val current = backStack?.destination?.route
+    val start = remember { if (state.onboarded) Tab.PRACTICE.route else Routes.ONBOARDING }
+    val showTabs = Tab.entries.any { it.route == current }
 
     Scaffold(
         containerColor = MudryaColors.Ground,
-        bottomBar = {
-            if (current != PLAYER_ROUTE) NavigationBar(containerColor = MudryaColors.SurfaceHigh) {
-                Tab.entries.forEach { tab ->
-                    val selected = current == tab.route
-                    NavigationBarItem(
-                        selected = selected,
-                        onClick = {
-                            nav.navigate(tab.route) {
-                                popUpTo(nav.graph.findStartDestination().id) { saveState = true }
-                                launchSingleTop = true
-                                restoreState = true
-                            }
-                        },
-                        icon = { TabDot(selected) },
-                        label = { Text(stringResource(tab.label)) },
-                        colors = NavigationBarItemDefaults.colors(
-                            selectedTextColor = MudryaColors.Saffron,
-                            unselectedTextColor = MudryaColors.TextMuted,
-                            indicatorColor = Color.Transparent,
-                        ),
-                    )
+        bottomBar = { if (showTabs) TabBar(nav, current) },
+    ) { padding ->
+        NavHost(nav, startDestination = start, modifier = Modifier.padding(padding)) {
+            composable(Routes.ONBOARDING) {
+                OnboardingScreen(initial = null) { profile ->
+                    users.update { it.copy(profile = profile, params = Plan.initial(profile)) }
+                    nav.navigate(Routes.FIRST_TEST) { popUpTo(Routes.ONBOARDING) { inclusive = true } }
                 }
             }
-        },
-    ) { padding ->
-        NavHost(nav, startDestination = Tab.PRACTICE.route, modifier = Modifier.padding(padding)) {
-            composable(Tab.PRACTICE.route) { PracticeScreen(onStart = { nav.navigate(PLAYER_ROUTE) }) }
-            composable(PLAYER_ROUTE) { PlayerScreen(onClose = { nav.popBackStack() }) }
+            composable(Routes.EDIT_PROFILE) {
+                OnboardingScreen(initial = state.profile) { profile ->
+                    users.update { it.copy(profile = profile, params = it.params.respecting(profile)) }
+                    nav.popBackStack()
+                }
+            }
+            composable(Routes.FIRST_TEST) {
+                val profile = state.profile
+                if (profile == null) {
+                    Box(Modifier.fillMaxSize())
+                } else {
+                    MovementTestScreen(profile, users) { nav.goHome() }
+                }
+            }
+            composable(Routes.TEST) {
+                val profile = state.profile
+                if (profile == null) {
+                    Box(Modifier.fillMaxSize())
+                } else {
+                    MovementTestScreen(profile, users) { nav.popBackStack() }
+                }
+            }
+            composable(Routes.PLAYER) { PlayerScreen(onClose = { nav.popBackStack() }) }
+            composable(Tab.PRACTICE.route) {
+                PracticeScreen(state, users, onStart = { nav.navigate(Routes.PLAYER) }, onTest = { nav.navigate(Routes.TEST) })
+            }
             composable(Tab.SETS.route) { Placeholder(R.string.tab_sets) }
-            composable(Tab.PROGRESS.route) { Placeholder(R.string.tab_progress) }
-            composable(Tab.PROFILE.route) { Placeholder(R.string.tab_profile) }
+            composable(Tab.PROGRESS.route) { ProgressScreen(state, onTest = { nav.navigate(Routes.TEST) }) }
+            composable(Tab.PROFILE.route) {
+                ProfileScreen(
+                    state,
+                    onEdit = { nav.navigate(Routes.EDIT_PROFILE) },
+                    onReset = {
+                        users.reset()
+                        nav.navigate(Routes.ONBOARDING) { popUpTo(nav.graph.id) { inclusive = true } }
+                    },
+                )
+            }
+        }
+    }
+}
+
+/** После смены ограничений опора должна оставаться допустимой. */
+private fun ru.mudrya.yoga.engine.SessionParams.respecting(p: UserProfile) =
+    if (Injury.WRISTS in p.injuries && support != Support.FISTS) copy(support = Support.FISTS) else this
+
+private fun NavHostController.goHome() = navigate(Tab.PRACTICE.route) { popUpTo(graph.id) { inclusive = true } }
+
+@Composable
+private fun TabBar(nav: NavHostController, current: String?) {
+    NavigationBar(containerColor = MudryaColors.SurfaceHigh) {
+        Tab.entries.forEach { tab ->
+            val selected = current == tab.route
+            NavigationBarItem(
+                selected = selected,
+                onClick = {
+                    nav.navigate(tab.route) {
+                        // Практика — корень после онбординга, на неё и сворачиваем стек вкладок.
+                        popUpTo(Tab.PRACTICE.route) { saveState = true }
+                        launchSingleTop = true
+                        restoreState = true
+                    }
+                },
+                icon = { TabDot(selected) },
+                label = { Text(stringResource(tab.label)) },
+                colors = NavigationBarItemDefaults.colors(
+                    selectedTextColor = MudryaColors.Saffron,
+                    unselectedTextColor = MudryaColors.TextMuted,
+                    indicatorColor = Color.Transparent,
+                ),
+            )
         }
     }
 }
@@ -101,54 +161,9 @@ private fun TabDot(selected: Boolean) {
 }
 
 @Composable
-private fun PracticeScreen(onStart: () -> Unit) {
-    Column(
-        Modifier
-            .fillMaxSize()
-            .padding(20.dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp),
-    ) {
-        Text(stringResource(R.string.today), color = MudryaColors.TextMuted, fontSize = 14.sp)
-        Column(
-            Modifier
-                .fillMaxWidth()
-                .background(MudryaColors.Saffron, RoundedCornerShape(24.dp))
-                .padding(20.dp),
-            verticalArrangement = Arrangement.spacedBy(12.dp),
-        ) {
-            Text(
-                stringResource(R.string.surya),
-                color = MudryaColors.Ground,
-                fontSize = 24.sp,
-                fontWeight = FontWeight.Bold,
-            )
-            Button(
-                onClick = onStart,
-                colors = ButtonDefaults.buttonColors(containerColor = MudryaColors.Ground, contentColor = MudryaColors.Text),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(52.dp),
-                shape = RoundedCornerShape(16.dp),
-            ) { Text(stringResource(R.string.start), fontWeight = FontWeight.Bold) }
-        }
-        Spacer(Modifier.height(8.dp))
-        Text(
-            stringResource(R.string.store_label, StoreModule.services.storeName),
-            color = MudryaColors.TextMuted,
-            style = MaterialTheme.typography.bodySmall,
-        )
-    }
-}
-
-@Composable
 private fun Placeholder(@StringRes title: Int) {
-    Column(
-        Modifier
-            .fillMaxSize()
-            .padding(20.dp),
-        verticalArrangement = Arrangement.spacedBy(8.dp),
-    ) {
-        Text(stringResource(title), color = MudryaColors.Text, fontSize = 22.sp, fontWeight = FontWeight.Bold)
+    Column(Modifier.fillMaxSize().padding(20.dp)) {
+        Text(stringResource(title), color = MudryaColors.Text, style = androidx.compose.material3.MaterialTheme.typography.headlineSmall)
         Text(stringResource(R.string.coming_soon), color = MudryaColors.TextMuted)
     }
 }

@@ -1,0 +1,256 @@
+package ru.mudrya.yoga.engine
+
+import ru.mudrya.yoga.model.Injury
+import ru.mudrya.yoga.model.Joint
+import ru.mudrya.yoga.model.Support
+
+enum class Level { BEGINNER, EXPERIENCED, ADVANCED }
+
+enum class Goal { JOINTS, YOUTH, SHAPE, STRENGTH, CALM }
+
+/** Ответы онбординга. */
+data class UserProfile(
+    val sex: Sex,
+    val age: Int,
+    val goals: Set<Goal>,
+    val level: Level,
+    val injuries: Set<Injury>,
+)
+
+/** Одна практика. [localDay] — номер дня по местному времени (LocalDate.toEpochDay). */
+data class SessionRecord(
+    val startedAtMs: Long,
+    val localDay: Long,
+    val sequenceId: String,
+    val rounds: Int,
+    val durationMs: Long,
+    val completed: Boolean,
+    val feedback: Feedback?,
+    val usedMetalDog: Boolean,
+)
+
+/** Результат теста возраста движения. */
+data class MovementRecord(
+    val atMs: Long,
+    val localDay: Long,
+    val chronologicalAge: Int,
+    val movementAge: Int,
+    val results: Map<MovementTest, Double>,
+)
+
+/** Всё, что приложение хранит о пользователе. */
+data class UserState(
+    val profile: UserProfile? = null,
+    val params: SessionParams = Plan.DEFAULT_PARAMS,
+    val sessions: List<SessionRecord> = emptyList(),
+    val tests: List<MovementRecord> = emptyList(),
+) {
+    val onboarded: Boolean get() = profile != null
+}
+
+/** Стартовый план и правила подстройки для полной Сурья Намаскар (длинный круг). */
+object Plan {
+    const val DEFAULT_PHASE_MS = 4_000L
+
+    val DEFAULT_PARAMS = SessionParams(rounds = 1, support = Support.PALMS, enabledSlots = emptyList(), phaseMs = DEFAULT_PHASE_MS)
+
+    /** Полный круг Сурьи — около 20 минут, поэтому круги прибавляются по одному. */
+    val LIMITS = AdaptationLimits(minRounds = 1, maxRounds = 6, roundStep = 1)
+
+    fun initial(profile: UserProfile): SessionParams {
+        val wrists = Injury.WRISTS in profile.injuries
+        return when (profile.level) {
+            Level.BEGINNER -> SessionParams(1, if (wrists) Support.FISTS else Support.PALMS, emptyList(), 4_000)
+            Level.EXPERIENCED -> SessionParams(1, if (wrists) Support.FISTS else Support.PALMS, emptyList(), 5_000)
+            Level.ADVANCED -> SessionParams(2, if (wrists) Support.FISTS else Support.FINGERS, emptyList(), 6_000)
+        }
+    }
+
+    /** Опора, которую можно выбрать при этих ограничениях. */
+    fun allowedSupports(injuries: Set<Injury>): List<Support> =
+        if (Injury.WRISTS in injuries) listOf(Support.FISTS) else Support.entries.toList()
+
+    fun adapt(
+        state: UserState,
+        feedback: Feedback,
+        usedMetalDog: Boolean,
+        problemZones: Set<Joint>,
+    ): SessionParams = Adaptation(LIMITS).next(
+        current = state.params,
+        feedback = feedback,
+        usedMetalDog = usedMetalDog,
+        availableSlots = emptyList(),
+        injuries = state.profile?.injuries.orEmpty(),
+        problemZones = problemZones,
+    )
+}
+
+/** Сводка для экрана «Прогресс». */
+data class ProgressStats(
+    val sessions: Int,
+    val totalMinutes: Int,
+    val currentStreak: Int,
+    val bestStreak: Int,
+    /** Минуты за последние 7 дней, от самого раннего к сегодняшнему. */
+    val lastWeekMinutes: List<Int>,
+    val firstMovementAge: Int?,
+    val lastMovementAge: Int?,
+) {
+    companion object {
+        fun of(state: UserState, today: Long): ProgressStats {
+            val minutesByDay = state.sessions.groupBy { it.localDay }
+                .mapValues { (_, list) -> list.sumOf { it.durationMs } }
+            val days = state.sessions.filter { it.completed }.map { it.localDay }.toSortedSet()
+
+            var best = 0
+            var run = 0
+            var prev: Long? = null
+            for (d in days) {
+                run = if (prev != null && d == prev + 1) run + 1 else 1
+                best = maxOf(best, run)
+                prev = d
+            }
+            // Серия не прерывается, пока не прошёл весь сегодняшний день.
+            var current = 0
+            var d = if (today in days) today else today - 1
+            while (d in days) {
+                current++
+                d--
+            }
+
+            val tests = state.tests.sortedBy { it.atMs }
+            return ProgressStats(
+                sessions = state.sessions.count { it.completed },
+                totalMinutes = (state.sessions.sumOf { it.durationMs } / 60_000).toInt(),
+                currentStreak = current,
+                bestStreak = best,
+                lastWeekMinutes = (today - 6..today).map { ((minutesByDay[it] ?: 0L) / 60_000).toInt() },
+                firstMovementAge = tests.firstOrNull()?.movementAge,
+                lastMovementAge = tests.lastOrNull()?.movementAge,
+            )
+        }
+    }
+}
+
+/**
+ * Текстовый формат хранения: строки «ключ=значение». Без внешних библиотек, читается глазами,
+ * лишние и битые строки пропускаются — обновление приложения не теряет прогресс.
+ */
+object UserStateCodec {
+    const val VERSION = 1
+
+    fun encode(s: UserState): String = buildString {
+        line("v", VERSION.toString())
+        s.profile?.let { p ->
+            line("profile.sex", p.sex.name)
+            line("profile.age", p.age.toString())
+            line("profile.goals", p.goals.joinToString(",") { it.name })
+            line("profile.level", p.level.name)
+            line("profile.injuries", p.injuries.joinToString(",") { it.name })
+        }
+        with(s.params) {
+            line("params.rounds", rounds.toString())
+            line("params.support", support.name)
+            line("params.slots", enabledSlots.joinToString(","))
+            line("params.phaseMs", phaseMs.toString())
+            line("params.easyStreak", easyStreak.toString())
+            line("params.okCount", okCount.toString())
+            line("params.eased", easedJoints.joinToString(",") { it.name })
+        }
+        s.sessions.forEach { r ->
+            line(
+                "session",
+                listOf(r.startedAtMs, r.localDay, r.sequenceId, r.rounds, r.durationMs, r.completed, r.feedback?.name ?: "", r.usedMetalDog)
+                    .joinToString(";"),
+            )
+        }
+        s.tests.forEach { t ->
+            line(
+                "test",
+                listOf(t.atMs, t.localDay, t.chronologicalAge, t.movementAge, t.results.entries.joinToString(",") { "${it.key.name}:${it.value}" })
+                    .joinToString(";"),
+            )
+        }
+    }
+
+    fun decode(text: String): UserState {
+        val single = mutableMapOf<String, String>()
+        val sessions = mutableListOf<SessionRecord>()
+        val tests = mutableListOf<MovementRecord>()
+        text.lineSequence().forEach { raw ->
+            val i = raw.indexOf('=')
+            if (i <= 0) return@forEach
+            val key = raw.substring(0, i).trim()
+            val value = raw.substring(i + 1).trim()
+            when (key) {
+                "session" -> parseSession(value)?.let(sessions::add)
+                "test" -> parseTest(value)?.let(tests::add)
+                else -> single[key] = value
+            }
+        }
+        return UserState(profile = parseProfile(single), params = parseParams(single), sessions = sessions, tests = tests)
+    }
+
+    private fun StringBuilder.line(k: String, v: String) {
+        append(k).append('=').append(v.replace('\n', ' ')).append('\n')
+    }
+
+    private inline fun <reified E : Enum<E>> enumOrNull(s: String?): E? = s?.let { v -> enumValues<E>().firstOrNull { it.name == v } }
+
+    private inline fun <reified E : Enum<E>> enumSet(s: String?): Set<E> =
+        s.orEmpty().split(',').mapNotNull { enumOrNull<E>(it.trim()) }.toSet()
+
+    private fun parseProfile(m: Map<String, String>): UserProfile? {
+        val sex = enumOrNull<Sex>(m["profile.sex"]) ?: return null
+        val age = m["profile.age"]?.toIntOrNull()?.takeIf { it in 14..100 } ?: return null
+        val level = enumOrNull<Level>(m["profile.level"]) ?: return null
+        return UserProfile(sex, age, enumSet(m["profile.goals"]), level, enumSet(m["profile.injuries"]))
+    }
+
+    private fun parseParams(m: Map<String, String>): SessionParams {
+        val d = Plan.DEFAULT_PARAMS
+        return SessionParams(
+            rounds = m["params.rounds"]?.toIntOrNull()?.coerceIn(Plan.LIMITS.minRounds, Plan.LIMITS.maxRounds) ?: d.rounds,
+            support = enumOrNull<Support>(m["params.support"]) ?: d.support,
+            enabledSlots = m["params.slots"].orEmpty().split(',').map { it.trim() }.filter { it.isNotEmpty() },
+            phaseMs = m["params.phaseMs"]?.toLongOrNull()?.coerceIn(2_000, 10_000) ?: d.phaseMs,
+            easyStreak = m["params.easyStreak"]?.toIntOrNull() ?: 0,
+            okCount = m["params.okCount"]?.toIntOrNull() ?: 0,
+            easedJoints = enumSet(m["params.eased"]),
+        )
+    }
+
+    private fun parseSession(v: String): SessionRecord? {
+        val p = v.split(';')
+        if (p.size < 8) return null
+        return SessionRecord(
+            startedAtMs = p[0].toLongOrNull() ?: return null,
+            localDay = p[1].toLongOrNull() ?: return null,
+            sequenceId = p[2],
+            rounds = p[3].toIntOrNull() ?: return null,
+            durationMs = p[4].toLongOrNull() ?: return null,
+            completed = p[5].toBooleanStrictOrNull() ?: return null,
+            feedback = enumOrNull<Feedback>(p[6]),
+            usedMetalDog = p[7].toBooleanStrictOrNull() ?: false,
+        )
+    }
+
+    private fun parseTest(v: String): MovementRecord? {
+        val p = v.split(';')
+        if (p.size < 5) return null
+        val results = p[4].split(',').mapNotNull { pair ->
+            val kv = pair.split(':')
+            if (kv.size != 2) return@mapNotNull null
+            val test = enumOrNull<MovementTest>(kv[0]) ?: return@mapNotNull null
+            val value = kv[1].toDoubleOrNull() ?: return@mapNotNull null
+            test to value
+        }.toMap()
+        return MovementRecord(
+            atMs = p[0].toLongOrNull() ?: return null,
+            localDay = p[1].toLongOrNull() ?: return null,
+            chronologicalAge = p[2].toIntOrNull() ?: return null,
+            movementAge = p[3].toIntOrNull() ?: return null,
+            results = results,
+        )
+    }
+}
