@@ -32,10 +32,11 @@ data class SessionStep(
     val asana: Asana,
     val side: Side,
     val support: Support?,
-    val enter: Breath,
+    val enter: List<Breath>,
     val hold: List<Breath>,
     val extraCycles: Boolean,
     val round: Int,
+    val metalDog: Boolean = false,
 )
 
 data class Session(
@@ -102,6 +103,7 @@ class SessionBuilder(private val catalog: Catalog) {
                 hold = step.hold,
                 extraCycles = step.extraCycles,
                 round = 1,
+                metalDog = step.metalDog,
             )
         }
     }
@@ -156,7 +158,7 @@ class SessionBuilder(private val catalog: Catalog) {
         fun loadOf(steps: List<SessionStep>): Map<Joint, Double> {
             val result = Joint.entries.associateWith { 0.0 }.toMutableMap()
             steps.forEach { s ->
-                val breaths = 1 + s.hold.size
+                val breaths = s.enter.size + s.hold.size
                 s.asana.load.forEach { (joint, value) ->
                     val factor = if (joint == Joint.WRISTS) wristFactor(s.support) else 1.0
                     result[joint] = result.getValue(joint) + value * breaths * factor

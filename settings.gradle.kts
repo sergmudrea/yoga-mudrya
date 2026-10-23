@@ -19,3 +19,4 @@ rootProject.name = "yoga-mudrya"
 include(":app")
 include(":core:model")
 include(":core:engine")
+include(":core:catalog")

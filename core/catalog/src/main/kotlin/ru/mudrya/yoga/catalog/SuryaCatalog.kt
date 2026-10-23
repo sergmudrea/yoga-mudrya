@@ -1,0 +1,279 @@
+package ru.mudrya.yoga.catalog
+
+import ru.mudrya.yoga.engine.GraphBuilder
+import ru.mudrya.yoga.engine.PoseFitter
+import ru.mudrya.yoga.model.Asana
+import ru.mudrya.yoga.model.Block
+import ru.mudrya.yoga.model.BlockRef
+import ru.mudrya.yoga.model.Breath
+import ru.mudrya.yoga.model.Catalog
+import ru.mudrya.yoga.model.Contact
+import ru.mudrya.yoga.model.FitRule
+import ru.mudrya.yoga.model.Joint
+import ru.mudrya.yoga.model.Pose
+import ru.mudrya.yoga.model.PoseParam
+import ru.mudrya.yoga.model.SequenceDef
+import ru.mudrya.yoga.model.Side
+import ru.mudrya.yoga.model.Step
+import ru.mudrya.yoga.model.Support
+
+/**
+ * Сурья Намаскар (круг солнечного света), основная последовательность нулевого цикла — 77 позиций.
+ * Порядок асан и схемы дыхания — по методике омнио-тренинга; описания — свои.
+ *
+ * Углы поз заданы приблизительно и подгоняются под пропорции модели ([PoseFitter]):
+ * в позах с двумя опорами руки и стопы одновременно стоят на полу.
+ */
+object SuryaCatalog {
+
+    private val IN = Breath.INHALE
+    private val EX = Breath.EXHALE
+    private val ALL_SUPPORTS = setOf(Support.FISTS, Support.PALMS, Support.FINGERS)
+
+    private fun pose(
+        t: Int, n: Int, ua: Int, fa: Int, th: Int, sh: Int, ft: Int,
+        th2: Int? = null, sh2: Int? = null, ft2: Int? = null,
+    ) = Pose(
+        t.toDouble(), n.toDouble(), ua.toDouble(), fa.toDouble(), th.toDouble(), sh.toDouble(), ft.toDouble(),
+        thigh2 = th2?.toDouble(), shin2 = sh2?.toDouble(), foot2 = ft2?.toDouble(),
+    )
+
+    private fun fit(a: Contact, b: Contact, vararg vary: PoseParam) = FitRule(a, b, vary.toList())
+
+    private val LEGS = arrayOf(PoseParam.THIGH, PoseParam.SHIN)
+    private val LEGS2 = arrayOf(PoseParam.THIGH2, PoseParam.SHIN2)
+    private val UPPER = arrayOf(PoseParam.TORSO, PoseParam.NECK, PoseParam.UPPER_ARM, PoseParam.FORE_ARM)
+
+    private fun a(
+        id: String, ru: String, en: String, pose: Pose,
+        cues: List<String>,
+        sanskrit: String? = null,
+        supports: Set<Support> = emptySet(),
+        load: Map<Joint, Int> = emptyMap(),
+        fit: FitRule? = null,
+        safer: String? = null,
+    ) = Asana(
+        id = id, nameRu = ru, nameEn = en, pose = pose, supports = supports, load = load,
+        saferAlternative = safer, cuesRu = cues, sanskrit = sanskrit, fit = fit,
+    )
+
+    val asanas: List<Asana> = listOf(
+        // --- Стандартный вход: стойки и наклоны ---
+        a("tadasana", "Основная стойка", "Mountain pose", pose(90, 90, 270, 270, 270, 270, 0),
+            listOf("Стопы вместе, вес поровну на обе стопы", "Позвоночник вытянут вверх, плечи расправлены", "Пальцами ног будто обхватываете пол"),
+            sanskrit = "Тадасана"),
+        a("front_inhale", "Вдох передней поверхностью тела", "Front-body inhale", pose(93, 90, 252, 15, 284, 256, 0),
+            listOf("Руки вперёд, затем, чуть присев, резко подтяните кисти к бокам на уровне солнечного сплетения", "Ладони вверх, пальцы будто цепляют воздух", "Короткий резкий вдох — примерно на четверть лёгких"),
+            load = mapOf(Joint.KNEES to 1)),
+        a("arms_up", "Вытянутый полупрогиб", "Extended half backbend", pose(98, 102, 100, 102, 270, 270, 300),
+            listOf("Руки вперёд и вверх, взгляд за кистями, подъём на носки", "Прогиб — в грудном отделе, поясница и шея длинные", "Тянитесь всем телом вверх"),
+            load = mapOf(Joint.LUMBAR to 1)),
+        a("side_crescent_right", "Правый боковой полумесяц", "Right side crescent", pose(90, 90, 88, 88, 270, 270, 0),
+            listOf("Кисти в замок, ладонями вверх, руки прямые", "Наклон вправо — растягивайте левый бок, а не складывайте правый", "Стопы плотно на полу"),
+            load = mapOf(Joint.LUMBAR to 1)),
+        a("side_crescent_left", "Левый боковой полумесяц", "Left side crescent", pose(90, 90, 88, 88, 270, 270, 0),
+            listOf("Кисти в замок, ладонями вверх, руки прямые", "Наклон влево — растягивайте правый бок", "Стопы плотно на полу"),
+            load = mapOf(Joint.LUMBAR to 1)),
+        a("full_backbend", "Прямой полумесяц (полный прогиб)", "Full standing backbend", pose(122, 145, 140, 150, 262, 264, 0),
+            listOf("Сначала раскройте грудной отдел, потом подключайте поясницу и шею", "Каждый отдел сначала вытягивается, затем прогибается", "Ноги прямые, не сгибайте колени"),
+            sanskrit = "Ардха-чандрасана", load = mapOf(Joint.LUMBAR to 3, Joint.NECK to 1), safer = "arms_up"),
+        a("horiz_fold", "Закрытый горизонтальный наклон", "Flat-back fold", pose(0, 3, 2, 2, 278, 274, 0),
+            listOf("Наклон от тазобедренных суставов волной от таза к рукам", "Корпус и руки — одна горизонтальная линия", "Ноги прямые, седалищные кости тянутся вверх"),
+            load = mapOf(Joint.LUMBAR to 2)),
+        a("uttanasana", "Закрытый вытянутый наклон", "Standing forward fold", pose(268, 262, 264, 262, 282, 276, 0),
+            listOf("Складывайтесь в тазобедренных суставах, а не сгибайте спину", "Грудь к бёдрам, макушка тянется к полу", "Пальцы рук давят в пол за стопами"),
+            sanskrit = "Уттанасана", load = mapOf(Joint.LUMBAR to 1),
+            fit = fit(Contact.HAND, Contact.FOOT, PoseParam.UPPER_ARM, PoseParam.FORE_ARM)),
+        a("half_lift", "Полупрогиб в вытянутом наклоне", "Half lift", pose(340, 25, 275, 275, 282, 276, 0),
+            listOf("Ладони на полу перед стопами", "Прогнитесь, взгляд вперёд и вверх", "Пупок прижат к бёдрам"),
+            load = mapOf(Joint.LUMBAR to 1),
+            fit = fit(Contact.HAND, Contact.FOOT, PoseParam.TORSO)),
+        a("fold_ankles", "Замкнутый закрытый наклон", "Fold holding ankles", pose(264, 258, 232, 300, 282, 276, 0),
+            listOf("Возьмитесь руками за лодыжки", "Притягивайте корпус вниз вдоль бёдер", "Ноги прямые"),
+            load = mapOf(Joint.LUMBAR to 1)),
+        a("shoulder_fold", "Плечевое вытягивание в наклоне", "Fold with shoulder stretch", pose(266, 262, 55, 55, 282, 276, 0),
+            listOf("Кисти в замок за спиной, замок вывернут", "Прямые руки опускаются из-за спины вперёд-вниз", "Позвоночник свободно стекает вниз"),
+            load = mapOf(Joint.SHOULDERS to 2)),
+        a("plank", "Наклонный упор", "High plank", pose(12, 16, 272, 272, 192, 192, 250),
+            listOf("Руки прямые, тело — одна прямая линия", "Плечи расправлены, живот подтянут", "Стопы на ширине плеч"),
+            supports = ALL_SUPPORTS, load = mapOf(Joint.WRISTS to 2, Joint.SHOULDERS to 2),
+            fit = fit(Contact.HAND, Contact.FOOT, *LEGS)),
+        // --- Внутренняя связка (виньяса) ---
+        a("glide_updog", "Скользящий упор-прогиб", "Gliding upward dog", pose(24, 50, 294, 294, 190, 190, 236),
+            listOf("Кисти впереди плеч, таз низко", "Тянитесь макушкой вперёд", "Движение — на вдохе"),
+            sanskrit = "Уттана-урдхва-мукха-шванасана", supports = ALL_SUPPORTS, load = mapOf(Joint.WRISTS to 2, Joint.LUMBAR to 1),
+            fit = fit(Contact.HAND, Contact.FOOT, *LEGS)),
+        a("glide_low", "Скользящий горизонтальный упор", "Gliding low plank", pose(12, 20, 200, 300, 186, 186, 250),
+            listOf("Опуститесь, корпус прямой", "Кисти остаются впереди плеч"),
+            sanskrit = "Уттана-чатуранга-дандасана", supports = ALL_SUPPORTS, load = mapOf(Joint.WRISTS to 2, Joint.SHOULDERS to 2),
+            fit = fit(Contact.HAND, Contact.FOOT, *LEGS)),
+        a("chaturanga", "Горизонтальный упор", "Low plank", pose(12, 16, 205, 280, 188, 188, 250),
+            listOf("Локти вдоль корпуса", "Тело параллельно полу, живот подтянут", "Если силы кончаются — «металлическая собака»"),
+            sanskrit = "Чатуранга-дандасана", supports = ALL_SUPPORTS, load = mapOf(Joint.WRISTS to 2, Joint.SHOULDERS to 2),
+            fit = fit(Contact.HAND, Contact.FOOT, *LEGS)),
+        a("half_up_plank", "Полупрогиб в горизонтальном упоре", "Half-up low plank", pose(22, 45, 215, 280, 188, 186, 250),
+            listOf("Немного откатитесь назад", "Не выпрямляя рук, раскройте грудь, взгляд вперёд"),
+            supports = ALL_SUPPORTS, load = mapOf(Joint.WRISTS to 2, Joint.SHOULDERS to 2),
+            fit = fit(Contact.HAND, Contact.FOOT, *LEGS)),
+        a("updog", "Упор-прогиб", "Upward-facing dog", pose(40, 66, 276, 274, 186, 184, 246),
+            listOf("Руки прямые", "Сначала раскройте грудной отдел, потом поясницу", "Движение — на вдохе"),
+            sanskrit = "Урдхва-мукха-шванасана", supports = ALL_SUPPORTS, load = mapOf(Joint.WRISTS to 2, Joint.LUMBAR to 2),
+            fit = fit(Contact.HAND, Contact.FOOT, *LEGS)),
+        a("ext_dog", "Вытянутый упор-горка", "Extended downward dog", pose(318, 312, 316, 316, 226, 226, 300),
+            listOf("Таз вверх-назад", "Спина и руки — одна линия, пятки приподняты"),
+            sanskrit = "Уттана-адхо-мукха-шванасана", supports = ALL_SUPPORTS, load = mapOf(Joint.WRISTS to 2, Joint.SHOULDERS to 2),
+            fit = fit(Contact.HAND, Contact.FOOT, *UPPER)),
+        a("dog_bend", "Упор-горка с прогибом", "Downward dog with chest press", pose(332, 348, 344, 330, 205, 205, 302),
+            listOf("Грудь тянется к полу между руками", "Плечи раскрыты", "Движение — на вдохе"),
+            supports = ALL_SUPPORTS, load = mapOf(Joint.WRISTS to 2, Joint.SHOULDERS to 2),
+            fit = fit(Contact.HAND, Contact.FOOT, *UPPER)),
+        a("deep_dog", "Глубокий упор-горка", "Downward-facing dog", pose(304, 300, 304, 304, 250, 250, 358),
+            listOf("Вес на ноги, пятки к полу", "Шея свободна", "Дышите свободно и плавно"),
+            sanskrit = "Адхо-мукха-шванасана", supports = ALL_SUPPORTS, load = mapOf(Joint.WRISTS to 2, Joint.SHOULDERS to 1),
+            fit = fit(Contact.HAND, Contact.FOOT, *UPPER)),
+        // --- Внутреннее кольцо с широким шагом (рабочая нога — ближняя) ---
+        a("wide_step", "Широкий шаг со вдохом", "Wide step with inhale", pose(95, 92, 250, 10, 330, 270, 0, 205, 205, 250),
+            listOf("Шагните ногой вперёд, стопа рядом с кистью", "Таз как можно ниже, голень перпендикулярна полу", "Корпус вертикально, кисти к талии, короткий вдох"),
+            load = mapOf(Joint.KNEES to 2),
+            fit = fit(Contact.FOOT, Contact.FOOT2, *LEGS2)),
+        a("crescent_lunge", "Полумесяц с широким шагом", "Crescent lunge", pose(106, 116, 116, 122, 330, 270, 0, 205, 205, 250),
+            listOf("Руки вперёд и вверх, прогиб в грудном отделе", "Тело — плавная дуга от задней пятки до пальцев рук", "Промежность низко, таз не разворачивается"),
+            sanskrit = "Эка-падардха-чандрасана", load = mapOf(Joint.KNEES to 2, Joint.LUMBAR to 2),
+            fit = fit(Contact.FOOT, Contact.FOOT2, *LEGS2)),
+        a("wings", "Выдох сквозь распростёртые крылья", "Exhale through open wings", pose(95, 92, 178, 176, 330, 270, 0, 205, 205, 250),
+            listOf("Голова прямо, руки медленно разводятся в стороны", "Кисти на себя", "Вся поза — на одном растянутом выдохе"),
+            load = mapOf(Joint.KNEES to 2),
+            fit = fit(Contact.FOOT, Contact.FOOT2, *LEGS2)),
+        a("lunge_backbend", "Полумесяц с широким шагом, глубокий прогиб", "Deep crescent backbend", pose(140, 162, 205, 218, 330, 270, 0, 212, 200, 250),
+            listOf("Прогнитесь глубже, пальцы рук тянутся к полу", "Заднюю ногу сгибайте как можно меньше", "Прогиб начинается с грудного отдела"),
+            load = mapOf(Joint.KNEES to 2, Joint.LUMBAR to 3), safer = "crescent_lunge",
+            fit = fit(Contact.FOOT, Contact.FOOT2, *LEGS2)),
+        a("kneel_backbend", "Полумесяц с коленом на полу", "Kneeling crescent backbend", pose(135, 160, 208, 222, 325, 270, 0, 250, 180, 180),
+            listOf("Опустите заднее колено на пол", "Прогнитесь ещё чуть глубже, соблюдая порядок: грудь, затем поясница"),
+            load = mapOf(Joint.KNEES to 2, Joint.LUMBAR to 3), safer = "crescent_lunge",
+            fit = fit(Contact.FOOT, Contact.KNEE2, *LEGS)),
+        // --- Связка на трёх точках (рабочая нога поднята) ---
+        a("tp_ext_dog", "Трёхточечный вытянутый упор-горка", "Three-legged extended dog", pose(318, 312, 316, 316, 165, 165, 180, 226, 226, 300),
+            listOf("Рабочая нога поднята назад-вверх", "Таз не разворачивайте"),
+            sanskrit = "Эка-падоттанадхо-мукха-шванасана", supports = ALL_SUPPORTS, load = mapOf(Joint.WRISTS to 2, Joint.SHOULDERS to 2),
+            fit = fit(Contact.HAND, Contact.FOOT2, *UPPER)),
+        a("tp_glide_updog", "Трёхточечный скользящий упор-прогиб", "Three-legged gliding upward dog", pose(24, 50, 294, 294, 168, 172, 200, 190, 190, 236),
+            listOf("Таз опускается, нога остаётся высоко", "Колено поднятой ноги почти прямое"),
+            supports = ALL_SUPPORTS, load = mapOf(Joint.WRISTS to 2, Joint.LUMBAR to 1),
+            fit = fit(Contact.HAND, Contact.FOOT2, *LEGS2)),
+        a("tp_low_plank", "Трёхточечный горизонтальный упор", "Three-legged low plank", pose(12, 18, 205, 282, 172, 174, 200, 188, 188, 250),
+            listOf("Опуститесь до горизонтали", "Нога по-прежнему поднята"),
+            sanskrit = "Трианга-дандасана", supports = ALL_SUPPORTS, load = mapOf(Joint.WRISTS to 2, Joint.SHOULDERS to 2),
+            fit = fit(Contact.HAND, Contact.FOOT2, *LEGS2)),
+        a("tp_deep_dog", "Трёхточечный глубокий упор-горка", "Three-legged downward dog", pose(300, 290, 300, 300, 135, 135, 160, 250, 250, 358),
+            listOf("Таз вверх, голова свободно висит", "Пятка опорной ноги на полу, рабочая нога назад-вверх"),
+            sanskrit = "Эка-пададхо-мукха-шванасана", supports = ALL_SUPPORTS, load = mapOf(Joint.WRISTS to 2, Joint.NECK to 1),
+            fit = fit(Contact.HAND, Contact.FOOT2, *UPPER)),
+        a("knee_to_shoulder", "Наклонный упор, колено к плечу", "Plank with knee to shoulder", pose(14, 22, 272, 272, 12, 262, 230, 192, 192, 250),
+            listOf("Опустите таз, голову поднимите", "Круговым движением подтяните колено к плечу той же стороны"),
+            supports = ALL_SUPPORTS, load = mapOf(Joint.WRISTS to 2, Joint.SHOULDERS to 2),
+            fit = fit(Contact.HAND, Contact.FOOT2, *LEGS2)),
+    )
+
+    // --- Схемы дыхания шагов ---
+    private fun s(id: String, enter: List<Breath>, hold: List<Breath>, dog: Boolean = false) =
+        Step(id, enter = enter, hold = hold, metalDog = dog)
+
+    private val FREE = listOf(IN, EX, IN, EX, IN, EX) // «свободное дыхание» в глубоком упоре-горке: в MVP — 3 цикла
+
+    val blocks: List<Block> = listOf(
+        Block("standard_entry", listOf(
+            s("tadasana", listOf(EX), emptyList()),
+            s("front_inhale", listOf(IN), emptyList()),
+            s("arms_up", listOf(IN), listOf(EX, IN, EX, IN)),
+            s("side_crescent_right", listOf(EX), listOf(IN, EX, IN)),
+            s("tadasana", listOf(EX), emptyList()),
+            s("front_inhale", listOf(IN), emptyList()),
+            s("arms_up", listOf(IN), listOf(EX, IN, EX, IN)),
+            s("side_crescent_left", listOf(EX), listOf(IN, EX, IN)),
+            s("tadasana", listOf(EX), emptyList()),
+            s("front_inhale", listOf(IN), emptyList()),
+            s("arms_up", listOf(IN), listOf(EX, IN, EX, IN)),
+            s("full_backbend", listOf(EX, IN, EX), listOf(IN, EX, IN)),
+            s("horiz_fold", listOf(EX), listOf(IN, EX, IN)),
+            s("uttanasana", listOf(EX, IN, EX), listOf(IN, EX, IN, EX)),
+            s("half_lift", listOf(IN), listOf(EX, IN)),
+            s("fold_ankles", listOf(EX), listOf(IN, EX, IN, EX)),
+            s("half_lift", listOf(IN), listOf(EX, IN)),
+            s("shoulder_fold", listOf(EX), listOf(IN, EX, IN, EX)),
+            s("half_lift", listOf(IN), listOf(EX, IN)),
+            s("plank", listOf(EX), listOf(IN, EX, IN), dog = true),
+        )),
+        Block("vinyasa", listOf(
+            s("glide_updog", listOf(IN), listOf(EX, IN)),
+            s("glide_low", listOf(EX), listOf(IN, EX, IN)),
+            s("chaturanga", listOf(EX), listOf(IN, EX, IN), dog = true),
+            s("half_up_plank", listOf(EX), listOf(IN, EX)),
+            s("updog", listOf(IN), listOf(EX, IN, EX, IN)),
+            s("ext_dog", listOf(EX), listOf(IN, EX, IN, EX, IN, EX)),
+            s("dog_bend", listOf(IN), listOf(EX, IN)),
+            s("deep_dog", listOf(EX), FREE),
+        )),
+        Block("ring_wide_step", listOf(
+            s("wide_step", listOf(EX, IN), emptyList()),
+            s("crescent_lunge", listOf(IN), listOf(EX, IN, EX, IN)),
+            s("wings", listOf(EX), emptyList()),
+            s("lunge_backbend", listOf(IN, EX), listOf(IN, EX, IN)),
+            s("kneel_backbend", listOf(EX), listOf(IN, EX, IN)),
+        )),
+        Block("three_point", listOf(
+            s("tp_ext_dog", listOf(EX), listOf(IN, EX)),
+            s("tp_glide_updog", listOf(EX), listOf(IN, EX, IN)),
+            s("tp_low_plank", listOf(EX), listOf(IN, EX, IN)),
+            s("tp_deep_dog", listOf(EX), listOf(IN, EX, IN)),
+            s("knee_to_shoulder", listOf(EX), listOf(IN, EX, IN)),
+            s("deep_dog", listOf(EX), FREE),
+        )),
+        Block("standard_exit", listOf(
+            s("half_lift", listOf(EX, IN), listOf(EX, IN)),
+            s("fold_ankles", listOf(EX), listOf(IN, EX, IN, EX)),
+            s("half_lift", listOf(IN), listOf(EX, IN)),
+            s("uttanasana", listOf(EX, IN, EX), listOf(IN, EX, IN, EX)),
+            s("half_lift", listOf(IN), listOf(EX, IN)),
+            s("shoulder_fold", listOf(EX), listOf(IN, EX, IN, EX)),
+            s("horiz_fold", listOf(IN), listOf(EX, IN, EX)),
+            s("front_inhale", listOf(IN, EX, IN), emptyList()),
+            s("arms_up", listOf(IN), listOf(EX, IN, EX, IN)),
+            s("full_backbend", listOf(EX, IN, EX), listOf(IN, EX, IN)),
+            s("tadasana", listOf(EX), emptyList()),
+        )),
+    )
+
+    val surya = SequenceDef(
+        id = "surya",
+        nameRu = "Сурья Намаскар",
+        nameEn = "Surya Namaskar",
+        items = listOf(
+            BlockRef("standard_entry"),
+            BlockRef("vinyasa"),
+            BlockRef("ring_wide_step", Side.RIGHT),
+            BlockRef("three_point", Side.RIGHT),
+            BlockRef("vinyasa"),
+            BlockRef("ring_wide_step", Side.LEFT),
+            BlockRef("three_point", Side.LEFT),
+            BlockRef("vinyasa"),
+            BlockRef("standard_exit"),
+        ),
+        entryBlockId = "standard_entry",
+        exitBlockId = "standard_exit",
+    )
+
+    val sequences: List<SequenceDef> = listOf(surya)
+
+    /** Каталог с подогнанными позами и графом переходов. */
+    val catalog: Catalog by lazy {
+        val fitted = asanas.map { asana -> asana.fit?.let { asana.copy(pose = PoseFitter.fit(asana.pose, it)) } ?: asana }
+        val blockMap = blocks.associateBy { it.id }
+        val alternatives = fitted.mapNotNull { x -> x.saferAlternative?.let { x.id to it } }.toMap()
+        Catalog(
+            asanas = fitted.associateBy { it.id },
+            blocks = blockMap,
+            transitions = GraphBuilder.build(blockMap, sequences, alternatives),
+        )
+    }
+}
