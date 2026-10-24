@@ -93,4 +93,37 @@ class SuryaCatalogTest {
             assertTrue(it.cuesRu.isNotEmpty(), it.id)
         }
     }
+
+    private fun buildChandra(injuries: Set<Injury> = emptySet()) = SessionBuilder(catalog)
+        .build(BuildRequest(SuryaCatalog.chandra, rounds = 1, support = Support.PALMS, constraints = Constraints(injuries)))
+
+    @Test
+    fun `chandra has 99 positions like the book`() {
+        assertEquals(99, buildChandra().steps.size)
+    }
+
+    @Test
+    fun `chandra moon ring runs right then left`() {
+        val sides = buildChandra().steps.filter { it.asana.id == "shoulder_dog" }.map { it.side }
+        assertEquals(listOf(Side.RIGHT, Side.LEFT), sides)
+    }
+
+    @Test
+    fun `chandra keeps all positions with any single limitation`() {
+        Injury.entries.forEach { assertEquals(99, buildChandra(setOf(it)).steps.size, it.name) }
+    }
+
+    @Test
+    fun `chandra repeats rounds`() {
+        val s = SessionBuilder(catalog).build(BuildRequest(SuryaCatalog.chandra, rounds = 2, support = Support.PALMS))
+        assertEquals(198, s.steps.size)
+    }
+
+    @Test
+    fun `cat backbend and round back differ only by the spine curve`() {
+        val cat = catalog.asana("cat").pose
+        val anti = catalog.asana("anti_cat").pose
+        assertTrue(cat.chest > cat.torso - 360 && (cat.chest - cat.torso + 360) % 360 in 1.0..179.0, "cat chest above waist line")
+        assertTrue((anti.torso - anti.chest + 360) % 360 in 1.0..179.0, "anti-cat back rounds up")
+    }
 }

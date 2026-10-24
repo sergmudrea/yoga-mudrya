@@ -19,7 +19,7 @@ import ru.mudrya.yoga.model.Joint
  * Держит контроллер плеера, чтобы поворот экрана не сбрасывал практику.
  * Время двигает экран (кадровый цикл), модель хранит состояние и сохраняет итог.
  */
-class PlayerViewModel(private val users: UserRepository) : ViewModel() {
+class PlayerViewModel(private val users: UserRepository, sequenceId: String) : ViewModel() {
 
     private val startedAt = System.currentTimeMillis()
     private val startDay = UserRepository.today()
@@ -28,7 +28,7 @@ class PlayerViewModel(private val users: UserRepository) : ViewModel() {
 
     private val session = SessionBuilder(SuryaCatalog.catalog).build(
         BuildRequest(
-            sequence = SuryaCatalog.surya,
+            sequence = SuryaCatalog.sequence(sequenceId),
             rounds = params.rounds,
             support = params.support,
             constraints = Constraints(injuries),
@@ -97,6 +97,6 @@ class PlayerViewModel(private val users: UserRepository) : ViewModel() {
         val SPEEDS = listOf(0.75, 1.0, 1.25)
         val PHASE_LENGTHS = listOf(3_000L, 4_000L, 5_000L, 6_000L, 7_000L, 8_000L)
 
-        fun factory(users: UserRepository) = viewModelFactory { initializer { PlayerViewModel(users) } }
+        fun factory(users: UserRepository, sequenceId: String) = viewModelFactory { initializer { PlayerViewModel(users, sequenceId) } }
     }
 }

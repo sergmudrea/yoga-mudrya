@@ -56,7 +56,7 @@ fun FigureCanvas(
         val trunk = Stroke(width = 9f * scale / 1.75f, cap = StrokeCap.Round, join = StrokeJoin.Round)
         drawPath(pathOf(listOf(f.hip, f.knee2, f.ankle2, f.toe2), ::o), FarLimb, style = limb)
         drawPath(pathOf(listOf(f.shoulder, f.elbow2, f.wrist2), ::o), FarLimb, style = limb)
-        drawPath(pathOf(listOf(f.hip, f.shoulder, f.neck), ::o), MudryaColors.Text, style = trunk)
+        drawPath(spinePath(f, ::o), MudryaColors.Text, style = trunk)
         drawPath(pathOf(listOf(f.hip, f.knee, f.ankle, f.toe), ::o), MudryaColors.Text, style = limb)
         drawPath(pathOf(listOf(f.shoulder, f.elbow, f.wrist), ::o), MudryaColors.Text, style = limb)
         drawCircle(MudryaColors.Text, radius = f.headRadius.toFloat() * scale, center = o(f.head))
@@ -67,6 +67,20 @@ private fun pathOf(points: List<Pt>, o: (Pt) -> Offset): Path = Path().apply {
     val first = o(points.first())
     moveTo(first.x, first.y)
     points.drop(1).forEach { val q = o(it); lineTo(q.x, q.y) }
+}
+
+/** Позвоночник — плавная дуга через талию (прогиб и антипрогиб), дальше шея. */
+private fun spinePath(f: FigurePoints, o: (Pt) -> Offset): Path = Path().apply {
+    val hip = o(f.hip)
+    val waist = o(f.waist)
+    val sh = o(f.shoulder)
+    val neck = o(f.neck)
+    // Контрольная точка, при которой квадратичная кривая проходит через талию.
+    val cx = 2 * waist.x - (hip.x + sh.x) / 2
+    val cy = 2 * waist.y - (hip.y + sh.y) / 2
+    moveTo(hip.x, hip.y)
+    quadraticTo(cx, cy, sh.x, sh.y)
+    lineTo(neck.x, neck.y)
 }
 
 private fun DrawScope.breathGlow(f: FigurePoints, fill: BreathFill, o: (Pt) -> Offset, scale: Float) {

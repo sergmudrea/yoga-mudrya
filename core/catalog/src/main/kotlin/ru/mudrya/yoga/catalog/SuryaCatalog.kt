@@ -18,7 +18,8 @@ import ru.mudrya.yoga.model.Step
 import ru.mudrya.yoga.model.Support
 
 /**
- * Сурья Намаскар (круг солнечного света), основная последовательность нулевого цикла — 77 позиций.
+ * Сурья Намаскар (круг солнечного света, 77 позиций) и Чандра Намаскар (круг лунного света, 99 позиций) —
+ * основные последовательности нулевого цикла.
  * Порядок асан и схемы дыхания — по методике омнио-тренинга; описания — свои.
  *
  * Углы поз заданы приблизительно и подгоняются под пропорции модели ([PoseFitter]):
@@ -33,9 +34,11 @@ object SuryaCatalog {
     private fun pose(
         t: Int, n: Int, ua: Int, fa: Int, th: Int, sh: Int, ft: Int,
         th2: Int? = null, sh2: Int? = null, ft2: Int? = null,
+        ua2: Int? = null, fa2: Int? = null, ut: Int? = null,
     ) = Pose(
         t.toDouble(), n.toDouble(), ua.toDouble(), fa.toDouble(), th.toDouble(), sh.toDouble(), ft.toDouble(),
         thigh2 = th2?.toDouble(), shin2 = sh2?.toDouble(), foot2 = ft2?.toDouble(),
+        upperArm2 = ua2?.toDouble(), foreArm2 = fa2?.toDouble(), upperTorso = ut?.toDouble(),
     )
 
     private fun fit(a: Contact, b: Contact, vararg vary: PoseParam) = FitRule(a, b, vary.toList())
@@ -43,6 +46,7 @@ object SuryaCatalog {
     private val LEGS = arrayOf(PoseParam.THIGH, PoseParam.SHIN)
     private val LEGS2 = arrayOf(PoseParam.THIGH2, PoseParam.SHIN2)
     private val UPPER = arrayOf(PoseParam.TORSO, PoseParam.NECK, PoseParam.UPPER_ARM, PoseParam.FORE_ARM)
+    private val TRUNK = arrayOf(PoseParam.TORSO, PoseParam.UPPER_TORSO)
 
     private fun a(
         id: String, ru: String, en: String, pose: Pose,
@@ -173,6 +177,81 @@ object SuryaCatalog {
             listOf("Опустите таз, голову поднимите", "Круговым движением подтяните колено к плечу той же стороны"),
             supports = ALL_SUPPORTS, load = mapOf(Joint.WRISTS to 2, Joint.SHOULDERS to 2),
             fit = fit(Contact.HAND, Contact.FOOT2, *LEGS2)),
+        // --- Лунное кольцо (Чандра Намаскар): внутреннее кольцо в упоре на четвереньках ---
+        a("shoulder_dog", "Плечевое вытягивание в упоре-горке", "Shoulder stretch in down dog",
+            pose(305, 302, 70, 70, 240, 240, 0),
+            listOf("Макушка мягко упирается в пол, спина и шея — одной линией", "Кисти в замок за спиной, прямые руки тянутся к полу за головой", "Пятки тянутся к полу"),
+            load = mapOf(Joint.SHOULDERS to 2, Joint.NECK to 2), fit = fit(Contact.HEAD, Contact.FOOT, *LEGS)),
+        a("cat", "Прогиб-кошка", "Cat backbend",
+            pose(345, 60, 270, 270, 270, 180, 180, ut = 40),
+            listOf("Упор на четвереньках: кисти под плечами, колени под тазом, носки оттянуты", "Подбородок вперёд-вверх, седалищные кости назад-вверх", "Прогиб волной от таза к шее"),
+            sanskrit = "Бидаласана", supports = ALL_SUPPORTS, load = mapOf(Joint.WRISTS to 1, Joint.KNEES to 1),
+            fit = fit(Contact.HAND, Contact.KNEE2, *TRUNK)),
+        a("anti_cat", "Антипрогиб-кошка", "Cat round back",
+            pose(40, 295, 270, 270, 270, 180, 180, ut = 345),
+            listOf("Спина дугой вверх, как у кошки", "Подбородок к яремной выемке", "Живот подтянут, пресс напряжён"),
+            sanskrit = "Випарита-бидаласана", supports = ALL_SUPPORTS, load = mapOf(Joint.WRISTS to 1, Joint.KNEES to 1),
+            fit = fit(Contact.HAND, Contact.KNEE2, *TRUNK)),
+        a("cat_leg_up", "Прогиб-кошка в трёхточечном упоре", "Three-point cat backbend",
+            pose(340, 65, 270, 270, 160, 150, 170, 270, 180, 180, ut = 45),
+            listOf("Прогнитесь до предела и поднимите рабочую ногу назад-вверх", "Таз и плечи остаются горизонтальными", "Подбородок тянется вперёд-вверх"),
+            sanskrit = "Эка-пада-бидаласана", supports = ALL_SUPPORTS, load = mapOf(Joint.WRISTS to 1, Joint.KNEES to 1, Joint.LUMBAR to 2),
+            fit = fit(Contact.HAND, Contact.KNEE2, *TRUNK)),
+        a("cat_knee_side", "Упор-кошка, колено к голове сбоку", "Cat knee to ear",
+            pose(5, 20, 270, 270, 15, 210, 240, 270, 180, 180, ut = 15),
+            listOf("Круговым движением сбоку подтяните колено к уху", "Таз не заваливается, опорная нога неподвижна"),
+            supports = ALL_SUPPORTS, load = mapOf(Joint.WRISTS to 1, Joint.KNEES to 1),
+            fit = fit(Contact.HAND, Contact.KNEE2, *TRUNK)),
+        a("cat_round_kick", "Упор-кошка, медленный круговой удар", "Cat slow roundhouse kick",
+            pose(5, 20, 270, 270, 330, 0, 0, 270, 180, 180, ut = 15),
+            listOf("Напряжённо выпрямите ногу — как медленный круговой удар подъёмом стопы", "Корпус неподвижен"),
+            supports = ALL_SUPPORTS, load = mapOf(Joint.WRISTS to 1, Joint.KNEES to 1),
+            fit = fit(Contact.HAND, Contact.KNEE2, *TRUNK)),
+        a("cat_deep", "Глубокий трёхточечный прогиб-кошка", "Deep three-point cat",
+            pose(335, 75, 270, 270, 140, 60, 60, 270, 180, 180, ut = 50),
+            listOf("Широким махом нога назад-вверх, затем согните её", "Прогнитесь до предела, стопа тянется к голове"),
+            supports = ALL_SUPPORTS, load = mapOf(Joint.WRISTS to 1, Joint.KNEES to 1, Joint.LUMBAR to 2),
+            fit = fit(Contact.HAND, Contact.KNEE2, *TRUNK)),
+        a("anticat_knee", "Антипрогиб-кошка, колено к голове снизу", "Round-back cat, knee to head",
+            pose(40, 290, 270, 270, 25, 210, 250, 245, 210, 280, ut = 340),
+            listOf("Опорная нога на пальцах, спина дугой", "Колено тянется к голове снизу, стопа пола не касается"),
+            supports = ALL_SUPPORTS, load = mapOf(Joint.WRISTS to 1, Joint.KNEES to 1),
+            fit = fit(Contact.HAND, Contact.FOOT2, *LEGS2)),
+        a("anticat_kick", "Антипрогиб-кошка, медленный прямой удар", "Round-back cat, slow front kick",
+            pose(40, 290, 270, 270, 5, 5, 10, 245, 210, 280, ut = 340),
+            listOf("Медленно выпрямите ногу вперёд-вверх", "Пятка не касается пола, спина остаётся дугой"),
+            supports = ALL_SUPPORTS, load = mapOf(Joint.WRISTS to 1, Joint.KNEES to 1),
+            fit = fit(Contact.HAND, Contact.FOOT2, *LEGS2)),
+        a("cat_side_kick", "Упор-кошка, медленный удар в сторону", "Cat slow side kick",
+            pose(5, 20, 270, 270, 315, 10, 10, 270, 180, 180, ut = 15),
+            listOf("Стопу — к внутренней стороне опорного бедра", "Затем медленный удар в сторону ребром стопы"),
+            supports = ALL_SUPPORTS, load = mapOf(Joint.WRISTS to 1, Joint.KNEES to 1),
+            fit = fit(Contact.HAND, Contact.KNEE2, *TRUNK)),
+        a("cat_reach", "Двухточечный упор-кошка с вытянутым прогибом", "Two-point cat reach",
+            pose(340, 65, 30, 30, 160, 150, 170, 270, 180, 180, 270, 270, ut = 45),
+            listOf("Нога назад-вверх, одноимённая рука вперёд-вверх", "Подбородок вперёд-вверх, тело — одна длинная дуга"),
+            supports = ALL_SUPPORTS, load = mapOf(Joint.WRISTS to 1, Joint.KNEES to 1, Joint.LUMBAR to 1),
+            fit = fit(Contact.HAND, Contact.KNEE2, *TRUNK)),
+        a("half_camel", "Верхний полуверблюд", "Upper half camel",
+            pose(340, 75, 165, 120, 150, 80, 80, 270, 180, 180, 270, 270, ut = 50),
+            listOf("Одноимённой рукой захватите лодыжку согнутой ноги", "Предельный прогиб, грудь раскрыта"),
+            sanskrit = "Урдхвардхоштрасана", supports = ALL_SUPPORTS, load = mapOf(Joint.WRISTS to 1, Joint.KNEES to 1, Joint.LUMBAR to 2, Joint.SHOULDERS to 1),
+            fit = fit(Contact.HAND, Contact.KNEE2, *TRUNK)),
+        a("cat_cross_reach", "Двухточечный упор-кошка с перекрёстным прогибом", "Two-point cat cross reach",
+            pose(340, 65, 270, 270, 160, 150, 170, 270, 180, 180, 30, 30, ut = 45),
+            listOf("Нога назад-вверх, противоположная рука вперёд-вверх", "Плечи и таз не поворачиваются"),
+            supports = ALL_SUPPORTS, load = mapOf(Joint.WRISTS to 1, Joint.KNEES to 1, Joint.LUMBAR to 1),
+            fit = fit(Contact.HAND, Contact.KNEE2, *TRUNK)),
+        a("cross_half_camel", "Перекрёстный верхний полуверблюд", "Cross upper half camel",
+            pose(340, 75, 270, 270, 150, 80, 80, 270, 180, 180, 165, 120, ut = 50),
+            listOf("Противоположной рукой захватите лодыжку", "Плечи и таз не поворачиваются, прогиб предельный"),
+            sanskrit = "Урдхвардхоштрасана", supports = ALL_SUPPORTS, load = mapOf(Joint.WRISTS to 1, Joint.KNEES to 1, Joint.LUMBAR to 2, Joint.SHOULDERS to 1),
+            fit = fit(Contact.HAND, Contact.KNEE2, *TRUNK)),
+        a("darnika", "Расслабление на пятках", "Child's rest on heels",
+            pose(345, 300, 182, 178, 340, 180, 180, 339, 180, 180, ut = 355),
+            listOf("Опуститесь тазом на пятки, носки вытянуты", "Лоб на полу, руки свободно вдоль тела", "Дышите свободно, отпустите спину"),
+            sanskrit = "Дарникасана", load = mapOf(Joint.KNEES to 1),
+            fit = fit(Contact.HEAD, Contact.KNEE, *TRUNK)),
     )
 
     // --- Схемы дыхания шагов ---
@@ -229,6 +308,30 @@ object SuryaCatalog {
             s("knee_to_shoulder", listOf(EX), listOf(IN, EX, IN)),
             s("deep_dog", listOf(EX), FREE),
         )),
+        Block("moon_ring", listOf(
+            s("shoulder_dog", listOf(EX), listOf(IN, EX, IN)),
+            s("cat", listOf(EX, IN), listOf(EX, IN, EX, IN)),
+            s("anti_cat", listOf(EX), listOf(IN, EX, IN)),
+            s("cat_leg_up", listOf(EX), listOf(IN, EX, IN)),
+            s("cat_knee_side", listOf(EX), listOf(IN, EX, IN)),
+            s("cat_round_kick", listOf(EX), listOf(IN, EX, IN)),
+            s("cat_deep", listOf(EX), listOf(IN, EX, IN)),
+            s("anticat_knee", listOf(EX), listOf(IN, EX, IN)),
+            s("anticat_kick", listOf(EX), listOf(IN, EX, IN)),
+            s("cat_side_kick", listOf(EX), listOf(IN, EX, IN)),
+            s("cat_reach", listOf(EX), listOf(IN, EX, IN)),
+            s("half_camel", listOf(EX), listOf(IN, EX, IN)),
+            s("anticat_knee", listOf(EX), listOf(IN, EX, IN)),
+            s("anticat_kick", listOf(EX), listOf(IN, EX, IN)),
+            s("cat_side_kick", listOf(EX), listOf(IN, EX, IN)),
+            s("cat_cross_reach", listOf(EX), listOf(IN, EX, IN)),
+            s("cross_half_camel", listOf(EX), listOf(IN, EX, IN)),
+            s("anticat_knee", listOf(EX), listOf(IN, EX, IN)),
+            s("cat", listOf(EX, IN), listOf(EX, IN)),
+            s("anti_cat", listOf(EX), listOf(IN, EX, IN)),
+            s("cat", listOf(EX, IN), listOf(EX, IN)),
+            s("darnika", listOf(EX), FREE),
+        )),
         Block("standard_exit", listOf(
             s("half_lift", listOf(EX, IN), listOf(EX, IN)),
             s("fold_ankles", listOf(EX), listOf(IN, EX, IN, EX)),
@@ -263,7 +366,27 @@ object SuryaCatalog {
         exitBlockId = "standard_exit",
     )
 
-    val sequences: List<SequenceDef> = listOf(surya)
+    /** Чандра Намаскар (круг лунного света) — 99 позиций: вход и выход как у Сурьи, внутри — лунные кольца. */
+    val chandra = SequenceDef(
+        id = "chandra",
+        nameRu = "Чандра Намаскар",
+        nameEn = "Chandra Namaskar",
+        items = listOf(
+            BlockRef("standard_entry"),
+            BlockRef("vinyasa"),
+            BlockRef("moon_ring", Side.RIGHT),
+            BlockRef("vinyasa"),
+            BlockRef("moon_ring", Side.LEFT),
+            BlockRef("vinyasa"),
+            BlockRef("standard_exit"),
+        ),
+        entryBlockId = "standard_entry",
+        exitBlockId = "standard_exit",
+    )
+
+    val sequences: List<SequenceDef> = listOf(surya, chandra)
+
+    fun sequence(id: String): SequenceDef = sequences.firstOrNull { it.id == id } ?: surya
 
     /** Каталог с подогнанными позами и графом переходов. */
     val catalog: Catalog by lazy {

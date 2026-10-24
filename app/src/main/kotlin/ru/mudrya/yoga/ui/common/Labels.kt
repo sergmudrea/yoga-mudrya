@@ -11,6 +11,10 @@ import ru.mudrya.yoga.model.Injury
 import ru.mudrya.yoga.model.Joint
 import ru.mudrya.yoga.model.Support
 
+/** Название сета по его id. */
+@Composable
+fun sequenceName(id: String): String = stringResource(if (id == "chandra") R.string.chandra else R.string.surya)
+
 @Composable
 fun jointLabel(j: Joint): String = stringResource(
     when (j) {
