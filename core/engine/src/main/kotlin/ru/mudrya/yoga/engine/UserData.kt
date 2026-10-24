@@ -95,6 +95,8 @@ object Plan {
 data class AppSettings(
     /** Короткий сигнал на смене вдоха и выдоха. */
     val sound: Boolean = true,
+    /** Голосовое ведение: дыхание, названия поз, подсказки. */
+    val voice: VoiceLevel = VoiceLevel.NAMES,
     /** Лёгкая вибрация на смене фазы. */
     val vibration: Boolean = false,
     /** Показывать практику на втором экране (ТВ), когда он подключён. */
@@ -250,6 +252,7 @@ object UserStateCodec {
         s.planStartDay?.let { line("plan.start", it.toString()) }
         line("settings.relaxSeconds", s.relaxSeconds.toString())
         line("settings.sound", s.settings.sound.toString())
+        line("settings.voice", s.settings.voice.name)
         line("settings.vibration", s.settings.vibration.toString())
         line("settings.tv", s.settings.tvOutput.toString())
         line("settings.debugPremium", s.settings.debugPremium.toString())
@@ -289,6 +292,7 @@ object UserStateCodec {
             relaxSeconds = single["settings.relaxSeconds"]?.toIntOrNull()?.coerceIn(0, 600) ?: 60,
             settings = AppSettings(
                 sound = single["settings.sound"]?.toBooleanStrictOrNull() ?: true,
+                voice = single["settings.voice"]?.let { v -> VoiceLevel.entries.firstOrNull { it.name == v } } ?: VoiceLevel.NAMES,
                 vibration = single["settings.vibration"]?.toBooleanStrictOrNull() ?: false,
                 tvOutput = single["settings.tv"]?.toBooleanStrictOrNull() ?: true,
                 debugPremium = single["settings.debugPremium"]?.toBooleanStrictOrNull() ?: false,

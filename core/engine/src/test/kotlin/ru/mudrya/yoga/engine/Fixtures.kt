@@ -15,7 +15,7 @@ import ru.mudrya.yoga.model.Support
 
 /** Маленький каталог по образцу Сурья Намаскар — для тестов движка. */
 object Fixtures {
-    private val P = Pose(90.0, 90.0, 270.0, 270.0, 270.0, 270.0, 0.0)
+    val P = Pose(90.0, 90.0, 270.0, 270.0, 270.0, 270.0, 0.0)
     private val ALL = setOf(Support.FISTS, Support.PALMS, Support.FINGERS)
 
     val asanas: Map<String, Asana> = listOf(
