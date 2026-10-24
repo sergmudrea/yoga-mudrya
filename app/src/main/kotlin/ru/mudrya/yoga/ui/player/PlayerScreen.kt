@@ -296,6 +296,15 @@ private fun StepTitle(f: PlayerFrame) {
         Spacer(Modifier.height(6.dp))
         Text(f.step.title, color = MudryaColors.Text, fontSize = 24.sp, fontWeight = FontWeight.Bold)
         asana.sanskrit?.let { Text(it, color = MudryaColors.TextMuted, fontSize = 14.sp) }
+        val replacedFor = f.step.replacedFor
+        val replacedTitle = f.step.replacedTitle
+        if (replacedFor != null && replacedTitle != null) {
+            Text(
+                stringResource(R.string.player_replaced, replacedTitle, jointLabel(replacedFor)),
+                color = MudryaColors.Moon,
+                fontSize = 13.sp,
+            )
+        }
         val from = f.previous?.title
         val next = f.next?.title
         if (enter && from != null) {

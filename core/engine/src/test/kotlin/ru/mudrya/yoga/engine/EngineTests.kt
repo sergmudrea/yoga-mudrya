@@ -23,12 +23,11 @@ class CatalogValidatorTest {
     }
 
     @Test
-    fun `alternative without inherited transitions is reported`() {
+    fun `replacements do not need their own transitions`() {
+        // Переходы проверяются по исходной последовательности: замена встаёт на место оригинала.
         val graphWithoutAlternatives = GraphBuilder.build(Fixtures.blocks, listOf(Fixtures.surya))
-        val broken = Catalog(Fixtures.asanas, Fixtures.blocks, graphWithoutAlternatives)
-        val problems = CatalogValidator.validate(broken, listOf(Fixtures.surya))
-        assertTrue(problems.isNotEmpty())
-        assertTrue(problems.all { "LUMBAR" in it.case || "NECK" in it.case })
+        val catalog = Catalog(Fixtures.asanas, Fixtures.blocks, graphWithoutAlternatives)
+        assertTrue(CatalogValidator.validate(catalog, listOf(Fixtures.surya)).isEmpty())
     }
 }
 

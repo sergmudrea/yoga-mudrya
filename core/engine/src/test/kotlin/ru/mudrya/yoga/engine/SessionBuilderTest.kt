@@ -89,8 +89,8 @@ class SessionBuilderTest {
     fun `wrist injury forces fists where possible`() {
         val steps = builder.build(req(support = Support.FINGERS, slots = setOf("crow"), injuries = setOf(Injury.WRISTS))).steps
         assertEquals(Support.FISTS, steps.first { it.asana.id == "chaturanga" }.support)
-        // Стойка-сборка бывает только на ладонях.
-        assertEquals(Support.PALMS, steps.first { it.asana.id == "crow" }.support)
+        // Стойка-сборка — баланс на руках с нагрузкой 3: при больных запястьях её не делаем.
+        assertTrue(steps.none { it.asana.id == "crow" })
     }
 
     @Test
