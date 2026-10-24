@@ -25,10 +25,18 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
 
       - name: Unit tests (engine + catalog + app, both stores)
-        run: ./gradlew --stacktrace :core:engine:test :core:catalog:test testGoogleDebugUnitTest testRustoreDebugUnitTest
+        run: |
+          set -o pipefail
+          ./gradlew --stacktrace :core:engine:test :core:catalog:test testGoogleDebugUnitTest testRustoreDebugUnitTest 2>&1 | tee gradle.log
 
       - name: Lint
         run: ./gradlew lintGoogleDebug lintRustoreDebug
+
+      - name: Build errors as annotations
+        if: failure()
+        run: |
+          [ -f gradle.log ] && grep -E "^e: |error:|What went wrong|FAILED|> .*Exception|expected:" -A2 gradle.log | head -40 | while IFS= read -r l; do echo "::error::$l"; done || true
+          for f in $(find . -path '*/test-results/*' -name '*.xml' 2>/dev/null); do grep -l "<failure" "$f" >/dev/null 2>&1 && grep -o 'testcase name="[^"]*"\|<failure message="[^"]*"' "$f" | head -6 | while IFS= read -r l; do echo "::error::$l"; done; done || true
 
       - name: Lint findings as annotations
         if: failure()
