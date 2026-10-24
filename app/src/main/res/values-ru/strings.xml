@@ -190,4 +190,25 @@
     <string name="settings_tv_auto_hint">Когда подключён второй экран, фигура и дыхание идут на него, а телефон становится пультом.</string>
     <string name="settings_tv_how">Подключите телевизор через беспроводной экран (Miracast, «Трансляция», Smart View) или HDMI-переходник, затем откройте практику.</string>
     <string name="settings_tv_open">Открыть настройки трансляции</string>
+    <string name="reminder_channel">Напоминания о практике</string>
+    <string name="reminder_title">Время практики</string>
+    <string name="reminder_text">Коврик ждёт. Даже короткая утренняя сессия сохранит серию.</string>
+    <string name="trial_reminder_title">Пробный период заканчивается</string>
+    <string name="trial_reminder_text">Через 2 дня магазин спишет оплату за подписку. Отменить можно в профиле — одной кнопкой.</string>
+    <string name="reminder_section">Напоминания</string>
+    <string name="reminder_toggle">Напоминать о практике</string>
+    <string name="reminder_toggle_hint">Уведомление в выбранное время. Работает без интернета.</string>
+    <string name="reminder_denied">Без разрешения на уведомления напоминания не придут. Его можно включить в настройках телефона.</string>
+    <string name="reminder_hour_step">1ч</string>
+    <string name="backup_section">Резервная копия</string>
+    <string name="backup_hint">Сохраните прогресс в файл — например, в облако или себе в мессенджер. Пригодится при смене телефона.</string>
+    <string name="backup_export">Сохранить в файл</string>
+    <string name="backup_import">Восстановить из файла</string>
+    <string name="backup_saved">Сохранено.</string>
+    <string name="backup_failed">Не получилось прочитать или записать файл.</string>
+    <string name="backup_empty">В файле нет данных приложения.</string>
+    <string name="backup_confirm_title">Восстановить из файла?</string>
+    <string name="backup_confirm_text">Текущие данные заменятся данными из файла: занятий — %1$d, тестов — %2$d.</string>
+    <string name="backup_confirm_yes">Восстановить</string>
+    <string name="backup_restored">Данные восстановлены.</string>
 </resources>
