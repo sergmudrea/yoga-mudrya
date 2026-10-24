@@ -1,0 +1,35 @@
+name: probe-sdk
+on: push
+jobs:
+  probe:
+    if: github.ref == 'refs/heads/probe-sdk-classes'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-java@v5
+        with: { distribution: temurin, java-version: 17 }
+      - name: RuStore Pay classes
+        run: |
+          set -x
+          R=https://nexus-external.rustore.ru/repository/maven-rustore-exposed
+          curl -sSf $R/ru/rustore/sdk/bom/2026.08.01/bom-2026.08.01.pom | grep -B2 -A2 -E "<artifactId>(pay|core|review|appupdate)</artifactId>" || true
+          V=$(curl -sSf $R/ru/rustore/sdk/bom/2026.08.01/bom-2026.08.01.pom | tr -d '\n ' | grep -oE '<artifactId>pay</artifactId><version>[^<]+' | sed 's/.*<version>//')
+          echo "PAY=$V"
+          curl -sSf -o pay.aar $R/ru/rustore/sdk/pay/$V/pay-$V.aar
+          curl -sSf $R/ru/rustore/sdk/pay/$V/pay-$V.pom | grep -A3 "<dependency>" | grep -E "groupId|artifactId|version" | paste - - - || true
+          mkdir pay && cd pay && unzip -q ../pay.aar && jar tf classes.jar | grep -vE '\$|internal|/impl/|/di/' | sort | head -300
+          for c in RuStorePayClient; do F=$(jar tf classes.jar | grep -E "/$c.class$" | head -1); javap -cp classes.jar ${F%.class} || true; done
+          for c in ProductInteractor PurchaseInteractor IntentInteractor UserInteractor ProductPurchaseParams ProductPurchaseResult Product ProductId PurchaseId SubscriptionPurchase ProductPurchase Purchase PreferredPurchaseType SdkTheme; do F=$(jar tf classes.jar | grep -E "/$c.class$" | head -1); [ -n "$F" ] && javap -cp classes.jar ${F%.class} || echo "no $c"; done
+          jar tf classes.jar | grep -i exception | head -40
+      - name: RuStore Pay deps classes (Task, exceptions, statuses)
+        run: |
+          R=https://nexus-external.rustore.ru/repository/maven-rustore-exposed
+          POM=$(curl -sSf $R/ru/rustore/sdk/bom/2026.08.01/bom-2026.08.01.pom | tr -d '\n ')
+          for a in core pay-core; do V=$(echo "$POM" | grep -oE "<artifactId>$a</artifactId><version>[^<]+" | sed 's/.*<version>//'); echo "$a=$V"; done
+          echo "$POM" | grep -oE '<artifactId>[^<]+</artifactId><version>[^<]+' | head -60
+      - name: Play Billing 8 classes
+        run: |
+          G=https://dl.google.com/dl/android/maven2/com/android/billingclient
+          curl -sSf $G/billing/maven-metadata.xml | grep -oE '<version>8[^<]+' | tail -5
+          curl -sSf -o b.aar $G/billing/8.0.0/billing-8.0.0.aar && mkdir b && cd b && unzip -q ../b.aar
+          javap -cp classes.jar com.android.billingclient.api.QueryProductDetailsResult com.android.billingclient.api.ProductDetailsResponseListener com.android.billingclient.api.BillingClient\$Builder || true
+          cd .. && curl -sSf -o k.aar $G/billing-ktx/8.0.0/billing-ktx-8.0.0.aar && mkdir k && cd k && unzip -q ../k.aar && jar tf classes.jar && for c in $(jar tf classes.jar | grep class$ | sed 's/.class$//'); do javap -cp classes.jar:../b/classes.jar $c; done
