@@ -177,7 +177,7 @@
     <string name="settings_sound">Phase change sound</string>
     <string name="settings_sound_hint">A short beep: higher for inhale, lower for exhale. Practise without looking at the screen.</string>
     <string name="settings_voice">Voice guidance</string>
-    <string name="settings_voice_hint">Uses the phone's speech engine. When the voice speaks, the beep is skipped.</string>
+    <string name="settings_voice_hint">Uses the phone\'s speech engine. When the voice speaks, the beep is skipped.</string>
     <string name="voice_off">Off</string>
     <string name="voice_breath">Breath only</string>
     <string name="voice_names">Poses and breath</string>
