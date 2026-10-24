@@ -34,6 +34,9 @@ enum class Injury(val joint: Joint) {
  *
  * Основные рука и нога — ближние к зрителю (рабочие). Вторые задаются только для
  * асимметричных поз: выпады, трёхточечные упоры. Если не заданы — совпадают с основными.
+ *
+ * Корпус по умолчанию прямой: [torso] — направление от таза к плечам. Если задан [upperTorso],
+ * [torso] — нижняя половина позвоночника, [upperTorso] — верхняя: так видны прогиб и антипрогиб («кошка»).
  */
 data class Pose(
     val torso: Double,
@@ -48,17 +51,20 @@ data class Pose(
     val thigh2: Double? = null,
     val shin2: Double? = null,
     val foot2: Double? = null,
+    val upperTorso: Double? = null,
 ) {
+    val chest: Double get() = upperTorso ?: torso
+
     val farUpperArm: Double get() = upperArm2 ?: upperArm
     val farForeArm: Double get() = foreArm2 ?: foreArm
     val farThigh: Double get() = thigh2 ?: thigh
     val farShin: Double get() = shin2 ?: shin
     val farFoot: Double get() = foot2 ?: foot
 
-    /** Все 12 углов с подставленными вторыми конечностями — для интерполяции и подгонки. */
+    /** Все 13 углов с подставленными вторыми конечностями и верхом корпуса — для интерполяции и подгонки. */
     fun toList(): List<Double> = listOf(
         torso, neck, upperArm, foreArm, thigh, shin, foot,
-        farUpperArm, farForeArm, farThigh, farShin, farFoot,
+        farUpperArm, farForeArm, farThigh, farShin, farFoot, chest,
     )
 
     fun get(param: PoseParam): Double = toList()[param.ordinal]
@@ -80,22 +86,23 @@ data class Pose(
         thigh2 = changes[PoseParam.THIGH2] ?: thigh2,
         shin2 = changes[PoseParam.SHIN2] ?: shin2,
         foot2 = changes[PoseParam.FOOT2] ?: foot2,
+        upperTorso = changes[PoseParam.UPPER_TORSO] ?: upperTorso,
     )
 
     companion object {
         fun fromList(v: List<Double>): Pose {
-            require(v.size == 7 || v.size == 12) { "Pose needs 7 or 12 angles, got ${v.size}" }
+            require(v.size == 7 || v.size == 12 || v.size == 13) { "Pose needs 7, 12 or 13 angles, got ${v.size}" }
             if (v.size == 7) return Pose(v[0], v[1], v[2], v[3], v[4], v[5], v[6])
-            return Pose(v[0], v[1], v[2], v[3], v[4], v[5], v[6], v[7], v[8], v[9], v[10], v[11])
+            return Pose(v[0], v[1], v[2], v[3], v[4], v[5], v[6], v[7], v[8], v[9], v[10], v[11], v.getOrNull(12))
         }
     }
 }
 
 /** Параметры позы в порядке [Pose.toList]. */
-enum class PoseParam { TORSO, NECK, UPPER_ARM, FORE_ARM, THIGH, SHIN, FOOT, UPPER_ARM2, FORE_ARM2, THIGH2, SHIN2, FOOT2 }
+enum class PoseParam { TORSO, NECK, UPPER_ARM, FORE_ARM, THIGH, SHIN, FOOT, UPPER_ARM2, FORE_ARM2, THIGH2, SHIN2, FOOT2, UPPER_TORSO }
 
 /** Точки, которые должны касаться пола. */
-enum class Contact { HAND, FOOT, FOOT2, KNEE2 }
+enum class Contact { HAND, FOOT, FOOT2, KNEE, KNEE2, HEAD }
 
 /**
  * Правило подгонки позы под пропорции модели: меняем [vary] на общую величину,

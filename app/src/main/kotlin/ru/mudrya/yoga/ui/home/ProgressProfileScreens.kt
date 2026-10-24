@@ -45,6 +45,7 @@ import ru.mudrya.yoga.ui.common.TextAction
 import ru.mudrya.yoga.ui.common.goalLabel
 import ru.mudrya.yoga.ui.common.injuryLabel
 import ru.mudrya.yoga.ui.common.levelLabel
+import ru.mudrya.yoga.ui.common.sequenceName
 import ru.mudrya.yoga.ui.common.sexLabel
 import ru.mudrya.yoga.ui.theme.MudryaColors
 import java.time.LocalDate
@@ -111,7 +112,7 @@ fun ProgressScreen(state: UserState, onTest: () -> Unit) {
             recent.forEach { r ->
                 Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
                     Column(Modifier.weight(1f)) {
-                        Text(stringResource(R.string.surya), color = MudryaColors.Text, fontSize = 15.sp)
+                        Text(sequenceName(r.sequenceId), color = MudryaColors.Text, fontSize = 15.sp)
                         Text(
                             formatDay(r.localDay) + " · " + stringResource(R.string.progress_minutes, (r.durationMs / 60_000).toInt()),
                             color = MudryaColors.TextMuted,

@@ -25,16 +25,16 @@ data class BodyProportions(
 
 /** Все суставы фигуры для отрисовки. «2» — дальние рука и нога. */
 data class FigurePoints(
-    val hip: Pt, val shoulder: Pt, val neck: Pt, val head: Pt,
+    val hip: Pt, val waist: Pt, val shoulder: Pt, val neck: Pt, val head: Pt,
     val elbow: Pt, val wrist: Pt, val elbow2: Pt, val wrist2: Pt,
     val knee: Pt, val ankle: Pt, val toe: Pt, val knee2: Pt, val ankle2: Pt, val toe2: Pt,
     val headRadius: Double,
 ) {
-    fun all(): List<Pt> = listOf(hip, shoulder, neck, elbow, wrist, elbow2, wrist2, knee, ankle, toe, knee2, ankle2, toe2) +
+    fun all(): List<Pt> = listOf(hip, waist, shoulder, neck, elbow, wrist, elbow2, wrist2, knee, ankle, toe, knee2, ankle2, toe2) +
         listOf(Pt(head.x, head.y - headRadius), Pt(head.x - headRadius, head.y), Pt(head.x + headRadius, head.y), Pt(head.x, head.y + headRadius))
 
     fun map(f: (Pt) -> Pt): FigurePoints = FigurePoints(
-        f(hip), f(shoulder), f(neck), f(head), f(elbow), f(wrist), f(elbow2), f(wrist2),
+        f(hip), f(waist), f(shoulder), f(neck), f(head), f(elbow), f(wrist), f(elbow2), f(wrist2),
         f(knee), f(ankle), f(toe), f(knee2), f(ankle2), f(toe2), headRadius,
     )
 
@@ -60,7 +60,9 @@ object FigureGeometry {
      */
     fun points(p: Pose, body: BodyProportions = BodyProportions(), chestLift: Double = 0.0): FigurePoints {
         val hip = Pt(0.0, 0.0)
-        val sh = hip.go(p.torso + chestLift, body.torso)
+        // Корпус из двух половин: при прямом корпусе они лежат на одной линии.
+        val waist = hip.go(p.torso + chestLift, body.torso / 2)
+        val sh = waist.go(p.chest + chestLift, body.torso / 2)
         val neck = sh.go(p.neck, body.neck)
         val head = neck.go(p.neck, body.head)
         val el = sh.go(p.upperArm, body.upperArm)
@@ -73,7 +75,7 @@ object FigureGeometry {
         val kn2 = hip.go(p.farThigh, body.thigh)
         val an2 = kn2.go(p.farShin, body.shin)
         val toe2 = an2.go(p.farFoot, body.foot)
-        return FigurePoints(hip, sh, neck, head, el, wr, el2, wr2, kn, an, toe, kn2, an2, toe2, body.head)
+        return FigurePoints(hip, waist, sh, neck, head, el, wr, el2, wr2, kn, an, toe, kn2, an2, toe2, body.head)
     }
 
     /** Те же суставы, поставленные на пол: самая низкая точка — y = 0, по горизонтали — центр по габариту. */
@@ -89,7 +91,9 @@ object FigureGeometry {
         Contact.HAND -> minOf(f.wrist.y, f.wrist2.y)
         Contact.FOOT -> minOf(f.ankle.y, f.toe.y)
         Contact.FOOT2 -> minOf(f.ankle2.y, f.toe2.y)
+        Contact.KNEE -> f.knee.y
         Contact.KNEE2 -> f.knee2.y
+        Contact.HEAD -> f.head.y - f.headRadius
     }
 }
 

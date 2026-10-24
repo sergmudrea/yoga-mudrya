@@ -52,7 +52,8 @@ private object Routes {
     const val EDIT_PROFILE = "profile/edit"
     const val FIRST_TEST = "test/first"
     const val TEST = "test"
-    const val PLAYER = "player/surya"
+    const val PLAYER = "player/{seq}"
+    fun player(sequenceId: String) = "player/$sequenceId"
 }
 
 @Composable
@@ -98,9 +99,11 @@ fun AppRoot() {
                     MovementTestScreen(profile, users) { nav.popBackStack() }
                 }
             }
-            composable(Routes.PLAYER) { PlayerScreen(onClose = { nav.popBackStack() }) }
+            composable(Routes.PLAYER) { entry ->
+                PlayerScreen(sequenceId = entry.arguments?.getString("seq") ?: "surya", onClose = { nav.popBackStack() })
+            }
             composable(Tab.PRACTICE.route) {
-                PracticeScreen(state, users, onStart = { nav.navigate(Routes.PLAYER) }, onTest = { nav.navigate(Routes.TEST) })
+                PracticeScreen(state, users, onStart = { nav.navigate(Routes.player(it)) }, onTest = { nav.navigate(Routes.TEST) })
             }
             composable(Tab.SETS.route) { Placeholder(R.string.tab_sets) }
             composable(Tab.PROGRESS.route) { ProgressScreen(state, onTest = { nav.navigate(Routes.TEST) }) }

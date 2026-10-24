@@ -34,7 +34,7 @@
     <string name="player_metal_dog">Дыхание металлической собаки</string>
     <string name="player_metal_dog_hint">Держите позу. Короткие частые выдохи носом за счёт живота, вдох — сам собой. Время практики остановлено.</string>
     <string name="player_continue">Продолжить</string>
-    <string name="player_done">Сурья Намаскар выполнена</string>
+    <string name="player_done">%1$s выполнена</string>
     <string name="player_done_stats">%1$d позиций · около %2$d мин</string>
     <string name="player_finish">Готово</string>
     <string name="finish_how">Как прошло?</string>
@@ -53,7 +53,7 @@
     <string name="home_age_label">Возраст движения</string>
     <string name="home_age_none">Пять простых тестов покажут, на сколько лет двигается ваше тело. Повторяйте раз в месяц и смотрите, как он снижается.</string>
     <string name="home_age_retake">Пройти тест снова</string>
-    <string name="home_chandra_soon">Лунное кольцо появится в следующей сборке.</string>
+    <string name="home_chandra_hint">Внутренние лунные кольца — на четвереньках: кошки, медленные удары ногой, полуверблюд. 99 позиций.</string>
     <string name="home_rounds">Круги</string>
     <string name="home_support">Опора кистей</string>
     <string name="home_support_wrists">Из-за запястий — только на кулаках.</string>

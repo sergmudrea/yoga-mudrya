@@ -47,18 +47,19 @@ import ru.mudrya.yoga.ui.common.supportLabel
 import ru.mudrya.yoga.ui.theme.MudryaColors
 
 /** Сколько минут займёт сессия с такими параметрами. */
-fun estimateMinutes(params: SessionParams, injuries: Set<Injury>): Int {
+fun estimateMinutes(sequenceId: String, params: SessionParams, injuries: Set<Injury>): Int {
     val session = SessionBuilder(SuryaCatalog.catalog).build(
-        BuildRequest(SuryaCatalog.surya, params.rounds, params.support, constraints = Constraints(injuries)),
+        BuildRequest(SuryaCatalog.sequence(sequenceId), params.rounds, params.support, constraints = Constraints(injuries)),
     )
     return ((BreathTimeline(session, params.phaseMs).totalMs + 30_000) / 60_000).toInt()
 }
 
 @Composable
-fun PracticeScreen(state: UserState, users: UserRepository, onStart: () -> Unit, onTest: () -> Unit) {
+fun PracticeScreen(state: UserState, users: UserRepository, onStart: (String) -> Unit, onTest: () -> Unit) {
     val params = state.params
     val injuries = state.profile?.injuries.orEmpty()
-    val minutes = remember(params, injuries) { estimateMinutes(params, injuries) }
+    val minutes = remember(params, injuries) { estimateMinutes("surya", params, injuries) }
+    val chandraMinutes = remember(params, injuries) { estimateMinutes("chandra", params, injuries) }
     val stats = remember(state) { ProgressStats.of(state, UserRepository.today()) }
     var tuning by rememberSaveable { mutableStateOf(false) }
 
@@ -80,7 +81,7 @@ fun PracticeScreen(state: UserState, users: UserRepository, onStart: () -> Unit,
                 color = MudryaColors.Ground,
                 fontSize = 14.sp,
             )
-            PrimaryButton(stringResource(R.string.start), onStart, color = MudryaColors.Ground, contentColor = MudryaColors.Text)
+            PrimaryButton(stringResource(R.string.start), { onStart("surya") }, color = MudryaColors.Ground, contentColor = MudryaColors.Text)
             Text(
                 stringResource(if (tuning) R.string.home_tune_hide else R.string.home_tune),
                 color = MudryaColors.Ground,
@@ -146,9 +147,15 @@ fun PracticeScreen(state: UserState, users: UserRepository, onStart: () -> Unit,
             )
         }
 
-        Card {
-            Text(stringResource(R.string.chandra), color = MudryaColors.Text, fontSize = 20.sp, fontWeight = FontWeight.Bold)
-            Body(stringResource(R.string.home_chandra_soon))
+        Card(color = MudryaColors.MoonDeep) {
+            Text(stringResource(R.string.chandra), color = MudryaColors.Moon, fontSize = 24.sp, fontWeight = FontWeight.Bold)
+            Text(
+                stringResource(R.string.home_session_line, params.rounds, chandraMinutes, supportLabel(params.support), formatPhase(params.phaseMs)),
+                color = MudryaColors.Text,
+                fontSize = 14.sp,
+            )
+            Body(stringResource(R.string.home_chandra_hint))
+            PrimaryButton(stringResource(R.string.start), { onStart("chandra") }, color = MudryaColors.Moon)
         }
         Spacer(Modifier.height(8.dp))
     }

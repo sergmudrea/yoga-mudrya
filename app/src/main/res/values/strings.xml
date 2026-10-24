@@ -34,7 +34,7 @@
     <string name="player_metal_dog">Metal dog breathing</string>
     <string name="player_metal_dog_hint">Hold the pose. Short quick exhales through the nose driven by the belly; the inhale comes by itself. Practice time is paused.</string>
     <string name="player_continue">Continue</string>
-    <string name="player_done">Surya Namaskar complete</string>
+    <string name="player_done">%1$s complete</string>
     <string name="player_done_stats">%1$d positions · about %2$d min</string>
     <string name="player_finish">Done</string>
     <string name="finish_how">How was it?</string>
@@ -53,7 +53,7 @@
     <string name="home_age_label">Movement age</string>
     <string name="home_age_none">Five simple tests show how old your body moves. Repeat monthly and watch it drop.</string>
     <string name="home_age_retake">Retake the test</string>
-    <string name="home_chandra_soon">The Moon salutation arrives in the next build.</string>
+    <string name="home_chandra_hint">Inner moon rings on all fours: cat stretches, slow kicks, half camel. 99 positions.</string>
     <string name="home_rounds">Rounds</string>
     <string name="home_support">Hand support</string>
     <string name="home_support_wrists">Fists only because of your wrists.</string>

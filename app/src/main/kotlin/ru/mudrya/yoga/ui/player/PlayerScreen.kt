@@ -51,6 +51,7 @@ import ru.mudrya.yoga.ui.common.PrimaryButton
 import ru.mudrya.yoga.ui.common.SectionLabel
 import ru.mudrya.yoga.ui.common.appContainer
 import ru.mudrya.yoga.ui.common.jointLabel
+import ru.mudrya.yoga.ui.common.sequenceName
 import ru.mudrya.yoga.engine.PlayerFrame
 import ru.mudrya.yoga.model.Breath
 import ru.mudrya.yoga.model.Side
@@ -58,9 +59,11 @@ import ru.mudrya.yoga.ui.theme.MudryaColors
 
 @Composable
 fun PlayerScreen(
+    sequenceId: String,
     onClose: () -> Unit,
-    vm: PlayerViewModel = viewModel(factory = PlayerViewModel.factory(appContainer().users)),
+    vm: PlayerViewModel = viewModel(key = "player-$sequenceId", factory = PlayerViewModel.factory(appContainer().users, sequenceId)),
 ) {
+    val title = sequenceName(sequenceId)
     val c = vm.controller
     val close = {
         vm.abandon()
@@ -92,7 +95,7 @@ fun PlayerScreen(
     }
 
     if (frame.finished) {
-        FinishView(frame) { feedback, zones ->
+        FinishView(frame, title) { feedback, zones ->
             vm.finish(feedback, zones)
             onClose()
         }
@@ -105,7 +108,7 @@ fun PlayerScreen(
             .background(MudryaColors.Ground)
             .padding(horizontal = 16.dp, vertical = 8.dp),
     ) {
-        TopBar(frame, close)
+        TopBar(frame, title, close)
         Spacer(Modifier.height(8.dp))
         ProgressLine(frame.elapsedMs.toFloat() / frame.totalMs.coerceAtLeast(1).toFloat())
         Spacer(Modifier.height(12.dp))
@@ -139,7 +142,7 @@ fun PlayerScreen(
 }
 
 @Composable
-private fun TopBar(f: PlayerFrame, onClose: () -> Unit) {
+private fun TopBar(f: PlayerFrame, title: String, onClose: () -> Unit) {
     Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth()) {
         Text(
             "✕",
@@ -150,7 +153,7 @@ private fun TopBar(f: PlayerFrame, onClose: () -> Unit) {
                 .padding(8.dp),
         )
         Text(
-            stringResource(R.string.surya),
+            title,
             color = MudryaColors.Text,
             fontWeight = FontWeight.Bold,
             fontSize = 17.sp,
@@ -387,7 +390,7 @@ private fun MetalDogOverlay(onDone: () -> Unit) {
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-private fun FinishView(f: PlayerFrame, onSave: (Feedback, Set<Joint>) -> Unit) {
+private fun FinishView(f: PlayerFrame, title: String, onSave: (Feedback, Set<Joint>) -> Unit) {
     var feedback by remember { mutableStateOf<Feedback?>(null) }
     var zones by remember { mutableStateOf(emptySet<Joint>()) }
     Column(
@@ -399,7 +402,7 @@ private fun FinishView(f: PlayerFrame, onSave: (Feedback, Set<Joint>) -> Unit) {
         verticalArrangement = Arrangement.spacedBy(14.dp),
     ) {
         Spacer(Modifier.height(12.dp))
-        Text(stringResource(R.string.player_done), color = MudryaColors.Saffron, fontSize = 28.sp, fontWeight = FontWeight.Bold)
+        Text(stringResource(R.string.player_done, title), color = MudryaColors.Saffron, fontSize = 28.sp, fontWeight = FontWeight.Bold)
         Text(
             stringResource(R.string.player_done_stats, f.stepCount, (f.totalMs / 60_000).toInt()),
             color = MudryaColors.Text,
