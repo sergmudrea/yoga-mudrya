@@ -37,7 +37,12 @@ data class SessionStep(
     val extraCycles: Boolean,
     val round: Int,
     val metalDog: Boolean = false,
-)
+    val titleRu: String? = null,
+    val cueRu: String? = null,
+) {
+    /** Что показывать заголовком: уточнённое название шага или название асаны. */
+    val title: String get() = titleRu ?: asana.nameRu
+}
 
 data class Session(
     val sequenceId: String,
@@ -104,6 +109,8 @@ class SessionBuilder(private val catalog: Catalog) {
                 extraCycles = step.extraCycles,
                 round = 1,
                 metalDog = step.metalDog,
+                titleRu = step.titleRu,
+                cueRu = step.cueRu,
             )
         }
     }

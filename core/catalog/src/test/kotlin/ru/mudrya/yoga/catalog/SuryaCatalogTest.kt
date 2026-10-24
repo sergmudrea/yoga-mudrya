@@ -35,7 +35,7 @@ class SuryaCatalogTest {
 
     @Test
     fun `every asana is used`() {
-        val used = SuryaCatalog.blocks.flatMap { b -> b.steps.map { it.asanaId } }.toSet()
+        val used = (SuryaCatalog.blocks + AtlasCatalog.blocks).flatMap { b -> b.steps.map { it.asanaId } }.toSet()
         val unused = catalog.asanas.keys - used
         assertEquals(emptySet(), unused)
     }
@@ -127,22 +127,32 @@ class SuryaCatalogTest {
         assertTrue((anti.torso - anti.chest + 360) % 360 in 1.0..179.0, "anti-cat back rounds up")
     }
 
-    private fun count(seq: ru.mudrya.yoga.model.SequenceDef) =
-        SessionBuilder(catalog).build(BuildRequest(seq, rounds = 1, support = Support.PALMS)).steps.size
-
     @Test
-    fun `bundle joins surya and chandra without exit and entry in between`() {
-        // 77 − 11 (выход Сурьи) + 99 − 20 (вход Чандры) − 8 (первая виньяса Чандры) = 137
-        assertEquals(137, count(SuryaCatalog.suryaChandra))
-        val ids = SessionBuilder(catalog).build(BuildRequest(SuryaCatalog.suryaChandra, 1, Support.PALMS)).steps.map { it.asana.id }
-        assertEquals(2, ids.count { it == "full_backbend" }, "full backbend only in the entry and the final exit")
+    fun `atlas sets build with the same number of positions as the atlas`() {
+        AtlasCatalog.sequences.forEach { seq ->
+            val n = SessionBuilder(catalog).build(BuildRequest(seq, rounds = 1, support = Support.PALMS)).steps.size
+            assertEquals(AtlasCatalog.stepCounts.getValue(seq.id), n, seq.id)
+        }
     }
 
     @Test
-    fun `morning session is about ten minutes`() {
-        assertEquals(39, count(SuryaCatalog.morning))
-        val s = SessionBuilder(catalog).build(BuildRequest(SuryaCatalog.morning, 1, Support.PALMS))
-        val minutes = BreathTimeline(s, phaseMs = 4_000).totalMs / 60_000.0
-        assertTrue(minutes in 7.0..13.0, "minutes=$minutes")
+    fun `classic surya namaskar is a full round, right then left`() {
+        val s = SessionBuilder(catalog).build(BuildRequest(SuryaCatalog.sequence("at_sn"), 1, Support.PALMS))
+        assertEquals(24, s.steps.size)
+        assertEquals(listOf(Side.RIGHT, Side.LEFT), s.steps.map { it.side }.distinct())
+        assertTrue(s.steps.any { it.title.contains("левая") })
+    }
+
+    @Test
+    fun `every step has a breath to move on`() {
+        SuryaCatalog.blocks.plus(AtlasCatalog.blocks).flatMap { it.steps }.forEach { assertTrue(it.enter.isNotEmpty(), it.asanaId) }
+    }
+
+    @Test
+    fun `atlas poses stand on the floor`() {
+        AtlasCatalog.asanas.forEach { a ->
+            val f = FigureGeometry.grounded(a.pose)
+            assertEquals(0.0, f.minY, 1e-6, a.id)
+        }
     }
 }

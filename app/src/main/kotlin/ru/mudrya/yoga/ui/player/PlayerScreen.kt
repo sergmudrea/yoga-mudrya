@@ -147,7 +147,7 @@ fun PlayerScreen(
                 FigureCanvas(
                     pose = frame.pose,
                     fill = frame.fill,
-                    description = frame.step.asana.nameRu,
+                    description = frame.step.title,
                     modifier = Modifier.fillMaxSize(),
                 )
             }
@@ -195,7 +195,7 @@ fun PlayerScreen(
                     ) {
                         StepTitle(frame)
                         BreathPanel(frame)
-                        Cue(frame)
+                        Cue(frame, c.paused)
                         controls()
                     }
                 }
@@ -204,7 +204,7 @@ fun PlayerScreen(
                 figure(Modifier.fillMaxWidth().weight(1f))
                 BreathPanel(frame)
                 Spacer(Modifier.height(10.dp))
-                Cue(frame)
+                Cue(frame, c.paused)
                 Spacer(Modifier.height(12.dp))
                 controls()
             }
@@ -294,10 +294,10 @@ private fun StepTitle(f: PlayerFrame) {
             sideLabel(f.step.side)?.let { Tag(it, MudryaColors.TextMuted) }
         }
         Spacer(Modifier.height(6.dp))
-        Text(asana.nameRu, color = MudryaColors.Text, fontSize = 24.sp, fontWeight = FontWeight.Bold)
+        Text(f.step.title, color = MudryaColors.Text, fontSize = 24.sp, fontWeight = FontWeight.Bold)
         asana.sanskrit?.let { Text(it, color = MudryaColors.TextMuted, fontSize = 14.sp) }
-        val from = f.previous?.asana?.nameRu
-        val next = f.next?.asana?.nameRu
+        val from = f.previous?.title
+        val next = f.next?.title
         if (enter && from != null) {
             Text(stringResource(R.string.player_from, from), color = MudryaColors.TextMuted, fontSize = 13.sp)
         } else if (next != null) {
@@ -386,8 +386,15 @@ private fun Bar(label: String, value: Float, color: Color) {
 }
 
 @Composable
-private fun Cue(f: PlayerFrame) {
-    val cues = f.step.asana.cuesRu
+private fun Cue(f: PlayerFrame, paused: Boolean) {
+    // На паузе — полное описание позы: есть время прочитать.
+    if (paused) {
+        f.step.asana.descriptionRu?.let {
+            Text(it, color = MudryaColors.TextMuted, fontSize = 14.sp, lineHeight = 20.sp, modifier = Modifier.fillMaxWidth())
+            return
+        }
+    }
+    val cues = listOfNotNull(f.step.cueRu) + f.step.asana.cuesRu.filter { it != f.step.cueRu }
     if (cues.isEmpty()) return
     // Подсказки сменяются по фазам: одна строка — меньше читать во время практики.
     val i = (f.phase.index + if (f.phase.kind == PhaseKind.HOLD) 1 else 0) % cues.size

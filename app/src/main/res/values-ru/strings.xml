@@ -53,7 +53,6 @@
     <string name="home_age_label">Возраст движения</string>
     <string name="home_age_none">Пять простых тестов покажут, на сколько лет двигается ваше тело. Повторяйте раз в месяц и смотрите, как он снижается.</string>
     <string name="home_age_retake">Пройти тест снова</string>
-    <string name="home_chandra_hint">Внутренние лунные кольца — на четвереньках: кошки, медленные удары ногой, полуверблюд. 99 позиций.</string>
     <string name="home_rounds">Круги</string>
     <string name="home_support">Опора кистей</string>
     <string name="home_support_wrists">Из-за запястий — только на кулаках.</string>
@@ -169,13 +168,6 @@
     <string name="home_relax">Расслабление между кругами</string>
     <string name="home_relax_off">нет</string>
     <string name="home_relax_hint">Лёжа на спине, с таймером. Можно закончить раньше.</string>
-    <string name="set_bundle">Сурья → Чандра</string>
-    <string name="set_morning">Утро за 10 минут</string>
-    <string name="set_minutes">~%1$d мин · кругов: %2$d</string>
-    <string name="set_surya_desc">Солнечное кольцо: 77 позиций, широкий шаг и упоры на трёх точках. Сила, выносливость, разогрев всего тела.</string>
-    <string name="set_chandra_desc">Лунное кольцо: 99 позиций, внутренние кольца на четвереньках. Гибкость спины и тазобедренных, мягче для ног.</string>
-    <string name="set_bundle_desc">Оба кольца подряд без выхода и нового входа — как в методике. Длинная полная тренировка.</string>
-    <string name="set_morning_desc">Стандартный вход, одна виньяса и выход. Когда мало времени или в день отдыха.</string>
     <string name="tv_button">ТВ</string>
     <string name="tv_on">Практика на экране ТВ</string>
     <string name="tv_remote">Телефон работает как пульт: пауза, назад, вперёд, темп.</string>
@@ -212,11 +204,11 @@
     <string name="backup_confirm_yes">Восстановить</string>
     <string name="backup_restored">Данные восстановлены.</string>
     <string name="paywall_title">Премиум</string>
-    <string name="paywall_benefit_chandra">Чандра Намаскар — 99 позиций лунного кольца</string>
-    <string name="paywall_benefit_bundle">Связка Сурья → Чандра — полная длинная тренировка</string>
-    <string name="paywall_benefit_short">Короткие сессии для занятых дней</string>
+    <string name="paywall_benefit_chandra">Лунное кольцо и классическая Чандра Намаскар</string>
+    <string name="paywall_benefit_bundle">Старт-сет, стержневой сет и стоп-сет — весь нулевой цикл книги</string>
+    <string name="paywall_benefit_short">Дополнительные элементы — усложнения для каждого сета</string>
     <string name="paywall_benefit_future">Новые сеты и режимы методики по мере выхода</string>
-    <string name="paywall_free_core">Бесплатно навсегда: полная Сурья Намаскар, тест возраста движения, прогресс, напоминания, вывод на ТВ.</string>
+    <string name="paywall_free_core">Бесплатно навсегда: классическая Сурья Намаскар, Солнечное кольцо, тест возраста движения, прогресс, напоминания, вывод на ТВ.</string>
     <string name="paywall_loading">Загружаем тарифы…</string>
     <string name="paywall_unavailable">Тарифы не загрузились. Оплата работает, когда приложение установлено из %1$s и есть интернет.</string>
     <string name="paywall_trial_terms">%1$d дней бесплатно. Первое списание — %2$s, %3$s. За 2 дня до него придёт напоминание.</string>
@@ -244,4 +236,15 @@
     <string name="settings_debug">Отладка</string>
     <string name="settings_debug_premium">Премиум без покупки</string>
     <string name="settings_debug_premium_hint">Есть только в тестовой сборке — чтобы проверить закрытые сеты.</string>
+    <string name="sets_classic">Классика</string>
+    <string name="sets_classic_hint">Традиционные Сурья и Чандра Намаскар: 12 и 16 положений, полный круг — с правой и с левой ноги.</string>
+    <string name="sets_rings">Нулевой цикл: кольца</string>
+    <string name="sets_rings_hint">Солнечное и лунное кольца по омнио-тренингу: правильные переходы, дыхание на каждое движение.</string>
+    <string name="sets_start">Нулевой цикл: старт-сет</string>
+    <string name="sets_start_hint">Переход после лунного кольца и семь мини-последовательностей вводного старт-сета.</string>
+    <string name="sets_core">Стержневой сет и стоп-сет</string>
+    <string name="sets_core_hint">Стержневой сет, связка и заключительный стоп-сет.</string>
+    <string name="sets_extra">Дополнительные элементы</string>
+    <string name="sets_extra_hint">Усложнения к кольцам, старт-сету и стоп-сету — когда основное уже даётся легко.</string>
+    <string name="set_size">%1$d позиций · ~%2$d мин · кругов: %3$d</string>
 </resources>

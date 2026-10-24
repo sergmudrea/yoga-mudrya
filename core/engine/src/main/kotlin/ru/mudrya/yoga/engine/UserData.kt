@@ -138,6 +138,10 @@ object Path8 {
     const val DAYS = 56
     private val WEEK = listOf(DayKind.SURYA, DayKind.CHANDRA, DayKind.SURYA, DayKind.REST, DayKind.CHANDRA, DayKind.SURYA, DayKind.REST)
 
+    /** Какие сеты засчитываются за день Сурьи и за день Чандры. */
+    val SURYA_SETS = setOf("surya", "at_sn")
+    val CHANDRA_SETS = setOf("chandra", "at_cn")
+
     fun kindOf(index: Int): DayKind = when {
         index % 14 == 0 || index == DAYS - 1 -> DayKind.TEST
         else -> WEEK[index % 7]
@@ -151,8 +155,8 @@ object Path8 {
 
     /** Сделан ли план дня: практика нужного сета или тест в этот день. */
     fun done(state: UserState, day: Long, kind: DayKind): Boolean = when (kind) {
-        DayKind.SURYA -> state.sessions.any { it.localDay == day && it.completed && it.sequenceId.startsWith("surya") }
-        DayKind.CHANDRA -> state.sessions.any { it.localDay == day && it.completed && (it.sequenceId == "chandra" || it.sequenceId == "surya_chandra") }
+        DayKind.SURYA -> state.sessions.any { it.localDay == day && it.completed && it.sequenceId in SURYA_SETS }
+        DayKind.CHANDRA -> state.sessions.any { it.localDay == day && it.completed && it.sequenceId in CHANDRA_SETS }
         DayKind.TEST -> state.tests.any { it.localDay == day }
         DayKind.REST -> true
     }

@@ -152,7 +152,7 @@ private fun TodayCard(state: UserState, today: Long, onStart: (String) -> Unit, 
             DayKind.REST -> {
                 Text(stringResource(R.string.path_rest), color = fg, fontSize = 26.sp, fontWeight = FontWeight.Bold)
                 Body(stringResource(R.string.path_rest_hint))
-                PrimaryButton(stringResource(R.string.path_rest_light), { onStart("morning") }, color = MudryaColors.Border, contentColor = MudryaColors.Text)
+                PrimaryButton(stringResource(R.string.path_rest_light), { onStart("at_sn") }, color = MudryaColors.Border, contentColor = MudryaColors.Text)
             }
             DayKind.TEST -> {
                 Text(stringResource(R.string.path_test), color = fg, fontSize = 26.sp, fontWeight = FontWeight.Bold)

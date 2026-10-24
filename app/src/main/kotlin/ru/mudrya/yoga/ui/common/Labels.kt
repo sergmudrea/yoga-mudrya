@@ -3,6 +3,8 @@ package ru.mudrya.yoga.ui.common
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import ru.mudrya.yoga.R
+import ru.mudrya.yoga.catalog.SuryaCatalog
+import java.util.Locale
 import ru.mudrya.yoga.engine.Goal
 import ru.mudrya.yoga.engine.Level
 import ru.mudrya.yoga.engine.MovementTest
@@ -13,14 +15,10 @@ import ru.mudrya.yoga.model.Support
 
 /** Название сета по его id. */
 @Composable
-fun sequenceName(id: String): String = stringResource(
-    when (id) {
-        "chandra" -> R.string.chandra
-        "surya_chandra" -> R.string.set_bundle
-        "morning" -> R.string.set_morning
-        else -> R.string.surya
-    },
-)
+fun sequenceName(id: String): String {
+    val seq = SuryaCatalog.sequence(id)
+    return if (Locale.getDefault().language == "ru") seq.nameRu else seq.nameEn
+}
 
 @Composable
 fun jointLabel(j: Joint): String = stringResource(

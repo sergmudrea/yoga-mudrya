@@ -185,7 +185,7 @@ class Path8Test {
 
     @Test
     fun `day plan is done by the right set`() {
-        val s = UserState(sessions = listOf(SessionRecord(0, 5, "surya_chandra", 1, 1, true, null, false)))
+        val s = UserState(sessions = listOf(SessionRecord(0, 5, "at_sn", 1, 1, true, null, false), SessionRecord(0, 5, "chandra", 1, 1, true, null, false)))
         assertTrue(Path8.done(s, 5, DayKind.SURYA))
         assertTrue(Path8.done(s, 5, DayKind.CHANDRA))
         assertFalse(Path8.done(s, 6, DayKind.SURYA))

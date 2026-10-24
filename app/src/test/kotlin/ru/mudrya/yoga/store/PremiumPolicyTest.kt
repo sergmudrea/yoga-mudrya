@@ -12,7 +12,8 @@ class PremiumPolicyTest {
     fun `surya is always free, other sets need premium`() {
         assertFalse(PremiumPolicy.isLocked("surya", premium = false))
         assertTrue(PremiumPolicy.isLocked("chandra", premium = false))
-        assertTrue(PremiumPolicy.isLocked("surya_chandra", premium = false))
+        assertFalse(PremiumPolicy.isLocked("at_sn", premium = false))
+        assertTrue(PremiumPolicy.isLocked("at_ss1", premium = false))
         assertFalse(PremiumPolicy.isLocked("chandra", premium = true))
     }
 

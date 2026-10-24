@@ -52,6 +52,10 @@ data class Pose(
     val shin2: Double? = null,
     val foot2: Double? = null,
     val upperTorso: Double? = null,
+    /** 0 — вид сбоку, 1 — вид спереди (плечи и таз разведены в ширину): позы с ногами в стороны. */
+    val front: Double = 0.0,
+    /** Масштаб длины позвоночника — для поз, где корпус виден в перспективе. */
+    val spineScale: Double = 1.0,
 ) {
     val chest: Double get() = upperTorso ?: torso
 
@@ -126,6 +130,8 @@ data class Asana(
     val saferAlternative: String? = null,
     /** Подсказки по технике, по порядку важности. */
     val cuesRu: List<String> = emptyList(),
+    /** Подробное описание позы своими словами по тексту методики. */
+    val descriptionRu: String? = null,
     /** Санскритское название, если есть. */
     val sanskrit: String? = null,
     /** Как подогнать позу под пропорции модели, чтобы опоры стояли на полу. */
@@ -144,6 +150,10 @@ data class Step(
     val extraCycles: Boolean = true,
     /** В этой позе методика предлагает «дыхание металлической собаки». */
     val metalDog: Boolean = false,
+    /** Название шага, если оно уточняет асану («поворот влево», «правая нога вверх»). */
+    val titleRu: String? = null,
+    /** Подсказка именно для этого шага последовательности. */
+    val cueRu: String? = null,
 ) {
     init {
         require(enter.isNotEmpty()) { "Step $asanaId: movement needs at least one breath phase" }

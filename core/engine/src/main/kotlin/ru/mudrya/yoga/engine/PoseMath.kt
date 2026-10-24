@@ -29,6 +29,9 @@ object PoseMath {
     /** Все 13 углов ведутся по кратчайшему пути; вторые рука и нога и верх корпуса — тоже. */
     fun interpolate(from: Pose, to: Pose, t: Double, eased: Boolean = true): Pose {
         val k = if (eased) easeInOut(t) else t.coerceIn(0.0, 1.0)
-        return Pose.fromList(from.toList().zip(to.toList()) { a, b -> lerpAngle(a, b, k) })
+        return Pose.fromList(from.toList().zip(to.toList()) { a, b -> lerpAngle(a, b, k) }).copy(
+            front = from.front + (to.front - from.front) * k,
+            spineScale = from.spineScale + (to.spineScale - from.spineScale) * k,
+        )
     }
 }
