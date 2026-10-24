@@ -54,11 +54,17 @@ fun FigureCanvas(
 
         val limb = Stroke(width = 6.5f * scale / 1.75f, cap = StrokeCap.Round, join = StrokeJoin.Round)
         val trunk = Stroke(width = 9f * scale / 1.75f, cap = StrokeCap.Round, join = StrokeJoin.Round)
-        drawPath(pathOf(listOf(f.hip, f.knee2, f.ankle2, f.toe2), ::o), FarLimb, style = limb)
-        drawPath(pathOf(listOf(f.shoulder, f.elbow2, f.wrist2), ::o), FarLimb, style = limb)
+        // В виде спереди обе стороны одинаково близко — дальние конечности тоже светлые.
+        val far = if (f.front > 0.5) MudryaColors.Text else FarLimb
+        drawPath(pathOf(listOf(f.farHip, f.knee2, f.ankle2, f.toe2), ::o), far, style = limb)
+        drawPath(pathOf(listOf(f.farShoulder, f.elbow2, f.wrist2), ::o), far, style = limb)
+        if (f.front > 0.05) {
+            drawPath(pathOf(listOf(f.nearShoulder, f.farShoulder), ::o), MudryaColors.Text, style = limb)
+            drawPath(pathOf(listOf(f.nearHip, f.farHip), ::o), MudryaColors.Text, style = limb)
+        }
         drawPath(spinePath(f, ::o), MudryaColors.Text, style = trunk)
-        drawPath(pathOf(listOf(f.hip, f.knee, f.ankle, f.toe), ::o), MudryaColors.Text, style = limb)
-        drawPath(pathOf(listOf(f.shoulder, f.elbow, f.wrist), ::o), MudryaColors.Text, style = limb)
+        drawPath(pathOf(listOf(f.nearHip, f.knee, f.ankle, f.toe), ::o), MudryaColors.Text, style = limb)
+        drawPath(pathOf(listOf(f.nearShoulder, f.elbow, f.wrist), ::o), MudryaColors.Text, style = limb)
         drawCircle(MudryaColors.Text, radius = f.headRadius.toFloat() * scale, center = o(f.head))
     }
 }

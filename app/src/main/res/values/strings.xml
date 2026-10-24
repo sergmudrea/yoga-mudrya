@@ -53,7 +53,6 @@
     <string name="home_age_label">Movement age</string>
     <string name="home_age_none">Five simple tests show how old your body moves. Repeat monthly and watch it drop.</string>
     <string name="home_age_retake">Retake the test</string>
-    <string name="home_chandra_hint">Inner moon rings on all fours: cat stretches, slow kicks, half camel. 99 positions.</string>
     <string name="home_rounds">Rounds</string>
     <string name="home_support">Hand support</string>
     <string name="home_support_wrists">Fists only because of your wrists.</string>
@@ -169,13 +168,6 @@
     <string name="home_relax">Rest between rounds</string>
     <string name="home_relax_off">off</string>
     <string name="home_relax_hint">Lying on your back with a timer. You can finish early.</string>
-    <string name="set_bundle">Surya → Chandra</string>
-    <string name="set_morning">10-minute morning</string>
-    <string name="set_minutes">~%1$d min · rounds: %2$d</string>
-    <string name="set_surya_desc">Sun salutation: 77 positions, wide steps and three-point planks. Strength, stamina, full-body warm-up.</string>
-    <string name="set_chandra_desc">Moon salutation: 99 positions, inner rings on all fours. Spine and hip mobility, gentler on the legs.</string>
-    <string name="set_bundle_desc">Both salutations back to back without exit and new entry, as the method prescribes. A long full workout.</string>
-    <string name="set_morning_desc">Standard entry, one vinyasa and exit. For busy days or rest days.</string>
     <string name="tv_button">TV</string>
     <string name="tv_on">Practice is on the TV</string>
     <string name="tv_remote">Your phone is the remote: pause, back, next, tempo.</string>
@@ -212,11 +204,11 @@
     <string name="backup_confirm_yes">Restore</string>
     <string name="backup_restored">Data restored.</string>
     <string name="paywall_title">Premium</string>
-    <string name="paywall_benefit_chandra">Chandra Namaskar: 99 positions of the moon salutation</string>
-    <string name="paywall_benefit_bundle">Surya → Chandra bundle: the full long workout</string>
-    <string name="paywall_benefit_short">Short sessions for busy days</string>
+    <string name="paywall_benefit_chandra">Moon ring and classic Chandra Namaskar</string>
+    <string name="paywall_benefit_bundle">Start set, core set and stop set: the whole zero cycle of the book</string>
+    <string name="paywall_benefit_short">Extra elements: progressions for every set</string>
     <string name="paywall_benefit_future">New sets and method modes as they come out</string>
-    <string name="paywall_free_core">Free forever: full Surya Namaskar, movement age test, progress, reminders, TV output.</string>
+    <string name="paywall_free_core">Free forever: classic Surya Namaskar, the Sun ring, movement age test, progress, reminders, TV output.</string>
     <string name="paywall_loading">Loading plans…</string>
     <string name="paywall_unavailable">Plans did not load. Payment works when the app is installed from %1$s and you are online.</string>
     <string name="paywall_trial_terms">%1$d days free. First charge on %2$s, %3$s. You will get a reminder 2 days before.</string>
@@ -244,4 +236,15 @@
     <string name="settings_debug">Debug</string>
     <string name="settings_debug_premium">Premium without purchase</string>
     <string name="settings_debug_premium_hint">Test builds only, to check locked sets.</string>
+    <string name="sets_classic">Classic</string>
+    <string name="sets_classic_hint">Traditional Surya and Chandra Namaskar: 12 and 16 positions, a full round from the right and the left leg.</string>
+    <string name="sets_rings">Zero cycle: rings</string>
+    <string name="sets_rings_hint">Sun and moon rings of the Omnio training: correct transitions, a breath for every movement.</string>
+    <string name="sets_start">Zero cycle: start set</string>
+    <string name="sets_start_hint">Transition after the moon ring and the seven mini-sequences of the introductory start set.</string>
+    <string name="sets_core">Core set and stop set</string>
+    <string name="sets_core_hint">Core set, the link and the closing stop set.</string>
+    <string name="sets_extra">Extra elements</string>
+    <string name="sets_extra_hint">Progressions for the rings, start set and stop set, for when the basics feel easy.</string>
+    <string name="set_size">%1$d positions · ~%2$d min · rounds: %3$d</string>
 </resources>

@@ -13,14 +13,18 @@ data class Pt(val x: Double, val y: Double) {
 
 /** Длины сегментов схематичной фигуры в условных единицах. */
 data class BodyProportions(
-    val torso: Double = 52.0,
+    // Пропорции атласа нулевого цикла ×2 — позы из атласа выглядят в приложении так же.
+    val torso: Double = 56.0,
     val neck: Double = 7.0,
-    val head: Double = 9.0,
-    val upperArm: Double = 26.0,
-    val foreArm: Double = 24.0,
+    val head: Double = 11.0,
+    val upperArm: Double = 28.0,
+    val foreArm: Double = 28.0,
     val thigh: Double = 44.0,
     val shin: Double = 42.0,
-    val foot: Double = 11.0,
+    val foot: Double = 12.0,
+    /** Половина ширины плеч и таза в виде спереди. */
+    val shoulderHalf: Double = 10.0,
+    val hipHalf: Double = 7.0,
 )
 
 /** Все суставы фигуры для отрисовки. «2» — дальние рука и нога. */
@@ -29,13 +33,19 @@ data class FigurePoints(
     val elbow: Pt, val wrist: Pt, val elbow2: Pt, val wrist2: Pt,
     val knee: Pt, val ankle: Pt, val toe: Pt, val knee2: Pt, val ankle2: Pt, val toe2: Pt,
     val headRadius: Double,
+    /** Точки крепления ближних и дальних конечностей: в виде сбоку совпадают с тазом и плечом. */
+    val nearShoulder: Pt = shoulder, val farShoulder: Pt = shoulder,
+    val nearHip: Pt = hip, val farHip: Pt = hip,
+    /** Доля вида спереди, 0..1. */
+    val front: Double = 0.0,
 ) {
-    fun all(): List<Pt> = listOf(hip, waist, shoulder, neck, elbow, wrist, elbow2, wrist2, knee, ankle, toe, knee2, ankle2, toe2) +
+    fun all(): List<Pt> = listOf(hip, waist, shoulder, neck, elbow, wrist, elbow2, wrist2, knee, ankle, toe, knee2, ankle2, toe2, nearShoulder, farShoulder, nearHip, farHip) +
         listOf(Pt(head.x, head.y - headRadius), Pt(head.x - headRadius, head.y), Pt(head.x + headRadius, head.y), Pt(head.x, head.y + headRadius))
 
     fun map(f: (Pt) -> Pt): FigurePoints = FigurePoints(
         f(hip), f(waist), f(shoulder), f(neck), f(head), f(elbow), f(wrist), f(elbow2), f(wrist2),
         f(knee), f(ankle), f(toe), f(knee2), f(ankle2), f(toe2), headRadius,
+        f(nearShoulder), f(farShoulder), f(nearHip), f(farHip), front,
     )
 
     /** Самая низкая точка тела. */
@@ -61,21 +71,28 @@ object FigureGeometry {
     fun points(p: Pose, body: BodyProportions = BodyProportions(), chestLift: Double = 0.0): FigurePoints {
         val hip = Pt(0.0, 0.0)
         // Корпус из двух половин: при прямом корпусе они лежат на одной линии.
-        val waist = hip.go(p.torso + chestLift, body.torso / 2)
-        val sh = waist.go(p.chest + chestLift, body.torso / 2)
+        val half = body.torso / 2 * p.spineScale
+        val waist = hip.go(p.torso + chestLift, half)
+        val sh = waist.go(p.chest + chestLift, half)
         val neck = sh.go(p.neck, body.neck)
         val head = neck.go(p.neck, body.head)
-        val el = sh.go(p.upperArm, body.upperArm)
+        // Вид спереди: плечи и таз разведены поперёк корпуса, как в атласе.
+        val fv = p.front.coerceIn(0.0, 1.0)
+        val shN = sh.go(p.chest + chestLift - 90, body.shoulderHalf * fv)
+        val shF = sh.go(p.chest + chestLift - 90, -body.shoulderHalf * fv)
+        val hipN = hip.go(p.torso + chestLift - 90, body.hipHalf * fv)
+        val hipF = hip.go(p.torso + chestLift - 90, -body.hipHalf * fv)
+        val el = shN.go(p.upperArm, body.upperArm)
         val wr = el.go(p.foreArm, body.foreArm)
-        val el2 = sh.go(p.farUpperArm, body.upperArm)
+        val el2 = shF.go(p.farUpperArm, body.upperArm)
         val wr2 = el2.go(p.farForeArm, body.foreArm)
-        val kn = hip.go(p.thigh, body.thigh)
+        val kn = hipN.go(p.thigh, body.thigh)
         val an = kn.go(p.shin, body.shin)
         val toe = an.go(p.foot, body.foot)
-        val kn2 = hip.go(p.farThigh, body.thigh)
+        val kn2 = hipF.go(p.farThigh, body.thigh)
         val an2 = kn2.go(p.farShin, body.shin)
         val toe2 = an2.go(p.farFoot, body.foot)
-        return FigurePoints(hip, waist, sh, neck, head, el, wr, el2, wr2, kn, an, toe, kn2, an2, toe2, body.head)
+        return FigurePoints(hip, waist, sh, neck, head, el, wr, el2, wr2, kn, an, toe, kn2, an2, toe2, body.head, shN, shF, hipN, hipF, fv)
     }
 
     /** Те же суставы, поставленные на пол: самая низкая точка — y = 0, по горизонтали — центр по габариту. */

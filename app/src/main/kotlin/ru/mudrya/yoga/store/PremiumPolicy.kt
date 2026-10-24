@@ -5,7 +5,8 @@ package ru.mudrya.yoga.store
  * полная Сурья Намаскар, тест возраста движения, прогресс, напоминания, вывод на ТВ.
  */
 object PremiumPolicy {
-    val FREE_SETS = setOf("surya")
+    /** Классическая Сурья Намаскар и Солнечное кольцо книги — бесплатно всегда. */
+    val FREE_SETS = setOf("surya", "at_sn")
 
     fun isLocked(setId: String, premium: Boolean): Boolean = !premium && setId !in FREE_SETS
 

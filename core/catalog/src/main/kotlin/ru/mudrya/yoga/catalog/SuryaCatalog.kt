@@ -84,10 +84,10 @@ object SuryaCatalog {
         a("horiz_fold", "Закрытый горизонтальный наклон", "Flat-back fold", pose(0, 3, 2, 2, 278, 274, 0),
             listOf("Наклон от тазобедренных суставов волной от таза к рукам", "Корпус и руки — одна горизонтальная линия", "Ноги прямые, седалищные кости тянутся вверх"),
             load = mapOf(Joint.LUMBAR to 2)),
-        a("uttanasana", "Закрытый вытянутый наклон", "Standing forward fold", pose(268, 262, 264, 262, 282, 276, 0),
+        a("uttanasana", "Закрытый вытянутый наклон", "Standing forward fold", pose(314, 245, 225, 195, 272, 270, 0, ut = 262),
             listOf("Складывайтесь в тазобедренных суставах, а не сгибайте спину", "Грудь к бёдрам, макушка тянется к полу", "Пальцы рук давят в пол за стопами"),
-            sanskrit = "Уттанасана", load = mapOf(Joint.LUMBAR to 1),
-            fit = fit(Contact.HAND, Contact.FOOT, PoseParam.UPPER_ARM, PoseParam.FORE_ARM)),
+            // Поза из атласа нулевого цикла: спина округлена, кисти за пятками.
+            sanskrit = "Уттанасана", load = mapOf(Joint.LUMBAR to 1)),
         a("half_lift", "Полупрогиб в вытянутом наклоне", "Half lift", pose(340, 25, 275, 275, 282, 276, 0),
             listOf("Ладони на полу перед стопами", "Прогнитесь, взгляд вперёд и вверх", "Пупок прижат к бёдрам"),
             load = mapOf(Joint.LUMBAR to 1),
@@ -349,8 +349,8 @@ object SuryaCatalog {
 
     val surya = SequenceDef(
         id = "surya",
-        nameRu = "Сурья Намаскар",
-        nameEn = "Surya Namaskar",
+        nameRu = "Солнечное кольцо",
+        nameEn = "Sun ring",
         items = listOf(
             BlockRef("standard_entry"),
             BlockRef("vinyasa"),
@@ -369,8 +369,8 @@ object SuryaCatalog {
     /** Чандра Намаскар (круг лунного света) — 99 позиций: вход и выход как у Сурьи, внутри — лунные кольца. */
     val chandra = SequenceDef(
         id = "chandra",
-        nameRu = "Чандра Намаскар",
-        nameEn = "Chandra Namaskar",
+        nameRu = "Лунное кольцо",
+        nameEn = "Moon ring",
         items = listOf(
             BlockRef("standard_entry"),
             BlockRef("vinyasa"),
@@ -384,37 +384,16 @@ object SuryaCatalog {
         exitBlockId = "standard_exit",
     )
 
-    /**
-     * Связка Сурья → Чандра: по правилу стыковки методики у Сурьи убирается стандартный выход,
-     * у Чандры — стандартный вход и первая виньяса (она уже была в конце Сурьи).
-     */
-    val suryaChandra = SequenceDef(
-        id = "surya_chandra",
-        nameRu = "Сурья → Чандра",
-        nameEn = "Surya → Chandra",
-        items = surya.items.dropLast(1) + chandra.items.drop(2),
-        entryBlockId = "standard_entry",
-        exitBlockId = "standard_exit",
-    )
-
-    /** Короткая утренняя сессия: стандартный вход, одна виньяса, стандартный выход (~10 минут). */
-    val morning = SequenceDef(
-        id = "morning",
-        nameRu = "Утро за 10 минут",
-        nameEn = "10-minute morning",
-        items = listOf(BlockRef("standard_entry"), BlockRef("vinyasa"), BlockRef("standard_exit")),
-        entryBlockId = "standard_entry",
-        exitBlockId = "standard_exit",
-    )
-
-    val sequences: List<SequenceDef> = listOf(surya, chandra, suryaChandra, morning)
+    /** Все сеты приложения: кольца книги с заменами при травмах и сеты атласа нулевого цикла. */
+    val sequences: List<SequenceDef> = listOf(surya, chandra) + AtlasCatalog.sequences
 
     fun sequence(id: String): SequenceDef = sequences.firstOrNull { it.id == id } ?: surya
 
     /** Каталог с подогнанными позами и графом переходов. */
     val catalog: Catalog by lazy {
-        val fitted = asanas.map { asana -> asana.fit?.let { asana.copy(pose = PoseFitter.fit(asana.pose, it)) } ?: asana }
-        val blockMap = blocks.associateBy { it.id }
+        val fitted = asanas.map { asana -> asana.fit?.let { asana.copy(pose = PoseFitter.fit(asana.pose, it)) } ?: asana } +
+            AtlasCatalog.asanas
+        val blockMap = (blocks + AtlasCatalog.blocks).associateBy { it.id }
         val alternatives = fitted.mapNotNull { x -> x.saferAlternative?.let { x.id to it } }.toMap()
         Catalog(
             asanas = fitted.associateBy { it.id },

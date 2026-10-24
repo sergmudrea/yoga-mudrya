@@ -171,7 +171,7 @@ private fun TvScreen(state: TvState) {
         horizontalArrangement = Arrangement.spacedBy(32.dp),
     ) {
         Box(Modifier.weight(1.3f).fillMaxHeight()) {
-            FigureCanvas(pose = f.pose, fill = f.fill, description = f.step.asana.nameRu, modifier = Modifier.fillMaxSize())
+            FigureCanvas(pose = f.pose, fill = f.fill, description = f.step.title, modifier = Modifier.fillMaxSize())
         }
         Column(Modifier.weight(1f).fillMaxHeight(), verticalArrangement = Arrangement.spacedBy(16.dp)) {
             Text(state.title, color = MudryaColors.TextMuted, fontSize = 22.sp)
@@ -182,7 +182,7 @@ private fun TvScreen(state: TvState) {
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
             )
-            Text(f.step.asana.nameRu, color = MudryaColors.Text, fontSize = 44.sp, fontWeight = FontWeight.Bold, lineHeight = 50.sp)
+            Text(f.step.title, color = MudryaColors.Text, fontSize = 44.sp, fontWeight = FontWeight.Bold, lineHeight = 50.sp)
             Text(
                 stringResource(if (inhale) R.string.player_inhale else R.string.player_exhale) + "  ${f.secondsLeftInPhase}",
                 color = if (inhale) MudryaColors.Moon else MudryaColors.Saffron,
@@ -191,7 +191,7 @@ private fun TvScreen(state: TvState) {
             )
             TvBar(f.fill.belly / 0.6, MudryaColors.Saffron)
             TvBar(f.fill.chest, MudryaColors.Moon)
-            f.step.asana.cuesRu.firstOrNull()?.let { Text(it, color = MudryaColors.Text, fontSize = 26.sp, lineHeight = 34.sp) }
+            (f.step.cueRu ?: f.step.asana.cuesRu.firstOrNull())?.let { Text(it, color = MudryaColors.Text, fontSize = 26.sp, lineHeight = 34.sp) }
             state.restLeft?.let {
                 Text(stringResource(R.string.rest_title) + "  %d:%02d".format(it / 60, it % 60), color = MudryaColors.Saffron, fontSize = 32.sp)
             }

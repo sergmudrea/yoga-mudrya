@@ -31,7 +31,8 @@ object GraphBuilder {
 
         sequences.forEach { seq ->
             seq.items.zipWithNext { x, y -> link(lastOf(x.blockId), firstOf(y.blockId)) }
-            if (seq.items.size > 1) link(lastOf(seq.items.last().blockId), firstOf(seq.items.first().blockId))
+            // Повтор кругов: конец сета переходит в его начало (и для сета из одного блока).
+            if (seq.items.isNotEmpty()) link(lastOf(seq.items.last().blockId), firstOf(seq.items.first().blockId))
             seq.slots.forEach { slot ->
                 val before = seq.items[slot.afterItemIndex].blockId
                 val after = seq.items.getOrNull(slot.afterItemIndex + 1)?.blockId ?: seq.items.first().blockId
