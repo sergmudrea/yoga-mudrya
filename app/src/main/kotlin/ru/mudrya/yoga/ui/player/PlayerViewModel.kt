@@ -34,7 +34,7 @@ class PlayerViewModel(private val users: UserRepository, sequenceId: String) : V
             sequence = SuryaCatalog.sequence(sequenceId),
             rounds = params.rounds,
             support = params.support,
-            constraints = Constraints(injuries),
+            constraints = Constraints(injuries, eased = params.easedJoints),
             relaxEvery = if (relaxSeconds > 0) 1 else 0,
         ),
     )

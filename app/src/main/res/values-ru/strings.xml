@@ -17,6 +17,7 @@
     <string name="player_side_right">ПРАВАЯ СТОРОНА</string>
     <string name="player_side_left">ЛЕВАЯ СТОРОНА</string>
     <string name="player_from">Из позы: %1$s</string>
+    <string name="player_replaced">Замена вместо «%1$s» — бережём: %2$s</string>
     <string name="player_next">Далее: %1$s</string>
     <string name="player_inhale">Вдох</string>
     <string name="player_exhale">Выдох</string>

@@ -14,7 +14,13 @@ import ru.mudrya.yoga.model.Support
 data class Constraints(
     val injuries: Set<Injury> = emptySet(),
     val level: Int = 0,
-)
+    /** Проблемные зоны, отмеченные после последней практики: их тоже разгружаем заменами. */
+    val eased: Set<Joint> = emptySet(),
+    /** С какой нагрузки (0..3) поза считается опасной для больного места. */
+    val threshold: Int = 2,
+) {
+    val joints: Set<Joint> get() = injuries.map { it.joint }.toSet() + eased
+}
 
 /** Что пользователь выбрал на карточке сессии. */
 data class BuildRequest(
@@ -39,6 +45,11 @@ data class SessionStep(
     val metalDog: Boolean = false,
     val titleRu: String? = null,
     val cueRu: String? = null,
+    /** Асана из канонической последовательности — по ней проверяются переходы. */
+    val originalAsanaId: String = asanaIdOrEmpty(asana),
+    /** Если асана заменена — из-за какого сустава и что было в оригинале. */
+    val replacedFor: Joint? = null,
+    val replacedTitle: String? = null,
 ) {
     /** Что показывать заголовком: уточнённое название шага или название асаны. */
     val title: String get() = titleRu ?: asana.nameRu
@@ -54,6 +65,8 @@ data class Session(
     val load: Map<Joint, Double>,
 )
 
+private fun asanaIdOrEmpty(a: Asana): String = a.id
+
 class SessionBuildException(message: String) : IllegalStateException(message)
 
 /**
@@ -65,8 +78,10 @@ class SessionBuilder(private val catalog: Catalog) {
     fun build(req: BuildRequest): Session {
         require(req.rounds >= 1) { "rounds must be >= 1" }
 
+        // Переходы проверяем по исходной последовательности: замена стоит на месте оригинала,
+        // а убранная поза не рвёт цепочку методики.
+        validateTransitions(rawSteps(req).map { it.first.asanaId }, wrapAround = req.rounds > 1)
         val round = oneRound(req)
-        validateTransitions(round.map { it.asana.id }, wrapAround = req.rounds > 1)
 
         val steps = (1..req.rounds).flatMap { r -> round.map { it.copy(round = r) } }
         val relax = if (req.relaxEvery > 0) {
@@ -85,6 +100,12 @@ class SessionBuilder(private val catalog: Catalog) {
 
     /** Один круг без повторов. */
     internal fun oneRound(req: BuildRequest): List<SessionStep> {
+        val raw = rawSteps(req)
+        return raw.mapNotNull { (step, side) -> toSessionStep(step, side, req) }
+    }
+
+    /** Шаги круга из блоков и включённых слотов, до замен. */
+    private fun rawSteps(req: BuildRequest): List<Pair<Step, Side>> {
         val seq = req.sequence
         val slotsByItem = seq.slots
             .filter { it.id in req.enabledSlots && it.minLevel <= req.constraints.level }
@@ -98,9 +119,13 @@ class SessionBuilder(private val catalog: Catalog) {
             }
         }
 
-        return raw.mapNotNull { (step, side) ->
-            val asana = resolveAsana(catalog.asana(step.asanaId), req.constraints) ?: return@mapNotNull null
-            SessionStep(
+        return raw
+    }
+
+    private fun toSessionStep(step: Step, side: Side, req: BuildRequest): SessionStep? {
+        val original = catalog.asana(step.asanaId)
+        val (asana, reason) = resolve(original, req.constraints) ?: return null
+        return SessionStep(
                 asana = asana,
                 side = side,
                 support = resolveSupport(asana, req.support, req.constraints),
@@ -109,21 +134,33 @@ class SessionBuilder(private val catalog: Catalog) {
                 extraCycles = step.extraCycles,
                 round = 1,
                 metalDog = step.metalDog,
-                titleRu = step.titleRu,
-                cueRu = step.cueRu,
+                // Название и подсказка шага относятся к оригиналу — у замены свои.
+                titleRu = if (asana.id == original.id) step.titleRu else null,
+                cueRu = if (asana.id == original.id) step.cueRu else null,
+                originalAsanaId = original.id,
+                replacedFor = reason,
+                replacedTitle = if (asana.id == original.id) null else step.titleRu ?: original.nameRu,
             )
-        }
     }
 
     /** Возвращает саму асану, её щадящую замену или null, если асану нужно убрать. */
-    internal fun resolveAsana(asana: Asana, c: Constraints): Asana? {
+    internal fun resolveAsana(asana: Asana, c: Constraints): Asana? = resolve(asana, c)?.first
+
+    /** Асана для сессии и сустав, из-за которого пришлось заменить (null — замены не было). */
+    internal fun resolve(asana: Asana, c: Constraints): Pair<Asana, Joint?>? {
         var current = asana
-        repeat(MAX_REPLACEMENTS) {
-            if (!isContraindicated(current, c)) return current
-            val alt = current.saferAlternative ?: return null
+        var reason: Joint? = null
+        for (i in 0 until MAX_REPLACEMENTS) {
+            if (current.level > c.level) {
+                current = current.saferAlternative?.let(catalog::asana) ?: return null
+                continue
+            }
+            val joint = problemJoint(current, c) ?: return current to reason
+            if (reason == null) reason = joint
+            val alt = current.alternatives[joint] ?: current.saferAlternative ?: return null
             current = catalog.asana(alt)
         }
-        return if (isContraindicated(current, c)) null else current
+        return if (isContraindicated(current, c)) null else current to reason
     }
 
     internal fun resolveSupport(asana: Asana, requested: Support, c: Constraints): Support? {
@@ -145,12 +182,17 @@ class SessionBuilder(private val catalog: Catalog) {
     companion object {
         private const val MAX_REPLACEMENTS = 3
 
-        fun isContraindicated(asana: Asana, c: Constraints): Boolean {
-            if (asana.level > c.level) return true
-            if (Injury.NECK in c.injuries && asana.inversion) return true
-            return c.injuries.any { injury ->
-                // Запястья решаются опорой, а не заменой асаны.
-                injury != Injury.WRISTS && (asana.load[injury.joint] ?: 0) >= 3
+        fun isContraindicated(asana: Asana, c: Constraints): Boolean =
+            asana.level > c.level || problemJoint(asana, c) != null
+
+        /** Какой больной сустав нагружает асана (null — можно делать). */
+        fun problemJoint(asana: Asana, c: Constraints): Joint? {
+            val joints = c.joints
+            if (Joint.NECK in joints && asana.inversion) return Joint.NECK
+            return joints.firstOrNull { j ->
+                val load = asana.load[j] ?: 0
+                // Запястья в упорах сначала разгружаются опорой на кулаки; заменяем только самое тяжёлое.
+                if (j == Joint.WRISTS && asana.supports.isNotEmpty()) load >= 3 else load >= c.threshold
             }
         }
 

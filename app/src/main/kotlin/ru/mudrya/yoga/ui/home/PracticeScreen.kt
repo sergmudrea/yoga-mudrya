@@ -55,7 +55,7 @@ import ru.mudrya.yoga.ui.theme.MudryaColors
 /** Сколько минут займёт сессия с такими параметрами. */
 fun estimateMinutes(sequenceId: String, params: SessionParams, injuries: Set<Injury>): Int {
     val session = SessionBuilder(SuryaCatalog.catalog).build(
-        BuildRequest(SuryaCatalog.sequence(sequenceId), params.rounds, params.support, constraints = Constraints(injuries)),
+        BuildRequest(SuryaCatalog.sequence(sequenceId), params.rounds, params.support, constraints = Constraints(injuries, eased = params.easedJoints)),
     )
     return ((BreathTimeline(session, params.phaseMs).totalMs + 30_000) / 60_000).toInt()
 }

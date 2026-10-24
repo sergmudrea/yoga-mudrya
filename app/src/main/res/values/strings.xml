@@ -17,6 +17,7 @@
     <string name="player_side_right">RIGHT SIDE</string>
     <string name="player_side_left">LEFT SIDE</string>
     <string name="player_from">From: %1$s</string>
+    <string name="player_replaced">Instead of “%1$s” — easier on: %2$s</string>
     <string name="player_next">Next: %1$s</string>
     <string name="player_inhale">Inhale</string>
     <string name="player_exhale">Exhale</string>

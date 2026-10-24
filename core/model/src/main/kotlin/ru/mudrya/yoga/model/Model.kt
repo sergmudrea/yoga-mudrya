@@ -136,6 +136,8 @@ data class Asana(
     val sanskrit: String? = null,
     /** Как подогнать позу под пропорции модели, чтобы опоры стояли на полу. */
     val fit: FitRule? = null,
+    /** Замена для каждого сустава: похожая поза из любого сета, где этот сустав не нагружен. */
+    val alternatives: Map<Joint, String> = emptyMap(),
 )
 
 /**

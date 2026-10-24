@@ -56,7 +56,7 @@ private val GROUPS = listOf(
 /** Сколько позиций и минут займёт сет с такими параметрами. */
 fun setSize(sequenceId: String, params: SessionParams, injuries: Set<Injury>): Pair<Int, Int> {
     val session = SessionBuilder(SuryaCatalog.catalog).build(
-        BuildRequest(SuryaCatalog.sequence(sequenceId), params.rounds, params.support, constraints = Constraints(injuries)),
+        BuildRequest(SuryaCatalog.sequence(sequenceId), params.rounds, params.support, constraints = Constraints(injuries, eased = params.easedJoints)),
     )
     val minutes = ((BreathTimeline(session, params.phaseMs).totalMs + 30_000) / 60_000).toInt().coerceAtLeast(1)
     return session.steps.size / params.rounds.coerceAtLeast(1) to minutes

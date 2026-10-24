@@ -1,6 +1,8 @@
 package ru.mudrya.yoga.catalog
 
 import ru.mudrya.yoga.engine.GraphBuilder
+import ru.mudrya.yoga.engine.LoadAnalyzer
+import ru.mudrya.yoga.engine.Substitutions
 import ru.mudrya.yoga.engine.PoseFitter
 import ru.mudrya.yoga.model.Asana
 import ru.mudrya.yoga.model.Block
@@ -393,10 +395,27 @@ object SuryaCatalog {
     val catalog: Catalog by lazy {
         val fitted = asanas.map { asana -> asana.fit?.let { asana.copy(pose = PoseFitter.fit(asana.pose, it)) } ?: asana } +
             AtlasCatalog.asanas
+        // Нагрузка считается по геометрии позы; ручная разметка колец книги — нижняя граница.
+        val computedProfiles = fitted.associate { it.id to LoadAnalyzer.analyze(it.pose) }
+        // Ручная выверка поверх геометрии: где правило ошиблось, решает разбор по биомеханике.
+        val profiles = computedProfiles.mapValues { (id, p) ->
+            LoadOverrides.map[id]?.let { o -> p.copy(load = o.load.filterValues { it > 0 }, inversion = o.inversion) } ?: p
+        }
+        val loaded = fitted.map { a ->
+            val computed = profiles.getValue(a.id)
+            val merged = if (a.id in LoadOverrides.map) {
+                computed.load
+            } else {
+                Joint.entries.associateWith { j -> maxOf(a.load[j] ?: 0, computed.load[j] ?: 0) }.filterValues { it > 0 }
+            }
+            a.copy(load = merged, inversion = if (a.id in LoadOverrides.map) computed.inversion else a.inversion || computed.inversion)
+        }
+        val subs = Substitutions.build(loaded, profiles)
+        val finalAsanas = loaded.map { a -> subs[a.id]?.let { a.copy(alternatives = it) } ?: a }
         val blockMap = (blocks + AtlasCatalog.blocks).associateBy { it.id }
-        val alternatives = fitted.mapNotNull { x -> x.saferAlternative?.let { x.id to it } }.toMap()
+        val alternatives = finalAsanas.mapNotNull { x -> x.saferAlternative?.let { x.id to it } }.toMap()
         Catalog(
-            asanas = fitted.associateBy { it.id },
+            asanas = finalAsanas.associateBy { it.id },
             blocks = blockMap,
             transitions = GraphBuilder.build(blockMap, sequences, alternatives),
         )
