@@ -384,7 +384,30 @@ object SuryaCatalog {
         exitBlockId = "standard_exit",
     )
 
-    val sequences: List<SequenceDef> = listOf(surya, chandra)
+    /**
+     * Связка Сурья → Чандра: по правилу стыковки методики у Сурьи убирается стандартный выход,
+     * у Чандры — стандартный вход и первая виньяса (она уже была в конце Сурьи).
+     */
+    val suryaChandra = SequenceDef(
+        id = "surya_chandra",
+        nameRu = "Сурья → Чандра",
+        nameEn = "Surya → Chandra",
+        items = surya.items.dropLast(1) + chandra.items.drop(2),
+        entryBlockId = "standard_entry",
+        exitBlockId = "standard_exit",
+    )
+
+    /** Короткая утренняя сессия: стандартный вход, одна виньяса, стандартный выход (~10 минут). */
+    val morning = SequenceDef(
+        id = "morning",
+        nameRu = "Утро за 10 минут",
+        nameEn = "10-minute morning",
+        items = listOf(BlockRef("standard_entry"), BlockRef("vinyasa"), BlockRef("standard_exit")),
+        entryBlockId = "standard_entry",
+        exitBlockId = "standard_exit",
+    )
+
+    val sequences: List<SequenceDef> = listOf(surya, chandra, suryaChandra, morning)
 
     fun sequence(id: String): SequenceDef = sequences.firstOrNull { it.id == id } ?: surya
 

@@ -5,6 +5,7 @@ import ru.mudrya.yoga.model.Injury
 import ru.mudrya.yoga.model.Joint
 import ru.mudrya.yoga.model.Support
 import kotlin.test.assertEquals
+import kotlin.test.assertFalse
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
@@ -18,6 +19,8 @@ class UserStateCodecTest {
             SessionRecord(2_000, 20_001, "surya", 2, 300_000, false, null, true),
         ),
         tests = listOf(MovementRecord(5_000, 20_000, 41, 37, mapOf(MovementTest.BALANCE to 8.5, MovementTest.SIT_RISE to 9.0))),
+        planStartDay = 19_990,
+        relaxSeconds = 90,
     )
 
     @Test
@@ -152,5 +155,45 @@ class ProvisionalNormsTest {
     @Test
     fun `values outside the anchors are flat`() {
         assertEquals(ProvisionalNorms.expected(MovementTest.BALANCE, 90, Sex.MALE), ProvisionalNorms.expected(MovementTest.BALANCE, 99, Sex.MALE))
+    }
+}
+
+class Path8Test {
+
+    @Test
+    fun `week has three surya, two chandra and two rest days`() {
+        val kinds = (7..13).map { Path8.kindOf(it) }
+        assertEquals(3, kinds.count { it == DayKind.SURYA })
+        assertEquals(2, kinds.count { it == DayKind.CHANDRA })
+        assertEquals(2, kinds.count { it == DayKind.REST })
+    }
+
+    @Test
+    fun `test every fourteen days and on the last day`() {
+        val tests = (0 until Path8.DAYS).filter { Path8.kindOf(it) == DayKind.TEST }
+        assertEquals(listOf(0, 14, 28, 42, 55), tests)
+    }
+
+    @Test
+    fun `today wraps after eight weeks`() {
+        assertEquals(PathDay(3, 1, DayKind.REST, false), Path8.today(100, 103))
+        assertEquals(0, Path8.today(100, 156).index)
+        assertTrue(Path8.today(100, 156).finished)
+    }
+
+    @Test
+    fun `day plan is done by the right set`() {
+        val s = UserState(sessions = listOf(SessionRecord(0, 5, "surya_chandra", 1, 1, true, null, false)))
+        assertTrue(Path8.done(s, 5, DayKind.SURYA))
+        assertTrue(Path8.done(s, 5, DayKind.CHANDRA))
+        assertFalse(Path8.done(s, 6, DayKind.SURYA))
+    }
+
+    @Test
+    fun `test is due after two weeks`() {
+        assertTrue(Path8.testDue(UserState(), 10))
+        val s = UserState(tests = listOf(MovementRecord(0, 10, 40, 40, emptyMap())))
+        assertFalse(Path8.testDue(s, 23))
+        assertTrue(Path8.testDue(s, 24))
     }
 }

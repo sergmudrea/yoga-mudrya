@@ -35,6 +35,8 @@ import ru.mudrya.yoga.ui.common.appContainer
 import ru.mudrya.yoga.ui.home.PracticeScreen
 import ru.mudrya.yoga.ui.home.ProfileScreen
 import ru.mudrya.yoga.ui.home.ProgressScreen
+import ru.mudrya.yoga.ui.home.SetsScreen
+import ru.mudrya.yoga.data.UserRepository
 import ru.mudrya.yoga.ui.onboarding.OnboardingScreen
 import ru.mudrya.yoga.ui.player.PlayerScreen
 import ru.mudrya.yoga.ui.test.MovementTestScreen
@@ -73,7 +75,7 @@ fun AppRoot() {
         NavHost(nav, startDestination = start, modifier = Modifier.padding(padding)) {
             composable(Routes.ONBOARDING) {
                 OnboardingScreen(initial = null) { profile ->
-                    users.update { it.copy(profile = profile, params = Plan.initial(profile)) }
+                    users.update { it.copy(profile = profile, params = Plan.initial(profile), planStartDay = UserRepository.today()) }
                     nav.navigate(Routes.FIRST_TEST) { popUpTo(Routes.ONBOARDING) { inclusive = true } }
                 }
             }
@@ -103,9 +105,15 @@ fun AppRoot() {
                 PlayerScreen(sequenceId = entry.arguments?.getString("seq") ?: "surya", onClose = { nav.popBackStack() })
             }
             composable(Tab.PRACTICE.route) {
-                PracticeScreen(state, users, onStart = { nav.navigate(Routes.player(it)) }, onTest = { nav.navigate(Routes.TEST) })
+                PracticeScreen(
+                    state,
+                    users,
+                    onStart = { nav.navigate(Routes.player(it)) },
+                    onTest = { nav.navigate(Routes.TEST) },
+                    onSets = { nav.goTab(Tab.SETS) },
+                )
             }
-            composable(Tab.SETS.route) { Placeholder(R.string.tab_sets) }
+            composable(Tab.SETS.route) { SetsScreen(state, users, onStart = { nav.navigate(Routes.player(it)) }) }
             composable(Tab.PROGRESS.route) { ProgressScreen(state, onTest = { nav.navigate(Routes.TEST) }) }
             composable(Tab.PROFILE.route) {
                 ProfileScreen(
@@ -124,6 +132,12 @@ fun AppRoot() {
 /** После смены ограничений опора должна оставаться допустимой. */
 private fun ru.mudrya.yoga.engine.SessionParams.respecting(p: UserProfile) =
     if (Injury.WRISTS in p.injuries && support != Support.FISTS) copy(support = Support.FISTS) else this
+
+private fun NavHostController.goTab(tab: Tab) = navigate(tab.route) {
+    popUpTo(Tab.PRACTICE.route) { saveState = true }
+    launchSingleTop = true
+    restoreState = true
+}
 
 private fun NavHostController.goHome() = navigate(Tab.PRACTICE.route) { popUpTo(graph.id) { inclusive = true } }
 
@@ -161,12 +175,4 @@ private fun TabDot(selected: Boolean) {
             .size(10.dp)
             .background(if (selected) MudryaColors.Saffron else MudryaColors.Border, CircleShape),
     )
-}
-
-@Composable
-private fun Placeholder(@StringRes title: Int) {
-    Column(Modifier.fillMaxSize().padding(20.dp)) {
-        Text(stringResource(title), color = MudryaColors.Text, style = androidx.compose.material3.MaterialTheme.typography.headlineSmall)
-        Text(stringResource(R.string.coming_soon), color = MudryaColors.TextMuted)
-    }
 }

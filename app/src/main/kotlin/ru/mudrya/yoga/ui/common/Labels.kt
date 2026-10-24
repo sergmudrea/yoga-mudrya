@@ -13,7 +13,14 @@ import ru.mudrya.yoga.model.Support
 
 /** Название сета по его id. */
 @Composable
-fun sequenceName(id: String): String = stringResource(if (id == "chandra") R.string.chandra else R.string.surya)
+fun sequenceName(id: String): String = stringResource(
+    when (id) {
+        "chandra" -> R.string.chandra
+        "surya_chandra" -> R.string.set_bundle
+        "morning" -> R.string.set_morning
+        else -> R.string.surya
+    },
+)
 
 @Composable
 fun jointLabel(j: Joint): String = stringResource(

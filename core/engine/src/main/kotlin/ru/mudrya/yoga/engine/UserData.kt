@@ -44,6 +44,10 @@ data class UserState(
     val params: SessionParams = Plan.DEFAULT_PARAMS,
     val sessions: List<SessionRecord> = emptyList(),
     val tests: List<MovementRecord> = emptyList(),
+    /** День начала «Пути 8 недель» (LocalDate.toEpochDay). */
+    val planStartDay: Long? = null,
+    /** Расслабление лёжа между кругами, секунды (0 — без расслабления). */
+    val relaxSeconds: Int = 60,
 ) {
     val onboarded: Boolean get() = profile != null
 }
@@ -83,6 +87,45 @@ object Plan {
         injuries = state.profile?.injuries.orEmpty(),
         problemZones = problemZones,
     )
+}
+
+enum class DayKind { SURYA, CHANDRA, REST, TEST }
+
+/** День «Пути 8 недель». */
+data class PathDay(val index: Int, val week: Int, val kind: DayKind, val finished: Boolean)
+
+/**
+ * «Путь 8 недель»: в неделе три дня Сурьи, два дня Чандры и два дня отдыха;
+ * тест возраста движения — в первый день и затем каждые 14 дней (вместо практики этого дня).
+ */
+object Path8 {
+    const val DAYS = 56
+    private val WEEK = listOf(DayKind.SURYA, DayKind.CHANDRA, DayKind.SURYA, DayKind.REST, DayKind.CHANDRA, DayKind.SURYA, DayKind.REST)
+
+    fun kindOf(index: Int): DayKind = when {
+        index % 14 == 0 || index == DAYS - 1 -> DayKind.TEST
+        else -> WEEK[index % 7]
+    }
+
+    /** Какой день пути сегодня. После восьми недель путь начинается заново. */
+    fun today(start: Long, today: Long): PathDay {
+        val i = ((today - start).coerceAtLeast(0) % DAYS).toInt()
+        return PathDay(i, i / 7 + 1, kindOf(i), finished = today - start >= DAYS)
+    }
+
+    /** Сделан ли план дня: практика нужного сета или тест в этот день. */
+    fun done(state: UserState, day: Long, kind: DayKind): Boolean = when (kind) {
+        DayKind.SURYA -> state.sessions.any { it.localDay == day && it.completed && it.sequenceId.startsWith("surya") }
+        DayKind.CHANDRA -> state.sessions.any { it.localDay == day && it.completed && (it.sequenceId == "chandra" || it.sequenceId == "surya_chandra") }
+        DayKind.TEST -> state.tests.any { it.localDay == day }
+        DayKind.REST -> true
+    }
+
+    /** Тест пора повторить: прошло 14 дней с последнего. */
+    fun testDue(state: UserState, today: Long): Boolean {
+        val last = state.tests.maxOfOrNull { it.localDay } ?: return true
+        return today - last >= 14
+    }
 }
 
 /** Сводка для экрана «Прогресс». */
@@ -164,6 +207,8 @@ object UserStateCodec {
                     .joinToString(";"),
             )
         }
+        s.planStartDay?.let { line("plan.start", it.toString()) }
+        line("settings.relaxSeconds", s.relaxSeconds.toString())
         s.tests.forEach { t ->
             line(
                 "test",
@@ -188,7 +233,14 @@ object UserStateCodec {
                 else -> single[key] = value
             }
         }
-        return UserState(profile = parseProfile(single), params = parseParams(single), sessions = sessions, tests = tests)
+        return UserState(
+            profile = parseProfile(single),
+            params = parseParams(single),
+            sessions = sessions,
+            tests = tests,
+            planStartDay = single["plan.start"]?.toLongOrNull(),
+            relaxSeconds = single["settings.relaxSeconds"]?.toIntOrNull()?.coerceIn(0, 600) ?: 60,
+        )
     }
 
     private fun StringBuilder.line(k: String, v: String) {

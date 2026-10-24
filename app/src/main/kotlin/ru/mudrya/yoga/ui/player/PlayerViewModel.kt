@@ -26,14 +26,29 @@ class PlayerViewModel(private val users: UserRepository, sequenceId: String) : V
     private val params = users.state.value.params
     private val injuries = users.state.value.profile?.injuries.orEmpty()
 
+    /** Сколько длится расслабление лёжа между кругами. */
+    val relaxSeconds: Int = users.state.value.relaxSeconds
+
     private val session = SessionBuilder(SuryaCatalog.catalog).build(
         BuildRequest(
             sequence = SuryaCatalog.sequence(sequenceId),
             rounds = params.rounds,
             support = params.support,
             constraints = Constraints(injuries),
+            relaxEvery = if (relaxSeconds > 0) 1 else 0,
         ),
     )
+
+    private var lastRound = 1
+
+    /** Начался новый круг, а перед ним положено расслабление: ставим практику на паузу. */
+    fun enteredRest(f: PlayerFrame): Boolean {
+        val r = f.step.round
+        val crossed = r > lastRound && (r - 1) in session.relaxAfterRounds
+        lastRound = r
+        if (crossed) controller.setPaused(true)
+        return crossed
+    }
 
     val controller = PlayerController(session, phaseMs = params.phaseMs)
 

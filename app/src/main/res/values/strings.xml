@@ -153,4 +153,27 @@
     <string name="unit_sec">seconds</string>
     <string name="unit_times">reps</string>
     <string name="unit_bpm">bpm</string>
+    <string name="rest_title">Rest lying down</string>
+    <string name="rest_hint">Lie on your back, arms along the body, palms up. Round %1$d is next.</string>
+    <string name="rest_skip">Continue</string>
+    <string name="path_week">8-week path · week %1$d, day %2$d</string>
+    <string name="path_again">Again</string>
+    <string name="path_done">Done today</string>
+    <string name="path_rest">Rest day</string>
+    <string name="path_rest_hint">Recovery is part of training. Take a walk or do the short morning session.</string>
+    <string name="path_rest_light">10-minute morning</string>
+    <string name="path_test">Test day</string>
+    <string name="path_test_hint">Take the movement age test to see what is changing.</string>
+    <string name="path_all_sets">All sets →</string>
+    <string name="home_age_due">Two weeks have passed, time to retake the test.</string>
+    <string name="home_relax">Rest between rounds</string>
+    <string name="home_relax_off">off</string>
+    <string name="home_relax_hint">Lying on your back with a timer. You can finish early.</string>
+    <string name="set_bundle">Surya → Chandra</string>
+    <string name="set_morning">10-minute morning</string>
+    <string name="set_minutes">~%1$d min · rounds: %2$d</string>
+    <string name="set_surya_desc">Sun salutation: 77 positions, wide steps and three-point planks. Strength, stamina, full-body warm-up.</string>
+    <string name="set_chandra_desc">Moon salutation: 99 positions, inner rings on all fours. Spine and hip mobility, gentler on the legs.</string>
+    <string name="set_bundle_desc">Both salutations back to back without exit and new entry, as the method prescribes. A long full workout.</string>
+    <string name="set_morning_desc">Standard entry, one vinyasa and exit. For busy days or rest days.</string>
 </resources>
