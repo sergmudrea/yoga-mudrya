@@ -48,6 +48,7 @@ data class UserState(
     val planStartDay: Long? = null,
     /** Расслабление лёжа между кругами, секунды (0 — без расслабления). */
     val relaxSeconds: Int = 60,
+    val settings: AppSettings = AppSettings(),
 ) {
     val onboarded: Boolean get() = profile != null
 }
@@ -88,6 +89,16 @@ object Plan {
         problemZones = problemZones,
     )
 }
+
+/** Настройки приложения. */
+data class AppSettings(
+    /** Короткий сигнал на смене вдоха и выдоха. */
+    val sound: Boolean = true,
+    /** Лёгкая вибрация на смене фазы. */
+    val vibration: Boolean = false,
+    /** Показывать практику на втором экране (ТВ), когда он подключён. */
+    val tvOutput: Boolean = true,
+)
 
 enum class DayKind { SURYA, CHANDRA, REST, TEST }
 
@@ -209,6 +220,9 @@ object UserStateCodec {
         }
         s.planStartDay?.let { line("plan.start", it.toString()) }
         line("settings.relaxSeconds", s.relaxSeconds.toString())
+        line("settings.sound", s.settings.sound.toString())
+        line("settings.vibration", s.settings.vibration.toString())
+        line("settings.tv", s.settings.tvOutput.toString())
         s.tests.forEach { t ->
             line(
                 "test",
@@ -240,6 +254,11 @@ object UserStateCodec {
             tests = tests,
             planStartDay = single["plan.start"]?.toLongOrNull(),
             relaxSeconds = single["settings.relaxSeconds"]?.toIntOrNull()?.coerceIn(0, 600) ?: 60,
+            settings = AppSettings(
+                sound = single["settings.sound"]?.toBooleanStrictOrNull() ?: true,
+                vibration = single["settings.vibration"]?.toBooleanStrictOrNull() ?: false,
+                tvOutput = single["settings.tv"]?.toBooleanStrictOrNull() ?: true,
+            ),
         )
     }
 

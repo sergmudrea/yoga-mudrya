@@ -176,4 +176,18 @@
     <string name="set_chandra_desc">Moon salutation: 99 positions, inner rings on all fours. Spine and hip mobility, gentler on the legs.</string>
     <string name="set_bundle_desc">Both salutations back to back without exit and new entry, as the method prescribes. A long full workout.</string>
     <string name="set_morning_desc">Standard entry, one vinyasa and exit. For busy days or rest days.</string>
+    <string name="tv_button">TV</string>
+    <string name="tv_on">Practice is on the TV</string>
+    <string name="tv_remote">Your phone is the remote: pause, back, next, tempo.</string>
+    <string name="settings_title">Settings</string>
+    <string name="settings_practice">During practice</string>
+    <string name="settings_sound">Phase change sound</string>
+    <string name="settings_sound_hint">A short beep: higher for inhale, lower for exhale. Practise without looking at the screen.</string>
+    <string name="settings_vibration">Vibration</string>
+    <string name="settings_vibration_hint">A light buzz on every change between inhale and exhale.</string>
+    <string name="settings_tv">TV</string>
+    <string name="settings_tv_auto">Show on TV</string>
+    <string name="settings_tv_auto_hint">When a second screen is connected, the figure and breathing go there and the phone becomes a remote.</string>
+    <string name="settings_tv_how">Connect the TV via wireless display (Miracast, Cast, Smart View) or an HDMI adapter, then open a practice.</string>
+    <string name="settings_tv_open">Open cast settings</string>
 </resources>

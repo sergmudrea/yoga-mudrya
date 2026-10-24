@@ -8,6 +8,8 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -25,16 +27,20 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.withFrameMillis
 import kotlinx.coroutines.delay
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -72,6 +78,13 @@ fun PlayerScreen(
     }
     BackHandler(onBack = close)
     var frame by remember { mutableStateOf(vm.frame()) }
+    val settings = appContainer().users.state.collectAsStateWithLifecycle().value.settings
+    val currentSettings by rememberUpdatedState(settings)
+    val context = LocalContext.current
+    val cues = remember { PhaseCues(context) }
+    DisposableEffect(Unit) { onDispose { cues.release() } }
+    val tv = remember { TvState(frame, title) }
+    val onTv by rememberTvOutput(settings.tvOutput, tv)
     var restLeft by remember { mutableStateOf<Int?>(null) }
     val endRest = {
         restLeft = null
@@ -95,15 +108,22 @@ fun PlayerScreen(
 
     LaunchedEffect(c) {
         var last = withFrameMillis { it }
+        var lastPhase = frame.phase
         while (true) {
             withFrameMillis { now ->
                 c.advance(now - last)
                 last = now
                 frame = vm.frame()
+                tv.frame = frame
                 if (vm.enteredRest(frame)) restLeft = vm.relaxSeconds
+                if (frame.phase != lastPhase) {
+                    lastPhase = frame.phase
+                    if (!frame.finished) cues.onPhase(frame.phase.breath, currentSettings.sound, currentSettings.vibration)
+                }
             }
         }
     }
+    SideEffect { tv.restLeft = restLeft }
 
     fun act(block: () -> Unit) {
         block()
@@ -119,31 +139,23 @@ fun PlayerScreen(
         return
     }
 
-    Column(
-        Modifier
-            .fillMaxSize()
-            .background(MudryaColors.Ground)
-            .padding(horizontal = 16.dp, vertical = 8.dp),
-    ) {
-        TopBar(frame, title, close)
-        Spacer(Modifier.height(8.dp))
-        ProgressLine(frame.elapsedMs.toFloat() / frame.totalMs.coerceAtLeast(1).toFloat())
-        Spacer(Modifier.height(12.dp))
-        StepTitle(frame)
-        Box(Modifier.fillMaxWidth().weight(1f)) {
-            FigureCanvas(
-                pose = frame.pose,
-                fill = frame.fill,
-                description = frame.step.asana.nameRu,
-                modifier = Modifier.fillMaxSize(),
-            )
+    val figure: @Composable (Modifier) -> Unit = { m ->
+        Box(m) {
+            if (onTv) {
+                TvBanner()
+            } else {
+                FigureCanvas(
+                    pose = frame.pose,
+                    fill = frame.fill,
+                    description = frame.step.asana.nameRu,
+                    modifier = Modifier.fillMaxSize(),
+                )
+            }
             if (c.metalDogActive) MetalDogOverlay { act { c.setMetalDog(false) } }
             restLeft?.let { RestOverlay(it, frame.step.round, endRest) }
         }
-        BreathPanel(frame)
-        Spacer(Modifier.height(10.dp))
-        Cue(frame)
-        Spacer(Modifier.height(12.dp))
+    }
+    val controls: @Composable () -> Unit = {
         Controls(
                 paused = c.paused,
                 speed = c.speed,
@@ -157,10 +169,68 @@ fun PlayerScreen(
                 onMetalDog = { act { vm.startMetalDog() } },
             )
     }
+
+    BoxWithConstraints(
+        Modifier
+            .fillMaxSize()
+            .background(MudryaColors.Ground)
+            .padding(horizontal = 16.dp, vertical = 8.dp),
+    ) {
+        val landscape = maxWidth > maxHeight
+        Column(Modifier.fillMaxSize()) {
+            TopBar(frame, title, close, onTv = { openCastSettings(context) })
+            Spacer(Modifier.height(8.dp))
+            ProgressLine(frame.elapsedMs.toFloat() / frame.totalMs.coerceAtLeast(1).toFloat())
+            Spacer(Modifier.height(12.dp))
+            if (landscape) {
+                // Альбомная ориентация: фигура слева, всё остальное справа.
+                Row(Modifier.fillMaxWidth().weight(1f), horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+                    figure(Modifier.weight(1.1f).fillMaxHeight())
+                    Column(
+                        Modifier
+                            .weight(1f)
+                            .fillMaxHeight()
+                            .verticalScroll(rememberScrollState()),
+                        verticalArrangement = Arrangement.spacedBy(10.dp),
+                    ) {
+                        StepTitle(frame)
+                        BreathPanel(frame)
+                        Cue(frame)
+                        controls()
+                    }
+                }
+            } else {
+                StepTitle(frame)
+                figure(Modifier.fillMaxWidth().weight(1f))
+                BreathPanel(frame)
+                Spacer(Modifier.height(10.dp))
+                Cue(frame)
+                Spacer(Modifier.height(12.dp))
+                controls()
+            }
+        }
+    }
+}
+
+/** Вместо фигуры на телефоне, пока картинка идёт на ТВ. */
+@Composable
+private fun TvBanner() {
+    Column(
+        Modifier
+            .fillMaxSize()
+            .background(MudryaColors.Surface, RoundedCornerShape(20.dp))
+            .padding(20.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        Text(stringResource(R.string.tv_on), color = MudryaColors.Moon, fontSize = 20.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
+        Spacer(Modifier.height(8.dp))
+        Text(stringResource(R.string.tv_remote), color = MudryaColors.TextMuted, fontSize = 15.sp, textAlign = TextAlign.Center)
+    }
 }
 
 @Composable
-private fun TopBar(f: PlayerFrame, title: String, onClose: () -> Unit) {
+private fun TopBar(f: PlayerFrame, title: String, onClose: () -> Unit, onTv: () -> Unit) {
     Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth()) {
         Text(
             "✕",
@@ -176,6 +246,15 @@ private fun TopBar(f: PlayerFrame, title: String, onClose: () -> Unit) {
             fontWeight = FontWeight.Bold,
             fontSize = 17.sp,
             modifier = Modifier.weight(1f),
+        )
+        Text(
+            stringResource(R.string.tv_button),
+            color = MudryaColors.Moon,
+            fontSize = 14.sp,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier
+                .clickable(onClick = onTv)
+                .padding(horizontal = 10.dp, vertical = 8.dp),
         )
         Text(
             stringResource(R.string.player_step_of, f.stepIndex + 1, f.stepCount),
