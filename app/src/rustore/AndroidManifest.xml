@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application>
+        <!-- ID приложения из консоли RuStore (число между apps/ и /versions в адресе). -->
+        <meta-data
+            android:name="console_app_id_value"
+            android:value="@string/rustore_console_app_id" />
+        <meta-data
+            android:name="sdk_pay_scheme_value"
+            android:value="mudryayoga" />
+
+        <activity
+            android:name=".MainActivity"
+            android:launchMode="singleTop"
+            tools:node="merge">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="mudryayoga" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

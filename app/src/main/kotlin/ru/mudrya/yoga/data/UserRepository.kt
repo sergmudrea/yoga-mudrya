@@ -13,6 +13,8 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import ru.mudrya.yoga.engine.UserState
+import ru.mudrya.yoga.store.BillingGateway
+import ru.mudrya.yoga.store.StoreModule
 import ru.mudrya.yoga.engine.UserStateCodec
 import java.io.File
 import java.time.LocalDate
@@ -77,4 +79,5 @@ class UserRepository(
 class AppContainer(context: Context) {
     val users = UserRepository(FileStateStore(context.filesDir))
     val reminders = ReminderScheduler(context)
+    val billing: BillingGateway = StoreModule.billing(context)
 }

@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.sp
 import ru.mudrya.yoga.R
 import ru.mudrya.yoga.data.UserRepository
 import ru.mudrya.yoga.engine.UserState
+import ru.mudrya.yoga.store.PremiumPolicy
 import ru.mudrya.yoga.ui.common.Body
 import ru.mudrya.yoga.ui.common.Card
 import ru.mudrya.yoga.ui.common.PrimaryButton
@@ -38,7 +39,7 @@ private val SETS = listOf(
 )
 
 @Composable
-fun SetsScreen(state: UserState, users: UserRepository, onStart: (String) -> Unit) {
+fun SetsScreen(state: UserState, users: UserRepository, premium: Boolean, onStart: (String) -> Unit) {
     val params = state.params
     val injuries = state.profile?.injuries.orEmpty()
     Column(
@@ -55,7 +56,8 @@ fun SetsScreen(state: UserState, users: UserRepository, onStart: (String) -> Uni
                 Text(sequenceName(set.id), color = set.accent, fontSize = 22.sp, fontWeight = FontWeight.Bold)
                 Text(stringResource(R.string.set_minutes, minutes, params.rounds), color = MudryaColors.Text, fontSize = 14.sp)
                 Body(stringResource(set.description))
-                PrimaryButton(stringResource(R.string.start), { onStart(set.id) }, color = set.accent)
+                val locked = PremiumPolicy.isLocked(set.id, premium)
+                PrimaryButton(stringResource(if (locked) R.string.set_locked else R.string.start), { onStart(set.id) }, color = set.accent)
             }
         }
         SessionTuning(state, users)

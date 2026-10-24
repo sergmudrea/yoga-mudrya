@@ -99,6 +99,8 @@ data class AppSettings(
     val vibration: Boolean = false,
     /** Показывать практику на втором экране (ТВ), когда он подключён. */
     val tvOutput: Boolean = true,
+    /** Только для отладочной сборки: включить премиум без покупки, чтобы проверить закрытые сеты. */
+    val debugPremium: Boolean = false,
 )
 
 /** Напоминание о практике: время и дни недели (1 — понедельник … 7 — воскресенье). */
@@ -246,6 +248,7 @@ object UserStateCodec {
         line("settings.sound", s.settings.sound.toString())
         line("settings.vibration", s.settings.vibration.toString())
         line("settings.tv", s.settings.tvOutput.toString())
+        line("settings.debugPremium", s.settings.debugPremium.toString())
         line("reminder.enabled", s.reminder.enabled.toString())
         line("reminder.time", "${s.reminder.hour}:${s.reminder.minute}")
         line("reminder.days", s.reminder.days.sorted().joinToString(","))
@@ -284,6 +287,7 @@ object UserStateCodec {
                 sound = single["settings.sound"]?.toBooleanStrictOrNull() ?: true,
                 vibration = single["settings.vibration"]?.toBooleanStrictOrNull() ?: false,
                 tvOutput = single["settings.tv"]?.toBooleanStrictOrNull() ?: true,
+                debugPremium = single["settings.debugPremium"]?.toBooleanStrictOrNull() ?: false,
             ),
             reminder = parseReminder(single),
         )
