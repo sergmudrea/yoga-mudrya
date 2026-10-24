@@ -1,0 +1,10 @@
+core=
+pay-core=
+<artifactId>bom</artifactId><version>2026.08.01
+<artifactId>appupdate</artifactId><version>10.5.1
+<artifactId>billingclient</artifactId><version>11.0.1
+<artifactId>installreferrer</artifactId><version>10.6.1
+<artifactId>pay</artifactId><version>11.1.0
+<artifactId>remoteconfig</artifactId><version>10.5.1
+<artifactId>review</artifactId><version>10.5.1
+<artifactId>gamecenter</artifactId><version>10.5.2

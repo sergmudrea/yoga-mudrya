@@ -1,0 +1,296 @@
+      <dependency>
+        <groupId>ru.rustore.sdk</groupId>
+        <artifactId>appupdate</artifactId>
+        <version>10.5.1</version>
+      </dependency>
+--
+      <dependency>
+        <groupId>ru.rustore.sdk</groupId>
+        <artifactId>pay</artifactId>
+        <version>11.1.0</version>
+      </dependency>
+--
+      <dependency>
+        <groupId>ru.rustore.sdk</groupId>
+        <artifactId>review</artifactId>
+        <version>10.5.1</version>
+      </dependency>
+PAY=11.1.0
+      <groupId>ru.rustore.sdk</groupId>	      <artifactId>core</artifactId>	      <version>10.5.0</version>
+      <groupId>ru.rustore.sdk</groupId>	      <artifactId>userprofile</artifactId>	      <version>10.5.0</version>
+      <groupId>org.jetbrains.kotlin</groupId>	      <artifactId>kotlin-stdlib-jdk8</artifactId>	      <version>1.8.22</version>
+      <groupId>ru.rustore.sdk</groupId>	      <artifactId>analytics</artifactId>	      <version>10.5.0</version>
+      <groupId>ru.rustore.sdk</groupId>	      <artifactId>reactive</artifactId>	      <version>10.5.0</version>
+      <groupId>ru.rustore.sdk</groupId>	      <artifactId>metrics</artifactId>	      <version>10.5.1</version>
+      <groupId>ru.rustore.sdk</groupId>	      <artifactId>installidentifier</artifactId>	      <version>10.5.0</version>
+      <groupId>ru.rustore.sdk</groupId>	      <artifactId>imaging</artifactId>	      <version>10.5.1</version>
+      <groupId>androidx.core</groupId>	      <artifactId>core-ktx</artifactId>	      <version>1.12.0</version>
+      <groupId>androidx.activity</groupId>	      <artifactId>activity-ktx</artifactId>	      <version>1.7.0</version>
+      <groupId>androidx.fragment</groupId>	      <artifactId>fragment-ktx</artifactId>	      <version>1.4.0</version>
+      <groupId>androidx.lifecycle</groupId>	      <artifactId>lifecycle-runtime-ktx</artifactId>	      <version>2.7.0</version>
+      <groupId>androidx.lifecycle</groupId>	      <artifactId>lifecycle-common-java8</artifactId>	      <version>2.7.0</version>
+      <groupId>androidx.recyclerview</groupId>	      <artifactId>recyclerview</artifactId>	      <version>1.2.1</version>
+      <groupId>com.google.android.material</groupId>	      <artifactId>material</artifactId>	      <version>1.5.0</version>
+      <groupId>ru.ok.tracer</groupId>	      <artifactId>tracer-lite-crash-report</artifactId>	      <version>1.4.0</version>
+META-INF/services/ru.ok.tracer.manifest.TracerLiteManifest
+ru/rustore/sdk/pay/ApplicationInteractor.class
+ru/rustore/sdk/pay/BuildConfig.class
+ru/rustore/sdk/pay/IntentInteractor.class
+ru/rustore/sdk/pay/ProductInteractor.class
+ru/rustore/sdk/pay/PurchaseInteractor.class
+ru/rustore/sdk/pay/RuStorePayClient.class
+ru/rustore/sdk/pay/RuStorePayClientProvider.class
+ru/rustore/sdk/pay/RuStorePayContentProvider.class
+ru/rustore/sdk/pay/SubscriptionInteractor.class
+ru/rustore/sdk/pay/TracerLibraryManifest.class
+ru/rustore/sdk/pay/UserInteractor.class
+ru/rustore/sdk/pay/callback/PurchaseEventListener.class
+ru/rustore/sdk/pay/model/AcknowledgementState.class
+ru/rustore/sdk/pay/model/AmountLabel.class
+ru/rustore/sdk/pay/model/AppUserEmail.class
+ru/rustore/sdk/pay/model/AppUserId.class
+ru/rustore/sdk/pay/model/ApplicationPurchase.class
+ru/rustore/sdk/pay/model/ApplicationPurchaseResult.class
+ru/rustore/sdk/pay/model/ApplicationPurchaseStatus.class
+ru/rustore/sdk/pay/model/BillingSubscription.class
+ru/rustore/sdk/pay/model/ConsoleApplicationId.class
+ru/rustore/sdk/pay/model/Currency.class
+ru/rustore/sdk/pay/model/Description.class
+ru/rustore/sdk/pay/model/DeveloperPayload.class
+ru/rustore/sdk/pay/model/GracePeriod.class
+ru/rustore/sdk/pay/model/HoldPeriod.class
+ru/rustore/sdk/pay/model/InvoiceId.class
+ru/rustore/sdk/pay/model/MainPeriod.class
+ru/rustore/sdk/pay/model/OrderId.class
+ru/rustore/sdk/pay/model/PackageName.class
+ru/rustore/sdk/pay/model/PreferredPurchaseType.class
+ru/rustore/sdk/pay/model/Price.class
+ru/rustore/sdk/pay/model/Product.class
+ru/rustore/sdk/pay/model/ProductId.class
+ru/rustore/sdk/pay/model/ProductPurchase.class
+ru/rustore/sdk/pay/model/ProductPurchaseParams.class
+ru/rustore/sdk/pay/model/ProductPurchaseResult.class
+ru/rustore/sdk/pay/model/ProductPurchaseStatus.class
+ru/rustore/sdk/pay/model/ProductType.class
+ru/rustore/sdk/pay/model/PromoPeriod.class
+ru/rustore/sdk/pay/model/Purchase.class
+ru/rustore/sdk/pay/model/PurchaseAvailabilityResult.class
+ru/rustore/sdk/pay/model/PurchaseId.class
+ru/rustore/sdk/pay/model/PurchaseStatus.class
+ru/rustore/sdk/pay/model/PurchaseType.class
+ru/rustore/sdk/pay/model/Quantity.class
+ru/rustore/sdk/pay/model/RuStorePaymentException.class
+ru/rustore/sdk/pay/model/SdkTheme.class
+ru/rustore/sdk/pay/model/SubscriptionInfo.class
+ru/rustore/sdk/pay/model/SubscriptionPeriod.class
+ru/rustore/sdk/pay/model/SubscriptionPurchase.class
+ru/rustore/sdk/pay/model/SubscriptionPurchaseStatus.class
+ru/rustore/sdk/pay/model/SubscriptionToken.class
+ru/rustore/sdk/pay/model/Title.class
+ru/rustore/sdk/pay/model/TrialPeriod.class
+ru/rustore/sdk/pay/model/Url.class
+ru/rustore/sdk/pay/model/UserAuthorizationStatus.class
+ru/vk/store/provider/RuStorePaymentInfoProvider.class
+ru/vk/store/provider/RuStorePaymentInfoProviderCallback.class
+Compiled from "r8-map-id-1ade75d940716b26d64c3452ef9e12796775b8920969b77e64caf17cd553baf2"
+public final class ru.rustore.sdk.pay.RuStorePayClient {
+  public static final ru.rustore.sdk.pay.RuStorePayClient$Companion Companion;
+  public ru.rustore.sdk.pay.RuStorePayClient(kotlin.Lazy<ru.rustore.sdk.pay.PurchaseInteractor>, kotlin.Lazy<ru.rustore.sdk.pay.ProductInteractor>, kotlin.Lazy<ru.rustore.sdk.pay.IntentInteractor>, kotlin.Lazy<ru.rustore.sdk.pay.UserInteractor>);
+  static {};
+  public final ru.rustore.sdk.pay.PurchaseInteractor getPurchaseInteractor();
+  public final ru.rustore.sdk.pay.ProductInteractor getProductInteractor();
+  public final ru.rustore.sdk.pay.IntentInteractor getIntentInteractor();
+  public final ru.rustore.sdk.pay.UserInteractor getUserInteractor();
+}
+Compiled from "r8-map-id-1ade75d940716b26d64c3452ef9e12796775b8920969b77e64caf17cd553baf2"
+public final class ru.rustore.sdk.pay.ProductInteractor {
+  public ru.rustore.sdk.pay.ProductInteractor(ru.rustore.sdk.pay.internal.gd);
+  public final ru.rustore.sdk.core.tasks.Task<java.util.List<ru.rustore.sdk.pay.model.Product>> getProducts(java.util.List<ru.rustore.sdk.pay.model.ProductId>);
+}
+Compiled from "r8-map-id-1ade75d940716b26d64c3452ef9e12796775b8920969b77e64caf17cd553baf2"
+public final class ru.rustore.sdk.pay.PurchaseInteractor {
+  public ru.rustore.sdk.pay.PurchaseInteractor(ru.rustore.sdk.pay.internal.nf);
+  public static ru.rustore.sdk.core.tasks.Task getPurchases$default(ru.rustore.sdk.pay.PurchaseInteractor, ru.rustore.sdk.pay.model.ProductType, ru.rustore.sdk.pay.model.PurchaseStatus, ru.rustore.sdk.pay.model.AcknowledgementState, int, java.lang.Object);
+  public static ru.rustore.sdk.core.tasks.Task purchase$default(ru.rustore.sdk.pay.PurchaseInteractor, ru.rustore.sdk.pay.model.ProductPurchaseParams, ru.rustore.sdk.pay.model.PreferredPurchaseType, ru.rustore.sdk.pay.model.SdkTheme, ru.rustore.sdk.pay.callback.PurchaseEventListener, int, java.lang.Object);
+  public static ru.rustore.sdk.core.tasks.Task purchaseTwoStep$default(ru.rustore.sdk.pay.PurchaseInteractor, ru.rustore.sdk.pay.model.ProductPurchaseParams, ru.rustore.sdk.pay.model.SdkTheme, ru.rustore.sdk.pay.callback.PurchaseEventListener, int, java.lang.Object);
+  public static ru.rustore.sdk.core.tasks.Task confirmTwoStepPurchase$default(ru.rustore.sdk.pay.PurchaseInteractor, ru.rustore.sdk.pay.model.PurchaseId, ru.rustore.sdk.pay.model.DeveloperPayload, int, java.lang.Object);
+  public static ru.rustore.sdk.core.tasks.Task updateAcknowledgementState$default(ru.rustore.sdk.pay.PurchaseInteractor, ru.rustore.sdk.pay.model.PurchaseId, ru.rustore.sdk.pay.model.AcknowledgementState, ru.rustore.sdk.pay.model.DeveloperPayload, int, java.lang.Object);
+  public final ru.rustore.sdk.core.tasks.Task<ru.rustore.sdk.pay.model.Purchase> getPurchase(ru.rustore.sdk.pay.model.PurchaseId);
+  public final ru.rustore.sdk.core.tasks.Task<java.util.List<ru.rustore.sdk.pay.model.Purchase>> getPurchases(ru.rustore.sdk.pay.model.ProductType, ru.rustore.sdk.pay.model.PurchaseStatus, ru.rustore.sdk.pay.model.AcknowledgementState);
+  public final ru.rustore.sdk.core.tasks.Task<java.util.List<ru.rustore.sdk.pay.model.BillingSubscription>> getBillingSubscriptions();
+  public final ru.rustore.sdk.core.tasks.Task<ru.rustore.sdk.pay.model.PurchaseAvailabilityResult> getPurchaseAvailability();
+  public final ru.rustore.sdk.core.tasks.Task<ru.rustore.sdk.pay.model.ProductPurchaseResult> purchase(ru.rustore.sdk.pay.model.ProductPurchaseParams, ru.rustore.sdk.pay.model.PreferredPurchaseType, ru.rustore.sdk.pay.model.SdkTheme, ru.rustore.sdk.pay.callback.PurchaseEventListener);
+  public final ru.rustore.sdk.core.tasks.Task<ru.rustore.sdk.pay.model.ProductPurchaseResult> purchaseTwoStep(ru.rustore.sdk.pay.model.ProductPurchaseParams, ru.rustore.sdk.pay.model.SdkTheme, ru.rustore.sdk.pay.callback.PurchaseEventListener);
+  public final ru.rustore.sdk.core.tasks.Task<kotlin.Unit> confirmTwoStepPurchase(ru.rustore.sdk.pay.model.PurchaseId, ru.rustore.sdk.pay.model.DeveloperPayload);
+  public final ru.rustore.sdk.core.tasks.Task<ru.rustore.sdk.pay.model.AcknowledgementState> updateAcknowledgementState(ru.rustore.sdk.pay.model.PurchaseId, ru.rustore.sdk.pay.model.AcknowledgementState, ru.rustore.sdk.pay.model.DeveloperPayload);
+  public final ru.rustore.sdk.core.tasks.Task<kotlin.Unit> cancelTwoStepPurchase(ru.rustore.sdk.pay.model.PurchaseId);
+}
+Compiled from "r8-map-id-1ade75d940716b26d64c3452ef9e12796775b8920969b77e64caf17cd553baf2"
+public final class ru.rustore.sdk.pay.IntentInteractor {
+  public ru.rustore.sdk.pay.IntentInteractor(ru.rustore.sdk.pay.internal.n8);
+  public static void proceedIntent$default(ru.rustore.sdk.pay.IntentInteractor, android.content.Intent, ru.rustore.sdk.pay.model.SdkTheme, int, java.lang.Object);
+  public final void proceedIntent(android.content.Intent, ru.rustore.sdk.pay.model.SdkTheme);
+}
+Compiled from "r8-map-id-1ade75d940716b26d64c3452ef9e12796775b8920969b77e64caf17cd553baf2"
+public final class ru.rustore.sdk.pay.UserInteractor {
+  public ru.rustore.sdk.pay.UserInteractor(ru.rustore.sdk.pay.internal.st);
+  public final ru.rustore.sdk.core.tasks.Task<ru.rustore.sdk.pay.model.UserAuthorizationStatus> getUserAuthorizationStatus();
+}
+Compiled from "r8-map-id-1ade75d940716b26d64c3452ef9e12796775b8920969b77e64caf17cd553baf2"
+public final class ru.rustore.sdk.pay.model.ProductPurchaseParams {
+  public ru.rustore.sdk.pay.model.ProductPurchaseParams(ru.rustore.sdk.pay.model.ProductId, ru.rustore.sdk.pay.model.Quantity, ru.rustore.sdk.pay.model.OrderId, ru.rustore.sdk.pay.model.DeveloperPayload, ru.rustore.sdk.pay.model.AppUserId, ru.rustore.sdk.pay.model.AppUserEmail);
+  public ru.rustore.sdk.pay.model.ProductPurchaseParams(ru.rustore.sdk.pay.model.ProductId, ru.rustore.sdk.pay.model.Quantity, ru.rustore.sdk.pay.model.OrderId, ru.rustore.sdk.pay.model.DeveloperPayload, ru.rustore.sdk.pay.model.AppUserId, ru.rustore.sdk.pay.model.AppUserEmail, int, kotlin.jvm.internal.DefaultConstructorMarker);
+  public final ru.rustore.sdk.pay.model.ProductId getProductId();
+  public final ru.rustore.sdk.pay.model.Quantity getQuantity();
+  public final ru.rustore.sdk.pay.model.OrderId getOrderId();
+  public final ru.rustore.sdk.pay.model.DeveloperPayload getDeveloperPayload();
+  public final ru.rustore.sdk.pay.model.AppUserId getAppUserId();
+  public final ru.rustore.sdk.pay.model.AppUserEmail getAppUserEmail();
+  public boolean equals(java.lang.Object);
+  public int hashCode();
+  public java.lang.String toString();
+}
+Compiled from "r8-map-id-1ade75d940716b26d64c3452ef9e12796775b8920969b77e64caf17cd553baf2"
+public final class ru.rustore.sdk.pay.model.ProductPurchaseResult {
+  public ru.rustore.sdk.pay.model.ProductPurchaseResult(ru.rustore.sdk.pay.model.OrderId, ru.rustore.sdk.pay.model.PurchaseId, ru.rustore.sdk.pay.model.ProductId, ru.rustore.sdk.pay.model.InvoiceId, ru.rustore.sdk.pay.model.PurchaseType, ru.rustore.sdk.pay.model.ProductType, ru.rustore.sdk.pay.model.Quantity, boolean);
+  public final ru.rustore.sdk.pay.model.OrderId getOrderId();
+  public final ru.rustore.sdk.pay.model.PurchaseId getPurchaseId();
+  public final ru.rustore.sdk.pay.model.ProductId getProductId();
+  public final ru.rustore.sdk.pay.model.InvoiceId getInvoiceId();
+  public final ru.rustore.sdk.pay.model.PurchaseType getPurchaseType();
+  public final ru.rustore.sdk.pay.model.ProductType getProductType();
+  public final ru.rustore.sdk.pay.model.Quantity getQuantity();
+  public final boolean getSandbox();
+  public boolean equals(java.lang.Object);
+  public int hashCode();
+  public java.lang.String toString();
+}
+Compiled from "r8-map-id-1ade75d940716b26d64c3452ef9e12796775b8920969b77e64caf17cd553baf2"
+public final class ru.rustore.sdk.pay.model.Product {
+  public ru.rustore.sdk.pay.model.Product(ru.rustore.sdk.pay.model.ProductId, ru.rustore.sdk.pay.model.ProductType, ru.rustore.sdk.pay.model.AmountLabel, ru.rustore.sdk.pay.model.Price, ru.rustore.sdk.pay.model.Currency, ru.rustore.sdk.pay.model.Url, ru.rustore.sdk.pay.model.Url, ru.rustore.sdk.pay.model.Title, ru.rustore.sdk.pay.model.Description, ru.rustore.sdk.pay.model.SubscriptionInfo);
+  public final ru.rustore.sdk.pay.model.ProductId getProductId();
+  public final ru.rustore.sdk.pay.model.ProductType getType();
+  public final ru.rustore.sdk.pay.model.AmountLabel getAmountLabel();
+  public final ru.rustore.sdk.pay.model.Price getPrice();
+  public final ru.rustore.sdk.pay.model.Currency getCurrency();
+  public final ru.rustore.sdk.pay.model.Url getImageUrl();
+  public final ru.rustore.sdk.pay.model.Url getPromoImageUrl();
+  public final ru.rustore.sdk.pay.model.Title getTitle();
+  public final ru.rustore.sdk.pay.model.Description getDescription();
+  public final ru.rustore.sdk.pay.model.SubscriptionInfo getSubscriptionInfo();
+  public boolean equals(java.lang.Object);
+  public int hashCode();
+  public java.lang.String toString();
+}
+Compiled from "r8-map-id-1ade75d940716b26d64c3452ef9e12796775b8920969b77e64caf17cd553baf2"
+public final class ru.rustore.sdk.pay.model.ProductId implements java.io.Serializable {
+  public static final ru.rustore.sdk.pay.model.ProductId$Companion Companion;
+  public ru.rustore.sdk.pay.model.ProductId(java.lang.String);
+  static {};
+  public final java.lang.String getValue();
+  public boolean equals(java.lang.Object);
+  public int hashCode();
+  public java.lang.String toString();
+}
+Compiled from "r8-map-id-1ade75d940716b26d64c3452ef9e12796775b8920969b77e64caf17cd553baf2"
+public final class ru.rustore.sdk.pay.model.PurchaseId implements java.io.Serializable {
+  public static final ru.rustore.sdk.pay.model.PurchaseId$Companion Companion;
+  public ru.rustore.sdk.pay.model.PurchaseId(java.lang.String);
+  static {};
+  public final java.lang.String getValue();
+  public boolean equals(java.lang.Object);
+  public int hashCode();
+  public java.lang.String toString();
+}
+Compiled from "r8-map-id-1ade75d940716b26d64c3452ef9e12796775b8920969b77e64caf17cd553baf2"
+public final class ru.rustore.sdk.pay.model.SubscriptionPurchase implements ru.rustore.sdk.pay.model.Purchase {
+  public ru.rustore.sdk.pay.model.SubscriptionPurchase(ru.rustore.sdk.pay.model.PurchaseId, ru.rustore.sdk.pay.model.InvoiceId, ru.rustore.sdk.pay.model.OrderId, ru.rustore.sdk.pay.model.PurchaseType, ru.rustore.sdk.pay.model.SubscriptionPurchaseStatus, ru.rustore.sdk.pay.model.Description, java.util.Date, ru.rustore.sdk.pay.model.Price, ru.rustore.sdk.pay.model.AmountLabel, ru.rustore.sdk.pay.model.Currency, ru.rustore.sdk.pay.model.DeveloperPayload, boolean, ru.rustore.sdk.pay.model.ProductId, java.util.Date, boolean, ru.rustore.sdk.pay.model.AcknowledgementState);
+  public ru.rustore.sdk.pay.model.PurchaseId getPurchaseId();
+  public ru.rustore.sdk.pay.model.InvoiceId getInvoiceId();
+  public ru.rustore.sdk.pay.model.OrderId getOrderId();
+  public ru.rustore.sdk.pay.model.PurchaseType getPurchaseType();
+  public ru.rustore.sdk.pay.model.SubscriptionPurchaseStatus getStatus();
+  public ru.rustore.sdk.pay.model.Description getDescription();
+  public java.util.Date getPurchaseTime();
+  public ru.rustore.sdk.pay.model.Price getPrice();
+  public ru.rustore.sdk.pay.model.AmountLabel getAmountLabel();
+  public ru.rustore.sdk.pay.model.Currency getCurrency();
+  public ru.rustore.sdk.pay.model.DeveloperPayload getDeveloperPayload();
+  public boolean getSandbox();
+  public final ru.rustore.sdk.pay.model.ProductId getProductId();
+  public final java.util.Date getExpirationDate();
+  public final boolean getGracePeriodEnabled();
+  public final ru.rustore.sdk.pay.model.AcknowledgementState getAcknowledgementState();
+  public boolean equals(java.lang.Object);
+  public int hashCode();
+  public java.lang.String toString();
+  public ru.rustore.sdk.pay.model.PurchaseStatus getStatus();
+}
+Compiled from "r8-map-id-1ade75d940716b26d64c3452ef9e12796775b8920969b77e64caf17cd553baf2"
+public final class ru.rustore.sdk.pay.model.ProductPurchase implements ru.rustore.sdk.pay.model.Purchase {
+  public ru.rustore.sdk.pay.model.ProductPurchase(ru.rustore.sdk.pay.model.PurchaseId, ru.rustore.sdk.pay.model.InvoiceId, ru.rustore.sdk.pay.model.OrderId, ru.rustore.sdk.pay.model.PurchaseType, ru.rustore.sdk.pay.model.ProductPurchaseStatus, ru.rustore.sdk.pay.model.Description, java.util.Date, ru.rustore.sdk.pay.model.Price, ru.rustore.sdk.pay.model.AmountLabel, ru.rustore.sdk.pay.model.Currency, ru.rustore.sdk.pay.model.DeveloperPayload, boolean, ru.rustore.sdk.pay.model.ProductId, ru.rustore.sdk.pay.model.Quantity, ru.rustore.sdk.pay.model.ProductType, ru.rustore.sdk.pay.model.AcknowledgementState);
+  public ru.rustore.sdk.pay.model.PurchaseId getPurchaseId();
+  public ru.rustore.sdk.pay.model.InvoiceId getInvoiceId();
+  public ru.rustore.sdk.pay.model.OrderId getOrderId();
+  public ru.rustore.sdk.pay.model.PurchaseType getPurchaseType();
+  public ru.rustore.sdk.pay.model.ProductPurchaseStatus getStatus();
+  public ru.rustore.sdk.pay.model.Description getDescription();
+  public java.util.Date getPurchaseTime();
+  public ru.rustore.sdk.pay.model.Price getPrice();
+  public ru.rustore.sdk.pay.model.AmountLabel getAmountLabel();
+  public ru.rustore.sdk.pay.model.Currency getCurrency();
+  public ru.rustore.sdk.pay.model.DeveloperPayload getDeveloperPayload();
+  public boolean getSandbox();
+  public final ru.rustore.sdk.pay.model.ProductId getProductId();
+  public final ru.rustore.sdk.pay.model.Quantity getQuantity();
+  public final ru.rustore.sdk.pay.model.ProductType getProductType();
+  public final ru.rustore.sdk.pay.model.AcknowledgementState getAcknowledgementState();
+  public boolean equals(java.lang.Object);
+  public int hashCode();
+  public java.lang.String toString();
+  public ru.rustore.sdk.pay.model.PurchaseStatus getStatus();
+}
+Compiled from "r8-map-id-1ade75d940716b26d64c3452ef9e12796775b8920969b77e64caf17cd553baf2"
+public interface ru.rustore.sdk.pay.model.Purchase {
+  public abstract ru.rustore.sdk.pay.model.PurchaseId getPurchaseId();
+  public abstract ru.rustore.sdk.pay.model.InvoiceId getInvoiceId();
+  public abstract ru.rustore.sdk.pay.model.OrderId getOrderId();
+  public abstract ru.rustore.sdk.pay.model.PurchaseType getPurchaseType();
+  public abstract ru.rustore.sdk.pay.model.PurchaseStatus getStatus();
+  public abstract ru.rustore.sdk.pay.model.Description getDescription();
+  public abstract java.util.Date getPurchaseTime();
+  public abstract ru.rustore.sdk.pay.model.Price getPrice();
+  public abstract ru.rustore.sdk.pay.model.AmountLabel getAmountLabel();
+  public abstract ru.rustore.sdk.pay.model.Currency getCurrency();
+  public abstract ru.rustore.sdk.pay.model.DeveloperPayload getDeveloperPayload();
+  public abstract boolean getSandbox();
+}
+Compiled from "r8-map-id-1ade75d940716b26d64c3452ef9e12796775b8920969b77e64caf17cd553baf2"
+public final class ru.rustore.sdk.pay.model.PreferredPurchaseType extends java.lang.Enum<ru.rustore.sdk.pay.model.PreferredPurchaseType> {
+  public static final ru.rustore.sdk.pay.model.PreferredPurchaseType ONE_STEP;
+  public static final ru.rustore.sdk.pay.model.PreferredPurchaseType TWO_STEP;
+  public static ru.rustore.sdk.pay.model.PreferredPurchaseType[] values();
+  public static ru.rustore.sdk.pay.model.PreferredPurchaseType valueOf(java.lang.String);
+  static {};
+}
+Compiled from "r8-map-id-1ade75d940716b26d64c3452ef9e12796775b8920969b77e64caf17cd553baf2"
+public final class ru.rustore.sdk.pay.model.SdkTheme extends java.lang.Enum<ru.rustore.sdk.pay.model.SdkTheme> {
+  public static final ru.rustore.sdk.pay.model.SdkTheme LIGHT;
+  public static final ru.rustore.sdk.pay.model.SdkTheme DARK;
+  public static ru.rustore.sdk.pay.model.SdkTheme[] values();
+  public static ru.rustore.sdk.pay.model.SdkTheme valueOf(java.lang.String);
+  static {};
+}
+ru/rustore/sdk/pay/model/RuStorePaymentException$ApplicationSchemeWasNotProvided.class
+ru/rustore/sdk/pay/model/RuStorePaymentException$EmptyPaymentTokenException.class
+ru/rustore/sdk/pay/model/RuStorePaymentException$InvalidCardBindingIdException.class
+ru/rustore/sdk/pay/model/RuStorePaymentException$ProductPurchaseCancelled.class
+ru/rustore/sdk/pay/model/RuStorePaymentException$ProductPurchaseException.class
+ru/rustore/sdk/pay/model/RuStorePaymentException$RuStorePayClientAlreadyExist.class
+ru/rustore/sdk/pay/model/RuStorePaymentException$RuStorePayClientNotCreated.class
+ru/rustore/sdk/pay/model/RuStorePaymentException$RuStorePayInvalidActivePurchase.class
+ru/rustore/sdk/pay/model/RuStorePaymentException$RuStorePayInvalidConsoleAppId.class
+ru/rustore/sdk/pay/model/RuStorePaymentException$RuStorePaySignatureException.class
+ru/rustore/sdk/pay/model/RuStorePaymentException$RuStorePaymentCommonException.class
+ru/rustore/sdk/pay/model/RuStorePaymentException$RuStorePaymentNetworkException.class
+ru/rustore/sdk/pay/model/RuStorePaymentException.class

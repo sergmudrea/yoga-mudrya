@@ -1,0 +1,185 @@
+<version>8.0.0
+<version>8.1.0
+<version>8.2.0
+<version>8.2.1
+<version>8.3.0
+Compiled from "com.android.billingclient:billing@@8.0.0"
+public final class com.android.billingclient.api.QueryProductDetailsResult {
+  public static com.android.billingclient.api.QueryProductDetailsResult create(java.util.List<com.android.billingclient.api.ProductDetails>, java.util.List<com.android.billingclient.api.UnfetchedProduct>);
+  public java.util.List<com.android.billingclient.api.ProductDetails> getProductDetailsList();
+  public java.util.List<com.android.billingclient.api.UnfetchedProduct> getUnfetchedProductList();
+  com.android.billingclient.api.QueryProductDetailsResult(java.util.List<com.android.billingclient.api.ProductDetails>, java.util.List<com.android.billingclient.api.UnfetchedProduct>);
+}
+Compiled from "com.android.billingclient:billing@@8.0.0"
+public interface com.android.billingclient.api.ProductDetailsResponseListener {
+  public abstract void onProductDetailsResponse(com.android.billingclient.api.BillingResult, com.android.billingclient.api.QueryProductDetailsResult);
+}
+Compiled from "com.android.billingclient:billing@@8.0.0"
+public final class com.android.billingclient.api.BillingClient$Builder {
+  volatile boolean zza;
+  volatile com.google.android.gms.internal.play_billing.zzbl zzb;
+  public com.android.billingclient.api.BillingClient$Builder enableAlternativeBillingOnly();
+  public com.android.billingclient.api.BillingClient$Builder enableAutoServiceReconnection();
+  public com.android.billingclient.api.BillingClient$Builder enableExternalOffer();
+  public com.android.billingclient.api.BillingClient$Builder enablePendingPurchases(com.android.billingclient.api.PendingPurchasesParams);
+  public com.android.billingclient.api.BillingClient$Builder enableUserChoiceBilling(com.android.billingclient.api.UserChoiceBillingListener);
+  public com.android.billingclient.api.BillingClient$Builder setListener(com.android.billingclient.api.PurchasesUpdatedListener);
+  public com.android.billingclient.api.BillingClient build();
+  com.android.billingclient.api.BillingClient$Builder(android.content.Context, com.android.billingclient.api.zzt);
+}
+META-INF/MANIFEST.MF
+META-INF/java.com.google.android.libraries.play.billing.public.ktbilling_granule.kotlin_module
+com/android/billingclient/api/BillingClientKotlinKt$$ExternalSyntheticLambda0.class
+com/android/billingclient/api/BillingClientKotlinKt$$ExternalSyntheticLambda1.class
+com/android/billingclient/api/BillingClientKotlinKt$$ExternalSyntheticLambda2.class
+com/android/billingclient/api/BillingClientKotlinKt$$ExternalSyntheticLambda3.class
+com/android/billingclient/api/BillingClientKotlinKt$$ExternalSyntheticLambda4.class
+com/android/billingclient/api/BillingClientKotlinKt$$ExternalSyntheticLambda5.class
+com/android/billingclient/api/BillingClientKotlinKt$$ExternalSyntheticLambda6.class
+com/android/billingclient/api/BillingClientKotlinKt$$ExternalSyntheticLambda7.class
+com/android/billingclient/api/BillingClientKotlinKt.class
+com/android/billingclient/api/ConsumeResult.class
+com/android/billingclient/api/CreateAlternativeBillingOnlyReportingDetailsResult.class
+com/android/billingclient/api/CreateExternalOfferReportingDetailsResult.class
+com/android/billingclient/api/ProductDetailsResult.class
+com/android/billingclient/api/PurchasesResult.class
+com/android/billingclient/ktx/BuildConfig.class
+billing-ktx.properties
+Compiled from "com.android.billingclient:billing-ktx@@8.0.0"
+public final class com.android.billingclient.api.BillingClientKotlinKt$$ExternalSyntheticLambda0 implements com.android.billingclient.api.ConsumeResponseListener {
+  public kotlinx.coroutines.CompletableDeferred f$0;
+  public com.android.billingclient.api.BillingClientKotlinKt$$ExternalSyntheticLambda0(kotlinx.coroutines.CompletableDeferred);
+  public final void onConsumeResponse(com.android.billingclient.api.BillingResult, java.lang.String);
+}
+Compiled from "com.android.billingclient:billing-ktx@@8.0.0"
+public final class com.android.billingclient.api.BillingClientKotlinKt$$ExternalSyntheticLambda1 implements com.android.billingclient.api.ExternalOfferAvailabilityListener {
+  public kotlinx.coroutines.CompletableDeferred f$0;
+  public com.android.billingclient.api.BillingClientKotlinKt$$ExternalSyntheticLambda1(kotlinx.coroutines.CompletableDeferred);
+  public final void onExternalOfferAvailabilityResponse(com.android.billingclient.api.BillingResult);
+}
+Compiled from "com.android.billingclient:billing-ktx@@8.0.0"
+public final class com.android.billingclient.api.BillingClientKotlinKt$$ExternalSyntheticLambda2 implements com.android.billingclient.api.ProductDetailsResponseListener {
+  public kotlinx.coroutines.CompletableDeferred f$0;
+  public com.android.billingclient.api.BillingClientKotlinKt$$ExternalSyntheticLambda2(kotlinx.coroutines.CompletableDeferred);
+  public final void onProductDetailsResponse(com.android.billingclient.api.BillingResult, com.android.billingclient.api.QueryProductDetailsResult);
+}
+Compiled from "com.android.billingclient:billing-ktx@@8.0.0"
+public final class com.android.billingclient.api.BillingClientKotlinKt$$ExternalSyntheticLambda3 implements com.android.billingclient.api.AcknowledgePurchaseResponseListener {
+  public kotlinx.coroutines.CompletableDeferred f$0;
+  public com.android.billingclient.api.BillingClientKotlinKt$$ExternalSyntheticLambda3(kotlinx.coroutines.CompletableDeferred);
+  public final void onAcknowledgePurchaseResponse(com.android.billingclient.api.BillingResult);
+}
+Compiled from "com.android.billingclient:billing-ktx@@8.0.0"
+public final class com.android.billingclient.api.BillingClientKotlinKt$$ExternalSyntheticLambda4 implements com.android.billingclient.api.ExternalOfferReportingDetailsListener {
+  public kotlinx.coroutines.CompletableDeferred f$0;
+  public com.android.billingclient.api.BillingClientKotlinKt$$ExternalSyntheticLambda4(kotlinx.coroutines.CompletableDeferred);
+  public final void onExternalOfferReportingDetailsResponse(com.android.billingclient.api.BillingResult, com.android.billingclient.api.ExternalOfferReportingDetails);
+}
+Compiled from "com.android.billingclient:billing-ktx@@8.0.0"
+public final class com.android.billingclient.api.BillingClientKotlinKt$$ExternalSyntheticLambda5 implements com.android.billingclient.api.AlternativeBillingOnlyAvailabilityListener {
+  public kotlinx.coroutines.CompletableDeferred f$0;
+  public com.android.billingclient.api.BillingClientKotlinKt$$ExternalSyntheticLambda5(kotlinx.coroutines.CompletableDeferred);
+  public final void onAlternativeBillingOnlyAvailabilityResponse(com.android.billingclient.api.BillingResult);
+}
+Compiled from "com.android.billingclient:billing-ktx@@8.0.0"
+public final class com.android.billingclient.api.BillingClientKotlinKt$$ExternalSyntheticLambda6 implements com.android.billingclient.api.AlternativeBillingOnlyReportingDetailsListener {
+  public kotlinx.coroutines.CompletableDeferred f$0;
+  public com.android.billingclient.api.BillingClientKotlinKt$$ExternalSyntheticLambda6(kotlinx.coroutines.CompletableDeferred);
+  public final void onAlternativeBillingOnlyTokenResponse(com.android.billingclient.api.BillingResult, com.android.billingclient.api.AlternativeBillingOnlyReportingDetails);
+}
+Compiled from "com.android.billingclient:billing-ktx@@8.0.0"
+public final class com.android.billingclient.api.BillingClientKotlinKt$$ExternalSyntheticLambda7 implements com.android.billingclient.api.PurchasesResponseListener {
+  public kotlinx.coroutines.CompletableDeferred f$0;
+  public com.android.billingclient.api.BillingClientKotlinKt$$ExternalSyntheticLambda7(kotlinx.coroutines.CompletableDeferred);
+  public final void onQueryPurchasesResponse(com.android.billingclient.api.BillingResult, java.util.List);
+}
+Compiled from "com.android.billingclient:billing-ktx@@8.0.0"
+public final class com.android.billingclient.api.BillingClientKotlinKt {
+  public static final java.lang.Object acknowledgePurchase(com.android.billingclient.api.BillingClient, com.android.billingclient.api.AcknowledgePurchaseParams, kotlin.coroutines.Continuation<? super com.android.billingclient.api.BillingResult>);
+  public static final java.lang.Object consumePurchase(com.android.billingclient.api.BillingClient, com.android.billingclient.api.ConsumeParams, kotlin.coroutines.Continuation<? super com.android.billingclient.api.ConsumeResult>);
+  public static final java.lang.Object createAlternativeBillingOnlyReportingDetails(com.android.billingclient.api.BillingClient, kotlin.coroutines.Continuation<? super com.android.billingclient.api.CreateAlternativeBillingOnlyReportingDetailsResult>);
+  public static final java.lang.Object createExternalOfferReportingDetails(com.android.billingclient.api.BillingClient, kotlin.coroutines.Continuation<? super com.android.billingclient.api.CreateExternalOfferReportingDetailsResult>);
+  public static final java.lang.Object isAlternativeBillingOnlyAvailable(com.android.billingclient.api.BillingClient, kotlin.coroutines.Continuation<? super com.android.billingclient.api.BillingResult>);
+  public static final java.lang.Object isExternalOfferAvailable(com.android.billingclient.api.BillingClient, kotlin.coroutines.Continuation<? super com.android.billingclient.api.BillingResult>);
+  public static final java.lang.Object queryProductDetails(com.android.billingclient.api.BillingClient, com.android.billingclient.api.QueryProductDetailsParams, kotlin.coroutines.Continuation<? super com.android.billingclient.api.ProductDetailsResult>);
+  public static final java.lang.Object queryPurchasesAsync(com.android.billingclient.api.BillingClient, com.android.billingclient.api.QueryPurchasesParams, kotlin.coroutines.Continuation<? super com.android.billingclient.api.PurchasesResult>);
+  public static void $r8$lambda$BC2cAL2vk_I3dV-pkSAsSywRIek(kotlinx.coroutines.CompletableDeferred, com.android.billingclient.api.BillingResult, java.lang.String);
+  public static void $r8$lambda$NjHhuq09jAs8F8dpZjv_HsFBRq0(kotlinx.coroutines.CompletableDeferred, com.android.billingclient.api.BillingResult);
+  public static void $r8$lambda$UIFqmbqzelSukPAr7gb0UVftOsk(kotlinx.coroutines.CompletableDeferred, com.android.billingclient.api.BillingResult, com.android.billingclient.api.QueryProductDetailsResult);
+  public static void $r8$lambda$jxN-QYHicJYIZOoHSpSjQpTOUq0(kotlinx.coroutines.CompletableDeferred, com.android.billingclient.api.BillingResult);
+  public static void $r8$lambda$mNiIov37EcRv6CLKJbxie9rmtK8(kotlinx.coroutines.CompletableDeferred, com.android.billingclient.api.BillingResult);
+  public static void $r8$lambda$uERt1i0NYhXEQkbmrKSYJisMHH8(kotlinx.coroutines.CompletableDeferred, com.android.billingclient.api.BillingResult, java.util.List);
+  public static void $r8$lambda$vlcEyDRKESu-E49PJWQAtcRlfoM(kotlinx.coroutines.CompletableDeferred, com.android.billingclient.api.BillingResult, com.android.billingclient.api.AlternativeBillingOnlyReportingDetails);
+  public static void $r8$lambda$z4VlE67Tlsqm1a7xTsH92uzKGwo(kotlinx.coroutines.CompletableDeferred, com.android.billingclient.api.BillingResult, com.android.billingclient.api.ExternalOfferReportingDetails);
+}
+Compiled from "com.android.billingclient:billing-ktx@@8.0.0"
+public final class com.android.billingclient.api.ConsumeResult {
+  public int hashCode();
+  public final com.android.billingclient.api.BillingResult component1();
+  public final com.android.billingclient.api.BillingResult getBillingResult();
+  public final com.android.billingclient.api.ConsumeResult copy(com.android.billingclient.api.BillingResult, java.lang.String);
+  public static com.android.billingclient.api.ConsumeResult copy$default(com.android.billingclient.api.ConsumeResult, com.android.billingclient.api.BillingResult, java.lang.String, int, java.lang.Object);
+  public final java.lang.String component2();
+  public final java.lang.String getPurchaseToken();
+  public java.lang.String toString();
+  public com.android.billingclient.api.ConsumeResult(com.android.billingclient.api.BillingResult, java.lang.String);
+  public boolean equals(java.lang.Object);
+}
+Compiled from "com.android.billingclient:billing-ktx@@8.0.0"
+public final class com.android.billingclient.api.CreateAlternativeBillingOnlyReportingDetailsResult {
+  public int hashCode();
+  public final com.android.billingclient.api.AlternativeBillingOnlyReportingDetails component2();
+  public final com.android.billingclient.api.AlternativeBillingOnlyReportingDetails getAlternativeBillingOnlyReportingDetails();
+  public final com.android.billingclient.api.BillingResult component1();
+  public final com.android.billingclient.api.BillingResult getBillingResult();
+  public final com.android.billingclient.api.CreateAlternativeBillingOnlyReportingDetailsResult copy(com.android.billingclient.api.BillingResult, com.android.billingclient.api.AlternativeBillingOnlyReportingDetails);
+  public static com.android.billingclient.api.CreateAlternativeBillingOnlyReportingDetailsResult copy$default(com.android.billingclient.api.CreateAlternativeBillingOnlyReportingDetailsResult, com.android.billingclient.api.BillingResult, com.android.billingclient.api.AlternativeBillingOnlyReportingDetails, int, java.lang.Object);
+  public java.lang.String toString();
+  public com.android.billingclient.api.CreateAlternativeBillingOnlyReportingDetailsResult(com.android.billingclient.api.BillingResult, com.android.billingclient.api.AlternativeBillingOnlyReportingDetails);
+  public boolean equals(java.lang.Object);
+}
+Compiled from "com.android.billingclient:billing-ktx@@8.0.0"
+public final class com.android.billingclient.api.CreateExternalOfferReportingDetailsResult {
+  public int hashCode();
+  public final com.android.billingclient.api.BillingResult component1();
+  public final com.android.billingclient.api.BillingResult getBillingResult();
+  public final com.android.billingclient.api.CreateExternalOfferReportingDetailsResult copy(com.android.billingclient.api.BillingResult, com.android.billingclient.api.ExternalOfferReportingDetails);
+  public static com.android.billingclient.api.CreateExternalOfferReportingDetailsResult copy$default(com.android.billingclient.api.CreateExternalOfferReportingDetailsResult, com.android.billingclient.api.BillingResult, com.android.billingclient.api.ExternalOfferReportingDetails, int, java.lang.Object);
+  public final com.android.billingclient.api.ExternalOfferReportingDetails component2();
+  public final com.android.billingclient.api.ExternalOfferReportingDetails getExternalOfferReportingDetails();
+  public java.lang.String toString();
+  public com.android.billingclient.api.CreateExternalOfferReportingDetailsResult(com.android.billingclient.api.BillingResult, com.android.billingclient.api.ExternalOfferReportingDetails);
+  public boolean equals(java.lang.Object);
+}
+Compiled from "com.android.billingclient:billing-ktx@@8.0.0"
+public final class com.android.billingclient.api.ProductDetailsResult {
+  public int hashCode();
+  public final com.android.billingclient.api.BillingResult component1();
+  public final com.android.billingclient.api.BillingResult getBillingResult();
+  public final com.android.billingclient.api.ProductDetailsResult copy(com.android.billingclient.api.BillingResult, java.util.List<com.android.billingclient.api.ProductDetails>);
+  public static com.android.billingclient.api.ProductDetailsResult copy$default(com.android.billingclient.api.ProductDetailsResult, com.android.billingclient.api.BillingResult, java.util.List, int, java.lang.Object);
+  public java.lang.String toString();
+  public final java.util.List<com.android.billingclient.api.ProductDetails> component2();
+  public final java.util.List<com.android.billingclient.api.ProductDetails> getProductDetailsList();
+  public com.android.billingclient.api.ProductDetailsResult(com.android.billingclient.api.BillingResult, java.util.List<com.android.billingclient.api.ProductDetails>);
+  public boolean equals(java.lang.Object);
+}
+Compiled from "com.android.billingclient:billing-ktx@@8.0.0"
+public final class com.android.billingclient.api.PurchasesResult {
+  public int hashCode();
+  public final com.android.billingclient.api.BillingResult component1();
+  public final com.android.billingclient.api.BillingResult getBillingResult();
+  public final com.android.billingclient.api.PurchasesResult copy(com.android.billingclient.api.BillingResult, java.util.List<? extends com.android.billingclient.api.Purchase>);
+  public static com.android.billingclient.api.PurchasesResult copy$default(com.android.billingclient.api.PurchasesResult, com.android.billingclient.api.BillingResult, java.util.List, int, java.lang.Object);
+  public java.lang.String toString();
+  public final java.util.List<com.android.billingclient.api.Purchase> component2();
+  public final java.util.List<com.android.billingclient.api.Purchase> getPurchasesList();
+  public com.android.billingclient.api.PurchasesResult(com.android.billingclient.api.BillingResult, java.util.List<? extends com.android.billingclient.api.Purchase>);
+  public boolean equals(java.lang.Object);
+}
+Compiled from "com.android.billingclient:billing-ktx@@8.0.0"
+public final class com.android.billingclient.ktx.BuildConfig {
+  public static final java.lang.String APPLICATION_ID;
+  public static final java.lang.String VERSION_NAME;
+  public com.android.billingclient.ktx.BuildConfig();
+}
