@@ -14,8 +14,9 @@ android {
         applicationId = "ru.mudrya.yoga"
         minSdk = 26
         targetSdk = 36
-        versionCode = 1
-        versionName = "0.1.0"
+        // versionCode растёт с каждой загрузкой в магазин; в CI его можно задать через VERSION_CODE.
+        versionCode = System.getenv("VERSION_CODE")?.toIntOrNull() ?: 2
+        versionName = "0.9.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -32,8 +33,22 @@ android {
         }
     }
 
+    // Ключ подписи приходит из секретов CI (см. docs/RELEASE.md). Без них релиз собирается неподписанным.
+    val keystorePath = System.getenv("SIGNING_KEYSTORE_PATH")
+    signingConfigs {
+        if (keystorePath != null) {
+            create("release") {
+                storeFile = file(keystorePath)
+                storePassword = System.getenv("SIGNING_STORE_PASSWORD")
+                keyAlias = System.getenv("SIGNING_KEY_ALIAS")
+                keyPassword = System.getenv("SIGNING_KEY_PASSWORD")
+            }
+        }
+    }
+
     buildTypes {
         release {
+            if (keystorePath != null) signingConfig = signingConfigs.getByName("release")
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")

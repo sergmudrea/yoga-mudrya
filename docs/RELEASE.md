@@ -1,0 +1,52 @@
+# Выпуск в Google Play и RuStore
+
+## 1. Ключ подписи (один раз)
+
+```bash
+keytool -genkeypair -v -keystore release.jks -alias mudrya -keyalg RSA -keysize 4096 -validity 10000
+base64 -w0 release.jks > release.jks.b64
+```
+
+Храните `release.jks` и пароли вне репозитория. Потеря ключа = невозможность обновлять приложение в RuStore
+(в Google Play спасает Play App Signing — включите его при первой загрузке).
+
+В GitHub → Settings → Secrets and variables → Actions добавьте:
+
+| Секрет | Что |
+|---|---|
+| `SIGNING_KEYSTORE_BASE64` | содержимое `release.jks.b64` |
+| `SIGNING_STORE_PASSWORD` | пароль хранилища |
+| `SIGNING_KEY_ALIAS` | `mudrya` |
+| `SIGNING_KEY_PASSWORD` | пароль ключа |
+
+## 2. Консоли магазинов
+
+**Google Play Console**
+1. Создать приложение `ru.mudrya.yoga`.
+2. Монетизация → Подписки: `premium_monthly` и `premium_yearly`, в каждой базовый план и предложение «пробный период 7 дней».
+3. Монетизация → Продукты: разовый `premium_lifetime`.
+4. Тестировщики лицензий — свой аккаунт, чтобы покупать без списаний.
+
+**RuStore Консоль**
+1. Создать приложение, взять ID из адреса консоли (число между `apps/` и `/versions`).
+2. Вписать его в `app/src/rustore/res/values/rustore.xml` → `rustore_console_app_id`.
+3. Подписки `premium_monthly`, `premium_yearly` (пробный период 7 дней) и разовый `premium_lifetime` — ID те же, что в Google Play.
+4. Подпись APK должна совпадать с ключом из п. 1.
+
+## 3. Сборка релиза
+
+```bash
+git tag v0.9.0 && git push origin v0.9.0
+```
+
+CI соберёт `googleRelease` (AAB) и `rustoreRelease` (APK), подпишет и выложит артефактом `release-v0.9.0`.
+`versionCode` = номер запуска CI, поэтому каждый тег даёт новый код версии.
+
+## 4. Перед отправкой — ручной чек-лист (~20 минут)
+
+- Реальный телефон: онбординг → тест → Сурья целиком → финиш → прогресс.
+- Пауза, свернуть приложение, блокировка экрана — практика продолжается с того же места.
+- ТВ через Miracast/«Трансляцию» и через HDMI-переходник.
+- Напоминание приходит; после перезагрузки — тоже.
+- Покупка тестовым аккаунтом, отмена из профиля, «Восстановить покупки».
+- Резервная копия: сохранить → удалить данные → восстановить.
