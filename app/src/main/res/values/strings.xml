@@ -190,4 +190,25 @@
     <string name="settings_tv_auto_hint">When a second screen is connected, the figure and breathing go there and the phone becomes a remote.</string>
     <string name="settings_tv_how">Connect the TV via wireless display (Miracast, Cast, Smart View) or an HDMI adapter, then open a practice.</string>
     <string name="settings_tv_open">Open cast settings</string>
+    <string name="reminder_channel">Practice reminders</string>
+    <string name="reminder_title">Time to practise</string>
+    <string name="reminder_text">Your mat is waiting. Even the short morning session keeps your streak.</string>
+    <string name="trial_reminder_title">Your trial ends soon</string>
+    <string name="trial_reminder_text">In 2 days the store will charge for the subscription. You can cancel from your profile in one tap.</string>
+    <string name="reminder_section">Reminders</string>
+    <string name="reminder_toggle">Remind me to practise</string>
+    <string name="reminder_toggle_hint">A notification at the chosen time. Works offline.</string>
+    <string name="reminder_denied">Without notification permission reminders cannot arrive. You can allow it in phone settings.</string>
+    <string name="reminder_hour_step">1h</string>
+    <string name="backup_section">Backup</string>
+    <string name="backup_hint">Save your progress to a file, e.g. to cloud storage or a messenger. Useful when you change phones.</string>
+    <string name="backup_export">Save to file</string>
+    <string name="backup_import">Restore from file</string>
+    <string name="backup_saved">Saved.</string>
+    <string name="backup_failed">Could not read or write the file.</string>
+    <string name="backup_empty">The file has no app data.</string>
+    <string name="backup_confirm_title">Restore from file?</string>
+    <string name="backup_confirm_text">Current data will be replaced by the file: %1$d sessions, %2$d tests.</string>
+    <string name="backup_confirm_yes">Restore</string>
+    <string name="backup_restored">Data restored.</string>
 </resources>

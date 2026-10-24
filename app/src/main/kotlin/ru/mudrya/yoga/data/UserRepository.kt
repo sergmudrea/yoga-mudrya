@@ -76,4 +76,5 @@ class UserRepository(
 /** Зависимости приложения. Создаются один раз в [ru.mudrya.yoga.MudryaApp]. */
 class AppContainer(context: Context) {
     val users = UserRepository(FileStateStore(context.filesDir))
+    val reminders = ReminderScheduler(context)
 }

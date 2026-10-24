@@ -22,6 +22,7 @@ class UserStateCodecTest {
         planStartDay = 19_990,
         relaxSeconds = 90,
         settings = AppSettings(sound = false, vibration = true, tvOutput = false),
+        reminder = ReminderSettings(enabled = true, hour = 19, minute = 30, days = setOf(1, 3, 5)),
     )
 
     @Test
@@ -196,5 +197,32 @@ class Path8Test {
         val s = UserState(tests = listOf(MovementRecord(0, 10, 40, 40, emptyMap())))
         assertFalse(Path8.testDue(s, 23))
         assertTrue(Path8.testDue(s, 24))
+    }
+}
+
+class RemindersTest {
+    private val r = ReminderSettings(enabled = true, hour = 8, minute = 0, days = setOf(1, 3)) // пн, ср
+    // 2026-10-26 — понедельник.
+    private fun at(day: Int, h: Int, m: Int = 0) = java.time.LocalDateTime.of(2026, 10, day, h, m)
+
+    @Test
+    fun `later today when time has not come`() {
+        assertEquals(at(26, 8), Reminders.next(at(26, 7), r))
+    }
+
+    @Test
+    fun `next allowed day when time has passed`() {
+        assertEquals(at(28, 8), Reminders.next(at(26, 8), r))
+    }
+
+    @Test
+    fun `wraps to next week`() {
+        assertEquals(java.time.LocalDateTime.of(2026, 11, 2, 8, 0), Reminders.next(at(29, 9), r))
+    }
+
+    @Test
+    fun `disabled or no days gives nothing`() {
+        assertNull(Reminders.next(at(26, 7), r.copy(enabled = false)))
+        assertNull(Reminders.next(at(26, 7), r.copy(days = emptySet())))
     }
 }

@@ -67,6 +67,8 @@ fun SettingsScreen(state: UserState, users: UserRepository, onBack: () -> Unit, 
             PrimaryButton(stringResource(R.string.settings_tv_open), { openCastSettings(context) }, color = MudryaColors.Moon)
         }
 
+        ReminderSection(state, users)
+        BackupSection(state, users)
         extra()
 
         TextAction(stringResource(R.string.onb_back), onBack)

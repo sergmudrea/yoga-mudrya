@@ -49,6 +49,7 @@ data class UserState(
     /** Расслабление лёжа между кругами, секунды (0 — без расслабления). */
     val relaxSeconds: Int = 60,
     val settings: AppSettings = AppSettings(),
+    val reminder: ReminderSettings = ReminderSettings(),
 ) {
     val onboarded: Boolean get() = profile != null
 }
@@ -99,6 +100,28 @@ data class AppSettings(
     /** Показывать практику на втором экране (ТВ), когда он подключён. */
     val tvOutput: Boolean = true,
 )
+
+/** Напоминание о практике: время и дни недели (1 — понедельник … 7 — воскресенье). */
+data class ReminderSettings(
+    val enabled: Boolean = false,
+    val hour: Int = 8,
+    val minute: Int = 0,
+    val days: Set<Int> = setOf(1, 2, 3, 4, 5, 6, 7),
+)
+
+object Reminders {
+    /** Ближайший момент напоминания строго после [now] или null, если напоминания выключены. */
+    fun next(now: java.time.LocalDateTime, r: ReminderSettings): java.time.LocalDateTime? {
+        if (!r.enabled || r.days.isEmpty()) return null
+        val time = java.time.LocalTime.of(r.hour.coerceIn(0, 23), r.minute.coerceIn(0, 59))
+        for (d in 0..7) {
+            val date = now.toLocalDate().plusDays(d.toLong())
+            val at = date.atTime(time)
+            if (date.dayOfWeek.value in r.days && at.isAfter(now)) return at
+        }
+        return null
+    }
+}
 
 enum class DayKind { SURYA, CHANDRA, REST, TEST }
 
@@ -223,6 +246,9 @@ object UserStateCodec {
         line("settings.sound", s.settings.sound.toString())
         line("settings.vibration", s.settings.vibration.toString())
         line("settings.tv", s.settings.tvOutput.toString())
+        line("reminder.enabled", s.reminder.enabled.toString())
+        line("reminder.time", "${s.reminder.hour}:${s.reminder.minute}")
+        line("reminder.days", s.reminder.days.sorted().joinToString(","))
         s.tests.forEach { t ->
             line(
                 "test",
@@ -259,6 +285,7 @@ object UserStateCodec {
                 vibration = single["settings.vibration"]?.toBooleanStrictOrNull() ?: false,
                 tvOutput = single["settings.tv"]?.toBooleanStrictOrNull() ?: true,
             ),
+            reminder = parseReminder(single),
         )
     }
 
@@ -288,6 +315,17 @@ object UserStateCodec {
             easyStreak = m["params.easyStreak"]?.toIntOrNull() ?: 0,
             okCount = m["params.okCount"]?.toIntOrNull() ?: 0,
             easedJoints = enumSet(m["params.eased"]),
+        )
+    }
+
+    private fun parseReminder(m: Map<String, String>): ReminderSettings {
+        val d = ReminderSettings()
+        val time = m["reminder.time"]?.split(':')
+        return ReminderSettings(
+            enabled = m["reminder.enabled"]?.toBooleanStrictOrNull() ?: d.enabled,
+            hour = time?.getOrNull(0)?.toIntOrNull()?.coerceIn(0, 23) ?: d.hour,
+            minute = time?.getOrNull(1)?.toIntOrNull()?.coerceIn(0, 59) ?: d.minute,
+            days = m["reminder.days"]?.split(',')?.mapNotNull { it.trim().toIntOrNull()?.takeIf { x -> x in 1..7 } }?.toSet() ?: d.days,
         )
     }
 
