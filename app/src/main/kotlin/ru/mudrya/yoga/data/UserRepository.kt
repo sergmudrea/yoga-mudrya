@@ -80,4 +80,5 @@ class AppContainer(context: Context) {
     val users = UserRepository(FileStateStore(context.filesDir))
     val reminders = ReminderScheduler(context)
     val billing: BillingGateway = StoreModule.billing(context)
+    val videos = VideoLibrary(context)
 }

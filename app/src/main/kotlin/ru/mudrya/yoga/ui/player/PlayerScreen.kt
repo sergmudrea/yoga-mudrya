@@ -31,6 +31,7 @@ import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.withFrameMillis
@@ -60,6 +61,7 @@ import ru.mudrya.yoga.ui.common.appContainer
 import ru.mudrya.yoga.ui.common.jointLabel
 import ru.mudrya.yoga.ui.common.sequenceName
 import ru.mudrya.yoga.engine.PlayerFrame
+import ru.mudrya.yoga.engine.VideoSlots
 import ru.mudrya.yoga.engine.VoiceLevel
 import ru.mudrya.yoga.engine.VoiceScript
 import ru.mudrya.yoga.engine.VoiceWords
@@ -162,10 +164,16 @@ fun PlayerScreen(
         return
     }
 
+    val videos = appContainer().videos
+    val videoSlots by videos.slots.collectAsStateWithLifecycle()
+    var showVideo by rememberSaveable { mutableStateOf(true) }
     val figure: @Composable (Modifier) -> Unit = { m ->
         Box(m) {
+            val clip = VideoSlots.resolve(frame.step.asana.id, videoSlots)
             if (onTv) {
                 TvBanner()
+            } else if (clip != null && showVideo) {
+                VideoPane(clip, videos::file, paused = c.paused, description = frame.step.title, modifier = Modifier.fillMaxSize())
             } else {
                 FigureCanvas(
                     pose = frame.pose,
@@ -173,6 +181,12 @@ fun PlayerScreen(
                     description = frame.step.title,
                     modifier = Modifier.fillMaxSize(),
                 )
+            }
+            if (!onTv && clip != null) {
+                Row(Modifier.align(Alignment.TopEnd).padding(8.dp), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                    Chip(stringResource(R.string.player_scheme), !showVideo, { showVideo = false }, accent = MudryaColors.Moon)
+                    Chip(stringResource(R.string.player_video), showVideo, { showVideo = true }, accent = MudryaColors.Moon)
+                }
             }
             if (c.metalDogActive) MetalDogOverlay { act { c.setMetalDog(false) } }
             restLeft?.let { RestOverlay(it, frame.step.round, endRest) }

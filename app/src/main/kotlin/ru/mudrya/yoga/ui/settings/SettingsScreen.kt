@@ -43,7 +43,13 @@ import ru.mudrya.yoga.ui.theme.MudryaColors
  * Настройки. [extra] — разделы, которые добавляют следующие этапы (напоминания, резервная копия).
  */
 @Composable
-fun SettingsScreen(state: UserState, users: UserRepository, onBack: () -> Unit, extra: @Composable () -> Unit = {}) {
+fun SettingsScreen(
+    state: UserState,
+    users: UserRepository,
+    onBack: () -> Unit,
+    onVideos: () -> Unit = {},
+    extra: @Composable () -> Unit = {},
+) {
     BackHandler(onBack = onBack)
     val context = LocalContext.current
     val s = state.settings
@@ -81,6 +87,12 @@ fun SettingsScreen(state: UserState, users: UserRepository, onBack: () -> Unit, 
             Toggle(stringResource(R.string.settings_tv_auto), stringResource(R.string.settings_tv_auto_hint), s.tvOutput) { v -> set { it.copy(tvOutput = v) } }
             Body(stringResource(R.string.settings_tv_how))
             PrimaryButton(stringResource(R.string.settings_tv_open), { openCastSettings(context) }, color = MudryaColors.Moon)
+        }
+
+        Card {
+            SectionLabel(stringResource(R.string.videos_title))
+            Body(stringResource(R.string.videos_settings_hint))
+            PrimaryButton(stringResource(R.string.videos_open), onVideos, color = MudryaColors.Moon)
         }
 
         ReminderSection(state, users)

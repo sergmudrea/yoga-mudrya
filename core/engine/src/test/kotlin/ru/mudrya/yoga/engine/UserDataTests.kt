@@ -268,3 +268,28 @@ class VoiceScriptTest {
         assertEquals("Вдох", VoiceScript.phrase(step("Кобра"), null, phase(PhaseKind.ENTER, 0, 1), VoiceLevel.BREATH, words))
     }
 }
+
+class VideoSlotsTest {
+
+    @Test
+    fun `own clip wins and is not mirrored`() {
+        assertEquals(ClipRef("at_lunge", false), VideoSlots.resolve("at_lunge", setOf("at_lunge", "at_lunge_m")))
+    }
+
+    @Test
+    fun `mirrored pose borrows its pair flipped`() {
+        assertEquals(ClipRef("at_lunge", true), VideoSlots.resolve("at_lunge_m", setOf("at_lunge")))
+        assertEquals(ClipRef("at_lunge_m", true), VideoSlots.resolve("at_lunge", setOf("at_lunge_m")))
+    }
+
+    @Test
+    fun `no clip gives nothing`() {
+        assertNull(VideoSlots.resolve("at_cobra", setOf("at_lunge")))
+    }
+
+    @Test
+    fun `slots collapse mirrored poses`() {
+        assertEquals("at_lunge", VideoSlots.slotOf("at_lunge_m"))
+        assertEquals("at_lunge", VideoSlots.slotOf("at_lunge"))
+    }
+}
