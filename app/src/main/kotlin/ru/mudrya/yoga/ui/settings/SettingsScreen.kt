@@ -22,6 +22,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import ru.mudrya.yoga.BuildConfig
 import ru.mudrya.yoga.R
 import ru.mudrya.yoga.data.UserRepository
 import ru.mudrya.yoga.engine.AppSettings
@@ -70,6 +71,13 @@ fun SettingsScreen(state: UserState, users: UserRepository, onBack: () -> Unit, 
         ReminderSection(state, users)
         BackupSection(state, users)
         extra()
+
+        if (BuildConfig.DEBUG) {
+            Card {
+                SectionLabel(stringResource(R.string.settings_debug))
+                Toggle(stringResource(R.string.settings_debug_premium), stringResource(R.string.settings_debug_premium_hint), s.debugPremium) { v -> set { it.copy(debugPremium = v) } }
+            }
+        }
 
         TextAction(stringResource(R.string.onb_back), onBack)
         Spacer(Modifier.height(8.dp))

@@ -8,6 +8,8 @@ navigationCompose = "2.9.0"
 composeBom = "2025.05.01"
 junitBom = "5.12.2"
 coroutines = "1.10.2"
+playBilling = "8.0.0"
+rustoreBom = "2026.08.01"
 
 [libraries]
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
@@ -26,6 +28,10 @@ kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-t
 junit-bom = { module = "org.junit:junit-bom", version.ref = "junitBom" }
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter" }
 junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher" }
+
+play-billing-ktx = { module = "com.android.billingclient:billing-ktx", version.ref = "playBilling" }
+rustore-bom = { module = "ru.rustore.sdk:bom", version.ref = "rustoreBom" }
+rustore-pay = { module = "ru.rustore.sdk:pay" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -35,7 +35,12 @@ import ru.mudrya.yoga.data.UserRepository
 import ru.mudrya.yoga.engine.Feedback
 import ru.mudrya.yoga.engine.ProgressStats
 import ru.mudrya.yoga.engine.UserState
+import ru.mudrya.yoga.store.Entitlement
 import ru.mudrya.yoga.store.StoreModule
+import ru.mudrya.yoga.ui.common.appContainer
+import ru.mudrya.yoga.ui.paywall.entitlementLabel
+import ru.mudrya.yoga.ui.paywall.openManageSubscriptions
+import androidx.compose.ui.platform.LocalContext
 import ru.mudrya.yoga.ui.common.Body
 import ru.mudrya.yoga.ui.common.Card
 import ru.mudrya.yoga.ui.common.PrimaryButton
@@ -171,7 +176,16 @@ private fun WeekBars(minutes: List<Int>, today: Long) {
 }
 
 @Composable
-fun ProfileScreen(state: UserState, onEdit: () -> Unit, onSettings: () -> Unit, onReset: () -> Unit) {
+fun ProfileScreen(
+    state: UserState,
+    onEdit: () -> Unit,
+    onSettings: () -> Unit,
+    entitlement: Entitlement,
+    onSubscribe: () -> Unit,
+    onReset: () -> Unit,
+) {
+    val context = LocalContext.current
+    val billing = appContainer().billing
     var confirm by rememberSaveable { mutableStateOf(false) }
     val p = state.profile
     Column(
@@ -193,6 +207,16 @@ fun ProfileScreen(state: UserState, onEdit: () -> Unit, onSettings: () -> Unit, 
                     p.injuries.map { injuryLabel(it) }.joinToString(", ").ifEmpty { stringResource(R.string.onb_limits_none) },
                 )
                 PrimaryButton(stringResource(R.string.profile_edit), onEdit, color = MudryaColors.Moon)
+            }
+        }
+        Card {
+            SectionLabel(stringResource(R.string.sub_section))
+            Body(entitlementLabel(entitlement), color = MudryaColors.Text)
+            if (entitlement == Entitlement.Free) {
+                PrimaryButton(stringResource(R.string.sub_get), onSubscribe)
+            } else if (entitlement != Entitlement.Lifetime) {
+                // «Отменить подписку» — одной кнопкой, сразу в управление подписками магазина.
+                PrimaryButton(stringResource(R.string.sub_cancel), { openManageSubscriptions(context, billing.manageSubscriptionsIntent()) }, color = MudryaColors.Surface, contentColor = MudryaColors.Text)
             }
         }
         PrimaryButton(stringResource(R.string.settings_title), onSettings, color = MudryaColors.Surface, contentColor = MudryaColors.Text)

@@ -63,6 +63,11 @@ dependencies {
     implementation(project(":core:engine"))
     implementation(project(":core:catalog"))
 
+    // Оплата: своя библиотека в каждой сборке.
+    "googleImplementation"(libs.play.billing.ktx)
+    "rustoreImplementation"(platform(libs.rustore.bom))
+    "rustoreImplementation"(libs.rustore.pay)
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.lifecycle.runtime.compose)

@@ -1,13 +1,16 @@
 package ru.mudrya.yoga.store
 
 import android.app.Activity
+import android.content.Context
+import android.content.Intent
 
-/** Реализации для сборки Google Play. SDK Play Billing и Play Core подключаются на этапе 5. */
+/** Реализации для сборки Google Play. */
 object StoreModule {
 
-    val billing: BillingGateway by lazy {
-        FakeBillingGateway(manageUrl = "https://play.google.com/store/account/subscriptions")
-    }
+    fun billing(context: Context): BillingGateway = PlayBillingGateway(context)
+
+    /** Возврат из оплаты не требует обработки интента в Google Play. */
+    fun onNewIntent(activity: Activity, intent: Intent?) = Unit
 
     val services: StoreServices = object : StoreServices {
         override val storeName = "Google Play"
