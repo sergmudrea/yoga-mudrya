@@ -21,6 +21,7 @@ class UserStateCodecTest {
         tests = listOf(MovementRecord(5_000, 20_000, 41, 37, mapOf(MovementTest.BALANCE to 8.5, MovementTest.SIT_RISE to 9.0))),
         planStartDay = 19_990,
         relaxSeconds = 90,
+        settings = AppSettings(sound = false, vibration = true, tvOutput = false),
     )
 
     @Test

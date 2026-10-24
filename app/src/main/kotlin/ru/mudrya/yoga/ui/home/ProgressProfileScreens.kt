@@ -171,7 +171,7 @@ private fun WeekBars(minutes: List<Int>, today: Long) {
 }
 
 @Composable
-fun ProfileScreen(state: UserState, onEdit: () -> Unit, onReset: () -> Unit) {
+fun ProfileScreen(state: UserState, onEdit: () -> Unit, onSettings: () -> Unit, onReset: () -> Unit) {
     var confirm by rememberSaveable { mutableStateOf(false) }
     val p = state.profile
     Column(
@@ -195,6 +195,7 @@ fun ProfileScreen(state: UserState, onEdit: () -> Unit, onReset: () -> Unit) {
                 PrimaryButton(stringResource(R.string.profile_edit), onEdit, color = MudryaColors.Moon)
             }
         }
+        PrimaryButton(stringResource(R.string.settings_title), onSettings, color = MudryaColors.Surface, contentColor = MudryaColors.Text)
         Card {
             SectionLabel(stringResource(R.string.profile_data))
             Body(stringResource(R.string.profile_data_hint))

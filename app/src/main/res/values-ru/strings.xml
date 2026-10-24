@@ -176,4 +176,18 @@
     <string name="set_chandra_desc">Лунное кольцо: 99 позиций, внутренние кольца на четвереньках. Гибкость спины и тазобедренных, мягче для ног.</string>
     <string name="set_bundle_desc">Оба кольца подряд без выхода и нового входа — как в методике. Длинная полная тренировка.</string>
     <string name="set_morning_desc">Стандартный вход, одна виньяса и выход. Когда мало времени или в день отдыха.</string>
+    <string name="tv_button">ТВ</string>
+    <string name="tv_on">Практика на экране ТВ</string>
+    <string name="tv_remote">Телефон работает как пульт: пауза, назад, вперёд, темп.</string>
+    <string name="settings_title">Настройки</string>
+    <string name="settings_practice">Во время практики</string>
+    <string name="settings_sound">Звук смены фазы</string>
+    <string name="settings_sound_hint">Короткий сигнал: на вдох — выше, на выдох — ниже. Можно заниматься, не глядя в экран.</string>
+    <string name="settings_vibration">Вибрация</string>
+    <string name="settings_vibration_hint">Лёгкий толчок на каждой смене вдоха и выдоха.</string>
+    <string name="settings_tv">Телевизор</string>
+    <string name="settings_tv_auto">Показывать на ТВ</string>
+    <string name="settings_tv_auto_hint">Когда подключён второй экран, фигура и дыхание идут на него, а телефон становится пультом.</string>
+    <string name="settings_tv_how">Подключите телевизор через беспроводной экран (Miracast, «Трансляция», Smart View) или HDMI-переходник, затем откройте практику.</string>
+    <string name="settings_tv_open">Открыть настройки трансляции</string>
 </resources>
