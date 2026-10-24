@@ -154,6 +154,17 @@ object LoadAnalyzer {
  */
 object Substitutions {
 
+    /** Какие опоры ближе всего к данной: в таком порядке ищем замену, если с той же опорой нет. */
+    private val NEAR: Map<Base, List<Base>> = mapOf(
+        Base.STANDING to listOf(Base.KNEELING, Base.HANDS_AND_FEET),
+        Base.HANDS_AND_FEET to listOf(Base.KNEELING, Base.LYING, Base.STANDING),
+        Base.KNEELING to listOf(Base.HANDS_AND_FEET, Base.SEATED, Base.LYING),
+        Base.SEATED to listOf(Base.LYING, Base.KNEELING),
+        Base.LYING to listOf(Base.SEATED, Base.KNEELING),
+        Base.INVERTED to listOf(Base.LYING, Base.HANDS_AND_FEET),
+        Base.ARM_BALANCE to listOf(Base.HANDS_AND_FEET, Base.KNEELING, Base.SEATED),
+    )
+
     /** Градусов «похожести» за каждую единицу нагрузки у кандидата. */
     private const val LOAD_PENALTY = 6.0
 
@@ -189,8 +200,10 @@ object Substitutions {
                 // Замена не должна сильнее нагружать другие суставы.
                 Joint.entries.all { o -> o == j || (c.load[o] ?: 0) <= max(1, a.load[o] ?: 0) }
         }
-        val sameBase = ok.filter { profiles.getValue(it.id).base == base }
-        val pool = sameBase.ifEmpty { ok }
+        // Сначала та же опора, потом ближайшие к ней — чтобы поток практики не ломался.
+        val pool = (listOf(base) + NEAR.getValue(base)).asSequence()
+            .map { b -> ok.filter { profiles.getValue(it.id).base == b } }
+            .firstOrNull { it.isNotEmpty() } ?: ok
         // Похожесть позы важнее всего, но при равенстве берём ту, что легче для всего тела.
         return pool.minByOrNull { LoadAnalyzer.distance(a.pose, it.pose) + LOAD_PENALTY * it.load.values.sum() }?.id
     }

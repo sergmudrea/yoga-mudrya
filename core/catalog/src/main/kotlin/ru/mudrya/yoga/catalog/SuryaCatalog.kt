@@ -399,7 +399,7 @@ object SuryaCatalog {
         val computedProfiles = fitted.associate { it.id to LoadAnalyzer.analyze(it.pose) }
         // Ручная выверка поверх геометрии: где правило ошиблось, решает разбор по биомеханике.
         val profiles = computedProfiles.mapValues { (id, p) ->
-            LoadOverrides.map[id]?.let { o -> p.copy(load = o.load.filterValues { it > 0 }, inversion = o.inversion) } ?: p
+            LoadOverrides.map[id]?.let { o -> p.copy(load = o.load.filterValues { it > 0 }, inversion = o.inversion, base = o.base ?: p.base) } ?: p
         }
         val loaded = fitted.map { a ->
             val computed = profiles.getValue(a.id)
