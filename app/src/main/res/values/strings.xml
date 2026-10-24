@@ -17,6 +17,16 @@
     <string name="player_side_right">RIGHT SIDE</string>
     <string name="player_side_left">LEFT SIDE</string>
     <string name="player_from">From: %1$s</string>
+    <string name="player_replaced_cycle">Instead of “%1$s” — gentle cycle mode</string>
+    <string name="cycle_title">Gentle days</string>
+    <string name="cycle_hint">During your period the app can replace inversions and the deepest backbends with similar calm poses. You just mark the start and the end — nothing else is stored.</string>
+    <string name="cycle_enable">Turn on</string>
+    <string name="cycle_start">Started today</string>
+    <string name="cycle_end">Finished</string>
+    <string name="cycle_day">Day %1$d of up to %2$d</string>
+    <string name="cycle_on">Gentle mode: no inversions or deep backbends — they are replaced automatically.</string>
+    <string name="cycle_off">Mark the first day — practice switches to gentle mode for up to five days or until you mark the end.</string>
+    <string name="cycle_disable">Do not track</string>
     <string name="player_replaced">Instead of “%1$s” — easier on: %2$s</string>
     <string name="player_next">Next: %1$s</string>
     <string name="player_inhale">Inhale</string>

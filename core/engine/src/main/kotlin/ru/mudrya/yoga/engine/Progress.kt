@@ -90,3 +90,41 @@ object PracticeCalendar {
 
     fun shift(year: Int, month: Int, by: Int): Pair<Int, Int> = YearMonth.of(year, month).plusMonths(by.toLong()).let { it.year to it.monthValue }
 }
+
+/**
+ * Отметки цикла. Пока идут «дни менструации», сессии собираются в щадящем режиме.
+ * Дни считаются с отметки «начались» до отметки «закончились», но не дольше [maxDays].
+ */
+data class CycleSettings(
+    /** Пользовательница включила отслеживание (в профиле). */
+    val enabled: Boolean = false,
+    val lastStart: Long? = null,
+    val lastEnd: Long? = null,
+    val maxDays: Int = DEFAULT_DAYS,
+) {
+    fun active(today: Long): Boolean {
+        if (!enabled) return false
+        val start = lastStart ?: return false
+        if (today < start || today - start >= maxDays) return false
+        // Отметка «закончились» (не раньше начала) выключает режим сразу, в тот же день.
+        val end = lastEnd
+        return end == null || end < start
+    }
+
+    /** Какой по счёту день (с 1), если режим активен. */
+    fun dayOf(today: Long): Int? = if (active(today)) (today - lastStart!!).toInt() + 1 else null
+
+    fun started(today: Long): CycleSettings = copy(lastStart = today, lastEnd = null)
+    fun ended(today: Long): CycleSettings = copy(lastEnd = today)
+
+    companion object {
+        const val DEFAULT_DAYS = 5
+    }
+}
+
+/** Все ограничения пользователя на сегодня: травмы, проблемные зоны после практики, щадящий режим цикла. */
+fun UserState.constraints(today: Long): Constraints = Constraints(
+    injuries = profile?.injuries.orEmpty(),
+    eased = params.easedJoints,
+    cycle = cycle.active(today),
+)

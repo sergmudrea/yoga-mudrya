@@ -54,6 +54,8 @@ data class UserState(
     val body: List<BodyRecord> = emptyList(),
     /** День старта вызова «108 кругов», null — вызов не начат. */
     val challengeStart: Long? = null,
+    /** Отметки цикла для щадящего режима. */
+    val cycle: CycleSettings = CycleSettings(),
 ) {
     val onboarded: Boolean get() = profile != null
 }
@@ -265,6 +267,10 @@ object UserStateCodec {
         line("reminder.days", s.reminder.days.sorted().joinToString(","))
         s.body.forEach { b -> line("body", listOf(b.localDay, b.weightKg ?: "", b.waistCm ?: "").joinToString(";")) }
         s.challengeStart?.let { line("challenge108.start", it.toString()) }
+        line("cycle.enabled", s.cycle.enabled.toString())
+        s.cycle.lastStart?.let { line("cycle.start", it.toString()) }
+        s.cycle.lastEnd?.let { line("cycle.end", it.toString()) }
+        line("cycle.days", s.cycle.maxDays.toString())
         s.tests.forEach { t ->
             line(
                 "test",
@@ -308,6 +314,12 @@ object UserStateCodec {
             reminder = parseReminder(single),
             body = body.sortedBy { it.localDay },
             challengeStart = single["challenge108.start"]?.toLongOrNull(),
+            cycle = CycleSettings(
+                enabled = single["cycle.enabled"]?.toBooleanStrictOrNull() ?: false,
+                lastStart = single["cycle.start"]?.toLongOrNull(),
+                lastEnd = single["cycle.end"]?.toLongOrNull(),
+                maxDays = single["cycle.days"]?.toIntOrNull()?.coerceIn(2, 10) ?: CycleSettings.DEFAULT_DAYS,
+            ),
         )
     }
 
