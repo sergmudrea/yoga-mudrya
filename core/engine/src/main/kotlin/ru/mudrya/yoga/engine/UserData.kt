@@ -50,6 +50,10 @@ data class UserState(
     val relaxSeconds: Int = 60,
     val settings: AppSettings = AppSettings(),
     val reminder: ReminderSettings = ReminderSettings(),
+    /** Замеры веса и талии. */
+    val body: List<BodyRecord> = emptyList(),
+    /** День старта вызова «108 кругов», null — вызов не начат. */
+    val challengeStart: Long? = null,
 ) {
     val onboarded: Boolean get() = profile != null
 }
@@ -259,6 +263,8 @@ object UserStateCodec {
         line("reminder.enabled", s.reminder.enabled.toString())
         line("reminder.time", "${s.reminder.hour}:${s.reminder.minute}")
         line("reminder.days", s.reminder.days.sorted().joinToString(","))
+        s.body.forEach { b -> line("body", listOf(b.localDay, b.weightKg ?: "", b.waistCm ?: "").joinToString(";")) }
+        s.challengeStart?.let { line("challenge108.start", it.toString()) }
         s.tests.forEach { t ->
             line(
                 "test",
@@ -272,6 +278,7 @@ object UserStateCodec {
         val single = mutableMapOf<String, String>()
         val sessions = mutableListOf<SessionRecord>()
         val tests = mutableListOf<MovementRecord>()
+        val body = mutableListOf<BodyRecord>()
         text.lineSequence().forEach { raw ->
             val i = raw.indexOf('=')
             if (i <= 0) return@forEach
@@ -280,6 +287,7 @@ object UserStateCodec {
             when (key) {
                 "session" -> parseSession(value)?.let(sessions::add)
                 "test" -> parseTest(value)?.let(tests::add)
+                "body" -> parseBody(value)?.let(body::add)
                 else -> single[key] = value
             }
         }
@@ -298,6 +306,8 @@ object UserStateCodec {
                 debugPremium = single["settings.debugPremium"]?.toBooleanStrictOrNull() ?: false,
             ),
             reminder = parseReminder(single),
+            body = body.sortedBy { it.localDay },
+            challengeStart = single["challenge108.start"]?.toLongOrNull(),
         )
     }
 
@@ -354,6 +364,15 @@ object UserStateCodec {
             feedback = enumOrNull<Feedback>(p[6]),
             usedMetalDog = p[7].toBooleanStrictOrNull() ?: false,
         )
+    }
+
+    private fun parseBody(v: String): BodyRecord? {
+        val p = v.split(';')
+        if (p.size < 3) return null
+        val weight = p[1].toDoubleOrNull()?.takeIf { it in 20.0..300.0 }
+        val waist = p[2].toDoubleOrNull()?.takeIf { it in 30.0..250.0 }
+        if (weight == null && waist == null) return null
+        return BodyRecord(p[0].toLongOrNull() ?: return null, weight, waist)
     }
 
     private fun parseTest(v: String): MovementRecord? {

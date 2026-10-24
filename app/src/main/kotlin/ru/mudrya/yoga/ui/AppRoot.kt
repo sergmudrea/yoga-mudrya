@@ -134,7 +134,7 @@ fun AppRoot() {
                 )
             }
             composable(Tab.SETS.route) { SetsScreen(state, users, premium, onStart = { nav.startSet(it, premium) }) }
-            composable(Tab.PROGRESS.route) { ProgressScreen(state, onTest = { nav.navigate(Routes.TEST) }) }
+            composable(Tab.PROGRESS.route) { ProgressScreen(state, users, onTest = { nav.navigate(Routes.TEST) }) }
             composable(Tab.PROFILE.route) {
                 ProfileScreen(
                     state,

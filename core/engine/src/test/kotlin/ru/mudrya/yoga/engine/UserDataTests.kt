@@ -23,6 +23,8 @@ class UserStateCodecTest {
         relaxSeconds = 90,
         settings = AppSettings(sound = false, voice = VoiceLevel.FULL, vibration = true, tvOutput = false),
         reminder = ReminderSettings(enabled = true, hour = 19, minute = 30, days = setOf(1, 3, 5)),
+        body = listOf(BodyRecord(19_990, 72.5, null), BodyRecord(20_000, 71.8, 84.0)),
+        challengeStart = 19_995,
     )
 
     @Test
@@ -291,5 +293,47 @@ class VideoSlotsTest {
     fun `slots collapse mirrored poses`() {
         assertEquals("at_lunge", VideoSlots.slotOf("at_lunge_m"))
         assertEquals("at_lunge", VideoSlots.slotOf("at_lunge"))
+    }
+}
+
+class ProgressExtrasTest {
+    private fun rec(day: Long, seq: String, rounds: Int, completed: Boolean = true) =
+        SessionRecord(day * 86_400_000, day, seq, rounds, 600_000, completed, null, false)
+
+    @Test
+    fun `challenge counts solar rounds since start`() {
+        val s = UserState(
+            sessions = listOf(rec(9, "surya", 5), rec(10, "at_sn", 4), rec(11, "chandra", 6), rec(12, "surya", 3, completed = false), rec(13, "surya", 2)),
+            challengeStart = 10,
+        )
+        val c = Challenge108.of(s)!!
+        assertEquals(6, c.rounds)
+        assertEquals(2, c.days)
+        assertEquals(102, c.left)
+        assertNull(Challenge108.of(UserState()))
+    }
+
+    @Test
+    fun `body log merges a day and trend shows change`() {
+        var log = BodyLog.put(emptyList(), 5, 80.0, null)
+        log = BodyLog.put(log, 5, null, 90.0)
+        log = BodyLog.put(log, 9, 78.4, 88.5)
+        assertEquals(listOf(BodyRecord(5, 80.0, 90.0), BodyRecord(9, 78.4, 88.5)), log)
+        val t = BodyTrend.of(log)
+        assertEquals(-1.6, t.weightChange)
+        assertEquals(-1.5, t.waistChange)
+    }
+
+    @Test
+    fun `calendar starts weeks on monday`() {
+        // 1 октября 2026 — четверг.
+        val day = java.time.LocalDate.of(2026, 10, 2).toEpochDay()
+        val m = PracticeCalendar.month(UserState(sessions = listOf(rec(day, "surya", 1))), 2026, 10)
+        assertEquals(listOf(null, null, null), m.weeks[0].take(3))
+        assertEquals(1, m.weeks[0][3]?.dayOfMonth)
+        assertEquals(true, m.weeks[0][4]?.completed)
+        assertEquals(1, m.activeDays)
+        assertTrue(m.weeks.all { it.size == 7 })
+        assertEquals(2027 to 1, PracticeCalendar.shift(2026, 12, 1))
     }
 }

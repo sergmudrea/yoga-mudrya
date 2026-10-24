@@ -60,7 +60,7 @@ import java.time.format.TextStyle
 import java.util.Locale
 
 @Composable
-fun ProgressScreen(state: UserState, onTest: () -> Unit) {
+fun ProgressScreen(state: UserState, users: UserRepository, onTest: () -> Unit) {
     val today = UserRepository.today()
     val stats = remember(state) { ProgressStats.of(state, today) }
     Column(
@@ -85,6 +85,9 @@ fun ProgressScreen(state: UserState, onTest: () -> Unit) {
             WeekBars(stats.lastWeekMinutes, today)
         }
 
+        CalendarCard(state, today)
+        ChallengeCard(state, users, today)
+
         Card {
             SectionLabel(stringResource(R.string.home_age_label))
             val tests = state.tests.sortedByDescending { it.atMs }
@@ -100,6 +103,7 @@ fun ProgressScreen(state: UserState, onTest: () -> Unit) {
                         color = MudryaColors.Text,
                     )
                 }
+                MovementAgeChart(state.tests)
                 tests.take(6).forEach { t ->
                     Row(Modifier.fillMaxWidth()) {
                         Text(formatDay(t.localDay), color = MudryaColors.TextMuted, fontSize = 14.sp, modifier = Modifier.weight(1f))
@@ -109,6 +113,8 @@ fun ProgressScreen(state: UserState, onTest: () -> Unit) {
             }
             PrimaryButton(stringResource(if (tests.isEmpty()) R.string.test_start else R.string.home_age_retake), onTest, color = MudryaColors.Moon)
         }
+
+        BodyCard(state, users, today)
 
         Card {
             SectionLabel(stringResource(R.string.progress_history))
