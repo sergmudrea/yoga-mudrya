@@ -54,6 +54,10 @@ class PlayerController(
         paused = !paused
     }
 
+    fun setPaused(value: Boolean) {
+        paused = value
+    }
+
     fun setMetalDog(active: Boolean) {
         metalDogActive = active
     }

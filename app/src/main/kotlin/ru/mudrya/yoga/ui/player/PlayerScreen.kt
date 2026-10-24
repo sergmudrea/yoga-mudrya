@@ -30,6 +30,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.withFrameMillis
+import kotlinx.coroutines.delay
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -71,6 +72,20 @@ fun PlayerScreen(
     }
     BackHandler(onBack = close)
     var frame by remember { mutableStateOf(vm.frame()) }
+    var restLeft by remember { mutableStateOf<Int?>(null) }
+    val endRest = {
+        restLeft = null
+        c.setPaused(false)
+    }
+    LaunchedEffect(restLeft) {
+        val left = restLeft ?: return@LaunchedEffect
+        if (left <= 0) {
+            endRest()
+        } else {
+            delay(1_000)
+            restLeft = left - 1
+        }
+    }
 
     val view = LocalView.current
     DisposableEffect(Unit) {
@@ -85,6 +100,7 @@ fun PlayerScreen(
                 c.advance(now - last)
                 last = now
                 frame = vm.frame()
+                if (vm.enteredRest(frame)) restLeft = vm.relaxSeconds
             }
         }
     }
@@ -92,6 +108,7 @@ fun PlayerScreen(
     fun act(block: () -> Unit) {
         block()
         frame = vm.frame()
+        if (vm.enteredRest(frame)) restLeft = vm.relaxSeconds
     }
 
     if (frame.finished) {
@@ -121,6 +138,7 @@ fun PlayerScreen(
                 modifier = Modifier.fillMaxSize(),
             )
             if (c.metalDogActive) MetalDogOverlay { act { c.setMetalDog(false) } }
+            restLeft?.let { RestOverlay(it, frame.step.round, endRest) }
         }
         BreathPanel(frame)
         Spacer(Modifier.height(10.dp))
@@ -364,6 +382,31 @@ private fun SmallButton(text: String, modifier: Modifier, onClick: () -> Unit, h
             .clickable(onClick = onClick)
             .padding(vertical = 10.dp, horizontal = 6.dp),
     )
+}
+
+/** Расслабление лёжа на спине между кругами — с таймером. */
+@Composable
+private fun RestOverlay(secondsLeft: Int, nextRound: Int, onDone: () -> Unit) {
+    Column(
+        Modifier
+            .fillMaxSize()
+            .background(MudryaColors.Ground.copy(alpha = 0.94f), RoundedCornerShape(20.dp))
+            .padding(20.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        Text(stringResource(R.string.rest_title), color = MudryaColors.Saffron, fontSize = 22.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
+        Spacer(Modifier.height(8.dp))
+        Text("%d:%02d".format(secondsLeft / 60, secondsLeft % 60), color = MudryaColors.Text, fontSize = 48.sp, fontWeight = FontWeight.Bold)
+        Spacer(Modifier.height(8.dp))
+        Text(stringResource(R.string.rest_hint, nextRound), color = MudryaColors.TextMuted, fontSize = 15.sp, textAlign = TextAlign.Center)
+        Spacer(Modifier.height(18.dp))
+        Button(
+            onClick = onDone,
+            colors = ButtonDefaults.buttonColors(containerColor = MudryaColors.Saffron, contentColor = MudryaColors.Ground),
+            shape = RoundedCornerShape(14.dp),
+        ) { Text(stringResource(R.string.rest_skip), fontWeight = FontWeight.Bold) }
+    }
 }
 
 @Composable

@@ -126,4 +126,23 @@ class SuryaCatalogTest {
         assertTrue(cat.chest > cat.torso - 360 && (cat.chest - cat.torso + 360) % 360 in 1.0..179.0, "cat chest above waist line")
         assertTrue((anti.torso - anti.chest + 360) % 360 in 1.0..179.0, "anti-cat back rounds up")
     }
+
+    private fun count(seq: ru.mudrya.yoga.model.SequenceDef) =
+        SessionBuilder(catalog).build(BuildRequest(seq, rounds = 1, support = Support.PALMS)).steps.size
+
+    @Test
+    fun `bundle joins surya and chandra without exit and entry in between`() {
+        // 77 − 11 (выход Сурьи) + 99 − 20 (вход Чандры) − 8 (первая виньяса Чандры) = 137
+        assertEquals(137, count(SuryaCatalog.suryaChandra))
+        val ids = SessionBuilder(catalog).build(BuildRequest(SuryaCatalog.suryaChandra, 1, Support.PALMS)).steps.map { it.asana.id }
+        assertEquals(2, ids.count { it == "full_backbend" }, "full backbend only in the entry and the final exit")
+    }
+
+    @Test
+    fun `morning session is about ten minutes`() {
+        assertEquals(39, count(SuryaCatalog.morning))
+        val s = SessionBuilder(catalog).build(BuildRequest(SuryaCatalog.morning, 1, Support.PALMS))
+        val minutes = BreathTimeline(s, phaseMs = 4_000).totalMs / 60_000.0
+        assertTrue(minutes in 7.0..13.0, "minutes=$minutes")
+    }
 }

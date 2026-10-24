@@ -153,4 +153,27 @@
     <string name="unit_sec">секунд</string>
     <string name="unit_times">раз</string>
     <string name="unit_bpm">уд/мин</string>
+    <string name="rest_title">Расслабление лёжа</string>
+    <string name="rest_hint">Лягте на спину, руки вдоль тела ладонями вверх. Дальше — круг %1$d.</string>
+    <string name="rest_skip">Продолжить</string>
+    <string name="path_week">Путь 8 недель · неделя %1$d, день %2$d</string>
+    <string name="path_again">Ещё раз</string>
+    <string name="path_done">Сделано сегодня</string>
+    <string name="path_rest">День отдыха</string>
+    <string name="path_rest_hint">Восстановление — часть тренировки. Можно прогуляться или сделать короткую утреннюю сессию.</string>
+    <string name="path_rest_light">Утро за 10 минут</string>
+    <string name="path_test">День теста</string>
+    <string name="path_test_hint">Пройдите тест возраста движения — так будет видно, что меняется.</string>
+    <string name="path_all_sets">Все сеты →</string>
+    <string name="home_age_due">Прошло две недели — пора повторить тест.</string>
+    <string name="home_relax">Расслабление между кругами</string>
+    <string name="home_relax_off">нет</string>
+    <string name="home_relax_hint">Лёжа на спине, с таймером. Можно закончить раньше.</string>
+    <string name="set_bundle">Сурья → Чандра</string>
+    <string name="set_morning">Утро за 10 минут</string>
+    <string name="set_minutes">~%1$d мин · кругов: %2$d</string>
+    <string name="set_surya_desc">Солнечное кольцо: 77 позиций, широкий шаг и упоры на трёх точках. Сила, выносливость, разогрев всего тела.</string>
+    <string name="set_chandra_desc">Лунное кольцо: 99 позиций, внутренние кольца на четвереньках. Гибкость спины и тазобедренных, мягче для ног.</string>
+    <string name="set_bundle_desc">Оба кольца подряд без выхода и нового входа — как в методике. Длинная полная тренировка.</string>
+    <string name="set_morning_desc">Стандартный вход, одна виньяса и выход. Когда мало времени или в день отдыха.</string>
 </resources>
