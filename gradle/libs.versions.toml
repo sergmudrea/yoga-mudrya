@@ -10,6 +10,7 @@ junitBom = "5.12.2"
 coroutines = "1.10.2"
 playBilling = "8.0.0"
 rustoreBom = "2026.08.01"
+media3 = "1.6.1"
 
 [libraries]
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
@@ -32,6 +33,7 @@ junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher
 play-billing-ktx = { module = "com.android.billingclient:billing-ktx", version.ref = "playBilling" }
 rustore-bom = { module = "ru.rustore.sdk:bom", version.ref = "rustoreBom" }
 rustore-pay = { module = "ru.rustore.sdk:pay" }
+media3-exoplayer = { module = "androidx.media3:media3-exoplayer", version.ref = "media3" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
