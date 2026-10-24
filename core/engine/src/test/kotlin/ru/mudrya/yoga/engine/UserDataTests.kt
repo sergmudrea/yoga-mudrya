@@ -25,6 +25,7 @@ class UserStateCodecTest {
         reminder = ReminderSettings(enabled = true, hour = 19, minute = 30, days = setOf(1, 3, 5)),
         body = listOf(BodyRecord(19_990, 72.5, null), BodyRecord(20_000, 71.8, 84.0)),
         challengeStart = 19_995,
+        cycle = CycleSettings(enabled = true, lastStart = 19_998, lastEnd = null, maxDays = 6),
     )
 
     @Test
@@ -335,5 +336,28 @@ class ProgressExtrasTest {
         assertEquals(1, m.activeDays)
         assertTrue(m.weeks.all { it.size == 7 })
         assertEquals(2027 to 1, PracticeCalendar.shift(2026, 12, 1))
+    }
+}
+
+class CycleTest {
+    private val c = CycleSettings(enabled = true).started(100)
+
+    @Test
+    fun `active from start for max days`() {
+        assertTrue(c.active(100))
+        assertEquals(5, c.dayOf(104))
+        assertFalse(c.active(105))
+        assertFalse(c.active(99))
+    }
+
+    @Test
+    fun `ended mark switches off at once`() {
+        assertFalse(c.ended(102).active(102))
+        assertTrue(c.ended(102).started(110).active(111))
+    }
+
+    @Test
+    fun `disabled tracking is never active`() {
+        assertFalse(c.copy(enabled = false).active(100))
     }
 }

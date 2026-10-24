@@ -17,6 +17,16 @@
     <string name="player_side_right">ПРАВАЯ СТОРОНА</string>
     <string name="player_side_left">ЛЕВАЯ СТОРОНА</string>
     <string name="player_from">Из позы: %1$s</string>
+    <string name="player_replaced_cycle">Замена вместо «%1$s» — щадящий режим цикла</string>
+    <string name="cycle_title">Щадящие дни</string>
+    <string name="cycle_hint">В дни менструации приложение может заменять перевёрнутые позы и самые глубокие прогибы на похожие спокойные. Нужно только отметить начало и конец — больше ничего не хранится.</string>
+    <string name="cycle_enable">Включить</string>
+    <string name="cycle_start">Начались сегодня</string>
+    <string name="cycle_end">Закончились</string>
+    <string name="cycle_day">День %1$d из не больше чем %2$d</string>
+    <string name="cycle_on">Щадящий режим: без перевёрнутых поз и глубоких прогибов — они заменяются автоматически.</string>
+    <string name="cycle_off">Отметьте первый день — практика перейдёт в щадящий режим до пяти дней или до отметки «закончились».</string>
+    <string name="cycle_disable">Не отслеживать</string>
     <string name="player_replaced">Замена вместо «%1$s» — бережём: %2$s</string>
     <string name="player_next">Далее: %1$s</string>
     <string name="player_inhale">Вдох</string>

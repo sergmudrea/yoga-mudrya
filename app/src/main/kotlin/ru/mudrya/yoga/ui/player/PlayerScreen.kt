@@ -337,7 +337,11 @@ private fun StepTitle(f: PlayerFrame) {
         val replacedTitle = f.step.replacedTitle
         if (replacedFor != null && replacedTitle != null) {
             Text(
-                stringResource(R.string.player_replaced, replacedTitle, jointLabel(replacedFor)),
+                if (f.step.replacedForCycle) {
+                    stringResource(R.string.player_replaced_cycle, replacedTitle)
+                } else {
+                    stringResource(R.string.player_replaced, replacedTitle, jointLabel(replacedFor))
+                },
                 color = MudryaColors.Moon,
                 fontSize = 13.sp,
             )

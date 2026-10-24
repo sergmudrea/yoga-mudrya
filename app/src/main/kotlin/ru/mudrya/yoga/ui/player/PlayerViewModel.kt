@@ -6,7 +6,7 @@ import androidx.lifecycle.viewmodel.viewModelFactory
 import ru.mudrya.yoga.catalog.SuryaCatalog
 import ru.mudrya.yoga.data.UserRepository
 import ru.mudrya.yoga.engine.BuildRequest
-import ru.mudrya.yoga.engine.Constraints
+import ru.mudrya.yoga.engine.constraints
 import ru.mudrya.yoga.engine.Feedback
 import ru.mudrya.yoga.engine.Plan
 import ru.mudrya.yoga.engine.PlayerController
@@ -24,7 +24,6 @@ class PlayerViewModel(private val users: UserRepository, sequenceId: String) : V
     private val startedAt = System.currentTimeMillis()
     private val startDay = UserRepository.today()
     private val params = users.state.value.params
-    private val injuries = users.state.value.profile?.injuries.orEmpty()
 
     /** Сколько длится расслабление лёжа между кругами. */
     val relaxSeconds: Int = users.state.value.relaxSeconds
@@ -34,7 +33,7 @@ class PlayerViewModel(private val users: UserRepository, sequenceId: String) : V
             sequence = SuryaCatalog.sequence(sequenceId),
             rounds = params.rounds,
             support = params.support,
-            constraints = Constraints(injuries, eased = params.easedJoints),
+            constraints = users.state.value.constraints(startDay),
             relaxEvery = if (relaxSeconds > 0) 1 else 0,
         ),
     )

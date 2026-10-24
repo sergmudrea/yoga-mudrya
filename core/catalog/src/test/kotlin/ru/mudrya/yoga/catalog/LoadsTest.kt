@@ -71,4 +71,16 @@ class LoadsTest {
             assertTrue(!it.replacedTitle.isNullOrBlank())
         }
     }
+
+    @Test
+    fun `cycle mode has no inversions and no deepest backbends in any set`() {
+        SuryaCatalog.sequences.forEach { seq ->
+            val s = SessionBuilder(catalog).build(BuildRequest(seq, 1, Support.PALMS, constraints = Constraints(cycle = true)))
+            s.steps.forEach { step ->
+                assertTrue(!step.asana.inversion, "${seq.id}: ${step.asana.id} перевёрнута")
+                assertTrue((step.asana.load[Joint.LUMBAR] ?: 0) < 3, "${seq.id}: ${step.asana.id} глубокий прогиб")
+            }
+            s.steps.filter { it.replacedFor != null }.forEach { assertTrue(it.replacedForCycle, "${seq.id}: ${it.asana.id}") }
+        }
+    }
 }

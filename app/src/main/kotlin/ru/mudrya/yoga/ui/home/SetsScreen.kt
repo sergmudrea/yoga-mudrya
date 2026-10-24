@@ -26,7 +26,7 @@ import ru.mudrya.yoga.engine.Constraints
 import ru.mudrya.yoga.engine.SessionBuilder
 import ru.mudrya.yoga.engine.SessionParams
 import ru.mudrya.yoga.engine.UserState
-import ru.mudrya.yoga.model.Injury
+import ru.mudrya.yoga.engine.constraints
 import ru.mudrya.yoga.store.PremiumPolicy
 import ru.mudrya.yoga.ui.common.Body
 import ru.mudrya.yoga.ui.common.Card
@@ -54,9 +54,9 @@ private val GROUPS = listOf(
 )
 
 /** Сколько позиций и минут займёт сет с такими параметрами. */
-fun setSize(sequenceId: String, params: SessionParams, injuries: Set<Injury>): Pair<Int, Int> {
+fun setSize(sequenceId: String, params: SessionParams, constraints: Constraints): Pair<Int, Int> {
     val session = SessionBuilder(SuryaCatalog.catalog).build(
-        BuildRequest(SuryaCatalog.sequence(sequenceId), params.rounds, params.support, constraints = Constraints(injuries, eased = params.easedJoints)),
+        BuildRequest(SuryaCatalog.sequence(sequenceId), params.rounds, params.support, constraints = constraints),
     )
     val minutes = ((BreathTimeline(session, params.phaseMs).totalMs + 30_000) / 60_000).toInt().coerceAtLeast(1)
     return session.steps.size / params.rounds.coerceAtLeast(1) to minutes
@@ -65,7 +65,7 @@ fun setSize(sequenceId: String, params: SessionParams, injuries: Set<Injury>): P
 @Composable
 fun SetsScreen(state: UserState, users: UserRepository, premium: Boolean, onStart: (String) -> Unit) {
     val params = state.params
-    val injuries = state.profile?.injuries.orEmpty()
+    val constraints = state.constraints(UserRepository.today())
     Column(
         Modifier
             .fillMaxSize()
@@ -80,7 +80,7 @@ fun SetsScreen(state: UserState, users: UserRepository, premium: Boolean, onStar
             SectionLabel(stringResource(group.title))
             group.hint?.let { Body(stringResource(it)) }
             group.ids.forEach { id ->
-                val (positions, minutes) = remember(params, injuries, id) { setSize(id, params, injuries) }
+                val (positions, minutes) = remember(params, constraints, id) { setSize(id, params, constraints) }
                 val locked = PremiumPolicy.isLocked(id, premium)
                 Card(color = group.background) {
                     Text(sequenceName(id), color = group.accent, fontSize = 20.sp, fontWeight = FontWeight.Bold)

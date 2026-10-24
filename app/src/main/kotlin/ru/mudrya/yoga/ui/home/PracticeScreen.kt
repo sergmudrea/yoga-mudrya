@@ -32,12 +32,14 @@ import ru.mudrya.yoga.data.UserRepository
 import ru.mudrya.yoga.engine.BreathTimeline
 import ru.mudrya.yoga.engine.BuildRequest
 import ru.mudrya.yoga.engine.Constraints
+import ru.mudrya.yoga.engine.constraints
 import ru.mudrya.yoga.engine.DayKind
 import ru.mudrya.yoga.engine.Path8
 import ru.mudrya.yoga.engine.Plan
 import ru.mudrya.yoga.engine.ProgressStats
 import ru.mudrya.yoga.engine.SessionBuilder
 import ru.mudrya.yoga.engine.SessionParams
+import ru.mudrya.yoga.engine.Sex
 import ru.mudrya.yoga.engine.UserState
 import ru.mudrya.yoga.model.Injury
 import ru.mudrya.yoga.ui.common.Body
@@ -53,9 +55,9 @@ import ru.mudrya.yoga.ui.common.supportLabel
 import ru.mudrya.yoga.ui.theme.MudryaColors
 
 /** Сколько минут займёт сессия с такими параметрами. */
-fun estimateMinutes(sequenceId: String, params: SessionParams, injuries: Set<Injury>): Int {
+fun estimateMinutes(sequenceId: String, params: SessionParams, constraints: Constraints): Int {
     val session = SessionBuilder(SuryaCatalog.catalog).build(
-        BuildRequest(SuryaCatalog.sequence(sequenceId), params.rounds, params.support, constraints = Constraints(injuries, eased = params.easedJoints)),
+        BuildRequest(SuryaCatalog.sequence(sequenceId), params.rounds, params.support, constraints = constraints),
     )
     return ((BreathTimeline(session, params.phaseMs).totalMs + 30_000) / 60_000).toInt()
 }
@@ -79,6 +81,7 @@ fun PracticeScreen(state: UserState, users: UserRepository, onStart: (String) ->
     ) {
         Text(stringResource(R.string.today), color = MudryaColors.TextMuted, fontSize = 14.sp)
         TodayCard(state, today, onStart, onTest, onSets)
+        if (state.profile?.sex == Sex.FEMALE) CycleCard(state, users, today)
         SessionTuning(state, users)
 
         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
@@ -121,7 +124,6 @@ private fun TodayCard(state: UserState, today: Long, onStart: (String) -> Unit, 
     val day = Path8.today(start, today)
     val done = Path8.done(state, today, day.kind)
     val params = state.params
-    val injuries = state.profile?.injuries.orEmpty()
     val (bg, fg) = when (day.kind) {
         DayKind.SURYA -> MudryaColors.Saffron to MudryaColors.Ground
         DayKind.CHANDRA -> MudryaColors.MoonDeep to MudryaColors.Moon
@@ -134,7 +136,8 @@ private fun TodayCard(state: UserState, today: Long, onStart: (String) -> Unit, 
         when (day.kind) {
             DayKind.SURYA, DayKind.CHANDRA -> {
                 val id = if (day.kind == DayKind.SURYA) "surya" else "chandra"
-                val minutes = remember(params, injuries, id) { estimateMinutes(id, params, injuries) }
+                val constraints = state.constraints(today)
+                val minutes = remember(params, constraints, id) { estimateMinutes(id, params, constraints) }
                 Text(sequenceName(id), color = fg, fontSize = 26.sp, fontWeight = FontWeight.Bold)
                 Text(
                     stringResource(R.string.home_session_line, params.rounds, minutes, supportLabel(params.support), formatPhase(params.phaseMs)),
@@ -230,5 +233,37 @@ fun Tile(label: String, value: String, modifier: Modifier = Modifier) {
     Card(modifier) {
         Text(value, color = MudryaColors.Text, fontSize = 24.sp, fontWeight = FontWeight.Bold)
         Text(label, color = MudryaColors.TextMuted, fontSize = 12.sp)
+    }
+}
+
+/**
+ * Щадящий режим в дни менструации: отметка «начались» на сегодня, «закончились» — выключает.
+ * Пока режим идёт, перевёрнутые позы и самые глубокие прогибы заменяются автоматически.
+ */
+@Composable
+private fun CycleCard(state: UserState, users: UserRepository, today: Long) {
+    val c = state.cycle
+    fun set(transform: (ru.mudrya.yoga.engine.CycleSettings) -> ru.mudrya.yoga.engine.CycleSettings) =
+        users.update { it.copy(cycle = transform(it.cycle)) }
+    Card(color = if (c.active(today)) MudryaColors.MoonDeep else MudryaColors.Surface) {
+        SectionLabel(stringResource(R.string.cycle_title))
+        when {
+            !c.enabled -> {
+                Body(stringResource(R.string.cycle_hint))
+                PrimaryButton(stringResource(R.string.cycle_enable), { set { it.copy(enabled = true) } }, color = MudryaColors.Moon)
+            }
+            c.active(today) -> {
+                Text(stringResource(R.string.cycle_day, c.dayOf(today) ?: 1, c.maxDays), color = MudryaColors.Moon, fontSize = 18.sp, fontWeight = FontWeight.Bold)
+                Body(stringResource(R.string.cycle_on), color = MudryaColors.Text)
+                PrimaryButton(stringResource(R.string.cycle_end), { set { it.ended(today) } }, color = MudryaColors.Moon)
+            }
+            else -> {
+                Body(stringResource(R.string.cycle_off))
+                Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+                    PrimaryButton(stringResource(R.string.cycle_start), { set { it.started(today) } }, color = MudryaColors.Moon, modifier = Modifier.weight(1f))
+                }
+                TextAction(stringResource(R.string.cycle_disable), { set { it.copy(enabled = false) } })
+            }
+        }
     }
 }

@@ -18,6 +18,8 @@ data class Constraints(
     val eased: Set<Joint> = emptySet(),
     /** С какой нагрузки (0..3) поза считается опасной для больного места. */
     val threshold: Int = 2,
+    /** Щадящий режим в дни менструации: без перевёрнутых поз и самых глубоких прогибов. */
+    val cycle: Boolean = false,
 ) {
     val joints: Set<Joint> get() = injuries.map { it.joint }.toSet() + eased
 }
@@ -50,6 +52,8 @@ data class SessionStep(
     /** Если асана заменена — из-за какого сустава и что было в оригинале. */
     val replacedFor: Joint? = null,
     val replacedTitle: String? = null,
+    /** Замена только из-за щадящего режима цикла (а не больного места). */
+    val replacedForCycle: Boolean = false,
 ) {
     /** Что показывать заголовком: уточнённое название шага или название асаны. */
     val title: String get() = titleRu ?: asana.nameRu
@@ -140,6 +144,7 @@ class SessionBuilder(private val catalog: Catalog) {
                 originalAsanaId = original.id,
                 replacedFor = reason,
                 replacedTitle = if (asana.id == original.id) null else step.titleRu ?: original.nameRu,
+                replacedForCycle = reason != null && req.constraints.cycle && problemJoint(original, req.constraints.copy(cycle = false)) == null,
             )
     }
 
@@ -182,6 +187,9 @@ class SessionBuilder(private val catalog: Catalog) {
     companion object {
         private const val MAX_REPLACEMENTS = 3
 
+        /** В щадящем режиме цикла убираем прогибы с нагрузкой на поясницу от этого уровня. */
+        const val CYCLE_LUMBAR = 3
+
         fun isContraindicated(asana: Asana, c: Constraints): Boolean =
             asana.level > c.level || problemJoint(asana, c) != null
 
@@ -189,11 +197,18 @@ class SessionBuilder(private val catalog: Catalog) {
         fun problemJoint(asana: Asana, c: Constraints): Joint? {
             val joints = c.joints
             if (Joint.NECK in joints && asana.inversion) return Joint.NECK
-            return joints.firstOrNull { j ->
+            joints.firstOrNull { j ->
                 val load = asana.load[j] ?: 0
                 // Запястья в упорах сначала разгружаются опорой на кулаки; заменяем только самое тяжёлое.
                 if (j == Joint.WRISTS && asana.supports.isNotEmpty()) load >= 3 else load >= c.threshold
+            }?.let { return it }
+            if (c.cycle) {
+                // Замена перевёрнутой позы ищется как для шеи (замены по шее никогда не перевёрнуты),
+                // глубокого прогиба — как для поясницы.
+                if (asana.inversion) return Joint.NECK
+                if ((asana.load[Joint.LUMBAR] ?: 0) >= CYCLE_LUMBAR) return Joint.LUMBAR
             }
+            return null
         }
 
         /** Коэффициент нагрузки на запястья для опоры. */
