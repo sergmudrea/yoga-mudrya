@@ -60,6 +60,9 @@ import ru.mudrya.yoga.ui.common.appContainer
 import ru.mudrya.yoga.ui.common.jointLabel
 import ru.mudrya.yoga.ui.common.sequenceName
 import ru.mudrya.yoga.engine.PlayerFrame
+import ru.mudrya.yoga.engine.VoiceLevel
+import ru.mudrya.yoga.engine.VoiceScript
+import ru.mudrya.yoga.engine.VoiceWords
 import ru.mudrya.yoga.model.Breath
 import ru.mudrya.yoga.model.Side
 import ru.mudrya.yoga.ui.theme.MudryaColors
@@ -82,7 +85,14 @@ fun PlayerScreen(
     val currentSettings by rememberUpdatedState(settings)
     val context = LocalContext.current
     val cues = remember { PhaseCues(context) }
-    DisposableEffect(Unit) { onDispose { cues.release() } }
+    val voice = remember { VoiceGuide(context) }
+    val words = remember { VoiceWords.of(voice.language) }
+    DisposableEffect(Unit) {
+        onDispose {
+            cues.release()
+            voice.release()
+        }
+    }
     val tv = remember { TvState(frame, title) }
     val onTv by rememberTvOutput(settings.tvOutput, tv)
     var restLeft by remember { mutableStateOf<Int?>(null) }
@@ -115,10 +125,23 @@ fun PlayerScreen(
                 last = now
                 frame = vm.frame()
                 tv.frame = frame
-                if (vm.enteredRest(frame)) restLeft = vm.relaxSeconds
+                if (vm.enteredRest(frame)) {
+                    restLeft = vm.relaxSeconds
+                    if (currentSettings.voice != VoiceLevel.OFF) voice.say(words.rest)
+                }
                 if (frame.phase != lastPhase) {
                     lastPhase = frame.phase
-                    if (!frame.finished) cues.onPhase(frame.phase.breath, currentSettings.sound, currentSettings.vibration)
+                    if (frame.finished) {
+                        if (currentSettings.voice != VoiceLevel.OFF) voice.say(words.done)
+                    } else {
+                        val phrase = VoiceScript.phrase(
+                            frame.step, frame.previous, frame.phase, currentSettings.voice, words, english = voice.language != "ru",
+                        )
+                        // Когда говорит голос, тон не нужен — достаточно вибрации.
+                        val speaking = phrase != null && voice.ready
+                        if (speaking) voice.say(phrase!!)
+                        cues.onPhase(frame.phase.breath, currentSettings.sound && !speaking, currentSettings.vibration)
+                    }
                 }
             }
         }

@@ -21,7 +21,7 @@ class UserStateCodecTest {
         tests = listOf(MovementRecord(5_000, 20_000, 41, 37, mapOf(MovementTest.BALANCE to 8.5, MovementTest.SIT_RISE to 9.0))),
         planStartDay = 19_990,
         relaxSeconds = 90,
-        settings = AppSettings(sound = false, vibration = true, tvOutput = false),
+        settings = AppSettings(sound = false, voice = VoiceLevel.FULL, vibration = true, tvOutput = false),
         reminder = ReminderSettings(enabled = true, hour = 19, minute = 30, days = setOf(1, 3, 5)),
     )
 
@@ -224,5 +224,47 @@ class RemindersTest {
     fun `disabled or no days gives nothing`() {
         assertNull(Reminders.next(at(26, 7), r.copy(enabled = false)))
         assertNull(Reminders.next(at(26, 7), r.copy(days = emptySet())))
+    }
+}
+
+class VoiceScriptTest {
+    private val words = VoiceWords.RU
+    private fun step(title: String, side: ru.mudrya.yoga.model.Side = ru.mudrya.yoga.model.Side.NONE, round: Int = 1, cue: String? = null) =
+        SessionStep(
+            ru.mudrya.yoga.model.Asana("a", title, title, Fixtures.P), side, null,
+            enter = listOf(ru.mudrya.yoga.model.Breath.INHALE), hold = listOf(ru.mudrya.yoga.model.Breath.EXHALE, ru.mudrya.yoga.model.Breath.INHALE),
+            extraCycles = false, round = round, titleRu = title, cueRu = cue,
+        )
+    private fun phase(kind: PhaseKind, index: Int, count: Int, b: ru.mudrya.yoga.model.Breath = ru.mudrya.yoga.model.Breath.INHALE) =
+        Phase(0, kind, b, index, count, 0, 4000)
+
+    @Test
+    fun `first phase names the pose then breath`() {
+        assertEquals("Кобра. Вдох", VoiceScript.phrase(step("Кобра (бхуджангасана)"), null, phase(PhaseKind.ENTER, 0, 1), VoiceLevel.NAMES, words))
+    }
+
+    @Test
+    fun `other phases say only the breath`() {
+        assertEquals("Выдох", VoiceScript.phrase(step("Кобра"), null, phase(PhaseKind.HOLD, 1, 2, ru.mudrya.yoga.model.Breath.EXHALE), VoiceLevel.NAMES, words))
+    }
+
+    @Test
+    fun `side and round are announced when they change`() {
+        val prev = step("Гора", ru.mudrya.yoga.model.Side.RIGHT, round = 1)
+        val s = step("Выпад", ru.mudrya.yoga.model.Side.LEFT, round = 2)
+        assertEquals("Круг 2. левая сторона. Выпад. Вдох", VoiceScript.phrase(s, prev, phase(PhaseKind.ENTER, 0, 1), VoiceLevel.NAMES, words))
+    }
+
+    @Test
+    fun `full level reads a short cue on a long hold`() {
+        val s = step("Кобра", cue = "Плечи от ушей.")
+        assertEquals("Вдох. Плечи от ушей", VoiceScript.phrase(s, null, phase(PhaseKind.HOLD, 0, 2), VoiceLevel.FULL, words))
+        assertEquals("Вдох", VoiceScript.phrase(s, null, phase(PhaseKind.HOLD, 0, 2), VoiceLevel.NAMES, words))
+    }
+
+    @Test
+    fun `off says nothing and breath level never names`() {
+        assertNull(VoiceScript.phrase(step("Кобра"), null, phase(PhaseKind.ENTER, 0, 1), VoiceLevel.OFF, words))
+        assertEquals("Вдох", VoiceScript.phrase(step("Кобра"), null, phase(PhaseKind.ENTER, 0, 1), VoiceLevel.BREATH, words))
     }
 }

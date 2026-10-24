@@ -34,6 +34,9 @@ import ru.mudrya.yoga.ui.common.ScreenTitle
 import ru.mudrya.yoga.ui.common.SectionLabel
 import ru.mudrya.yoga.ui.common.TextAction
 import ru.mudrya.yoga.ui.player.openCastSettings
+import ru.mudrya.yoga.engine.VoiceLevel
+import ru.mudrya.yoga.ui.common.Chip
+import ru.mudrya.yoga.ui.common.ChipRow
 import ru.mudrya.yoga.ui.theme.MudryaColors
 
 /**
@@ -58,6 +61,18 @@ fun SettingsScreen(state: UserState, users: UserRepository, onBack: () -> Unit, 
         Card {
             SectionLabel(stringResource(R.string.settings_practice))
             Toggle(stringResource(R.string.settings_sound), stringResource(R.string.settings_sound_hint), s.sound) { v -> set { it.copy(sound = v) } }
+            Text(stringResource(R.string.settings_voice), color = MudryaColors.Text, fontSize = 16.sp, fontWeight = FontWeight.Bold)
+            Text(stringResource(R.string.settings_voice_hint), color = MudryaColors.TextMuted, fontSize = 13.sp, lineHeight = 18.sp)
+            ChipRow {
+                listOf(
+                    VoiceLevel.OFF to R.string.voice_off,
+                    VoiceLevel.BREATH to R.string.voice_breath,
+                    VoiceLevel.NAMES to R.string.voice_names,
+                    VoiceLevel.FULL to R.string.voice_full,
+                ).forEach { (level, label) ->
+                    Chip(stringResource(label), s.voice == level, { set { it.copy(voice = level) } })
+                }
+            }
             Toggle(stringResource(R.string.settings_vibration), stringResource(R.string.settings_vibration_hint), s.vibration) { v -> set { it.copy(vibration = v) } }
         }
 
