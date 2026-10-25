@@ -41,6 +41,7 @@ import ru.mudrya.yoga.ui.home.PracticeScreen
 import ru.mudrya.yoga.ui.home.ProfileScreen
 import ru.mudrya.yoga.ui.home.ProgressScreen
 import ru.mudrya.yoga.ui.home.SetsScreen
+import ru.mudrya.yoga.ui.home.LibraryScreen
 import ru.mudrya.yoga.ui.settings.SettingsScreen
 import ru.mudrya.yoga.ui.settings.VideoLibraryScreen
 import ru.mudrya.yoga.data.UserRepository
@@ -64,6 +65,7 @@ private object Routes {
     const val SETTINGS = "settings"
     const val PAYWALL = "paywall"
     const val VIDEOS = "settings/videos"
+    const val LIBRARY = "library"
     const val PLAYER = "player/{seq}"
     fun player(sequenceId: String) = "player/$sequenceId"
 }
@@ -133,7 +135,10 @@ fun AppRoot() {
                     onSets = { nav.goTab(Tab.SETS) },
                 )
             }
-            composable(Tab.SETS.route) { SetsScreen(state, users, premium, onStart = { nav.startSet(it, premium) }) }
+            composable(Tab.SETS.route) {
+                SetsScreen(state, users, premium, onStart = { nav.startSet(it, premium) }, onLibrary = { nav.navigate(Routes.LIBRARY) })
+            }
+            composable(Routes.LIBRARY) { LibraryScreen(premium, onStart = { nav.startSet(it, premium) }, onBack = { nav.popBackStack() }) }
             composable(Tab.PROGRESS.route) { ProgressScreen(state, users, onTest = { nav.navigate(Routes.TEST) }) }
             composable(Tab.PROFILE.route) {
                 ProfileScreen(

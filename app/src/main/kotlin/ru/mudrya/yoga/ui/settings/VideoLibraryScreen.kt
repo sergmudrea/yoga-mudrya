@@ -74,7 +74,7 @@ fun VideoLibraryScreen(videos: VideoLibrary, onBack: () -> Unit) {
                 ScreenTitle(stringResource(R.string.videos_title))
                 Body(stringResource(R.string.videos_hint))
                 ChipRow {
-                    SuryaCatalog.sequences.forEach { seq ->
+                    SuryaCatalog.coreSequences.forEach { seq ->
                         Chip(sequenceName(seq.id), seq.id == sequenceId, { sequenceId = seq.id }, accent = MudryaColors.Moon)
                     }
                 }

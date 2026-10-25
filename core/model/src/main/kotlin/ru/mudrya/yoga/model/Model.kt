@@ -132,6 +132,8 @@ data class Asana(
     val cuesRu: List<String> = emptyList(),
     /** Подробное описание позы своими словами по тексту методики. */
     val descriptionRu: String? = null,
+    /** Описание по-английски. */
+    val descriptionEn: String? = null,
     /** Санскритское название, если есть. */
     val sanskrit: String? = null,
     /** Как подогнать позу под пропорции модели, чтобы опоры стояли на полу. */
@@ -161,6 +163,9 @@ data class Step(
     val titleRu: String? = null,
     /** Подсказка именно для этого шага последовательности. */
     val cueRu: String? = null,
+    /** То же по-английски (для английского интерфейса). */
+    val titleEn: String? = null,
+    val cueEn: String? = null,
 ) {
     init {
         require(enter.isNotEmpty()) { "Step $asanaId: movement needs at least one breath phase" }

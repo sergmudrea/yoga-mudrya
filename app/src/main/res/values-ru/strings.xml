@@ -219,6 +219,14 @@
     <string name="age_chart_legend">Оранжевая — возраст движения, серая — паспортный. Ниже — лучше.</string>
     <string name="settings_figure3d">Объёмная фигура</string>
     <string name="settings_figure3d_hint">Марионетка из атласа: плавные переходы, опорные ладони и стопы не скользят; поворачивается пальцем. Выкл. — плоская схема с подсветкой дыхания.</string>
+    <string name="library_title">Библиотека</string>
+    <string name="library_hint">Все %1$d поз из книги Д. Лакерды «2100 асан» по главам и разделам, на объёмной марионетке. Каждый раздел проигрывается как сет.</string>
+    <string name="library_search">Поиск: голубь, бакасана, mountain…</string>
+    <string name="library_found">Найдено разделов: %1$d</string>
+    <string name="library_poses">поз: %1$d</string>
+    <string name="library_card">2100 асан: %1$d поз</string>
+    <string name="library_card_hint">Вся книга Д. Лакерды: названия по-русски, на санскрите и по-английски, каждая поза — на марионетке.</string>
+    <string name="library_open">Открыть библиотеку</string>
     <string name="settings_voice">Голосовое ведение</string>
     <string name="settings_voice_hint">Через синтезатор речи телефона. Когда говорит голос, тон не звучит.</string>
     <string name="voice_off">Выкл.</string>

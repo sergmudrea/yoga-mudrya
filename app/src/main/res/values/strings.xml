@@ -219,6 +219,14 @@
     <string name="age_chart_legend">Orange — movement age, grey — passport age. Lower is better.</string>
     <string name="settings_figure3d">3D figure</string>
     <string name="settings_figure3d_hint">The wooden marionette from the atlas: smooth transitions, palms and feet stay planted; turn it with your finger. Off — the flat scheme with breath glow.</string>
+    <string name="library_title">Library</string>
+    <string name="library_hint">All %1$d poses from D. Lacerda’s “2100 Asanas”, by chapters and sections of the book, on the 3D marionette. Each section plays as a set.</string>
+    <string name="library_search">Search: pigeon, bakasana, mountain…</string>
+    <string name="library_found">Sections found: %1$d</string>
+    <string name="library_poses">%1$d poses</string>
+    <string name="library_card">2100 asanas: %1$d poses</string>
+    <string name="library_card_hint">The whole book by D. Lacerda: names in Russian, Sanskrit and English, every pose on the marionette.</string>
+    <string name="library_open">Open the library</string>
     <string name="settings_voice">Voice guidance</string>
     <string name="settings_voice_hint">Uses the phone\'s speech engine. When the voice speaks, the beep is skipped.</string>
     <string name="voice_off">Off</string>

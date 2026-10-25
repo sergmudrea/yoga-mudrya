@@ -16,19 +16,19 @@ class LoadsTest {
 
     @Test
     fun `standing at rest loads nothing`() {
-        assertTrue(LoadAnalyzer.analyze(catalog.asana("tadasana").pose).load.isEmpty())
+        assertTrue(LoadAnalyzer.analyze(catalog.asana("at_tad").pose).load.isEmpty())
     }
 
     @Test
     fun `plank puts weight on wrists and shoulders`() {
-        val load = catalog.asana("plank").load
+        val load = catalog.asana("at_plank").load
         assertTrue((load[Joint.WRISTS] ?: 0) >= 2)
         assertTrue((load[Joint.SHOULDERS] ?: 0) >= 2)
     }
 
     @Test
     fun `full backbend loads the lower back heavily`() {
-        assertEquals(3, catalog.asana("full_backbend").load[Joint.LUMBAR])
+        assertEquals(3, catalog.asana("at_full").load[Joint.LUMBAR])
     }
 
     @Test
@@ -45,7 +45,7 @@ class LoadsTest {
     @Test
     fun `problem zone after practice is spared in every set`() {
         Joint.entries.forEach { joint ->
-            SuryaCatalog.sequences.forEach { seq ->
+            SuryaCatalog.coreSequences.forEach { seq ->
                 val s = SessionBuilder(catalog).build(
                     BuildRequest(seq, 1, Support.FISTS, constraints = Constraints(eased = setOf(joint))),
                 )
@@ -74,7 +74,7 @@ class LoadsTest {
 
     @Test
     fun `cycle mode has no inversions and no deepest backbends in any set`() {
-        SuryaCatalog.sequences.forEach { seq ->
+        SuryaCatalog.coreSequences.forEach { seq ->
             val s = SessionBuilder(catalog).build(BuildRequest(seq, 1, Support.PALMS, constraints = Constraints(cycle = true)))
             s.steps.forEach { step ->
                 assertTrue(!step.asana.inversion, "${seq.id}: ${step.asana.id} перевёрнута")
