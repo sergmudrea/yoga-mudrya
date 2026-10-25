@@ -107,6 +107,8 @@ data class AppSettings(
     val vibration: Boolean = false,
     /** Показывать практику на втором экране (ТВ), когда он подключён. */
     val tvOutput: Boolean = true,
+    /** Объёмная марионетка из атласа вместо плоской схемы. */
+    val figure3d: Boolean = true,
     /** Только для отладочной сборки: включить премиум без покупки, чтобы проверить закрытые сеты. */
     val debugPremium: Boolean = false,
 )
@@ -261,6 +263,7 @@ object UserStateCodec {
         line("settings.voice", s.settings.voice.name)
         line("settings.vibration", s.settings.vibration.toString())
         line("settings.tv", s.settings.tvOutput.toString())
+        line("settings.figure3d", s.settings.figure3d.toString())
         line("settings.debugPremium", s.settings.debugPremium.toString())
         line("reminder.enabled", s.reminder.enabled.toString())
         line("reminder.time", "${s.reminder.hour}:${s.reminder.minute}")
@@ -309,6 +312,7 @@ object UserStateCodec {
                 voice = single["settings.voice"]?.let { v -> VoiceLevel.entries.firstOrNull { it.name == v } } ?: VoiceLevel.NAMES,
                 vibration = single["settings.vibration"]?.toBooleanStrictOrNull() ?: false,
                 tvOutput = single["settings.tv"]?.toBooleanStrictOrNull() ?: true,
+                figure3d = single["settings.figure3d"]?.toBooleanStrictOrNull() ?: true,
                 debugPremium = single["settings.debugPremium"]?.toBooleanStrictOrNull() ?: false,
             ),
             reminder = parseReminder(single),

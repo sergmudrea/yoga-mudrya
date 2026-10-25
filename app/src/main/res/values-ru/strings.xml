@@ -217,6 +217,8 @@
     <string name="body_add">Добавить замер за сегодня</string>
     <string name="body_save">Сохранить</string>
     <string name="age_chart_legend">Оранжевая — возраст движения, серая — паспортный. Ниже — лучше.</string>
+    <string name="settings_figure3d">Объёмная фигура</string>
+    <string name="settings_figure3d_hint">Марионетка из атласа: плавные переходы, опорные ладони и стопы не скользят; поворачивается пальцем. Выкл. — плоская схема с подсветкой дыхания.</string>
     <string name="settings_voice">Голосовое ведение</string>
     <string name="settings_voice_hint">Через синтезатор речи телефона. Когда говорит голос, тон не звучит.</string>
     <string name="voice_off">Выкл.</string>

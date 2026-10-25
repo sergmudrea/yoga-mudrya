@@ -21,7 +21,7 @@ class UserStateCodecTest {
         tests = listOf(MovementRecord(5_000, 20_000, 41, 37, mapOf(MovementTest.BALANCE to 8.5, MovementTest.SIT_RISE to 9.0))),
         planStartDay = 19_990,
         relaxSeconds = 90,
-        settings = AppSettings(sound = false, voice = VoiceLevel.FULL, vibration = true, tvOutput = false),
+        settings = AppSettings(sound = false, voice = VoiceLevel.FULL, vibration = true, tvOutput = false, figure3d = false),
         reminder = ReminderSettings(enabled = true, hour = 19, minute = 30, days = setOf(1, 3, 5)),
         body = listOf(BodyRecord(19_990, 72.5, null), BodyRecord(20_000, 71.8, 84.0)),
         challengeStart = 19_995,

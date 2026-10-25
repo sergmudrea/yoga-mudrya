@@ -79,6 +79,7 @@ fun SettingsScreen(
                     Chip(stringResource(label), s.voice == level, { set { it.copy(voice = level) } })
                 }
             }
+            Toggle(stringResource(R.string.settings_figure3d), stringResource(R.string.settings_figure3d_hint), s.figure3d) { v -> set { it.copy(figure3d = v) } }
             Toggle(stringResource(R.string.settings_vibration), stringResource(R.string.settings_vibration_hint), s.vibration) { v -> set { it.copy(vibration = v) } }
         }
 

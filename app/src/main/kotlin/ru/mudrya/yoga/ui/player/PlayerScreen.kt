@@ -148,7 +148,11 @@ fun PlayerScreen(
             }
         }
     }
-    SideEffect { tv.restLeft = restLeft }
+    SideEffect {
+        tv.restLeft = restLeft
+        tv.transitionMs = transitionMs(frame, c.phaseMs, c.speed)
+        tv.use3d = settings.figure3d
+    }
 
     fun act(block: () -> Unit) {
         block()
@@ -175,12 +179,7 @@ fun PlayerScreen(
             } else if (clip != null && showVideo) {
                 VideoPane(clip, videos::file, paused = c.paused, description = frame.step.title, modifier = Modifier.fillMaxSize())
             } else {
-                FigureCanvas(
-                    pose = frame.pose,
-                    fill = frame.fill,
-                    description = frame.step.title,
-                    modifier = Modifier.fillMaxSize(),
-                )
+                PracticeFigure(frame, transitionMs(frame, c.phaseMs, c.speed), settings.figure3d, Modifier.fillMaxSize())
             }
             if (!onTv && clip != null) {
                 Row(Modifier.align(Alignment.TopEnd).padding(8.dp), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
