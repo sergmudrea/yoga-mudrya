@@ -63,7 +63,7 @@ fun setSize(sequenceId: String, params: SessionParams, constraints: Constraints)
 }
 
 @Composable
-fun SetsScreen(state: UserState, users: UserRepository, premium: Boolean, onStart: (String) -> Unit) {
+fun SetsScreen(state: UserState, users: UserRepository, premium: Boolean, onStart: (String) -> Unit, onLibrary: () -> Unit = {}) {
     val params = state.params
     val constraints = state.constraints(UserRepository.today())
     Column(
@@ -93,6 +93,13 @@ fun SetsScreen(state: UserState, users: UserRepository, premium: Boolean, onStar
                     )
                 }
             }
+        }
+        Spacer(Modifier.height(4.dp))
+        SectionLabel(stringResource(R.string.library_title))
+        Card(color = MudryaColors.MoonDeep) {
+            Text(stringResource(R.string.library_card, ru.mudrya.yoga.catalog.LibraryCatalog.POSE_COUNT), color = MudryaColors.Moon, fontSize = 20.sp, fontWeight = FontWeight.Bold)
+            Body(stringResource(R.string.library_card_hint))
+            PrimaryButton(stringResource(R.string.library_open), onLibrary, color = MudryaColors.Moon, contentColor = MudryaColors.Ground)
         }
         Spacer(Modifier.height(8.dp))
     }

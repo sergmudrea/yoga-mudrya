@@ -67,6 +67,9 @@ import ru.mudrya.yoga.engine.VoiceScript
 import ru.mudrya.yoga.engine.VoiceWords
 import ru.mudrya.yoga.model.Breath
 import ru.mudrya.yoga.model.Side
+import ru.mudrya.yoga.ui.common.shownTitle
+import ru.mudrya.yoga.ui.common.shownCues
+import ru.mudrya.yoga.ui.common.shownDescription
 import ru.mudrya.yoga.ui.theme.MudryaColors
 
 @Composable
@@ -177,7 +180,7 @@ fun PlayerScreen(
             if (onTv) {
                 TvBanner()
             } else if (clip != null && showVideo) {
-                VideoPane(clip, videos::file, paused = c.paused, description = frame.step.title, modifier = Modifier.fillMaxSize())
+                VideoPane(clip, videos::file, paused = c.paused, description = frame.step.shownTitle(), modifier = Modifier.fillMaxSize())
             } else {
                 PracticeFigure(frame, transitionMs(frame, c.phaseMs, c.speed), settings.figure3d, Modifier.fillMaxSize())
             }
@@ -330,7 +333,7 @@ private fun StepTitle(f: PlayerFrame) {
             sideLabel(f.step.side)?.let { Tag(it, MudryaColors.TextMuted) }
         }
         Spacer(Modifier.height(6.dp))
-        Text(f.step.title, color = MudryaColors.Text, fontSize = 24.sp, fontWeight = FontWeight.Bold)
+        Text(f.step.shownTitle(), color = MudryaColors.Text, fontSize = 24.sp, fontWeight = FontWeight.Bold)
         asana.sanskrit?.let { Text(it, color = MudryaColors.TextMuted, fontSize = 14.sp) }
         val replacedFor = f.step.replacedFor
         val replacedTitle = f.step.replacedTitle
@@ -345,8 +348,8 @@ private fun StepTitle(f: PlayerFrame) {
                 fontSize = 13.sp,
             )
         }
-        val from = f.previous?.title
-        val next = f.next?.title
+        val from = f.previous?.shownTitle()
+        val next = f.next?.shownTitle()
         if (enter && from != null) {
             Text(stringResource(R.string.player_from, from), color = MudryaColors.TextMuted, fontSize = 13.sp)
         } else if (next != null) {
@@ -438,12 +441,12 @@ private fun Bar(label: String, value: Float, color: Color) {
 private fun Cue(f: PlayerFrame, paused: Boolean) {
     // На паузе — полное описание позы: есть время прочитать.
     if (paused) {
-        f.step.asana.descriptionRu?.let {
+        f.step.asana.shownDescription()?.let {
             Text(it, color = MudryaColors.TextMuted, fontSize = 14.sp, lineHeight = 20.sp, modifier = Modifier.fillMaxWidth())
             return
         }
     }
-    val cues = listOfNotNull(f.step.cueRu) + f.step.asana.cuesRu.filter { it != f.step.cueRu }
+    val cues = f.step.shownCues()
     if (cues.isEmpty()) return
     // Подсказки сменяются по фазам: одна строка — меньше читать во время практики.
     val i = (f.phase.index + if (f.phase.kind == PhaseKind.HOLD) 1 else 0) % cues.size

@@ -54,9 +54,17 @@ data class SessionStep(
     val replacedTitle: String? = null,
     /** Замена только из-за щадящего режима цикла (а не больного места). */
     val replacedForCycle: Boolean = false,
+    val titleEn: String? = null,
+    val cueEn: String? = null,
 ) {
     /** Что показывать заголовком: уточнённое название шага или название асаны. */
     val title: String get() = titleRu ?: asana.nameRu
+
+    /** Заголовок на языке интерфейса. */
+    fun title(english: Boolean): String = if (english) titleEn ?: asana.nameEn else title
+
+    /** Подсказка шага на языке интерфейса. */
+    fun cue(english: Boolean): String? = if (english) cueEn else cueRu
 }
 
 data class Session(
@@ -141,6 +149,8 @@ class SessionBuilder(private val catalog: Catalog) {
                 // Название и подсказка шага относятся к оригиналу — у замены свои.
                 titleRu = if (asana.id == original.id) step.titleRu else null,
                 cueRu = if (asana.id == original.id) step.cueRu else null,
+                titleEn = if (asana.id == original.id) step.titleEn else null,
+                cueEn = if (asana.id == original.id) step.cueEn else null,
                 originalAsanaId = original.id,
                 replacedFor = reason,
                 replacedTitle = if (asana.id == original.id) null else step.titleRu ?: original.nameRu,

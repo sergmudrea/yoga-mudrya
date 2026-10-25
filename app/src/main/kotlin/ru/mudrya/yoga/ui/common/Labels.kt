@@ -13,6 +13,19 @@ import ru.mudrya.yoga.model.Injury
 import ru.mudrya.yoga.model.Joint
 import ru.mudrya.yoga.model.Support
 
+/** Интерфейс не на русском — показываем английские названия и подсказки. */
+val english: Boolean get() = Locale.getDefault().language != "ru"
+
+/** Название позы на языке интерфейса. */
+fun ru.mudrya.yoga.engine.SessionStep.shownTitle(): String = title(english)
+
+/** Подсказки к шагу на языке интерфейса: сначала подсказка шага, потом общие подсказки позы. */
+fun ru.mudrya.yoga.engine.SessionStep.shownCues(): List<String> =
+    if (english) listOfNotNull(cueEn) else listOfNotNull(cueRu) + asana.cuesRu.filter { it != cueRu }
+
+/** Описание позы на языке интерфейса. */
+fun ru.mudrya.yoga.model.Asana.shownDescription(): String? = if (english) descriptionEn else descriptionRu
+
 /** Название сета по его id. */
 @Composable
 fun sequenceName(id: String): String {

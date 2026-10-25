@@ -63,7 +63,7 @@ object VoiceScript {
         val firstOfStep = phase.kind == PhaseKind.ENTER && phase.index == 0
         if (level == VoiceLevel.BREATH || !firstOfStep) {
             if (level == VoiceLevel.FULL && phase.kind == PhaseKind.HOLD && phase.index == 0 && phase.count >= 2) {
-                cue(step)?.let { return "$breath. $it" }
+                cue(step, english)?.let { return "$breath. $it" }
             }
             return breath
         }
@@ -72,13 +72,13 @@ object VoiceScript {
         if (step.side != Side.NONE && step.side != previous?.side) {
             parts += if (step.side == Side.RIGHT) words.right else words.left
         }
-        parts += spoken(if (english) step.asana.nameEn else step.title)
+        parts += spoken(step.title(english))
         parts += breath
         return parts.joinToString(". ")
     }
 
-    private fun cue(step: SessionStep): String? =
-        (step.cueRu ?: step.asana.cuesRu.firstOrNull())?.let(::spoken)?.takeIf { it.isNotBlank() && it.length <= MAX_CUE_CHARS }
+    private fun cue(step: SessionStep, english: Boolean): String? =
+        (if (english) step.cueEn else step.cueRu ?: step.asana.cuesRu.firstOrNull())?.let(::spoken)?.takeIf { it.isNotBlank() && it.length <= MAX_CUE_CHARS }
 
     /** Текст для синтезатора: без скобок, кавычек и лишних пробелов. */
     fun spoken(text: String): String = text

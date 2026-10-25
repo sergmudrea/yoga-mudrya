@@ -44,6 +44,8 @@ import ru.mudrya.yoga.R
 import ru.mudrya.yoga.engine.PhaseKind
 import ru.mudrya.yoga.engine.PlayerFrame
 import ru.mudrya.yoga.model.Breath
+import ru.mudrya.yoga.ui.common.shownTitle
+import ru.mudrya.yoga.ui.common.shownCues
 import ru.mudrya.yoga.ui.theme.MudryaColors
 import ru.mudrya.yoga.ui.theme.MudryaTheme
 
@@ -184,7 +186,7 @@ private fun TvScreen(state: TvState) {
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
             )
-            Text(f.step.title, color = MudryaColors.Text, fontSize = 44.sp, fontWeight = FontWeight.Bold, lineHeight = 50.sp)
+            Text(f.step.shownTitle(), color = MudryaColors.Text, fontSize = 44.sp, fontWeight = FontWeight.Bold, lineHeight = 50.sp)
             Text(
                 stringResource(if (inhale) R.string.player_inhale else R.string.player_exhale) + "  ${f.secondsLeftInPhase}",
                 color = if (inhale) MudryaColors.Moon else MudryaColors.Saffron,
@@ -193,7 +195,7 @@ private fun TvScreen(state: TvState) {
             )
             TvBar(f.fill.belly / 0.6, MudryaColors.Saffron)
             TvBar(f.fill.chest, MudryaColors.Moon)
-            (f.step.cueRu ?: f.step.asana.cuesRu.firstOrNull())?.let { Text(it, color = MudryaColors.Text, fontSize = 26.sp, lineHeight = 34.sp) }
+            f.step.shownCues().firstOrNull()?.let { Text(it, color = MudryaColors.Text, fontSize = 26.sp, lineHeight = 34.sp) }
             state.restLeft?.let {
                 Text(stringResource(R.string.rest_title) + "  %d:%02d".format(it / 60, it % 60), color = MudryaColors.Saffron, fontSize = 32.sp)
             }
