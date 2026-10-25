@@ -150,7 +150,8 @@ def asana_for(pose_id, m, title, sanskrit, cue):
         base = P[pose_id]
         p = mirror(base) if m else base
         desc = DESC.get(pose_id)
-        asanas[key] = {"id": aid, "name": title, "sanskrit": sanskrit or None, "pose": pose_kt(p), "desc": desc, "cues": []}
+        asanas[key] = {"id": aid, "name": title, "sanskrit": sanskrit or None, "pose": pose_kt(p), "desc": desc, "cues": [],
+                       "figure": (pose_id, bool(m))}
     a = asanas[key]
     if cue and cue not in a["cues"] and len(a["cues"]) < 3:
         a["cues"].append(cue)
@@ -207,6 +208,7 @@ w("import ru.mudrya.yoga.model.Asana")
 w("import ru.mudrya.yoga.model.Block")
 w("import ru.mudrya.yoga.model.BlockRef")
 w("import ru.mudrya.yoga.model.Breath")
+w("import ru.mudrya.yoga.model.FigureRef")
 w("import ru.mudrya.yoga.model.Pose")
 w("import ru.mudrya.yoga.model.SequenceDef")
 w("import ru.mudrya.yoga.model.Side")
@@ -245,7 +247,8 @@ for i, ch in enumerate(chunks):
     for a in ch:
         cues = ", ".join(kstr(c) for c in a["cues"])
         w(f"        Asana(id = {kstr(a['id'])}, nameRu = {kstr(a['name'])}, nameEn = {kstr(a['sanskrit'] or a['name'])}, pose = {a['pose']},")
-        w(f"            cuesRu = listOf({cues}), sanskrit = {kstr(a['sanskrit'])}, descriptionRu = {kstr(a['desc'])}),")
+        w(f"            cuesRu = listOf({cues}), sanskrit = {kstr(a['sanskrit'])}, descriptionRu = {kstr(a['desc'])},")
+        w(f"            figure = FigureRef({kstr(a['figure'][0])}, {str(a['figure'][1]).lower()})),")
     w("    )")
     w("")
 

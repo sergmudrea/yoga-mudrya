@@ -217,6 +217,8 @@
     <string name="body_add">Add today\'s measurement</string>
     <string name="body_save">Save</string>
     <string name="age_chart_legend">Orange — movement age, grey — passport age. Lower is better.</string>
+    <string name="settings_figure3d">3D figure</string>
+    <string name="settings_figure3d_hint">The wooden marionette from the atlas: smooth transitions, palms and feet stay planted; turn it with your finger. Off — the flat scheme with breath glow.</string>
     <string name="settings_voice">Voice guidance</string>
     <string name="settings_voice_hint">Uses the phone\'s speech engine. When the voice speaks, the beep is skipped.</string>
     <string name="voice_off">Off</string>

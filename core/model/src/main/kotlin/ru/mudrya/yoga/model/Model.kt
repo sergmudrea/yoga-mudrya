@@ -138,7 +138,12 @@ data class Asana(
     val fit: FitRule? = null,
     /** Замена для каждого сустава: похожая поза из любого сета, где этот сустав не нагружен. */
     val alternatives: Map<Joint, String> = emptyMap(),
+    /** Поза объёмной марионетки из атласа (эмулятор); null — только схема. */
+    val figure: FigureRef? = null,
 )
+
+/** Ссылка на позу в эмуляторе атласа: id позы и отражение (другая сторона). */
+data class FigureRef(val pose: String, val mirror: Boolean = false)
 
 /**
  * Шаг последовательности. Движение (вход в асану) может занимать одну или несколько фаз дыхания,
