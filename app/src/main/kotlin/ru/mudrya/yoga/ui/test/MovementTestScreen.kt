@@ -30,6 +30,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ru.mudrya.yoga.R
 import ru.mudrya.yoga.data.UserRepository
+import ru.mudrya.yoga.engine.BodyLog
+import ru.mudrya.yoga.engine.HealthCheck
+import ru.mudrya.yoga.engine.HealthRecord
 import ru.mudrya.yoga.engine.MovementAgeCalculator
 import ru.mudrya.yoga.engine.MovementRecord
 import ru.mudrya.yoga.engine.MovementResult
@@ -67,29 +70,47 @@ private fun format(v: Double): String = if (v % 1.0 == 0.0) v.toInt().toString()
  * Тест возраста движения: вступление → пять тестов (любой можно пропустить) → результат.
  */
 @Composable
-fun MovementTestScreen(profile: UserProfile, users: UserRepository, onDone: () -> Unit) {
+fun MovementTestScreen(profile: UserProfile, users: UserRepository, onPremium: () -> Unit = {}, onDone: () -> Unit) {
     val tests = MovementTest.entries
-    // −1 — вступление, 0..4 — тесты, 5 — результат.
+    val questions = HealthQuestion.entries
+    // −1 — вступление, 0..4 — тесты движения, дальше — анкета здоровья, последняя — результат.
     var page by rememberSaveable { mutableIntStateOf(-1) }
     val results = rememberSaveable { HashMap<String, Double>() }
+    val answers = rememberSaveable { HashMap<String, Double>() }
     var resultAge by rememberSaveable { mutableStateOf<Int?>(null) }
+    var healthAt by rememberSaveable { mutableStateOf<Long?>(null) }
+    val resultPage = tests.size + questions.size
 
-    BackHandler(enabled = page in 0 until tests.size) { page-- }
+    BackHandler(enabled = page in 0 until resultPage) { page-- }
+
+    fun movementValues() = results.mapNotNull { (k, v) -> tests.firstOrNull { it.name == k }?.let { it to v } }.toMap()
 
     fun finish() {
-        val values = results.mapNotNull { (k, v) -> tests.firstOrNull { it.name == k }?.let { it to v } }.toMap()
-        if (values.isEmpty()) {
+        val values = movementValues()
+        val now = System.currentTimeMillis()
+        val day = UserRepository.today()
+        val health = healthRecord(answers, now, day)
+        val hasHealth = answers.isNotEmpty()
+        if (values.isEmpty() && !hasHealth) {
             onDone()
             return
         }
-        val r = MovementAgeCalculator(ProvisionalNorms).calculate(profile.age, profile.sex, values)
-        users.update {
-            it.copy(
-                tests = it.tests + MovementRecord(System.currentTimeMillis(), UserRepository.today(), profile.age, r.age, values),
-            )
+        val r = if (values.isEmpty()) null else MovementAgeCalculator(ProvisionalNorms).calculate(profile.age, profile.sex, values)
+        users.update { s ->
+            var next = s
+            if (r != null) next = next.copy(tests = next.tests + MovementRecord(now, day, profile.age, r.age, values))
+            if (hasHealth) {
+                next = next.copy(health = next.health + health)
+                // Вес и талия сразу попадают в журнал замеров прогресса.
+                if (health.weightKg != null || health.waistCm != null) {
+                    next = next.copy(body = BodyLog.put(next.body, day, health.weightKg, health.waistCm))
+                }
+            }
+            next
         }
-        resultAge = r.age
-        page = tests.size
+        resultAge = r?.age
+        healthAt = if (hasHealth) now else null
+        page = resultPage
     }
 
     Column(
@@ -109,18 +130,25 @@ fun MovementTestScreen(profile: UserProfile, users: UserRepository, onDone: () -
                     initial = results[t.name],
                     onRecord = { v ->
                         results[t.name] = v
-                        if (page == tests.size - 1) finish() else page++
+                        page++
                     },
                     onSkip = {
                         results.remove(t.name)
-                        if (page == tests.size - 1) finish() else page++
+                        page++
                     },
                 )
             }
+            page < resultPage -> {
+                val i = page - tests.size
+                HealthPage(i, questions.size, questions[i], answers) {
+                    if (page == resultPage - 1) finish() else page++
+                }
+            }
             else -> {
-                val values = results.mapNotNull { (k, v) -> tests.firstOrNull { it.name == k }?.let { it to v } }.toMap()
-                val r = MovementAgeCalculator(ProvisionalNorms).calculate(profile.age, profile.sex, values)
-                ResultPage(profile.age, resultAge ?: r.age, r, onDone)
+                val values = movementValues()
+                val r = if (values.isEmpty()) null else MovementAgeCalculator(ProvisionalNorms).calculate(profile.age, profile.sex, values)
+                val health = healthAt?.let { healthRecord(answers, it, UserRepository.today()) }
+                ResultPage(profile, resultAge ?: r?.age, r, health, onPremium, onDone)
             }
         }
     }
@@ -187,7 +215,15 @@ private fun TestPage(index: Int, count: Int, test: MovementTest, initial: Double
 }
 
 @Composable
-private fun ResultPage(passportAge: Int, movementAge: Int, r: MovementResult, onDone: () -> Unit) {
+private fun ResultPage(
+    profile: UserProfile,
+    movementAge: Int?,
+    r: MovementResult?,
+    health: HealthRecord?,
+    onPremium: () -> Unit,
+    onDone: () -> Unit,
+) {
+    val passportAge = profile.age
     Column(Modifier.fillMaxSize()) {
         Column(
             Modifier
@@ -196,6 +232,17 @@ private fun ResultPage(passportAge: Int, movementAge: Int, r: MovementResult, on
             verticalArrangement = Arrangement.spacedBy(12.dp),
         ) {
             Spacer(Modifier.height(16.dp))
+            if (movementAge != null && r != null) MovementResultBlock(passportAge, movementAge, r)
+            health?.let { HealthSummaryView(it, HealthCheck.evaluate(it, profile.sex), onPremium) }
+            Body(stringResource(R.string.test_disclaimer))
+        }
+        PrimaryButton(stringResource(R.string.test_done), onDone)
+    }
+}
+
+@Composable
+private fun MovementResultBlock(passportAge: Int, movementAge: Int, r: MovementResult) {
+    Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
             SectionLabel(stringResource(R.string.test_result_label))
             Row(verticalAlignment = Alignment.Bottom) {
                 Text("$movementAge", color = MudryaColors.Saffron, fontSize = 64.sp, fontWeight = FontWeight.Bold)
@@ -218,9 +265,6 @@ private fun ResultPage(passportAge: Int, movementAge: Int, r: MovementResult, on
             Card {
                 r.perTest.forEach { (t, years) -> Correction(testTitle(t), years) }
             }
-            Body(stringResource(R.string.test_disclaimer))
-        }
-        PrimaryButton(stringResource(R.string.test_done), onDone)
     }
 }
 

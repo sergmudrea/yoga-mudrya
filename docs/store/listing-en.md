@@ -1,23 +1,43 @@
-# Store listing — English (Google Play)
+# Store listing — English
 
-**Title:** Mudrya Yoga — Surya Namaskar
+**Title:** Wise Yoga — Surya Namaskar
 
-**Short description (≤80 chars):**
-Surya & Chandra Namaskar as a workout: breathing, transitions, progress
+**Short description (up to 80 characters):**
+Sun & Moon salutations by the book: 3D coach, breath, own sets, 2100 asanas
 
 **Full description:**
 
-Surya Namaskar and Chandra Namaskar in full, not "three poses in five minutes": 77 positions of the sun salutation and 99 of the moon salutation, with correct transitions and a breath for every movement.
+Surya Namaskar and Chandra Namaskar as complete practices from A. Sidersky's book — not "three poses in five minutes". 77 positions of the Sun ring and 99 of the Moon ring, with a breath for every movement and smooth transitions.
 
-• A schematic figure shows every pose and the transition into it.
-• Belly and chest highlights guide full yogic breathing.
-• The tempo adapts after each session: easy, just right or hard.
-• Movement age: five simple tests, repeat every two weeks.
-• 8-week path: Surya, Chandra, rest and test days planned for you.
-• Limitations for wrists, lower back, neck and knees.
-• Cast to your TV (Miracast, Cast, HDMI); your phone is the remote.
-• Phase sounds, offline, reminders, progress backup.
+3D coach
+• A wooden marionette shows every pose and the transition into it: joints within anatomical limits, supporting palms and feet stay planted, fingers with phalanges — interlaced finger locks are highlighted and labelled.
+• Turn the figure with your finger to see the pose from any side.
+• Voice guidance names the poses and leads the breath.
 
-Honest subscription: full Surya Namaskar, the test, progress, reminders and TV output are free forever. Premium unlocks Chandra Namaskar, the Surya → Chandra bundle and short sessions. 7-day trial, a reminder 2 days before the charge, cancel in one tap from your profile. No upsell during practice.
+Library of 2100 asanas
+Every pose from D. Lacerda's "2100 Asanas" by chapters and sections, with English, Sanskrit and Russian names. Browsing and adding to your own sets is free.
 
-Not a medical service. Consult a doctor if you have pain, injuries or are pregnant.
+Set builder
+Build your own practice: add poses with "+" from the rings, the start set and the library, reorder by dragging. Five free runs of your own sets.
+
+Movement age test and health check
+Five exercises and five questions: movement age, body mass index and obesity class on the WHO scale, waist risk, heart fitness from resting pulse, endurance from the European Society of Cardiology stair test.
+
+Gentle on the body
+• Mark sore spots and "where it was hard" after practice — the app replaces poses that load them with similar ones from other sets.
+• Gentle cycle days: no inversions or deep backbends.
+• Support on fists, palms or fingers.
+
+Progress
+8-week path, practice calendar, the "108 rounds" challenge, weight and waist, movement age chart.
+
+Practice comfortably
+• Cast to a TV: Miracast, Cast, HDMI. The phone becomes a remote.
+• Your own instructor videos instead of the scheme.
+• Works offline. Reminders. Progress backup to a file.
+
+Honest subscription
+Free forever: the Sun and Moon rings, classic Surya Namaskar, the asana library for browsing and the builder, the movement age test and health check, progress, reminders, TV casting.
+Premium — monthly, yearly or lifetime: the start set with inversions, classic Chandra Namaskar, playing library sections, unlimited own sets. 7-day trial, a reminder 2 days before the first charge, cancel with one tap in the profile. No sales pop-ups during practice.
+
+Not a medical service. With pain, injuries, heart conditions or pregnancy, consult a doctor.

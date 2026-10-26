@@ -29,6 +29,9 @@ fun ru.mudrya.yoga.model.Asana.shownDescription(): String? = if (english) descri
 /** Название сета по его id. */
 @Composable
 fun sequenceName(id: String): String {
+    if (ru.mudrya.yoga.engine.CustomSets.isCustom(id)) {
+        return appContainer().users.state.value.customSets.firstOrNull { it.id == id }?.name ?: id
+    }
     val seq = SuryaCatalog.sequence(id)
     return if (Locale.getDefault().language == "ru") seq.nameRu else seq.nameEn
 }

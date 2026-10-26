@@ -84,6 +84,15 @@ async function createFigure3D(){
   for(const s of ['L','R']){const h=P['hand'+s].userData;h.dk.rotation.z=-Math.PI/2;h.lt.rotation.z=Math.PI/2;
     const f=P['foot'+s].userData;f.dk.rotation.x=Math.PI;}
   const fist={L:false,R:false};
+  /* пальцы: четыре по три фаланги и большой из двух; форма кисти задаёт сгибание */
+  const shape={L:'open',R:'open'};
+  const PH=[[.040,.026,.019],[.044,.028,.020],[.041,.026,.019],[.031,.020,.016]],TH=[.034,.028];
+  const CURL={open:{c:[6,10,6],sp:.06,t:[12,12]},floor:{c:[2,2,0],sp:.12,t:[4,0]},fist:{c:[88,100,70],sp:0,t:[40,55]},
+    lock:{c:[62,72,40],sp:.03,t:[6,12]},namaste:{c:[0,0,0],sp:0,t:[0,6]}};
+  const LOCKM=mk('#e8b64c');LOCKM.emissive=new T.Color('#5a3d00');
+  const FING={};
+  for(const s of ['L','R']){FING[s]={f:PH.map(row=>row.map(L=>add(capG(.0082,L),M[s]))),t:TH.map(L=>add(capG(.0098,L),M[s]))};}
+  const segTo=(o,a,b,dir,mat)=>{o.position.copy(a).add(b).multiplyScalar(.5);o.quaternion.setFromUnitVectors(Y,dir);if(o.material!==mat)o.material=mat;};
 
   let theme=null;
   function setTheme(t){if(theme===t)return;theme=t;const pal=COLORS[t];for(const k in M)M[k].color.set(pal[k]);
@@ -136,10 +145,22 @@ async function createFigure3D(){
       /* hand: frame from direction and palm normal */
       const hq=TW['hand'+s], hd=ax(hq,REST['hand'+s][0]), pn=ax(hq,REST['hand'+s][1]);
       const hb=basis(hd,pn); /* local y = hand dir, x = palm */
-      const f=fist[s];const hl=f?.06:.095, hw=f?.05:.047, ht=f?.045:.022;
-      const hc=j['W'+s].clone().add(hd.clone().multiplyScalar(f?.05:.085));
+      const f=fist[s];const hl=f?.06:.058, hw=f?.05:.047, ht=f?.045:.024;
+      const hc=j['W'+s].clone().add(hd.clone().multiplyScalar(f?.05:.055));
       ell(P['hand'+s],hc,hb,[ht,hl,hw],'A_'+s+'h');
       if(apply)P['hand'+s].scale.set(ht,hl,hw);
+      {const sh=shape[s]||'open',C=CURL[sh]||CURL.open,lock=sh==='lock',mat=lock?LOCKM:M[s];
+       const fz=V3().crossVectors(pn,hd).normalize(),g=s==='R'?1:-1;
+       const knuck=j['W'+s].clone().add(hd.clone().multiplyScalar((f?.05:.055)+hl*.85));
+       for(let i=0;i<4;i++){
+         let p=knuck.clone().add(fz.clone().multiplyScalar((i-1.5)*.0205+(lock&&s==='L'?.01:0)));
+         const d=hd.clone().add(fz.clone().multiplyScalar((i-1.5)*C.sp)).normalize();let a=0;
+         for(let k=0;k<3;k++){a+=C.c[k]*DEG;const dir=d.clone().multiplyScalar(Math.cos(a)).add(pn.clone().multiplyScalar(Math.sin(a))).normalize();
+           const e=p.clone().add(dir.clone().multiplyScalar(PH[i][k]));if(apply)segTo(FING[s].f[i][k],p,e,dir,mat);low('A_'+s+'h',Math.min(p.y,e.y)-.008);p=e;}}
+       let p=j['W'+s].clone().add(hd.clone().multiplyScalar(.035)).add(fz.clone().multiplyScalar(-g*.03)).add(pn.clone().multiplyScalar(sh==='floor'?-.004:.012));
+       const d0=hd.clone().multiplyScalar(.75).add(fz.clone().multiplyScalar(-g*.55)).add(pn.clone().multiplyScalar(sh==='floor'?-.05:.25)).normalize();let a=0;
+       for(let k=0;k<2;k++){a+=C.t[k]*DEG;const dir=d0.clone().multiplyScalar(Math.cos(a)).add(pn.clone().multiplyScalar(Math.sin(a))).normalize();
+         const e=p.clone().add(dir.clone().multiplyScalar(TH[k]));if(apply)segTo(FING[s].t[k],p,e,dir,mat);low('A_'+s+'h',Math.min(p.y,e.y)-.009);p=e;}}
       /* foot: x = left, y = up, z = forward */
       const fq=TW['foot'+s], fwd=ax(fq,FW), lf=ax(fq,LX);
       const up=V3().crossVectors(fwd,lf);
@@ -176,7 +197,7 @@ async function createFigure3D(){
   /* show a pose; ik: {A_L|A_R|L_L|L_R: 'floor' | V3 | {p,w}} */
   function showTW(TW0,{hipX=0,ignoreArms=false,ik=null,hands=null}={}){
     const TW={};for(const k in TW0)TW[k]=TW0[k].clone();
-    fist.L=!!(hands&&hands.L==='fist');fist.R=!!(hands&&hands.R==='fist');
+    fist.L=!!(hands&&hands.L==='fist');fist.R=!!(hands&&hands.R==='fist');shape.L=(hands&&hands.L)||'open';shape.R=(hands&&hands.R)||'open';
     let j=place(TW,hipX,ignoreArms);
     const spec={...(ik||{})};
     if(ignoreArms){const mins=layout(TW,j,false);for(const key of ['A_L','A_R'])if(!(key in spec)&&gapOf(mins,key)<-0.005)spec[key]='lift';}
@@ -421,7 +442,7 @@ async function boot(){
   const feat=(p,id)=>{const f={L1:0,L2:0,butter:0,pair:0};
     if(fig.LOTUS.includes(id)){f.L1=1;f.L2=1;} if(fig.HALF[id]){f[fig.HALF[id]]=1;} if(fig.BUTTER.includes(id))f.butter=1;
     const pl=planHands(place(fk(p)));f.pair=pl.pair?1:0;const fr=front(p);const sd={A1:fr?'L':'R',A2:fr?'R':'L'};f.hands={};
-    for(const A of ['A1','A2']){const h=pl[A];f.hands[sd[A]]=h?(h.t==='fist'?'fist':'open'):'open';}return f;};
+    for(const A of ['A1','A2']){const h=pl[A];f.hands[sd[A]]=h?({fist:'fist',lock:'lock',lockrev:'lock',namaste:'namaste',floor:'floor',floorb:'floor'}[h.t]||'open'):'open';}return f;};
   const lerpFeat=(a,b,k)=>{const o={};for(const key of ['L1','L2','butter','pair'])o[key]=(a[key]||0)+((b[key]||0)-(a[key]||0))*k;o.hands=k<0.5?a.hands:b.hands;return o;};
   const toV=v=>V3(v[0],-v[1],v[2]||0).normalize();
   const plan3=p=>{const pl=planHands(place(fk(p)));const out={};
@@ -522,8 +543,12 @@ async function boot(){
   window.__refit=()=>{if(cur)frameCam(cur.center,camYaw);};
   window.Mudrya={
     ready:true,
-    go(id,mirror,ms){const key=id+'|'+(mirror?1:0);if(key===lastKey&&ms>0)return;lastKey=key;
-      try{go(getPose(id,mirror?1:0),id,ms||0);}catch(e){console.warn('pose',id,e);}},
+    go(id,mirror,ms,hands){const key=id+'|'+(mirror?1:0)+'|'+(hands||'');if(key===lastKey&&ms>0)return;lastKey=key;
+      try{let pose=getPose(id,mirror?1:0);
+        /* положение кистей из приложения (замок, ладони вместе) — для поз библиотеки */
+        if(hands&&pose.jp)pose={...pose,jp:{...pose.jp,hm:{L:hands,R:hands}}};
+        go(pose,id,ms||0);}catch(e){console.warn('pose',id,e);}},
+    hands(id){try{const st=solveState(getPose(id,0),id);return JSON.stringify(st.hands);}catch(e){return '';}},
     setTheme(t){fig.setTheme(t);document.body.style.background=t==='dark'?'#0F1115':'#f3f1ec';},
     resetView(){view.userMoved=false;if(cur)frameCam(cur.center,camYaw);},
     has(id){return !!(P[id]||(window.JP&&JP[id]));}

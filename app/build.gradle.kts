@@ -15,8 +15,8 @@ android {
         minSdk = 26
         targetSdk = 36
         // versionCode растёт с каждой загрузкой в магазин; в CI его можно задать через VERSION_CODE.
-        versionCode = System.getenv("VERSION_CODE")?.toIntOrNull() ?: 2
-        versionName = "0.9.0"
+        versionCode = System.getenv("VERSION_CODE")?.toIntOrNull() ?: 10
+        versionName = "1.0.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 

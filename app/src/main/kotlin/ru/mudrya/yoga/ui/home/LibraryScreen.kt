@@ -1,6 +1,7 @@
 package ru.mudrya.yoga.ui.home
 
 import androidx.activity.compose.BackHandler
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -58,10 +59,32 @@ private val SECTIONS: Map<String, LibSection> by lazy {
  * (по-русски, по-английски, на санскрите). Раздел проигрывается как обычный сет на марионетке.
  */
 @Composable
-fun LibraryScreen(premium: Boolean, onStart: (String) -> Unit, onBack: () -> Unit) {
+fun LibraryScreen(
+    state: ru.mudrya.yoga.engine.UserState,
+    users: ru.mudrya.yoga.data.UserRepository,
+    premium: Boolean,
+    onStart: (String) -> Unit,
+    onBack: () -> Unit,
+) {
     BackHandler(onBack = onBack)
     var chapter by rememberSaveable { mutableIntStateOf(0) }
     var query by rememberSaveable { mutableStateOf("") }
+    var expanded by rememberSaveable { mutableStateOf<String?>(null) }
+    var preview by remember { mutableStateOf<String?>(null) }
+    var addedTo by remember { mutableStateOf<String?>(null) }
+    val newName = stringResource(R.string.builder_new_name, state.customSets.size + 1)
+    // «Плюс» добавляет позу в последний свой сет; если своих сетов нет — создаёт новый.
+    fun add(asanaId: String) {
+        val target = state.customSets.lastOrNull()
+        if (target == null) {
+            val created = ru.mudrya.yoga.engine.CustomSet(ru.mudrya.yoga.engine.CustomSets.newId(System.currentTimeMillis()), newName, listOf(asanaId))
+            users.update { it.copy(customSets = it.customSets + created) }
+            addedTo = created.name
+        } else {
+            users.update { s -> s.copy(customSets = s.customSets.map { if (it.id == target.id) it.copy(asanaIds = it.asanaIds + asanaId) else it }) }
+            addedTo = target.name
+        }
+    }
     val ids = remember(chapter, query) {
         val q = query.trim().lowercase()
         if (q.isNotEmpty()) {
@@ -75,6 +98,7 @@ fun LibraryScreen(premium: Boolean, onStart: (String) -> Unit, onBack: () -> Uni
             Column(Modifier.padding(top = 20.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
                 ScreenTitle(stringResource(R.string.library_title))
                 Body(stringResource(R.string.library_hint, LibraryCatalog.POSE_COUNT))
+                addedTo?.let { Text(stringResource(R.string.library_added, it), color = MudryaColors.Saffron, fontSize = 14.sp) }
                 OutlinedTextField(
                     value = query,
                     onValueChange = { query = it },
@@ -110,14 +134,51 @@ fun LibraryScreen(premium: Boolean, onStart: (String) -> Unit, onBack: () -> Uni
                     color = MudryaColors.Text,
                     fontSize = 13.sp,
                 )
-                PrimaryButton(
-                    stringResource(if (locked) R.string.set_locked else R.string.start),
-                    { onStart(id) },
-                    color = MudryaColors.Moon,
-                    contentColor = MudryaColors.Ground,
-                )
+                androidx.compose.foundation.layout.Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                    PrimaryButton(
+                        stringResource(if (expanded == id) R.string.library_hide else R.string.library_show),
+                        { expanded = if (expanded == id) null else id },
+                        Modifier.weight(1f),
+                        color = MudryaColors.Border,
+                        contentColor = MudryaColors.Text,
+                    )
+                    PrimaryButton(
+                        stringResource(if (locked) R.string.set_locked else R.string.start),
+                        { onStart(id) },
+                        Modifier.weight(1f),
+                        color = MudryaColors.Moon,
+                        contentColor = MudryaColors.Ground,
+                    )
+                }
+                if (expanded == id) {
+                    ru.mudrya.yoga.ui.builder.PoseCatalog.section(id).forEach { a ->
+                        androidx.compose.foundation.layout.Row(
+                            Modifier.fillMaxWidth().clickable { preview = a.id },
+                            verticalAlignment = androidx.compose.ui.Alignment.CenterVertically,
+                        ) {
+                            Text(
+                                if (english) a.nameEn else a.nameRu,
+                                color = MudryaColors.Text,
+                                fontSize = 14.sp,
+                                modifier = Modifier.weight(1f).padding(vertical = 6.dp),
+                            )
+                            Text(
+                                "＋",
+                                color = MudryaColors.Saffron,
+                                fontSize = 22.sp,
+                                fontWeight = FontWeight.Bold,
+                                modifier = Modifier.clickable { add(a.id) }.padding(horizontal = 14.dp, vertical = 4.dp),
+                            )
+                        }
+                    }
+                }
             }
         }
         item { Column(Modifier.padding(bottom = 24.dp)) {} }
+    }
+    preview?.let { pid ->
+        ru.mudrya.yoga.ui.builder.PoseCatalog.asana(pid)?.let {
+            ru.mudrya.yoga.ui.builder.PosePreview(it, onAdd = { add(pid); preview = null }, onClose = { preview = null })
+        }
     }
 }

@@ -42,6 +42,7 @@ import ru.mudrya.yoga.ui.home.ProfileScreen
 import ru.mudrya.yoga.ui.home.ProgressScreen
 import ru.mudrya.yoga.ui.home.SetsScreen
 import ru.mudrya.yoga.ui.home.LibraryScreen
+import ru.mudrya.yoga.ui.builder.BuilderScreen
 import ru.mudrya.yoga.ui.settings.SettingsScreen
 import ru.mudrya.yoga.ui.settings.VideoLibraryScreen
 import ru.mudrya.yoga.data.UserRepository
@@ -66,6 +67,7 @@ private object Routes {
     const val PAYWALL = "paywall"
     const val VIDEOS = "settings/videos"
     const val LIBRARY = "library"
+    const val BUILDER = "builder"
     const val PLAYER = "player/{seq}"
     fun player(sequenceId: String) = "player/$sequenceId"
 }
@@ -107,7 +109,7 @@ fun AppRoot() {
                 if (profile == null) {
                     Box(Modifier.fillMaxSize())
                 } else {
-                    MovementTestScreen(profile, users) { nav.goHome() }
+                    MovementTestScreen(profile, users, onPremium = { nav.navigate(Routes.PAYWALL) }) { nav.goHome() }
                 }
             }
             composable(Routes.TEST) {
@@ -115,7 +117,7 @@ fun AppRoot() {
                 if (profile == null) {
                     Box(Modifier.fillMaxSize())
                 } else {
-                    MovementTestScreen(profile, users) { nav.popBackStack() }
+                    MovementTestScreen(profile, users, onPremium = { nav.navigate(Routes.PAYWALL) }) { nav.popBackStack() }
                 }
             }
             composable(Routes.PLAYER) { entry ->
@@ -136,9 +138,26 @@ fun AppRoot() {
                 )
             }
             composable(Tab.SETS.route) {
-                SetsScreen(state, users, premium, onStart = { nav.startSet(it, premium) }, onLibrary = { nav.navigate(Routes.LIBRARY) })
+                SetsScreen(
+                    state,
+                    users,
+                    premium,
+                    onStart = { nav.startSet(it, premium) },
+                    onLibrary = { nav.navigate(Routes.LIBRARY) },
+                    onBuilder = { nav.navigate(Routes.BUILDER) },
+                )
             }
-            composable(Routes.LIBRARY) { LibraryScreen(premium, onStart = { nav.startSet(it, premium) }, onBack = { nav.popBackStack() }) }
+            composable(Routes.LIBRARY) { LibraryScreen(state, users, premium, onStart = { nav.startSet(it, premium) }, onBack = { nav.popBackStack() }) }
+            composable(Routes.BUILDER) {
+                BuilderScreen(
+                    state,
+                    users,
+                    premium,
+                    onPlay = { nav.navigate(Routes.player(it)) },
+                    onPaywall = { nav.navigate(Routes.PAYWALL) },
+                    onBack = { nav.popBackStack() },
+                )
+            }
             composable(Tab.PROGRESS.route) { ProgressScreen(state, users, onTest = { nav.navigate(Routes.TEST) }) }
             composable(Tab.PROFILE.route) {
                 ProfileScreen(

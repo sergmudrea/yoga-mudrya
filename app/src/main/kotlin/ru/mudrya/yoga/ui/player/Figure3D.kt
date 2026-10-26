@@ -99,7 +99,8 @@ fun Figure3D(
     LaunchedEffect(ready, target) {
         if (!ready || !SAFE_ID.matches(target.pose)) return@LaunchedEffect
         val ms = if (shown) transitionMs.coerceIn(0, 20_000) else 0
-        webView.evaluateJavascript("Mudrya.go('${target.pose}',${if (target.mirror) 1 else 0},$ms)", null)
+        val hands = target.hands?.let { "'${it.js}'" } ?: "undefined"
+        webView.evaluateJavascript("Mudrya.go('${target.pose}',${if (target.mirror) 1 else 0},$ms,$hands)", null)
         shown = true
     }
     AndroidView(factory = { webView }, modifier = modifier.semantics { contentDescription = description })

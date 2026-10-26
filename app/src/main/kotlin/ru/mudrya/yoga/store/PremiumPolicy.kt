@@ -2,13 +2,17 @@ package ru.mudrya.yoga.store
 
 /**
  * Что бесплатно, а что по подписке. Бесплатное ядро не урезается в обновлениях:
- * полная Сурья Намаскар, тест возраста движения, прогресс, напоминания, вывод на ТВ.
+ * Солнечное и Лунное кольца книги, классическое приветствие солнцу (Сурья Намаскар),
+ * библиотека асан для просмотра и конструктора, тест возраста движения и анкета здоровья,
+ * прогресс, напоминания, вывод на ТВ. Свои сеты — 5 бесплатных запусков (см. CustomSets).
  */
 object PremiumPolicy {
-    /** Классическая Сурья Намаскар и Солнечное кольцо книги — бесплатно всегда. */
-    val FREE_SETS = setOf("surya", "at_sn")
+    /** Кольца книги и классическая Сурья Намаскар — бесплатно всегда. */
+    val FREE_SETS = setOf("surya", "chandra", "at_sn")
 
-    fun isLocked(setId: String, premium: Boolean): Boolean = !premium && setId !in FREE_SETS
+    /** Свои сеты не закрываются целиком: их запуски считает конструктор. */
+    fun isLocked(setId: String, premium: Boolean): Boolean =
+        !premium && setId !in FREE_SETS && !ru.mudrya.yoga.engine.CustomSets.isCustom(setId)
 
     /** Когда напомнить о конце пробного периода: за 48 часов до первого списания. */
     fun trialReminderAt(purchaseEpochMs: Long, trialDays: Int): Long? =

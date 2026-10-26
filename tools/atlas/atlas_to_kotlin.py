@@ -38,22 +38,22 @@ SETS = [
     ("lk", "chandra", "Moon ring", False),
     ("sn", "at_sn", "Surya Namaskar (classic)", True),
     ("cn", "at_cn", "Chandra Namaskar (classic)", True),
+    # Дальше — только первый ряд старт-сета, который заканчивается перевёрнутыми позами
+    # (мини-последовательность 3: стойки на голове и на плечах, плуг). Остальные сеты убраны.
     ("ns", "at_ns", "Transition to the start set", False),
     ("ss1", "at_ss1", "Start set 1", False),
     ("ss2", "at_ss2", "Start set 2", False),
-    ("ss3", "at_ss3", "Start set 3", False),
-    ("ss4", "at_ss4", "Start set 4", False),
-    ("ss5", "at_ss5", "Start set 5", False),
-    ("ss6", "at_ss6", "Start set 6", False),
-    ("ss7", "at_ss7", "Start set 7", False),
-    ("st", "at_st", "Core set", False),
-    ("ds", "at_ds", "Link to the stop set", False),
-    ("zs", "at_zs", "Stop set", False),
-    ("skd", "at_skd", "Sun ring: extra elements", False),
-    ("lkd", "at_lkd", "Moon ring: extra elements", False),
-    ("ssd", "at_ssd", "Start set: extra elements", False),
-    ("zsd", "at_zsd", "Stop set: extra elements", False),
+    ("ss3", "at_ss3", "Start set 3: inversions", False),
 ]
+
+HAND = ATLAS.get("HAND", {})
+
+
+def hand_lock(pose_id):
+    """Пальцы в замке (перед собой или за спиной) — по разметке кистей атласа."""
+    h = HAND.get(pose_id)
+    hs = h if isinstance(h, list) else [h]
+    return any(isinstance(x, str) and x.split(":")[0] in ("lock", "lockrev") for x in hs)
 
 FREE_MARKERS = ["свободн", "произвольн", "расслаблен", "ровное дыхание", "как можно дольше", "сколько угодно",
                 "без ограничения", "созерцан", "полное дыхание", "дыхание,"]
@@ -185,7 +185,8 @@ def asana_for(pose_id, m, title, sanskrit, cue, title_en=None):
         p = mirror(base) if m else base
         desc = DESC.get(pose_id)
         asanas[key] = {"id": aid, "name": title, "sanskrit": sanskrit or None, "pose": pose_kt(p), "desc": desc, "cues": [],
-                       "figure": (pose_id, bool(m)), "name_en": title_en, "desc_en": TR["desc"].get(pose_id)}
+                       "figure": (pose_id, bool(m)), "name_en": title_en, "desc_en": TR["desc"].get(pose_id),
+                       "lock": hand_lock(pose_id)}
     a = asanas[key]
     if cue and cue not in a["cues"] and len(a["cues"]) < 3:
         a["cues"].append(cue)
@@ -269,6 +270,7 @@ w("import ru.mudrya.yoga.model.Block")
 w("import ru.mudrya.yoga.model.BlockRef")
 w("import ru.mudrya.yoga.model.Breath")
 w("import ru.mudrya.yoga.model.FigureRef")
+w("import ru.mudrya.yoga.model.HandShape")
 w("import ru.mudrya.yoga.model.Pose")
 w("import ru.mudrya.yoga.model.SequenceDef")
 w("import ru.mudrya.yoga.model.Side")
@@ -309,7 +311,8 @@ for i, ch in enumerate(chunks):
         cues = ", ".join(kstr(c) for c in a["cues"])
         w(f"        Asana(id = {kstr(a['id'])}, nameRu = {kstr(a['name'])}, nameEn = {kstr(a['name_en'] or a['sanskrit'] or a['name'])}, pose = {a['pose']},")
         w(f"            cuesRu = listOf({cues}), sanskrit = {kstr(a['sanskrit'])}, descriptionRu = {kstr(a['desc'])}, descriptionEn = {kstr(a['desc_en'])},")
-        w(f"            figure = FigureRef({kstr(a['figure'][0])}, {str(a['figure'][1]).lower()})),")
+        lock = ", hands = HandShape.LOCK" if a["lock"] else ""
+        w(f"            figure = FigureRef({kstr(a['figure'][0])}, {str(a['figure'][1]).lower()}{lock})),")
     w("    )")
     w("")
 

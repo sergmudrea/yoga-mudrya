@@ -56,6 +56,12 @@ data class UserState(
     val challengeStart: Long? = null,
     /** Отметки цикла для щадящего режима. */
     val cycle: CycleSettings = CycleSettings(),
+    /** Свои сеты из конструктора. */
+    val customSets: List<CustomSet> = emptyList(),
+    /** Сколько раз запускались свои сеты без премиума. */
+    val customRuns: Int = 0,
+    /** Анкеты здоровья (ИМТ, талия, пульс, лестница, сидячие часы). */
+    val health: List<HealthRecord> = emptyList(),
 ) {
     val onboarded: Boolean get() = profile != null
 }
@@ -274,6 +280,17 @@ object UserStateCodec {
         s.cycle.lastStart?.let { line("cycle.start", it.toString()) }
         s.cycle.lastEnd?.let { line("cycle.end", it.toString()) }
         line("cycle.days", s.cycle.maxDays.toString())
+        line("custom.runs", s.customRuns.toString())
+        s.customSets.forEach { c ->
+            line("custom", listOf(c.id, java.net.URLEncoder.encode(c.name, "UTF-8"), c.asanaIds.joinToString(",")).joinToString(";"))
+        }
+        s.health.forEach { h ->
+            line(
+                "health",
+                listOf(h.atMs, h.localDay, h.heightCm ?: "", h.weightKg ?: "", h.waistCm ?: "", h.restingHr ?: "", h.stairsSec ?: "", h.sittingHours ?: "")
+                    .joinToString(";"),
+            )
+        }
         s.tests.forEach { t ->
             line(
                 "test",
@@ -288,6 +305,8 @@ object UserStateCodec {
         val sessions = mutableListOf<SessionRecord>()
         val tests = mutableListOf<MovementRecord>()
         val body = mutableListOf<BodyRecord>()
+        val custom = mutableListOf<CustomSet>()
+        val health = mutableListOf<HealthRecord>()
         text.lineSequence().forEach { raw ->
             val i = raw.indexOf('=')
             if (i <= 0) return@forEach
@@ -297,6 +316,8 @@ object UserStateCodec {
                 "session" -> parseSession(value)?.let(sessions::add)
                 "test" -> parseTest(value)?.let(tests::add)
                 "body" -> parseBody(value)?.let(body::add)
+                "custom" -> parseCustom(value)?.let(custom::add)
+                "health" -> parseHealth(value)?.let(health::add)
                 else -> single[key] = value
             }
         }
@@ -318,6 +339,9 @@ object UserStateCodec {
             reminder = parseReminder(single),
             body = body.sortedBy { it.localDay },
             challengeStart = single["challenge108.start"]?.toLongOrNull(),
+            customSets = custom,
+            customRuns = single["custom.runs"]?.toIntOrNull()?.coerceAtLeast(0) ?: 0,
+            health = health.sortedBy { it.atMs },
             cycle = CycleSettings(
                 enabled = single["cycle.enabled"]?.toBooleanStrictOrNull() ?: false,
                 lastStart = single["cycle.start"]?.toLongOrNull(),
@@ -379,6 +403,32 @@ object UserStateCodec {
             completed = p[5].toBooleanStrictOrNull() ?: return null,
             feedback = enumOrNull<Feedback>(p[6]),
             usedMetalDog = p[7].toBooleanStrictOrNull() ?: false,
+        )
+    }
+
+    private fun parseCustom(v: String): CustomSet? {
+        val p = v.split(';')
+        if (p.size < 3 || !p[0].startsWith(CustomSets.PREFIX)) return null
+        val name = try {
+            java.net.URLDecoder.decode(p[1], "UTF-8")
+        } catch (_: IllegalArgumentException) {
+            return null
+        }
+        return CustomSet(p[0], name, p[2].split(',').filter { it.isNotBlank() })
+    }
+
+    private fun parseHealth(v: String): HealthRecord? {
+        val p = v.split(';')
+        if (p.size < 8) return null
+        return HealthRecord(
+            atMs = p[0].toLongOrNull() ?: return null,
+            localDay = p[1].toLongOrNull() ?: return null,
+            heightCm = p[2].toDoubleOrNull(),
+            weightKg = p[3].toDoubleOrNull(),
+            waistCm = p[4].toDoubleOrNull(),
+            restingHr = p[5].toIntOrNull(),
+            stairsSec = p[6].toIntOrNull(),
+            sittingHours = p[7].toIntOrNull(),
         )
     }
 

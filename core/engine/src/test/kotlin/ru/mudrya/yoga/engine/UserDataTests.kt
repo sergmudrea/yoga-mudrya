@@ -26,6 +26,9 @@ class UserStateCodecTest {
         body = listOf(BodyRecord(19_990, 72.5, null), BodyRecord(20_000, 71.8, 84.0)),
         challengeStart = 19_995,
         cycle = CycleSettings(enabled = true, lastStart = 19_998, lastEnd = null, maxDays = 6),
+        customSets = listOf(CustomSet("my_abc", "Утро; спина, плечи", listOf("at_tad", "lb_B1"))),
+        customRuns = 3,
+        health = listOf(HealthRecord(7_000, 20_000, 178.0, 86.5, 92.0, 66, 52, 9), HealthRecord(8_000, 20_001, weightKg = 85.0)),
     )
 
     @Test
@@ -359,5 +362,68 @@ class CycleTest {
     @Test
     fun `disabled tracking is never active`() {
         assertFalse(c.copy(enabled = false).active(100))
+    }
+}
+
+class CustomSetsTest {
+    @Test
+    fun `move reorders like drag and drop`() {
+        assertEquals(listOf("b", "c", "a"), CustomSets.move(listOf("a", "b", "c"), 0, 2))
+        assertEquals(listOf("c", "a", "b"), CustomSets.move(listOf("a", "b", "c"), 2, 0))
+        assertEquals(listOf("a", "b"), CustomSets.move(listOf("a", "b"), 0, 5))
+    }
+
+    @Test
+    fun `five free runs then premium`() {
+        assertTrue(CustomSets.canRun(premium = false, runsUsed = 4))
+        assertFalse(CustomSets.canRun(premium = false, runsUsed = 5))
+        assertTrue(CustomSets.canRun(premium = true, runsUsed = 50))
+        assertEquals(2, CustomSets.runsLeft(3))
+    }
+
+    @Test
+    fun `custom set plays with breaths copied from the catalog`() {
+        val set = CustomSet("my_1", "Мой", listOf("plank", "tadasana", "unknown", "plank"))
+        val cat = CustomSets.catalogWith(Fixtures.catalog, set)
+        val s = SessionBuilder(cat).build(BuildRequest(CustomSets.sequence(set), 1, ru.mudrya.yoga.model.Support.PALMS))
+        assertEquals(listOf("plank", "tadasana", "plank"), s.steps.map { it.asana.id })
+    }
+}
+
+class HealthCheckTest {
+    private fun level(r: HealthRecord, m: HealthMetric, sex: Sex = Sex.MALE) = HealthCheck.evaluate(r, sex).findings.first { it.metric == m }
+
+    @Test
+    fun `bmi classes follow WHO`() {
+        assertEquals("NORMAL", HealthCheck.bmiGrade(22.0).first)
+        assertEquals("OVER", HealthCheck.bmiGrade(27.0).first)
+        assertEquals("OBESE1", HealthCheck.bmiGrade(31.0).first)
+        assertEquals("OBESE2", HealthCheck.bmiGrade(36.0).first)
+        assertEquals("OBESE3", HealthCheck.bmiGrade(41.0).first)
+        assertEquals(27.3, level(HealthRecord(0, 0, heightCm = 178.0, weightKg = 86.5), HealthMetric.BMI).value)
+    }
+
+    @Test
+    fun `waist thresholds depend on sex and height`() {
+        val r = HealthRecord(0, 0, heightCm = 170.0, waistCm = 98.0)
+        assertEquals(HealthLevel.RISK, level(r, HealthMetric.WAIST, Sex.MALE).level)
+        assertEquals(HealthLevel.HIGH, level(r, HealthMetric.WAIST, Sex.FEMALE).level)
+        assertEquals(HealthLevel.RISK, level(r, HealthMetric.WAIST_TO_HEIGHT).level)
+    }
+
+    @Test
+    fun `stairs and pulse grades`() {
+        assertEquals("FIT", level(HealthRecord(0, 0, stairsSec = 40), HealthMetric.STAIRS).grade)
+        assertEquals("CANNOT", level(HealthRecord(0, 0, stairsSec = 0), HealthMetric.STAIRS).grade)
+        assertEquals("TACHY", level(HealthRecord(0, 0, restingHr = 104), HealthMetric.RESTING_HR).grade)
+        assertEquals("GOOD", level(HealthRecord(0, 0, restingHr = 72), HealthMetric.RESTING_HR, Sex.FEMALE).grade)
+    }
+
+    @Test
+    fun `overall risk grows with worrying answers`() {
+        assertEquals(HealthLevel.GOOD, HealthCheck.evaluate(HealthRecord(0, 0, 180.0, 72.0, 80.0, 58, 40, 3), Sex.MALE).overall)
+        assertEquals(HealthLevel.HIGH, HealthCheck.evaluate(HealthRecord(0, 0, 170.0, 100.0, 110.0, 95, 0, 10), Sex.MALE).overall)
+        assertEquals(76.9, HealthCheck.targetWeight(175.7, 90.0))
+        assertNull(HealthCheck.targetWeight(180.0, 70.0))
     }
 }

@@ -114,6 +114,13 @@ fun ProgressScreen(state: UserState, users: UserRepository, onTest: () -> Unit) 
             PrimaryButton(stringResource(if (tests.isEmpty()) R.string.test_start else R.string.home_age_retake), onTest, color = MudryaColors.Moon)
         }
 
+        state.health.lastOrNull()?.let { h ->
+            ru.mudrya.yoga.ui.test.HealthSummaryView(
+                h,
+                ru.mudrya.yoga.engine.HealthCheck.evaluate(h, state.profile?.sex ?: ru.mudrya.yoga.engine.Sex.FEMALE),
+                onPremium = null,
+            )
+        }
         BodyCard(state, users, today)
 
         Card {

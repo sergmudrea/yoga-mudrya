@@ -331,6 +331,11 @@ private fun StepTitle(f: PlayerFrame) {
                 if (enter) MudryaColors.Moon else MudryaColors.Saffron,
             )
             sideLabel(f.step.side)?.let { Tag(it, MudryaColors.TextMuted) }
+            when (f.step.asana.figure?.hands) {
+                ru.mudrya.yoga.model.HandShape.LOCK -> Tag(stringResource(R.string.player_hand_lock), MudryaColors.Saffron)
+                ru.mudrya.yoga.model.HandShape.PRAYER -> Tag(stringResource(R.string.player_hand_prayer), MudryaColors.Moon)
+                null -> Unit
+            }
         }
         Spacer(Modifier.height(6.dp))
         Text(f.step.shownTitle(), color = MudryaColors.Text, fontSize = 24.sp, fontWeight = FontWeight.Bold)

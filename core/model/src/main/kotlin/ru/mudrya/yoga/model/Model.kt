@@ -144,8 +144,17 @@ data class Asana(
     val figure: FigureRef? = null,
 )
 
-/** Ссылка на позу в эмуляторе атласа: id позы и отражение (другая сторона). */
-data class FigureRef(val pose: String, val mirror: Boolean = false)
+/** Ссылка на позу в эмуляторе атласа: id позы, отражение (другая сторона) и положение кистей. */
+data class FigureRef(val pose: String, val mirror: Boolean = false, val hands: HandShape? = null)
+
+/** Положение кистей и пальцев, если оно важно для позы. */
+enum class HandShape(val js: String) {
+    /** Пальцы в замке — переплетены (перед собой, за спиной, за головой). */
+    LOCK("lock"),
+
+    /** Ладони вместе — анджали-мудра. */
+    PRAYER("namaste"),
+}
 
 /**
  * Шаг последовательности. Движение (вход в асану) может занимать одну или несколько фаз дыхания,

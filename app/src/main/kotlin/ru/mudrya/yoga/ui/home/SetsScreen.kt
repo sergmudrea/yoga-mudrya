@@ -45,12 +45,10 @@ private val GROUPS = listOf(
     SetGroup(
         R.string.sets_start,
         R.string.sets_start_hint,
-        listOf("at_ns", "at_ss1", "at_ss2", "at_ss3", "at_ss4", "at_ss5", "at_ss6", "at_ss7"),
+        listOf("at_ns", "at_ss1", "at_ss2", "at_ss3"),
         MudryaColors.Saffron,
         MudryaColors.Surface,
     ),
-    SetGroup(R.string.sets_core, R.string.sets_core_hint, listOf("at_st", "at_ds", "at_zs"), MudryaColors.Moon, MudryaColors.Surface),
-    SetGroup(R.string.sets_extra, R.string.sets_extra_hint, listOf("at_skd", "at_lkd", "at_ssd", "at_zsd"), MudryaColors.TextMuted, MudryaColors.Surface),
 )
 
 /** Сколько позиций и минут займёт сет с такими параметрами. */
@@ -63,7 +61,14 @@ fun setSize(sequenceId: String, params: SessionParams, constraints: Constraints)
 }
 
 @Composable
-fun SetsScreen(state: UserState, users: UserRepository, premium: Boolean, onStart: (String) -> Unit, onLibrary: () -> Unit = {}) {
+fun SetsScreen(
+    state: UserState,
+    users: UserRepository,
+    premium: Boolean,
+    onStart: (String) -> Unit,
+    onLibrary: () -> Unit = {},
+    onBuilder: () -> Unit = {},
+) {
     val params = state.params
     val constraints = state.constraints(UserRepository.today())
     Column(
@@ -93,6 +98,16 @@ fun SetsScreen(state: UserState, users: UserRepository, premium: Boolean, onStar
                     )
                 }
             }
+        }
+        Spacer(Modifier.height(4.dp))
+        SectionLabel(stringResource(R.string.builder_title))
+        Card(color = MudryaColors.SaffronDeep) {
+            Text(stringResource(R.string.builder_card), color = MudryaColors.Saffron, fontSize = 20.sp, fontWeight = FontWeight.Bold)
+            Body(
+                if (premium) stringResource(R.string.builder_card_hint_premium)
+                else stringResource(R.string.builder_card_hint, ru.mudrya.yoga.engine.CustomSets.runsLeft(state.customRuns)),
+            )
+            PrimaryButton(stringResource(R.string.builder_open), onBuilder)
         }
         Spacer(Modifier.height(4.dp))
         SectionLabel(stringResource(R.string.library_title))

@@ -60,6 +60,19 @@ def pose2d(rec):
     return "p(" + ", ".join(str(x) for x in args) + (", front = 1.0" if front else "") + ")"
 
 
+LOCK_WORDS = ("замк", "замок", "сцеплен", "interlac", "clasp", "bound hands", "baddha hasta", "baddha anguli", "hands bound")
+PRAYER_WORDS = ("ладони вместе", "намаскар", "анджали", "prayer", "namaskar", "anjali")
+
+
+def hand_shape(*texts):
+    t = " ".join(x for x in texts if x).lower()
+    if any(w in t for w in LOCK_WORDS):
+        return "LOCK"
+    if any(w in t for w in PRAYER_WORDS):
+        return "PRAYER"
+    return None
+
+
 def title_case(s):
     small = {"and", "or", "the", "of", "with", "on", "in", "to", "a", "an", "over", "below", "above", "at", "&"}
     words = s.lower().split()
@@ -102,6 +115,7 @@ for i, (sid, seq) in enumerate(LIB["LIBSEQ"].items()):
             "pose": pose2d(rec) if rec and "err" not in rec else neutral,
             "desc": desc, "desc_en": lib_desc_en(rows[num]) if num in rows else None,
             "cue": (desc or title).split(". ")[0].rstrip("."), "figure": jid,
+            "hands": hand_shape(title, names, desc, (rows.get(num) or [None] * 7)[6]),
         })
         enter, hold_b = step_breath(move, hold)
         steps.append({"asana": aid, "enter": enter, "hold": hold_b, "title": title, "title_en": en or sk_ or title})
@@ -123,6 +137,7 @@ w("import ru.mudrya.yoga.model.Block")
 w("import ru.mudrya.yoga.model.BlockRef")
 w("import ru.mudrya.yoga.model.Breath")
 w("import ru.mudrya.yoga.model.FigureRef")
+w("import ru.mudrya.yoga.model.HandShape")
 w("import ru.mudrya.yoga.model.Pose")
 w("import ru.mudrya.yoga.model.SequenceDef")
 w("import ru.mudrya.yoga.model.Side")
@@ -152,9 +167,9 @@ w("        front = front,")
 w("    )")
 w("")
 w("    @Suppress(\"LongParameterList\")")
-w("    private fun a(id: String, ru: String, en: String, sk: String?, pose: Pose, cue: String, desc: String?, descEn: String?, fig: String) =")
+w("    private fun a(id: String, ru: String, en: String, sk: String?, pose: Pose, cue: String, desc: String?, descEn: String?, fig: String, hands: HandShape? = null) =")
 w("        Asana(id = id, nameRu = ru, nameEn = en, pose = pose, cuesRu = listOf(cue), sanskrit = sk, descriptionRu = desc,")
-w("            descriptionEn = descEn, figure = FigureRef(fig))")
+w("            descriptionEn = descEn, figure = FigureRef(fig, hands = hands))")
 w("")
 w("    private fun s(id: String, enter: List<Breath>, title: String, titleEn: String) =")
 w("        Step(id, enter = enter, hold = FREE, titleRu = title, titleEn = titleEn)")
@@ -172,7 +187,8 @@ w("")
 for i, chunk in enumerate(ach):
     w(f"    private fun a{i}(): List<Asana> = listOf(")
     for x in chunk:
-        w(f"        a({kstr(x['id'])}, {kstr(x['name'])}, {kstr(x['name_en'])}, {kstr(x['sanskrit'])}, {x['pose']}, {kstr(x['cue'])}, {kstr(x['desc'])}, {kstr(x['desc_en'])}, {kstr(x['figure'])}),")
+        hs = f", HandShape.{x['hands']}" if x["hands"] else ""
+        w(f"        a({kstr(x['id'])}, {kstr(x['name'])}, {kstr(x['name_en'])}, {kstr(x['sanskrit'])}, {x['pose']}, {kstr(x['cue'])}, {kstr(x['desc'])}, {kstr(x['desc_en'])}, {kstr(x['figure'])}{hs}),")
     w("    )")
     w("")
 CH_B = 20

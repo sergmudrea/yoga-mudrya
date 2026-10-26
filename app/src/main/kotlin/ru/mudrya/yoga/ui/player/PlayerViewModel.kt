@@ -6,6 +6,7 @@ import androidx.lifecycle.viewmodel.viewModelFactory
 import ru.mudrya.yoga.catalog.SuryaCatalog
 import ru.mudrya.yoga.data.UserRepository
 import ru.mudrya.yoga.engine.BuildRequest
+import ru.mudrya.yoga.engine.CustomSets
 import ru.mudrya.yoga.engine.constraints
 import ru.mudrya.yoga.engine.Feedback
 import ru.mudrya.yoga.engine.Plan
@@ -28,9 +29,12 @@ class PlayerViewModel(private val users: UserRepository, sequenceId: String) : V
     /** Сколько длится расслабление лёжа между кругами. */
     val relaxSeconds: Int = users.state.value.relaxSeconds
 
-    private val session = SessionBuilder(SuryaCatalog.catalog).build(
+    /** Свой сет из конструктора проигрывается на каталоге, дополненном его блоком. */
+    private val custom = users.state.value.customSets.firstOrNull { it.id == sequenceId }
+
+    private val session = SessionBuilder(custom?.let { CustomSets.catalogWith(SuryaCatalog.catalog, it) } ?: SuryaCatalog.catalog).build(
         BuildRequest(
-            sequence = SuryaCatalog.sequence(sequenceId),
+            sequence = custom?.let(CustomSets::sequence) ?: SuryaCatalog.sequence(sequenceId),
             rounds = params.rounds,
             support = params.support,
             constraints = users.state.value.constraints(startDay),
