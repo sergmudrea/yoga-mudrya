@@ -26,6 +26,51 @@ start = next(i for i, l in enumerate(lines) if l.strip() == '<script>' and 'cons
 end = next(i for i, l in enumerate(lines) if l.startswith('var EXTRA='))
 classic = '\n'.join(lines[start:end + 1])
 classic += '\nfunction poseOf(st){return getPose(st[1],st[2]);}\n'
+# Зеркало поз библиотеки: кроме рук и ног меняются местами цели кистей/стоп, а наклон и скрутка таза — по знаку.
+classic = classic.replace(
+    "if(o.sp)o.sp=[o.sp[0],-o.sp[1],-o.sp[2]];",
+    "if(o.sp)o.sp=[o.sp[0],-o.sp[1],-o.sp[2]];if(o.pp)o.pp=[o.pp[0],-(o.pp[1]||0),-(o.pp[2]||0)];sw('tL','tR');sw('gL','gR');"
+    "for(const k of ['tL','tR','gL','gR'])if(o[k]&&o[k].ref&&/[LR]$/.test(o[k].ref))o[k]={...o[k],ref:o[k].ref.replace(/L$/,'#').replace(/R$/,'L').replace('#','R')};", 1)
+assert "sw('tL','tR')" in classic
+# Позы приложения при зеркале не разворачиваются лицом в другую сторону (как позы атласа): поворот сохраняется.
+classic = classic.replace("function getPose(id,m){if(window.JP&&JP[id]){const j=m?mirJ(JP[id]):JP[id];",
+    "function getPose(id,m){if(window.JP&&JP[id]){const j=m?mirJ(JP[id]):JP[id];if(m&&window.KEEPYAW&&KEEPYAW[id]&&JP[id].root)j.root=[j.root[0],j.root[1],JP[id].root[2]];", 1)
+assert 'KEEPYAW[id]' in classic
+# Заготовки библиотеки, у которых после аудита была неверная геометрия (правка по книге Лакерды):
+_PRESETS = [
+    # поза ребёнка: торс ложится на бёдра — наклон всего тела вперёд, иначе бёдра торчат вверх
+    ("var CHILD=(o)=>VIR(mg({hL:[150,4,0],hR:[150,4,0],pp:[-15,0,0],sp:[35,0,0],nk:[20,0,0]},o||{}));",
+     "var CHILD=(o)=>VIR(mg({root:[90,0,0],hL:[150,4,0],hR:[150,4,0],pp:[-20,0,0],sp:[35,0,0],nk:[25,0,0]},o||{}));"),
+    # позы на руках (ворона и производные): ладони на полу под плечами, стопы над полом
+    ("var CRW=(o)=>mg({ab:1,root:[60,0,0],pp:[30,0,0],hL:[120,15,0],hR:[120,15,0],kL:150,kR:150,aL:-40,aR:-40,nk:[-30,0,0],c:['hL','hR']},arms('dn',{s:[60,10,0],e:20}),o||{});",
+     "var CRWP={p:[0.17,-0.12,0.42],ref:'chest',hd:[0,1,0],pn:[0,0,1],pole:[0,-1,0]};"
+     "var CRW=(o)=>mg({ab:1,root:[80,0,0],pp:[0,0,0],hL:[145,24,0],hR:[145,24,0],kL:160,kR:160,aL:30,aR:30,sp:[25,0,0],nk:[-45,0,0],c:['hL','hR']},{tL:CRWP,tR:CRWP,hm:{L:'floor',R:'floor'}},o||{});"),
+    # поза бесконечности: лёжа на правом боку (правая рука под головой), левая нога вверх
+    ("var INFS=(o)=>INF(mg(arm('R','up',{s:[170,0,0],e:140}),o||{}));",
+     "var INFS=(o)=>{const q=INF(mg(arm('R','up',{s:[170,0,0],e:140}),o||{}));q.root=[q.root[0],-q.root[1],q.root[2]];return q;};"),
+    # мост: плечи и голова на полу, таз поднят, стопы на полу
+    ("var BRG=(o)=>mg({root:[-120,0,0],hL:[-60,8,0],hR:[-60,8,0],kL:70,kR:70,aL:20,aR:20,nk:[50,0,0],c:['fL','fR']},arms('dn',{s:[10,10,0]}),o||{});",
+     "var BRG=(o)=>mg({root:[-145,0,0],hL:[-60,8,0],hR:[-60,8,0],kL:75,kR:75,aL:20,aR:20,nk:[55,0,0],c:['fL','fR']},arms('dn',{s:[-50,10,0]}),o||{});"),
+    # рыба: таз и ноги на полу, грудь поднята, макушка на полу
+    ("var FISH=(o)=>SUP(mg({pp:[45,0,0],sp:[-75,0,0],nk:[-55,0,0]},arms('dn',{s:[0,10,0],e:60}),o||{}));",
+     "var FISH=(o)=>SUP(mg({pp:[42,0,0],sp:[-30,0,0],nk:[-80,0,0]},arms('dn',{s:[0,10,0],e:60}),o||{}));"),
+]
+_PRESETS += [
+    # боковые позы на руках: ноги уходят вбок вместе с тазом (крен), грудь развёрнута обратно к полу
+    ("var SIDEC=(o)=>CRW(mg({root:[60,0,0],pp:[30,0,-70],hL:[110,-10,0],hR:[110,-10,0],kL:130,kR:130},o||{}));",
+     "var SIDEC=(o)=>CRW(mg({root:[85,85,0],pp:[0,0,85],hL:[110,-10,0],hR:[110,-10,0],kL:130,kR:130,aL:-30,aR:-30},o||{}));"),
+    ("var KOUN=(o)=>CRW(mg({root:[70,0,0],pp:[20,0,-60],hL:[95,-15,0],hR:[95,-15,0],kL:0,kR:0,aL:10,aR:10},arms('dn',{s:[40,10,0],e:90}),o||{}));",
+     "var KOUN=(o)=>CRW(mg({root:[85,85,0],pp:[0,0,85],hL:[95,-15,0],hR:[95,-15,0],kL:0,kR:0,aL:-20,aR:-20},o||{}));"),
+]
+for _a, _b in _PRESETS:
+    assert _a in classic, _a[:60]
+    classic = classic.replace(_a, _b, 1)
+# Позы, исправленные по книге после аудита (tools/atlas/app_poses.js): внутри блока библиотеки, где есть mg/arms/FOOT.
+_fix = (root / 'tools/atlas/app_poses.js').read_text(encoding='utf-8')
+_anchor = "JP.pranam=mg({root:[0,0,90],hL:[0,3,4],hR:[0,3,4]},AP?arms('pr'):{});"
+assert _anchor in classic
+classic = classic.replace(_anchor, _anchor + '\n' + _fix, 1)
+
 
 # 2) Модуль марионетки: createFigure3D и помощники; boot — из атласа, без разметки страницы.
 m0 = next(i for i, l in enumerate(lines) if l.startswith('<script type="module">')) + 1
@@ -41,6 +86,10 @@ def sub(text, old, new):
     return text.replace(old, new, 1)
 
 # ---- пальцы с фалангами и замки пальцев (дополнение приложения к марионетке атласа) ----
+# Наклон вперёд во фронтальных позах (sc<1) шёл назад, на спину: знак поворота торса.
+head = sub(head, "const qLean=Q().setFromAxisAngle(V3(1,0,0),-lean);", "const qLean=Q().setFromAxisAngle(V3(1,0,0),lean);")
+head = sub(head, "if(lean){W.neck=[rotL(dir2(t1)).applyAxisAngle(X,-0.2),Lt];W.head=[rotL(dir2(t1)).applyAxisAngle(X,-0.4),Lt];}",
+           "if(lean){W.neck=[rotL(dir2(t1)).applyAxisAngle(X,0.2),Lt];W.head=[rotL(dir2(t1)).applyAxisAngle(X,0.4),Lt];}")
 head = sub(head, "const fist={L:false,R:false};", r"""const fist={L:false,R:false};
   /* пальцы: четыре по три фаланги и большой из двух; форма кисти задаёт сгибание */
   const shape={L:'open',R:'open'};

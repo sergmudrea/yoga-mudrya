@@ -242,11 +242,11 @@ async function createFigure3D(){
     const t0=p.t[0],t1=p.t[1],t2=p.t[2];
     const lerpA=(a,b,k)=>a+(((b-a+540)%360)-180)*k;
     const lean=front&&(p.sc||1)<0.95?Math.acos(clamp(p.sc,0.05,1)):0;
-    const qLean=Q().setFromAxisAngle(V3(1,0,0),-lean);
+    const qLean=Q().setFromAxisAngle(V3(1,0,0),lean);
     const rotL=(v,f=1)=>f>=0.999?v.applyQuaternion(qLean):v.applyQuaternion(Q().slerp(qLean,f));
     const sd_=a=>lean?rotL(dir2(a)):dir2(a);
     W.pelvis=[sd_(t0),Lt];W.lumbar=[sd_(lerpA(t0,t1,.35)),Lt];W.chest=[sd_(t1),Lt];
-    if(lean){W.neck=[rotL(dir2(t1)).applyAxisAngle(X,-0.2),Lt];W.head=[rotL(dir2(t1)).applyAxisAngle(X,-0.4),Lt];}
+    if(lean){W.neck=[rotL(dir2(t1)).applyAxisAngle(X,0.2),Lt];W.head=[rotL(dir2(t1)).applyAxisAngle(X,0.4),Lt];}
     else{W.neck=[dir2(lerpA(t1,t2,.5)),Lt];W.head=[dir2(t2),Lt];}
     const chestP=sd_(t0).multiplyScalar(L2.sp*.45).add(sd_(t1).multiplyScalar(L2.sp*.55));
     feat=feat||{};
