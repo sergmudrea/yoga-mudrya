@@ -28,7 +28,7 @@ import ru.mudrya.yoga.ui.player.Figure3D
 import ru.mudrya.yoga.ui.theme.MudryaColors
 
 /** Название позы на языке интерфейса. */
-fun Asana.shownName(): String = if (english) nameEn else nameRu
+fun Asana.shownName(): String = if (english) ru.mudrya.yoga.ui.common.tr(nameEn) else nameRu
 
 /** Поза на марионетке с описанием — доступна и без премиума. */
 @Composable

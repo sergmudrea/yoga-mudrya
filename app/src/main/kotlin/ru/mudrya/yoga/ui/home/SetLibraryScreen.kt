@@ -32,6 +32,7 @@ import ru.mudrya.yoga.ui.common.Body
 import ru.mudrya.yoga.ui.common.Card
 import ru.mudrya.yoga.ui.common.programHint
 import ru.mudrya.yoga.ui.common.programName
+import ru.mudrya.yoga.ui.common.tr
 import ru.mudrya.yoga.ui.common.ScreenTitle
 import ru.mudrya.yoga.ui.common.SectionLabel
 import ru.mudrya.yoga.ui.theme.MudryaColors
@@ -93,10 +94,10 @@ fun SetLibraryScreen(state: UserState, users: UserRepository, premium: Boolean, 
 
         ThemeCatalog.Section.entries.forEach { section ->
             Spacer(Modifier.height(4.dp))
-            SectionLabel(if (ru) section.titleRu else section.titleEn)
+            SectionLabel(if (ru) section.titleRu else tr(section.titleEn))
             ThemeCatalog.themes.filter { it.section == section }.forEach { t ->
                 ThemeRow(t.id, state, users, premium, onStart)
-                Text(if (ru) t.hintRu else t.hintEn, color = MudryaColors.TextMuted, fontSize = 13.sp, modifier = Modifier.padding(start = 6.dp))
+                Text(if (ru) t.hintRu else tr(t.hintEn), color = MudryaColors.TextMuted, fontSize = 13.sp, modifier = Modifier.padding(start = 6.dp))
             }
         }
 
@@ -105,7 +106,7 @@ fun SetLibraryScreen(state: UserState, users: UserRepository, premium: Boolean, 
         Body(stringResource(R.string.setlib_training_hint))
         BookSetsCatalog.sets.forEach { b ->
             ThemeRow(b.id, state, users, premium, onStart)
-            Text(if (ru) b.hintRu else b.hintEn, color = MudryaColors.TextMuted, fontSize = 13.sp, modifier = Modifier.padding(start = 6.dp))
+            Text(if (ru) b.hintRu else tr(b.hintEn), color = MudryaColors.TextMuted, fontSize = 13.sp, modifier = Modifier.padding(start = 6.dp))
         }
 
         Spacer(Modifier.height(4.dp))

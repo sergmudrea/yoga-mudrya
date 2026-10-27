@@ -141,6 +141,7 @@ fun PlayerScreen(
                     } else {
                         val phrase = VoiceScript.phrase(
                             frame.step, frame.previous, frame.phase, currentSettings.voice, words, english = voice.language != "ru",
+                            translate = ru.mudrya.yoga.ui.common.Tr::t,
                         )
                         // Когда говорит голос, тон не нужен — достаточно вибрации.
                         val speaking = phrase != null && voice.ready

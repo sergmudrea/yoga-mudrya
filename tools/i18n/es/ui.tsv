@@ -1,0 +1,551 @@
+app_name	Mudrya Yoga
+tab_practice	Práctica
+tab_sets	Series
+tab_progress	Progreso
+tab_profile	Perfil
+today	Hoy
+surya	Surya Namaskar
+chandra	Chandra Namaskar
+start	Empezar
+coming_soon	Esta pantalla llegará en la próxima etapa.
+store_label	Versión: %1$s
+player_step_of	%1$d de %2$d
+player_phase_move	TRANSICIÓN
+player_phase_hold	MANTENER
+player_side_right	LADO DERECHO
+player_side_left	LADO IZQUIERDO
+player_from	Desde: %1$s
+player_replaced_cycle	En lugar de «%1$s» — modo suave del ciclo
+cycle_title	Días suaves
+cycle_hint	Durante la menstruación, la app puede sustituir las inversiones y las flexiones hacia atrás más profundas por posturas tranquilas parecidas. Solo marcas el inicio y el final; no se guarda nada más.
+cycle_enable	Activar
+cycle_start	Empezó hoy
+cycle_end	Terminó
+cycle_day	Día %1$d de %2$d como máximo
+cycle_on	Modo suave: sin inversiones ni flexiones hacia atrás profundas; se sustituyen automáticamente.
+cycle_off	Marca el primer día y la práctica pasará al modo suave hasta cinco días o hasta que marques el final.
+cycle_disable	No registrar
+player_hand_lock	Dedos entrelazados
+player_hand_prayer	Palmas juntas
+player_replaced	En lugar de «%1$s» — para cuidar: %2$s
+player_next	Siguiente: %1$s
+player_inhale	Inhala
+player_exhale	Exhala
+player_breath_of	respiración %1$d de %2$d
+player_belly	Vientre
+player_chest	Pecho
+player_hint_inhale	Primero se llena el vientre y luego el pecho. El movimiento acompaña la inhalación.
+player_hint_exhale	Primero baja el pecho y luego el vientre se recoge suavemente. El movimiento acompaña la exhalación.
+player_prev	Postura anterior
+player_pause	Pausa
+player_next_step	Postura siguiente
+player_speed	Ritmo %1$s
+player_hold_n	Respiraciones ×%1$d
+player_hold_method	Respiraciones: como en la serie
+player_phase_len	Fase %1$d s
+player_metal_dog_short	Perro de metal
+player_metal_dog	Respiración del perro de metal
+player_metal_dog_hint	Mantén la postura. Exhalaciones cortas y rápidas por la nariz, impulsadas por el vientre; la inhalación llega sola. El tiempo de práctica está en pausa.
+player_continue	Continuar
+player_done	%1$s completada
+player_done_stats	%1$d posiciones · unos %2$d min
+player_finish	Listo
+finish_how	¿Qué tal ha ido?
+finish_easy	Fácil
+finish_easy_hint	Añadiremos una ronda o un apoyo de manos más exigente
+finish_ok	Justo bien
+finish_ok_hint	Lo mantenemos; una ronda más cada tres sesiones
+finish_hard	Difícil
+finish_hard_hint	Menos carga y respiraciones más cortas
+finish_zones	¿Te molesta algo?
+goal_joints	Articulaciones y columna móviles
+goal_youth	Bajar mi edad de movimiento
+goal_shape	Un cuerpo más esbelto y tonificado
+goal_strength	Fuerza y resistencia
+goal_calm	Calma y energía
+home_age_label	Edad de movimiento
+home_age_none	Cinco pruebas sencillas muestran qué edad tiene tu cuerpo al moverse. Repítelas cada mes y mira cómo baja.
+home_age_retake	Repetir la prueba
+home_rounds	Rondas
+home_support	Apoyo de manos
+home_support_wrists	Solo sobre los puños, por las muñecas.
+home_phase	Duración de la inhalación y la exhalación
+home_phase_hint	El objetivo son 7–9 segundos. Empieza donde te resulte fácil; la app la irá alargando.
+home_session_line	Rondas: %1$d · ~%2$d min · %3$s · fase %4$s s
+home_tune	Ajustar
+home_tune_hide	Ocultar ajustes
+injury_wrists_hint	Puños en lugar de palmas, menos carga en las muñecas
+injury_lumbar_hint	Flexiones hacia atrás profundas sustituidas por suaves
+injury_neck_hint	Sin cabeza hacia atrás ni inversiones
+injury_knees_hint	Zancadas y posturas de rodillas más suaves
+joint_wrists	Muñecas
+joint_shoulders	Hombros
+joint_lumbar	Zona lumbar
+joint_neck	Cuello
+joint_knees	Rodillas
+level_beginner	Estoy empezando
+level_beginner_hint	Nuevo en el yoga o tras una larga pausa
+level_experienced	Algo de experiencia
+level_experienced_hint	Conozco las posturas básicas y he hecho Surya Namaskar
+level_advanced	Práctica regular
+level_advanced_hint	Surya Namaskar me resulta fácil, quiero un reto
+onb_welcome_title	Mudrya Yoga
+onb_welcome_text	Yoga que se adapta a ti: prácticas cortas cada día, una respiración para cada movimiento y una carga que crece contigo.
+onb_welcome_method	Cuatro preguntas rápidas y tu plan diario estará listo.
+onb_start	Empezar
+onb_next	Siguiente
+onb_finish	Listo
+onb_back	Atrás
+onb_about_title	Sobre ti
+onb_about_hint	Para elegir la carga adecuada y sustituir las posturas que no te convienen.
+onb_sex	Sexo
+onb_age	Edad
+onb_goals_title	¿Qué quieres conseguir?
+onb_goals_hint	Puedes elegir varias.
+onb_level_title	Tu experiencia
+onb_limits_title	¿Alguna limitación?
+onb_limits_hint	La app quita o sustituye las posturas que cargan estas zonas.
+onb_limits_none	Sin limitaciones
+onb_limits_doctor	Si tienes dolor, lesiones, estás embarazada o tienes una enfermedad crónica, consulta a un médico antes de empezar.
+phase_value	%1$s s
+profile_level	Experiencia
+profile_goals	Objetivos
+profile_limits	Limitaciones
+profile_edit	Editar respuestas
+profile_data	Datos
+profile_data_hint	Todo se queda en este teléfono. No hace falta cuenta.
+profile_reset	Borrar todos los datos
+profile_reset_title	¿Borrar todos los datos?
+profile_reset_text	Tu perfil, el historial de práctica y los resultados de las pruebas se borrarán para siempre.
+profile_reset_yes	Borrar
+profile_reset_no	Cancelar
+progress_week	Últimos 7 días, minutos
+progress_history	Historial
+progress_empty	Aquí aparecerán tus prácticas.
+progress_minutes	%1$d min
+progress_unfinished	sin terminar
+progress_age_better	%1$d más joven desde la primera prueba
+progress_age_worse	%1$d mayor desde la primera prueba
+progress_age_same	Sin cambios desde la primera prueba
+sex_female	Mujer
+sex_male	Hombre
+stat_streak	días seguidos
+stat_best_streak	mejor racha
+stat_sessions	sesiones
+stat_minutes	minutos
+support_fists	sobre los puños
+support_palms	sobre las palmas
+support_fingers	sobre las yemas de los dedos
+test_intro_title	Prueba de edad de movimiento
+test_intro_text	Cinco ejercicios y un chequeo de salud de cinco preguntas, unos 15 minutos. Necesitarás algo de espacio, una esterilla, un cronómetro y una cinta métrica. Puedes saltarte cualquier paso. Al final: tu edad de movimiento, índice de masa corporal y grado de obesidad, riesgo por cintura, forma cardíaca y resistencia.
+test_disclaimer	Es una estimación según normas de edad, no una medición médica.
+test_start	Hacer la prueba
+test_later	Más tarde
+test_n_of	Prueba %1$d de %2$d
+test_record	Guardar
+test_skip	Saltar
+test_done	Listo
+test_sit_rise	Sentarse y levantarse del suelo
+test_sit_rise_how	Descalzo, siéntate en el suelo con las piernas cruzadas y vuelve a levantarte, sin apoyos si puedes. Empiezas con 10 puntos. Menos 1 por cada apoyo (mano, antebrazo, rodilla, lado de la pierna), menos 0,5 por perder el equilibrio.
+test_fold	Flexión hacia delante de pie
+test_fold_how	Súbete a un escalón o a una caja firme, rodillas estiradas. Inclínate despacio y baja las manos. Los centímetros por debajo de los pies suman, los que faltan restan.
+test_balance	Equilibrio con los ojos cerrados
+test_balance_how	Sobre una pierna, manos en las caderas, cierra los ojos. Tiempo hasta que el otro pie toque el suelo o se mueva el pie de apoyo. El mejor de tres intentos.
+test_push_ups	Flexiones
+test_push_ups_how	Flexiones clásicas sobre las puntas de los pies, el pecho casi toca el suelo. Todas las que puedas sin descanso y con buena técnica.
+test_hr	Recuperación cardíaca
+test_hr_how	Haz 6 rondas rápidas del saludo, tómate el pulso enseguida y otra vez a los 60 segundos. Introduce la diferencia. Sáltala si no tienes pulsómetro.
+test_result_label	Tu edad de movimiento
+test_result_passport	edad real %1$d
+test_result_younger	Tu cuerpo se mueve %1$d años más joven que tu edad.
+test_result_older	Tu cuerpo se mueve %1$d años mayor que tu edad. La práctica regular lo cambiará; repite la prueba dentro de un mes.
+test_result_same	Coincide con tu edad real.
+unit_points	puntos
+unit_cm	cm
+unit_sec	segundos
+unit_times	repet.
+unit_bpm	lpm
+rest_title	Descanso tumbado
+rest_hint	Túmbate boca arriba, brazos a lo largo del cuerpo, palmas hacia arriba. A continuación: ronda %1$d.
+rest_skip	Continuar
+path_week	Camino de 8 semanas · semana %1$d, día %2$d
+path_again	Otra vez
+path_done	Hecho hoy
+path_rest	Día de descanso
+path_rest_hint	La recuperación es parte del entrenamiento. Sal a caminar o haz la sesión corta de la mañana.
+path_rest_light	10 minutos por la mañana
+path_test	Día de prueba
+path_test_hint	Haz la prueba de edad de movimiento para ver qué está cambiando.
+path_all_sets	Todas las series →
+home_age_due	Han pasado dos semanas, es hora de repetir la prueba.
+home_relax	Descanso entre rondas
+home_relax_off	desactivado
+home_relax_hint	Tumbado boca arriba con temporizador. Puedes terminar antes.
+tv_button	TV
+tv_on	La práctica está en la televisión
+tv_remote	Tu teléfono es el mando: pausa, atrás, siguiente, ritmo.
+settings_title	Ajustes
+settings_practice	Durante la práctica
+settings_sound	Sonido al cambiar de fase
+settings_sound_hint	Un pitido corto: más agudo al inhalar, más grave al exhalar. Practica sin mirar la pantalla.
+player_scheme	Esquema
+player_video	Vídeo
+videos_title	Vídeos de la instructora
+videos_hint	Añade tu propio vídeo a cualquier postura: grábate a ti o a tu profesor. Un vídeo del lado derecho se reproduce también, en espejo, para el izquierdo. Se reproduce sin sonido: la respiración y la voz siguen siendo de la app.
+videos_settings_hint	Tus propios vídeos para las posturas, en lugar del esquema.
+videos_open	Elegir vídeos
+videos_coverage	Vídeos: %1$d de %2$d posturas
+videos_has	vídeo añadido
+videos_none	esquema
+videos_add	Añadir
+videos_replace	Sustituir
+videos_remove	Quitar
+videos_failed	No se pudo leer este archivo.
+calendar_summary	Días con práctica: %1$d · minutos: %2$d
+challenge_title	108 rondas
+challenge_hint	El número tradicional: 108 rondas del saludo al sol a tu ritmo. Se cuentan desde el día de inicio: cada práctica «Sol» terminada o Surya Namaskar clásico.
+challenge_start	Empezar el reto
+challenge_progress	%1$d de %2$d
+challenge_left	Quedan %1$d rondas · días de práctica: %2$d
+challenge_done	¡Hecho! 108 rondas en %1$d días de práctica.
+challenge_reset	Detener el reto
+challenge_again	Empezar de nuevo
+body_title	Peso y cintura
+body_hint	Mide una vez por semana, por la mañana: importa la tendencia, no un número aislado.
+body_weight	Peso
+body_waist	Cintura
+body_kg	%1$s kg
+body_cm	%1$s cm
+body_add	Añadir la medida de hoy
+body_save	Guardar
+age_chart_legend	Naranja — edad de movimiento, gris — edad real. Más bajo es mejor.
+settings_figure3d	Figura 3D
+settings_figure3d_hint	La marioneta de madera: transiciones suaves, manos y pies se quedan en el suelo; gírala con el dedo. Desactivado — el esquema plano con el brillo de la respiración.
+library_title	Biblioteca
+library_hint	Las %1$d posturas de la biblioteca (según «2100 Asanas» de D. Lacerda) por capítulos y secciones, gratis para consultar: cualquier postura se abre en la marioneta y se añade a tu serie con «＋». Reproducir secciones enteras es Premium.
+library_search	Buscar: paloma, bakasana, montaña…
+library_found	Secciones encontradas: %1$d
+library_poses	%1$d posturas
+library_card	Biblioteca de posturas: %1$d
+library_card_hint	Una biblioteca de más de 1800 posturas: nombres, sánscrito, cada postura en la marioneta.
+library_open	Abrir la biblioteca
+close	Cerrar
+back	Atrás
+builder_title	Creador de series
+builder_card	Crea tu serie
+builder_card_hint	Posturas de las prácticas principales, del calentamiento y de la biblioteca de más de 1800 posturas; el orden se cambia arrastrando. Pruebas gratis restantes: %1$d de 5.
+builder_card_hint_premium	Posturas de las prácticas principales, del calentamiento y de la biblioteca de más de 1800 posturas; el orden se cambia arrastrando. Premium: usos ilimitados.
+builder_open	Abrir el creador
+builder_hint	Reúne posturas con «＋», ordénalas manteniendo pulsada y arrastrando una fila, y prueba la serie en el reproductor con la marioneta 3D.
+builder_runs_left	Pruebas gratis restantes: %1$d de %2$d. Después: Premium por un mes, un año o para siempre.
+builder_new	Nueva serie
+builder_new_name	Mi serie %1$d
+builder_empty	Aún no hay series: crea la primera.
+builder_edit	Editar
+builder_test	Probar la serie
+builder_name	Nombre de la serie
+builder_drag_hint	Mantén pulsada una fila y arrástrala para cambiar el orden. Toca una postura para verla en la marioneta.
+builder_no_poses	Aún no hay posturas: añádelas con «＋».
+builder_add	Añadir posturas
+builder_delete	Borrar la serie
+builder_pick_title	Añadir posturas
+builder_in_set	En la serie: %1$d
+builder_tab_core	Prácticas principales
+builder_tab_library	Biblioteca
+builder_done	Listo
+builder_more	Y %1$d más: afina la búsqueda.
+builder_add_to_set	＋ Añadir a la serie
+trial_title	Prueba gratuita
+trial_text	Tus propias series se pueden iniciar gratis %1$d veces en total. Quedan: %2$d. Después necesitarás Premium: por un mes, un año o para siempre.
+trial_over_title	Se acabaron las pruebas gratis
+trial_over_text	Has usado los %1$d inicios gratis de tus series. Premium desbloquea usos ilimitados, todas las series y toda la biblioteca.
+trial_run	Iniciar (quedan: %1$d)
+trial_premium	Hazte Premium
+library_show	Posturas
+library_hide	Ocultar
+library_added	Añadida a «%1$s»
+health_n_of	Chequeo de salud · %1$d de %2$d
+health_body_title	Altura y peso
+health_body_how	Por la mañana, antes del desayuno, sin zapatos. Con esto calculamos el índice de masa corporal y el grado de obesidad según la escala de la OMS.
+health_height	Altura
+health_weight	Peso
+health_waist_title	Cintura
+health_waist_how	Mide a la altura del ombligo, de pie, en una exhalación tranquila, la cinta ajustada sin apretar. La cintura refleja la grasa abdominal (visceral) mejor que el peso.
+health_pulse_title	Pulso en reposo
+health_pulse_how	Siéntate tranquilo 5 minutos, luego cuenta el pulso en la muñeca o el cuello durante 30 segundos y multiplica por 2.
+health_bpm	%1$d lpm
+health_stairs_title	Prueba de las escaleras
+health_stairs_how	Sube 4 pisos (unos 60 escalones) a paso ligero, sin pararte ni correr. ¿Cuánto has tardado? (Prueba de las escaleras de la Sociedad Europea de Cardiología.) Sáltala si tienes problemas de corazón.
+health_stairs_45	menos de 45 s
+health_stairs_60	45–60 s
+health_stairs_90	1–1,5 min
+health_stairs_slow	más de 1,5 min
+health_stairs_cannot	no pude
+health_sitting_title	Tiempo sentado
+health_sitting_how	¿Cuántas horas al día pasas sentado: trabajo, coche, sofá, pantalla?
+health_hours	%1$d h al día
+health_result_title	Chequeo de salud
+health_overall_good	En general: buena forma
+health_overall_ok	En general: bien, con margen de mejora
+health_overall_risk	En general: hay factores de riesgo
+health_overall_high	En general: varios factores de riesgo serios
+health_m_bmi	Índice de masa corporal %1$s
+health_m_whtr	Cintura/altura %1$s
+health_m_waist	Cintura %1$s cm
+health_m_hr	Pulso en reposo %1$d
+health_m_stairs	Prueba de las escaleras
+health_m_sitting	Sentado %1$d h al día
+health_bmi_under	Bajo peso (IMC inferior a 18,5)
+health_bmi_normal	Peso normal (18,5–24,9)
+health_bmi_over	Sobrepeso, preobesidad (25–29,9)
+health_bmi_obese1	Obesidad de clase I (30–34,9)
+health_bmi_obese2	Obesidad de clase II (35–39,9)
+health_bmi_obese3	Obesidad de clase III (40 o más)
+health_whtr_good	Menos de 0,5: sin obesidad abdominal
+health_whtr_risk	0,5–0,6: la grasa abdominal aumenta el riesgo
+health_whtr_high	0,6 o más: riesgo cardiometabólico alto
+health_waist_good	Dentro de la norma para tu sexo
+health_waist_risk	Por encima de la norma: riesgo aumentado
+health_waist_high	Muy por encima de la norma: riesgo alto
+health_hr_excellent	Excelente: un corazón entrenado
+health_hr_good	Bueno
+health_hr_average	Medio
+health_hr_below	Por debajo de la media: el corazón trabaja más en reposo
+health_hr_poor	Baja forma física
+health_hr_tachy	100 o más: consulta a un médico antes de practicar con intensidad
+health_stairs_fit	Unos 9–10 MET: buena capacidad cardíaca y pulmonar
+health_stairs_good	Buena capacidad
+health_stairs_average	Media: la resistencia se puede desarrollar
+health_stairs_low	Menos de 8 MET: resistencia baja, conviene hablarlo con un médico
+health_stairs_cannot_v	Resistencia muy baja: empieza con suavidad y consulta a un médico
+health_sit_good	Poco tiempo sentado: genial
+health_sit_ok	Moderado: haz pausas activas cada hora
+health_sit_risk	Más de 8 horas: un factor de riesgo; alrededor de una hora de movimiento al día lo compensa
+health_target	Para un IMC normal: menos %1$s kg (hasta %2$s kg).
+health_disclaimer	Un cribado con escalas abiertas (OMS, NICE, ESC), no un diagnóstico.
+health_premium_pitch	Premium construye tu plan alrededor de estas cifras: todas las series y la biblioteca, series propias ilimitadas y sustituciones suaves para las zonas sensibles.
+health_premium_button	Obtener mi plan Premium
+builder_hold	Mantener cada postura
+builder_hold_n	%1$d respiraciones
+home_my_sets	Mis series
+settings_display	Pantalla
+settings_show_cues	Indicaciones y descripción de la postura
+settings_show_next	«Siguiente» y «desde» bajo el título
+settings_show_sanskrit	Nombres en sánscrito
+settings_show_breath	Barra de respiración
+settings_large_text	Texto grande en el reproductor
+settings_thumbnails	Imágenes de las posturas
+settings_thumbnails_hint	Pequeñas imágenes de la marioneta en la biblioteca, el creador y la pantalla de inicio.
+settings_camera	Ángulo de cámara
+camera_side	Lateral
+camera_three_quarter	Tres cuartos
+camera_front	Frontal
+account_title	Cuenta
+account_button	Cuenta: iniciar sesión o registrarse
+account_button_signed	Cuenta: %1$s
+account_login	Iniciar sesión
+account_register	Crear cuenta
+account_email	Correo electrónico
+account_name	Nombre
+account_password	Contraseña (al menos %1$d caracteres)
+account_register_hint	Tu progreso actual, tus series y los resultados de las pruebas pasan a la nueva cuenta.
+account_register_do	Crear cuenta
+account_login_do	Iniciar sesión
+account_logout	Cerrar sesión
+account_delete	Borrar la cuenta
+account_delete_title	¿Borrar la cuenta?
+account_delete_text	La cuenta y todo su progreso (prácticas, series propias, pruebas y medidas) se borrarán de este dispositivo para siempre. La suscripción se gestiona en la tienda y no se cancela automáticamente.
+account_delete_confirm	Borrar para siempre
+account_local_note	Cada cuenta guarda su propio progreso en este dispositivo, así varias personas pueden practicar en un mismo teléfono. La contraseña se guarda solo como hash. Para pasar el progreso a otro teléfono, usa la copia de seguridad en Ajustes.
+account_err_email	Revisa la dirección de correo.
+account_err_short	La contraseña debe tener al menos %1$d caracteres.
+account_err_exists	Ya existe una cuenta con este correo: inicia sesión.
+account_err_not_found	No hay ninguna cuenta con este correo en este dispositivo.
+account_err_wrong	Contraseña incorrecta.
+builder_pin_do	＋ Añadir a la pantalla de inicio
+builder_unpin	Quitar de la pantalla de inicio
+builder_preview	Vista previa %1$d / %2$d · %3$s
+settings_voice	Guía por voz
+settings_voice_hint	Usa el motor de voz del teléfono. Cuando habla la voz, se omite el pitido.
+voice_off	Desactivada
+voice_breath	Solo respiración
+voice_names	Posturas y respiración
+voice_full	Con indicaciones
+settings_vibration	Vibración
+settings_vibration_hint	Una ligera vibración en cada cambio entre inhalación y exhalación.
+settings_tv	TV
+settings_tv_auto	Mostrar en la televisión
+settings_tv_auto_hint	Cuando hay una segunda pantalla conectada, la figura y la respiración pasan allí y el teléfono se convierte en mando.
+settings_tv_how	Conecta la televisión por pantalla inalámbrica (Miracast, Cast, Smart View) o con un adaptador HDMI y abre una práctica.
+settings_tv_open	Abrir ajustes de transmisión
+reminder_channel	Recordatorios de práctica
+reminder_title	Hora de practicar
+reminder_text	Tu esterilla te espera. Incluso la sesión corta de la mañana mantiene tu racha.
+trial_reminder_title	Tu prueba termina pronto
+trial_reminder_text	Dentro de 2 días la tienda cobrará la suscripción. Puedes cancelarla desde tu perfil con un toque.
+reminder_section	Recordatorios
+reminder_toggle	Recordarme practicar
+reminder_toggle_hint	Una notificación a la hora elegida. Funciona sin conexión.
+reminder_denied	Sin permiso de notificaciones, los recordatorios no pueden llegar. Puedes permitirlo en los ajustes del teléfono.
+reminder_hour_step	1 h
+backup_section	Copia de seguridad
+backup_hint	Guarda tu progreso en un archivo, por ejemplo en la nube o en un mensajero. Útil al cambiar de teléfono.
+backup_export	Guardar en un archivo
+backup_import	Restaurar desde un archivo
+backup_saved	Guardado.
+backup_failed	No se pudo leer ni escribir el archivo.
+backup_empty	El archivo no contiene datos de la app.
+backup_confirm_title	¿Restaurar desde el archivo?
+backup_confirm_text	Los datos actuales se sustituirán por los del archivo: %1$d sesiones, %2$d pruebas.
+backup_confirm_yes	Restaurar
+backup_restored	Datos restaurados.
+paywall_title	Premium
+paywall_benefit_chandra	Prácticas completas «Sol y Luna» (hasta dos horas), series avanzadas, Chandra Namaskar clásico
+paywall_benefit_bundle	Tus series del creador: usos ilimitados
+paywall_benefit_short	Secciones enteras de la biblioteca de posturas como prácticas
+paywall_benefit_future	Nuevas series y programas a medida que salgan
+paywall_free_core	Gratis para siempre: las prácticas «Sol» y «Luna», Surya Namaskar clásico, la serie de la mañana y «Espalda sin dolor», la biblioteca de posturas y el creador (5 usos de tus series), la prueba de movilidad y el chequeo de salud, progreso, recordatorios y transmisión a la TV.
+paywall_loading	Cargando planes…
+paywall_unavailable	No se cargaron los planes. El pago funciona si la app está instalada desde %1$s y tienes conexión.
+paywall_trial_terms	%1$d días gratis. Primer cobro el %2$s, %3$s. Recibirás un aviso 2 días antes.
+paywall_try	Prueba %1$d días gratis
+paywall_buy	Comprar por %1$s
+paywall_cancel_anytime	Cancela cuando quieras: Perfil → Suscripción → Cancelar suscripción.
+paywall_restore	Restaurar compras
+paywall_restore_none	No se encontraron compras para esta cuenta.
+paywall_not_now	Ahora no
+plan_month	Mes
+plan_year	Año
+plan_lifetime	Para siempre
+plan_per_month	%1$s al mes
+plan_per_year	%1$s al año
+plan_once	%1$s una vez
+sub_section	Suscripción
+sub_free	Versión gratuita
+sub_trial	Prueba hasta el %1$s
+sub_premium	Premium activo
+sub_premium_until	Premium hasta el %1$s
+sub_lifetime	Premium para siempre
+sub_get	Hazte Premium
+sub_cancel	Cancelar suscripción
+set_locked	Desbloquear con Premium
+settings_debug	Depuración
+settings_debug_premium	Premium sin compra
+settings_debug_premium_hint	Solo versiones de prueba, para revisar las series bloqueadas.
+sets_classic	Clásico
+sets_classic_hint	Surya y Chandra Namaskar tradicionales: 12 y 16 posiciones, una ronda completa con la pierna derecha y con la izquierda.
+sets_rings	Prácticas principales
+sets_rings_hint	«Sol» y «Luna»: transiciones fluidas y una respiración para cada movimiento.
+sets_full	Ciclo completo
+sets_full_hint	Una práctica larga: «Sol» pasa directamente a «Luna», luego un calentamiento de siete secuencias cortas y una vuelta a la calma hasta la relajación final. Para practicantes con experiencia: hasta dos horas.
+sets_core	Serie avanzada y vuelta a la calma
+sets_core_hint	La serie avanzada, la transición y la vuelta a la calma final.
+sets_extra	Elementos adicionales
+sets_extra_hint	Progresiones para el calentamiento y la vuelta a la calma, cuando lo básico resulte fácil.
+sets_start	Calentamiento
+sets_start_hint	Siete secuencias cortas que calientan todo el cuerpo.
+set_size	%1$d posiciones · ~%2$d min · rondas: %3$d
+promo_title	Código de activación
+promo_hint	¿Tienes un código Premium por un mes, un año o para siempre? Introdúcelo aquí.
+promo_activate	Activar
+promo_ok_month	Premium activado durante 30 días
+promo_ok_year	Premium activado durante un año
+promo_ok_lifetime	Premium activado para siempre
+promo_bad	El código no es válido. Revisa las letras y los números.
+promo_used	Este código ya se ha usado
+promo_active_until	Premium por código hasta el %1$s
+promo_active_lifetime	Premium por código: para siempre
+health_breath_title	Respiración tranquila
+health_breath_how	Siéntate cómodo y respira como siempre, sin controlarlo. Inicia el temporizador y cuenta las respiraciones completas (inhalación + exhalación) durante un minuto. Así se fija la duración inicial de la inhalación y la exhalación en la práctica; puedes alargarla con el botón de fase del reproductor.
+health_breath_value	%1$d respiraciones por minuto
+health_breath_phase	Fase inicial en la práctica: inhalar %1$s s, exhalar lo mismo
+health_breath_start	Iniciar temporizador de 1 minuto
+health_breath_stop	Detener el temporizador
+health_breath_left	%1$d s: cuenta las respiraciones
+health_breath_done	Se acabó el tiempo: introduce cuántas respiraciones has contado
+health_m_breath	Respiración %1$d por minuto
+health_breath_slow	Respiración lenta y profunda: una buena base para fases largas
+health_breath_normal	Respiración tranquila normal (12–20 por minuto)
+health_breath_fast	Respiración rápida en reposo: empieza con fases cortas y alárgalas poco a poco
+sets_favorites	Series favoritas
+sets_ready	Series listas
+sets_ready_hint	Toca una serie para ver su estructura y ajustes antes de empezar.
+sets_more	Más series: calentamiento, vuelta a la calma y extras ▾
+sets_more_hide	Ocultar series adicionales ▴
+set_size_short	%1$d posiciones · ~%2$d min
+session_minutes	~%1$d min
+session_poses	%1$d posiciones
+session_rounds_chip	%1$d rondas
+session_hold	Respiraciones en cada postura
+session_hold_method	como en la serie
+session_phase_line	Inhalación y exhalación: %1$s s cada una. Alárgalas en el reproductor con el botón de fase.
+session_structure	Estructura
+session_side_right	lado derecho
+session_side_left	lado izquierdo
+session_steps	%1$d pasos
+session_wrist	Carga en las muñecas
+session_wrist_low	Suave: sobre los puños
+session_wrist_mid	Media: sobre las palmas
+session_wrist_high	Alta: sobre los dedos
+session_locked	Esta serie es parte de Premium.
+session_start	Empezar
+extras_title	Elementos adicionales
+extras_all	Todos los elementos adicionales
+extras_all_hint	Cada elemento se coloca en su lugar dentro de la serie
+extras_positions	+%1$d posiciones
+setlib_title	Biblioteca de series
+setlib_card	Biblioteca de series
+setlib_open	Abrir la biblioteca de series
+setlib_card_hint	%1$d series por objetivo (espalda, articulaciones, caderas, figura, fuerza, sueño), más series adicionales y 6 series de entrenamiento. Elegidas para ti tras las pruebas.
+setlib_hint	Elige una serie para tu objetivo. Tras el chequeo de salud y la prueba de movimiento, la app pone primero las que te convienen; las posturas desaconsejadas para ti se sustituyen en cualquier serie.
+setlib_for_you	Elegidas para ti
+setlib_take_test	Haz la prueba de movimiento y el chequeo de salud, y la app elegirá series para ti.
+setlib_training	Entrenamiento por series: 6 series
+setlib_training_hint	Series cortas de 15–20 minutos dos veces al día (mañana y noche) dan más que una sesión larga. Alterna las series de un día a otro; la serie integral es para los días ocupados, no para la práctica habitual. Tras cada postura intensa, su contrapostura. Trabaja en tu límite, pero nunca fuerces las articulaciones: dominar una serie lleva meses.
+setlib_book	Series adicionales
+setlib_book_hint	Elementos adicionales de las prácticas «Sol» y «Luna», el calentamiento, la vuelta a la calma y una serie avanzada como prácticas independientes. También puedes activarlos en las series principales desde la ficha de la sesión.
+advice_back	Por la zona lumbar
+advice_neck	Por el cuello
+advice_knees	Por las rodillas
+advice_wrists	Suave con las muñecas
+advice_goal_joints	Para tu objetivo: articulaciones sanas
+advice_goal_youth	Para tu objetivo: mantenerte joven
+advice_goal_shape	Para tu objetivo: figura
+advice_goal_strength	Para tu objetivo: fuerza
+advice_goal_calm	Para tu objetivo: calma
+advice_weight	Por el peso y la cintura del chequeo
+advice_heart	Por el pulso y la prueba de las escaleras
+advice_sitting	Pasas mucho tiempo sentado
+advice_breath	Tu respiración en reposo es rápida
+advice_movement_age	Tu edad de movimiento supera tu edad
+session_length	Duración de la práctica
+session_length_min	%1$d min
+session_length_full	Completa
+session_length_shortest	Esta serie no puede durar menos de %1$d min: las posturas ya se mantienen lo mínimo.
+onb_minutes_title	¿Cuántos minutos al día?
+onb_minutes_hint	Cada serie se adapta a este tiempo. Puedes cambiarlo cuando quieras.
+onb_minutes_10	Fácil de encajar en cualquier día
+onb_minutes_20	El mejor equilibrio para resultados visibles
+onb_minutes_40	Una práctica profunda
+onb_plan_title	Tu plan está listo
+onb_plan_hint	Cada día una serie nueva. Marca los días y mantén tu racha.
+onb_plan_first	Día 1: %1$s · ~%2$d min
+onb_plan_start	Empezar la primera práctica
+onb_plan_later	Más tarde
+onb_plan_change	Puedes cambiar el programa en «Series» → «Programas».
+program_day	PROGRAMA · DÍA %1$d DE %2$d
+program_rest	Día de descanso
+program_rest_hint	La recuperación también es parte del programa. Si te apetece, una práctica tranquila.
+program_rest_light	Práctica tranquila
+program_done_title	¡Programa completado!
+program_done_text	Días cumplidos: %1$d de %2$d. Elige el siguiente programa: el hábito ya está ahí.
+program_choose	Elegir un programa
+program_streak	Racha: %1$d días seguidos
+programs_title	Programas
+programs_hint	Un plan de 14–30 días: una serie para cada día según tu objetivo. Las series se ajustan a los minutos que elegiste.
+program_start_btn	Empezar el programa
+program_active	En curso · día %1$d de %2$d
+program_days	%1$d días
+program_stop	Detener el programa
+program_path8	Camino de 8 semanas «Sol y Luna»
+program_path8_hint	Para practicantes con experiencia: prácticas largas «Sol» y «Luna» alternas, con una prueba cada dos semanas.

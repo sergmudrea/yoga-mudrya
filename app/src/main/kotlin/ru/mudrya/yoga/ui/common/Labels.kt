@@ -17,19 +17,19 @@ import ru.mudrya.yoga.model.Support
 val english: Boolean get() = Locale.getDefault().language != "ru"
 
 /** Название позы на языке интерфейса. */
-fun ru.mudrya.yoga.engine.SessionStep.shownTitle(): String = title(english)
+fun ru.mudrya.yoga.engine.SessionStep.shownTitle(): String = if (english) tr(title(true)) else title(false)
 
 /** Подсказки к шагу на языке интерфейса: сначала подсказка шага, потом общие подсказки позы. */
 fun ru.mudrya.yoga.engine.SessionStep.shownCues(): List<String> =
-    if (english) listOfNotNull(cueEn) else listOfNotNull(cueRu) + asana.cuesRu.filter { it != cueRu }
+    if (english) listOfNotNull(cueEn?.let(::tr)) else listOfNotNull(cueRu) + asana.cuesRu.filter { it != cueRu }
 
 /** Описание позы на языке интерфейса. */
-fun ru.mudrya.yoga.model.Asana.shownDescription(): String? = if (english) descriptionEn else descriptionRu
+fun ru.mudrya.yoga.model.Asana.shownDescription(): String? = if (english) descriptionEn?.let(::tr) else descriptionRu
 
 /** Название и описание программы на языке интерфейса. */
-fun programName(p: ru.mudrya.yoga.catalog.ProgramCatalog.Program): String = if (english) p.nameEn else p.nameRu
+fun programName(p: ru.mudrya.yoga.catalog.ProgramCatalog.Program): String = if (english) tr(p.nameEn) else p.nameRu
 
-fun programHint(p: ru.mudrya.yoga.catalog.ProgramCatalog.Program): String = if (english) p.hintEn else p.hintRu
+fun programHint(p: ru.mudrya.yoga.catalog.ProgramCatalog.Program): String = if (english) tr(p.hintEn) else p.hintRu
 
 /** Название сета по его id. */
 @Composable
@@ -38,7 +38,7 @@ fun sequenceName(id: String): String {
         return appContainer().users.state.value.customSets.firstOrNull { it.id == id }?.name ?: id
     }
     val seq = SuryaCatalog.sequence(id)
-    return if (Locale.getDefault().language == "ru") seq.nameRu else seq.nameEn
+    return if (Locale.getDefault().language == "ru") seq.nameRu else tr(seq.nameEn)
 }
 
 @Composable

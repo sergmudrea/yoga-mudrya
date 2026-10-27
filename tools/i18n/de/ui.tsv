@@ -1,0 +1,551 @@
+app_name	Mudrya Yoga
+tab_practice	Üben
+tab_sets	Sets
+tab_progress	Fortschritt
+tab_profile	Profil
+today	Heute
+surya	Surya Namaskar
+chandra	Chandra Namaskar
+start	Start
+coming_soon	Dieser Bildschirm kommt im nächsten Schritt.
+store_label	Build: %1$s
+player_step_of	%1$d von %2$d
+player_phase_move	ÜBERGANG
+player_phase_hold	HALTEN
+player_side_right	RECHTE SEITE
+player_side_left	LINKE SEITE
+player_from	Aus: %1$s
+player_replaced_cycle	Statt „%1$s“ – sanfter Zyklusmodus
+cycle_title	Sanfte Tage
+cycle_hint	Während der Periode kann die App Umkehrhaltungen und die tiefsten Rückbeugen durch ähnliche ruhige Haltungen ersetzen. Du markierst nur Beginn und Ende – sonst wird nichts gespeichert.
+cycle_enable	Einschalten
+cycle_start	Heute begonnen
+cycle_end	Vorbei
+cycle_day	Tag %1$d von höchstens %2$d
+cycle_on	Sanfter Modus: keine Umkehrhaltungen und tiefen Rückbeugen – sie werden automatisch ersetzt.
+cycle_off	Markiere den ersten Tag – die Praxis wechselt für bis zu fünf Tage oder bis zur Markierung des Endes in den sanften Modus.
+cycle_disable	Nicht erfassen
+player_hand_lock	Finger verschränkt
+player_hand_prayer	Handflächen zusammen
+player_replaced	Statt „%1$s“ – schonend für: %2$s
+player_next	Als Nächstes: %1$s
+player_inhale	Einatmen
+player_exhale	Ausatmen
+player_breath_of	Atemzug %1$d von %2$d
+player_belly	Bauch
+player_chest	Brust
+player_hint_inhale	Zuerst füllt sich der Bauch, dann die Brust. Die Bewegung folgt dem Einatmen.
+player_hint_exhale	Zuerst sinkt die Brust, dann zieht sich der Bauch sanft ein. Die Bewegung folgt dem Ausatmen.
+player_prev	Vorherige Haltung
+player_pause	Pause
+player_next_step	Nächste Haltung
+player_speed	Tempo %1$s
+player_hold_n	Atemzüge ×%1$d
+player_hold_method	Atemzüge: wie im Set
+player_phase_len	Phase %1$d s
+player_metal_dog_short	Metallhund
+player_metal_dog	Metallhund-Atmung
+player_metal_dog_hint	Bleib in der Haltung. Kurze, schnelle Ausatmungen durch die Nase aus dem Bauch; das Einatmen kommt von selbst. Die Übungszeit ist angehalten.
+player_continue	Weiter
+player_done	%1$s abgeschlossen
+player_done_stats	%1$d Positionen · etwa %2$d Min.
+player_finish	Fertig
+finish_how	Wie war es?
+finish_easy	Leicht
+finish_easy_hint	Wir fügen eine Runde oder eine schwierigere Handstütze hinzu
+finish_ok	Genau richtig
+finish_ok_hint	So bleibt es; alle drei Einheiten eine Runde mehr
+finish_hard	Schwer
+finish_hard_hint	Weniger Belastung und kürzere Atemzüge
+finish_zones	Stört dich etwas?
+goal_joints	Bewegliche Gelenke und Wirbelsäule
+goal_youth	Mein Bewegungsalter senken
+goal_shape	Schlanker, straffer Körper
+goal_strength	Kraft und Ausdauer
+goal_calm	Ruhe und Energie
+home_age_label	Bewegungsalter
+home_age_none	Fünf einfache Tests zeigen, wie alt sich dein Körper bewegt. Wiederhole sie monatlich und sieh zu, wie es sinkt.
+home_age_retake	Test wiederholen
+home_rounds	Runden
+home_support	Handstütze
+home_support_wrists	Wegen der Handgelenke nur auf Fäusten.
+home_phase	Länge von Ein- und Ausatmen
+home_phase_hint	Ziel sind 7–9 Sekunden. Beginne, wo es leichtfällt; die App verlängert es.
+home_session_line	Runden: %1$d · ~%2$d Min. · %3$s · Phase %4$s s
+home_tune	Anpassen
+home_tune_hide	Einstellungen ausblenden
+injury_wrists_hint	Fäuste statt Handflächen, weniger Last auf den Handgelenken
+injury_lumbar_hint	Tiefe Rückbeugen werden durch sanfte ersetzt
+injury_neck_hint	Kein Kopf nach hinten, keine Umkehrhaltungen
+injury_knees_hint	Sanftere Ausfallschritte und Knien
+joint_wrists	Handgelenke
+joint_shoulders	Schultern
+joint_lumbar	Unterer Rücken
+joint_neck	Nacken
+joint_knees	Knie
+level_beginner	Ich fange an
+level_beginner_hint	Neu im Yoga oder nach einer langen Pause
+level_experienced	Etwas Erfahrung
+level_experienced_hint	Ich kenne die Grundhaltungen und habe Surya Namaskar gemacht
+level_advanced	Regelmäßige Praxis
+level_advanced_hint	Surya Namaskar fällt mir leicht, ich will eine Herausforderung
+onb_welcome_title	Mudrya Yoga
+onb_welcome_text	Yoga, das sich dir anpasst: kurze tägliche Einheiten, ein Atemzug für jede Bewegung und eine Belastung, die mit dir wächst.
+onb_welcome_method	Vier kurze Fragen – und dein Tagesplan steht.
+onb_start	Los geht’s
+onb_next	Weiter
+onb_finish	Fertig
+onb_back	Zurück
+onb_about_title	Über dich
+onb_about_hint	Um die richtige Belastung zu wählen und Haltungen zu ersetzen, die nicht zu dir passen.
+onb_sex	Geschlecht
+onb_age	Alter
+onb_goals_title	Was möchtest du erreichen?
+onb_goals_hint	Mehrfachauswahl möglich.
+onb_level_title	Deine Erfahrung
+onb_limits_title	Gibt es Einschränkungen?
+onb_limits_hint	Die App entfernt oder ersetzt Haltungen, die diese Bereiche belasten.
+onb_limits_none	Keine Einschränkungen
+onb_limits_doctor	Bei Schmerzen, Verletzungen, Schwangerschaft oder chronischen Erkrankungen sprich vor dem Start mit einer Ärztin oder einem Arzt.
+phase_value	%1$s s
+profile_level	Erfahrung
+profile_goals	Ziele
+profile_limits	Einschränkungen
+profile_edit	Antworten ändern
+profile_data	Daten
+profile_data_hint	Alles bleibt auf diesem Telefon. Kein Konto nötig.
+profile_reset	Alle Daten löschen
+profile_reset_title	Alle Daten löschen?
+profile_reset_text	Dein Profil, deine Übungshistorie und deine Testergebnisse werden endgültig gelöscht.
+profile_reset_yes	Löschen
+profile_reset_no	Abbrechen
+progress_week	Letzte 7 Tage, Minuten
+progress_history	Verlauf
+progress_empty	Hier erscheinen deine Übungseinheiten.
+progress_minutes	%1$d Min.
+progress_unfinished	nicht beendet
+progress_age_better	%1$d jünger seit dem ersten Test
+progress_age_worse	%1$d älter seit dem ersten Test
+progress_age_same	Keine Veränderung seit dem ersten Test
+sex_female	Weiblich
+sex_male	Männlich
+stat_streak	Tage in Folge
+stat_best_streak	beste Serie
+stat_sessions	Einheiten
+stat_minutes	Minuten
+support_fists	auf Fäusten
+support_palms	auf Handflächen
+support_fingers	auf Fingerspitzen
+test_intro_title	Test des Bewegungsalters
+test_intro_text	Fünf Übungen und ein Gesundheitscheck mit fünf Fragen, etwa 15 Minuten. Du brauchst etwas Platz, eine Matte, eine Stoppuhr und ein Maßband. Jeder Schritt lässt sich überspringen. Am Ende: dein Bewegungsalter, Body-Mass-Index und Grad des Übergewichts, Taillenrisiko, Herzfitness und Ausdauer.
+test_disclaimer	Das ist eine Einschätzung anhand von Altersnormen, keine medizinische Messung.
+test_start	Test machen
+test_later	Später
+test_n_of	Test %1$d von %2$d
+test_record	Speichern
+test_skip	Überspringen
+test_done	Fertig
+test_sit_rise	Hinsetzen und vom Boden aufstehen
+test_sit_rise_how	Barfuß im Schneidersitz auf den Boden setzen und wieder aufstehen, wenn möglich ohne Abstützen. Start mit 10 Punkten. Minus 1 für jede Stütze (Hand, Unterarm, Knie, Beinseite), minus 0,5 für Gleichgewichtsverlust.
+test_fold	Vorbeuge im Stehen
+test_fold_how	Stell dich auf eine Stufe oder eine stabile Kiste, Knie gestreckt. Langsam nach vorn beugen und nach unten reichen. Zentimeter unterhalb der Füße zählen plus, oberhalb minus.
+test_balance	Gleichgewicht mit geschlossenen Augen
+test_balance_how	Auf einem Bein stehen, Hände an den Hüften, Augen schließen. Zeit, bis der andere Fuß aufsetzt oder sich der Standfuß bewegt. Bester von drei Versuchen.
+test_push_ups	Liegestütze
+test_push_ups_how	Klassische Liegestütze auf den Zehen, die Brust berührt fast den Boden. So viele wie möglich ohne Pause und mit guter Technik.
+test_hr	Herzfrequenz-Erholung
+test_hr_how	Mach 6 schnelle Runden des Sonnengrußes, miss sofort den Puls und nach 60 Sekunden noch einmal. Gib die Differenz ein. Überspringe den Test, wenn du keinen Pulsmesser hast.
+test_result_label	Dein Bewegungsalter
+test_result_passport	Lebensalter %1$d
+test_result_younger	Dein Körper bewegt sich %1$d Jahre jünger als dein Alter.
+test_result_older	Dein Körper bewegt sich %1$d Jahre älter als dein Alter. Regelmäßiges Üben ändert das; wiederhole den Test in einem Monat.
+test_result_same	Entspricht deinem Lebensalter.
+unit_points	Punkte
+unit_cm	cm
+unit_sec	Sekunden
+unit_times	Wdh.
+unit_bpm	S/min
+rest_title	Ruhe im Liegen
+rest_hint	Leg dich auf den Rücken, Arme neben dem Körper, Handflächen nach oben. Als Nächstes kommt Runde %1$d.
+rest_skip	Weiter
+path_week	8-Wochen-Weg · Woche %1$d, Tag %2$d
+path_again	Nochmal
+path_done	Heute erledigt
+path_rest	Ruhetag
+path_rest_hint	Erholung gehört zum Training. Mach einen Spaziergang oder die kurze Morgeneinheit.
+path_rest_light	10 Minuten am Morgen
+path_test	Testtag
+path_test_hint	Mach den Test des Bewegungsalters, um zu sehen, was sich verändert.
+path_all_sets	Alle Sets →
+home_age_due	Zwei Wochen sind vergangen – Zeit, den Test zu wiederholen.
+home_relax	Ruhe zwischen den Runden
+home_relax_off	aus
+home_relax_hint	Auf dem Rücken liegend mit Timer. Du kannst früher aufhören.
+tv_button	TV
+tv_on	Die Übung läuft auf dem Fernseher
+tv_remote	Dein Telefon ist die Fernbedienung: Pause, zurück, weiter, Tempo.
+settings_title	Einstellungen
+settings_practice	Während der Übung
+settings_sound	Ton beim Phasenwechsel
+settings_sound_hint	Ein kurzer Ton: höher zum Einatmen, tiefer zum Ausatmen. Üben, ohne auf den Bildschirm zu schauen.
+player_scheme	Schema
+player_video	Video
+videos_title	Videos der Lehrerin
+videos_hint	Hänge an jede Haltung einen eigenen Clip: von dir oder deiner Lehrerin. Ein Clip für die rechte Seite wird gespiegelt auch für die linke abgespielt. Er läuft ohne Ton – Atem und Stimme bleiben bei der App.
+videos_settings_hint	Eigene Clips für die Haltungen statt des Schemas.
+videos_open	Clips auswählen
+videos_coverage	Clips: %1$d von %2$d Haltungen
+videos_has	Clip vorhanden
+videos_none	Schema
+videos_add	Hinzufügen
+videos_replace	Ersetzen
+videos_remove	Entfernen
+videos_failed	Diese Datei konnte nicht gelesen werden.
+calendar_summary	Übungstage: %1$d · Minuten: %2$d
+challenge_title	108 Runden
+challenge_hint	Die traditionelle Zahl: 108 Runden des Sonnengrußes im eigenen Tempo. Gezählt ab dem Starttag: jede abgeschlossene „Sonne“ oder klassischer Surya Namaskar.
+challenge_start	Challenge starten
+challenge_progress	%1$d von %2$d
+challenge_left	Noch %1$d Runden · Übungstage: %2$d
+challenge_done	Geschafft! 108 Runden in %1$d Übungstagen.
+challenge_reset	Challenge beenden
+challenge_again	Neu starten
+body_title	Gewicht und Taille
+body_hint	Einmal pro Woche morgens messen: Der Trend zählt, nicht eine einzelne Zahl.
+body_weight	Gewicht
+body_waist	Taille
+body_kg	%1$s kg
+body_cm	%1$s cm
+body_add	Heutige Messung hinzufügen
+body_save	Speichern
+age_chart_legend	Orange – Bewegungsalter, grau – Lebensalter. Niedriger ist besser.
+settings_figure3d	3D-Figur
+settings_figure3d_hint	Die Holz-Gliederpuppe: weiche Übergänge, Hände und Füße bleiben am Boden; mit dem Finger drehbar. Aus – das flache Schema mit Atemleuchten.
+library_title	Bibliothek
+library_hint	Alle %1$d Haltungen der Bibliothek (nach D. Lacerdas „2100 Asanas“) nach Kapiteln und Abschnitten – kostenlos ansehen: Jede Haltung öffnet sich auf der Gliederpuppe und lässt sich mit „＋“ zu deinem Set hinzufügen. Ganze Abschnitte abspielen ist Premium.
+library_search	Suche: Taube, Bakasana, Berg…
+library_found	Gefundene Abschnitte: %1$d
+library_poses	%1$d Haltungen
+library_card	Haltungsbibliothek: %1$d Haltungen
+library_card_hint	Eine Bibliothek mit über 1800 Haltungen: Namen, Sanskrit, jede Haltung auf der Gliederpuppe.
+library_open	Bibliothek öffnen
+close	Schließen
+back	Zurück
+builder_title	Set-Baukasten
+builder_card	Eigenes Set bauen
+builder_card_hint	Haltungen aus den Hauptübungen, dem Aufwärmen und der Bibliothek mit über 1800 Haltungen; Reihenfolge per Ziehen. Freie Testläufe übrig: %1$d von 5.
+builder_card_hint_premium	Haltungen aus den Hauptübungen, dem Aufwärmen und der Bibliothek mit über 1800 Haltungen; Reihenfolge per Ziehen. Premium: unbegrenzte Läufe.
+builder_open	Baukasten öffnen
+builder_hint	Sammle Haltungen mit „＋“, ordne sie per langem Drücken und Ziehen einer Zeile und teste das Set im Player auf der 3D-Gliederpuppe.
+builder_runs_left	Freie Testläufe übrig: %1$d von %2$d. Danach Premium für einen Monat, ein Jahr oder für immer.
+builder_new	Neues Set
+builder_new_name	Mein Set %1$d
+builder_empty	Noch keine Sets – erstelle das erste.
+builder_edit	Bearbeiten
+builder_test	Set testen
+builder_name	Name des Sets
+builder_drag_hint	Lange auf eine Zeile drücken und ziehen, um die Reihenfolge zu ändern. Tippe auf eine Haltung, um sie auf der Gliederpuppe zu sehen.
+builder_no_poses	Noch keine Haltungen – füge sie mit „＋“ hinzu.
+builder_add	Haltungen hinzufügen
+builder_delete	Set löschen
+builder_pick_title	Haltungen hinzufügen
+builder_in_set	Im Set: %1$d
+builder_tab_core	Hauptübungen
+builder_tab_library	Bibliothek
+builder_done	Fertig
+builder_more	Und %1$d weitere – verfeinere die Suche.
+builder_add_to_set	＋ Zum Set hinzufügen
+trial_title	Kostenloser Testlauf
+trial_text	Eigene Sets kannst du insgesamt %1$d-mal kostenlos starten. Übrig: %2$d. Danach brauchst du Premium – für einen Monat, ein Jahr oder für immer.
+trial_over_title	Kostenlose Läufe aufgebraucht
+trial_over_text	Du hast alle %1$d kostenlosen Läufe eigener Sets genutzt. Premium schaltet unbegrenzte Läufe, alle Sets und die ganze Bibliothek frei.
+trial_run	Starten (übrig: %1$d)
+trial_premium	Premium holen
+library_show	Haltungen
+library_hide	Ausblenden
+library_added	Zu „%1$s“ hinzugefügt
+health_n_of	Gesundheitscheck · %1$d von %2$d
+health_body_title	Größe und Gewicht
+health_body_how	Morgens vor dem Frühstück, ohne Schuhe. Daraus berechnen wir den Body-Mass-Index und den Grad des Übergewichts nach WHO-Skala.
+health_height	Größe
+health_weight	Gewicht
+health_waist_title	Taille
+health_waist_how	Auf Höhe des Nabels im Stehen messen, bei ruhigem Ausatmen, das Maßband anliegend, aber nicht drückend. Die Taille zeigt Bauchfett (viszerales Fett) besser als das Gewicht.
+health_pulse_title	Ruhepuls
+health_pulse_how	Sitz 5 Minuten ruhig, dann zähle den Puls am Handgelenk oder Hals 30 Sekunden lang und multipliziere mit 2.
+health_bpm	%1$d S/min
+health_stairs_title	Treppentest
+health_stairs_how	Steig 4 Stockwerke (etwa 60 Stufen) zügig hinauf, ohne Pause und ohne zu rennen. Wie lange hat es gedauert? (Treppentest der Europäischen Gesellschaft für Kardiologie.) Überspringe ihn bei Herzproblemen.
+health_stairs_45	unter 45 s
+health_stairs_60	45–60 s
+health_stairs_90	1–1,5 Min.
+health_stairs_slow	über 1,5 Min.
+health_stairs_cannot	nicht geschafft
+health_sitting_title	Sitzzeit
+health_sitting_how	Wie viele Stunden am Tag sitzt du: Arbeit, Auto, Sofa, Bildschirm?
+health_hours	%1$d Std. am Tag
+health_result_title	Gesundheitscheck
+health_overall_good	Insgesamt: gute Form
+health_overall_ok	Insgesamt: in Ordnung, mit Luft nach oben
+health_overall_risk	Insgesamt: es gibt Risikofaktoren
+health_overall_high	Insgesamt: mehrere ernste Risikofaktoren
+health_m_bmi	Body-Mass-Index %1$s
+health_m_whtr	Taille-zu-Größe %1$s
+health_m_waist	Taille %1$s cm
+health_m_hr	Ruhepuls %1$d
+health_m_stairs	Treppentest
+health_m_sitting	Sitzen %1$d Std. am Tag
+health_bmi_under	Untergewicht (BMI unter 18,5)
+health_bmi_normal	Normalgewicht (18,5–24,9)
+health_bmi_over	Übergewicht, Präadipositas (25–29,9)
+health_bmi_obese1	Adipositas Grad I (30–34,9)
+health_bmi_obese2	Adipositas Grad II (35–39,9)
+health_bmi_obese3	Adipositas Grad III (40 und mehr)
+health_whtr_good	Unter 0,5 – keine Bauchfettleibigkeit
+health_whtr_risk	0,5–0,6 – Bauchfett erhöht das Risiko
+health_whtr_high	0,6 und mehr – hohes kardiometabolisches Risiko
+health_waist_good	Im Normbereich für dein Geschlecht
+health_waist_risk	Über der Norm – erhöhtes Risiko
+health_waist_high	Deutlich über der Norm – hohes Risiko
+health_hr_excellent	Ausgezeichnet: ein trainiertes Herz
+health_hr_good	Gut
+health_hr_average	Durchschnittlich
+health_hr_below	Unterdurchschnittlich – das Herz arbeitet in Ruhe mehr
+health_hr_poor	Schwache Fitness
+health_hr_tachy	100 und mehr – vor intensivem Üben ärztlich abklären
+health_stairs_fit	Etwa 9–10 MET: gute Herz- und Lungenleistung
+health_stairs_good	Gute Leistungsfähigkeit
+health_stairs_average	Durchschnittlich – die Ausdauer lässt sich aufbauen
+health_stairs_low	Unter 8 MET – geringe Ausdauer, besser ärztlich besprechen
+health_stairs_cannot_v	Sehr geringe Ausdauer – sanft beginnen und ärztlich beraten lassen
+health_sit_good	Wenig Sitzen – super
+health_sit_ok	Mäßig: jede Stunde eine Bewegungspause einlegen
+health_sit_risk	Über 8 Stunden: ein Risikofaktor; etwa eine Stunde Bewegung am Tag gleicht ihn aus
+health_target	Zum normalen BMI: minus %1$s kg (auf %2$s kg).
+health_disclaimer	Ein Screening nach offenen Skalen (WHO, NICE, ESC), keine Diagnose.
+health_premium_pitch	Premium baut deinen Plan um diese Werte: alle Sets und die Bibliothek, unbegrenzt eigene Sets, schonende Ersatzhaltungen für Problemzonen.
+health_premium_button	Meinen Premium-Plan holen
+builder_hold	Jede Haltung halten
+builder_hold_n	%1$d Atemzüge
+home_my_sets	Meine Sets
+settings_display	Anzeige
+settings_show_cues	Hinweise und Beschreibung der Haltung
+settings_show_next	„Als Nächstes“ und „aus“ unter dem Titel
+settings_show_sanskrit	Sanskrit-Namen
+settings_show_breath	Atembalken
+settings_large_text	Große Schrift im Player
+settings_thumbnails	Bilder der Haltungen
+settings_thumbnails_hint	Kleine Bilder der Gliederpuppe in der Bibliothek, im Baukasten und auf dem Startbildschirm.
+settings_camera	Kamerawinkel
+camera_side	Seite
+camera_three_quarter	Dreiviertel
+camera_front	Vorne
+account_title	Konto
+account_button	Konto: anmelden oder registrieren
+account_button_signed	Konto: %1$s
+account_login	Anmelden
+account_register	Konto erstellen
+account_email	E-Mail
+account_name	Name
+account_password	Passwort (mindestens %1$d Zeichen)
+account_register_hint	Dein aktueller Fortschritt, deine Sets und Testergebnisse wandern ins neue Konto.
+account_register_do	Konto erstellen
+account_login_do	Anmelden
+account_logout	Abmelden
+account_delete	Konto löschen
+account_delete_title	Konto löschen?
+account_delete_text	Das Konto und sein gesamter Fortschritt – Übungen, eigene Sets, Tests und Messungen – werden endgültig von diesem Gerät gelöscht. Ein Abo wird im Store verwaltet und nicht automatisch gekündigt.
+account_delete_confirm	Endgültig löschen
+account_local_note	Jedes Konto speichert seinen Fortschritt auf diesem Gerät, so können mehrere Personen auf einem Telefon üben. Das Passwort wird nur als Hash gespeichert. Um den Fortschritt auf ein anderes Telefon zu bringen, nutze die Sicherung in den Einstellungen.
+account_err_email	Prüfe die E-Mail-Adresse.
+account_err_short	Das Passwort muss mindestens %1$d Zeichen haben.
+account_err_exists	Ein Konto mit dieser E-Mail gibt es schon – melde dich an.
+account_err_not_found	Auf diesem Gerät gibt es kein Konto mit dieser E-Mail.
+account_err_wrong	Falsches Passwort.
+builder_pin_do	＋ Zum Startbildschirm hinzufügen
+builder_unpin	Vom Startbildschirm entfernen
+builder_preview	Vorschau %1$d / %2$d · %3$s
+settings_voice	Sprachführung
+settings_voice_hint	Nutzt die Sprachausgabe des Telefons. Wenn die Stimme spricht, entfällt der Ton.
+voice_off	Aus
+voice_breath	Nur Atem
+voice_names	Haltungen und Atem
+voice_full	Mit Hinweisen
+settings_vibration	Vibration
+settings_vibration_hint	Ein leichtes Summen bei jedem Wechsel zwischen Ein- und Ausatmen.
+settings_tv	TV
+settings_tv_auto	Auf dem Fernseher zeigen
+settings_tv_auto_hint	Wenn ein zweiter Bildschirm verbunden ist, laufen Figur und Atmung dort und das Telefon wird zur Fernbedienung.
+settings_tv_how	Verbinde den Fernseher per kabellosem Display (Miracast, Cast, Smart View) oder HDMI-Adapter und öffne dann eine Übung.
+settings_tv_open	Cast-Einstellungen öffnen
+reminder_channel	Erinnerungen ans Üben
+reminder_title	Zeit zu üben
+reminder_text	Deine Matte wartet. Schon die kurze Morgeneinheit hält deine Serie.
+trial_reminder_title	Deine Testphase endet bald
+trial_reminder_text	In 2 Tagen bucht der Store das Abo ab. Du kannst es im Profil mit einem Tipp kündigen.
+reminder_section	Erinnerungen
+reminder_toggle	Ans Üben erinnern
+reminder_toggle_hint	Eine Benachrichtigung zur gewählten Zeit. Funktioniert offline.
+reminder_denied	Ohne Berechtigung für Benachrichtigungen können keine Erinnerungen ankommen. Du kannst sie in den Telefoneinstellungen erlauben.
+reminder_hour_step	1 Std.
+backup_section	Sicherung
+backup_hint	Speichere deinen Fortschritt in einer Datei, z. B. in der Cloud oder im Messenger. Praktisch beim Telefonwechsel.
+backup_export	In Datei speichern
+backup_import	Aus Datei wiederherstellen
+backup_saved	Gespeichert.
+backup_failed	Die Datei konnte nicht gelesen oder geschrieben werden.
+backup_empty	Die Datei enthält keine App-Daten.
+backup_confirm_title	Aus Datei wiederherstellen?
+backup_confirm_text	Die aktuellen Daten werden durch die Datei ersetzt: %1$d Einheiten, %2$d Tests.
+backup_confirm_yes	Wiederherstellen
+backup_restored	Daten wiederhergestellt.
+paywall_title	Premium
+paywall_benefit_chandra	Vollständige Übungen „Sonne und Mond“ (bis zu zwei Stunden), Sets für Fortgeschrittene, klassischer Chandra Namaskar
+paywall_benefit_bundle	Eigene Sets aus dem Baukasten – unbegrenzte Läufe
+paywall_benefit_short	Ganze Abschnitte der Haltungsbibliothek als Übungen
+paywall_benefit_future	Neue Sets und Programme, sobald sie erscheinen
+paywall_free_core	Für immer kostenlos: die Übungen „Sonne“ und „Mond“, klassischer Surya Namaskar, das Morgen-Set und „Rücken ohne Schmerz“, die Haltungsbibliothek und der Baukasten (5 Läufe eigener Sets), Beweglichkeitstest und Gesundheitscheck, Fortschritt, Erinnerungen, Übertragung auf den Fernseher.
+paywall_loading	Tarife werden geladen…
+paywall_unavailable	Die Tarife wurden nicht geladen. Bezahlen funktioniert, wenn die App aus %1$s installiert ist und du online bist.
+paywall_trial_terms	%1$d Tage kostenlos. Erste Abbuchung am %2$s, %3$s. Du wirst 2 Tage vorher erinnert.
+paywall_try	%1$d Tage kostenlos testen
+paywall_buy	Für %1$s kaufen
+paywall_cancel_anytime	Jederzeit kündbar: Profil → Abo → Abo kündigen.
+paywall_restore	Käufe wiederherstellen
+paywall_restore_none	Für dieses Konto wurden keine Käufe gefunden.
+paywall_not_now	Nicht jetzt
+plan_month	Monat
+plan_year	Jahr
+plan_lifetime	Für immer
+plan_per_month	%1$s pro Monat
+plan_per_year	%1$s pro Jahr
+plan_once	%1$s einmalig
+sub_section	Abo
+sub_free	Kostenlose Version
+sub_trial	Testphase bis %1$s
+sub_premium	Premium aktiv
+sub_premium_until	Premium bis %1$s
+sub_lifetime	Premium für immer
+sub_get	Premium holen
+sub_cancel	Abo kündigen
+set_locked	Mit Premium freischalten
+settings_debug	Debug
+settings_debug_premium	Premium ohne Kauf
+settings_debug_premium_hint	Nur Testversionen, um gesperrte Sets zu prüfen.
+sets_classic	Klassisch
+sets_classic_hint	Traditioneller Surya und Chandra Namaskar: 12 und 16 Positionen, eine volle Runde vom rechten und vom linken Bein.
+sets_rings	Hauptübungen
+sets_rings_hint	„Sonne“ und „Mond“: fließende Übergänge und ein Atemzug für jede Bewegung.
+sets_full	Voller Zyklus
+sets_full_hint	Eine lange Übung: „Sonne“ geht direkt in „Mond“ über, dann ein Aufwärmen aus sieben kurzen Flows und ein Ausklang bis zur Endentspannung. Für Erfahrene – bis zu zwei Stunden.
+sets_core	Set für Fortgeschrittene und Ausklang
+sets_core_hint	Das Set für Fortgeschrittene, die Überleitung und der abschließende Ausklang.
+sets_extra	Zusatzelemente
+sets_extra_hint	Steigerungen für Aufwärmen und Ausklang, wenn die Grundlagen leichtfallen.
+sets_start	Aufwärmen
+sets_start_hint	Sieben kurze Flows, die den ganzen Körper aufwärmen.
+set_size	%1$d Positionen · ~%2$d Min. · Runden: %3$d
+promo_title	Aktivierungscode
+promo_hint	Du hast einen Code für Premium für einen Monat, ein Jahr oder für immer? Gib ihn hier ein.
+promo_activate	Aktivieren
+promo_ok_month	Premium ist für 30 Tage aktiv
+promo_ok_year	Premium ist für ein Jahr aktiv
+promo_ok_lifetime	Premium ist für immer aktiv
+promo_bad	Der Code ist ungültig. Prüfe Buchstaben und Ziffern.
+promo_used	Dieser Code wurde bereits verwendet
+promo_active_until	Premium per Code bis %1$s
+promo_active_lifetime	Premium per Code: für immer
+health_breath_title	Ruhige Atmung
+health_breath_how	Setz dich bequem hin und atme wie gewohnt, ohne zu steuern. Starte den Timer und zähle eine Minute lang volle Atemzüge (Ein- + Ausatmen). Daraus ergibt sich die Startlänge von Ein- und Ausatmen in der Übung; mit der Phasentaste im Player kannst du sie verlängern.
+health_breath_value	%1$d Atemzüge pro Minute
+health_breath_phase	Startphase in der Übung: einatmen %1$s s, ausatmen genauso
+health_breath_start	1-Minuten-Timer starten
+health_breath_stop	Timer stoppen
+health_breath_left	%1$d s – Atemzüge zählen
+health_breath_done	Die Zeit ist um – gib ein, wie viele Atemzüge du gezählt hast
+health_m_breath	Atmung %1$d pro Minute
+health_breath_slow	Langsame, tiefe Atmung – eine gute Basis für lange Phasen
+health_breath_normal	Normale ruhige Atmung (12–20 pro Minute)
+health_breath_fast	Schnelle Atmung in Ruhe – mit kurzen Phasen beginnen und sie nach und nach verlängern
+sets_favorites	Lieblings-Sets
+sets_ready	Fertige Sets
+sets_ready_hint	Tippe auf ein Set, um vor dem Start Aufbau und Einstellungen zu sehen.
+sets_more	Weitere Sets: Aufwärmen, Ausklang und Extras ▾
+sets_more_hide	Weitere Sets ausblenden ▴
+set_size_short	%1$d Positionen · ~%2$d Min.
+session_minutes	~%1$d Min.
+session_poses	%1$d Positionen
+session_rounds_chip	%1$d Runden
+session_hold	Atemzüge pro Haltung
+session_hold_method	wie im Set
+session_phase_line	Ein- und Ausatmen: je %1$s s. Im Player mit der Phasentaste verlängern.
+session_structure	Aufbau
+session_side_right	rechte Seite
+session_side_left	linke Seite
+session_steps	%1$d Schritte
+session_wrist	Last auf den Handgelenken
+session_wrist_low	Sanft: auf Fäusten
+session_wrist_mid	Mittel: auf Handflächen
+session_wrist_high	Hoch: auf den Fingern
+session_locked	Dieses Set gehört zu Premium.
+session_start	Start
+extras_title	Zusatzelemente
+extras_all	Alle Zusatzelemente
+extras_all_hint	Jedes Element kommt an seinen eigenen Platz im Set
+extras_positions	+%1$d Positionen
+setlib_title	Set-Bibliothek
+setlib_card	Set-Bibliothek
+setlib_open	Set-Bibliothek öffnen
+setlib_card_hint	%1$d Sets für ein Ziel – Rücken, Gelenke, Hüften, Figur, Kraft, Schlaf – plus Zusatzsets und 6 Sets fürs Set-Training. Nach den Tests für dich ausgewählt.
+setlib_hint	Wähle ein Set für dein Ziel. Nach Gesundheitscheck und Bewegungstest stellt die App passende Sets nach vorn; für dich ungeeignete Haltungen werden in jedem Set ersetzt.
+setlib_for_you	Für dich ausgewählt
+setlib_take_test	Mach den Bewegungstest und den Gesundheitscheck – dann wählt die App Sets für dich aus.
+setlib_training	Set-Training: 6 Sets
+setlib_training_hint	Kurze Sets von 15–20 Minuten zweimal am Tag (morgens und abends) bringen mehr als eine lange Einheit. Wechsle die Sets von Tag zu Tag; das integrale Set ist für volle Tage, nicht für die Dauerpraxis. Auf jede starke Haltung folgt ihre Gegenhaltung. Arbeite an deiner Grenze, aber zwinge nie die Gelenke – ein Set zu meistern dauert Monate.
+setlib_book	Zusatzsets
+setlib_book_hint	Zusatzelemente der Übungen „Sonne“ und „Mond“, Aufwärmen, Ausklang und ein Set für Fortgeschrittene als eigene Übungen. Du kannst sie auch auf der Sitzungskarte in die Hauptsets einschalten.
+advice_back	Wegen des unteren Rückens
+advice_neck	Wegen des Nackens
+advice_knees	Wegen der Knie
+advice_wrists	Schonend für die Handgelenke
+advice_goal_joints	Für dein Ziel: gesunde Gelenke
+advice_goal_youth	Für dein Ziel: jung bleiben
+advice_goal_shape	Für dein Ziel: Figur
+advice_goal_strength	Für dein Ziel: Kraft
+advice_goal_calm	Für dein Ziel: Ruhe
+advice_weight	Nach Gewicht und Taille aus dem Gesundheitscheck
+advice_heart	Nach Puls und Treppentest
+advice_sitting	Du sitzt viel
+advice_breath	Deine Ruheatmung ist schnell
+advice_movement_age	Dein Bewegungsalter liegt über deinem Alter
+session_length	Übungsdauer
+session_length_min	%1$d Min.
+session_length_full	Komplett
+session_length_shortest	Kürzer als %1$d Min. geht dieses Set nicht – die Haltezeiten sind schon auf das Minimum gekürzt.
+onb_minutes_title	Wie viele Minuten am Tag?
+onb_minutes_hint	Jedes Set passt sich dieser Zeit an. Du kannst sie jederzeit ändern.
+onb_minutes_10	Passt in jeden Tag
+onb_minutes_20	Die beste Balance für sichtbare Ergebnisse
+onb_minutes_40	Eine tiefe Praxis
+onb_plan_title	Dein Plan ist fertig
+onb_plan_hint	Jeden Tag ein neues Set. Hake die Tage ab und halte deine Serie.
+onb_plan_first	Tag 1: %1$s · ~%2$d Min.
+onb_plan_start	Erste Übung starten
+onb_plan_later	Später
+onb_plan_change	Das Programm kannst du unter „Sets“ → „Programme“ ändern.
+program_day	PROGRAMM · TAG %1$d VON %2$d
+program_rest	Ruhetag
+program_rest_hint	Erholung gehört auch zum Programm. Wenn du magst: eine ruhige Übung.
+program_rest_light	Ruhige Übung
+program_done_title	Programm geschafft!
+program_done_text	Erledigte Tage: %1$d von %2$d. Wähle das nächste Programm – die Gewohnheit ist schon da.
+program_choose	Programm wählen
+program_streak	Serie: %1$d Tage in Folge
+programs_title	Programme
+programs_hint	Ein Plan für 14–30 Tage: für jeden Tag ein Set passend zu deinem Ziel. Die Sets passen sich deinen gewählten Minuten an.
+program_start_btn	Programm starten
+program_active	Läuft · Tag %1$d von %2$d
+program_days	%1$d Tage
+program_stop	Programm beenden
+program_path8	8-Wochen-Weg „Sonne und Mond“
+program_path8_hint	Für Erfahrene: lange Übungen „Sonne“ und „Mond“ im Wechsel, mit einem Test alle zwei Wochen.

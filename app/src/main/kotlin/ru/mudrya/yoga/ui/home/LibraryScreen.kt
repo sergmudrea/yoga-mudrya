@@ -35,6 +35,7 @@ import ru.mudrya.yoga.ui.common.ChipRow
 import ru.mudrya.yoga.ui.common.PrimaryButton
 import ru.mudrya.yoga.ui.common.ScreenTitle
 import ru.mudrya.yoga.ui.common.english
+import ru.mudrya.yoga.ui.common.tr
 import ru.mudrya.yoga.ui.common.sequenceName
 import ru.mudrya.yoga.ui.theme.MudryaColors
 
@@ -44,11 +45,11 @@ private data class LibSection(val id: String, val poses: List<String>, val searc
 private val SECTIONS: Map<String, LibSection> by lazy {
     val asanas = LibraryCatalog.asanas.associateBy { it.id }
     LibraryCatalog.blocks.associate { b ->
-        val names = b.steps.map { st -> asanas.getValue(st.asanaId).let { a -> if (english) a.nameEn else a.nameRu } }
+        val names = b.steps.map { st -> asanas.getValue(st.asanaId).let { a -> if (english) tr(a.nameEn) else a.nameRu } }
         val seq = SuryaCatalog.sequence(b.id)
-        val text = (listOf(seq.nameRu, seq.nameEn) + b.steps.flatMap { st ->
+        val text = (listOf(seq.nameRu, seq.nameEn, tr(seq.nameEn)) + b.steps.flatMap { st ->
             val a = asanas.getValue(st.asanaId)
-            listOfNotNull(a.nameRu, a.nameEn, a.sanskrit, st.titleRu)
+            listOfNotNull(a.nameRu, a.nameEn, tr(a.nameEn), a.sanskrit, st.titleRu)
         }).joinToString(" ").lowercase()
         b.id to LibSection(b.id, names, text)
     }
@@ -115,7 +116,7 @@ fun LibraryScreen(
                 if (query.isBlank()) {
                     ChipRow {
                         LibraryCatalog.chapters.forEachIndexed { i, ch ->
-                            Chip(if (english) ch.nameEn else ch.nameRu, i == chapter, { chapter = i }, accent = MudryaColors.Moon)
+                            Chip(if (english) tr(ch.nameEn) else ch.nameRu, i == chapter, { chapter = i }, accent = MudryaColors.Moon)
                         }
                     }
                 } else {
@@ -171,7 +172,7 @@ fun LibraryScreen(
                                 androidx.compose.foundation.layout.Spacer(Modifier.padding(start = 10.dp))
                             }
                             Text(
-                                if (english) a.nameEn else a.nameRu,
+                                if (english) tr(a.nameEn) else a.nameRu,
                                 color = MudryaColors.Text,
                                 fontSize = 14.sp,
                                 modifier = Modifier.weight(1f).padding(vertical = 6.dp),

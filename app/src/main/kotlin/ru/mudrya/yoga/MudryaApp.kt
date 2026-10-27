@@ -17,6 +17,7 @@ class MudryaApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        ru.mudrya.yoga.ui.common.Tr.init(this)
         container = AppContainer(this)
         ReminderScheduler.ensureChannel(this)
         // Каталог (2000+ поз с нагрузками и заменами) собирается заранее, не на главном потоке.

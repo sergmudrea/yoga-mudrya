@@ -252,7 +252,7 @@ private fun injuryHint(i: Injury): String = stringResource(
 @Composable
 private fun WelcomeHero() {
     val poses = androidx.compose.runtime.remember {
-        ru.mudrya.yoga.catalog.AtlasCatalog.blocks.first { it.id == "at_sn_r" }.steps.map { it.asanaId to (it.titleRu ?: "") }
+        ru.mudrya.yoga.catalog.AtlasCatalog.blocks.first { it.id == "at_sn_r" }.steps.map { it.asanaId to (if (ru.mudrya.yoga.ui.common.english) ru.mudrya.yoga.ui.common.tr(it.titleEn ?: "") else it.titleRu ?: "") }
     }
     var i by androidx.compose.runtime.remember { androidx.compose.runtime.mutableIntStateOf(0) }
     androidx.compose.runtime.LaunchedEffect(Unit) {

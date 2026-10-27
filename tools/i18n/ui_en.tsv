@@ -1,0 +1,551 @@
+app_name	Mudrya Yoga
+tab_practice	Practice
+tab_sets	Sets
+tab_progress	Progress
+tab_profile	Profile
+today	Today
+surya	Surya Namaskar
+chandra	Chandra Namaskar
+start	Start
+coming_soon	This screen arrives in the next stage.
+store_label	Build: %1$s
+player_step_of	%1$d of %2$d
+player_phase_move	TRANSITION
+player_phase_hold	HOLD
+player_side_right	RIGHT SIDE
+player_side_left	LEFT SIDE
+player_from	From: %1$s
+player_replaced_cycle	Instead of “%1$s” — gentle cycle mode
+cycle_title	Gentle days
+cycle_hint	During your period the app can replace inversions and the deepest backbends with similar calm poses. You just mark the start and the end — nothing else is stored.
+cycle_enable	Turn on
+cycle_start	Started today
+cycle_end	Finished
+cycle_day	Day %1$d of up to %2$d
+cycle_on	Gentle mode: no inversions or deep backbends — they are replaced automatically.
+cycle_off	Mark the first day — practice switches to gentle mode for up to five days or until you mark the end.
+cycle_disable	Do not track
+player_hand_lock	Fingers interlaced
+player_hand_prayer	Palms together
+player_replaced	Instead of “%1$s” — easier on: %2$s
+player_next	Next: %1$s
+player_inhale	Inhale
+player_exhale	Exhale
+player_breath_of	breath %1$d of %2$d
+player_belly	Belly
+player_chest	Chest
+player_hint_inhale	Fill the belly first, then the chest. Move together with the inhale.
+player_hint_exhale	Release the chest first, then gently draw in the belly. Move together with the exhale.
+player_prev	Previous pose
+player_pause	Pause
+player_next_step	Next pose
+player_speed	Tempo %1$s
+player_hold_n	Breaths ×%1$d
+player_hold_method	Breaths: as in the set
+player_phase_len	Phase %1$d s
+player_metal_dog_short	Metal dog
+player_metal_dog	Metal dog breathing
+player_metal_dog_hint	Hold the pose. Short quick exhales through the nose driven by the belly; the inhale comes by itself. Practice time is paused.
+player_continue	Continue
+player_done	%1$s complete
+player_done_stats	%1$d positions · about %2$d min
+player_finish	Done
+finish_how	How was it?
+finish_easy	Easy
+finish_easy_hint	We will add a round or a harder hand support
+finish_ok	Just right
+finish_ok_hint	Keep it; one more round every three sessions
+finish_hard	Hard
+finish_hard_hint	Lighter load and shorter breaths
+finish_zones	Anything bothering you?
+goal_joints	Mobile joints and spine
+goal_youth	Lower my movement age
+goal_shape	Slimmer, toned body
+goal_strength	Strength and stamina
+goal_calm	Calm and energy
+home_age_label	Movement age
+home_age_none	Five simple tests show how old your body moves. Repeat monthly and watch it drop.
+home_age_retake	Retake the test
+home_rounds	Rounds
+home_support	Hand support
+home_support_wrists	Fists only because of your wrists.
+home_phase	Inhale and exhale length
+home_phase_hint	The aim is 7–9 seconds. Start where it feels easy; the app will lengthen it.
+home_session_line	Rounds: %1$d · ~%2$d min · %3$s · phase %4$s s
+home_tune	Adjust
+home_tune_hide	Hide settings
+injury_wrists_hint	Fists instead of palms, less wrist load
+injury_lumbar_hint	Deep backbends replaced with gentle ones
+injury_neck_hint	No head tilts back or inversions
+injury_knees_hint	Softer lunges and kneeling
+joint_wrists	Wrists
+joint_shoulders	Shoulders
+joint_lumbar	Lower back
+joint_neck	Neck
+joint_knees	Knees
+level_beginner	Just starting
+level_beginner_hint	New to yoga or after a long break
+level_experienced	Some experience
+level_experienced_hint	I know the basic poses and have done Surya Namaskar
+level_advanced	Regular practice
+level_advanced_hint	Surya Namaskar feels easy, I want a challenge
+onb_welcome_title	Mudrya Yoga
+onb_welcome_text	Yoga that adapts to you: short daily practices, a breath for every movement, and a load that grows with you.
+onb_welcome_method	Four quick questions and your daily plan is ready.
+onb_start	Start
+onb_next	Next
+onb_finish	Done
+onb_back	Back
+onb_about_title	About you
+onb_about_hint	To set the right load and replace poses that don’t suit you.
+onb_sex	Sex
+onb_age	Age
+onb_goals_title	What do you want?
+onb_goals_hint	Pick any number.
+onb_level_title	Your experience
+onb_limits_title	Any limitations?
+onb_limits_hint	The app removes or replaces poses that load these areas.
+onb_limits_none	No limitations
+onb_limits_doctor	If you have pain, injuries, are pregnant or have a chronic condition, talk to a doctor before you start.
+phase_value	%1$s s
+profile_level	Experience
+profile_goals	Goals
+profile_limits	Limitations
+profile_edit	Edit answers
+profile_data	Data
+profile_data_hint	Everything stays on this phone. No account needed.
+profile_reset	Delete all data
+profile_reset_title	Delete all data?
+profile_reset_text	Your profile, practice history and test results will be deleted permanently.
+profile_reset_yes	Delete
+profile_reset_no	Cancel
+progress_week	Last 7 days, minutes
+progress_history	History
+progress_empty	Your practices will appear here.
+progress_minutes	%1$d min
+progress_unfinished	unfinished
+progress_age_better	%1$d younger since the first test
+progress_age_worse	%1$d older since the first test
+progress_age_same	No change since the first test
+sex_female	Female
+sex_male	Male
+stat_streak	day streak
+stat_best_streak	best streak
+stat_sessions	sessions
+stat_minutes	minutes
+support_fists	on fists
+support_palms	on palms
+support_fingers	on fingertips
+test_intro_title	Movement age test
+test_intro_text	Five exercises and a five-question health check, about 15 minutes. You will need some free space, a mat, a stopwatch and a tape measure. Any step can be skipped. At the end — your movement age, body mass index and degree of obesity, waist risk, heart fitness and endurance.
+test_disclaimer	This is an estimate against age norms, not a medical measure.
+test_start	Take the test
+test_later	Later
+test_n_of	Test %1$d of %2$d
+test_record	Save
+test_skip	Skip
+test_done	Done
+test_sit_rise	Sit down and rise from the floor
+test_sit_rise_how	Barefoot, sit down on the floor cross-legged and stand up again, without support if you can. Start at 10 points. Minus 1 for each support (hand, forearm, knee, side of leg), minus 0.5 for losing balance.
+test_fold	Standing forward fold
+test_fold_how	Stand on a step or sturdy box, knees straight. Slowly fold and reach down. Centimetres below your feet are plus, short of them are minus.
+test_balance	Balance with eyes closed
+test_balance_how	Stand on one leg, hands on hips, close your eyes. Time until the other foot touches down or the standing foot moves. Best of three tries.
+test_push_ups	Push-ups
+test_push_ups_how	Classic push-ups from the toes, chest nearly touching the floor. As many as you can without rest and with good form.
+test_hr	Heart rate recovery
+test_hr_how	Do 6 fast rounds of the salutation, take your pulse at once, then again after 60 seconds. Enter the difference. Skip it if you have no heart rate monitor.
+test_result_label	Your movement age
+test_result_passport	passport age %1$d
+test_result_younger	Your body moves %1$d years younger than your age.
+test_result_older	Your body moves %1$d years older than your age. Regular practice will change that; retake the test in a month.
+test_result_same	Matches your passport age.
+unit_points	points
+unit_cm	cm
+unit_sec	seconds
+unit_times	reps
+unit_bpm	bpm
+rest_title	Rest lying down
+rest_hint	Lie on your back, arms along the body, palms up. Round %1$d is next.
+rest_skip	Continue
+path_week	8-week path · week %1$d, day %2$d
+path_again	Again
+path_done	Done today
+path_rest	Rest day
+path_rest_hint	Recovery is part of training. Take a walk or do the short morning session.
+path_rest_light	10-minute morning
+path_test	Test day
+path_test_hint	Take the movement age test to see what is changing.
+path_all_sets	All sets →
+home_age_due	Two weeks have passed, time to retake the test.
+home_relax	Rest between rounds
+home_relax_off	off
+home_relax_hint	Lying on your back with a timer. You can finish early.
+tv_button	TV
+tv_on	Practice is on the TV
+tv_remote	Your phone is the remote: pause, back, next, tempo.
+settings_title	Settings
+settings_practice	During practice
+settings_sound	Phase change sound
+settings_sound_hint	A short beep: higher for inhale, lower for exhale. Practise without looking at the screen.
+player_scheme	Scheme
+player_video	Video
+videos_title	Instructor video
+videos_hint	Attach your own clip to any pose: film yourself or your teacher. A clip for the right side also plays, mirrored, for the left. It plays silently — breath and voice stay with the app.
+videos_settings_hint	Your own clips for the poses, instead of the scheme.
+videos_open	Choose clips
+videos_coverage	Clips: %1$d of %2$d poses
+videos_has	clip attached
+videos_none	scheme
+videos_add	Add
+videos_replace	Replace
+videos_remove	Remove
+videos_failed	Could not read this file.
+calendar_summary	Days with practice: %1$d · minutes: %2$d
+challenge_title	108 rounds
+challenge_hint	The traditional number: 108 rounds of the sun salutation at your own pace. Counted from the day you start: every finished “Sun” practice or classic Surya Namaskar.
+challenge_start	Start the challenge
+challenge_progress	%1$d of %2$d
+challenge_left	%1$d rounds to go · practice days: %2$d
+challenge_done	Done! 108 rounds in %1$d practice days.
+challenge_reset	Stop the challenge
+challenge_again	Start again
+body_title	Weight and waist
+body_hint	Measure once a week, in the morning: the trend matters, not a single number.
+body_weight	Weight
+body_waist	Waist
+body_kg	%1$s kg
+body_cm	%1$s cm
+body_add	Add today\'s measurement
+body_save	Save
+age_chart_legend	Orange — movement age, grey — passport age. Lower is better.
+settings_figure3d	3D figure
+settings_figure3d_hint	The wooden marionette from the atlas: smooth transitions, palms and feet stay planted; turn it with your finger. Off — the flat scheme with breath glow.
+library_title	Library
+library_hint	All %1$d poses of the library (after D. Lacerda’s “2100 Asanas”) by chapters and sections — free to browse: open any pose on the marionette and add it to your set with “＋”. Playing whole sections is Premium.
+library_search	Search: pigeon, bakasana, mountain…
+library_found	Sections found: %1$d
+library_poses	%1$d poses
+library_card	Pose library: %1$d poses
+library_card_hint	A library of 1800+ poses: names, Sanskrit, every pose on the marionette.
+library_open	Open the library
+close	Close
+back	Back
+builder_title	Set builder
+builder_card	Build your own set
+builder_card_hint	Poses from the main practices, the warm-up and the library of 1800+ poses; reorder by dragging. Free test runs left: %1$d of 5.
+builder_card_hint_premium	Poses from the main practices, the warm-up and the library of 1800+ poses; reorder by dragging. Premium: unlimited runs.
+builder_open	Open the builder
+builder_hint	Collect poses with “＋”, reorder them by long-pressing and dragging a row, then test the set in the player on the 3D marionette.
+builder_runs_left	Free test runs left: %1$d of %2$d. After that — Premium for a month, a year or forever.
+builder_new	New set
+builder_new_name	My set %1$d
+builder_empty	No sets yet — create the first one.
+builder_edit	Edit
+builder_test	Test the set
+builder_name	Set name
+builder_drag_hint	Long-press a row and drag it to change the order. Tap a pose to see it on the marionette.
+builder_no_poses	No poses yet — add them with “＋”.
+builder_add	Add poses
+builder_delete	Delete set
+builder_pick_title	Add poses
+builder_in_set	In the set: %1$d
+builder_tab_core	Main practices
+builder_tab_library	Library
+builder_done	Done
+builder_more	And %1$d more — refine the search.
+builder_add_to_set	＋ Add to the set
+trial_title	Free test run
+trial_text	Your own sets can be run for free %1$d times in total. Runs left: %2$d. After that you will need Premium — for a month, a year or forever.
+trial_over_title	Free runs are over
+trial_over_text	You have used all %1$d free runs of your own sets. Premium unlocks unlimited runs, all sets and the whole library.
+trial_run	Run (left: %1$d)
+trial_premium	Get Premium
+library_show	Poses
+library_hide	Hide
+library_added	Added to “%1$s”
+health_n_of	Health check · %1$d of %2$d
+health_body_title	Height and weight
+health_body_how	In the morning, before breakfast, without shoes. From these we calculate the body mass index and the degree of obesity on the WHO scale.
+health_height	Height
+health_weight	Weight
+health_waist_title	Waist
+health_waist_how	Measure at the navel level, standing, on a calm exhale, the tape snug but not pressing. Waist shows abdominal (visceral) fat better than weight.
+health_pulse_title	Resting pulse
+health_pulse_how	Sit quietly for 5 minutes, then count your pulse on the wrist or neck for 30 seconds and multiply by 2.
+health_bpm	%1$d bpm
+health_stairs_title	Stair test
+health_stairs_how	Climb 4 flights (about 60 steps) at a brisk pace without stopping or running. How long did it take? (The European Society of Cardiology stair test.) Skip it if you have heart problems.
+health_stairs_45	under 45 s
+health_stairs_60	45–60 s
+health_stairs_90	1–1.5 min
+health_stairs_slow	over 1.5 min
+health_stairs_cannot	could not
+health_sitting_title	Sitting time
+health_sitting_how	How many hours a day do you sit: work, car, sofa, screen?
+health_hours	%1$d h a day
+health_result_title	Health check
+health_overall_good	Overall: good shape
+health_overall_ok	Overall: fine, with room to grow
+health_overall_risk	Overall: there are risk factors
+health_overall_high	Overall: several serious risk factors
+health_m_bmi	Body mass index %1$s
+health_m_whtr	Waist-to-height %1$s
+health_m_waist	Waist %1$s cm
+health_m_hr	Resting pulse %1$d
+health_m_stairs	Stair test
+health_m_sitting	Sitting %1$d h a day
+health_bmi_under	Underweight (BMI below 18.5)
+health_bmi_normal	Normal weight (18.5–24.9)
+health_bmi_over	Overweight, pre-obesity (25–29.9)
+health_bmi_obese1	Obesity class I (30–34.9)
+health_bmi_obese2	Obesity class II (35–39.9)
+health_bmi_obese3	Obesity class III (40 and above)
+health_whtr_good	Below 0.5 — no abdominal obesity
+health_whtr_risk	0.5–0.6 — abdominal fat raises the risk
+health_whtr_high	0.6 and above — high cardiometabolic risk
+health_waist_good	Within the norm for your sex
+health_waist_risk	Above the norm — increased risk
+health_waist_high	Well above the norm — high risk
+health_hr_excellent	Excellent: a trained heart
+health_hr_good	Good
+health_hr_average	Average
+health_hr_below	Below average — the heart works harder at rest
+health_hr_poor	Poor fitness
+health_hr_tachy	100 and above — see a doctor before intensive practice
+health_stairs_fit	About 9–10 METs: good heart and lung capacity
+health_stairs_good	Good capacity
+health_stairs_average	Average — endurance can be built up
+health_stairs_low	Below 8 METs — low endurance, worth discussing with a doctor
+health_stairs_cannot_v	Very low endurance — start gently and consult a doctor
+health_sit_good	Little sitting — great
+health_sit_ok	Moderate: add movement breaks every hour
+health_sit_risk	Over 8 hours: a risk factor; about an hour of movement a day offsets it
+health_target	To reach a normal BMI: minus %1$s kg (to %2$s kg).
+health_disclaimer	A screening by open scales (WHO, NICE, ESC), not a diagnosis.
+health_premium_pitch	Premium builds your plan around these numbers: all sets and the library, unlimited own sets, gentle replacements for problem zones.
+health_premium_button	Get my Premium plan
+builder_hold	Hold each pose
+builder_hold_n	%1$d breaths
+home_my_sets	My sets
+settings_display	Display
+settings_show_cues	Cues and pose description
+settings_show_next	“Next” and “from” under the title
+settings_show_sanskrit	Sanskrit names
+settings_show_breath	Breath bar
+settings_large_text	Large text in the player
+settings_thumbnails	Pose pictures
+settings_thumbnails_hint	Small marionette pictures in the library, the builder and on the home screen.
+settings_camera	Camera angle
+camera_side	Side
+camera_three_quarter	Three-quarter
+camera_front	Front
+account_title	Account
+account_button	Account: sign in or register
+account_button_signed	Account: %1$s
+account_login	Sign in
+account_register	Create account
+account_email	Email
+account_name	Name
+account_password	Password (at least %1$d characters)
+account_register_hint	Your current progress, sets and test results move into the new account.
+account_register_do	Create account
+account_login_do	Sign in
+account_logout	Sign out
+account_delete	Delete account
+account_delete_title	Delete the account?
+account_delete_text	The account and all its progress — practices, own sets, tests and measurements — will be deleted from this device for good. A subscription is managed in the store and is not cancelled automatically.
+account_delete_confirm	Delete for good
+account_local_note	Each account keeps its own progress on this device, so several people can practise on one phone. The password is stored only as a hash. To move progress to another phone, use the backup in Settings.
+account_err_email	Check the email address.
+account_err_short	The password must be at least %1$d characters.
+account_err_exists	An account with this email already exists — sign in.
+account_err_not_found	No account with this email on this device.
+account_err_wrong	Wrong password.
+builder_pin_do	＋ Add to the home screen
+builder_unpin	Remove from the home screen
+builder_preview	Preview %1$d / %2$d · %3$s
+settings_voice	Voice guidance
+settings_voice_hint	Uses the phone\'s speech engine. When the voice speaks, the beep is skipped.
+voice_off	Off
+voice_breath	Breath only
+voice_names	Poses and breath
+voice_full	With cues
+settings_vibration	Vibration
+settings_vibration_hint	A light buzz on every change between inhale and exhale.
+settings_tv	TV
+settings_tv_auto	Show on TV
+settings_tv_auto_hint	When a second screen is connected, the figure and breathing go there and the phone becomes a remote.
+settings_tv_how	Connect the TV via wireless display (Miracast, Cast, Smart View) or an HDMI adapter, then open a practice.
+settings_tv_open	Open cast settings
+reminder_channel	Practice reminders
+reminder_title	Time to practise
+reminder_text	Your mat is waiting. Even the short morning session keeps your streak.
+trial_reminder_title	Your trial ends soon
+trial_reminder_text	In 2 days the store will charge for the subscription. You can cancel from your profile in one tap.
+reminder_section	Reminders
+reminder_toggle	Remind me to practise
+reminder_toggle_hint	A notification at the chosen time. Works offline.
+reminder_denied	Without notification permission reminders cannot arrive. You can allow it in phone settings.
+reminder_hour_step	1h
+backup_section	Backup
+backup_hint	Save your progress to a file, e.g. to cloud storage or a messenger. Useful when you change phones.
+backup_export	Save to file
+backup_import	Restore from file
+backup_saved	Saved.
+backup_failed	Could not read or write the file.
+backup_empty	The file has no app data.
+backup_confirm_title	Restore from file?
+backup_confirm_text	Current data will be replaced by the file: %1$d sessions, %2$d tests.
+backup_confirm_yes	Restore
+backup_restored	Data restored.
+paywall_title	Premium
+paywall_benefit_chandra	Full “Sun and Moon” practices (up to two hours), advanced sets, classic Chandra Namaskar
+paywall_benefit_bundle	Your own sets from the builder — unlimited runs
+paywall_benefit_short	Whole sections of the pose library as practices
+paywall_benefit_future	New sets and programs as they come out
+paywall_free_core	Free forever: the “Sun” and “Moon” practices, classic Surya Namaskar, the morning set and “Back without pain”, the pose library and the builder (5 runs of your own sets), the mobility test and health check, progress, reminders, TV casting.
+paywall_loading	Loading plans…
+paywall_unavailable	Plans did not load. Payment works when the app is installed from %1$s and you are online.
+paywall_trial_terms	%1$d days free. First charge on %2$s, %3$s. You will get a reminder 2 days before.
+paywall_try	Try %1$d days free
+paywall_buy	Buy for %1$s
+paywall_cancel_anytime	Cancel any time: Profile → Subscription → Cancel subscription.
+paywall_restore	Restore purchases
+paywall_restore_none	No purchases found for this account.
+paywall_not_now	Not now
+plan_month	Month
+plan_year	Year
+plan_lifetime	Lifetime
+plan_per_month	%1$s per month
+plan_per_year	%1$s per year
+plan_once	%1$s once
+sub_section	Subscription
+sub_free	Free version
+sub_trial	Trial until %1$s
+sub_premium	Premium active
+sub_premium_until	Premium until %1$s
+sub_lifetime	Lifetime premium
+sub_get	Get premium
+sub_cancel	Cancel subscription
+set_locked	Unlock with premium
+settings_debug	Debug
+settings_debug_premium	Premium without purchase
+settings_debug_premium_hint	Test builds only, to check locked sets.
+sets_classic	Classic
+sets_classic_hint	Traditional Surya and Chandra Namaskar: 12 and 16 positions, a full round from the right and the left leg.
+sets_rings	Main practices
+sets_rings_hint	“Sun” and “Moon”: smooth transitions and a breath for every movement.
+sets_full	Full cycle
+sets_full_hint	One long practice: “Sun” flows straight into “Moon”, then a warm-up of seven short flows and a cool-down to the final relaxation. For experienced practitioners — up to two hours.
+sets_core	Advanced set and cool-down
+sets_core_hint	The advanced set, the lead-in and the closing cool-down.
+sets_extra	Extra elements
+sets_extra_hint	Progressions for the warm-up and the cool-down, for when the basics feel easy.
+sets_start	Warm-up
+sets_start_hint	Seven short flows that warm up the whole body.
+set_size	%1$d positions · ~%2$d min · rounds: %3$d
+promo_title	Activation code
+promo_hint	Have a code for Premium for a month, a year or forever? Enter it here.
+promo_activate	Activate
+promo_ok_month	Premium is on for 30 days
+promo_ok_year	Premium is on for a year
+promo_ok_lifetime	Premium is on forever
+promo_bad	The code is not valid. Check the letters and digits.
+promo_used	This code has already been used
+promo_active_until	Premium by code until %1$s
+promo_active_lifetime	Premium by code: forever
+health_breath_title	Calm breathing
+health_breath_how	Sit comfortably and breathe as usual, without controlling it. Start the timer and count full breaths (inhale + exhale) for one minute. This sets the starting length of the inhale and exhale in the practice; you can lengthen it with the phase button in the player.
+health_breath_value	%1$d breaths a minute
+health_breath_phase	Starting phase in the practice: inhale %1$s s, exhale the same
+health_breath_start	Start a 1-minute timer
+health_breath_stop	Stop the timer
+health_breath_left	%1$d s — count breaths
+health_breath_done	Time is up — enter how many breaths you counted
+health_m_breath	Breathing %1$d a minute
+health_breath_slow	Slow, deep breathing — a good base for long phases
+health_breath_normal	Normal calm breathing (12–20 a minute)
+health_breath_fast	Fast breathing at rest — start with short phases and lengthen them gradually
+sets_favorites	Favorite sets
+sets_ready	Ready sets
+sets_ready_hint	Tap a set to see its structure and settings before you start.
+sets_more	More sets: warm-up, cool-down and extras ▾
+sets_more_hide	Hide extra sets ▴
+set_size_short	%1$d positions · ~%2$d min
+session_minutes	~%1$d min
+session_poses	%1$d positions
+session_rounds_chip	%1$d rounds
+session_hold	Breaths in each hold
+session_hold_method	as in the set
+session_phase_line	Inhale and exhale: %1$s s each. Lengthen it in the player with the phase button.
+session_structure	Structure
+session_side_right	right side
+session_side_left	left side
+session_steps	%1$d steps
+session_wrist	Wrist load
+session_wrist_low	Gentle: on fists
+session_wrist_mid	Medium: on palms
+session_wrist_high	High: on fingers
+session_locked	This set is part of Premium.
+session_start	Start
+extras_title	Extra elements
+extras_all	All extra elements
+extras_all_hint	Each element goes into the set at its own place
+extras_positions	+%1$d positions
+setlib_title	Set library
+setlib_card	Set library
+setlib_open	Open the set library
+setlib_card_hint	%1$d sets for a task — back, joints, hips, shape, strength, sleep — plus extra sets and 6 set-training sets. Picked for you after the tests.
+setlib_hint	Choose a set for your task. After the health check and the movement test the app puts the ones that suit you first; poses unsafe for your limits are replaced in every set.
+setlib_for_you	Picked for you
+setlib_take_test	Take the movement test and the health check, and the app will pick sets for you.
+setlib_training	Set training: 6 sets
+setlib_training_hint	Short sets of 15–20 minutes twice a day (morning and evening) give more than one long session. Alternate the sets day by day; the integral set is for busy days, not for permanent practice. Follow every strong pose with its counter-pose. Work at your limit but never force the joints — mastering a set takes months.
+setlib_book	Extra sets
+setlib_book_hint	Extra elements of the “Sun” and “Moon” practices, the warm-up, cool-down and an advanced set as separate practices. You can also switch them into the main sets on the session card.
+advice_back	Because of the lower back
+advice_neck	Because of the neck
+advice_knees	Because of the knees
+advice_wrists	Gentle on the wrists
+advice_goal_joints	For your goal: healthy joints
+advice_goal_youth	For your goal: stay young
+advice_goal_shape	For your goal: shape
+advice_goal_strength	For your goal: strength
+advice_goal_calm	For your goal: calm
+advice_weight	By the weight and waist from the health check
+advice_heart	By the pulse and the stair test
+advice_sitting	You sit a lot
+advice_breath	Your calm breathing is fast
+advice_movement_age	Your movement age is above your age
+session_length	Practice length
+session_length_min	%1$d min
+session_length_full	Full
+session_length_shortest	This set can’t be shorter than %1$d min — holds are cut to the minimum.
+onb_minutes_title	How many minutes a day?
+onb_minutes_hint	Every set adapts to this time. You can change it any time.
+onb_minutes_10	Easy to fit into any day
+onb_minutes_20	The best balance for visible results
+onb_minutes_40	A deep practice
+onb_plan_title	Your plan is ready
+onb_plan_hint	A new set every day. Tick off the days and keep your streak.
+onb_plan_first	Day 1: %1$s · ~%2$d min
+onb_plan_start	Start the first practice
+onb_plan_later	Later
+onb_plan_change	You can change the program under “Sets” → “Programs”.
+program_day	PROGRAM · DAY %1$d OF %2$d
+program_rest	Rest day
+program_rest_hint	Recovery is part of the program too. If you feel like it, a calm practice.
+program_rest_light	Calm practice
+program_done_title	Program complete!
+program_done_text	Days completed: %1$d of %2$d. Pick the next program — the habit is already there.
+program_choose	Choose a program
+program_streak	Streak: %1$d days in a row
+programs_title	Programs
+programs_hint	A 14–30 day plan: a set for every day, matched to your goal. Sets fit the minutes you chose.
+program_start_btn	Start the program
+program_active	In progress · day %1$d of %2$d
+program_days	%1$d days
+program_stop	Stop the program
+program_path8	8-week path “Sun and Moon”
+program_path8_hint	For experienced practitioners: long “Sun” and “Moon” practices in turn, with a test every two weeks.

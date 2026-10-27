@@ -48,6 +48,7 @@ import ru.mudrya.yoga.store.PremiumPolicy
 import ru.mudrya.yoga.ui.common.Body
 import ru.mudrya.yoga.ui.common.Card
 import ru.mudrya.yoga.ui.common.Chip
+import ru.mudrya.yoga.ui.common.tr
 import ru.mudrya.yoga.ui.common.ChipRow
 import ru.mudrya.yoga.ui.common.PrimaryButton
 import ru.mudrya.yoga.ui.common.SectionLabel
@@ -192,7 +193,7 @@ fun SessionCardScreen(
                 val rows = mutableListOf<Triple<String, Side, Int>>()
                 def.items.forEach { ref ->
                     val block = SuryaCatalog.catalog.blocks[ref.blockId] ?: return@forEach
-                    val title = (if (ru) block.titleRu else block.titleEn ?: block.titleRu) ?: sequenceName(sequenceId)
+                    val title = (if (ru) block.titleRu else block.titleEn?.let(::tr) ?: block.titleRu) ?: sequenceName(sequenceId)
                     val last = rows.lastOrNull()
                     if (last != null && last.first == title && last.second == ref.side) rows[rows.size - 1] = Triple(title, ref.side, last.third + block.steps.size)
                     else rows += Triple(title, ref.side, block.steps.size)
@@ -287,7 +288,7 @@ private fun ExtrasCard(def: SequenceDef, state: UserState, users: UserRepository
         SwitchRow(stringResource(R.string.extras_all), stringResource(R.string.extras_all_hint), all) { set(zones.map { it.id }, it) }
         zones.forEach { z ->
             val n = def.slots.filter { it.id == z.id }.sumOf { SuryaCatalog.catalog.block(it.blockId).steps.size }
-            SwitchRow(if (ru) z.nameRu else z.nameEn, stringResource(R.string.extras_positions, n), z.id in on) { set(listOf(z.id), it) }
+            SwitchRow(if (ru) z.nameRu else tr(z.nameEn), stringResource(R.string.extras_positions, n), z.id in on) { set(listOf(z.id), it) }
         }
     }
 }

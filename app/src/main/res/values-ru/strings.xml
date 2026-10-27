@@ -43,7 +43,7 @@
     <string name="player_next_step">Следующая поза</string>
     <string name="player_speed">Темп %1$s</string>
     <string name="player_hold_n">Дыханий ×%1$d</string>
-    <string name="player_hold_method">Дыхания: метод.</string>
+    <string name="player_hold_method">Вдохи: как в сете</string>
     <string name="player_phase_len">Фаза %1$d с</string>
     <string name="player_metal_dog_short">Мет. собака</string>
     <string name="player_metal_dog">Дыхание металлической собаки</string>
@@ -72,7 +72,7 @@
     <string name="home_support">Опора кистей</string>
     <string name="home_support_wrists">Из-за запястий — только на кулаках.</string>
     <string name="home_phase">Длительность вдоха и выдоха</string>
-    <string name="home_phase_hint">Цель методики — 7–9 секунд. Начните с удобной длины, приложение само будет её увеличивать.</string>
+    <string name="home_phase_hint">Цель — 7–9 секунд. Начните с комфортной длины, приложение будет её удлинять.</string>
     <string name="home_session_line">Кругов: %1$d · ~%2$d мин · %3$s · фаза %4$s с</string>
     <string name="home_tune">Настроить</string>
     <string name="home_tune_hide">Скрыть настройки</string>
@@ -228,7 +228,7 @@
     <string name="library_search">Поиск: голубь, бакасана, mountain…</string>
     <string name="library_found">Найдено разделов: %1$d</string>
     <string name="library_poses">поз: %1$d</string>
-    <string name="library_card">2100 асан: %1$d поз</string>
+    <string name="library_card">Библиотека поз: %1$d</string>
     <string name="library_card_hint">Библиотека на 1800+ поз: названия, санскрит, каждая поза — на марионетке.</string>
     <string name="library_open">Открыть библиотеку</string>
     <string name="close">Закрыть</string>
@@ -253,7 +253,7 @@
     <string name="builder_pick_title">Добавить позы</string>
     <string name="builder_in_set">В сете: %1$d</string>
     <string name="builder_tab_core">Основные практики</string>
-    <string name="builder_tab_library">Библиотека 2100</string>
+    <string name="builder_tab_library">Библиотека</string>
     <string name="builder_done">Готово</string>
     <string name="builder_more">И ещё %1$d — уточните поиск.</string>
     <string name="builder_add_to_set">＋ Добавить в сет</string>
@@ -404,8 +404,8 @@
     <string name="paywall_title">Премиум</string>
     <string name="paywall_benefit_chandra">Полные практики «Солнце и Луна» (до двух часов), сеты для продвинутых, классическая Чандра Намаскар</string>
     <string name="paywall_benefit_bundle">Свои сеты из конструктора — без ограничения запусков</string>
-    <string name="paywall_benefit_short">Проигрывание разделов библиотеки 2100 асан целиком</string>
-    <string name="paywall_benefit_future">Новые сеты и режимы методики по мере выхода</string>
+    <string name="paywall_benefit_short">Разделы библиотеки поз целиком, как практика</string>
+    <string name="paywall_benefit_future">Новые сеты и программы по мере выхода</string>
     <string name="paywall_free_core">Бесплатно навсегда: практики «Солнце» и «Луна», классическая Сурья Намаскар, утренний сет и «Спина без боли», библиотека поз и конструктор (5 запусков своих сетов), тест подвижности и анкета здоровья, прогресс, напоминания, вывод на ТВ.</string>
     <string name="paywall_loading">Загружаем тарифы…</string>
     <string name="paywall_unavailable">Тарифы не загрузились. Оплата работает, когда приложение установлено из %1$s и есть интернет.</string>
@@ -472,14 +472,14 @@
     <string name="sets_favorites">Избранные сеты</string>
     <string name="sets_ready">Готовые сеты</string>
     <string name="sets_ready_hint">Нажмите на сет, чтобы увидеть структуру и настройки перед стартом.</string>
-    <string name="sets_more">Ещё сеты: старт, основа, стоп и дополнения ▾</string>
+    <string name="sets_more">Ещё сеты: разминка, заминка и доп. элементы ▾</string>
     <string name="sets_more_hide">Скрыть дополнительные сеты ▴</string>
     <string name="set_size_short">%1$d положений · ~%2$d мин</string>
     <string name="session_minutes">~%1$d мин</string>
     <string name="session_poses">%1$d положений</string>
     <string name="session_rounds_chip">кругов: %1$d</string>
     <string name="session_hold">Вдохов-выдохов на удержании</string>
-    <string name="session_hold_method">по методике</string>
+    <string name="session_hold_method">как в сете</string>
     <string name="session_phase_line">Вдох и выдох по %1$s с. Удлинить можно в плеере кнопкой фазы.</string>
     <string name="session_structure">Структура</string>
     <string name="session_side_right">правая сторона</string>

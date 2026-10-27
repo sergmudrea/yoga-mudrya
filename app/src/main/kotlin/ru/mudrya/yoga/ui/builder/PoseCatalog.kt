@@ -10,7 +10,7 @@ data class PoseEntry(val asana: Asana, val search: String)
 /** Позы, из которых собирают свой сет: сеты Сидерского и библиотека 2100 асан. */
 object PoseCatalog {
 
-    private fun entry(a: Asana) = PoseEntry(a, listOfNotNull(a.nameRu, a.nameEn, a.sanskrit).joinToString(" ").lowercase())
+    private fun entry(a: Asana) = PoseEntry(a, listOfNotNull(a.nameRu, a.nameEn, ru.mudrya.yoga.ui.common.tr(a.nameEn), a.sanskrit).joinToString(" ").lowercase())
 
     /** Позы колец, классики и старт-сета — без повторов по названию. */
     val core: List<PoseEntry> by lazy { AtlasCatalog.asanas.distinctBy { it.nameRu }.map(::entry) }
