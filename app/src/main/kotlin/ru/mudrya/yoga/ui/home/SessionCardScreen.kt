@@ -30,7 +30,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ru.mudrya.yoga.R
+import ru.mudrya.yoga.catalog.AtlasCatalog
 import ru.mudrya.yoga.catalog.SuryaCatalog
+import ru.mudrya.yoga.model.SequenceDef
 import ru.mudrya.yoga.data.UserRepository
 import ru.mudrya.yoga.engine.BreathTimeline
 import ru.mudrya.yoga.engine.BuildRequest
@@ -250,10 +252,10 @@ private fun StructureRow(n: Int, title: String, side: String?, steps: Int) {
  * (например, «королевская кобра» — между СС-43 и СС-44). Выбор общий для всех сетов.
  */
 @Composable
-private fun ExtrasCard(def: ru.mudrya.yoga.model.SequenceDef, state: UserState, users: UserRepository, ru: Boolean) {
+private fun ExtrasCard(def: SequenceDef, state: UserState, users: UserRepository, ru: Boolean) {
     val here = def.slots.map { it.id }.distinct()
     if (here.isEmpty()) return
-    val zones = ru.mudrya.yoga.catalog.AtlasCatalog.zones.filter { it.id in here }
+    val zones = AtlasCatalog.zones.filter { it.id in here }
     val on = state.params.enabledSlots.toSet()
     fun set(ids: Collection<String>, enable: Boolean) = users.update { s ->
         val cur = s.params.enabledSlots.toMutableList()
@@ -265,7 +267,7 @@ private fun ExtrasCard(def: ru.mudrya.yoga.model.SequenceDef, state: UserState, 
         val all = zones.all { it.id in on }
         SwitchRow(stringResource(R.string.extras_all), stringResource(R.string.extras_all_hint), all) { set(zones.map { it.id }, it) }
         zones.forEach { z ->
-            val n = def.slots.filter { it.id == z.id }.sumOf { ru.mudrya.yoga.catalog.SuryaCatalog.catalog.block(it.blockId).steps.size }
+            val n = def.slots.filter { it.id == z.id }.sumOf { SuryaCatalog.catalog.block(it.blockId).steps.size }
             SwitchRow(if (ru) z.nameRu else z.nameEn, stringResource(R.string.extras_positions, n), z.id in on) { set(listOf(z.id), it) }
         }
     }
