@@ -51,6 +51,8 @@ SETS = [
     ("zs", "at_zs", "Stop set", False),
     ("ssd", "at_ssd", "Start set: extra elements", False),
     ("zsd", "at_zsd", "Stop set: extra elements", False),
+    ("skd", "at_skd", "Sun ring: extra elements", False),
+    ("lkd", "at_lkd", "Moon ring: extra elements", False),
 ]
 
 HAND = ATLAS.get("HAND", {})

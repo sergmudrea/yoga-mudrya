@@ -64,7 +64,7 @@ private val MORE_GROUPS = listOf(
         MudryaColors.Surface,
     ),
     SetGroup(R.string.sets_core, R.string.sets_core_hint, listOf("at_st", "at_ds", "at_zs"), MudryaColors.Moon, MudryaColors.Surface),
-    SetGroup(R.string.sets_extra, R.string.sets_extra_hint, listOf("at_ssd", "at_zsd"), MudryaColors.TextMuted, MudryaColors.Surface),
+    SetGroup(R.string.sets_extra, R.string.sets_extra_hint, listOf("at_ssd", "at_zsd", "at_skd", "at_lkd"), MudryaColors.TextMuted, MudryaColors.Surface),
 )
 
 internal fun accentOf(id: String): Color = if (id == "chandra" || id == "full_moon" || id == "at_cn") MudryaColors.Moon else MudryaColors.Saffron
