@@ -18,7 +18,7 @@ globalThis.document = { createElement: () => ({ getContext: () => ctx2d, width: 
 globalThis.__THREE = T;
 
 const data = fs.readFileSync(path.join(emu, 'atlas-data.js'), 'utf8');
-let mar = fs.readFileSync(path.join(emu, 'marionette.js'), 'utf8');
+let mar = fs.readFileSync(path.join(here, 'marionette.src.mjs'), 'utf8');
 mar = mar.replace(/^import .*$/gm, '');
 mar = mar.slice(0, mar.indexOf('async function boot(){'));
 const code = `${data}\n;(async()=>{\nconst T=globalThis.__THREE;\n${mar}\nconst OrbitControls=null;\nglobalThis.__fig=await createFigure3D();\n})();`;

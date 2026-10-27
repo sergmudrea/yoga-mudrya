@@ -49,7 +49,7 @@ import java.util.Locale
 import kotlin.math.roundToInt
 
 /** Вопросы анкеты здоровья — после тестов движения. */
-enum class HealthQuestion { BODY, WAIST, PULSE, STAIRS, SITTING }
+enum class HealthQuestion { BODY, WAIST, PULSE, BREATH, STAIRS, SITTING }
 
 private fun f1(x: Double) = if (x % 1.0 == 0.0) x.roundToInt().toString() else String.format(Locale.getDefault(), "%.1f", x)
 
@@ -90,6 +90,15 @@ fun HealthPage(index: Int, count: Int, q: HealthQuestion, answers: HashMap<Strin
                         onBigMinus = { v = (v - 5).coerceAtLeast(35) }, onBigPlus = { v = (v + 5).coerceAtMost(140) })
                     answers["hr"] = v.toDouble()
                 }
+                HealthQuestion.BREATH -> {
+                    var v by rememberSaveable { mutableIntStateOf(answers["bpm"]?.toInt() ?: 14) }
+                    ScreenTitle(stringResource(R.string.health_breath_title))
+                    Body(stringResource(R.string.health_breath_how), color = MudryaColors.Text)
+                    BreathTimer()
+                    Stepper(stringResource(R.string.health_breath_value, v), { v = (v - 1).coerceAtLeast(3) }, { v = (v + 1).coerceAtMost(40) })
+                    Body(stringResource(R.string.health_breath_phase, f1(HealthCheck.startPhaseMs(v) / 1000.0)))
+                    answers["bpm"] = v.toDouble()
+                }
                 HealthQuestion.STAIRS -> {
                     var v by rememberSaveable { mutableIntStateOf(answers["stairs"]?.toInt() ?: -1) }
                     ScreenTitle(stringResource(R.string.health_stairs_title))
@@ -117,6 +126,7 @@ fun HealthPage(index: Int, count: Int, q: HealthQuestion, answers: HashMap<Strin
                 HealthQuestion.BODY -> { answers.remove("height"); answers.remove("weight") }
                 HealthQuestion.WAIST -> answers.remove("waist")
                 HealthQuestion.PULSE -> answers.remove("hr")
+                HealthQuestion.BREATH -> answers.remove("bpm")
                 HealthQuestion.STAIRS -> answers.remove("stairs")
                 HealthQuestion.SITTING -> answers.remove("sitting")
             }
@@ -137,7 +147,28 @@ fun healthRecord(answers: Map<String, Double>, atMs: Long, day: Long) = HealthRe
     restingHr = answers["hr"]?.toInt(),
     stairsSec = answers["stairs"]?.toInt(),
     sittingHours = answers["sitting"]?.toInt(),
+    breathsPerMin = answers["bpm"]?.toInt(),
 )
+
+/** Секундомер на минуту: считать вдохи, пока идёт отсчёт. */
+@Composable
+private fun BreathTimer() {
+    var left by rememberSaveable { mutableIntStateOf(-1) }
+    androidx.compose.runtime.LaunchedEffect(left > 0) {
+        while (left > 0) {
+            kotlinx.coroutines.delay(1_000)
+            left -= 1
+        }
+    }
+    when {
+        left > 0 -> Text(stringResource(R.string.health_breath_left, left), color = MudryaColors.Saffron, fontSize = 22.sp, fontWeight = FontWeight.Bold)
+        left == 0 -> Text(stringResource(R.string.health_breath_done), color = MudryaColors.Saffron, fontSize = 16.sp)
+        else -> Unit
+    }
+    TextAction(stringResource(if (left > 0) R.string.health_breath_stop else R.string.health_breath_start), {
+        left = if (left > 0) -1 else 60
+    })
+}
 
 fun levelColor(l: HealthLevel): Color = when (l) {
     HealthLevel.GOOD -> Color(0xFF6CC49B)
@@ -189,6 +220,7 @@ private fun FindingRow(f: HealthFinding) {
         HealthMetric.RESTING_HR -> stringResource(R.string.health_m_hr, f.value.toInt())
         HealthMetric.STAIRS -> stringResource(R.string.health_m_stairs)
         HealthMetric.SITTING -> stringResource(R.string.health_m_sitting, f.value.toInt())
+        HealthMetric.BREATH -> stringResource(R.string.health_m_breath, f.value.toInt())
     }
     val verdict = stringResource(verdictRes(f))
     Row(Modifier.fillMaxWidth().padding(vertical = 4.dp), verticalAlignment = Alignment.Top) {
@@ -239,5 +271,10 @@ private fun verdictRes(f: HealthFinding): Int = when (f.metric) {
         HealthLevel.GOOD -> R.string.health_sit_good
         HealthLevel.OK -> R.string.health_sit_ok
         else -> R.string.health_sit_risk
+    }
+    HealthMetric.BREATH -> when (f.level) {
+        HealthLevel.GOOD -> R.string.health_breath_slow
+        HealthLevel.OK -> R.string.health_breath_normal
+        else -> R.string.health_breath_fast
     }
 }

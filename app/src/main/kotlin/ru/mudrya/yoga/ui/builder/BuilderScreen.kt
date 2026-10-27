@@ -427,7 +427,13 @@ private fun SetPreview(order: List<String>, holdCycles: Int) {
     Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
         Text(stringResource(R.string.builder_preview, i + 1, order.size, asana?.shownName() ?: ""), color = MudryaColors.TextMuted, fontSize = 13.sp)
         asana?.figure?.let {
-            ru.mudrya.yoga.ui.player.Figure3D(it, PREVIEW_MOVE_MS, asana.shownName(), Modifier.fillMaxWidth().height(200.dp).clip(RoundedCornerShape(16.dp)))
+            ru.mudrya.yoga.ui.player.Figure3D(
+                it,
+                PREVIEW_MOVE_MS,
+                asana.shownName(),
+                Modifier.fillMaxWidth().height(200.dp).clip(RoundedCornerShape(16.dp)),
+                placeholder = { PoseThumb(asana.id, 200.dp, Modifier.fillMaxWidth()) },
+            )
         }
     }
 }

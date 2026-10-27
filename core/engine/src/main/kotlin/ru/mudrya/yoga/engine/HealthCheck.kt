@@ -15,13 +15,15 @@ data class HealthRecord(
     val stairsSec: Int? = null,
     /** Сколько часов в день сидя (работа, транспорт, экран). */
     val sittingHours: Int? = null,
+    /** Спокойных дыханий (вдох+выдох) за минуту. */
+    val breathsPerMin: Int? = null,
 )
 
 /** Насколько хорош показатель: от хорошего к высокому риску. */
 enum class HealthLevel { GOOD, OK, RISK, HIGH }
 
 /** Что показывает анкета. */
-enum class HealthMetric { BMI, WAIST_TO_HEIGHT, WAIST, RESTING_HR, STAIRS, SITTING }
+enum class HealthMetric { BMI, WAIST_TO_HEIGHT, WAIST, RESTING_HR, STAIRS, SITTING, BREATH }
 
 /** Один вывод: показатель, его значение, уровень и класс (для текста на экране). */
 data class HealthFinding(val metric: HealthMetric, val value: Double, val level: HealthLevel, val grade: String)
@@ -110,6 +112,14 @@ object HealthCheck {
             }
             out += HealthFinding(HealthMetric.SITTING, hrs.toDouble(), level, level.name)
         }
+        r.breathsPerMin?.let { b ->
+            val (grade, level) = when {
+                b <= 10 -> "SLOW" to HealthLevel.GOOD
+                b <= 20 -> "NORMAL" to HealthLevel.OK
+                else -> "FAST" to HealthLevel.RISK
+            }
+            out += HealthFinding(HealthMetric.BREATH, b.toDouble(), level, grade)
+        }
         val worries = out.count { it.level == HealthLevel.RISK } + 2 * out.count { it.level == HealthLevel.HIGH }
         val overall = when {
             out.isEmpty() -> HealthLevel.OK
@@ -128,4 +138,13 @@ object HealthCheck {
     }
 
     private fun round1(x: Double) = (x * 10).roundToInt() / 10.0
+
+    /**
+     * Стартовая длина фазы (вдоха или выдоха) по спокойному дыханию: половина цикла,
+     * с шагом 0,5 с, в пределах 2–8 с. Дальше фазу удлиняют кнопкой в плеере.
+     */
+    fun startPhaseMs(breathsPerMin: Int): Long {
+        val half = 60_000.0 / breathsPerMin.coerceIn(4, 40) / 2
+        return ((half / 500).roundToInt() * 500L).coerceIn(2_000L, 8_000L)
+    }
 }

@@ -71,6 +71,8 @@ private object Routes {
     const val BUILDER = "builder"
     const val ACCOUNT = "account"
     const val PLAYER = "player/{seq}"
+    const val SESSION = "session/{seq}"
+    fun session(id: String) = "session/$id"
     fun player(sequenceId: String) = "player/$sequenceId"
 }
 
@@ -80,7 +82,9 @@ fun AppRoot() {
     val users = container.users
     val state by users.state.collectAsStateWithLifecycle()
     val entitlement by container.billing.entitlement.collectAsStateWithLifecycle()
-    val premium = entitlement.isPremium(System.currentTimeMillis()) || (BuildConfig.DEBUG && state.settings.debugPremium)
+    val premium = entitlement.isPremium(System.currentTimeMillis()) ||
+        ru.mudrya.yoga.engine.PromoCodes.active(state, System.currentTimeMillis()) ||
+        (BuildConfig.DEBUG && state.settings.debugPremium)
     // Права проверяются у магазина при каждом запуске: покупка на другом устройстве, отмена, продление.
     LaunchedEffect(Unit) { container.billing.restore() }
     val nav = rememberNavController()
@@ -124,6 +128,18 @@ fun AppRoot() {
             }
             composable(Routes.PLAYER) { entry ->
                 PlayerScreen(sequenceId = entry.arguments?.getString("seq") ?: "surya", onClose = { nav.popBackStack() })
+            }
+            composable(Routes.SESSION) { entry ->
+                val id = entry.arguments?.getString("seq") ?: "surya"
+                ru.mudrya.yoga.ui.home.SessionCardScreen(
+                    sequenceId = id,
+                    state = state,
+                    users = users,
+                    premium = premium,
+                    onStart = { nav.navigate(Routes.player(id)) { popUpTo(Routes.SESSION) { inclusive = true } } },
+                    onPaywall = { nav.navigate(Routes.PAYWALL) },
+                    onBack = { nav.popBackStack() },
+                )
             }
             composable(Routes.PAYWALL) { PaywallScreen(onClose = { nav.popBackStack() }) }
             composable(Routes.SETTINGS) {
@@ -187,8 +203,14 @@ private fun ru.mudrya.yoga.engine.SessionParams.respecting(p: UserProfile) =
     if (Injury.WRISTS in p.injuries && support != Support.FISTS) copy(support = Support.FISTS) else this
 
 /** Закрытый сет ведёт на экран подписки, открытый — сразу в плеер. Во время практики продаж нет. */
-private fun NavHostController.startSet(id: String, premium: Boolean) =
-    navigate(if (PremiumPolicy.isLocked(id, premium)) Routes.PAYWALL else Routes.player(id))
+private fun NavHostController.startSet(id: String, premium: Boolean) = navigate(
+    when {
+        PremiumPolicy.isLocked(id, premium) -> Routes.PAYWALL
+        // Свои сеты уже настроены в конструкторе — сразу в плеер.
+        ru.mudrya.yoga.engine.CustomSets.isCustom(id) -> Routes.player(id)
+        else -> Routes.session(id)
+    },
+)
 
 private fun NavHostController.goTab(tab: Tab) = navigate(tab.route) {
     popUpTo(Tab.PRACTICE.route) { saveState = true }

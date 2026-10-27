@@ -29,7 +29,10 @@ class UserStateCodecTest {
         customSets = listOf(CustomSet("my_abc", "Утро; спина, плечи", listOf("at_tad", "lb_B1"), holdCycles = 3)),
         customRuns = 3,
         pinnedSets = listOf("my_abc"),
-        health = listOf(HealthRecord(7_000, 20_000, 178.0, 86.5, 92.0, 66, 52, 9), HealthRecord(8_000, 20_001, weightKg = 85.0)),
+        favoriteSets = listOf("surya", "lib3", "my_abc"),
+        promoUntilMs = 99_000,
+        usedCodes = listOf("YABCDE"),
+        health = listOf(HealthRecord(7_000, 20_000, 178.0, 86.5, 92.0, 66, 52, 9, 14), HealthRecord(8_000, 20_001, weightKg = 85.0)),
     )
 
     @Test
@@ -481,5 +484,36 @@ class HoldOverrideTest {
         assertTrue(c.frame().step.hold.size == 2)
         c.setHold(null)
         assertEquals(before, c.frame().totalMs)
+    }
+}
+
+class PromoCodesTest {
+    @Test
+    fun `codes verify offline, kinds and tampering`() {
+        val y = PromoCodes.make(PromoKind.YEAR, "7K2QP")
+        assertEquals(PromoKind.YEAR, PromoCodes.verify(y)!!.kind)
+        assertEquals(PromoKind.YEAR, PromoCodes.verify(y.lowercase().replace("-", " "))!!.kind)
+        assertNull(PromoCodes.verify(y.dropLast(1) + if (y.last() == 'A') "B" else "A"))
+        assertNull(PromoCodes.verify("MUDRA-Q7K2QP-AAAAAA"))
+    }
+
+    @Test
+    fun `applying extends the term once per code, lifetime forever`() {
+        val now = 1_000L
+        val m = PromoCodes.verify(PromoCodes.make(PromoKind.MONTH, "AAAAA"))!!
+        val s1 = PromoCodes.apply(UserState(), m, now)!!
+        assertEquals(now + 30 * 86_400_000L, s1.promoUntilMs)
+        assertNull(PromoCodes.apply(s1, m, now))
+        assertTrue(PromoCodes.active(s1, now + 1))
+        val l = PromoCodes.verify(PromoCodes.make(PromoKind.LIFETIME, "BBBBB"))!!
+        assertTrue(PromoCodes.active(PromoCodes.apply(UserState(), l, now)!!, Long.MAX_VALUE))
+    }
+
+    @Test
+    fun `start phase follows calm breathing`() {
+        assertEquals(4_000L, HealthCheck.startPhaseMs(8))
+        assertEquals(2_500L, HealthCheck.startPhaseMs(12))
+        assertEquals(2_000L, HealthCheck.startPhaseMs(20))
+        assertEquals(7_500L, HealthCheck.startPhaseMs(4))
     }
 }

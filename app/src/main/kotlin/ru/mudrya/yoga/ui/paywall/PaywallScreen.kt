@@ -15,6 +15,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -140,6 +141,8 @@ fun PaywallScreen(onClose: () -> Unit) {
             }
         })
         message?.let { Body(it, color = MudryaColors.Saffron) }
+        val userState by container.users.state.collectAsState()
+        PromoCodeCard(userState, container.users)
         TextAction(stringResource(R.string.paywall_not_now), onClose)
         Spacer(Modifier.height(8.dp))
     }

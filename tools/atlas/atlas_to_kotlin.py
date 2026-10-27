@@ -226,6 +226,7 @@ def side_of(group):
 
 
 entry_exit = {}
+block_titles = {}
 for atlas_id, set_id, name_en, two_sides in SETS:
     s = SEQS[atlas_id]
     if atlas_id in SPLIT:
@@ -240,6 +241,7 @@ for atlas_id, set_id, name_en, two_sides in SETS:
         for i, (group, chunk) in enumerate(parts):
             bid = f"{set_id}_{i + 1}"
             blocks.append((bid, chunk))
+            block_titles[bid] = (group, TR["groups"].get(group))
             refs.append((bid, side_of(group)))
         entry_exit[set_id] = (refs[0][0], refs[-1][0])
         sequences.append((set_id, name_ru, name_en, refs, len(steps)))
@@ -249,10 +251,13 @@ for atlas_id, set_id, name_en, two_sides in SETS:
         left = build_steps(s["steps"], flip=True)
         blocks.append((f"{set_id}_r", right))
         blocks.append((f"{set_id}_l", left))
+        block_titles[f"{set_id}_r"] = (s["name"] + " — правая сторона", name_en + " — right side")
+        block_titles[f"{set_id}_l"] = (s["name"] + " — левая сторона", name_en + " — left side")
         sequences.append((set_id, s["name"], name_en, [(f"{set_id}_r", "RIGHT"), (f"{set_id}_l", "LEFT")], len(right) + len(left)))
     else:
         steps = build_steps(s["steps"], flip=False)
         blocks.append((set_id, steps))
+        block_titles[set_id] = (s["name"], name_en)
         sequences.append((set_id, s["name"], name_en, [(set_id, "NONE")], len(steps)))
 
 # Полный цикл одной практикой: кольцо книги открывает практику, после него — переход, старт-сет 1–7,
@@ -342,7 +347,8 @@ w("    val blocks: List<Block> by lazy { listOf(" + ", ".join(f"b{i}()" for i in
 w("")
 for i, (bid, steps) in enumerate(blocks):
     w(f"    // {bid}")
-    w(f"    private fun b{i}() = Block({kstr(bid)}, listOf(")
+    bt = block_titles.get(bid, (None, None))
+    w(f"    private fun b{i}() = Block({kstr(bid)}, titleRu = {kstr(bt[0])}, titleEn = {kstr(bt[1])}, steps = listOf(")
     for st in steps:
         dog = ", dog = true" if st["dog"] else ""
         w(f"        s({kstr(st['asana'])}, {blist(st['enter'])}, {blist(st['hold'])}, {kstr(st['title'])}, {kstr(st['cue'])}, {kstr(st['title_en'])}, {kstr(st['cue_en'])}{dog}),")

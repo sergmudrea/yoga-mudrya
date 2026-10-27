@@ -90,6 +90,7 @@ fun PracticeScreen(
         Text(stringResource(R.string.today), color = MudryaColors.TextMuted, fontSize = 14.sp)
         TodayCard(state, today, onStart, onTest, onSets)
         PinnedSets(state, users, premium, onStart, onPaywall)
+        FavoriteSets(state, users, premium, onStart)
         if (state.profile?.sex == Sex.FEMALE) CycleCard(state, users, today)
         SessionTuning(state, users)
 

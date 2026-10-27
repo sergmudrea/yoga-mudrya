@@ -1068,7 +1068,7 @@ object AtlasCatalog {
     val blocks: List<Block> by lazy { listOf(b0(), b1(), b2(), b3(), b4(), b5(), b6(), b7(), b8(), b9(), b10(), b11(), b12(), b13(), b14(), b15(), b16(), b17(), b18(), b19(), b20(), b21(), b22(), b23(), b24(), b25(), b26(), b27(), b28(), b29(), b30(), b31(), b32()) }
 
     // surya_1
-    private fun b0() = Block("surya_1", listOf(
+    private fun b0() = Block("surya_1", titleRu = "Стандартный вход", titleEn = "Standard entry", steps = listOf(
         s("at_tad", listOf(EX), emptyList(), "Основная стойка", "Ноги вместе, позвоночник вытянут, вес поровну на обе стопы. Стоим как скала.", "Basic stance", "Legs together, spine extended, weight evenly on both feet. Stand like a rock."),
         s("at_vdoh", listOf(IN), emptyList(), "Вдох передней поверхностью тела", "Руки вперёд, чуть присесть и резко подтянуть кисти ладонями вверх к бокам.", "Inhale through the front of the body", "Arms forward, squat slightly and sharply pull the hands, palms up, to the sides."),
         s("at_polu", listOf(IN), listOf(EX, IN, EX, IN), "Вытянутый полупрогиб", "Руки вперёд и вверх, подняться на носки, грудной прогиб без излома в пояснице и шее.", "Extended half arch", "Arms forward and up, rise onto the toes, chest arch without a kink in the lower back or neck."),
@@ -1092,7 +1092,7 @@ object AtlasCatalog {
     ))
 
     // surya_2
-    private fun b1() = Block("surya_2", listOf(
+    private fun b1() = Block("surya_2", titleRu = "Внутренняя связка (виньяса)", titleEn = "Inner link (vinyasa)", steps = listOf(
         s("at_uslide", listOf(IN), listOf(EX, IN), "Вытянутый (скользящий) упор-прогиб", "Перекатиться через пальцы на подъёмы стоп, таз провисает, руки прямые.", "Extended (sliding) arched plank", "Roll over the toes onto the tops of the feet, pelvis sagging, arms straight."),
         s("at_uchat", listOf(EX), listOf(IN, EX, IN), "Вытянутый (скользящий) горизонтальный упор", "Волной «расстелить» тело над полом, локти к бокам, подбородок вперёд.", "Extended (sliding) horizontal plank", "In a wave, “spread” the body above the floor, elbows to the sides, chin forward."),
         s("at_chat", listOf(EX), listOf(IN, EX, IN, EX, IN), "Горизонтальный упор", "Сместиться назад на пальцы ног, тело в одной горизонтальной плоскости.", "Horizontal plank", "Shift back onto the toes, body in one horizontal plane.", dog = true),
@@ -1104,7 +1104,7 @@ object AtlasCatalog {
     ))
 
     // surya_3
-    private fun b2() = Block("surya_3", listOf(
+    private fun b2() = Block("surya_3", titleRu = "Внутреннее солнечное кольцо, правый шаг", titleEn = "Inner Sun ring, right step", steps = listOf(
         s("at_lvdoh", listOf(IN), emptyList(), "Широкий шаг со вдохом передней поверхностью тела", "Широкий шаг правой ногой к кисти, таз низко, торс вертикально, кисти рывком к талии.", "Wide step, inhaling through the front of the body", "Wide step with the right foot to the hand, pelvis low, torso vertical, hands jerked to the waist."),
         s("at_lcres", listOf(IN), listOf(EX, IN, EX, IN), "Полумесяц с широким шагом", "Руки вверх, прогиб назад, тело одна дуга от пятки до пальцев рук.", "Wide-step crescent", "Arms up, backbend, the body one arc from heel to fingertips."),
         s("at_wings", listOf(EX), listOf(EX), "Выдохнуть сквозь распростёртые крылья", "Голова прямо, медленно и с напряжением развести руки в стороны.", "Exhale through outspread wings", "Head straight, slowly and with tension spread the arms to the sides."),
@@ -1113,7 +1113,7 @@ object AtlasCatalog {
     ))
 
     // surya_4
-    private fun b3() = Block("surya_4", listOf(
+    private fun b3() = Block("surya_4", titleRu = "Связка на трёх точках, правая нога", titleEn = "Three-point link, right leg", steps = listOf(
         s("at_edog3", listOf(EX), listOf(IN, EX), "Трёхточечный вытянутый упор-горка", "Вернуться в горку, правая нога высоко назад-вверх, таз не поворачивать.", "Three-point extended downward plank", "Return to the downward plank, right leg high back and up, do not turn the pelvis."),
         s("at_uslide3", listOf(EX), listOf(IN, EX, IN), "Трёхточечный скользящий упор-прогиб", "Опустить таз, вытянуться, нога остаётся поднятой.", "Three-point sliding arched plank", "Lower the pelvis, extend, the leg stays raised."),
         s("at_chat3", listOf(EX), listOf(IN, EX, IN), "Трёхточечный горизонтальный упор", "Согнуть руки до горизонтали, нога поднята.", "Three-point horizontal plank", "Bend the arms to horizontal, leg raised."),
@@ -1123,7 +1123,7 @@ object AtlasCatalog {
     ))
 
     // surya_5
-    private fun b4() = Block("surya_5", listOf(
+    private fun b4() = Block("surya_5", titleRu = "Внутренняя связка (виньяса)", titleEn = "Inner link (vinyasa)", steps = listOf(
         s("at_uslide", listOf(IN), listOf(EX, IN), "Вытянутый (скользящий) упор-прогиб", "Перекатиться через пальцы на подъёмы стоп, таз провисает, руки прямые.", "Extended (sliding) arched plank", "Roll over the toes onto the tops of the feet, pelvis sagging, arms straight."),
         s("at_uchat", listOf(EX), listOf(IN, EX, IN), "Вытянутый (скользящий) горизонтальный упор", "Волной «расстелить» тело над полом, локти к бокам, подбородок вперёд.", "Extended (sliding) horizontal plank", "In a wave, “spread” the body above the floor, elbows to the sides, chin forward."),
         s("at_chat", listOf(EX), listOf(IN, EX, IN, EX, IN), "Горизонтальный упор", "Сместиться назад на пальцы ног, тело в одной горизонтальной плоскости.", "Horizontal plank", "Shift back onto the toes, body in one horizontal plane.", dog = true),
@@ -1135,7 +1135,7 @@ object AtlasCatalog {
     ))
 
     // surya_6
-    private fun b5() = Block("surya_6", listOf(
+    private fun b5() = Block("surya_6", titleRu = "Внутреннее солнечное кольцо, левый шаг", titleEn = "Inner Sun ring, left step", steps = listOf(
         s("at_lvdoh_m", listOf(IN), emptyList(), "Широкий шаг со вдохом передней поверхностью тела", "Широкий шаг левой ногой к кисти, таз низко, торс вертикально, кисти рывком к талии.", "Wide step, inhaling through the front of the body", "Wide step with the left foot to the hand, pelvis low, torso vertical, hands jerked to the waist."),
         s("at_lcres_m", listOf(IN), listOf(EX, IN, EX, IN), "Полумесяц с широким шагом", "Руки вверх, прогиб назад, тело одна дуга от пятки до пальцев рук.", "Wide-step crescent", "Arms up, backbend, the body one arc from heel to fingertips."),
         s("at_wings_m", listOf(EX), listOf(EX), "Выдохнуть сквозь распростёртые крылья", "Голова прямо, медленно и с напряжением развести руки в стороны.", "Exhale through outspread wings", "Head straight, slowly and with tension spread the arms to the sides."),
@@ -1144,7 +1144,7 @@ object AtlasCatalog {
     ))
 
     // surya_7
-    private fun b6() = Block("surya_7", listOf(
+    private fun b6() = Block("surya_7", titleRu = "Связка на трёх точках, левая нога", titleEn = "Three-point link, left leg", steps = listOf(
         s("at_edog3_m", listOf(EX), listOf(IN, EX), "Трёхточечный вытянутый упор-горка", "Вернуться в горку, левая нога высоко назад-вверх, таз не поворачивать.", "Three-point extended downward plank", "Return to the downward plank, left leg high back and up, do not turn the pelvis."),
         s("at_uslide3_m", listOf(EX), listOf(IN, EX, IN), "Трёхточечный скользящий упор-прогиб", "Опустить таз, вытянуться, нога остаётся поднятой.", "Three-point sliding arched plank", "Lower the pelvis, extend, the leg stays raised."),
         s("at_chat3_m", listOf(EX), listOf(IN, EX, IN), "Трёхточечный горизонтальный упор", "Согнуть руки до горизонтали, нога поднята.", "Three-point horizontal plank", "Bend the arms to horizontal, leg raised."),
@@ -1154,7 +1154,7 @@ object AtlasCatalog {
     ))
 
     // surya_8
-    private fun b7() = Block("surya_8", listOf(
+    private fun b7() = Block("surya_8", titleRu = "Внутренняя связка (виньяса)", titleEn = "Inner link (vinyasa)", steps = listOf(
         s("at_uslide", listOf(IN), listOf(EX, IN), "Вытянутый (скользящий) упор-прогиб", "Перекатиться через пальцы на подъёмы стоп, таз провисает, руки прямые.", "Extended (sliding) arched plank", "Roll over the toes onto the tops of the feet, pelvis sagging, arms straight."),
         s("at_uchat", listOf(EX), listOf(IN, EX, IN), "Вытянутый (скользящий) горизонтальный упор", "Волной «расстелить» тело над полом, локти к бокам, подбородок вперёд.", "Extended (sliding) horizontal plank", "In a wave, “spread” the body above the floor, elbows to the sides, chin forward."),
         s("at_chat", listOf(EX), listOf(IN, EX, IN, EX, IN), "Горизонтальный упор", "Сместиться назад на пальцы ног, тело в одной горизонтальной плоскости.", "Horizontal plank", "Shift back onto the toes, body in one horizontal plane.", dog = true),
@@ -1166,7 +1166,7 @@ object AtlasCatalog {
     ))
 
     // surya_9
-    private fun b8() = Block("surya_9", listOf(
+    private fun b8() = Block("surya_9", titleRu = "Стандартный выход", titleEn = "Standard exit", steps = listOf(
         s("at_pnak", listOf(EX, IN), listOf(EX, IN), "Полупрогиб в вытянутом наклоне", "Прыжком стопы между ладоней, выпрямить ноги и прогнуться.", "Half arch in the extended bend", "Jump the feet between the palms, straighten the legs and arch."),
         s("at_zamk", listOf(EX), listOf(IN, EX, IN, EX), "Замкнутый закрытый вытянутый наклон", "За лодыжки, грудь к бёдрам.", "Locked closed extended bend", "Hold the ankles, chest to the thighs."),
         s("at_pnak", listOf(IN), listOf(EX, IN), "Полупрогиб в вытянутом наклоне", null, "Half arch in the extended bend", null),
@@ -1181,7 +1181,7 @@ object AtlasCatalog {
     ))
 
     // chandra_1
-    private fun b9() = Block("chandra_1", listOf(
+    private fun b9() = Block("chandra_1", titleRu = "Стандартный вход", titleEn = "Standard entry", steps = listOf(
         s("at_tad", listOf(EX), emptyList(), "Основная стойка", "Ноги вместе, позвоночник вытянут, вес поровну на обе стопы. Стоим как скала.", "Basic stance", "Legs together, spine extended, weight evenly on both feet. Stand like a rock."),
         s("at_vdoh", listOf(IN), emptyList(), "Вдох передней поверхностью тела", "Руки вперёд, чуть присесть и резко подтянуть кисти ладонями вверх к бокам.", "Inhale through the front of the body", "Arms forward, squat slightly and sharply pull the hands, palms up, to the sides."),
         s("at_polu", listOf(IN), listOf(EX, IN, EX, IN), "Вытянутый полупрогиб", "Руки вперёд и вверх, подняться на носки, грудной прогиб без излома в пояснице и шее.", "Extended half arch", "Arms forward and up, rise onto the toes, chest arch without a kink in the lower back or neck."),
@@ -1205,7 +1205,7 @@ object AtlasCatalog {
     ))
 
     // chandra_2
-    private fun b10() = Block("chandra_2", listOf(
+    private fun b10() = Block("chandra_2", titleRu = "Внутренняя связка", titleEn = "Inner link", steps = listOf(
         s("at_uslide", listOf(IN), listOf(EX, IN), "Вытянутый (скользящий) упор-прогиб", "Перекатиться через пальцы на подъёмы стоп, таз провисает, руки прямые.", "Extended (sliding) arched plank", "Roll over the toes onto the tops of the feet, pelvis sagging, arms straight."),
         s("at_uchat", listOf(EX), listOf(IN, EX, IN), "Вытянутый (скользящий) горизонтальный упор", "Волной «расстелить» тело над полом, локти к бокам, подбородок вперёд.", "Extended (sliding) horizontal plank", "In a wave, “spread” the body above the floor, elbows to the sides, chin forward."),
         s("at_chat", listOf(EX), listOf(IN, EX, IN, EX, IN), "Горизонтальный упор", "Сместиться назад на пальцы ног, тело в одной горизонтальной плоскости.", "Horizontal plank", "Shift back onto the toes, body in one horizontal plane.", dog = true),
@@ -1217,7 +1217,7 @@ object AtlasCatalog {
     ))
 
     // chandra_3
-    private fun b11() = Block("chandra_3", listOf(
+    private fun b11() = Block("chandra_3", titleRu = "Правостороннее внутреннее лунное кольцо", titleEn = "Right-side inner Moon ring", steps = listOf(
         s("at_plechdog", listOf(EX), listOf(IN, EX, IN), "Плечевое вытягивание в упоре-горке", "Голова упирается в пол, спина и шея одной линией; замок за спиной тянется к полу за головой.", "Shoulder stretch in the downward plank", "Head rests on the floor, back and neck in one line; the lock behind the back reaches for the floor beyond the head."),
         s("at_cat", listOf(EX, IN), listOf(EX, IN, EX, IN), "Прогиб-кошка", "Упор на четвереньках, носки оттянуты; подбородок вперёд-вверх, седалищные кости назад-вверх.", "Arched cat", "On all fours, toes pointed; chin forward and up, sitting bones back and up."),
         s("at_antcat", listOf(EX), listOf(IN, EX, IN), "Антипрогиб-кошка", "Спина дугой вверх, подбородок к яремной выемке, пресс напряжён.", "Counter-arched cat", "Back arched upward, chin to the jugular notch, abs engaged."),
@@ -1243,7 +1243,7 @@ object AtlasCatalog {
     ))
 
     // chandra_4
-    private fun b12() = Block("chandra_4", listOf(
+    private fun b12() = Block("chandra_4", titleRu = "Внутренняя связка", titleEn = "Inner link", steps = listOf(
         s("at_uslide", listOf(IN), listOf(EX, IN), "Вытянутый (скользящий) упор-прогиб", "Перекатиться через пальцы на подъёмы стоп, таз провисает, руки прямые.", "Extended (sliding) arched plank", "Roll over the toes onto the tops of the feet, pelvis sagging, arms straight."),
         s("at_uchat", listOf(EX), listOf(IN, EX, IN), "Вытянутый (скользящий) горизонтальный упор", "Волной «расстелить» тело над полом, локти к бокам, подбородок вперёд.", "Extended (sliding) horizontal plank", "In a wave, “spread” the body above the floor, elbows to the sides, chin forward."),
         s("at_chat", listOf(EX), listOf(IN, EX, IN, EX, IN), "Горизонтальный упор", "Сместиться назад на пальцы ног, тело в одной горизонтальной плоскости.", "Horizontal plank", "Shift back onto the toes, body in one horizontal plane.", dog = true),
@@ -1255,7 +1255,7 @@ object AtlasCatalog {
     ))
 
     // chandra_5
-    private fun b13() = Block("chandra_5", listOf(
+    private fun b13() = Block("chandra_5", titleRu = "Левостороннее внутреннее лунное кольцо", titleEn = "Left-side inner Moon ring", steps = listOf(
         s("at_plechdog", listOf(EX), listOf(IN, EX, IN), "Плечевое вытягивание в упоре-горке", "Голова упирается в пол, спина и шея одной линией; замок за спиной тянется к полу за головой.", "Shoulder stretch in the downward plank", "Head rests on the floor, back and neck in one line; the lock behind the back reaches for the floor beyond the head."),
         s("at_cat", listOf(EX, IN), listOf(EX, IN, EX, IN), "Прогиб-кошка", "Упор на четвереньках, носки оттянуты; подбородок вперёд-вверх, седалищные кости назад-вверх.", "Arched cat", "On all fours, toes pointed; chin forward and up, sitting bones back and up."),
         s("at_antcat", listOf(EX), listOf(IN, EX, IN), "Антипрогиб-кошка", "Спина дугой вверх, подбородок к яремной выемке, пресс напряжён.", "Counter-arched cat", "Back arched upward, chin to the jugular notch, abs engaged."),
@@ -1281,7 +1281,7 @@ object AtlasCatalog {
     ))
 
     // chandra_6
-    private fun b14() = Block("chandra_6", listOf(
+    private fun b14() = Block("chandra_6", titleRu = "Внутренняя связка", titleEn = "Inner link", steps = listOf(
         s("at_uslide", listOf(IN), listOf(EX, IN), "Вытянутый (скользящий) упор-прогиб", "Перекатиться через пальцы на подъёмы стоп, таз провисает, руки прямые.", "Extended (sliding) arched plank", "Roll over the toes onto the tops of the feet, pelvis sagging, arms straight."),
         s("at_uchat", listOf(EX), listOf(IN, EX, IN), "Вытянутый (скользящий) горизонтальный упор", "Волной «расстелить» тело над полом, локти к бокам, подбородок вперёд.", "Extended (sliding) horizontal plank", "In a wave, “spread” the body above the floor, elbows to the sides, chin forward."),
         s("at_chat", listOf(EX), listOf(IN, EX, IN, EX, IN), "Горизонтальный упор", "Сместиться назад на пальцы ног, тело в одной горизонтальной плоскости.", "Horizontal plank", "Shift back onto the toes, body in one horizontal plane.", dog = true),
@@ -1293,7 +1293,7 @@ object AtlasCatalog {
     ))
 
     // chandra_7
-    private fun b15() = Block("chandra_7", listOf(
+    private fun b15() = Block("chandra_7", titleRu = "Стандартный выход", titleEn = "Standard exit", steps = listOf(
         s("at_pnak", listOf(EX, IN), listOf(EX, IN), "Полупрогиб в вытянутом наклоне", "Прыжком стопы между ладоней, выпрямить ноги и прогнуться.", "Half arch in the extended bend", "Jump the feet between the palms, straighten the legs and arch."),
         s("at_zamk", listOf(EX), listOf(IN, EX, IN, EX), "Замкнутый закрытый вытянутый наклон", "За лодыжки, грудь к бёдрам.", "Locked closed extended bend", "Hold the ankles, chest to the thighs."),
         s("at_pnak", listOf(IN), listOf(EX, IN), "Полупрогиб в вытянутом наклоне", null, "Half arch in the extended bend", null),
@@ -1308,7 +1308,7 @@ object AtlasCatalog {
     ))
 
     // at_sn_r
-    private fun b16() = Block("at_sn_r", listOf(
+    private fun b16() = Block("at_sn_r", titleRu = "Сурья Намаскар — правая сторона", titleEn = "Surya Namaskar (classic) — right side", steps = listOf(
         s("at_pranam", listOf(EX), emptyList(), "Пранамасана — поза молитвы", "Стопы вместе, ладони сложены у груди.", "Pranamasana — prayer pose", "Feet together, palms joined at the chest."),
         s("at_hastaut", listOf(IN), emptyList(), "Хаста уттанасана — руки вверх", "Руки над головой, мягкий прогиб назад.", "Hasta Uttanasana — arms up", "Arms overhead, gentle backbend."),
         s("at_padah", listOf(EX), emptyList(), "Падахастасана — наклон к стопам", "Наклон от таза, ладони на пол у стоп.", "Padahastasana — bend to the feet", "Bend from the pelvis, palms on the floor by the feet."),
@@ -1324,7 +1324,7 @@ object AtlasCatalog {
     ))
 
     // at_sn_l
-    private fun b17() = Block("at_sn_l", listOf(
+    private fun b17() = Block("at_sn_l", titleRu = "Сурья Намаскар — левая сторона", titleEn = "Surya Namaskar (classic) — left side", steps = listOf(
         s("at_pranam", listOf(EX), emptyList(), "Пранамасана — поза молитвы", "Стопы вместе, ладони сложены у груди.", "Pranamasana — prayer pose", "Feet together, palms joined at the chest."),
         s("at_hastaut", listOf(IN), emptyList(), "Хаста уттанасана — руки вверх", "Руки над головой, мягкий прогиб назад.", "Hasta Uttanasana — arms up", "Arms overhead, gentle backbend."),
         s("at_padah", listOf(EX), emptyList(), "Падахастасана — наклон к стопам", "Наклон от таза, ладони на пол у стоп.", "Padahastasana — bend to the feet", "Bend from the pelvis, palms on the floor by the feet."),
@@ -1340,7 +1340,7 @@ object AtlasCatalog {
     ))
 
     // at_cn_r
-    private fun b18() = Block("at_cn_r", listOf(
+    private fun b18() = Block("at_cn_r", titleRu = "Чандра Намаскар — правая сторона", titleEn = "Chandra Namaskar (classic) — right side", steps = listOf(
         s("at_pranam", listOf(EX), emptyList(), "Пранамасана — поза молитвы", "Стопы вместе, ладони у груди, внимание на дыхании.", "Pranamasana — prayer pose", "Feet together, palms at the chest, attention on the breath."),
         s("at_hastaut", listOf(IN), emptyList(), "Хаста уттанасана — руки вверх", "Руки вверх и чуть назад, таз мягко вперёд.", "Hasta Uttanasana — arms up", "Arms up and slightly back, pelvis gently forward."),
         s("at_padah", listOf(EX), emptyList(), "Падахастасана — наклон к стопам", "Ладони на пол у стоп, колени можно согнуть.", "Padahastasana — bend to the feet", "Palms on the floor by the feet; knees may bend."),
@@ -1360,7 +1360,7 @@ object AtlasCatalog {
     ))
 
     // at_cn_l
-    private fun b19() = Block("at_cn_l", listOf(
+    private fun b19() = Block("at_cn_l", titleRu = "Чандра Намаскар — левая сторона", titleEn = "Chandra Namaskar (classic) — left side", steps = listOf(
         s("at_pranam", listOf(EX), emptyList(), "Пранамасана — поза молитвы", "Стопы вместе, ладони у груди, внимание на дыхании.", "Pranamasana — prayer pose", "Feet together, palms at the chest, attention on the breath."),
         s("at_hastaut", listOf(IN), emptyList(), "Хаста уттанасана — руки вверх", "Руки вверх и чуть назад, таз мягко вперёд.", "Hasta Uttanasana — arms up", "Arms up and slightly back, pelvis gently forward."),
         s("at_padah", listOf(EX), emptyList(), "Падахастасана — наклон к стопам", "Ладони на пол у стоп, колени можно согнуть.", "Padahastasana — bend to the feet", "Palms on the floor by the feet; knees may bend."),
@@ -1380,7 +1380,7 @@ object AtlasCatalog {
     ))
 
     // at_ns
-    private fun b20() = Block("at_ns", listOf(
+    private fun b20() = Block("at_ns", titleRu = "Переход к старт-сету", titleEn = "Transition to the start set", steps = listOf(
         s("at_darnika", listOf(EX), emptyList(), "Расслабление на пятках", "Ладони широко, пальцами в стороны; стопы на пальцы.", "Relaxation on the heels", "Palms wide, fingers turned out; feet on the toes."),
         s("at_plank", listOf(EX), listOf(IN, EX, IN), "Выход в широкий наклонный упор", "Волной от таза послать тело вперёд, ноги выпрямить. Пятки на ширине плеч.", "Out into a wide inclined plank", "In a wave from the pelvis, send the body forward, straighten the legs. Heels shoulder-width apart."),
         s("at_wchat", listOf(EX), listOf(IN, EX, IN), "Широкий горизонтальный упор", "Согнуть руки до прямого угла, локти и плечи на одной линии, предплечья вертикальны.", "Wide horizontal plank", "Bend the arms to a right angle, elbows and shoulders in one line, forearms vertical."),
@@ -1392,7 +1392,7 @@ object AtlasCatalog {
     ))
 
     // at_ss1
-    private fun b21() = Block("at_ss1", listOf(
+    private fun b21() = Block("at_ss1", titleRu = "Старт-сет 1", titleEn = "Start set 1", steps = listOf(
         s("at_croc", listOf(IN), listOf(EX, IN, EX, IN, EX), "Крокодил прилёг отдохнуть", "Начинаем с расслабления лёжа на животе.", "The crocodile lies down to rest", "Begin with relaxation lying on the belly."),
         s("at_shalabha", listOf(IN, EX), listOf(IN, EX, IN, EX), "Кузнечик", "«Выползти» позвоночником из таза, пупок к полу, ноги прямые назад-вверх, носки оттянуты.", "Locust", "“Crawl” the spine out of the pelvis, navel to the floor, legs straight back and up, toes pointed."),
         s("at_sphinx", listOf(IN, EX), listOf(IN, EX), "Сфинкс", "Локти под плечами, предплечья параллельны; грудь вертикально, ноги вместе.", "Sphinx", "Elbows under the shoulders, forearms parallel; chest vertical, legs together."),
@@ -1452,7 +1452,7 @@ object AtlasCatalog {
     ))
 
     // at_ss2
-    private fun b22() = Block("at_ss2", listOf(
+    private fun b22() = Block("at_ss2", titleRu = "Старт-сет 2", titleEn = "Start set 2", steps = listOf(
         s("at_plough", listOf(EX), listOf(IN), "«Плугообразные» махи обеими ногами", "Ладони в пол, махом прямые ноги за голову до касания пола и обратно; 10–12 раз.", "“Plough-like” swings with both legs", "Palms to the floor, swing the straight legs over the head until they touch the floor and back; 10–12 times."),
         s("at_legs0", listOf(EX), emptyList(), "Ступенчатое поднимание прямых ног: исходное", "Руки через стороны за голову ладонями вверх, ноги вместе, носки оттянуты.", "Stepwise straight-leg raise: start", "Arms through the sides behind the head, palms up, legs together, toes pointed."),
         s("at_legs30", listOf(EX), listOf(IN, EX, IN), "Ноги на 30–35°", null, "Legs at 30–35°", null),
@@ -1489,7 +1489,7 @@ object AtlasCatalog {
     ))
 
     // at_ss3
-    private fun b23() = Block("at_ss3", listOf(
+    private fun b23() = Block("at_ss3", titleRu = "Старт-сет 3", titleEn = "Start set 3: inversions", steps = listOf(
         s("at_plough", listOf(IN), listOf(EX, IN, EX, IN, EX), "Перекат через голову", "Ноги за голову, ладони у головы, толчком перекатиться строго через середину головы.", "Roll over the head", "Legs over the head, palms by the head, push and roll strictly over the middle of the head."),
         s("at_darnika", listOf(IN), listOf(EX, IN, EX, IN, EX), "Расслабление на пятках", null, "Relaxation on the heels", null),
         s("at_hprep", listOf(EX), listOf(IN, EX, IN, EX, IN, EX), "Полустойка на голове", "Кисти в замок, локти не шире плеч, голова в угол предплечий; выпрямить ноги.", "Half headstand", "Hands interlocked, elbows no wider than the shoulders, head in the angle of the forearms; straighten the legs."),
@@ -1545,7 +1545,7 @@ object AtlasCatalog {
     ))
 
     // at_ss4
-    private fun b24() = Block("at_ss4", listOf(
+    private fun b24() = Block("at_ss4", titleRu = "Старт-сет 4", titleEn = "Start set 4", steps = listOf(
         s("at_flatstr", listOf(EX), listOf(IN, EX, IN, EX, IN, EX), "Плоское растягивание нижней части спины", "Ноги вместе, носки на себя; голова и плечи вверх, подбородок к яремной выемке.", "Flat lower-back stretch", "Legs together, toes toward you; head and shoulders up, chin to the jugular notch."),
         s("at_paschprep", listOf(EX), listOf(IN, EX, IN, EX, IN, EX), "Закрытый вытянутый наклон сидя", "Медленно «свернуться» в положение сидя, за стопы, таз вперёд.", "Seated closed extended bend", "Slowly “curl” into sitting, hold the feet, pelvis forward."),
         s("at_pasch", listOf(EX), listOf(IN, EX, IN, EX, IN, EX), "Закрытый вытянутый наклон сидя, полный", "Живот, грудь, подбородок, лоб по очереди к ногам.", "Seated closed extended bend, full", "Belly, chest, chin, forehead in turn to the legs."),
@@ -1595,7 +1595,7 @@ object AtlasCatalog {
     ))
 
     // at_ss5
-    private fun b25() = Block("at_ss5", listOf(
+    private fun b25() = Block("at_ss5", titleRu = "Старт-сет 5", titleEn = "Start set 5", steps = listOf(
         s("at_hanuhalf", listOf(EX), listOf(IN, EX, IN, EX, IN, EX), "Левосторонние продольные полуножницы", "Передняя нога на пятке далеко вперёд, задняя на носке; таз «квадратный» и провисает к полу.", "Left front half splits", "Front leg on the heel far forward, back leg on the toes; pelvis “square” and sagging toward the floor."),
         s("at_hanufold", listOf(EX), listOf(IN, EX, IN, EX, IN, EX), "Левосторонние продольные ножницы с вытянутым наклоном", "Торс по переднему бедру, рукой носок на себя.", "Left front splits with extended bend", "Torso along the front thigh, hand pulls the toes toward you."),
         s("at_hanuflat", listOf(EX), listOf(IN, EX, IN, EX, IN, EX), "Ножницы с наклоном, задняя нога на полу", "Задний носок «отпустить», нога ложится на пол; подбородок на пол.", "Splits with bend, back leg on the floor", "“Release” the back toes, the leg lies on the floor; chin to the floor."),
@@ -1618,7 +1618,7 @@ object AtlasCatalog {
     ))
 
     // at_ss6
-    private fun b26() = Block("at_ss6", listOf(
+    private fun b26() = Block("at_ss6", titleRu = "Старт-сет 6", titleEn = "Start set 6", steps = listOf(
         s("at_frogfold", listOf(EX), listOf(IN, EX, IN), "Лягушка с «ежовым» наклоном", "За колени, спина дугой, лоб к пупку, макушка на полу.", "Frog with “hedgehog” bend", "Hold the knees, back rounded, forehead to the navel, crown on the floor."),
         s("at_kneelbend", listOf(IN), listOf(EX, IN), "Полудуга, или полулук", "Руки через стороны вверх, прогиб, таз поднимается.", "Half arc, or half bow", "Arms through the sides up, arch, pelvis rises."),
         s("at_kneelup", listOf(EX), listOf(IN, EX, IN), "Полудуга: выпрямление", null, "Half arc: straightening", null),
@@ -1660,7 +1660,7 @@ object AtlasCatalog {
     ))
 
     // at_ss7
-    private fun b27() = Block("at_ss7", listOf(
+    private fun b27() = Block("at_ss7", titleRu = "Старт-сет 7", titleEn = "Start set 7", steps = listOf(
         s("at_pnak", listOf(EX), emptyList(), "Полупрогиб в закрытом вытянутом наклоне", "Прыжком стопы к ладоням, ноги прямые, живот к бёдрам.", "Half arch in the closed extended bend", "Jump the feet to the palms, legs straight, belly to the thighs."),
         s("at_pnak", listOf(IN), emptyList(), "Полупрогиб с подтянутыми ступнями", "Ступни до предела на себя.", "Half arch with feet drawn in", "Feet flexed toward you to the limit."),
         s("at_zamk", listOf(EX), listOf(IN), "Закрытый вытянутый наклон", "За лодыжки, торс по ногам.", "Closed extended bend", "Hold the ankles, torso along the legs."),
@@ -1704,7 +1704,7 @@ object AtlasCatalog {
     ))
 
     // at_st
-    private fun b28() = Block("at_st", listOf(
+    private fun b28() = Block("at_st", titleRu = "Стержневой сет", titleEn = "Core set", steps = listOf(
         s("at_horse", listOf(IN), emptyList(), "Стойка всадника, ладони между лопаток", "Стопы на 1,5–2 ширины плеч, ладони между лопаток, прогиб назад.", "Horse stance, palms between the shoulder blades", "Feet 1.5–2 shoulder-widths apart, palms between the shoulder blades, backbend."),
         s("at_horse2", listOf(IN), emptyList(), "Стойка всадника, кисти на бёдрах", "Руки прямые на бёдрах, прогиб глубже без излома в пояснице.", "Horse stance, hands on the thighs", "Straight arms on the thighs, backbend deeper without a kink in the lower back."),
         s("at_horse3", listOf(EX, IN), emptyList(), "Руки за голову, колени согнуты", null, "Hands behind the head, knees bent", null),
@@ -1752,7 +1752,7 @@ object AtlasCatalog {
     ))
 
     // at_ds
-    private fun b29() = Block("at_ds", listOf(
+    private fun b29() = Block("at_ds", titleRu = "Связка к стоп-сету", titleEn = "Link to the stop set", steps = listOf(
         s("at_tad", listOf(EX), emptyList(), "Основная стойка", "Ноги вместе, позвоночник вытянут, вес поровну на обе стопы. Стоим как скала.", "Basic stance", "Legs together, spine extended, weight evenly on both feet. Stand like a rock."),
         s("at_vdoh", listOf(IN), emptyList(), "Вдох передней поверхностью тела", "Руки вперёд, чуть присесть и резко подтянуть кисти ладонями вверх к бокам.", "Inhale through the front of the body", "Arms forward, squat slightly and sharply pull the hands, palms up, to the sides."),
         s("at_polu", listOf(IN), listOf(EX, IN, EX, IN), "Вытянутый полупрогиб", "Руки вперёд и вверх, подняться на носки, грудной прогиб без излома в пояснице и шее.", "Extended half arch", "Arms forward and up, rise onto the toes, chest arch without a kink in the lower back or neck."),
@@ -1788,7 +1788,7 @@ object AtlasCatalog {
     ))
 
     // at_zs
-    private fun b30() = Block("at_zs", listOf(
+    private fun b30() = Block("at_zs", titleRu = "Стоп-сет", titleEn = "Stop set", steps = listOf(
         s("at_shava", listOf(IN), listOf(EX, IN, EX, IN, EX), "Расслабление лёжа на спине", "Стопы на ширине плеч, ладони вверх.", "Relaxation lying on the back", "Feet shoulder-width apart, palms up."),
         s("at_legs0", listOf(IN), emptyList(), "Вытянуться, руки за головой", "Ноги вместе.", "Stretch out, hands behind the head", "Legs together."),
         s("at_flatstr", listOf(EX), listOf(IN), "Подъём головы и плеч", "Поясница вытянута, руки вперёд.", "Raising the head and shoulders", "Lower back lengthened, arms forward."),
@@ -1816,7 +1816,7 @@ object AtlasCatalog {
     ))
 
     // at_ssd
-    private fun b31() = Block("at_ssd", listOf(
+    private fun b31() = Block("at_ssd", titleRu = "Старт-сет · доп. элементы", titleEn = "Start set: extra elements", steps = listOf(
         s("at_ekoshtra", listOf(EX, IN, EX), listOf(IN, EX, IN, EX, IN, EX), "Односторонний верблюд", "Из змеиного прогиба левой рукой за подъём левой стопы снизу, локоть вверх, стопу ко лбу.", "One-sided camel", "From the snake arch, the left hand takes the instep of the left foot from below, elbow up, foot to the forehead."),
         s("at_ekoshtra2", listOf(IN, EX, IN, EX, IN, EX), emptyList(), "Односторонний верблюд с двойной фиксацией", "Рёбра на пол, обеими руками стопу ко лбу.", "One-sided camel with double fixation", "Ribs to the floor, both hands bring the foot to the forehead."),
         s("at_ekscorp", listOf(EX), listOf(IN, EX, IN, EX, IN, EX), "Односторонний замкнутый скорпион", "Правое предплечье на пол, таз вверх, лоб на предплечье.", "One-sided locked scorpion", "Right forearm to the floor, pelvis up, forehead on the forearm."),
@@ -1886,7 +1886,7 @@ object AtlasCatalog {
     ))
 
     // at_zsd
-    private fun b32() = Block("at_zsd", listOf(
+    private fun b32() = Block("at_zsd", titleRu = "Стоп-сет · доп. элементы", titleEn = "Stop set: extra elements", steps = listOf(
         s("at_ugra", listOf(EX), listOf(IN), "«Ежовый» наклон сидя", "За колени, спина дугой, макушка к ногам.", "Seated “hedgehog” bend", "Hold the knees, back rounded, crown to the legs."),
         s("at_revtable", listOf(EX), listOf(IN), "Обратный полуупор", "Ладони по бокам таза.", "Reverse half plank", "Palms at the sides of the pelvis."),
         s("at_revtableup", listOf(EX), listOf(IN), "Обратный полуупор, правая нога вверх", null, "Reverse half plank, right leg up", null),

@@ -86,9 +86,12 @@ class PlayerViewModel(private val users: UserRepository, sequenceId: String) : V
         controller.setTempo(controller.phaseMs, SPEEDS[(i + 1) % SPEEDS.size])
     }
 
+    /** Стартовая фаза — из замера спокойного дыхания (тест здоровья) или по методике. */
+    private val basePhaseMs = params.phaseMs
+
+    /** Кнопка фазы удлиняет вдох/выдох на секунду от личного старта; после 10 с — снова старт. */
     fun cyclePhaseLength() {
-        val i = PHASE_LENGTHS.indexOf(controller.phaseMs).let { if (it < 0) 0 else it }
-        controller.setTempo(PHASE_LENGTHS[(i + 1) % PHASE_LENGTHS.size], controller.speed)
+        controller.setTempo(nextPhase(controller.phaseMs, basePhaseMs), controller.speed)
     }
 
     /** Финиш с ответом «как прошло»: сохраняем практику и параметры следующей сессии. */
@@ -128,6 +131,9 @@ class PlayerViewModel(private val users: UserRepository, sequenceId: String) : V
     companion object {
         val SPEEDS = listOf(0.75, 1.0, 1.25)
         val PHASE_LENGTHS = listOf(3_000L, 4_000L, 5_000L, 6_000L, 7_000L, 8_000L)
+        const val MAX_PHASE_MS = 10_000L
+
+        fun nextPhase(current: Long, base: Long): Long = (current + 1_000).let { if (it > MAX_PHASE_MS) base else it }
 
         fun factory(users: UserRepository, sequenceId: String) = viewModelFactory { initializer { PlayerViewModel(users, sequenceId) } }
     }

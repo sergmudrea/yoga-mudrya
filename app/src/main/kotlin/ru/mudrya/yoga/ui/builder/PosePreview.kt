@@ -43,7 +43,13 @@ fun PosePreview(asana: Asana, onAdd: (() -> Unit)?, onClose: () -> Unit) {
         ) {
             Text(asana.shownName(), color = MudryaColors.Text, fontSize = 20.sp, fontWeight = FontWeight.Bold)
             asana.sanskrit?.let { Text(it, color = MudryaColors.TextMuted, fontSize = 14.sp) }
-            Figure3D(asana.figure ?: FigureRef("tad"), 0, asana.shownName(), Modifier.fillMaxWidth().height(300.dp))
+            Figure3D(
+                asana.figure ?: FigureRef("tad"),
+                0,
+                asana.shownName(),
+                Modifier.fillMaxWidth().height(300.dp),
+                placeholder = { PoseThumb(asana.id, 300.dp, Modifier.fillMaxWidth()) },
+            )
             Column(Modifier.height(120.dp).verticalScroll(rememberScrollState())) {
                 Text(asana.shownDescription() ?: asana.cuesRu.firstOrNull().orEmpty(), color = MudryaColors.TextMuted, fontSize = 14.sp)
             }

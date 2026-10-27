@@ -7,9 +7,12 @@
 в позу так же, как в атласе (опорные ладони и стопы не скользят), setTheme, resetView.
 three.js — локальная копия (без сети), путь к пакету передаётся вторым аргументом.
 
-  python3 tools/atlas/build_emulator.py <atlas.html> <three/package>
+  python3 tools/atlas/build_emulator.py <atlas.html> <three/package> <esbuild>
+
+Марионетка собирается esbuild'ом в один обычный (не модульный) скрипт вместе с three.js:
+так WebView не зависит от поддержки importmap и MIME-типов для ES-модулей.
 """
-import pathlib, re, shutil, sys
+import pathlib, re, shutil, subprocess, sys, tempfile
 
 src = pathlib.Path(sys.argv[1]).read_text(encoding='utf-8')
 three = pathlib.Path(sys.argv[2])
@@ -136,22 +139,33 @@ boot += r"""
 boot();
 """
 
-html = f"""<!doctype html><html><head><meta charset="utf-8">
+esbuild = sys.argv[3] if len(sys.argv) > 3 else 'esbuild'
+html = """<!doctype html><html><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Mudrya emulator</title>
-<style>html,body{{margin:0;height:100%;background:#0F1115;overflow:hidden}}#stage{{position:fixed;inset:0}}#c{{width:100%;height:100%;display:block;touch-action:none}}</style>
-<script type="importmap">{{"imports":{{"three":"./three.module.min.js","three/addons/":"./"}}}}</script>
+<style>html,body{margin:0;height:100%;background:#0F1115;overflow:hidden}#stage{position:fixed;inset:0}#c{width:100%;height:100%;display:block;touch-action:none}</style>
 </head><body><div id="stage"><canvas id="c"></canvas></div>
 <!-- Сгенерировано tools/atlas/build_emulator.py из «Атласа нулевого цикла» — не править руками. -->
+<script>window.onerror=function(m,s,l){if(window.AndroidBridge&&AndroidBridge.onError)AndroidBridge.onError(String(m)+' @'+l);};</script>
 <script src="atlas-data.js"></script>
-<script type="module" src="marionette.js"></script>
+<script src="marionette.js"></script>
 </body></html>
 """
+for old in ['three.module.min.js', 'controls/OrbitControls.js', 'THREE-LICENSE']:
+    f = out / old
+    if f.exists():
+        f.unlink()
+if (out / 'controls').exists():
+    shutil.rmtree(out / 'controls')
 (out / 'index.html').write_text(html, encoding='utf-8')
 (out / 'atlas-data.js').write_text(classic, encoding='utf-8')
-(out / 'marionette.js').write_text(head + boot, encoding='utf-8')
-(out / 'controls').mkdir(exist_ok=True)
-shutil.copy(three / 'build/three.module.min.js', out / 'three.module.min.js')
-shutil.copy(three / 'examples/jsm/controls/OrbitControls.js', out / 'controls/OrbitControls.js')
-shutil.copy(three / 'LICENSE', out / 'THREE-LICENSE')
+# Исходник марионетки (ES-модуль) — для сборки и для tools/atlas/library_poses.mjs.
+src_mod = root / 'tools/atlas/marionette.src.mjs'
+src_mod.write_text(head + boot, encoding='utf-8')
+if True:
+    subprocess.run([esbuild, str(src_mod), '--bundle', '--format=iife', '--minify', '--target=chrome80',
+                    f'--alias:three={three}/build/three.module.js',
+                    f'--alias:three/addons={three}/examples/jsm',
+                    '--legal-comments=none', f'--outfile={out / "marionette.js"}'], check=True)
+shutil.copy(three / 'LICENSE', out / 'THREE-LICENSE.txt')
 print('ok', {p.name: p.stat().st_size for p in out.rglob('*') if p.is_file()})

@@ -160,12 +160,7 @@ fun OnboardingScreen(initial: UserProfile?, onDone: (UserProfile) -> Unit) {
 @Composable
 private fun Welcome() {
     Spacer(Modifier.height(32.dp))
-    Box(
-        Modifier
-            .fillMaxWidth()
-            .height(180.dp)
-            .background(MudryaColors.SaffronDeep, RoundedCornerShape(28.dp)),
-    )
+    WelcomeHero()
     Spacer(Modifier.height(12.dp))
     ScreenTitle(stringResource(R.string.onb_welcome_title))
     Body(stringResource(R.string.onb_welcome_text))
@@ -195,3 +190,38 @@ private fun injuryHint(i: Injury): String = stringResource(
         Injury.KNEES -> R.string.injury_knees_hint
     },
 )
+
+/**
+ * Заставка приветствия: марионетка проходит положения классической Сурья Намаскар
+ * (кадры из атласа), под ней — название и номер положения.
+ */
+@Composable
+private fun WelcomeHero() {
+    val poses = androidx.compose.runtime.remember {
+        ru.mudrya.yoga.catalog.AtlasCatalog.blocks.first { it.id == "at_sn_r" }.steps.map { it.asanaId to (it.titleRu ?: "") }
+    }
+    var i by androidx.compose.runtime.remember { androidx.compose.runtime.mutableIntStateOf(0) }
+    androidx.compose.runtime.LaunchedEffect(Unit) {
+        while (true) {
+            kotlinx.coroutines.delay(1_300)
+            i = (i + 1) % poses.size
+        }
+    }
+    Column(
+        Modifier
+            .fillMaxWidth()
+            .background(MudryaColors.SaffronDeep, RoundedCornerShape(28.dp))
+            .padding(vertical = 14.dp),
+        horizontalAlignment = androidx.compose.ui.Alignment.CenterHorizontally,
+    ) {
+        androidx.compose.animation.Crossfade(targetState = i, label = "hero") { k ->
+            ru.mudrya.yoga.ui.builder.PoseThumb(poses[k].first, 150.dp)
+        }
+        Spacer(Modifier.height(8.dp))
+        androidx.compose.material3.Text(
+            "${i + 1} / ${poses.size} · ${poses[i].second}",
+            color = MudryaColors.Saffron,
+            fontSize = androidx.compose.ui.unit.TextUnit(13f, androidx.compose.ui.unit.TextUnitType.Sp),
+        )
+    }
+}

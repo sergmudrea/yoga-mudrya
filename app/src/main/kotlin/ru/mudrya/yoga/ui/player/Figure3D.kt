@@ -18,6 +18,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
@@ -30,7 +31,7 @@ import ru.mudrya.yoga.model.FigureRef
 private const val EMULATOR_URL = "https://appassets.androidplatform.net/assets/emulator/index.html"
 
 /** Если марионетка не ответила за это время (нет WebGL), показываем схему. */
-private const val READY_TIMEOUT_MS = 10_000L
+private const val READY_TIMEOUT_MS = 8_000L
 
 /** id позы атласа — только латиница, цифры и подчёркивание; иначе в JS не передаём. */
 private val SAFE_ID = Regex("^[A-Za-z0-9_]+$")
@@ -52,6 +53,8 @@ fun Figure3D(
     modifier: Modifier = Modifier,
     onUnavailable: () -> Unit = {},
     cameraYaw: Int = 16,
+    /** Что показывать, пока марионетка загружается (и если не загрузилась). */
+    placeholder: @Composable () -> Unit = {},
 ) {
     val context = LocalContext.current
     var ready by remember { mutableStateOf(false) }
@@ -66,6 +69,12 @@ fun Figure3D(
             settings.javaScriptEnabled = true
             settings.allowFileAccess = false
             settings.allowContentAccess = false
+            webChromeClient = object : android.webkit.WebChromeClient() {
+                override fun onConsoleMessage(m: android.webkit.ConsoleMessage): Boolean {
+                    if (m.messageLevel() == android.webkit.ConsoleMessage.MessageLevel.ERROR) android.util.Log.w("Figure3D", m.message())
+                    return true
+                }
+            }
             webViewClient = object : WebViewClient() {
                 override fun shouldInterceptRequest(view: WebView, request: WebResourceRequest): WebResourceResponse? =
                     loader.shouldInterceptRequest(request.url)
@@ -75,6 +84,11 @@ fun Figure3D(
                     @JavascriptInterface
                     fun onReady() {
                         main.post { ready = true }
+                    }
+
+                    @JavascriptInterface
+                    fun onError(message: String) {
+                        android.util.Log.w("Figure3D", message)
                     }
                 },
                 "AndroidBridge",
@@ -107,5 +121,12 @@ fun Figure3D(
         webView.evaluateJavascript("Mudrya.go('${target.pose}',${if (target.mirror) 1 else 0},$ms,$hands)", null)
         shown = true
     }
-    AndroidView(factory = { webView }, modifier = modifier.semantics { contentDescription = description })
+    androidx.compose.foundation.layout.Box(modifier.semantics { contentDescription = description }) {
+        // Пока марионетка грузится — запасная картинка, WebView прозрачен: пустого места не бывает.
+        if (!ready) placeholder()
+        AndroidView(
+            factory = { webView },
+            modifier = androidx.compose.ui.Modifier.matchParentSize().graphicsLayer { alpha = if (ready) 1f else 0f },
+        )
+    }
 }

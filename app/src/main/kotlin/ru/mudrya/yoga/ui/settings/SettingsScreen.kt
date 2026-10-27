@@ -114,6 +114,8 @@ fun SettingsScreen(
             PrimaryButton(stringResource(R.string.videos_open), onVideos, color = MudryaColors.Moon)
         }
 
+        ru.mudrya.yoga.ui.paywall.PromoCodeCard(state, users)
+
         ReminderSection(state, users)
         BackupSection(state, users)
         extra()

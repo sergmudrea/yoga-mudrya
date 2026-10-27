@@ -127,7 +127,10 @@ fun LibraryScreen(
             val section = SECTIONS.getValue(id)
             val locked = PremiumPolicy.isLocked(id, premium)
             Card {
-                Text(sequenceName(id), color = MudryaColors.Moon, fontSize = 18.sp, fontWeight = FontWeight.Bold)
+                androidx.compose.foundation.layout.Row(verticalAlignment = androidx.compose.ui.Alignment.CenterVertically) {
+                    Text(sequenceName(id), color = MudryaColors.Moon, fontSize = 18.sp, fontWeight = FontWeight.Bold, modifier = Modifier.weight(1f))
+                    FavoriteStar(id, state, users)
+                }
                 if (state.settings.thumbnails) {
                     androidx.compose.foundation.layout.Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
                         ru.mudrya.yoga.ui.builder.PoseCatalog.section(id).take(5).forEach { a ->

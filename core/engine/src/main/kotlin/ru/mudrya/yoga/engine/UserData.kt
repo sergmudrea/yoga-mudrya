@@ -65,6 +65,12 @@ data class UserState(
     val customRuns: Int = 0,
     /** Свои сеты, вынесенные на главный экран. */
     val pinnedSets: List<String> = emptyList(),
+    /** Избранные сеты (любые: книги, библиотеки, свои). */
+    val favoriteSets: List<String> = emptyList(),
+    /** Премиум по коду активации: до какого момента, навсегда, какие коды уже введены. */
+    val promoUntilMs: Long? = null,
+    val promoLifetime: Boolean = false,
+    val usedCodes: List<String> = emptyList(),
     /** Анкеты здоровья (ИМТ, талия, пульс, лестница, сидячие часы). */
     val health: List<HealthRecord> = emptyList(),
 ) {
@@ -306,13 +312,20 @@ object UserStateCodec {
         line("cycle.days", s.cycle.maxDays.toString())
         line("custom.runs", s.customRuns.toString())
         line("custom.pinned", s.pinnedSets.joinToString(","))
+        line("favorites", s.favoriteSets.joinToString(","))
+        s.promoUntilMs?.let { line("promo.until", it.toString()) }
+        line("promo.lifetime", s.promoLifetime.toString())
+        line("promo.used", s.usedCodes.joinToString(","))
         s.customSets.forEach { c ->
             line("custom", listOf(c.id, java.net.URLEncoder.encode(c.name, "UTF-8"), c.asanaIds.joinToString(","), c.holdCycles).joinToString(";"))
         }
         s.health.forEach { h ->
             line(
                 "health",
-                listOf(h.atMs, h.localDay, h.heightCm ?: "", h.weightKg ?: "", h.waistCm ?: "", h.restingHr ?: "", h.stairsSec ?: "", h.sittingHours ?: "")
+                listOf(
+                    h.atMs, h.localDay, h.heightCm ?: "", h.weightKg ?: "", h.waistCm ?: "", h.restingHr ?: "", h.stairsSec ?: "", h.sittingHours ?: "",
+                    h.breathsPerMin ?: "",
+                )
                     .joinToString(";"),
             )
         }
@@ -375,6 +388,10 @@ object UserStateCodec {
             customSets = custom,
             customRuns = single["custom.runs"]?.toIntOrNull()?.coerceAtLeast(0) ?: 0,
             pinnedSets = single["custom.pinned"]?.split(',')?.filter { it.startsWith(CustomSets.PREFIX) }.orEmpty(),
+            favoriteSets = single["favorites"]?.split(',')?.filter { it.isNotBlank() }.orEmpty(),
+            promoUntilMs = single["promo.until"]?.toLongOrNull(),
+            promoLifetime = single["promo.lifetime"]?.toBooleanStrictOrNull() ?: false,
+            usedCodes = single["promo.used"]?.split(',')?.filter { it.isNotBlank() }.orEmpty(),
             health = health.sortedBy { it.atMs },
             cycle = CycleSettings(
                 enabled = single["cycle.enabled"]?.toBooleanStrictOrNull() ?: false,
@@ -464,6 +481,7 @@ object UserStateCodec {
             restingHr = p[5].toIntOrNull(),
             stairsSec = p[6].toIntOrNull(),
             sittingHours = p[7].toIntOrNull(),
+            breathsPerMin = p.getOrNull(8)?.toIntOrNull(),
         )
     }
 

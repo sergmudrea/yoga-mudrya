@@ -105,6 +105,10 @@ fun MovementTestScreen(profile: UserProfile, users: UserRepository, onPremium: (
                 if (health.weightKg != null || health.waistCm != null) {
                     next = next.copy(body = BodyLog.put(next.body, day, health.weightKg, health.waistCm))
                 }
+                // Спокойное дыхание задаёт стартовую длину фазы в практике.
+                health.breathsPerMin?.let { bpm ->
+                    next = next.copy(params = next.params.copy(phaseMs = HealthCheck.startPhaseMs(bpm)))
+                }
             }
             next
         }

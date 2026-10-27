@@ -5,6 +5,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.ui.Modifier
 import ru.mudrya.yoga.engine.PlayerFrame
 import ru.mudrya.yoga.ui.common.shownTitle
@@ -18,7 +19,17 @@ fun PracticeFigure(frame: PlayerFrame, transitionMs: Long, use3d: Boolean, modif
     var unavailable by rememberSaveable { mutableStateOf(false) }
     val figure = frame.step.asana.figure
     if (use3d && !unavailable && figure != null) {
-        Figure3D(figure, transitionMs, frame.step.shownTitle(), modifier, onUnavailable = { unavailable = true }, cameraYaw = cameraYaw)
+        Figure3D(
+            figure,
+            transitionMs,
+            frame.step.shownTitle(),
+            modifier,
+            onUnavailable = { unavailable = true },
+            cameraYaw = cameraYaw,
+            placeholder = {
+                FigureCanvas(pose = frame.pose, fill = frame.fill, description = frame.step.shownTitle(), modifier = Modifier.fillMaxSize())
+            },
+        )
     } else {
         FigureCanvas(pose = frame.pose, fill = frame.fill, description = frame.step.shownTitle(), modifier = modifier)
     }

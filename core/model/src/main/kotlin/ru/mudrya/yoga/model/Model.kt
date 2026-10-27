@@ -186,7 +186,8 @@ data class Step(
 }
 
 /** Блок — именованный кусок последовательности: стандартный вход, виньяса, внутреннее кольцо… */
-data class Block(val id: String, val steps: List<Step>) {
+/** Блок шагов; [titleRu]/[titleEn] — название раздела книги (вход, связка, кольцо…), если оно есть. */
+data class Block(val id: String, val steps: List<Step>, val titleRu: String? = null, val titleEn: String? = null) {
     init {
         require(steps.isNotEmpty()) { "Block $id is empty" }
     }
