@@ -38,12 +38,19 @@ SETS = [
     ("lk", "chandra", "Moon ring", False),
     ("sn", "at_sn", "Surya Namaskar (classic)", True),
     ("cn", "at_cn", "Chandra Namaskar (classic)", True),
-    # Дальше — только первый ряд старт-сета, который заканчивается перевёрнутыми позами
-    # (мини-последовательность 3: стойки на голове и на плечах, плуг). Остальные сеты убраны.
     ("ns", "at_ns", "Transition to the start set", False),
     ("ss1", "at_ss1", "Start set 1", False),
     ("ss2", "at_ss2", "Start set 2", False),
     ("ss3", "at_ss3", "Start set 3: inversions", False),
+    ("ss4", "at_ss4", "Start set 4", False),
+    ("ss5", "at_ss5", "Start set 5", False),
+    ("ss6", "at_ss6", "Start set 6", False),
+    ("ss7", "at_ss7", "Start set 7", False),
+    ("st", "at_st", "Core set", False),
+    ("ds", "at_ds", "Link to the stop set", False),
+    ("zs", "at_zs", "Stop set", False),
+    ("ssd", "at_ssd", "Start set: extra elements", False),
+    ("zsd", "at_zsd", "Stop set: extra elements", False),
 ]
 
 HAND = ATLAS.get("HAND", {})
@@ -247,6 +254,21 @@ for atlas_id, set_id, name_en, two_sides in SETS:
         steps = build_steps(s["steps"], flip=False)
         blocks.append((set_id, steps))
         sequences.append((set_id, s["name"], name_en, [(set_id, "NONE")], len(steps)))
+
+# Полный цикл одной практикой: кольцо книги открывает практику, после него — переход, старт-сет 1–7,
+# стержневой сет, связка и стоп-сет, а закрывает всё стандартный выход того же кольца.
+FLOW = ["at_ns", "at_ss1", "at_ss2", "at_ss3", "at_ss4", "at_ss5", "at_ss6", "at_ss7", "at_st", "at_ds", "at_zs"]
+COMPOSITES = [
+    ("full_sun", "surya", "Полный цикл: Солнце", "Full cycle: Sun"),
+    ("full_moon", "chandra", "Полный цикл: Луна", "Full cycle: Moon"),
+]
+seq_by_id = {sid: (refs, count) for sid, _, _, refs, count in sequences}
+block_len = {bid: len(steps) for bid, steps in blocks}
+for cid, ring, name_ru, name_en in COMPOSITES:
+    ring_refs, _ = seq_by_id[ring]
+    refs = ring_refs[:-1] + [(b, "NONE") for b in FLOW] + ring_refs[-1:]
+    entry_exit[cid] = (ring_refs[0][0], ring_refs[-1][0])
+    sequences.append((cid, name_ru, name_en, refs, sum(block_len[b] for b, _ in refs)))
 
 for a in asanas.values():
     if not a["cues"]:

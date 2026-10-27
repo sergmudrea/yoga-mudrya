@@ -139,4 +139,27 @@ class SuryaCatalogTest {
         assertEquals("Mountain Pose", first.titleEn)
         assertEquals("Tadasana", first.asana.sanskrit)
     }
+
+    @Test
+    fun `full cycle opens with the ring, runs start, core and stop sets, closes with the ring exit`() {
+        listOf("full_sun" to "surya", "full_moon" to "chandra").forEach { (full, ring) ->
+            val f = SuryaCatalog.sequence(full)
+            val r = SuryaCatalog.sequence(ring)
+            assertEquals(r.items.first(), f.items.first())
+            assertEquals(r.items.last(), f.items.last())
+            val inner = f.items.map { it.blockId }
+            assertEquals(listOf("at_ns", "at_ss1", "at_ss2", "at_ss3", "at_ss4", "at_ss5", "at_ss6", "at_ss7", "at_st", "at_ds", "at_zs"),
+                inner.filter { it.startsWith("at_") })
+            val n = build(full).steps.size
+            assertEquals(AtlasCatalog.stepCounts.getValue(full), n)
+            assertTrue(n > build(ring).steps.size + 300, "$full: $n")
+        }
+    }
+
+    @Test
+    fun `start sets 1 to 7, core, stop and extra sets are back`() {
+        listOf("at_ss4", "at_ss5", "at_ss6", "at_ss7", "at_st", "at_ds", "at_zs", "at_ssd", "at_zsd").forEach {
+            assertEquals(it, SuryaCatalog.sequence(it).id)
+        }
+    }
 }

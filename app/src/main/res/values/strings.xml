@@ -360,7 +360,7 @@
     <string name="backup_confirm_yes">Restore</string>
     <string name="backup_restored">Data restored.</string>
     <string name="paywall_title">Premium</string>
-    <string name="paywall_benefit_chandra">The start set with inversions and classic Chandra Namaskar</string>
+    <string name="paywall_benefit_chandra">The full Sun and Moon cycles, start set 1–7, the core and stop sets, classic Chandra Namaskar</string>
     <string name="paywall_benefit_bundle">Your own sets from the builder — unlimited runs</string>
     <string name="paywall_benefit_short">Play whole sections of the 2100-asana library</string>
     <string name="paywall_benefit_future">New sets and modes of the method as they come out</string>
@@ -396,7 +396,13 @@
     <string name="sets_classic_hint">Traditional Surya and Chandra Namaskar: 12 and 16 positions, a full round from the right and the left leg.</string>
     <string name="sets_rings">Zero cycle: rings</string>
     <string name="sets_rings_hint">Sun and moon rings of the Omnio training: correct transitions, a breath for every movement.</string>
+    <string name="sets_full">Full cycle</string>
+    <string name="sets_full_hint">One practice in the order of the book: the ring opens it, then the transition, start set 1–7, the core set, the link and the stop set, and the same ring’s standard exit closes it.</string>
+    <string name="sets_core">Core set and stop set</string>
+    <string name="sets_core_hint">Core set, the link and the closing stop set.</string>
+    <string name="sets_extra">Extra elements</string>
+    <string name="sets_extra_hint">Progressions for the start set and the stop set, for when the basics feel easy.</string>
     <string name="sets_start">Zero cycle: start set</string>
-    <string name="sets_start_hint">Transition after the moon ring and the first three mini-sequences of the start set, ending with inversions: headstand, shoulderstand, plough.</string>
+    <string name="sets_start_hint">Transition after the moon ring and the seven mini-sequences of the introductory start set.</string>
     <string name="set_size">%1$d positions · ~%2$d min · rounds: %3$d</string>
 </resources>

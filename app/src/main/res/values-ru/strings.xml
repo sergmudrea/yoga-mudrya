@@ -360,7 +360,7 @@
     <string name="backup_confirm_yes">Восстановить</string>
     <string name="backup_restored">Данные восстановлены.</string>
     <string name="paywall_title">Премиум</string>
-    <string name="paywall_benefit_chandra">Старт-сет с перевёрнутыми позами и классическая Чандра Намаскар</string>
+    <string name="paywall_benefit_chandra">Полный цикл «Солнце» и «Луна», старт-сет 1–7, стержневой и стоп-сет, классическая Чандра Намаскар</string>
     <string name="paywall_benefit_bundle">Свои сеты из конструктора — без ограничения запусков</string>
     <string name="paywall_benefit_short">Проигрывание разделов библиотеки 2100 асан целиком</string>
     <string name="paywall_benefit_future">Новые сеты и режимы методики по мере выхода</string>
@@ -396,7 +396,13 @@
     <string name="sets_classic_hint">Традиционные Сурья и Чандра Намаскар: 12 и 16 положений, полный круг — с правой и с левой ноги.</string>
     <string name="sets_rings">Нулевой цикл: кольца</string>
     <string name="sets_rings_hint">Солнечное и лунное кольца по омнио-тренингу: правильные переходы, дыхание на каждое движение.</string>
+    <string name="sets_full">Полный цикл</string>
+    <string name="sets_full_hint">Одна практика по порядку книги: кольцо открывает её, дальше переход, старт-сет 1–7, стержневой сет, связка и стоп-сет, а закрывает стандартный выход того же кольца.</string>
+    <string name="sets_core">Стержневой сет и стоп-сет</string>
+    <string name="sets_core_hint">Стержневой сет, связка и заключительный стоп-сет.</string>
+    <string name="sets_extra">Дополнительные элементы</string>
+    <string name="sets_extra_hint">Усложнения для старт-сета и стоп-сета — когда основа даётся легко.</string>
     <string name="sets_start">Нулевой цикл: старт-сет</string>
-    <string name="sets_start_hint">Переход после лунного кольца и первые три мини-последовательности старт-сета — ряд заканчивается перевёрнутыми позами: стойки на голове и на плечах, плуг.</string>
+    <string name="sets_start_hint">Переход после лунного кольца и семь мини-последовательностей вводного старт-сета.</string>
     <string name="set_size">%1$d позиций · ~%2$d мин · кругов: %3$d</string>
 </resources>

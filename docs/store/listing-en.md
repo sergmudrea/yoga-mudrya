@@ -38,6 +38,6 @@ Practice comfortably
 
 Honest subscription
 Free forever: the Sun and Moon rings, classic Surya Namaskar, the asana library for browsing and the builder, the movement age test and health check, progress, reminders, TV casting.
-Premium — monthly, yearly or lifetime: the start set with inversions, classic Chandra Namaskar, playing library sections, unlimited own sets. 7-day trial, a reminder 2 days before the first charge, cancel with one tap in the profile. No sales pop-ups during practice.
+Premium — monthly, yearly or lifetime: the full Sun and Moon cycles as one practice, start set 1–7, the core and stop sets with extra elements, classic Chandra Namaskar, playing library sections, unlimited own sets. 7-day trial, a reminder 2 days before the first charge, cancel with one tap in the profile. No sales pop-ups during practice.
 
 Not a medical service. With pain, injuries, heart conditions or pregnancy, consult a doctor.

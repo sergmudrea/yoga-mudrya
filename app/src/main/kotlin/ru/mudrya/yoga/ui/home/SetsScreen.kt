@@ -42,13 +42,16 @@ private data class SetGroup(val title: Int, val hint: Int?, val ids: List<String
 private val GROUPS = listOf(
     SetGroup(R.string.sets_classic, R.string.sets_classic_hint, listOf("at_sn", "at_cn"), MudryaColors.Saffron, MudryaColors.SaffronDeep),
     SetGroup(R.string.sets_rings, R.string.sets_rings_hint, listOf("surya", "chandra"), MudryaColors.Moon, MudryaColors.MoonDeep),
+    SetGroup(R.string.sets_full, R.string.sets_full_hint, listOf("full_sun", "full_moon"), MudryaColors.Saffron, MudryaColors.SaffronDeep),
     SetGroup(
         R.string.sets_start,
         R.string.sets_start_hint,
-        listOf("at_ns", "at_ss1", "at_ss2", "at_ss3"),
+        listOf("at_ns", "at_ss1", "at_ss2", "at_ss3", "at_ss4", "at_ss5", "at_ss6", "at_ss7"),
         MudryaColors.Saffron,
         MudryaColors.Surface,
     ),
+    SetGroup(R.string.sets_core, R.string.sets_core_hint, listOf("at_st", "at_ds", "at_zs"), MudryaColors.Moon, MudryaColors.Surface),
+    SetGroup(R.string.sets_extra, R.string.sets_extra_hint, listOf("at_ssd", "at_zsd"), MudryaColors.TextMuted, MudryaColors.Surface),
 )
 
 /** Сколько позиций и минут займёт сет с такими параметрами. */
