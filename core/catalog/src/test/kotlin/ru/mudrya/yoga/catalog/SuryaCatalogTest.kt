@@ -141,18 +141,24 @@ class SuryaCatalogTest {
     }
 
     @Test
-    fun `full cycle opens with the ring, runs start, core and stop sets, closes with the ring exit`() {
-        listOf("full_sun" to "surya", "full_moon" to "chandra").forEach { (full, ring) ->
-            val f = SuryaCatalog.sequence(full)
-            val r = SuryaCatalog.sequence(ring)
-            assertEquals(r.items.first(), f.items.first())
-            assertEquals(r.items.last(), f.items.last())
-            val inner = f.items.map { it.blockId }
-            assertEquals(listOf("at_ns", "at_ss1", "at_ss2", "at_ss3", "at_ss4", "at_ss5", "at_ss6", "at_ss7", "at_st", "at_ds", "at_zs"),
-                inner.filter { it.startsWith("at_") })
-            val n = build(full).steps.size
-            assertEquals(AtlasCatalog.stepCounts.getValue(full), n)
-            assertTrue(n > build(ring).steps.size + 300, "$full: $n")
+    fun `full cycle joins the rings, start set, link and stop set like the book`() {
+        val sun = SuryaCatalog.sequence("surya").items
+        val moon = SuryaCatalog.sequence("chandra").items
+        val full = SuryaCatalog.sequence("full_sun").items.map { it.blockId }
+        // Солнце без стандартного выхода, затем лунные кольца без лунного входа
+        assertEquals(sun.dropLast(1).map { it.blockId }, full.take(sun.size - 1))
+        assertEquals(moon[2].blockId, full[sun.size - 1])
+        assertTrue(moon.first().blockId !in full && moon.last().blockId !in full && sun.last().blockId !in full)
+        val tail = listOf("at_ns", "at_ss1", "at_ss2", "at_ss3", "at_ss4", "at_ss5", "at_ss6", "at_ss7", "at_ds", "at_zs")
+        assertEquals(tail, full.takeLast(tail.size))
+        assertTrue("at_st" !in full)
+        val moonFull = SuryaCatalog.sequence("full_moon").items.map { it.blockId }
+        assertEquals(moon.first().blockId, moonFull.first())
+        assertEquals(tail, moonFull.takeLast(tail.size))
+        listOf("full_sun", "full_moon").forEach { id ->
+            val steps = build(id).steps
+            assertEquals(AtlasCatalog.stepCounts.getValue(id), steps.size)
+            assertEquals("at_shava", steps.last().asana.id)
         }
     }
 

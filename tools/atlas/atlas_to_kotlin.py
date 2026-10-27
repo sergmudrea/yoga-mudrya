@@ -262,19 +262,33 @@ for atlas_id, set_id, name_en, two_sides in SETS:
         block_titles[set_id] = (s["name"], name_en)
         sequences.append((set_id, s["name"], name_en, [(set_id, "NONE")], len(steps)))
 
-# Полный цикл одной практикой: кольцо книги открывает практику, после него — переход, старт-сет 1–7,
-# стержневой сет, связка и стоп-сет, а закрывает всё стандартный выход того же кольца.
-FLOW = ["at_ns", "at_ss1", "at_ss2", "at_ss3", "at_ss4", "at_ss5", "at_ss6", "at_ss7", "at_st", "at_ds", "at_zs"]
-COMPOSITES = [
-    ("full_sun", "surya", "Полный цикл: Солнце", "Full cycle: Sun"),
-    ("full_moon", "chandra", "Полный цикл: Луна", "Full cycle: Moon"),
-]
+# Полный цикл одной практикой — по разделу книги «Соединение двух кругов и старт-сета в единую
+# последовательность» и «Связка для соединения старт-сета и стоп-сета»:
+#  • круг солнечного света без стандартного выхода: после глубокого упора-горки, которым заканчивается
+#    левостороннее солнечное кольцо (с его связкой), сразу плечевое вытягивание в упоре-горке —
+#    начало правостороннего лунного кольца (лунный стандартный вход и первая связка не выполняются);
+#  • круг лунного света без стандартного выхода: из последнего расслабления на пятках — переход к старт-сету;
+#  • старт-сет (семь мини-последовательностей), связка (стандартный вход + внутренняя связка с выходом
+#    в шавасану) и заключительный стоп-сет, который заканчивается сиддхасаной и шавасаной.
+# Стержневой сет в книге — дополнительная практика, в основную цепочку не входит (отдельный сет).
+FLOW = ["at_ns", "at_ss1", "at_ss2", "at_ss3", "at_ss4", "at_ss5", "at_ss6", "at_ss7", "at_ds", "at_zs"]
 seq_by_id = {sid: (refs, count) for sid, _, _, refs, count in sequences}
 block_len = {bid: len(steps) for bid, steps in blocks}
-for cid, ring, name_ru, name_en in COMPOSITES:
-    ring_refs, _ = seq_by_id[ring]
-    refs = ring_refs[:-1] + [(b, "NONE") for b in FLOW] + ring_refs[-1:]
-    entry_exit[cid] = (ring_refs[0][0], ring_refs[-1][0])
+sun_refs, _ = seq_by_id["surya"]
+moon_refs, _ = seq_by_id["chandra"]
+moon_title = {b: block_titles[b][0] for b, _ in moon_refs}
+moon_inner = [r for r in moon_refs if "кольцо" in (moon_title[r[0]] or "")]
+assert len(moon_inner) == 2, moon_title
+i0 = moon_refs.index(moon_inner[0]); i1 = moon_refs.index(moon_inner[1])
+MOON_RINGS = moon_refs[i0:i1 + 1]          # правое кольцо, связка, левое кольцо (до расслабления на пятках)
+SUN_NO_EXIT = sun_refs[:-1]                 # всё солнечное кольцо до стандартного выхода
+MOON_NO_EXIT = moon_refs[:i1 + 1]           # лунный вход, связка, кольца — без последней связки и выхода
+COMPOSITES = [
+    ("full_sun", "Полный цикл: Солнце и Луна", "Full cycle: Sun and Moon", SUN_NO_EXIT + MOON_RINGS),
+    ("full_moon", "Полный цикл: Луна", "Full cycle: Moon", MOON_NO_EXIT),
+]
+for cid, name_ru, name_en, head in COMPOSITES:
+    refs = list(head) + [(b, "NONE") for b in FLOW]
     sequences.append((cid, name_ru, name_en, refs, sum(block_len[b] for b, _ in refs)))
 
 for a in asanas.values():

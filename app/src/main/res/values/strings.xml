@@ -402,7 +402,7 @@
     <string name="backup_confirm_yes">Restore</string>
     <string name="backup_restored">Data restored.</string>
     <string name="paywall_title">Premium</string>
-    <string name="paywall_benefit_chandra">The full Sun and Moon cycles, start set 1–7, the core and stop sets, classic Chandra Namaskar</string>
+    <string name="paywall_benefit_chandra">The full cycle by the book (Sun and Moon → start set 1–7 → link → stop set), the core set, classic Chandra Namaskar</string>
     <string name="paywall_benefit_bundle">Your own sets from the builder — unlimited runs</string>
     <string name="paywall_benefit_short">Play whole sections of the 2100-asana library</string>
     <string name="paywall_benefit_future">New sets and modes of the method as they come out</string>
@@ -439,7 +439,7 @@
     <string name="sets_rings">Zero cycle: rings</string>
     <string name="sets_rings_hint">Sun and moon rings of the Omnio training: correct transitions, a breath for every movement.</string>
     <string name="sets_full">Full cycle</string>
-    <string name="sets_full_hint">One practice in the order of the book: the ring opens it, then the transition, start set 1–7, the core set, the link and the stop set, and the same ring’s standard exit closes it.</string>
+    <string name="sets_full_hint">One practice in the order of the book: the Sun ring without its exit flows into the Moon ring, then the transition, start set 1–7, the link and the stop set ending in siddhasana and shavasana. The core set is an extra practice, separate.</string>
     <string name="sets_core">Core set and stop set</string>
     <string name="sets_core_hint">Core set, the link and the closing stop set.</string>
     <string name="sets_extra">Extra elements</string>

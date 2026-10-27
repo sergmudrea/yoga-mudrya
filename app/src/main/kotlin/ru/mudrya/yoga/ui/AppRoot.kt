@@ -1,13 +1,10 @@
 package ru.mudrya.yoga.ui
 
 import androidx.annotation.StringRes
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationBarItemDefaults
@@ -52,11 +49,11 @@ import ru.mudrya.yoga.ui.player.PlayerScreen
 import ru.mudrya.yoga.ui.test.MovementTestScreen
 import ru.mudrya.yoga.ui.theme.MudryaColors
 
-enum class Tab(val route: String, @StringRes val label: Int) {
-    PRACTICE("practice", R.string.tab_practice),
-    SETS("sets", R.string.tab_sets),
-    PROGRESS("progress", R.string.tab_progress),
-    PROFILE("profile", R.string.tab_profile),
+enum class Tab(val route: String, @StringRes val label: Int, @androidx.annotation.DrawableRes val icon: Int) {
+    PRACTICE("practice", R.string.tab_practice, R.drawable.ic_tab_practice),
+    SETS("sets", R.string.tab_sets, R.drawable.ic_tab_sets),
+    PROGRESS("progress", R.string.tab_progress, R.drawable.ic_tab_progress),
+    PROFILE("profile", R.string.tab_profile, R.drawable.ic_tab_profile),
 }
 
 private object Routes {
@@ -235,7 +232,13 @@ private fun TabBar(nav: NavHostController, current: String?) {
                         restoreState = true
                     }
                 },
-                icon = { TabDot(selected) },
+                icon = {
+                    androidx.compose.material3.Icon(
+                        painter = androidx.compose.ui.res.painterResource(tab.icon),
+                        contentDescription = null,
+                        tint = if (selected) MudryaColors.Saffron else MudryaColors.TextMuted,
+                    )
+                },
                 label = { Text(stringResource(tab.label)) },
                 colors = NavigationBarItemDefaults.colors(
                     selectedTextColor = MudryaColors.Saffron,
@@ -245,13 +248,4 @@ private fun TabBar(nav: NavHostController, current: String?) {
             )
         }
     }
-}
-
-@Composable
-private fun TabDot(selected: Boolean) {
-    Box(
-        Modifier
-            .size(10.dp)
-            .background(if (selected) MudryaColors.Saffron else MudryaColors.Border, CircleShape),
-    )
 }

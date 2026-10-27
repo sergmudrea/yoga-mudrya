@@ -402,7 +402,7 @@
     <string name="backup_confirm_yes">Восстановить</string>
     <string name="backup_restored">Данные восстановлены.</string>
     <string name="paywall_title">Премиум</string>
-    <string name="paywall_benefit_chandra">Полный цикл «Солнце» и «Луна», старт-сет 1–7, стержневой и стоп-сет, классическая Чандра Намаскар</string>
+    <string name="paywall_benefit_chandra">Полный цикл по книге (Солнце и Луна → старт-сет 1–7 → связка → стоп-сет), стержневой сет, классическая Чандра Намаскар</string>
     <string name="paywall_benefit_bundle">Свои сеты из конструктора — без ограничения запусков</string>
     <string name="paywall_benefit_short">Проигрывание разделов библиотеки 2100 асан целиком</string>
     <string name="paywall_benefit_future">Новые сеты и режимы методики по мере выхода</string>
@@ -439,7 +439,7 @@
     <string name="sets_rings">Нулевой цикл: кольца</string>
     <string name="sets_rings_hint">Солнечное и лунное кольца по омнио-тренингу: правильные переходы, дыхание на каждое движение.</string>
     <string name="sets_full">Полный цикл</string>
-    <string name="sets_full_hint">Одна практика по порядку книги: кольцо открывает её, дальше переход, старт-сет 1–7, стержневой сет, связка и стоп-сет, а закрывает стандартный выход того же кольца.</string>
+    <string name="sets_full_hint">Одна практика по порядку книги: солнечный круг без стандартного выхода сразу переходит в лунные кольца, затем переход, старт-сет 1–7, связка и стоп-сет до сиддхасаны и шавасаны. Стержневой сет в книге — дополнительная практика, он отдельно.</string>
     <string name="sets_core">Стержневой сет и стоп-сет</string>
     <string name="sets_core_hint">Стержневой сет, связка и заключительный стоп-сет.</string>
     <string name="sets_extra">Дополнительные элементы</string>
