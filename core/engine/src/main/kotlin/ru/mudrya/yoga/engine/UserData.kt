@@ -129,6 +129,8 @@ data class AppSettings(
     val camera: CameraView = CameraView.SIDE,
     /** Картинки поз в библиотеке и конструкторе. */
     val thumbnails: Boolean = true,
+    /** Вдохов-выдохов на удержании каждой позы в плеере; 0 — как в методике. */
+    val holdBreaths: Int = 0,
     /** Только для отладочной сборки: включить премиум без покупки, чтобы проверить закрытые сеты. */
     val debugPremium: Boolean = false,
 )
@@ -291,6 +293,7 @@ object UserStateCodec {
         line("settings.largeText", s.settings.largeText.toString())
         line("settings.camera", s.settings.camera.name)
         line("settings.thumbnails", s.settings.thumbnails.toString())
+        line("settings.holdBreaths", s.settings.holdBreaths.toString())
         line("settings.debugPremium", s.settings.debugPremium.toString())
         line("reminder.enabled", s.reminder.enabled.toString())
         line("reminder.time", "${s.reminder.hour}:${s.reminder.minute}")
@@ -363,6 +366,7 @@ object UserStateCodec {
                 largeText = single["settings.largeText"]?.toBooleanStrictOrNull() ?: false,
                 camera = single["settings.camera"]?.let { v -> CameraView.entries.firstOrNull { it.name == v } } ?: CameraView.SIDE,
                 thumbnails = single["settings.thumbnails"]?.toBooleanStrictOrNull() ?: true,
+                holdBreaths = single["settings.holdBreaths"]?.toIntOrNull()?.coerceIn(0, CustomSets.MAX_HOLD) ?: 0,
                 debugPremium = single["settings.debugPremium"]?.toBooleanStrictOrNull() ?: false,
             ),
             reminder = parseReminder(single),

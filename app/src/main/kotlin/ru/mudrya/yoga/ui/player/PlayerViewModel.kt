@@ -53,7 +53,19 @@ class PlayerViewModel(private val users: UserRepository, sequenceId: String) : V
         return crossed
     }
 
-    val controller = PlayerController(session, phaseMs = params.phaseMs)
+    val controller = PlayerController(
+        session,
+        phaseMs = params.phaseMs,
+        holdCycles = users.state.value.settings.holdBreaths.takeIf { it > 0 },
+    )
+
+    /** Вдохов-выдохов на удержании: по методике → 1 → 2 → 3 → 5; выбор запоминается. */
+    fun cycleHold() {
+        val i = HOLDS.indexOf(controller.holdCycles).let { if (it < 0) 0 else it }
+        val next = HOLDS[(i + 1) % HOLDS.size]
+        controller.setHold(next)
+        users.update { it.copy(settings = it.settings.copy(holdBreaths = next ?: 0)) }
+    }
 
     var usedMetalDog = false
         private set
@@ -66,6 +78,8 @@ class PlayerViewModel(private val users: UserRepository, sequenceId: String) : V
         usedMetalDog = true
         controller.setMetalDog(true)
     }
+
+    private val HOLDS = listOf(null, 1, 2, 3, 5)
 
     fun cycleSpeed() {
         val i = SPEEDS.indexOf(controller.speed).let { if (it < 0) 1 else it }

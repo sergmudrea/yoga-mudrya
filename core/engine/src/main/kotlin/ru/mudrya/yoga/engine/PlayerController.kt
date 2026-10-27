@@ -25,10 +25,16 @@ data class PlayerFrame(
  * UI вызывает [advance] на каждом кадре и рисует [frame].
  */
 class PlayerController(
-    private val session: Session,
+    private val baseSession: Session,
     phaseMs: Long = 4_000,
     speed: Double = 1.0,
+    holdCycles: Int? = null,
 ) {
+    /** Сколько дыхательных циклов держать каждую позу; null — как в методике (у каждого шага своё). */
+    var holdCycles: Int? = holdCycles
+        private set
+
+    private var session: Session = withHold(baseSession, holdCycles)
     var phaseMs: Long = phaseMs
         private set
     var speed: Double = speed
@@ -70,6 +76,15 @@ class PlayerController(
         timeline = BreathTimeline(session, phaseMs, speed)
         val p = timeline.phases[pos.phaseIndex]
         tMs = p.startMs + (pos.progress * p.durationMs).toLong()
+    }
+
+    /** Меняет число вдохов-выдохов на удержании, оставаясь на текущем шаге (с его начала). */
+    fun setHold(cycles: Int?) {
+        val i = frame().stepIndex
+        holdCycles = cycles
+        session = withHold(baseSession, cycles)
+        timeline = BreathTimeline(session, phaseMs, speed)
+        tMs = timeline.stepStartMs(i.coerceIn(0, session.steps.size - 1))
     }
 
     fun goToStep(index: Int) {
@@ -114,6 +129,10 @@ class PlayerController(
     }
 
     companion object {
+        /** Сессия, где у каждого шага удержание — [cycles] пар «выдох–вдох». */
+        fun withHold(s: Session, cycles: Int?): Session =
+            if (cycles == null) s else s.copy(steps = s.steps.map { it.copy(hold = CustomSets.hold(cycles)) })
+
         /** Подъём корпуса на вдохе для живости фигуры, градусы. */
         fun chestLift(fill: BreathFill): Double = fill.chest * 2.5
 

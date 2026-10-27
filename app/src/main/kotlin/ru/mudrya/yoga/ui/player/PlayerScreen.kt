@@ -200,12 +200,14 @@ fun PlayerScreen(
                 paused = c.paused,
                 speed = c.speed,
                 phaseSec = c.phaseMs / 1000,
+                holdCycles = c.holdCycles,
                 metalDogOffered = frame.step.metalDog,
                 onPrev = { act { c.previousStep() } },
                 onPause = { act { c.togglePause() } },
                 onNext = { act { c.nextStep() } },
                 onSpeed = { act { vm.cycleSpeed() } },
                 onPhase = { act { vm.cyclePhaseLength() } },
+                onHold = { act { vm.cycleHold() } },
                 onMetalDog = { act { vm.startMetalDog() } },
             )
     }
@@ -466,12 +468,14 @@ private fun Controls(
     paused: Boolean,
     speed: Double,
     phaseSec: Long,
+    holdCycles: Int?,
     metalDogOffered: Boolean,
     onPrev: () -> Unit,
     onPause: () -> Unit,
     onNext: () -> Unit,
     onSpeed: () -> Unit,
     onPhase: () -> Unit,
+    onHold: () -> Unit,
     onMetalDog: () -> Unit,
 ) {
     Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
@@ -487,6 +491,11 @@ private fun Controls(
         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             SmallButton(stringResource(R.string.player_speed, formatSpeed(speed)), Modifier.weight(1f), onSpeed)
             SmallButton(stringResource(R.string.player_phase_len, phaseSec), Modifier.weight(1f), onPhase)
+            SmallButton(
+                holdCycles?.let { stringResource(R.string.player_hold_n, it) } ?: stringResource(R.string.player_hold_method),
+                Modifier.weight(1f),
+                onHold,
+            )
             SmallButton(
                 stringResource(R.string.player_metal_dog_short),
                 Modifier.weight(1f),

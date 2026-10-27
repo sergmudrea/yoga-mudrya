@@ -36,6 +36,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalDensity
@@ -126,6 +127,7 @@ fun BuilderScreen(
             },
             onEdit = { editing = it },
             onTest = { if (premium) onPlay(it) else trialFor = it },
+            onPin = { id, on -> users.update { s -> s.copy(pinnedSets = if (on) (s.pinnedSets + id).distinct() else s.pinnedSets - id) } },
             onBack = onBack,
         )
     }
@@ -178,7 +180,15 @@ fun TrialDialog(runsUsed: Int, onRun: () -> Unit, onPremium: () -> Unit, onDismi
 }
 
 @Composable
-private fun SetList(state: UserState, premium: Boolean, onNew: (String) -> Unit, onEdit: (String) -> Unit, onTest: (String) -> Unit, onBack: () -> Unit) {
+private fun SetList(
+    state: UserState,
+    premium: Boolean,
+    onNew: (String) -> Unit,
+    onEdit: (String) -> Unit,
+    onTest: (String) -> Unit,
+    onPin: (String, Boolean) -> Unit,
+    onBack: () -> Unit,
+) {
     val defaultName = stringResource(R.string.builder_new_name, state.customSets.size + 1)
     Column(
         Modifier
@@ -207,6 +217,8 @@ private fun SetList(state: UserState, premium: Boolean, onNew: (String) -> Unit,
                         enabled = set.asanaIds.isNotEmpty(),
                     )
                 }
+                val pinned = set.id in state.pinnedSets
+                TextAction(stringResource(if (pinned) R.string.builder_unpin else R.string.builder_pin_do), { onPin(set.id, !pinned) })
             }
         }
         TextAction(stringResource(R.string.back), onBack)
@@ -233,7 +245,7 @@ private fun SetEditor(
     var order by remember(set.id, set.asanaIds) { mutableStateOf(set.asanaIds) }
     val current by rememberUpdatedState(set)
 
-    Column(Modifier.fillMaxSize().padding(horizontal = 20.dp)) {
+    Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = 20.dp)) {
         Column(Modifier.padding(top = 20.dp, bottom = 8.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
             OutlinedTextField(
                 value = set.name,
@@ -249,17 +261,16 @@ private fun SetEditor(
                     Chip(stringResource(R.string.builder_hold_n, n), set.holdCycles == n, { onChange(set.copy(holdCycles = n)) })
                 }
             }
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Text(stringResource(R.string.builder_pin), color = MudryaColors.Text, fontSize = 15.sp, modifier = Modifier.weight(1f))
-                androidx.compose.material3.Switch(checked = pinned, onCheckedChange = onPin)
-            }
+            PrimaryButton(
+                stringResource(if (pinned) R.string.builder_unpin else R.string.builder_pin_do),
+                { onPin(!pinned) },
+                color = if (pinned) MudryaColors.Border else MudryaColors.Moon,
+                contentColor = if (pinned) MudryaColors.Text else MudryaColors.Ground,
+            )
+            if (order.isNotEmpty()) SetPreview(order, set.holdCycles)
             Body(stringResource(R.string.builder_drag_hint))
         }
-        Column(
-            Modifier
-                .weight(1f)
-                .verticalScroll(rememberScrollState()),
-        ) {
+        Column {
             order.forEachIndexed { i, id ->
                 val asana = PoseCatalog.asana(id)
                 val dragging = i == dragIndex
@@ -401,3 +412,25 @@ private fun fieldColors() = OutlinedTextFieldDefaults.colors(
     focusedLabelColor = MudryaColors.Saffron,
     unfocusedLabelColor = MudryaColors.TextMuted,
 )
+
+/** Живой просмотр своего сета: марионетка переходит от позы к позе с выбранным удержанием. */
+@Composable
+private fun SetPreview(order: List<String>, holdCycles: Int) {
+    var i by remember(order) { mutableIntStateOf(0) }
+    androidx.compose.runtime.LaunchedEffect(order, holdCycles) {
+        while (true) {
+            kotlinx.coroutines.delay(PREVIEW_MOVE_MS + holdCycles * 2 * PREVIEW_PHASE_MS)
+            i = (i + 1) % order.size
+        }
+    }
+    val asana = PoseCatalog.asana(order[i.coerceIn(0, order.lastIndex)])
+    Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+        Text(stringResource(R.string.builder_preview, i + 1, order.size, asana?.shownName() ?: ""), color = MudryaColors.TextMuted, fontSize = 13.sp)
+        asana?.figure?.let {
+            ru.mudrya.yoga.ui.player.Figure3D(it, PREVIEW_MOVE_MS, asana.shownName(), Modifier.fillMaxWidth().height(200.dp).clip(RoundedCornerShape(16.dp)))
+        }
+    }
+}
+
+private const val PREVIEW_MOVE_MS = 1_800L
+private const val PREVIEW_PHASE_MS = 900L

@@ -42,6 +42,8 @@
     <string name="player_pause">Пауза</string>
     <string name="player_next_step">Следующая поза</string>
     <string name="player_speed">Темп %1$s</string>
+    <string name="player_hold_n">Дыханий ×%1$d</string>
+    <string name="player_hold_method">Дыхания: метод.</string>
     <string name="player_phase_len">Фаза %1$d с</string>
     <string name="player_metal_dog_short">Мет. собака</string>
     <string name="player_metal_dog">Дыхание металлической собаки</string>
@@ -327,7 +329,6 @@
     <string name="health_premium_button">Мой премиум-план</string>
     <string name="builder_hold">Удержание каждой позы</string>
     <string name="builder_hold_n">%1$d дых.</string>
-    <string name="builder_pin">На главном экране</string>
     <string name="home_my_sets">Мои сеты</string>
     <string name="settings_display">Показ</string>
     <string name="settings_show_cues">Подсказки и описание позы</string>
@@ -363,6 +364,9 @@
     <string name="account_err_exists">Аккаунт с этой почтой уже есть — войдите.</string>
     <string name="account_err_not_found">На этом устройстве нет аккаунта с этой почтой.</string>
     <string name="account_err_wrong">Неверный пароль.</string>
+    <string name="builder_pin_do">＋ На главный экран</string>
+    <string name="builder_unpin">Убрать с главного экрана</string>
+    <string name="builder_preview">Просмотр %1$d / %2$d · %3$s</string>
     <string name="settings_voice">Голосовое ведение</string>
     <string name="settings_voice_hint">Через синтезатор речи телефона. Когда говорит голос, тон не звучит.</string>
     <string name="voice_off">Выкл.</string>

@@ -42,6 +42,8 @@
     <string name="player_pause">Pause</string>
     <string name="player_next_step">Next pose</string>
     <string name="player_speed">Tempo %1$s</string>
+    <string name="player_hold_n">Breaths ×%1$d</string>
+    <string name="player_hold_method">Breaths: method</string>
     <string name="player_phase_len">Phase %1$d s</string>
     <string name="player_metal_dog_short">Metal dog</string>
     <string name="player_metal_dog">Metal dog breathing</string>
@@ -327,7 +329,6 @@
     <string name="health_premium_button">Get my Premium plan</string>
     <string name="builder_hold">Hold each pose</string>
     <string name="builder_hold_n">%1$d breaths</string>
-    <string name="builder_pin">On the home screen</string>
     <string name="home_my_sets">My sets</string>
     <string name="settings_display">Display</string>
     <string name="settings_show_cues">Cues and pose description</string>
@@ -363,6 +364,9 @@
     <string name="account_err_exists">An account with this email already exists — sign in.</string>
     <string name="account_err_not_found">No account with this email on this device.</string>
     <string name="account_err_wrong">Wrong password.</string>
+    <string name="builder_pin_do">＋ Add to the home screen</string>
+    <string name="builder_unpin">Remove from the home screen</string>
+    <string name="builder_preview">Preview %1$d / %2$d · %3$s</string>
     <string name="settings_voice">Voice guidance</string>
     <string name="settings_voice_hint">Uses the phone\'s speech engine. When the voice speaks, the beep is skipped.</string>
     <string name="voice_off">Off</string>

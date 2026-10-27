@@ -21,7 +21,7 @@ class UserStateCodecTest {
         tests = listOf(MovementRecord(5_000, 20_000, 41, 37, mapOf(MovementTest.BALANCE to 8.5, MovementTest.SIT_RISE to 9.0))),
         planStartDay = 19_990,
         relaxSeconds = 90,
-        settings = AppSettings(sound = false, voice = VoiceLevel.FULL, vibration = true, tvOutput = false, figure3d = false, showCues = false, largeText = true, camera = CameraView.FRONT, thumbnails = false),
+        settings = AppSettings(sound = false, voice = VoiceLevel.FULL, vibration = true, tvOutput = false, figure3d = false, showCues = false, largeText = true, camera = CameraView.FRONT, thumbnails = false, holdBreaths = 3),
         reminder = ReminderSettings(enabled = true, hour = 19, minute = 30, days = setOf(1, 3, 5)),
         body = listOf(BodyRecord(19_990, 72.5, null), BodyRecord(20_000, 71.8, 84.0)),
         challengeStart = 19_995,
@@ -463,5 +463,23 @@ class AccountsTest {
         assertEquals(listOf(a), list)
         assertEquals("a@b.ru", current)
         assertEquals(16, Accounts.dataKey("a@b.ru").length)
+    }
+}
+
+class HoldOverrideTest {
+    @Test
+    fun `player can change breaths per pose and keeps the current step`() {
+        val set = CustomSet("my_1", "Мой", listOf("plank", "tadasana", "chaturanga"), holdCycles = 3)
+        val s = SessionBuilder(CustomSets.catalogWith(Fixtures.catalog, set))
+            .build(BuildRequest(CustomSets.sequence(set), 1, ru.mudrya.yoga.model.Support.PALMS))
+        val c = PlayerController(s, phaseMs = 1_000)
+        c.goToStep(1)
+        val before = c.frame().totalMs
+        c.setHold(1)
+        assertEquals(1, c.frame().stepIndex)
+        assertTrue(c.frame().totalMs < before)
+        assertTrue(c.frame().step.hold.size == 2)
+        c.setHold(null)
+        assertEquals(before, c.frame().totalMs)
     }
 }
