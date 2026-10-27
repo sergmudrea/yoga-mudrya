@@ -23,7 +23,7 @@ class SuryaCatalogTest {
     fun `sun ring has 77 positions like the book`() {
         val s = build("surya")
         assertEquals(77, s.steps.size)
-        assertEquals("Основная стойка", s.steps.first().title)
+        assertEquals("Поза горы", s.steps.first().title)
     }
 
     @Test

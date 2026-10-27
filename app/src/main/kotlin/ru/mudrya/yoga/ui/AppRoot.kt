@@ -97,14 +97,27 @@ fun AppRoot() {
     ) { padding ->
         NavHost(nav, startDestination = start, modifier = Modifier.padding(padding)) {
             composable(Routes.ONBOARDING) {
-                OnboardingScreen(initial = null) { profile ->
-                    users.update { it.copy(profile = profile, params = Plan.initial(profile), planStartDay = UserRepository.today()) }
-                    nav.navigate(Routes.FIRST_TEST) { popUpTo(Routes.ONBOARDING) { inclusive = true } }
+                OnboardingScreen(initial = null) { r ->
+                    val today = UserRepository.today()
+                    users.update {
+                        it.copy(
+                            profile = r.profile,
+                            params = Plan.initial(r.profile),
+                            planStartDay = today,
+                            settings = it.settings.copy(lengthMin = r.minutes, holdBreaths = 0),
+                            programId = r.programId,
+                            programStart = today,
+                        )
+                    }
+                    val first = ru.mudrya.yoga.catalog.ProgramCatalog.program(r.programId)?.days?.firstOrNull { it != null }
+                    nav.navigate(Tab.PRACTICE.route) { popUpTo(Routes.ONBOARDING) { inclusive = true } }
+                    if (r.startNow && first != null) nav.navigate(Routes.session(first))
                 }
             }
             composable(Routes.EDIT_PROFILE) {
-                OnboardingScreen(initial = state.profile) { profile ->
-                    users.update { it.copy(profile = profile, params = it.params.respecting(profile)) }
+                OnboardingScreen(initial = state.profile, initialMinutes = state.settings.lengthMin) { r ->
+                    val profile = r.profile
+                    users.update { it.copy(profile = profile, params = it.params.respecting(profile), settings = it.settings.copy(lengthMin = r.minutes)) }
                     nav.popBackStack()
                 }
             }
@@ -153,6 +166,7 @@ fun AppRoot() {
                     onSets = { nav.goTab(Tab.SETS) },
                     premium = premium,
                     onPaywall = { nav.navigate(Routes.PAYWALL) },
+                    onPrograms = { nav.navigate(Routes.SET_LIBRARY) },
                 )
             }
             composable(Tab.SETS.route) {

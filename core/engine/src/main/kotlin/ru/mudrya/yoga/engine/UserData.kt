@@ -73,6 +73,9 @@ data class UserState(
     val usedCodes: List<String> = emptyList(),
     /** Анкеты здоровья (ИМТ, талия, пульс, лестница, сидячие часы). */
     val health: List<HealthRecord> = emptyList(),
+    /** Выбранная программа на 14–30 дней и день её старта. */
+    val programId: String? = null,
+    val programStart: Long? = null,
 ) {
     val onboarded: Boolean get() = profile != null
 }
@@ -137,6 +140,8 @@ data class AppSettings(
     val thumbnails: Boolean = true,
     /** Вдохов-выдохов на удержании каждой позы в плеере; 0 — как в методике. */
     val holdBreaths: Int = 0,
+    /** Длина сета в минутах (10 / 20 / 40); 0 — как задумано в сете. */
+    val lengthMin: Int = 0,
     /** Только для отладочной сборки: включить премиум без покупки, чтобы проверить закрытые сеты. */
     val debugPremium: Boolean = false,
 )
@@ -300,6 +305,9 @@ object UserStateCodec {
         line("settings.camera", s.settings.camera.name)
         line("settings.thumbnails", s.settings.thumbnails.toString())
         line("settings.holdBreaths", s.settings.holdBreaths.toString())
+        line("settings.lengthMin", s.settings.lengthMin.toString())
+        s.programId?.let { line("program.id", it) }
+        s.programStart?.let { line("program.start", it.toString()) }
         line("settings.debugPremium", s.settings.debugPremium.toString())
         line("reminder.enabled", s.reminder.enabled.toString())
         line("reminder.time", "${s.reminder.hour}:${s.reminder.minute}")
@@ -380,6 +388,7 @@ object UserStateCodec {
                 camera = single["settings.camera"]?.let { v -> CameraView.entries.firstOrNull { it.name == v } } ?: CameraView.SIDE,
                 thumbnails = single["settings.thumbnails"]?.toBooleanStrictOrNull() ?: true,
                 holdBreaths = single["settings.holdBreaths"]?.toIntOrNull()?.coerceIn(0, CustomSets.MAX_HOLD) ?: 0,
+                lengthMin = single["settings.lengthMin"]?.toIntOrNull()?.takeIf { it in SessionFit.LENGTHS } ?: 0,
                 debugPremium = single["settings.debugPremium"]?.toBooleanStrictOrNull() ?: false,
             ),
             reminder = parseReminder(single),
@@ -393,6 +402,8 @@ object UserStateCodec {
             promoLifetime = single["promo.lifetime"]?.toBooleanStrictOrNull() ?: false,
             usedCodes = single["promo.used"]?.split(',')?.filter { it.isNotBlank() }.orEmpty(),
             health = health.sortedBy { it.atMs },
+            programId = single["program.id"]?.takeIf { it.isNotBlank() },
+            programStart = single["program.start"]?.toLongOrNull(),
             cycle = CycleSettings(
                 enabled = single["cycle.enabled"]?.toBooleanStrictOrNull() ?: false,
                 lastStart = single["cycle.start"]?.toLongOrNull(),

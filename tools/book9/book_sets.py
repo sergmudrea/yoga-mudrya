@@ -8,6 +8,9 @@
 R — расслабление 5 циклов.
 """
 import os
+import sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from titles import T as TITLES
 
 def S(code, title, pose, b='E'):
     return (code, title, pose, b)
@@ -458,23 +461,23 @@ IN += [
 
 SETS = [
     ('bk_mk', 'Три малых солнца', 'Three small suns',
-     'Серия малых солнечных колец: три коротких кольца-разогрева, второе — с прыжком в стойку-сборку, третье — с полумесяцами.',
-     'Series of small sun rings: three short warm-up rings, the second with a jump to crow, the third with crescents.', MK),
+     'Три коротких круга приветствия солнцу: второй — с прыжком в ворону, третий — с выпадами. Разминка на 10 минут.',
+     'Three short sun salutation rounds: the second with a jump into crow, the third with lunges. A 10-minute warm-up.', MK),
     ('bk_zh', 'Разожги внутренний огонь', 'Light the inner fire',
-     'Сет 1 «Работа животом»: брюшные помпы, замки и брюшной жгут (наули) в бабочке и лотосе. Натощак.',
-     'Set 1 “Belly work”: abdominal pumps, locks and nauli in butterfly and lotus. On an empty stomach.', ZH),
+     'Дыхание животом, втягивание и волна мышц живота в бабочке и лотосе. Только натощак.',
+     'Belly breathing, abdominal draw-ins and the abdominal wave in butterfly and lotus. On an empty stomach only.', ZH),
     ('bk_p', 'Переверни мир', 'Turn the world upside down',
-     'Сет 2 «Перевёрнутые последовательности»: плуги, стойки на плечах, мосты, стойка на голове.',
-     'Set 2 “Inverted sequences”: ploughs, shoulder stands, bridges, headstand.', P),
+     'Плуги, стойки на плечах, мосты и стойка на голове. Перевёрнутые позы — только после разминки.',
+     'Ploughs, shoulder stands, bridges and a headstand. Inversions only after a warm-up.', P),
     ('bk_v', 'Сильные ноги, гибкая спина', 'Strong legs, supple spine',
-     'Сет 3 «Верхняя работа»: треугольники, углы, воины, полулотос стоя, широкие наклоны — всё стоя.',
-     'Set 3 “Upper work”: triangles, angles, warriors, standing half lotus, wide forward bends — all standing.', V),
+     'Треугольники, боковые углы, воины, дерево и широкие наклоны — всё стоя.',
+     'Triangles, side angles, warriors, tree and wide-legged bends — all standing.', V),
     ('bk_pz', 'Змеиная гибкость', 'Serpent flexibility',
-     'Сет 4 «Ползучая работа»: прогибы лёжа, наклоны и скручивания сидя, обратные упоры, павлин.',
-     'Set 4 “Creeping work”: prone backbends, seated forward bends and twists, reverse planks, peacock.', PZ),
+     'Прогибы лёжа на животе, наклоны и скрутки сидя, обратная планка, павлин.',
+     'Backbends lying on the belly, seated bends and twists, reverse plank, peacock.', PZ),
     ('bk_in', 'Всё за один раз', 'All in one go',
-     'Сет 5 «Интегральный»: понемногу из всех сетов — для дней, когда некогда заниматься отдельными сетами.',
-     'Set 5 “Integral”: a little of every set — for days with no time for separate sets.', IN),
+     'Понемногу из всех сетов — для дней, когда некогда заниматься отдельными сетами.',
+     'A little of every set — for days with no time for separate sets.', IN),
 ]
 
 BR = {'i': ('IN', 0), 'e': ('EX', 0), 'I': ('IN', 3), 'E': ('EX', 3), 'R': ('EX', 5)}
@@ -515,8 +518,8 @@ def emit(out):
     lines.append('    private fun hold(first: Breath, cycles: Int): List<Breath> =')
     lines.append('        List(cycles * 2) { if (it % 2 == 0) (if (first == IN) EX else IN) else first }')
     lines.append('')
-    lines.append('    private fun s(id: String, enter: Breath, cycles: Int, title: String) =')
-    lines.append('        Step(id, enter = listOf(enter), hold = hold(enter, cycles), extraCycles = cycles > 0, titleRu = title)')
+    lines.append('    private fun s(id: String, enter: Breath, cycles: Int, title: String, titleEn: String) =')
+    lines.append('        Step(id, enter = listOf(enter), hold = hold(enter, cycles), extraCycles = cycles > 0, titleRu = title, titleEn = titleEn)')
     lines.append('')
     ids = set()
     for sid, nru, nen, hru, hen, steps in SETS:
@@ -525,8 +528,8 @@ def emit(out):
         for code, title, pose, b in steps:
             br, cyc = BR[b]
             ids.add(pose)
-            t = title if not code else f'{title} ({code})'
-            lines.append(f'        s({kstr(pose)}, {br}, {cyc}, {kstr(t)}),')
+            ru, en = TITLES[title]
+            lines.append(f'        s({kstr(pose)}, {br}, {cyc}, {kstr(ru)}, {kstr(en)}),')
         lines.append('    )')
         lines.append('')
     lines.append('    val blocks: List<Block> by lazy {')

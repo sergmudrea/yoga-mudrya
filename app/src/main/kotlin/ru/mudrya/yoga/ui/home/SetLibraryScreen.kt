@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ru.mudrya.yoga.R
 import ru.mudrya.yoga.catalog.BookSetsCatalog
+import ru.mudrya.yoga.catalog.ProgramCatalog
 import ru.mudrya.yoga.catalog.ThemeCatalog
 import ru.mudrya.yoga.data.UserRepository
 import ru.mudrya.yoga.engine.AdviceReason
@@ -66,6 +67,27 @@ fun SetLibraryScreen(state: UserState, users: UserRepository, premium: Boolean, 
             Body(stringResource(R.string.setlib_take_test), color = MudryaColors.Saffron)
         }
 
+        Spacer(Modifier.height(4.dp))
+        SectionLabel(stringResource(R.string.programs_title))
+        Body(stringResource(R.string.programs_hint))
+        val today = UserRepository.today()
+        ProgramCatalog.programs.forEach { p ->
+            val active = state.programId == p.id
+            val day = if (active) ProgramCatalog.today(p, state.programStart ?: today, today, state) else null
+            ProgramRow(
+                ru.mudrya.yoga.ui.common.programName(p),
+                ru.mudrya.yoga.ui.common.programHint(p),
+                if (day != null && !day.finished) stringResource(R.string.program_active, day.index + 1, p.length) else stringResource(R.string.program_days, p.length),
+                active,
+            ) { users.update { it.copy(programId = p.id, programStart = today) }; onBack() }
+        }
+        ProgramRow(
+            stringResource(R.string.program_path8),
+            stringResource(R.string.program_path8_hint),
+            "",
+            state.programId == null,
+        ) { users.update { it.copy(programId = null) }; onBack() }
+
         ThemeCatalog.Section.entries.forEach { section ->
             Spacer(Modifier.height(4.dp))
             SectionLabel(if (ru) section.titleRu else section.titleEn)
@@ -94,7 +116,7 @@ fun SetLibraryScreen(state: UserState, users: UserRepository, premium: Boolean, 
 @Composable
 private fun ThemeRow(id: String, state: UserState, users: UserRepository, premium: Boolean, onStart: (String) -> Unit) {
     val constraints = state.constraints(UserRepository.today())
-    val (positions, minutes) = remember(state.params, constraints, id) { setSize(id, state.params, constraints) }
+    val (positions, minutes) = remember(state.params, constraints, id, state.settings.lengthMin) { setSize(id, state.params, constraints, state.settings.lengthMin) }
     SetRow(id, positions, minutes, PremiumPolicy.isLocked(id, premium), accentOf(id), backgroundOf(id), state, users) { onStart(id) }
 }
 
@@ -127,5 +149,19 @@ fun ForYouSets(state: UserState, users: UserRepository, premium: Boolean, onStar
     advice.forEach { a ->
         ThemeRow(a.themeId, state, users, premium, onStart)
         Text(adviceText(a), color = MudryaColors.Saffron, fontSize = 13.sp, modifier = Modifier.padding(start = 6.dp))
+    }
+}
+
+/** Строка программы: название, описание, длина или текущий день; нажатие — начать программу. */
+@Composable
+private fun ProgramRow(name: String, hint: String, meta: String, active: Boolean, onPick: () -> Unit) {
+    ru.mudrya.yoga.ui.common.Card(
+        modifier = Modifier.clickable(onClick = onPick),
+        color = if (active) MudryaColors.SaffronDeep else MudryaColors.Surface,
+    ) {
+        Text(name, color = if (active) MudryaColors.Saffron else MudryaColors.Text, fontSize = 17.sp, fontWeight = androidx.compose.ui.text.font.FontWeight.Bold)
+        Text(hint, color = MudryaColors.TextMuted, fontSize = 13.sp)
+        if (meta.isNotEmpty()) Text(meta, color = MudryaColors.Saffron, fontSize = 13.sp)
+        if (!active) Text(stringResource(R.string.program_start_btn) + " →", color = MudryaColors.Saffron, fontSize = 14.sp, fontWeight = androidx.compose.ui.text.font.FontWeight.Bold)
     }
 }

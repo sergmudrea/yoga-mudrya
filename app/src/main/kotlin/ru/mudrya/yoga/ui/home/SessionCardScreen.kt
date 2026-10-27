@@ -38,6 +38,7 @@ import ru.mudrya.yoga.engine.BreathTimeline
 import ru.mudrya.yoga.engine.BuildRequest
 import ru.mudrya.yoga.engine.Plan
 import ru.mudrya.yoga.engine.SessionBuilder
+import ru.mudrya.yoga.engine.SessionFit
 import ru.mudrya.yoga.engine.UserState
 import ru.mudrya.yoga.engine.constraints
 import ru.mudrya.yoga.model.Injury
@@ -96,9 +97,12 @@ fun SessionCardScreen(
     val constraints = state.constraints(UserRepository.today())
     val injuries = state.profile?.injuries.orEmpty()
     val def = remember(sequenceId) { SuryaCatalog.sequence(sequenceId) }
-    val session = remember(sequenceId, params, constraints) {
+    val built = remember(sequenceId, params, constraints) {
         SessionBuilder(SuryaCatalog.catalog).build(BuildRequest(def, params.rounds, params.support, enabledSlots = params.enabledSlots.toSet(), constraints = constraints))
     }
+    val lengthMin = state.settings.lengthMin
+    val session = remember(built, lengthMin, params.phaseMs) { SessionFit.fit(built, params.phaseMs, lengthMin) }
+    val shortest = remember(built, params.phaseMs) { SessionFit.minMinutes(built, params.phaseMs) }
     val minutes = ((BreathTimeline(session, params.phaseMs).totalMs + 30_000) / 60_000).toInt().coerceAtLeast(1)
     val perRound = session.steps.size / params.rounds.coerceAtLeast(1)
     val usesHands = remember(session) { session.steps.any { it.asana.supports.isNotEmpty() } }
@@ -136,6 +140,21 @@ fun SessionCardScreen(
             }
 
             Card {
+                SectionLabel(stringResource(R.string.session_length))
+                ChipRow {
+                    SessionFit.LENGTHS.forEach { m ->
+                        Chip(
+                            stringResource(R.string.session_length_min, m),
+                            lengthMin == m,
+                            { users.update { it.copy(settings = it.settings.copy(lengthMin = m, holdBreaths = 0)) } },
+                        )
+                    }
+                    Chip(stringResource(R.string.session_length_full), lengthMin == 0, { users.update { it.copy(settings = it.settings.copy(lengthMin = 0)) } })
+                }
+                if (lengthMin in 1 until shortest) Body(stringResource(R.string.session_length_shortest, shortest))
+            }
+
+            Card {
                 SectionLabel(stringResource(R.string.home_rounds))
                 Stepper(
                     value = params.rounds.toString(),
@@ -158,7 +177,7 @@ fun SessionCardScreen(
                         Chip(
                             if (n == 0) stringResource(R.string.session_hold_method) else n.toString(),
                             state.settings.holdBreaths == n,
-                            { users.update { it.copy(settings = it.settings.copy(holdBreaths = n)) } },
+                            { users.update { it.copy(settings = it.settings.copy(holdBreaths = n, lengthMin = if (n > 0) 0 else it.settings.lengthMin)) } },
                         )
                     }
                 }

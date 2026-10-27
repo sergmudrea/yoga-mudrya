@@ -267,9 +267,9 @@ for atlas_id, set_id, name_en, two_sides in SETS:
 def codes(prefix, a, b, extra=()):
     return [f"{prefix}-{i}" for i in range(a, b + 1)] + list(extra)
 ZONES = [
-    ("x_sun", "Солнце: допэлементы колец", "Sun ring extras",
+    ("x_sun", "Солнце: доп. элементы", "Sun: extras",
      [("skd", codes("СКД", 1, 25), "СК-28", False), ("skd", codes("СКД", 1, 25), "СК-47", True)]),
-    ("x_moon", "Луна: верхние верблюды", "Moon ring: upper camels",
+    ("x_moon", "Луна: верхние верблюды", "Moon: upper camels",
      [("lkd", codes("ЛКД", 1, 2), "ЛК-40", False), ("lkd", codes("ЛКД", 3, 4), "ЛК-45", False),
       ("lkd", codes("ЛКД", 1, 2), "ЛК-70", True), ("lkd", codes("ЛКД", 3, 4), "ЛК-75", True)]),
     ("x_backbends", "Прогибы лёжа: верблюд и скорпион", "Prone backbends: camel and scorpion",
@@ -286,7 +286,7 @@ ZONES = [
     ("x_scissors", "Ножницы: упор-стойка и кольцо", "Splits: tuck balance and pigeon ring",
      [("ssd", ["ССД-63"], "СС-187", False), ("ssd", ["ССД-65"], "СС-191", False),
       ("ssd", ["ССД-65"], "СС-197", True), ("ssd", ["ССД-64"], "СС-198", False)]),
-    ("x_lotus", "Лотосовая связка стоп-сета", "Stop set lotus sequence", [("zsd", codes("ЗСД", 1, 57), "ЗС-10", False)]),
+    ("x_lotus", "Связка в лотосе", "Lotus sequence", [("zsd", codes("ЗСД", 1, 57), "ЗС-10", False)]),
 ]
 block_map = dict(blocks)
 def cut_after(code):
@@ -404,6 +404,79 @@ w("    @Suppress(\"LongParameterList\")")
 w("    private fun s(id: String, enter: List<Breath>, hold: List<Breath>, title: String, cue: String?, titleEn: String?, cueEn: String?, dog: Boolean = false) =")
 w("        Step(id, enter = enter, hold = hold, metalDog = dog, titleRu = title, cueRu = cue, titleEn = titleEn, cueEn = cueEn)")
 w("")
+
+# Простые названия поз (tools/atlas/plain_names.json): имя асаны и совпадающие с ним названия шагов.
+PLAIN = {k: v for k, v in json.loads((ROOT / "tools/atlas/plain_names.json").read_text(encoding="utf-8")).items() if not k.startswith("_")}
+_old_names = {}
+for _a in asanas.values():
+    _pn = PLAIN.get(_a["id"]) or PLAIN.get(_a["id"].removesuffix("_m"))
+    if _pn:
+        _old_names[_a["id"]] = (_a["name"], _a["name_en"] or _a["sanskrit"] or _a["name"])
+        _a["name"], _a["name_en"] = _pn
+for _bid, _steps in blocks:
+    for _st in _steps:
+        _o = _old_names.get(_st["asana"])
+        if not _o:
+            continue
+        _pn = PLAIN.get(_st["asana"]) or PLAIN.get(_st["asana"].removesuffix("_m"))
+        if _st["title"] == _o[0]:
+            _st["title"] = _pn[0]
+        if _st["title_en"] == _o[1]:
+            _st["title_en"] = _pn[1]
+
+# Простые названия сетов и блоков вместо терминов методики.
+SEQ_PLAIN = {
+    "surya": ("Солнце", "Sun flow"), "chandra": ("Луна", "Moon flow"),
+    "at_ns": ("Подготовка к разминке", "Lead-in to the warm-up"),
+    "at_ss1": ("Разминка 1", "Warm-up 1"), "at_ss2": ("Разминка 2", "Warm-up 2"), "at_ss3": ("Разминка 3: перевёрнутые позы", "Warm-up 3: inversions"),
+    "at_ss4": ("Разминка 4", "Warm-up 4"), "at_ss5": ("Разминка 5", "Warm-up 5"), "at_ss6": ("Разминка 6", "Warm-up 6"), "at_ss7": ("Разминка 7", "Warm-up 7"),
+    "at_st": ("Для продвинутых", "Advanced set"), "at_ds": ("Переход к заминке", "Lead-in to the cool-down"), "at_zs": ("Заминка", "Cool-down"),
+    "at_ssd": ("Разминка · доп. элементы", "Warm-up: extra elements"), "at_zsd": ("Заминка · доп. элементы", "Cool-down: extra elements"),
+    "at_skd": ("Солнце · доп. элементы", "Sun: extra elements"), "at_lkd": ("Луна · доп. элементы", "Moon: extra elements"),
+    "full_sun": ("Солнце и Луна: полная практика", "Sun and Moon: full practice"), "full_moon": ("Луна: полная практика", "Moon: full practice"),
+}
+_seq_old = {s[0]: (s[1], s[2]) for s in sequences}
+sequences[:] = [(s[0],) + SEQ_PLAIN.get(s[0], (s[1], s[2])) + tuple(s[3:]) for s in sequences]
+BLOCK_PLAIN = {
+    "Стандартный вход": ("Начало", "Opening"), "Стандартный выход": ("Завершение", "Closing"),
+    "Внутренняя связка (виньяса)": ("Связка (виньяса)", "Vinyasa"), "Внутренняя связка": ("Связка", "Flow"),
+    "Внутреннее солнечное кольцо, правый шаг": ("Круг с выпадом, правая нога", "Lunge round, right leg"),
+    "Внутреннее солнечное кольцо, левый шаг": ("Круг с выпадом, левая нога", "Lunge round, left leg"),
+    "Связка на трёх точках, правая нога": ("Связка на одной ноге, правая", "One-leg flow, right"),
+    "Связка на трёх точках, левая нога": ("Связка на одной ноге, левая", "One-leg flow, left"),
+    "Правостороннее внутреннее лунное кольцо": ("Лунный круг, правая сторона", "Moon round, right side"),
+    "Левостороннее внутреннее лунное кольцо": ("Лунный круг, левая сторона", "Moon round, left side"),
+    "Солнце: допэлементы колец": ("Солнце: доп. элементы", "Sun: extras"),
+    "Лотосовая связка стоп-сета": ("Связка в лотосе", "Lotus sequence"),
+}
+for _bid, _tt in list(block_titles.items()):
+    _sid = _bid
+    if _tt[0] in BLOCK_PLAIN:
+        block_titles[_bid] = BLOCK_PLAIN[_tt[0]]
+        continue
+    for _k, (_ru, _en) in SEQ_PLAIN.items():
+        _o = _seq_old.get(_k)
+        if _o and _tt[0] and _tt[0].startswith(_o[0]):
+            block_titles[_bid] = (_ru + _tt[0][len(_o[0]):], _en + (_tt[1] or "")[len(_o[1]):] if _tt[1] and _tt[1].startswith(_o[1]) else _en)
+            break
+
+# Ссылки на коды фото книги в подсказках не нужны.
+import re as _re
+def _nocode(c):
+    if not c:
+        return c
+    c = _re.sub(r"\s*Чередовать с [А-Я]{2,3}-\d+\.", " Чередовать с предыдущей позой.", c)
+    c = _re.sub(r"\s*Alternate with [A-Z]{2,3}-\d+\.", " Alternate with the previous pose.", c)
+    c = c.strip()
+    if _re.fullmatch(r"(Как [А-Я]{2,3}-\d+\.|As in [A-Z]{2,3}-\d+\.)", c):
+        return None
+    return c
+for _bid, _steps in blocks:
+    for _st in _steps:
+        _st["cue"] = _nocode(_st["cue"])
+        _st["cue_en"] = _nocode(_st["cue_en"])
+for _a in asanas.values():
+    _a["cues"] = [x for x in (_nocode(c) for c in _a["cues"]) if x]
 
 alist = list(asanas.values())
 CH = 40

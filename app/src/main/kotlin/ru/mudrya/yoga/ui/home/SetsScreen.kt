@@ -35,6 +35,7 @@ import ru.mudrya.yoga.engine.BreathTimeline
 import ru.mudrya.yoga.engine.BuildRequest
 import ru.mudrya.yoga.engine.Constraints
 import ru.mudrya.yoga.engine.SessionBuilder
+import ru.mudrya.yoga.engine.SessionFit
 import ru.mudrya.yoga.engine.SessionParams
 import ru.mudrya.yoga.engine.UserState
 import ru.mudrya.yoga.engine.constraints
@@ -70,9 +71,13 @@ internal fun accentOf(id: String): Color = if (id == "chandra" || id == "full_mo
 internal fun backgroundOf(id: String): Color = if (accentOf(id) == MudryaColors.Moon) MudryaColors.MoonDeep else MudryaColors.SaffronDeep
 
 /** Сколько позиций и минут займёт сет с такими параметрами. */
-fun setSize(sequenceId: String, params: SessionParams, constraints: Constraints): Pair<Int, Int> {
-    val session = SessionBuilder(SuryaCatalog.catalog).build(
-        BuildRequest(SuryaCatalog.sequence(sequenceId), params.rounds, params.support, enabledSlots = params.enabledSlots.toSet(), constraints = constraints),
+fun setSize(sequenceId: String, params: SessionParams, constraints: Constraints, lengthMin: Int = 0): Pair<Int, Int> {
+    val session = SessionFit.fit(
+        SessionBuilder(SuryaCatalog.catalog).build(
+            BuildRequest(SuryaCatalog.sequence(sequenceId), params.rounds, params.support, enabledSlots = params.enabledSlots.toSet(), constraints = constraints),
+        ),
+        params.phaseMs,
+        lengthMin,
     )
     val minutes = ((BreathTimeline(session, params.phaseMs).totalMs + 30_000) / 60_000).toInt().coerceAtLeast(1)
     return session.steps.size / params.rounds.coerceAtLeast(1) to minutes
@@ -94,7 +99,7 @@ fun SetsScreen(
 
     @Composable
     fun SetItem(id: String, accent: Color, background: Color) {
-        val (positions, minutes) = remember(params, constraints, id) { setSize(id, params, constraints) }
+        val (positions, minutes) = remember(params, constraints, id, state.settings.lengthMin) { setSize(id, params, constraints, state.settings.lengthMin) }
         SetRow(id, positions, minutes, PremiumPolicy.isLocked(id, premium), accent, background, state, users) { onStart(id) }
     }
 
@@ -209,7 +214,7 @@ fun FavoriteSets(state: UserState, users: UserRepository, premium: Boolean, onSt
     val constraints = state.constraints(UserRepository.today())
     SectionLabel(stringResource(R.string.sets_favorites))
     ids.forEach { id ->
-        val (positions, minutes) = remember(state.params, constraints, id) { setSize(id, state.params, constraints) }
+        val (positions, minutes) = remember(state.params, constraints, id, state.settings.lengthMin) { setSize(id, state.params, constraints, state.settings.lengthMin) }
         SetRow(id, positions, minutes, PremiumPolicy.isLocked(id, premium), accentOf(id), backgroundOf(id), state, users) { onStart(id) }
     }
 }

@@ -1,6 +1,8 @@
 package ru.mudrya.yoga.ui.home
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -38,6 +40,7 @@ import ru.mudrya.yoga.engine.Path8
 import ru.mudrya.yoga.engine.Plan
 import ru.mudrya.yoga.engine.ProgressStats
 import ru.mudrya.yoga.engine.SessionBuilder
+import ru.mudrya.yoga.engine.SessionFit
 import ru.mudrya.yoga.engine.SessionParams
 import ru.mudrya.yoga.engine.Sex
 import ru.mudrya.yoga.engine.UserState
@@ -55,9 +58,13 @@ import ru.mudrya.yoga.ui.common.supportLabel
 import ru.mudrya.yoga.ui.theme.MudryaColors
 
 /** Сколько минут займёт сессия с такими параметрами. */
-fun estimateMinutes(sequenceId: String, params: SessionParams, constraints: Constraints): Int {
-    val session = SessionBuilder(SuryaCatalog.catalog).build(
-        BuildRequest(SuryaCatalog.sequence(sequenceId), params.rounds, params.support, enabledSlots = params.enabledSlots.toSet(), constraints = constraints),
+fun estimateMinutes(sequenceId: String, params: SessionParams, constraints: Constraints, lengthMin: Int = 0): Int {
+    val session = SessionFit.fit(
+        SessionBuilder(SuryaCatalog.catalog).build(
+            BuildRequest(SuryaCatalog.sequence(sequenceId), params.rounds, params.support, enabledSlots = params.enabledSlots.toSet(), constraints = constraints),
+        ),
+        params.phaseMs,
+        lengthMin,
     )
     return ((BreathTimeline(session, params.phaseMs).totalMs + 30_000) / 60_000).toInt()
 }
@@ -71,6 +78,7 @@ fun PracticeScreen(
     onSets: () -> Unit,
     premium: Boolean = false,
     onPaywall: () -> Unit = {},
+    onPrograms: () -> Unit = onSets,
 ) {
     val today = UserRepository.today()
     val stats = remember(state) { ProgressStats.of(state, today) }
@@ -88,7 +96,12 @@ fun PracticeScreen(
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         Text(stringResource(R.string.today), color = MudryaColors.TextMuted, fontSize = 14.sp)
-        TodayCard(state, today, onStart, onTest, onSets)
+        val program = ru.mudrya.yoga.catalog.ProgramCatalog.program(state.programId)
+        if (program != null) {
+            ProgramCard(program, state, users, today, stats.currentStreak, onStart, onPrograms)
+        } else {
+            TodayCard(state, today, onStart, onTest, onSets)
+        }
         PinnedSets(state, users, premium, onStart, onPaywall)
         FavoriteSets(state, users, premium, onStart)
         ForYouSets(state, users, premium, onStart)
@@ -148,7 +161,7 @@ private fun TodayCard(state: UserState, today: Long, onStart: (String) -> Unit, 
             DayKind.SURYA, DayKind.CHANDRA -> {
                 val id = if (day.kind == DayKind.SURYA) "surya" else "chandra"
                 val constraints = state.constraints(today)
-                val minutes = remember(params, constraints, id) { estimateMinutes(id, params, constraints) }
+                val minutes = remember(params, constraints, id, state.settings.lengthMin) { estimateMinutes(id, params, constraints, state.settings.lengthMin) }
                 Text(sequenceName(id), color = fg, fontSize = 26.sp, fontWeight = FontWeight.Bold)
                 Text(
                     stringResource(R.string.home_session_line, params.rounds, minutes, supportLabel(params.support), formatPhase(params.phaseMs)),
@@ -184,6 +197,84 @@ private fun TodayCard(state: UserState, today: Long, onStart: (String) -> Unit, 
                 .clickable(onClick = onSets)
                 .padding(vertical = 4.dp),
         )
+    }
+}
+
+/** Карточка «Сегодня» по выбранной программе: день, сет дня, отметки дней и серия. */
+@Composable
+private fun ProgramCard(
+    program: ru.mudrya.yoga.catalog.ProgramCatalog.Program,
+    state: UserState,
+    users: UserRepository,
+    today: Long,
+    streak: Int,
+    onStart: (String) -> Unit,
+    onPrograms: () -> Unit,
+) {
+    val start = state.programStart ?: today
+    val day = remember(state.sessions, start, today, program.id) { ru.mudrya.yoga.catalog.ProgramCatalog.today(program, start, today, state) }
+    if (day.finished) {
+        Card(color = MudryaColors.SaffronDeep) {
+            Text(stringResource(R.string.program_done_title), color = MudryaColors.Saffron, fontSize = 24.sp, fontWeight = FontWeight.Bold)
+            Body(stringResource(R.string.program_done_text, day.doneDays, program.length), color = MudryaColors.Text)
+            DayMarks(day.marks)
+            PrimaryButton(stringResource(R.string.program_choose), onPrograms)
+        }
+        return
+    }
+    val set = day.setId
+    val done = ru.mudrya.yoga.catalog.ProgramCatalog.isDone(program, day.index, today, state) && set != null
+    Card(color = MudryaColors.Saffron) {
+        Text(stringResource(R.string.program_day, day.index + 1, program.length), color = MudryaColors.Ground, fontSize = 13.sp, fontWeight = FontWeight.Bold)
+        Text(ru.mudrya.yoga.ui.common.programName(program), color = MudryaColors.Ground, fontSize = 14.sp)
+        if (set != null) {
+            val constraints = state.constraints(today)
+            val minutes = remember(state.params, constraints, set, state.settings.lengthMin) { estimateMinutes(set, state.params, constraints, state.settings.lengthMin) }
+            Text(sequenceName(set), color = MudryaColors.Ground, fontSize = 26.sp, fontWeight = FontWeight.Bold)
+            Text(stringResource(R.string.session_minutes, minutes), color = MudryaColors.Ground, fontSize = 14.sp)
+            if (done) DoneMark(MudryaColors.Ground)
+            PrimaryButton(
+                stringResource(if (done) R.string.path_again else R.string.start),
+                { onStart(set) },
+                color = MudryaColors.Ground,
+                contentColor = MudryaColors.Text,
+            )
+        } else {
+            Text(stringResource(R.string.program_rest), color = MudryaColors.Ground, fontSize = 26.sp, fontWeight = FontWeight.Bold)
+            Text(stringResource(R.string.program_rest_hint), color = MudryaColors.Ground, fontSize = 14.sp)
+            PrimaryButton(stringResource(R.string.program_rest_light), { onStart("th_calm") }, color = MudryaColors.Ground, contentColor = MudryaColors.Text)
+        }
+        DayMarks(day.marks, onLight = true)
+        if (streak > 0) Text(stringResource(R.string.program_streak, streak), color = MudryaColors.Ground, fontSize = 13.sp, fontWeight = FontWeight.Bold)
+        Text(
+            stringResource(R.string.program_choose),
+            color = MudryaColors.Ground,
+            fontSize = 14.sp,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier
+                .clickable(onClick = onPrograms)
+                .padding(vertical = 4.dp),
+        )
+    }
+}
+
+/** Полоски дней программы: засчитан — ярко, пропущен — тускло, впереди — контур. */
+@Composable
+private fun DayMarks(marks: List<Boolean?>, onLight: Boolean = false) {
+    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(3.dp)) {
+        marks.forEach { m ->
+            val c = when (m) {
+                true -> if (onLight) MudryaColors.Ground else MudryaColors.Saffron
+                false -> if (onLight) MudryaColors.Ground.copy(alpha = 0.25f) else MudryaColors.Border
+                null -> if (onLight) MudryaColors.Ground.copy(alpha = 0.1f) else MudryaColors.Surface
+            }
+            androidx.compose.foundation.layout.Box(
+                Modifier
+                    .weight(1f)
+                    .height(6.dp)
+                    .background(c, RoundedCornerShape(3.dp)),
+            )
+        }
     }
 }
 

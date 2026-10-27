@@ -13,6 +13,7 @@ import ru.mudrya.yoga.engine.Plan
 import ru.mudrya.yoga.engine.PlayerController
 import ru.mudrya.yoga.engine.PlayerFrame
 import ru.mudrya.yoga.engine.SessionBuilder
+import ru.mudrya.yoga.engine.SessionFit
 import ru.mudrya.yoga.engine.SessionRecord
 import ru.mudrya.yoga.model.Joint
 
@@ -32,7 +33,7 @@ class PlayerViewModel(private val users: UserRepository, sequenceId: String) : V
     /** Свой сет из конструктора проигрывается на каталоге, дополненном его блоком. */
     private val custom = users.state.value.customSets.firstOrNull { it.id == sequenceId }
 
-    private val session = SessionBuilder(custom?.let { CustomSets.catalogWith(SuryaCatalog.catalog, it) } ?: SuryaCatalog.catalog).build(
+    private val built = SessionBuilder(custom?.let { CustomSets.catalogWith(SuryaCatalog.catalog, it) } ?: SuryaCatalog.catalog).build(
         BuildRequest(
             sequence = custom?.let(CustomSets::sequence) ?: SuryaCatalog.sequence(sequenceId),
             rounds = params.rounds,
@@ -42,6 +43,13 @@ class PlayerViewModel(private val users: UserRepository, sequenceId: String) : V
             relaxEvery = if (relaxSeconds > 0) 1 else 0,
         ),
     )
+
+    /** Длина сета 10 / 20 / 40 минут: удержания подгоняются (если не выбран ручной счёт вдохов). */
+    private val session = if (custom == null && users.state.value.settings.holdBreaths == 0) {
+        SessionFit.fit(built, params.phaseMs, users.state.value.settings.lengthMin)
+    } else {
+        built
+    }
 
     private var lastRound = 1
 
