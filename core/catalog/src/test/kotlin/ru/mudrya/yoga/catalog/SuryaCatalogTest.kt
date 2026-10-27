@@ -144,17 +144,21 @@ class SuryaCatalogTest {
     fun `full cycle joins the rings, start set, link and stop set like the book`() {
         val sun = SuryaCatalog.sequence("surya").items
         val moon = SuryaCatalog.sequence("chandra").items
-        val full = SuryaCatalog.sequence("full_sun").items.map { it.blockId }
+        // Блоки, разрезанные под вставки допэлементов, сводятся к сетам-источникам.
+        fun base(ids: List<String>) = ids.map { it.replace(Regex("(_\\d+)+$"), "") }.fold(listOf<String>()) { a, x -> if (a.lastOrNull() == x) a else a + x }
+        val fullRaw = SuryaCatalog.sequence("full_sun").items.map { it.blockId }
+        val full = fullRaw
         // Солнце без стандартного выхода, затем лунные кольца без лунного входа
-        assertEquals(sun.dropLast(1).map { it.blockId }, full.take(sun.size - 1))
-        assertEquals(moon[2].blockId, full[sun.size - 1])
+        val sunBlocks = sun.dropLast(1).map { it.blockId }
+        assertEquals(sunBlocks, full.take(sunBlocks.size))
+        assertEquals(moon.first { it.blockId.startsWith("chandra") && it.side == Side.RIGHT }.blockId, full[sunBlocks.size])
         assertTrue(moon.first().blockId !in full && moon.last().blockId !in full && sun.last().blockId !in full)
         val tail = listOf("at_ns", "at_ss1", "at_ss2", "at_ss3", "at_ss4", "at_ss5", "at_ss6", "at_ss7", "at_ds", "at_zs")
-        assertEquals(tail, full.takeLast(tail.size))
-        assertTrue("at_st" !in full)
+        val fullBase = base(full.filter { it.startsWith("at_") })
+        assertEquals(tail, fullBase)
         val moonFull = SuryaCatalog.sequence("full_moon").items.map { it.blockId }
         assertEquals(moon.first().blockId, moonFull.first())
-        assertEquals(tail, moonFull.takeLast(tail.size))
+        assertEquals(tail, base(moonFull.filter { it.startsWith("at_") }))
         listOf("full_sun", "full_moon").forEach { id ->
             val steps = build(id).steps
             assertEquals(AtlasCatalog.stepCounts.getValue(id), steps.size)
@@ -167,5 +171,29 @@ class SuryaCatalogTest {
         listOf("at_ss4", "at_ss5", "at_ss6", "at_ss7", "at_st", "at_ds", "at_zs", "at_ssd", "at_zsd").forEach {
             assertEquals(it, SuryaCatalog.sequence(it).id)
         }
+    }
+
+    @Test
+    fun `extra elements are inserted where the book says`() {
+        val ids = AtlasCatalog.zones.map { it.id }.toSet()
+        val plain = build("full_sun").steps.size
+        val all = SessionBuilder(catalog).build(BuildRequest(SuryaCatalog.sequence("full_sun"), 1, Support.PALMS, enabledSlots = ids)).steps
+        assertEquals(plain + AtlasCatalog.zones.sumOf { z -> SuryaCatalog.sequence("full_sun").slots.filter { it.id == z.id }.sumOf { catalog.block(it.blockId).steps.size } }, all.size)
+        // королевская кобра — сразу после упора-прогиба на пальцах (СС-43)
+        val cobra = SessionBuilder(catalog).build(BuildRequest(SuryaCatalog.sequence("at_ss1"), 1, Support.PALMS, enabledSlots = setOf("x_cobra"))).steps
+        val i = cobra.indexOfFirst { it.asana.id == "at_rajasarp" }
+        assertTrue(i > 0 && cobra[i - 1].asana.id == "at_updogtoes", cobra.getOrNull(i - 1)?.asana?.id)
+        // лотосовая связка — между ЗС-10 и ЗС-11
+        val stop = SessionBuilder(catalog).build(BuildRequest(SuryaCatalog.sequence("at_zs"), 1, Support.PALMS, enabledSlots = setOf("x_lotus"))).steps
+        assertEquals(build("at_zs").steps.size + 57, stop.size)
+    }
+
+    @Test
+    fun `themed sets use known poses and build for every injury and support`() {
+        ThemeCatalog.sequences.forEach { seq ->
+            catalog.block(seq.items.single().blockId).steps.forEach { assertTrue(it.asanaId in catalog.asanas, "${seq.id}: ${it.asanaId}") }
+        }
+        assertEquals(emptyList(), CatalogValidator.validate(catalog, ThemeCatalog.sequences))
+        assertTrue(ThemeCatalog.themes.size >= 15)
     }
 }

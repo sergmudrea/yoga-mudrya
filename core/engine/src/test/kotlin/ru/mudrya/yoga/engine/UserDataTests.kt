@@ -517,3 +517,22 @@ class PromoCodesTest {
         assertEquals(7_500L, HealthCheck.startPhaseMs(4))
     }
 }
+
+class ThemeAdvisorTest {
+    @Test
+    fun `back pain, sitting and weight lead the recommendations`() {
+        val s = UserState(
+            profile = UserProfile(Sex.MALE, 45, setOf(Goal.SHAPE), Level.BEGINNER, setOf(ru.mudrya.yoga.model.Injury.LUMBAR)),
+            health = listOf(HealthRecord(1, 1, heightCm = 178.0, weightKg = 92.0, waistCm = 100.0, sittingHours = 9)),
+        )
+        val ids = ThemeAdvisor.recommend(s).map { it.themeId }
+        kotlin.test.assertEquals("th_slim", ids.first())
+        kotlin.test.assertTrue("th_back_relief" in ids && "th_posture" in ids, ids.toString())
+        kotlin.test.assertTrue("th_strength" !in ids)
+    }
+
+    @Test
+    fun `no data gives no advice`() {
+        kotlin.test.assertTrue(ThemeAdvisor.recommend(UserState()).isEmpty())
+    }
+}

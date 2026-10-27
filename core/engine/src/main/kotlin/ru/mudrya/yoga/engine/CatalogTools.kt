@@ -73,7 +73,9 @@ object CatalogValidator {
         val injurySets = Injury.entries.powerSet()
 
         sequences.forEach { seq ->
-            val slotSets = seq.slots.map { it.id }.powerSet()
+            // Без вставок, каждая зона по отдельности и все сразу (полный перебор зон слишком велик).
+            val ids = seq.slots.map { it.id }.distinct()
+            val slotSets = (listOf(emptySet<String>()) + ids.map { setOf(it) } + listOf(ids.toSet())).distinct()
             for (level in 0..maxLevel) for (injuries in injurySets) for (support in Support.entries) for (slots in slotSets) {
                 val case = "level=$level injuries=$injuries support=$support slots=$slots"
                 try {

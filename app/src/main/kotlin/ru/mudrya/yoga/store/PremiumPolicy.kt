@@ -8,7 +8,7 @@ package ru.mudrya.yoga.store
  */
 object PremiumPolicy {
     /** Кольца книги и классическая Сурья Намаскар — бесплатно всегда. */
-    val FREE_SETS = setOf("surya", "chandra", "at_sn")
+    val FREE_SETS = setOf("surya", "chandra", "at_sn", "th_back_relief", "th_morning")
 
     /** Свои сеты не закрываются целиком: их запуски считает конструктор. */
     fun isLocked(setId: String, premium: Boolean): Boolean =

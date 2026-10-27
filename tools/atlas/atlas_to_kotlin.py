@@ -262,6 +262,68 @@ for atlas_id, set_id, name_en, two_sides in SETS:
         block_titles[set_id] = (s["name"], name_en)
         sequences.append((set_id, s["name"], name_en, [(set_id, "NONE")], len(steps)))
 
+# ---- Вставки дополнительных элементов на места, указанные в книге ----
+# зона: id, название, вставки (сет-источник, коды шагов, после какого шага основной последовательности, зеркально)
+def codes(prefix, a, b, extra=()):
+    return [f"{prefix}-{i}" for i in range(a, b + 1)] + list(extra)
+ZONES = [
+    ("x_sun", "Солнце: допэлементы колец", "Sun ring extras",
+     [("skd", codes("СКД", 1, 25), "СК-28", False), ("skd", codes("СКД", 1, 25), "СК-47", True)]),
+    ("x_moon", "Луна: верхние верблюды", "Moon ring: upper camels",
+     [("lkd", codes("ЛКД", 1, 2), "ЛК-40", False), ("lkd", codes("ЛКД", 3, 4), "ЛК-45", False),
+      ("lkd", codes("ЛКД", 1, 2), "ЛК-70", True), ("lkd", codes("ЛКД", 3, 4), "ЛК-75", True)]),
+    ("x_backbends", "Прогибы лёжа: верблюд и скорпион", "Prone backbends: camel and scorpion",
+     [("ssd", codes("ССД", 1, 5), "СС-15′", False)]),
+    ("x_cobra", "Королевская кобра", "King cobra", [("ssd", ["ССД-6"], "СС-43", False)]),
+    ("x_headstand", "Стойка на голове: лотос, скорпион, стойка на предплечьях", "Headstand: lotus, scorpion, forearm stand",
+     [("ssd", codes("ССД", 7, 25), "СС-96", False)]),
+    ("x_viparita", "Перевёрнутые позы с лотосом", "Inversions with lotus", [("ssd", codes("ССД", 26, 34), "СС-133", False)]),
+    ("x_plough", "Супер-плуг и стойка на плечах без поддержки", "Super plough and unsupported shoulder stand",
+     [("ssd", codes("ССД", 35, 37, ("ССД-35а",)), "СС-135", False)]),
+    ("x_pendulum", "Маятник и стойки на руках", "Pendulum and handstands", [("ssd", codes("ССД", 38, 54), "СС-138", False)]),
+    ("x_reverse", "Обратные упоры", "Reverse supports", [("ssd", codes("ССД", 55, 58), "СС-146", False)]),
+    ("x_mula", "Корневая фиксация", "Root lock", [("ssd", codes("ССД", 59, 62), "СС-177", False)]),
+    ("x_scissors", "Ножницы: упор-стойка и кольцо", "Splits: tuck balance and pigeon ring",
+     [("ssd", ["ССД-63"], "СС-187", False), ("ssd", ["ССД-65"], "СС-191", False),
+      ("ssd", ["ССД-65"], "СС-197", True), ("ssd", ["ССД-64"], "СС-198", False)]),
+    ("x_lotus", "Лотосовая связка стоп-сета", "Stop set lotus sequence", [("zsd", codes("ЗСД", 1, 57), "ЗС-10", False)]),
+]
+block_map = dict(blocks)
+def cut_after(code):
+    """Разрезает блок так, чтобы шаг code был последним в своём блоке; возвращает id блока."""
+    for i, (bid, steps) in enumerate(blocks):
+        pos = [k for k, st in enumerate(steps) if st["code"] == code]
+        if not pos:
+            continue
+        k = pos[0]
+        if k == len(steps) - 1:
+            return bid
+        nid = f"{bid}_{len(blocks)}"
+        blocks[i] = (bid, steps[:k + 1])
+        blocks.insert(i + 1, (nid, steps[k + 1:]))
+        block_titles[nid] = block_titles.get(bid, (None, None))
+        for j, (sid, nr, ne, refs, cnt) in enumerate(sequences):
+            nrefs = []
+            for b, side in refs:
+                nrefs.append((b, side))
+                if b == bid:
+                    nrefs.append((nid, side))
+            sequences[j] = (sid, nr, ne, nrefs, cnt)
+        if bid in entry_exit and entry_exit[bid][1] == bid:
+            pass
+        return bid
+    raise SystemExit(f"нет шага {code}")
+zone_slots = []   # (zone id, block id of insertion, after-block id)
+for zid, zru, zen, inserts in ZONES:
+    for n, (src, cs, after, flip) in enumerate(inserts):
+        src_steps = [st for st in SEQS[src]["steps"] if st[0] in cs]
+        assert len(src_steps) == len(cs), (zid, src, len(src_steps), len(cs))
+        ib = f"{zid}_{n + 1}"
+        blocks.append((ib, build_steps(src_steps, flip=flip)))
+        block_titles[ib] = (zru, zen)
+        cut_after(after)
+        zone_slots.append((zid, ib, after))
+
 # Полный цикл одной практикой — по разделу книги «Соединение двух кругов и старт-сета в единую
 # последовательность» и «Связка для соединения старт-сета и стоп-сета»:
 #  • круг солнечного света без стандартного выхода: после глубокого упора-горки, которым заканчивается
@@ -277,9 +339,8 @@ block_len = {bid: len(steps) for bid, steps in blocks}
 sun_refs, _ = seq_by_id["surya"]
 moon_refs, _ = seq_by_id["chandra"]
 moon_title = {b: block_titles[b][0] for b, _ in moon_refs}
-moon_inner = [r for r in moon_refs if "кольцо" in (moon_title[r[0]] or "")]
-assert len(moon_inner) == 2, moon_title
-i0 = moon_refs.index(moon_inner[0]); i1 = moon_refs.index(moon_inner[1])
+ring_idx = [k for k, r in enumerate(moon_refs) if "кольцо" in (moon_title[r[0]] or "")]
+i0, i1 = ring_idx[0], ring_idx[-1]
 MOON_RINGS = moon_refs[i0:i1 + 1]          # правое кольцо, связка, левое кольцо (до расслабления на пятках)
 SUN_NO_EXIT = sun_refs[:-1]                 # всё солнечное кольцо до стандартного выхода
 MOON_NO_EXIT = moon_refs[:i1 + 1]           # лунный вход, связка, кольца — без последней связки и выхода
@@ -288,7 +349,7 @@ COMPOSITES = [
     ("full_moon", "Полный цикл: Луна", "Full cycle: Moon", MOON_NO_EXIT),
 ]
 for cid, name_ru, name_en, head in COMPOSITES:
-    refs = list(head) + [(b, "NONE") for b in FLOW]
+    refs = list(head) + [r for f in FLOW for r in seq_by_id[f][0]]
     sequences.append((cid, name_ru, name_en, refs, sum(block_len[b] for b, _ in refs)))
 
 for a in asanas.values():
@@ -317,6 +378,7 @@ w("import ru.mudrya.yoga.model.HandShape")
 w("import ru.mudrya.yoga.model.Pose")
 w("import ru.mudrya.yoga.model.SequenceDef")
 w("import ru.mudrya.yoga.model.Side")
+w("import ru.mudrya.yoga.model.Slot")
 w("import ru.mudrya.yoga.model.Step")
 w("")
 w("/**")
@@ -377,7 +439,24 @@ for sid, name_ru, name_en, refs, count in sequences:
     ee = ""
     if sid in entry_exit:
         ee = f", entryBlockId = {kstr(entry_exit[sid][0])}, exitBlockId = {kstr(entry_exit[sid][1])}"
-    w(f"        SequenceDef(id = {kstr(sid)}, nameRu = {kstr(name_ru)}, nameEn = {kstr(name_en)}, items = listOf({items}){ee}),")
+    order = [b for b, _ in refs]
+    last_code = {b: dict(blocks)[b][-1]["code"] for b in order}
+    sl = []
+    for z, ib, code in zone_slots:
+        idx = [k for k, b in enumerate(order) if last_code[b] == code]
+        if idx:
+            sl.append(f"Slot({kstr(z)}, {kstr(ib)}, {idx[0]})")
+    slots_kt = f", slots = listOf({', '.join(sl)})" if sl else ""
+    w(f"        SequenceDef(id = {kstr(sid)}, nameRu = {kstr(name_ru)}, nameEn = {kstr(name_en)}, items = listOf({items}){slots_kt}{ee}),")
+w("    )")
+w("")
+w("    /** Зона дополнительных элементов книги: включается в карточке сессии, элементы встают на свои места. */")
+w("    data class Zone(val id: String, val nameRu: String, val nameEn: String, val positions: Int)")
+w("")
+w("    val zones: List<Zone> = listOf(")
+for zid, zru, zen, inserts in ZONES:
+    npos = sum(len(cs) for _, cs, _, _ in inserts)
+    w(f"        Zone({kstr(zid)}, {kstr(zru)}, {kstr(zen)}, {npos}),")
 w("    )")
 w("")
 w("    /** Сколько позиций в каждом сете атласа — для проверки при перегенерации. */")

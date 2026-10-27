@@ -37,6 +37,7 @@ class PlayerViewModel(private val users: UserRepository, sequenceId: String) : V
             sequence = custom?.let(CustomSets::sequence) ?: SuryaCatalog.sequence(sequenceId),
             rounds = params.rounds,
             support = params.support,
+            enabledSlots = params.enabledSlots.toSet(),
             constraints = users.state.value.constraints(startDay),
             relaxEvery = if (relaxSeconds > 0) 1 else 0,
         ),

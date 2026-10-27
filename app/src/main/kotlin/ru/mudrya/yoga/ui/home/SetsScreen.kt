@@ -64,7 +64,6 @@ private val MORE_GROUPS = listOf(
         MudryaColors.Surface,
     ),
     SetGroup(R.string.sets_core, R.string.sets_core_hint, listOf("at_st", "at_ds", "at_zs"), MudryaColors.Moon, MudryaColors.Surface),
-    SetGroup(R.string.sets_extra, R.string.sets_extra_hint, listOf("at_ssd", "at_zsd", "at_skd", "at_lkd"), MudryaColors.TextMuted, MudryaColors.Surface),
 )
 
 internal fun accentOf(id: String): Color = if (id == "chandra" || id == "full_moon" || id == "at_cn") MudryaColors.Moon else MudryaColors.Saffron
@@ -73,7 +72,7 @@ internal fun backgroundOf(id: String): Color = if (accentOf(id) == MudryaColors.
 /** Сколько позиций и минут займёт сет с такими параметрами. */
 fun setSize(sequenceId: String, params: SessionParams, constraints: Constraints): Pair<Int, Int> {
     val session = SessionBuilder(SuryaCatalog.catalog).build(
-        BuildRequest(SuryaCatalog.sequence(sequenceId), params.rounds, params.support, constraints = constraints),
+        BuildRequest(SuryaCatalog.sequence(sequenceId), params.rounds, params.support, enabledSlots = params.enabledSlots.toSet(), constraints = constraints),
     )
     val minutes = ((BreathTimeline(session, params.phaseMs).totalMs + 30_000) / 60_000).toInt().coerceAtLeast(1)
     return session.steps.size / params.rounds.coerceAtLeast(1) to minutes
@@ -87,6 +86,7 @@ fun SetsScreen(
     onStart: (String) -> Unit,
     onLibrary: () -> Unit = {},
     onBuilder: () -> Unit = {},
+    onSetLibrary: () -> Unit = {},
 ) {
     val params = state.params
     val constraints = state.constraints(UserRepository.today())
@@ -120,6 +120,11 @@ fun SetsScreen(
             Text(stringResource(R.string.library_card, ru.mudrya.yoga.catalog.LibraryCatalog.POSE_COUNT), color = MudryaColors.Moon, fontSize = 19.sp, fontWeight = FontWeight.Bold)
             Body(stringResource(R.string.library_card_hint))
             PrimaryButton(stringResource(R.string.library_open), onLibrary, color = MudryaColors.Moon, contentColor = MudryaColors.Ground)
+        }
+        Card(color = MudryaColors.Surface, modifier = Modifier.clickable(onClick = onSetLibrary)) {
+            Text(stringResource(R.string.setlib_card), color = MudryaColors.Text, fontSize = 19.sp, fontWeight = FontWeight.Bold)
+            Body(stringResource(R.string.setlib_card_hint, ru.mudrya.yoga.catalog.ThemeCatalog.themes.size))
+            PrimaryButton(stringResource(R.string.setlib_open), onSetLibrary, color = MudryaColors.Border, contentColor = MudryaColors.Text)
         }
         Card(color = MudryaColors.SaffronDeep, modifier = Modifier.clickable(onClick = onBuilder)) {
             Text(stringResource(R.string.builder_card), color = MudryaColors.Saffron, fontSize = 19.sp, fontWeight = FontWeight.Bold)

@@ -69,6 +69,7 @@ private object Routes {
     const val ACCOUNT = "account"
     const val PLAYER = "player/{seq}"
     const val SESSION = "session/{seq}"
+    const val SET_LIBRARY = "setlibrary"
     fun session(id: String) = "session/$id"
     fun player(sequenceId: String) = "player/$sequenceId"
 }
@@ -162,7 +163,11 @@ fun AppRoot() {
                     onStart = { nav.startSet(it, premium) },
                     onLibrary = { nav.navigate(Routes.LIBRARY) },
                     onBuilder = { nav.navigate(Routes.BUILDER) },
+                    onSetLibrary = { nav.navigate(Routes.SET_LIBRARY) },
                 )
+            }
+            composable(Routes.SET_LIBRARY) {
+                ru.mudrya.yoga.ui.home.SetLibraryScreen(state, users, premium, onStart = { nav.startSet(it, premium) }, onBack = { nav.popBackStack() })
             }
             composable(Routes.LIBRARY) { LibraryScreen(state, users, premium, onStart = { nav.startSet(it, premium) }, onBack = { nav.popBackStack() }) }
             composable(Routes.ACCOUNT) { AccountScreen(container.accounts, users, onBack = { nav.popBackStack() }) }

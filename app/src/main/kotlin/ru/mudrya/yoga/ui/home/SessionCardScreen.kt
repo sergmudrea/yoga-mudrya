@@ -95,7 +95,7 @@ fun SessionCardScreen(
     val injuries = state.profile?.injuries.orEmpty()
     val def = remember(sequenceId) { SuryaCatalog.sequence(sequenceId) }
     val session = remember(sequenceId, params, constraints) {
-        SessionBuilder(SuryaCatalog.catalog).build(BuildRequest(def, params.rounds, params.support, constraints = constraints))
+        SessionBuilder(SuryaCatalog.catalog).build(BuildRequest(def, params.rounds, params.support, enabledSlots = params.enabledSlots.toSet(), constraints = constraints))
     }
     val minutes = ((BreathTimeline(session, params.phaseMs).totalMs + 30_000) / 60_000).toInt().coerceAtLeast(1)
     val perRound = session.steps.size / params.rounds.coerceAtLeast(1)
@@ -163,17 +163,26 @@ fun SessionCardScreen(
                 Body(stringResource(R.string.session_phase_line, formatPhase(params.phaseMs)))
             }
 
+            ExtrasCard(def, state, users, ru)
+
             SectionLabel(stringResource(R.string.session_structure))
             Card {
-                def.items.forEachIndexed { i, ref ->
-                    val block = SuryaCatalog.catalog.blocks[ref.blockId] ?: return@forEachIndexed
+                // Блоки, разрезанные под вставки допэлементов, показываются одним разделом.
+                val rows = mutableListOf<Triple<String, Side, Int>>()
+                def.items.forEach { ref ->
+                    val block = SuryaCatalog.catalog.blocks[ref.blockId] ?: return@forEach
                     val title = (if (ru) block.titleRu else block.titleEn ?: block.titleRu) ?: sequenceName(sequenceId)
-                    val side = when (ref.side) {
+                    val last = rows.lastOrNull()
+                    if (last != null && last.first == title && last.second == ref.side) rows[rows.size - 1] = Triple(title, ref.side, last.third + block.steps.size)
+                    else rows += Triple(title, ref.side, block.steps.size)
+                }
+                rows.forEachIndexed { i, (title, sideRef, n) ->
+                    val side = when (sideRef) {
                         Side.RIGHT -> stringResource(R.string.session_side_right)
                         Side.LEFT -> stringResource(R.string.session_side_left)
                         else -> null
                     }
-                    StructureRow(i + 1, title, side, block.steps.size)
+                    StructureRow(i + 1, title, side, n)
                 }
             }
             if (locked) Body(stringResource(R.string.session_locked), color = MudryaColors.Saffron)
@@ -233,5 +242,52 @@ private fun StructureRow(n: Int, title: String, side: String?, steps: Int) {
             side?.let { Text(it, color = MudryaColors.TextMuted, fontSize = 13.sp) }
         }
         Text(stringResource(R.string.session_steps, steps), color = MudryaColors.TextMuted, fontSize = 13.sp)
+    }
+}
+
+/**
+ * Дополнительные элементы книги: общий переключатель и по зонам. Включённая зона встаёт в сет на своё место
+ * (например, «королевская кобра» — между СС-43 и СС-44). Выбор общий для всех сетов.
+ */
+@Composable
+private fun ExtrasCard(def: ru.mudrya.yoga.model.SequenceDef, state: UserState, users: UserRepository, ru: Boolean) {
+    val here = def.slots.map { it.id }.distinct()
+    if (here.isEmpty()) return
+    val zones = ru.mudrya.yoga.catalog.AtlasCatalog.zones.filter { it.id in here }
+    val on = state.params.enabledSlots.toSet()
+    fun set(ids: Collection<String>, enable: Boolean) = users.update { s ->
+        val cur = s.params.enabledSlots.toMutableList()
+        ids.forEach { id -> if (enable) { if (id !in cur) cur += id } else cur.remove(id) }
+        s.copy(params = s.params.copy(enabledSlots = cur))
+    }
+    SectionLabel(stringResource(R.string.extras_title))
+    Card {
+        val all = zones.all { it.id in on }
+        SwitchRow(stringResource(R.string.extras_all), stringResource(R.string.extras_all_hint), all) { set(zones.map { it.id }, it) }
+        zones.forEach { z ->
+            val n = def.slots.filter { it.id == z.id }.sumOf { ru.mudrya.yoga.catalog.SuryaCatalog.catalog.block(it.blockId).steps.size }
+            SwitchRow(if (ru) z.nameRu else z.nameEn, stringResource(R.string.extras_positions, n), z.id in on) { set(listOf(z.id), it) }
+        }
+    }
+}
+
+@Composable
+private fun SwitchRow(title: String, hint: String, checked: Boolean, onChange: (Boolean) -> Unit) {
+    Row(Modifier.fillMaxWidth().clickable { onChange(!checked) }.padding(vertical = 4.dp), verticalAlignment = Alignment.CenterVertically) {
+        Column(Modifier.weight(1f)) {
+            Text(title, color = MudryaColors.Text, fontSize = 15.sp)
+            Text(hint, color = MudryaColors.TextMuted, fontSize = 13.sp)
+        }
+        androidx.compose.material3.Switch(
+            checked = checked,
+            onCheckedChange = onChange,
+            colors = androidx.compose.material3.SwitchDefaults.colors(
+                checkedThumbColor = MudryaColors.Ground,
+                checkedTrackColor = MudryaColors.Saffron,
+                uncheckedThumbColor = MudryaColors.TextMuted,
+                uncheckedTrackColor = MudryaColors.Surface,
+                uncheckedBorderColor = MudryaColors.Border,
+            ),
+        )
     }
 }
