@@ -21,14 +21,13 @@ import androidx.media3.common.Player
 import androidx.media3.exoplayer.ExoPlayer
 import ru.mudrya.yoga.engine.ClipRef
 import ru.mudrya.yoga.ui.theme.MudryaColors
-import java.io.File
 
 /**
  * Ролик инструктора для текущей позы: без звука (ведёт дыхание и голос приложения), по кругу.
  * Зеркальная поза показывает ролик пары, отражённый по горизонтали.
  */
 @Composable
-fun VideoPane(clip: ClipRef, file: (String) -> File, paused: Boolean, description: String, modifier: Modifier = Modifier) {
+fun VideoPane(clip: ClipRef, uri: (String) -> android.net.Uri, paused: Boolean, description: String, modifier: Modifier = Modifier) {
     val context = LocalContext.current
     val player = remember {
         ExoPlayer.Builder(context).build().apply {
@@ -38,7 +37,7 @@ fun VideoPane(clip: ClipRef, file: (String) -> File, paused: Boolean, descriptio
     }
     DisposableEffect(Unit) { onDispose { player.release() } }
     LaunchedEffect(clip.slot) {
-        player.setMediaItem(MediaItem.fromUri(android.net.Uri.fromFile(file(clip.slot))))
+        player.setMediaItem(MediaItem.fromUri(uri(clip.slot)))
         player.prepare()
     }
     LaunchedEffect(paused) { player.playWhenReady = !paused }

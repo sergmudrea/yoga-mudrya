@@ -39,6 +39,7 @@ import ru.mudrya.yoga.ui.common.Chip
 import ru.mudrya.yoga.ui.common.ChipRow
 import ru.mudrya.yoga.ui.common.ScreenTitle
 import ru.mudrya.yoga.ui.common.TextAction
+import ru.mudrya.yoga.ui.builder.shownName
 import ru.mudrya.yoga.ui.common.sequenceName
 import ru.mudrya.yoga.ui.theme.MudryaColors
 
@@ -61,7 +62,7 @@ fun VideoLibraryScreen(videos: VideoLibrary, onBack: () -> Unit) {
     }
     val positions = remember(sequenceId) {
         val session = SessionBuilder(SuryaCatalog.catalog).build(BuildRequest(SuryaCatalog.sequence(sequenceId), 1, Support.PALMS))
-        val names = session.steps.associate { VideoSlots.slotOf(it.asana.id) to it.asana.nameRu }
+        val names = session.steps.associate { VideoSlots.slotOf(it.asana.id) to it.asana.shownName() }
         VideoSlots.slots(session).map { it to names.getValue(it) }
     }
 
@@ -98,7 +99,7 @@ fun VideoLibraryScreen(videos: VideoLibrary, onBack: () -> Unit) {
                     pendingSlot = slot
                     picker.launch(arrayOf("video/*"))
                 })
-                if (slot in slots) TextAction(stringResource(R.string.videos_remove), { videos.remove(slot) })
+                if (slot in slots && videos.hasOwn(slot)) TextAction(stringResource(R.string.videos_remove), { videos.remove(slot) })
             }
         }
         item { Column(Modifier.padding(bottom = 24.dp)) {} }

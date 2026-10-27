@@ -181,7 +181,7 @@ fun PlayerScreen(
             if (onTv) {
                 TvBanner()
             } else if (clip != null && showVideo) {
-                VideoPane(clip, videos::file, paused = c.paused, description = frame.step.shownTitle(), modifier = Modifier.fillMaxSize())
+                VideoPane(clip, videos::uri, paused = c.paused, description = frame.step.shownTitle(), modifier = Modifier.fillMaxSize())
             } else {
                 PracticeFigure(frame, transitionMs(frame, c.phaseMs, c.speed), settings.figure3d, Modifier.fillMaxSize(), settings.camera.yaw)
             }

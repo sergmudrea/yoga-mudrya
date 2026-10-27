@@ -29,6 +29,9 @@ import ru.mudrya.yoga.engine.UserState
 import ru.mudrya.yoga.engine.constraints
 import ru.mudrya.yoga.store.PremiumPolicy
 import ru.mudrya.yoga.ui.common.Body
+import ru.mudrya.yoga.ui.common.Card
+import ru.mudrya.yoga.ui.common.programHint
+import ru.mudrya.yoga.ui.common.programName
 import ru.mudrya.yoga.ui.common.ScreenTitle
 import ru.mudrya.yoga.ui.common.SectionLabel
 import ru.mudrya.yoga.ui.theme.MudryaColors
@@ -75,8 +78,8 @@ fun SetLibraryScreen(state: UserState, users: UserRepository, premium: Boolean, 
             val active = state.programId == p.id
             val day = if (active) ProgramCatalog.today(p, state.programStart ?: today, today, state) else null
             ProgramRow(
-                ru.mudrya.yoga.ui.common.programName(p),
-                ru.mudrya.yoga.ui.common.programHint(p),
+                programName(p),
+                programHint(p),
                 if (day != null && !day.finished) stringResource(R.string.program_active, day.index + 1, p.length) else stringResource(R.string.program_days, p.length),
                 active,
             ) { users.update { it.copy(programId = p.id, programStart = today) }; onBack() }
@@ -155,7 +158,7 @@ fun ForYouSets(state: UserState, users: UserRepository, premium: Boolean, onStar
 /** Строка программы: название, описание, длина или текущий день; нажатие — начать программу. */
 @Composable
 private fun ProgramRow(name: String, hint: String, meta: String, active: Boolean, onPick: () -> Unit) {
-    ru.mudrya.yoga.ui.common.Card(
+    Card(
         modifier = Modifier.clickable(onClick = onPick),
         color = if (active) MudryaColors.SaffronDeep else MudryaColors.Surface,
     ) {
