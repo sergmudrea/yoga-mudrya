@@ -498,10 +498,12 @@
     <string name="setlib_title">Set library</string>
     <string name="setlib_card">Set library</string>
     <string name="setlib_open">Open the set library</string>
-    <string name="setlib_card_hint">%1$d sets for a task — back, joints, hips, shape, strength, sleep — plus the extra sets from the book. Picked for you after the tests.</string>
+    <string name="setlib_card_hint">%1$d sets for a task — back, joints, hips, shape, strength, sleep — plus the extra sets and 6 set-training sets from the books. Picked for you after the tests.</string>
     <string name="setlib_hint">Choose a set for your task. After the health check and the movement test the app puts the ones that suit you first; poses unsafe for your limits are replaced in every set.</string>
     <string name="setlib_for_you">Picked for you</string>
     <string name="setlib_take_test">Take the movement test and the health check, and the app will pick sets for you.</string>
+    <string name="setlib_training">Set training: 6 sets from the book</string>
+    <string name="setlib_training_hint">From “Yoga of the Eight Circles: set training” by M. Yasochka, S. Sidortsov and A. Zenchenko. Short sets of 15–20 minutes twice a day (morning and evening) give more than one long session. Alternate the sets day by day; the integral set is for busy days, not for permanent practice. Follow every strong pose with its counter-pose. Work at your limit but never force the joints — mastering a set takes months.</string>
     <string name="setlib_book">From the book: extra sets</string>
     <string name="setlib_book_hint">Extra elements of the rings, start set and stop set, and the core set, as separate practices. You can also switch them into the main sets on the session card.</string>
     <string name="advice_back">Because of the lower back</string>

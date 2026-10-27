@@ -18,6 +18,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ru.mudrya.yoga.R
+import ru.mudrya.yoga.catalog.BookSetsCatalog
 import ru.mudrya.yoga.catalog.ThemeCatalog
 import ru.mudrya.yoga.data.UserRepository
 import ru.mudrya.yoga.engine.AdviceReason
@@ -37,7 +38,7 @@ private val BOOK_EXTRAS = listOf("at_skd", "at_lkd", "at_ssd", "at_zsd", "at_st"
 
 /**
  * Библиотека сетов: «Подобрано для вас» по тестам и целям, сеты под задачу по разделам
- * и дополнительные сеты из книги Сидерского.
+ * шесть сетов «Сетового тренинга» (Ясочка, Сидорцов, Зенченко) и дополнительные сеты из книги Сидерского.
  */
 @Composable
 fun SetLibraryScreen(state: UserState, users: UserRepository, premium: Boolean, onStart: (String) -> Unit, onBack: () -> Unit) {
@@ -72,6 +73,14 @@ fun SetLibraryScreen(state: UserState, users: UserRepository, premium: Boolean, 
                 ThemeRow(t.id, state, users, premium, onStart)
                 Text(if (ru) t.hintRu else t.hintEn, color = MudryaColors.TextMuted, fontSize = 13.sp, modifier = Modifier.padding(start = 6.dp))
             }
+        }
+
+        Spacer(Modifier.height(4.dp))
+        SectionLabel(stringResource(R.string.setlib_training))
+        Body(stringResource(R.string.setlib_training_hint))
+        BookSetsCatalog.sets.forEach { b ->
+            ThemeRow(b.id, state, users, premium, onStart)
+            Text(if (ru) b.hintRu else b.hintEn, color = MudryaColors.TextMuted, fontSize = 13.sp, modifier = Modifier.padding(start = 6.dp))
         }
 
         Spacer(Modifier.height(4.dp))

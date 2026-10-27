@@ -196,4 +196,17 @@ class SuryaCatalogTest {
         assertEquals(emptyList(), CatalogValidator.validate(catalog, ThemeCatalog.sequences))
         assertTrue(ThemeCatalog.themes.size >= 15)
     }
+
+    @Test
+    fun `book set training sets use known poses and build for every injury and support`() {
+        assertEquals(listOf("bk_mk", "bk_zh", "bk_p", "bk_v", "bk_pz", "bk_in"), BookSetsCatalog.sets.map { it.id })
+        BookSetsCatalog.sequences.forEach { seq ->
+            catalog.block(seq.items.single().blockId).steps.forEach { assertTrue(it.asanaId in catalog.asanas, "${seq.id}: ${it.asanaId}") }
+        }
+        assertEquals(emptyList(), CatalogValidator.validate(catalog, BookSetsCatalog.sequences))
+        // малые солнечные кольца: три кольца, каждое кончается основной стойкой
+        assertEquals(4, catalog.block("bk_mk").steps.count { it.asanaId == "at_tad" })
+        // интегральный сет — самый длинный
+        assertEquals("bk_in", BookSetsCatalog.sets.maxBy { catalog.block(it.id).steps.size }.id)
+    }
 }

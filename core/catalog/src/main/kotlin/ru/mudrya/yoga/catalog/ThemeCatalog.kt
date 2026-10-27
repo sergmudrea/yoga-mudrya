@@ -176,8 +176,8 @@ object ThemeCatalog {
     val sequences: List<SequenceDef> by lazy { themes.map { SequenceDef(it.id, it.nameRu, it.nameEn, listOf(BlockRef(it.id))) } }
 
     /** Зеркальные копии поз библиотеки, которые нужны темам (правая/левая сторона). */
-    fun mirroredLibraryAsanas(library: Map<String, Asana>): List<Asana> =
-        themes.flatMap { expand(it.poses) }.filter { it.startsWith("lb_") && it.endsWith("_m") }.distinct().mapNotNull { id ->
+    fun mirroredLibraryAsanas(library: Map<String, Asana>, extra: List<String> = emptyList()): List<Asana> =
+        (themes.flatMap { expand(it.poses) } + extra).filter { it.startsWith("lb_") && it.endsWith("_m") }.distinct().mapNotNull { id ->
             library[id.removeSuffix("_m")]?.let { a -> a.copy(id = id, figure = a.figure?.copy(mirror = true)) }
         }
 
