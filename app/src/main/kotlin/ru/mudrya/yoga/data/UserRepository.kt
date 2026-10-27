@@ -26,8 +26,15 @@ interface StateStore {
 }
 
 /** Файл во внутренней памяти приложения. AtomicFile не оставит полузаписанный файл при сбое. */
-class FileStateStore(dir: File) : StateStore {
-    private val file = AtomicFile(File(dir, "user_state.txt"))
+class FileStateStore(dir: File, name: String = GUEST_FILE) : StateStore {
+    private val file = AtomicFile(File(dir, name))
+
+    /** Удалить файл (удаление аккаунта). */
+    fun delete() = file.delete()
+
+    companion object {
+        const val GUEST_FILE = "user_state.txt"
+    }
 
     override fun read(): String? = try {
         file.readFully().toString(Charsets.UTF_8)
@@ -52,7 +59,7 @@ class FileStateStore(dir: File) : StateStore {
  * запись на диск идёт в фоне по порядку.
  */
 class UserRepository(
-    private val store: StateStore,
+    private var store: StateStore,
     private val scope: CoroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.IO),
 ) {
     private val _state = MutableStateFlow(store.read()?.let(UserStateCodec::decode) ?: UserState())
@@ -70,6 +77,15 @@ class UserRepository(
 
     fun reset() = update { UserState() }
 
+    /** Переключиться на другой файл прогресса (вход в аккаунт и выход). [carry] — перенести текущее состояние. */
+    fun switchTo(newStore: StateStore, carry: Boolean = false) {
+        val current = _state.value
+        store = newStore
+        val loaded = if (carry) current else newStore.read()?.let(UserStateCodec::decode) ?: UserState()
+        _state.value = loaded
+        if (carry) scope.launch { writeLock.withLock { newStore.write(UserStateCodec.encode(loaded)) } }
+    }
+
     companion object {
         fun today(): Long = LocalDate.now().toEpochDay()
     }
@@ -77,7 +93,8 @@ class UserRepository(
 
 /** Зависимости приложения. Создаются один раз в [ru.mudrya.yoga.MudryaApp]. */
 class AppContainer(context: Context) {
-    val users = UserRepository(FileStateStore(context.filesDir))
+    val accounts = AccountRepository(context.filesDir)
+    val users = UserRepository(accounts.currentStore())
     val reminders = ReminderScheduler(context)
     val billing: BillingGateway = StoreModule.billing(context)
     val videos = VideoLibrary(context)

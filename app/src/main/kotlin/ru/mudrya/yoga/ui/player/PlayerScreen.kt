@@ -155,6 +155,7 @@ fun PlayerScreen(
         tv.restLeft = restLeft
         tv.transitionMs = transitionMs(frame, c.phaseMs, c.speed)
         tv.use3d = settings.figure3d
+        tv.cameraYaw = settings.camera.yaw
     }
 
     fun act(block: () -> Unit) {
@@ -182,7 +183,7 @@ fun PlayerScreen(
             } else if (clip != null && showVideo) {
                 VideoPane(clip, videos::file, paused = c.paused, description = frame.step.shownTitle(), modifier = Modifier.fillMaxSize())
             } else {
-                PracticeFigure(frame, transitionMs(frame, c.phaseMs, c.speed), settings.figure3d, Modifier.fillMaxSize())
+                PracticeFigure(frame, transitionMs(frame, c.phaseMs, c.speed), settings.figure3d, Modifier.fillMaxSize(), settings.camera.yaw)
             }
             if (!onTv && clip != null) {
                 Row(Modifier.align(Alignment.TopEnd).padding(8.dp), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
@@ -232,18 +233,18 @@ fun PlayerScreen(
                             .verticalScroll(rememberScrollState()),
                         verticalArrangement = Arrangement.spacedBy(10.dp),
                     ) {
-                        StepTitle(frame)
-                        BreathPanel(frame)
-                        Cue(frame, c.paused)
+                        StepTitle(frame, settings)
+                        if (settings.showBreath) BreathPanel(frame)
+                        if (settings.showCues) Cue(frame, c.paused, settings.largeText)
                         controls()
                     }
                 }
             } else {
-                StepTitle(frame)
+                StepTitle(frame, settings)
                 figure(Modifier.fillMaxWidth().weight(1f))
-                BreathPanel(frame)
+                if (settings.showBreath) BreathPanel(frame)
                 Spacer(Modifier.height(10.dp))
-                Cue(frame, c.paused)
+                if (settings.showCues) Cue(frame, c.paused, settings.largeText)
                 Spacer(Modifier.height(12.dp))
                 controls()
             }
@@ -321,7 +322,7 @@ private fun ProgressLine(value: Float) {
 }
 
 @Composable
-private fun StepTitle(f: PlayerFrame) {
+private fun StepTitle(f: PlayerFrame, settings: ru.mudrya.yoga.engine.AppSettings) {
     val asana = f.step.asana
     val enter = f.phase.kind == PhaseKind.ENTER
     Column(Modifier.fillMaxWidth()) {
@@ -338,8 +339,8 @@ private fun StepTitle(f: PlayerFrame) {
             }
         }
         Spacer(Modifier.height(6.dp))
-        Text(f.step.shownTitle(), color = MudryaColors.Text, fontSize = 24.sp, fontWeight = FontWeight.Bold)
-        asana.sanskrit?.let { Text(it, color = MudryaColors.TextMuted, fontSize = 14.sp) }
+        Text(f.step.shownTitle(), color = MudryaColors.Text, fontSize = if (settings.largeText) 30.sp else 24.sp, fontWeight = FontWeight.Bold)
+        if (settings.showSanskrit) asana.sanskrit?.let { Text(it, color = MudryaColors.TextMuted, fontSize = if (settings.largeText) 17.sp else 14.sp) }
         val replacedFor = f.step.replacedFor
         val replacedTitle = f.step.replacedTitle
         if (replacedFor != null && replacedTitle != null) {
@@ -355,7 +356,9 @@ private fun StepTitle(f: PlayerFrame) {
         }
         val from = f.previous?.shownTitle()
         val next = f.next?.shownTitle()
-        if (enter && from != null) {
+        if (!settings.showNext) {
+            Unit
+        } else if (enter && from != null) {
             Text(stringResource(R.string.player_from, from), color = MudryaColors.TextMuted, fontSize = 13.sp)
         } else if (next != null) {
             Text(stringResource(R.string.player_next, next), color = MudryaColors.TextMuted, fontSize = 13.sp)
@@ -443,7 +446,7 @@ private fun Bar(label: String, value: Float, color: Color) {
 }
 
 @Composable
-private fun Cue(f: PlayerFrame, paused: Boolean) {
+private fun Cue(f: PlayerFrame, paused: Boolean, large: Boolean = false) {
     // На паузе — полное описание позы: есть время прочитать.
     if (paused) {
         f.step.asana.shownDescription()?.let {
@@ -455,7 +458,7 @@ private fun Cue(f: PlayerFrame, paused: Boolean) {
     if (cues.isEmpty()) return
     // Подсказки сменяются по фазам: одна строка — меньше читать во время практики.
     val i = (f.phase.index + if (f.phase.kind == PhaseKind.HOLD) 1 else 0) % cues.size
-    Text(cues[i], color = MudryaColors.Text, fontSize = 15.sp, modifier = Modifier.fillMaxWidth())
+    Text(cues[i], color = MudryaColors.Text, fontSize = if (large) 19.sp else 15.sp, modifier = Modifier.fillMaxWidth())
 }
 
 @Composable

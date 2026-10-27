@@ -84,6 +84,24 @@ fun SettingsScreen(
         }
 
         Card {
+            SectionLabel(stringResource(R.string.settings_display))
+            Toggle(stringResource(R.string.settings_show_cues), null, s.showCues) { v -> set { it.copy(showCues = v) } }
+            Toggle(stringResource(R.string.settings_show_next), null, s.showNext) { v -> set { it.copy(showNext = v) } }
+            Toggle(stringResource(R.string.settings_show_sanskrit), null, s.showSanskrit) { v -> set { it.copy(showSanskrit = v) } }
+            Toggle(stringResource(R.string.settings_show_breath), null, s.showBreath) { v -> set { it.copy(showBreath = v) } }
+            Toggle(stringResource(R.string.settings_large_text), null, s.largeText) { v -> set { it.copy(largeText = v) } }
+            Toggle(stringResource(R.string.settings_thumbnails), stringResource(R.string.settings_thumbnails_hint), s.thumbnails) { v -> set { it.copy(thumbnails = v) } }
+            Text(stringResource(R.string.settings_camera), color = MudryaColors.Text, fontSize = 16.sp, fontWeight = FontWeight.Bold)
+            ChipRow {
+                listOf(
+                    ru.mudrya.yoga.engine.CameraView.SIDE to R.string.camera_side,
+                    ru.mudrya.yoga.engine.CameraView.THREE_QUARTER to R.string.camera_three_quarter,
+                    ru.mudrya.yoga.engine.CameraView.FRONT to R.string.camera_front,
+                ).forEach { (view, label) -> Chip(stringResource(label), s.camera == view, { set { it.copy(camera = view) } }) }
+            }
+        }
+
+        Card {
             SectionLabel(stringResource(R.string.settings_tv))
             Toggle(stringResource(R.string.settings_tv_auto), stringResource(R.string.settings_tv_auto_hint), s.tvOutput) { v -> set { it.copy(tvOutput = v) } }
             Body(stringResource(R.string.settings_tv_how))

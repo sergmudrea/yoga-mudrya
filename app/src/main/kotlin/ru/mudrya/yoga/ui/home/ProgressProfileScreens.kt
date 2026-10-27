@@ -41,6 +41,7 @@ import ru.mudrya.yoga.ui.common.appContainer
 import ru.mudrya.yoga.ui.paywall.entitlementLabel
 import ru.mudrya.yoga.ui.paywall.openManageSubscriptions
 import androidx.compose.ui.platform.LocalContext
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import ru.mudrya.yoga.ui.common.Body
 import ru.mudrya.yoga.ui.common.Card
 import ru.mudrya.yoga.ui.common.PrimaryButton
@@ -196,6 +197,7 @@ fun ProfileScreen(
     entitlement: Entitlement,
     onSubscribe: () -> Unit,
     onReset: () -> Unit,
+    onAccount: () -> Unit = {},
 ) {
     val context = LocalContext.current
     val billing = appContainer().billing
@@ -232,6 +234,13 @@ fun ProfileScreen(
                 PrimaryButton(stringResource(R.string.sub_cancel), { openManageSubscriptions(context, billing.manageSubscriptionsIntent()) }, color = MudryaColors.Surface, contentColor = MudryaColors.Text)
             }
         }
+        val account by appContainer().accounts.current.collectAsStateWithLifecycle()
+        PrimaryButton(
+            account?.let { stringResource(R.string.account_button_signed, it.email) } ?: stringResource(R.string.account_button),
+            onAccount,
+            color = MudryaColors.Surface,
+            contentColor = MudryaColors.Text,
+        )
         PrimaryButton(stringResource(R.string.settings_title), onSettings, color = MudryaColors.Surface, contentColor = MudryaColors.Text)
         Card {
             SectionLabel(stringResource(R.string.profile_data))

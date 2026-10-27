@@ -51,6 +51,7 @@ fun Figure3D(
     description: String,
     modifier: Modifier = Modifier,
     onUnavailable: () -> Unit = {},
+    cameraYaw: Int = 16,
 ) {
     val context = LocalContext.current
     var ready by remember { mutableStateOf(false) }
@@ -93,6 +94,9 @@ fun Figure3D(
     }
     LaunchedEffect(ready) {
         if (ready) webView.evaluateJavascript("Mudrya.setTheme('dark')", null)
+    }
+    LaunchedEffect(ready, cameraYaw) {
+        if (ready) webView.evaluateJavascript("Mudrya.setYaw($cameraYaw)", null)
     }
     // Первая поза — сразу, дальше — плавный переход за время движения.
     var shown by remember { mutableStateOf(false) }

@@ -68,6 +68,42 @@ head = sub(head, "fist.L=!!(hands&&hands.L==='fist');fist.R=!!(hands&&hands.R===
 
 boot = sub(boot, "f.hands[sd[A]]=h?(h.t==='fist'?'fist':'open'):'open';",
            "f.hands[sd[A]]=h?({fist:'fist',lock:'lock',lockrev:'lock',namaste:'namaste',floor:'floor',floorb:'floor'}[h.t]||'open'):'open';")
+# ---- переходы без изломов: если сустав в середине перехода сгибается сильнее, чем в обеих позах,
+# переход считается вторым способом (поворот каждого сегмента по кратчайшей дуге) и берётся лучший ----
+# Опора, которую поза отпускает (или набирает), тянула кисть или стопу к полу всю середину перехода —
+# локоть и колено складывались «на излом». Теперь опора отпускается в первой трети перехода
+# и набирается в последней.
+boot = sub(boot, "else if(A.ik&&A.ik[key])ik[key]={p:A.ends[key],w:1-e};else ik[key]={p:B.ends[key],w:e};}",
+           "else if(A.ik&&A.ik[key])ik[key]={p:A.ends[key],w:Math.pow(Math.max(0,1-e/0.35),2)};else ik[key]={p:B.ends[key],w:Math.pow(Math.max(0,(e-0.65)/0.35),2)};}")
+boot = sub(boot, "      else{TW0={};for(const n in A.TW)TW0[n]=A.TW[n].clone().slerp(B.TW[n],e);}",
+           "      else if(mode==='H')TW0=slerpLocal(A.TW,B.TW,e);\n      else{TW0={};for(const n in A.TW)TW0[n]=A.TW[n].clone().slerp(B.TW[n],e);}")
+boot = sub(boot, "const mode=A.kind==='J'&&B.kind==='J'", "let mode=A.kind==='J'&&B.kind==='J'")
+boot = sub(boot, "    const at=k=>{\n      const e=ease(k);", "    const atM=(k,mode)=>{\n      const e=ease(k);")
+boot = sub(boot, "      camYaw=A.cam+(B.cam-A.cam)*e;frameCam(lerpFr(A.center,centerB,e),camYaw);};\n", r"""      camYaw=A.cam+(B.cam-A.cam)*e;frameCam(lerpFr(A.center,centerB,e),camYaw);};
+    const at=k=>atM(k,mode);
+    if(mode!=='Q'){
+      const sc=m=>{const rows=[];for(let j=0;j<=8;j++){atM(j/8,m);const P={};for(const q of fig.points())P[q.name]=q.v;rows.push(BENDS.map(t=>bendOf(P,t)));}
+        let worst=0;for(let t=0;t<BENDS.length;t++){const lim=Math.max(rows[0][t],rows[8][t]);for(let j=1;j<8;j++)worst=Math.max(worst,rows[j][t]-lim);}return worst;};
+      const s0=sc(mode);if(s0>25){let best=s0,bm=mode;for(const m of ['H','Q']){const v=sc(m);if(v<best-10){best=v;bm=m;}}mode=bm;}}
+    else{const s0=(()=>{const rows=[];for(let j=0;j<=8;j++){atM(j/8,'Q');const P={};for(const q of fig.points())P[q.name]=q.v;rows.push(BENDS.map(t=>bendOf(P,t)));}
+        let w=0;for(let t=0;t<BENDS.length;t++){const lim=Math.max(rows[0][t],rows[8][t]);for(let j=1;j<8;j++)w=Math.max(w,rows[j][t]-lim);}return w;})();
+      if(s0>25)mode='H';}
+""")
+boot = sub(boot, "  function makeTransition(toPose,toId){", r"""  const BENDS=[['pelvis','waist','chest'],['waist','chest','head'],['hipL','kneeL','ankleL'],['hipR','kneeR','ankleR'],
+    ['shoulderL','elbowL','wristL'],['shoulderR','elbowR','wristR'],['waist','hipL','kneeL'],['waist','hipR','kneeR']];
+  const bendOf=(P,[a,b,c])=>P[b].clone().sub(P[a]).angleTo(P[c].clone().sub(P[b]))*180/Math.PI;
+  /* поворот каждого сустава относительно родителя по кратчайшей дуге: сгибы идут ровно от позы к позе */
+  const PARENT={lumbar:'pelvis',chest:'lumbar',neck:'chest',head:'neck',uarmL:'chest',farmL:'uarmL',handL:'farmL',uarmR:'chest',farmR:'uarmR',handR:'farmR',
+    thighL:'pelvis',shinL:'thighL',footL:'shinL',thighR:'pelvis',shinR:'thighR',footR:'shinR'};
+  const ORDER=['pelvis','lumbar','chest','neck','head','uarmL','farmL','handL','uarmR','farmR','handR','thighL','shinL','footL','thighR','shinR','footR'];
+  function slerpLocal(TA,TB,e){const out={};
+    for(const n of ORDER){const p=PARENT[n];
+      if(!p){out[n]=TA[n].clone().slerp(TB[n],e);continue;}
+      const la=TA[p].clone().invert().multiply(TA[n]),lb=TB[p].clone().invert().multiply(TB[n]);
+      out[n]=out[p].clone().multiply(la.slerp(lb,e));}
+    for(const n in TA)if(!out[n])out[n]=TA[n].clone().slerp(TB[n],e);
+    return out;}
+  function makeTransition(toPose,toId){""")
 boot = sub(boot, "const host=document.getElementById('stage3d'); if(!host)return;", "const host=document.getElementById('stage');")
 boot = sub(boot, "const canvas=document.getElementById('big3d');", "const canvas=document.getElementById('c');")
 boot = re.sub(r"const fit=\(\)=>\{[^\n]*?\};", "const fit=()=>{view.resize(host.clientWidth||600,host.clientHeight||600);if(window.__refit)window.__refit();};", boot, count=1)
@@ -77,6 +113,11 @@ boot += r"""
   /* ---- мост для приложения ---- */
   let lastKey='';
   window.__refit=()=>{if(cur)frameCam(cur.center,camYaw);};
+  /* отладка переходов: кадры точек фигуры при переходе A → B (для проверки изломов) */
+  window.__trans=(aId,aM,bId,bM,n)=>{cur=null;go(getPose(aId,aM),aId,0);const tr=makeTransition(getPose(bId,bM),bId);const out=[];
+    for(let j=0;j<=n;j++){tr.at(j/n);out.push(fig.points().map(q=>[q.name,+q.v.x.toFixed(4),+q.v.y.toFixed(4),+q.v.z.toFixed(4)]));}
+    tr.finish();return out;};
+  window.__frame=(aId,aM,bId,bM,k)=>{cur=null;go(getPose(aId,aM),aId,0);const tr=makeTransition(getPose(bId,bM),bId);tr.at(k);view.render();};
   window.Mudrya={
     ready:true,
     go(id,mirror,ms,hands){const key=id+'|'+(mirror?1:0)+'|'+(hands||'');if(key===lastKey&&ms>0)return;lastKey=key;
@@ -87,6 +128,7 @@ boot += r"""
     hands(id){try{const st=solveState(getPose(id,0),id);return JSON.stringify(st.hands);}catch(e){return '';}},
     setTheme(t){fig.setTheme(t);document.body.style.background=t==='dark'?'#0F1115':'#f3f1ec';},
     resetView(){view.userMoved=false;if(cur)frameCam(cur.center,camYaw);},
+    setYaw(d){view.yaw=d;view.userMoved=false;if(cur)frameCam(cur.center,camYaw);},
     has(id){return !!(P[id]||(window.JP&&JP[id]));}
   };
   if(window.AndroidBridge)AndroidBridge.onReady();

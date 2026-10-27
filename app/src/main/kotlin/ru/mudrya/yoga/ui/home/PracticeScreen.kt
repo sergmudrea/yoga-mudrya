@@ -63,7 +63,15 @@ fun estimateMinutes(sequenceId: String, params: SessionParams, constraints: Cons
 }
 
 @Composable
-fun PracticeScreen(state: UserState, users: UserRepository, onStart: (String) -> Unit, onTest: () -> Unit, onSets: () -> Unit) {
+fun PracticeScreen(
+    state: UserState,
+    users: UserRepository,
+    onStart: (String) -> Unit,
+    onTest: () -> Unit,
+    onSets: () -> Unit,
+    premium: Boolean = false,
+    onPaywall: () -> Unit = {},
+) {
     val today = UserRepository.today()
     val stats = remember(state) { ProgressStats.of(state, today) }
 
@@ -81,6 +89,7 @@ fun PracticeScreen(state: UserState, users: UserRepository, onStart: (String) ->
     ) {
         Text(stringResource(R.string.today), color = MudryaColors.TextMuted, fontSize = 14.sp)
         TodayCard(state, today, onStart, onTest, onSets)
+        PinnedSets(state, users, premium, onStart, onPaywall)
         if (state.profile?.sex == Sex.FEMALE) CycleCard(state, users, today)
         SessionTuning(state, users)
 
@@ -265,5 +274,39 @@ private fun CycleCard(state: UserState, users: UserRepository, today: Long) {
                 TextAction(stringResource(R.string.cycle_disable), { set { it.copy(enabled = false) } })
             }
         }
+    }
+}
+
+/** Свои сеты, вынесенные на главный экран из конструктора. Без премиума — с подсчётом пяти запусков. */
+@Composable
+private fun PinnedSets(state: UserState, users: UserRepository, premium: Boolean, onStart: (String) -> Unit, onPaywall: () -> Unit) {
+    val sets = state.pinnedSets.mapNotNull { id -> state.customSets.firstOrNull { it.id == id } }.filter { it.asanaIds.isNotEmpty() }
+    if (sets.isEmpty()) return
+    var trialFor by androidx.compose.runtime.saveable.rememberSaveable { androidx.compose.runtime.mutableStateOf<String?>(null) }
+    SectionLabel(stringResource(R.string.home_my_sets))
+    sets.forEach { set ->
+        Card(color = MudryaColors.SaffronDeep) {
+            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                set.asanaIds.distinct().take(4).forEach { ru.mudrya.yoga.ui.builder.PoseThumb(it, 48.dp) }
+            }
+            Text(set.name, color = MudryaColors.Saffron, fontSize = 20.sp, fontWeight = FontWeight.Bold)
+            Text(stringResource(R.string.library_poses, set.asanaIds.size), color = MudryaColors.Text, fontSize = 14.sp)
+            PrimaryButton(stringResource(R.string.start), { if (premium) onStart(set.id) else trialFor = set.id })
+        }
+    }
+    trialFor?.let { id ->
+        ru.mudrya.yoga.ui.builder.TrialDialog(
+            runsUsed = state.customRuns,
+            onRun = {
+                trialFor = null
+                users.update { it.copy(customRuns = it.customRuns + 1) }
+                onStart(id)
+            },
+            onPremium = {
+                trialFor = null
+                onPaywall()
+            },
+            onDismiss = { trialFor = null },
+        )
     }
 }

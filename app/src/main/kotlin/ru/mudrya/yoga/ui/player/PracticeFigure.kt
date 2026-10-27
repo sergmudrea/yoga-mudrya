@@ -14,11 +14,11 @@ import ru.mudrya.yoga.ui.common.shownTitle
  * иначе плоская схема с подсветкой дыхания. Если WebGL недоступен — до конца экрана схема.
  */
 @Composable
-fun PracticeFigure(frame: PlayerFrame, transitionMs: Long, use3d: Boolean, modifier: Modifier = Modifier) {
+fun PracticeFigure(frame: PlayerFrame, transitionMs: Long, use3d: Boolean, modifier: Modifier = Modifier, cameraYaw: Int = 16) {
     var unavailable by rememberSaveable { mutableStateOf(false) }
     val figure = frame.step.asana.figure
     if (use3d && !unavailable && figure != null) {
-        Figure3D(figure, transitionMs, frame.step.shownTitle(), modifier, onUnavailable = { unavailable = true })
+        Figure3D(figure, transitionMs, frame.step.shownTitle(), modifier, onUnavailable = { unavailable = true }, cameraYaw = cameraYaw)
     } else {
         FigureCanvas(pose = frame.pose, fill = frame.fill, description = frame.step.shownTitle(), modifier = modifier)
     }

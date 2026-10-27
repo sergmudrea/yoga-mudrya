@@ -7,13 +7,19 @@ import ru.mudrya.yoga.model.Catalog
 import ru.mudrya.yoga.model.SequenceDef
 import ru.mudrya.yoga.model.Step
 
-/** Сет, собранный пользователем в конструкторе: название и позы по порядку. */
-data class CustomSet(val id: String, val name: String, val asanaIds: List<String>)
+/** Сет, собранный пользователем в конструкторе: название, позы по порядку и сколько дыханий держать позу. */
+data class CustomSet(
+    val id: String,
+    val name: String,
+    val asanaIds: List<String>,
+    val holdCycles: Int = CustomSets.DEFAULT_HOLD_CYCLES,
+)
 
 /**
- * Конструктор сетов: свой сет проигрывается как обычный. Дыхание и подсказки шага берутся
- * из первого места, где поза встречается в сетах каталога; новые позы библиотеки — вдох на вход
- * и три спокойных цикла удержания.
+ * Конструктор сетов: свой сет проигрывается как обычный и сам переходит от позы к позе.
+ * Вход в позу и подсказки берутся из первого места, где поза встречается в сетах каталога
+ * (у новых поз библиотеки — вдох на вход), удержание — столько дыхательных циклов, сколько
+ * выбрано для сета ([CustomSet.holdCycles]).
  */
 object CustomSets {
     const val PREFIX = "my_"
@@ -21,7 +27,10 @@ object CustomSets {
     /** Сколько раз свой сет можно запустить без премиума. */
     const val FREE_RUNS = 5
 
-    private val DEFAULT_HOLD = listOf(Breath.EXHALE, Breath.INHALE, Breath.EXHALE, Breath.INHALE, Breath.EXHALE, Breath.INHALE)
+    const val DEFAULT_HOLD_CYCLES = 2
+    const val MAX_HOLD = 10
+
+    fun hold(cycles: Int): List<Breath> = List(cycles.coerceIn(1, MAX_HOLD)) { listOf(Breath.EXHALE, Breath.INHALE) }.flatten()
 
     fun isCustom(sequenceId: String): Boolean = sequenceId.startsWith(PREFIX)
 
@@ -38,9 +47,10 @@ object CustomSets {
     fun block(set: CustomSet, catalog: Catalog): Block? {
         val templates = HashMap<String, Step>()
         catalog.blocks.values.forEach { b -> b.steps.forEach { st -> templates.putIfAbsent(st.asanaId, st) } }
+        val hold = hold(set.holdCycles)
         val steps = set.asanaIds.filter { it in catalog.asanas }.map { id ->
-            templates[id]?.copy(metalDog = false)
-                ?: Step(id, enter = listOf(Breath.INHALE), hold = DEFAULT_HOLD)
+            templates[id]?.copy(metalDog = false, hold = hold, extraCycles = false)
+                ?: Step(id, enter = listOf(Breath.INHALE), hold = hold, extraCycles = false)
         }
         return if (steps.isEmpty()) null else Block(set.id, steps)
     }

@@ -128,6 +128,13 @@ fun LibraryScreen(
             val locked = PremiumPolicy.isLocked(id, premium)
             Card {
                 Text(sequenceName(id), color = MudryaColors.Moon, fontSize = 18.sp, fontWeight = FontWeight.Bold)
+                if (state.settings.thumbnails) {
+                    androidx.compose.foundation.layout.Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                        ru.mudrya.yoga.ui.builder.PoseCatalog.section(id).take(5).forEach { a ->
+                            ru.mudrya.yoga.ui.builder.PoseThumb(a.id, 56.dp, Modifier.clickable { preview = a.id })
+                        }
+                    }
+                }
                 Text(
                     stringResource(R.string.library_poses, section.poses.size) + " · " + section.poses.take(4).joinToString(", ") +
                         if (section.poses.size > 4) "…" else "",
@@ -153,9 +160,13 @@ fun LibraryScreen(
                 if (expanded == id) {
                     ru.mudrya.yoga.ui.builder.PoseCatalog.section(id).forEach { a ->
                         androidx.compose.foundation.layout.Row(
-                            Modifier.fillMaxWidth().clickable { preview = a.id },
+                            Modifier.fillMaxWidth().clickable { preview = a.id }.padding(vertical = 3.dp),
                             verticalAlignment = androidx.compose.ui.Alignment.CenterVertically,
                         ) {
+                            if (state.settings.thumbnails) {
+                                ru.mudrya.yoga.ui.builder.PoseThumb(a.id, 52.dp)
+                                androidx.compose.foundation.layout.Spacer(Modifier.padding(start = 10.dp))
+                            }
                             Text(
                                 if (english) a.nameEn else a.nameRu,
                                 color = MudryaColors.Text,

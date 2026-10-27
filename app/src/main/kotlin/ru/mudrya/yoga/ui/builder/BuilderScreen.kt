@@ -60,7 +60,7 @@ import ru.mudrya.yoga.ui.common.TextAction
 import ru.mudrya.yoga.ui.theme.MudryaColors
 import kotlin.math.roundToInt
 
-private val ROW_HEIGHT = 58.dp
+private val ROW_HEIGHT = 64.dp
 
 /**
  * Конструктор сетов: свои сеты из поз колец, старт-сета и библиотеки 2100 асан.
@@ -95,16 +95,22 @@ fun BuilderScreen(
     when {
         set != null && picking -> PosePicker(
             added = set.asanaIds.size,
+            thumbs = state.settings.thumbnails,
             onAdd = { id -> save(set.copy(asanaIds = set.asanaIds + id)) },
             onDone = { picking = false },
         )
         set != null -> SetEditor(
             set = set,
+            pinned = set.id in state.pinnedSets,
+            thumbs = state.settings.thumbnails,
             onChange = ::save,
+            onPin = { on ->
+                users.update { s -> s.copy(pinnedSets = if (on) (s.pinnedSets + set.id).distinct() else s.pinnedSets - set.id) }
+            },
             onAdd = { picking = true },
             onTest = { if (premium) onPlay(set.id) else trialFor = set.id },
             onDelete = {
-                users.update { s -> s.copy(customSets = s.customSets.filter { it.id != set.id }) }
+                users.update { s -> s.copy(customSets = s.customSets.filter { it.id != set.id }, pinnedSets = s.pinnedSets - set.id) }
                 editing = null
             },
             onBack = { editing = null },
@@ -143,7 +149,7 @@ fun BuilderScreen(
 
 /** Перед запуском своего сета: с премиумом — сразу, без — честно о пяти бесплатных запусках. */
 @Composable
-private fun TrialDialog(runsUsed: Int, onRun: () -> Unit, onPremium: () -> Unit, onDismiss: () -> Unit) {
+fun TrialDialog(runsUsed: Int, onRun: () -> Unit, onPremium: () -> Unit, onDismiss: () -> Unit) {
     val left = CustomSets.runsLeft(runsUsed)
     AlertDialog(
         onDismissRequest = onDismiss,
@@ -208,7 +214,17 @@ private fun SetList(state: UserState, premium: Boolean, onNew: (String) -> Unit,
 }
 
 @Composable
-private fun SetEditor(set: CustomSet, onChange: (CustomSet) -> Unit, onAdd: () -> Unit, onTest: () -> Unit, onDelete: () -> Unit, onBack: () -> Unit) {
+private fun SetEditor(
+    set: CustomSet,
+    pinned: Boolean,
+    thumbs: Boolean,
+    onChange: (CustomSet) -> Unit,
+    onPin: (Boolean) -> Unit,
+    onAdd: () -> Unit,
+    onTest: () -> Unit,
+    onDelete: () -> Unit,
+    onBack: () -> Unit,
+) {
     var preview by remember { mutableStateOf<String?>(null) }
     var dragIndex by remember { mutableIntStateOf(-1) }
     var dragOffset by remember { mutableFloatStateOf(0f) }
@@ -227,6 +243,16 @@ private fun SetEditor(set: CustomSet, onChange: (CustomSet) -> Unit, onAdd: () -
                 modifier = Modifier.fillMaxWidth(),
                 colors = fieldColors(),
             )
+            Text(stringResource(R.string.builder_hold), color = MudryaColors.TextMuted, fontSize = 13.sp)
+            ChipRow {
+                listOf(1, 2, 3, 5).forEach { n ->
+                    Chip(stringResource(R.string.builder_hold_n, n), set.holdCycles == n, { onChange(set.copy(holdCycles = n)) })
+                }
+            }
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(stringResource(R.string.builder_pin), color = MudryaColors.Text, fontSize = 15.sp, modifier = Modifier.weight(1f))
+                androidx.compose.material3.Switch(checked = pinned, onCheckedChange = onPin)
+            }
             Body(stringResource(R.string.builder_drag_hint))
         }
         Column(
@@ -272,6 +298,10 @@ private fun SetEditor(set: CustomSet, onChange: (CustomSet) -> Unit, onAdd: () -
                 ) {
                     Text("≡", color = MudryaColors.TextMuted, fontSize = 22.sp, modifier = Modifier.width(26.dp))
                     Text("${i + 1}.", color = MudryaColors.TextMuted, fontSize = 14.sp, modifier = Modifier.width(30.dp))
+                    if (thumbs) {
+                        PoseThumb(id, 50.dp)
+                        Spacer(Modifier.width(8.dp))
+                    }
                     Text(
                         asana?.shownName() ?: id,
                         color = MudryaColors.Text,
@@ -307,7 +337,7 @@ private fun SetEditor(set: CustomSet, onChange: (CustomSet) -> Unit, onAdd: () -
 
 /** Выбор поз «плюсом»: позы колец и старт-сета или вся библиотека, с поиском и просмотром на марионетке. */
 @Composable
-fun PosePicker(added: Int, onAdd: (String) -> Unit, onDone: () -> Unit) {
+fun PosePicker(added: Int, onAdd: (String) -> Unit, onDone: () -> Unit, thumbs: Boolean = true) {
     var tab by rememberSaveable { mutableIntStateOf(0) }
     var query by rememberSaveable { mutableStateOf("") }
     var preview by remember { mutableStateOf<String?>(null) }
@@ -338,9 +368,13 @@ fun PosePicker(added: Int, onAdd: (String) -> Unit, onDone: () -> Unit) {
                     .fillMaxWidth()
                     .background(MudryaColors.Surface, RoundedCornerShape(12.dp))
                     .clickable { preview = e.asana.id }
-                    .padding(start = 12.dp),
+                    .padding(start = 8.dp),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
+                if (thumbs) {
+                    PoseThumb(e.asana.id, 56.dp)
+                    Spacer(Modifier.width(10.dp))
+                }
                 Column(Modifier.weight(1f).padding(vertical = 8.dp)) {
                     Text(e.asana.shownName(), color = MudryaColors.Text, fontSize = 15.sp, maxLines = 2, overflow = TextOverflow.Ellipsis)
                     e.asana.sanskrit?.let { Text(it, color = MudryaColors.TextMuted, fontSize = 12.sp, maxLines = 1) }

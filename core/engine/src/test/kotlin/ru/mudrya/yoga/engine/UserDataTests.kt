@@ -21,13 +21,14 @@ class UserStateCodecTest {
         tests = listOf(MovementRecord(5_000, 20_000, 41, 37, mapOf(MovementTest.BALANCE to 8.5, MovementTest.SIT_RISE to 9.0))),
         planStartDay = 19_990,
         relaxSeconds = 90,
-        settings = AppSettings(sound = false, voice = VoiceLevel.FULL, vibration = true, tvOutput = false, figure3d = false),
+        settings = AppSettings(sound = false, voice = VoiceLevel.FULL, vibration = true, tvOutput = false, figure3d = false, showCues = false, largeText = true, camera = CameraView.FRONT, thumbnails = false),
         reminder = ReminderSettings(enabled = true, hour = 19, minute = 30, days = setOf(1, 3, 5)),
         body = listOf(BodyRecord(19_990, 72.5, null), BodyRecord(20_000, 71.8, 84.0)),
         challengeStart = 19_995,
         cycle = CycleSettings(enabled = true, lastStart = 19_998, lastEnd = null, maxDays = 6),
-        customSets = listOf(CustomSet("my_abc", "Утро; спина, плечи", listOf("at_tad", "lb_B1"))),
+        customSets = listOf(CustomSet("my_abc", "Утро; спина, плечи", listOf("at_tad", "lb_B1"), holdCycles = 3)),
         customRuns = 3,
+        pinnedSets = listOf("my_abc"),
         health = listOf(HealthRecord(7_000, 20_000, 178.0, 86.5, 92.0, 66, 52, 9), HealthRecord(8_000, 20_001, weightKg = 85.0)),
     )
 
@@ -425,5 +426,42 @@ class HealthCheckTest {
         assertEquals(HealthLevel.HIGH, HealthCheck.evaluate(HealthRecord(0, 0, 170.0, 100.0, 110.0, 95, 0, 10), Sex.MALE).overall)
         assertEquals(76.9, HealthCheck.targetWeight(175.7, 90.0))
         assertNull(HealthCheck.targetWeight(180.0, 70.0))
+    }
+}
+
+class CustomSetPlaybackTest {
+    @Test
+    fun `custom set moves on from pose to pose by itself`() {
+        val set = CustomSet("my_1", "Мой", listOf("plank", "tadasana", "chaturanga"), holdCycles = 1)
+        val s = SessionBuilder(CustomSets.catalogWith(Fixtures.catalog, set))
+            .build(BuildRequest(CustomSets.sequence(set), 1, ru.mudrya.yoga.model.Support.PALMS))
+        assertTrue(s.steps.all { it.hold.size == 2 })
+        val c = PlayerController(s, phaseMs = 1_000)
+        val seen = mutableListOf<Int>()
+        repeat(40) { c.advance(250); seen += c.frame().stepIndex }
+        assertEquals(listOf(0, 1, 2), seen.distinct())
+        assertTrue(c.frame().finished)
+    }
+}
+
+class AccountsTest {
+    @Test
+    fun `register, log in and reject a wrong password`() {
+        val a = Accounts.create("Me@Example.com ", "Сергей", "secret-123", 1, emptyList()).getOrThrow()
+        assertEquals("me@example.com", a.email)
+        assertTrue(Accounts.check("me@example.com", "secret-123", listOf(a)).isSuccess)
+        assertEquals(AccountError.WRONG_PASSWORD, (Accounts.check("me@example.com", "nope-nope", listOf(a)).exceptionOrNull() as AccountException).error)
+        assertEquals(AccountError.EXISTS, (Accounts.create("me@example.com", "", "secret-123", 2, listOf(a)).exceptionOrNull() as AccountException).error)
+        assertEquals(AccountError.SHORT_PASSWORD, Accounts.validate("x@y.ru", "123"))
+        assertEquals(AccountError.BAD_EMAIL, Accounts.validate("not-mail", "12345678"))
+    }
+
+    @Test
+    fun `accounts file round trip`() {
+        val a = Accounts.create("a@b.ru", "Имя; с точкой", "12345678", 5, emptyList()).getOrThrow()
+        val (list, current) = Accounts.decode(Accounts.encode(listOf(a), "a@b.ru"))
+        assertEquals(listOf(a), list)
+        assertEquals("a@b.ru", current)
+        assertEquals(16, Accounts.dataKey("a@b.ru").length)
     }
 }

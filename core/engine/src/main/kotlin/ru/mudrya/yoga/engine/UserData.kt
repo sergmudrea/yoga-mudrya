@@ -38,6 +38,9 @@ data class MovementRecord(
     val results: Map<MovementTest, Double>,
 )
 
+/** Ракурс камеры у марионетки: угол поворота вокруг фигуры, градусы. */
+enum class CameraView(val yaw: Int) { SIDE(16), THREE_QUARTER(45), FRONT(80) }
+
 /** Всё, что приложение хранит о пользователе. */
 data class UserState(
     val profile: UserProfile? = null,
@@ -60,6 +63,8 @@ data class UserState(
     val customSets: List<CustomSet> = emptyList(),
     /** Сколько раз запускались свои сеты без премиума. */
     val customRuns: Int = 0,
+    /** Свои сеты, вынесенные на главный экран. */
+    val pinnedSets: List<String> = emptyList(),
     /** Анкеты здоровья (ИМТ, талия, пульс, лестница, сидячие часы). */
     val health: List<HealthRecord> = emptyList(),
 ) {
@@ -115,6 +120,15 @@ data class AppSettings(
     val tvOutput: Boolean = true,
     /** Объёмная марионетка из атласа вместо плоской схемы. */
     val figure3d: Boolean = true,
+    /** Показ в плеере: подсказки, «далее», санскрит, полоса дыхания, крупный текст, ракурс камеры. */
+    val showCues: Boolean = true,
+    val showNext: Boolean = true,
+    val showSanskrit: Boolean = true,
+    val showBreath: Boolean = true,
+    val largeText: Boolean = false,
+    val camera: CameraView = CameraView.SIDE,
+    /** Картинки поз в библиотеке и конструкторе. */
+    val thumbnails: Boolean = true,
     /** Только для отладочной сборки: включить премиум без покупки, чтобы проверить закрытые сеты. */
     val debugPremium: Boolean = false,
 )
@@ -270,6 +284,13 @@ object UserStateCodec {
         line("settings.vibration", s.settings.vibration.toString())
         line("settings.tv", s.settings.tvOutput.toString())
         line("settings.figure3d", s.settings.figure3d.toString())
+        line("settings.showCues", s.settings.showCues.toString())
+        line("settings.showNext", s.settings.showNext.toString())
+        line("settings.showSanskrit", s.settings.showSanskrit.toString())
+        line("settings.showBreath", s.settings.showBreath.toString())
+        line("settings.largeText", s.settings.largeText.toString())
+        line("settings.camera", s.settings.camera.name)
+        line("settings.thumbnails", s.settings.thumbnails.toString())
         line("settings.debugPremium", s.settings.debugPremium.toString())
         line("reminder.enabled", s.reminder.enabled.toString())
         line("reminder.time", "${s.reminder.hour}:${s.reminder.minute}")
@@ -281,8 +302,9 @@ object UserStateCodec {
         s.cycle.lastEnd?.let { line("cycle.end", it.toString()) }
         line("cycle.days", s.cycle.maxDays.toString())
         line("custom.runs", s.customRuns.toString())
+        line("custom.pinned", s.pinnedSets.joinToString(","))
         s.customSets.forEach { c ->
-            line("custom", listOf(c.id, java.net.URLEncoder.encode(c.name, "UTF-8"), c.asanaIds.joinToString(",")).joinToString(";"))
+            line("custom", listOf(c.id, java.net.URLEncoder.encode(c.name, "UTF-8"), c.asanaIds.joinToString(","), c.holdCycles).joinToString(";"))
         }
         s.health.forEach { h ->
             line(
@@ -334,6 +356,13 @@ object UserStateCodec {
                 vibration = single["settings.vibration"]?.toBooleanStrictOrNull() ?: false,
                 tvOutput = single["settings.tv"]?.toBooleanStrictOrNull() ?: true,
                 figure3d = single["settings.figure3d"]?.toBooleanStrictOrNull() ?: true,
+                showCues = single["settings.showCues"]?.toBooleanStrictOrNull() ?: true,
+                showNext = single["settings.showNext"]?.toBooleanStrictOrNull() ?: true,
+                showSanskrit = single["settings.showSanskrit"]?.toBooleanStrictOrNull() ?: true,
+                showBreath = single["settings.showBreath"]?.toBooleanStrictOrNull() ?: true,
+                largeText = single["settings.largeText"]?.toBooleanStrictOrNull() ?: false,
+                camera = single["settings.camera"]?.let { v -> CameraView.entries.firstOrNull { it.name == v } } ?: CameraView.SIDE,
+                thumbnails = single["settings.thumbnails"]?.toBooleanStrictOrNull() ?: true,
                 debugPremium = single["settings.debugPremium"]?.toBooleanStrictOrNull() ?: false,
             ),
             reminder = parseReminder(single),
@@ -341,6 +370,7 @@ object UserStateCodec {
             challengeStart = single["challenge108.start"]?.toLongOrNull(),
             customSets = custom,
             customRuns = single["custom.runs"]?.toIntOrNull()?.coerceAtLeast(0) ?: 0,
+            pinnedSets = single["custom.pinned"]?.split(',')?.filter { it.startsWith(CustomSets.PREFIX) }.orEmpty(),
             health = health.sortedBy { it.atMs },
             cycle = CycleSettings(
                 enabled = single["cycle.enabled"]?.toBooleanStrictOrNull() ?: false,
@@ -414,7 +444,8 @@ object UserStateCodec {
         } catch (_: IllegalArgumentException) {
             return null
         }
-        return CustomSet(p[0], name, p[2].split(',').filter { it.isNotBlank() })
+        val hold = p.getOrNull(3)?.toIntOrNull()?.coerceIn(1, CustomSets.MAX_HOLD) ?: CustomSets.DEFAULT_HOLD_CYCLES
+        return CustomSet(p[0], name, p[2].split(',').filter { it.isNotBlank() }, hold)
     }
 
     private fun parseHealth(v: String): HealthRecord? {

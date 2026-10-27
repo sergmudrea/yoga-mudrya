@@ -43,6 +43,7 @@ import ru.mudrya.yoga.ui.home.ProgressScreen
 import ru.mudrya.yoga.ui.home.SetsScreen
 import ru.mudrya.yoga.ui.home.LibraryScreen
 import ru.mudrya.yoga.ui.builder.BuilderScreen
+import ru.mudrya.yoga.ui.account.AccountScreen
 import ru.mudrya.yoga.ui.settings.SettingsScreen
 import ru.mudrya.yoga.ui.settings.VideoLibraryScreen
 import ru.mudrya.yoga.data.UserRepository
@@ -68,6 +69,7 @@ private object Routes {
     const val VIDEOS = "settings/videos"
     const val LIBRARY = "library"
     const val BUILDER = "builder"
+    const val ACCOUNT = "account"
     const val PLAYER = "player/{seq}"
     fun player(sequenceId: String) = "player/$sequenceId"
 }
@@ -135,6 +137,8 @@ fun AppRoot() {
                     onStart = { nav.startSet(it, premium) },
                     onTest = { nav.navigate(Routes.TEST) },
                     onSets = { nav.goTab(Tab.SETS) },
+                    premium = premium,
+                    onPaywall = { nav.navigate(Routes.PAYWALL) },
                 )
             }
             composable(Tab.SETS.route) {
@@ -148,6 +152,7 @@ fun AppRoot() {
                 )
             }
             composable(Routes.LIBRARY) { LibraryScreen(state, users, premium, onStart = { nav.startSet(it, premium) }, onBack = { nav.popBackStack() }) }
+            composable(Routes.ACCOUNT) { AccountScreen(container.accounts, users, onBack = { nav.popBackStack() }) }
             composable(Routes.BUILDER) {
                 BuilderScreen(
                     state,
@@ -164,6 +169,7 @@ fun AppRoot() {
                     state,
                     onEdit = { nav.navigate(Routes.EDIT_PROFILE) },
                     onSettings = { nav.navigate(Routes.SETTINGS) },
+                    onAccount = { nav.navigate(Routes.ACCOUNT) },
                     entitlement = entitlement,
                     onSubscribe = { nav.navigate(Routes.PAYWALL) },
                     onReset = {

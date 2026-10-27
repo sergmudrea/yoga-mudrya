@@ -56,6 +56,7 @@ class TvState(frame: PlayerFrame, title: String) {
     var restLeft by mutableStateOf<Int?>(null)
     var transitionMs by mutableStateOf(4_000L)
     var use3d by mutableStateOf(true)
+    var cameraYaw by mutableStateOf(16)
 }
 
 /**
@@ -175,7 +176,7 @@ private fun TvScreen(state: TvState) {
         horizontalArrangement = Arrangement.spacedBy(32.dp),
     ) {
         Box(Modifier.weight(1.3f).fillMaxHeight()) {
-            PracticeFigure(f, state.transitionMs, state.use3d, Modifier.fillMaxSize())
+            PracticeFigure(f, state.transitionMs, state.use3d, Modifier.fillMaxSize(), state.cameraYaw)
         }
         Column(Modifier.weight(1f).fillMaxHeight(), verticalArrangement = Arrangement.spacedBy(16.dp)) {
             Text(state.title, color = MudryaColors.TextMuted, fontSize = 22.sp)
