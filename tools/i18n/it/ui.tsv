@@ -549,8 +549,6 @@ program_days	%1$d giorni
 program_stop	Interrompi il programma
 program_path8	Percorso di 8 settimane «Sole e Luna»
 program_path8_hint	Per chi ha esperienza: lunghe pratiche «Sole» e «Luna» alternate, con un test ogni due settimane.
-settings_model	Modello realistico
-settings_model_hint	Una figura realistica in tuta aderente, donna o uomo, con le stesse transizioni fluide. Disattivato: la marionetta di legno, arti destri arancioni e sinistri blu.
 checkin_title	Come ti senti oggi?
 checkin_energy	Energia
 energy_low	Poca
@@ -613,8 +611,6 @@ paywall_free_extra	Gratis anche: il check-in quotidiano con una pratica suggerit
 player_transition	ingresso nella posizione
 player_details	Altro ▾
 player_details_hide	Nascondi ▴
-settings_model_female	Donna
-settings_model_male	Uomo
 breath_nadi	Respirazione alternata
 breath_nadi_hint	Chiudi la narice destra con il pollice, la sinistra con l'anulare. Inspira da un lato, espira dall'altro. Riequilibra e calma.
 breath_full	Respiro yogico completo

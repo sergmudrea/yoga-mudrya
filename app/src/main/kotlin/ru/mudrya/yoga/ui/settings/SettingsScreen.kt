@@ -80,16 +80,6 @@ fun SettingsScreen(
                 }
             }
             Toggle(stringResource(R.string.settings_figure3d), stringResource(R.string.settings_figure3d_hint), s.figure3d) { v -> set { it.copy(figure3d = v) } }
-            if (s.figure3d) {
-                Toggle(stringResource(R.string.settings_model), stringResource(R.string.settings_model_hint), s.realisticModel) { v -> set { it.copy(realisticModel = v) } }
-                if (s.realisticModel) {
-                    val male = s.modelMale ?: (state.profile?.sex == ru.mudrya.yoga.engine.Sex.MALE)
-                    ChipRow {
-                        Chip(stringResource(R.string.settings_model_female), !male, { set { it.copy(modelMale = false) } })
-                        Chip(stringResource(R.string.settings_model_male), male, { set { it.copy(modelMale = true) } })
-                    }
-                }
-            }
             Toggle(stringResource(R.string.settings_vibration), stringResource(R.string.settings_vibration_hint), s.vibration) { v -> set { it.copy(vibration = v) } }
         }
 

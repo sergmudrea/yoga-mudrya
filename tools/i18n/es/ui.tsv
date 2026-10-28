@@ -549,8 +549,6 @@ program_days	%1$d días
 program_stop	Detener el programa
 program_path8	Camino de 8 semanas «Sol y Luna»
 program_path8_hint	Para practicantes con experiencia: prácticas largas «Sol» y «Luna» alternas, con una prueba cada dos semanas.
-settings_model	Modelo realista
-settings_model_hint	Una figura realista con ropa ajustada, mujer u hombre, con las mismas transiciones suaves. Desactivado: la marioneta de madera, extremidades derechas naranjas e izquierdas azules.
 checkin_title	¿Cómo te sientes hoy?
 checkin_energy	Energía
 energy_low	Poca
@@ -613,8 +611,6 @@ paywall_free_extra	También gratis: el registro diario con una práctica sugerid
 player_transition	entrando en la postura
 player_details	Más ▾
 player_details_hide	Ocultar ▴
-settings_model_female	Mujer
-settings_model_male	Hombre
 breath_nadi	Respiración alterna
 breath_nadi_hint	Cierra la fosa derecha con el pulgar y la izquierda con el anular. Inhala por un lado y exhala por el otro. Equilibra y calma.
 breath_full	Respiración yóguica completa

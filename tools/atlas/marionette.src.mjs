@@ -419,9 +419,9 @@ async function createFigure3D(){
     return {c:V3((x0+x1)/2,Math.max(H/2,s/2-0.12)-0.02,(z0+z1)/2*0.5),s};}
 
   setTheme('light');
-  /* реалистичная модель поверх марионетки: решатель тот же, рисуется кожа */
-  /* модели: 'model' — женская (model.glb), 'male' — мужская (model_m.glb, грузится по запросу); 'doll' — марионетка */
-  const SKIN_URL={model:'model.glb',male:'model_m.glb'};
+  /* модель поверх марионетки (skin.mjs): решатель тот же, рисуется кожа. Человеческие модели убраны;
+     сюда можно подключить другую (например, робота): SKIN_URL={bot:'bot.glb'}. По умолчанию — марионетка ('doll'). */
+  const SKIN_URL={};
   async function loadSkin(url,key='model'){const s=await createSkin(T,scene,{REST,DIM,url});s.setTheme(theme||'light');s.active=false;skins[key]=s;return s;}
   async function setFigure(kind){
     if(kind!=='doll'&&!skins[kind]&&SKIN_URL[kind]){try{await loadSkin(SKIN_URL[kind],kind);}catch(e){console.warn('model',kind,e);kind='doll';}}
@@ -611,7 +611,6 @@ async function boot(){
     has(id){return !!(P[id]||(window.JP&&JP[id]));},
     setFigure(k){fig.setFigure(k).then(()=>view.render());}
   };
-  try{await fig.setFigure('model');}catch(e){console.warn('model unavailable, keeping the doll',e);}
   view.render();window.Mudrya.loaded=true;window.__skinAudit=()=>fig.skinAudit();window.__skinRadius=()=>fig.skinRadius();
   if(window.AndroidBridge)AndroidBridge.onReady();
 }

@@ -551,8 +551,6 @@
     <string name="program_stop">Arrêter le programme</string>
     <string name="program_path8">Parcours de 8 semaines « Soleil et Lune »</string>
     <string name="program_path8_hint">Pour pratiquants expérimentés : longues pratiques « Soleil » et « Lune » en alternance, avec un test toutes les deux semaines.</string>
-    <string name="settings_model">Modèle réaliste</string>
-    <string name="settings_model_hint">Une silhouette réaliste en tenue ajustée, femme ou homme, avec les mêmes transitions fluides. Désactivé — la marionnette en bois, membres droits orange et gauches bleus.</string>
     <string name="checkin_title">Comment allez-vous aujourd\'hui ?</string>
     <string name="checkin_energy">Énergie</string>
     <string name="energy_low">Faible</string>
@@ -615,8 +613,6 @@
     <string name="player_transition">entrée dans la posture</string>
     <string name="player_details">Plus ▾</string>
     <string name="player_details_hide">Masquer ▴</string>
-    <string name="settings_model_female">Femme</string>
-    <string name="settings_model_male">Homme</string>
     <string name="breath_nadi">Respiration alternée</string>
     <string name="breath_nadi_hint">Fermez la narine droite avec le pouce, la gauche avec l\'annulaire. Inspirez d\'un côté, expirez de l\'autre. Équilibre et apaise.</string>
     <string name="breath_full">Respiration yogique complète</string>

@@ -551,8 +551,6 @@
     <string name="program_stop">Programm beenden</string>
     <string name="program_path8">8-Wochen-Weg „Sonne und Mond“</string>
     <string name="program_path8_hint">Für Erfahrene: lange Übungen „Sonne“ und „Mond“ im Wechsel, mit einem Test alle zwei Wochen.</string>
-    <string name="settings_model">Realistisches Modell</string>
-    <string name="settings_model_hint">Eine realistische Figur im eng anliegenden Anzug – weiblich oder männlich – mit denselben weichen Übergängen. Aus – die Holzpuppe mit orangen rechten und blauen linken Gliedern.</string>
     <string name="checkin_title">Wie geht es Ihnen heute?</string>
     <string name="checkin_energy">Energie</string>
     <string name="energy_low">Wenig</string>
@@ -615,8 +613,6 @@
     <string name="player_transition">Übergang in die Haltung</string>
     <string name="player_details">Mehr ▾</string>
     <string name="player_details_hide">Ausblenden ▴</string>
-    <string name="settings_model_female">Weiblich</string>
-    <string name="settings_model_male">Männlich</string>
     <string name="breath_nadi">Wechselatmung</string>
     <string name="breath_nadi_hint">Rechtes Nasenloch mit dem Daumen schließen, linkes mit dem Ringfinger. Auf einer Seite ein, auf der anderen aus. Gleicht aus und beruhigt.</string>
     <string name="breath_full">Volle Yoga-Atmung</string>

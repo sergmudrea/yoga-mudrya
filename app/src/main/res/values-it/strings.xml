@@ -551,8 +551,6 @@
     <string name="program_stop">Interrompi il programma</string>
     <string name="program_path8">Percorso di 8 settimane «Sole e Luna»</string>
     <string name="program_path8_hint">Per chi ha esperienza: lunghe pratiche «Sole» e «Luna» alternate, con un test ogni due settimane.</string>
-    <string name="settings_model">Modello realistico</string>
-    <string name="settings_model_hint">Una figura realistica in tuta aderente, donna o uomo, con le stesse transizioni fluide. Disattivato: la marionetta di legno, arti destri arancioni e sinistri blu.</string>
     <string name="checkin_title">Come ti senti oggi?</string>
     <string name="checkin_energy">Energia</string>
     <string name="energy_low">Poca</string>
@@ -615,8 +613,6 @@
     <string name="player_transition">ingresso nella posizione</string>
     <string name="player_details">Altro ▾</string>
     <string name="player_details_hide">Nascondi ▴</string>
-    <string name="settings_model_female">Donna</string>
-    <string name="settings_model_male">Uomo</string>
     <string name="breath_nadi">Respirazione alternata</string>
     <string name="breath_nadi_hint">Chiudi la narice destra con il pollice, la sinistra con l\'anulare. Inspira da un lato, espira dall\'altro. Riequilibra e calma.</string>
     <string name="breath_full">Respiro yogico completo</string>

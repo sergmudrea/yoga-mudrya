@@ -551,8 +551,6 @@
     <string name="program_stop">Остановить программу</string>
     <string name="program_path8">Путь 8 недель «Солнце и Луна»</string>
     <string name="program_path8_hint">Для опытных: чередование длинных практик «Солнце» и «Луна» с тестом раз в две недели.</string>
-    <string name="settings_model">Реалистичная модель</string>
-    <string name="settings_model_hint">Реалистичная фигура в облегающем костюме — женская или мужская, те же плавные переходы. Выкл. — деревянная марионетка: правые руки и ноги оранжевые, левые синие.</string>
     <string name="checkin_title">Как вы сегодня?</string>
     <string name="checkin_energy">Силы</string>
     <string name="energy_low">Мало сил</string>
@@ -615,8 +613,6 @@
     <string name="player_transition">переход в позу</string>
     <string name="player_details">Подробнее ▾</string>
     <string name="player_details_hide">Скрыть ▴</string>
-    <string name="settings_model_female">Женская</string>
-    <string name="settings_model_male">Мужская</string>
     <string name="breath_nadi">Попеременное дыхание</string>
     <string name="breath_nadi_hint">Правую ноздрю закрывайте большим пальцем, левую — безымянным. Вдох одной стороной, выдох другой. Уравновешивает и успокаивает.</string>
     <string name="breath_full">Полное йоговское дыхание</string>

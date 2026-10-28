@@ -12,7 +12,6 @@ import android.webkit.WebViewClient
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -58,12 +57,6 @@ fun Figure3D(
     placeholder: @Composable () -> Unit = {},
 ) {
     val context = LocalContext.current
-    val userState = ru.mudrya.yoga.ui.common.appContainer().users.state.collectAsState().value
-    val figureKind = when {
-        !userState.settings.realisticModel -> "doll"
-        userState.settings.modelMale ?: (userState.profile?.sex == ru.mudrya.yoga.engine.Sex.MALE) -> "male"
-        else -> "model"
-    }
     var ready by remember { mutableStateOf(false) }
     val failed by rememberUpdatedState(onUnavailable)
     val main = remember { Handler(Looper.getMainLooper()) }
@@ -115,9 +108,6 @@ fun Figure3D(
     }
     LaunchedEffect(ready) {
         if (ready) webView.evaluateJavascript("Mudrya.setTheme('dark')", null)
-    }
-    LaunchedEffect(ready, figureKind) {
-        if (ready) webView.evaluateJavascript("Mudrya.setFigure('$figureKind')", null)
     }
     LaunchedEffect(ready, cameraYaw) {
         if (ready) webView.evaluateJavascript("Mudrya.setYaw($cameraYaw)", null)

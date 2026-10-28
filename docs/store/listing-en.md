@@ -12,7 +12,7 @@ Yoga that adapts to your body — instead of asking you to keep up with a video.
 Open the app and tell it in ten seconds how you are today: how much energy you have, calm or tense, where you feel tight, how much time you've got. The app suggests a practice and explains why: "You marked tension in the neck and shoulders — we'll gently open the shoulders and unload the neck, no inversions." One button, and you're practising.
 
 3D coach
-• A realistic 3D model shows every pose and the smooth transition into it. Joints move within anatomical limits, supporting palms and feet don't slide, finger locks are highlighted.
+• A 3D marionette shows every pose and the smooth transition into it. Joints move within anatomical limits, supporting palms and feet don't slide, finger locks are highlighted.
 • Turn the model with your finger to see the pose from every side. Or switch to the wooden marionette with orange right and blue left limbs.
 • The voice names the poses and leads the breath: "inhale", "exhale", cues during holds.
 

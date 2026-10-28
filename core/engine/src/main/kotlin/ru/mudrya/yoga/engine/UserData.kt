@@ -131,10 +131,6 @@ data class AppSettings(
     val tvOutput: Boolean = true,
     /** Объёмная марионетка из атласа вместо плоской схемы. */
     val figure3d: Boolean = true,
-    /** Реалистичная модель (женская фигура в костюме) поверх решателя марионетки; выкл. — деревянная марионетка. */
-    val realisticModel: Boolean = true,
-    /** Мужская модель вместо женской; null — по полу в профиле. */
-    val modelMale: Boolean? = null,
     /** Показ в плеере: подсказки, «далее», санскрит, полоса дыхания, крупный текст, ракурс камеры. */
     val showCues: Boolean = true,
     val showNext: Boolean = true,
@@ -303,8 +299,6 @@ object UserStateCodec {
         line("settings.vibration", s.settings.vibration.toString())
         line("settings.tv", s.settings.tvOutput.toString())
         line("settings.figure3d", s.settings.figure3d.toString())
-        line("settings.model", s.settings.realisticModel.toString())
-        s.settings.modelMale?.let { line("settings.modelMale", it.toString()) }
         line("settings.showCues", s.settings.showCues.toString())
         line("settings.showNext", s.settings.showNext.toString())
         line("settings.showSanskrit", s.settings.showSanskrit.toString())
@@ -391,8 +385,6 @@ object UserStateCodec {
                 vibration = single["settings.vibration"]?.toBooleanStrictOrNull() ?: false,
                 tvOutput = single["settings.tv"]?.toBooleanStrictOrNull() ?: true,
                 figure3d = single["settings.figure3d"]?.toBooleanStrictOrNull() ?: true,
-                realisticModel = single["settings.model"]?.toBooleanStrictOrNull() ?: true,
-                modelMale = single["settings.modelMale"]?.toBooleanStrictOrNull(),
                 showCues = single["settings.showCues"]?.toBooleanStrictOrNull() ?: true,
                 showNext = single["settings.showNext"]?.toBooleanStrictOrNull() ?: true,
                 showSanskrit = single["settings.showSanskrit"]?.toBooleanStrictOrNull() ?: true,
