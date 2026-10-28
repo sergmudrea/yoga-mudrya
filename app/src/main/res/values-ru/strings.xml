@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Мудрая йога</string>
+    <string name="app_name">Мудря йога</string>
     <string name="tab_practice">Практика</string>
     <string name="tab_sets">Сеты</string>
     <string name="tab_progress">Прогресс</string>
@@ -91,7 +91,7 @@
     <string name="level_experienced_hint">Знаю основные асаны, делал Сурья Намаскар</string>
     <string name="level_advanced">Практикую регулярно</string>
     <string name="level_advanced_hint">Сурья Намаскар даётся легко, хочу нагрузку</string>
-    <string name="onb_welcome_title">Мудрая йога</string>
+    <string name="onb_welcome_title">Мудря йога</string>
     <string name="onb_welcome_text">Йога, которая подстраивается под вас: короткие практики на каждый день, дыхание на каждое движение, нагрузка растёт вместе с вами.</string>
     <string name="onb_welcome_method">Четыре коротких вопроса — и у вас готов план на каждый день.</string>
     <string name="onb_start">Начать</string>
