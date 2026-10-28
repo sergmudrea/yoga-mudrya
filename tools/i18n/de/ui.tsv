@@ -1,0 +1,896 @@
+app_name	Mudrya Yoga
+tab_practice	Üben
+tab_sets	Sets
+tab_progress	Fortschritt
+tab_profile	Profil
+today	Heute
+surya	Surya Namaskar
+chandra	Chandra Namaskar
+start	Start
+coming_soon	Dieser Bildschirm kommt im nächsten Schritt.
+store_label	Build: %1$s
+player_step_of	%1$d von %2$d
+player_phase_move	ÜBERGANG
+player_phase_hold	HALTEN
+player_side_right	RECHTE SEITE
+player_side_left	LINKE SEITE
+player_from	Aus: %1$s
+player_replaced_cycle	Statt „%1$s“ – sanfter Zyklusmodus
+cycle_title	Sanfte Tage
+cycle_hint	Während der Periode kann die App Umkehrhaltungen und die tiefsten Rückbeugen durch ähnliche ruhige Haltungen ersetzen. Du markierst nur Beginn und Ende – sonst wird nichts gespeichert.
+cycle_enable	Einschalten
+cycle_start	Heute begonnen
+cycle_end	Vorbei
+cycle_day	Tag %1$d von höchstens %2$d
+cycle_on	Sanfter Modus: keine Umkehrhaltungen und tiefen Rückbeugen – sie werden automatisch ersetzt.
+cycle_off	Markiere den ersten Tag – die Praxis wechselt für bis zu fünf Tage oder bis zur Markierung des Endes in den sanften Modus.
+cycle_disable	Nicht erfassen
+player_hand_lock	Finger verschränkt
+player_hand_prayer	Handflächen zusammen
+player_replaced	Statt „%1$s“ – schonend für: %2$s
+player_next	Als Nächstes: %1$s
+player_inhale	Einatmen
+player_exhale	Ausatmen
+player_breath_of	Atemzug %1$d von %2$d
+player_belly	Bauch
+player_chest	Brust
+player_hint_inhale	Zuerst füllt sich der Bauch, dann die Brust. Die Bewegung folgt dem Einatmen.
+player_hint_exhale	Zuerst sinkt die Brust, dann zieht sich der Bauch sanft ein. Die Bewegung folgt dem Ausatmen.
+player_prev	Vorherige Haltung
+player_pause	Pause
+player_next_step	Nächste Haltung
+player_speed	Tempo %1$s
+player_hold_n	Atemzüge ×%1$d
+player_hold_method	Atemzüge: wie im Set
+player_phase_len	Phase %1$d s
+player_metal_dog_short	Metallhund
+player_metal_dog	Metallhund-Atmung
+player_metal_dog_hint	Bleib in der Haltung. Kurze, schnelle Ausatmungen durch die Nase aus dem Bauch; das Einatmen kommt von selbst. Die Übungszeit ist angehalten.
+player_continue	Weiter
+player_done	%1$s abgeschlossen
+player_done_stats	%1$d Positionen · etwa %2$d Min.
+player_finish	Fertig
+finish_how	Wie war es?
+finish_easy	Leicht
+finish_easy_hint	Wir fügen eine Runde oder eine schwierigere Handstütze hinzu
+finish_ok	Genau richtig
+finish_ok_hint	So bleibt es; alle drei Einheiten eine Runde mehr
+finish_hard	Schwer
+finish_hard_hint	Weniger Belastung und kürzere Atemzüge
+finish_zones	Stört dich etwas?
+goal_joints	Bewegliche Gelenke und Wirbelsäule
+goal_youth	Mein Bewegungsalter senken
+goal_shape	Schlanker, straffer Körper
+goal_strength	Kraft und Ausdauer
+goal_calm	Ruhe und Energie
+home_age_label	Bewegungsalter
+home_age_none	Fünf einfache Tests zeigen, wie alt sich dein Körper bewegt. Wiederhole sie monatlich und sieh zu, wie es sinkt.
+home_age_retake	Test wiederholen
+home_rounds	Runden
+home_support	Handstütze
+home_support_wrists	Wegen der Handgelenke nur auf Fäusten.
+home_phase	Länge von Ein- und Ausatmen
+home_phase_hint	Ziel sind 7–9 Sekunden. Beginne, wo es leichtfällt; die App verlängert es.
+home_session_line	Runden: %1$d · ~%2$d Min. · %3$s · Phase %4$s s
+home_tune	Anpassen
+home_tune_hide	Einstellungen ausblenden
+injury_wrists_hint	Fäuste statt Handflächen, weniger Last auf den Handgelenken
+injury_lumbar_hint	Tiefe Rückbeugen werden durch sanfte ersetzt
+injury_neck_hint	Kein Kopf nach hinten, keine Umkehrhaltungen
+injury_knees_hint	Sanftere Ausfallschritte und Knien
+joint_wrists	Handgelenke
+joint_shoulders	Schultern
+joint_lumbar	Unterer Rücken
+joint_neck	Nacken
+joint_knees	Knie
+level_beginner	Ich fange an
+level_beginner_hint	Neu im Yoga oder nach einer langen Pause
+level_experienced	Etwas Erfahrung
+level_experienced_hint	Ich kenne die Grundhaltungen und habe Surya Namaskar gemacht
+level_advanced	Regelmäßige Praxis
+level_advanced_hint	Surya Namaskar fällt mir leicht, ich will eine Herausforderung
+onb_welcome_title	Mudrya Yoga
+onb_welcome_text	Yoga, das sich dir anpasst: kurze tägliche Einheiten, ein Atemzug für jede Bewegung und eine Belastung, die mit dir wächst.
+onb_welcome_method	Vier kurze Fragen – und dein Tagesplan steht.
+onb_start	Los geht’s
+onb_next	Weiter
+onb_finish	Fertig
+onb_back	Zurück
+onb_about_title	Über dich
+onb_about_hint	Um die richtige Belastung zu wählen und Haltungen zu ersetzen, die nicht zu dir passen.
+onb_sex	Geschlecht
+onb_age	Alter
+onb_goals_title	Was möchtest du erreichen?
+onb_goals_hint	Mehrfachauswahl möglich.
+onb_level_title	Deine Erfahrung
+onb_limits_title	Gibt es Einschränkungen?
+onb_limits_hint	Die App entfernt oder ersetzt Haltungen, die diese Bereiche belasten.
+onb_limits_none	Keine Einschränkungen
+onb_limits_doctor	Bei Schmerzen, Verletzungen, Schwangerschaft oder chronischen Erkrankungen sprich vor dem Start mit einer Ärztin oder einem Arzt.
+phase_value	%1$s s
+profile_level	Erfahrung
+profile_goals	Ziele
+profile_limits	Einschränkungen
+profile_edit	Antworten ändern
+profile_data	Daten
+profile_data_hint	Alles bleibt auf diesem Telefon. Kein Konto nötig.
+profile_reset	Alle Daten löschen
+profile_reset_title	Alle Daten löschen?
+profile_reset_text	Dein Profil, deine Übungshistorie und deine Testergebnisse werden endgültig gelöscht.
+profile_reset_yes	Löschen
+profile_reset_no	Abbrechen
+progress_week	Letzte 7 Tage, Minuten
+progress_history	Verlauf
+progress_empty	Hier erscheinen deine Übungseinheiten.
+progress_minutes	%1$d Min.
+progress_unfinished	nicht beendet
+progress_age_better	%1$d jünger seit dem ersten Test
+progress_age_worse	%1$d älter seit dem ersten Test
+progress_age_same	Keine Veränderung seit dem ersten Test
+sex_female	Weiblich
+sex_male	Männlich
+stat_streak	Tage in Folge
+stat_best_streak	beste Serie
+stat_sessions	Einheiten
+stat_minutes	Minuten
+support_fists	auf Fäusten
+support_palms	auf Handflächen
+support_fingers	auf Fingerspitzen
+test_intro_title	Test des Bewegungsalters
+test_intro_text	Fünf Übungen und ein Gesundheitscheck mit fünf Fragen, etwa 15 Minuten. Du brauchst etwas Platz, eine Matte, eine Stoppuhr und ein Maßband. Jeder Schritt lässt sich überspringen. Am Ende: dein Bewegungsalter, Body-Mass-Index und Grad des Übergewichts, Taillenrisiko, Herzfitness und Ausdauer.
+test_disclaimer	Das ist eine Einschätzung anhand von Altersnormen, keine medizinische Messung.
+test_start	Test machen
+test_later	Später
+test_n_of	Test %1$d von %2$d
+test_record	Speichern
+test_skip	Überspringen
+test_done	Fertig
+test_sit_rise	Hinsetzen und vom Boden aufstehen
+test_sit_rise_how	Barfuß im Schneidersitz auf den Boden setzen und wieder aufstehen, wenn möglich ohne Abstützen. Start mit 10 Punkten. Minus 1 für jede Stütze (Hand, Unterarm, Knie, Beinseite), minus 0,5 für Gleichgewichtsverlust.
+test_fold	Vorbeuge im Stehen
+test_fold_how	Stell dich auf eine Stufe oder eine stabile Kiste, Knie gestreckt. Langsam nach vorn beugen und nach unten reichen. Zentimeter unterhalb der Füße zählen plus, oberhalb minus.
+test_balance	Gleichgewicht mit geschlossenen Augen
+test_balance_how	Auf einem Bein stehen, Hände an den Hüften, Augen schließen. Zeit, bis der andere Fuß aufsetzt oder sich der Standfuß bewegt. Bester von drei Versuchen.
+test_push_ups	Liegestütze
+test_push_ups_how	Klassische Liegestütze auf den Zehen, die Brust berührt fast den Boden. So viele wie möglich ohne Pause und mit guter Technik.
+test_hr	Herzfrequenz-Erholung
+test_hr_how	Mach 6 schnelle Runden des Sonnengrußes, miss sofort den Puls und nach 60 Sekunden noch einmal. Gib die Differenz ein. Überspringe den Test, wenn du keinen Pulsmesser hast.
+test_result_label	Dein Bewegungsalter
+test_result_passport	Lebensalter %1$d
+test_result_younger	Dein Körper bewegt sich %1$d Jahre jünger als dein Alter.
+test_result_older	Dein Körper bewegt sich %1$d Jahre älter als dein Alter. Regelmäßiges Üben ändert das; wiederhole den Test in einem Monat.
+test_result_same	Entspricht deinem Lebensalter.
+unit_points	Punkte
+unit_cm	cm
+unit_sec	Sekunden
+unit_times	Wdh.
+unit_bpm	S/min
+rest_title	Ruhe im Liegen
+rest_hint	Leg dich auf den Rücken, Arme neben dem Körper, Handflächen nach oben. Als Nächstes kommt Runde %1$d.
+rest_skip	Weiter
+path_week	8-Wochen-Weg · Woche %1$d, Tag %2$d
+path_again	Nochmal
+path_done	Heute erledigt
+path_rest	Ruhetag
+path_rest_hint	Erholung gehört zum Training. Mach einen Spaziergang oder die kurze Morgeneinheit.
+path_rest_light	10 Minuten am Morgen
+path_test	Testtag
+path_test_hint	Mach den Test des Bewegungsalters, um zu sehen, was sich verändert.
+path_all_sets	Alle Sets →
+home_age_due	Zwei Wochen sind vergangen – Zeit, den Test zu wiederholen.
+home_relax	Ruhe zwischen den Runden
+home_relax_off	aus
+home_relax_hint	Auf dem Rücken liegend mit Timer. Du kannst früher aufhören.
+tv_button	TV
+tv_on	Die Übung läuft auf dem Fernseher
+tv_remote	Dein Telefon ist die Fernbedienung: Pause, zurück, weiter, Tempo.
+settings_title	Einstellungen
+settings_practice	Während der Übung
+settings_sound	Ton beim Phasenwechsel
+settings_sound_hint	Ein kurzer Ton: höher zum Einatmen, tiefer zum Ausatmen. Üben, ohne auf den Bildschirm zu schauen.
+player_scheme	Schema
+player_video	Video
+videos_title	Videos der Lehrerin
+videos_hint	Hänge an jede Haltung einen eigenen Clip: von dir oder deiner Lehrerin. Ein Clip für die rechte Seite wird gespiegelt auch für die linke abgespielt. Er läuft ohne Ton – Atem und Stimme bleiben bei der App.
+videos_settings_hint	Eigene Clips für die Haltungen statt des Schemas.
+videos_open	Clips auswählen
+videos_coverage	Clips: %1$d von %2$d Haltungen
+videos_has	Clip vorhanden
+videos_none	Schema
+videos_add	Hinzufügen
+videos_replace	Ersetzen
+videos_remove	Entfernen
+videos_failed	Diese Datei konnte nicht gelesen werden.
+calendar_summary	Übungstage: %1$d · Minuten: %2$d
+challenge_title	108 Runden
+challenge_hint	Die traditionelle Zahl: 108 Runden des Sonnengrußes im eigenen Tempo. Gezählt ab dem Starttag: jede abgeschlossene „Sonne“ oder klassischer Surya Namaskar.
+challenge_start	Challenge starten
+challenge_progress	%1$d von %2$d
+challenge_left	Noch %1$d Runden · Übungstage: %2$d
+challenge_done	Geschafft! 108 Runden in %1$d Übungstagen.
+challenge_reset	Challenge beenden
+challenge_again	Neu starten
+body_title	Gewicht und Taille
+body_hint	Einmal pro Woche morgens messen: Der Trend zählt, nicht eine einzelne Zahl.
+body_weight	Gewicht
+body_waist	Taille
+body_kg	%1$s kg
+body_cm	%1$s cm
+body_add	Heutige Messung hinzufügen
+body_save	Speichern
+age_chart_legend	Orange – Bewegungsalter, grau – Lebensalter. Niedriger ist besser.
+settings_figure3d	3D-Figur
+settings_figure3d_hint	Die Holz-Gliederpuppe: weiche Übergänge, Hände und Füße bleiben am Boden; mit dem Finger drehbar. Aus – das flache Schema mit Atemleuchten.
+library_title	Bibliothek
+library_hint	Alle %1$d Haltungen der Bibliothek (nach D. Lacerdas „2100 Asanas“) nach Kapiteln und Abschnitten – kostenlos ansehen: Jede Haltung öffnet sich auf der Gliederpuppe und lässt sich mit „＋“ zu deinem Set hinzufügen. Ganze Abschnitte abspielen ist Premium.
+library_search	Suche: Taube, Bakasana, Berg…
+library_found	Gefundene Abschnitte: %1$d
+library_poses	%1$d Haltungen
+library_card	Haltungsbibliothek: %1$d Haltungen
+library_card_hint	Eine Bibliothek mit über 1800 Haltungen: Namen, Sanskrit, jede Haltung auf der Gliederpuppe.
+library_open	Bibliothek öffnen
+close	Schließen
+back	Zurück
+builder_title	Set-Baukasten
+builder_card	Eigenes Set bauen
+builder_card_hint	Haltungen aus den Hauptübungen, dem Aufwärmen und der Bibliothek mit über 1800 Haltungen; Reihenfolge per Ziehen. Freie Testläufe übrig: %1$d von 5.
+builder_card_hint_premium	Haltungen aus den Hauptübungen, dem Aufwärmen und der Bibliothek mit über 1800 Haltungen; Reihenfolge per Ziehen. Premium: unbegrenzte Läufe.
+builder_open	Baukasten öffnen
+builder_hint	Sammle Haltungen mit „＋“, ordne sie per langem Drücken und Ziehen einer Zeile und teste das Set im Player auf der 3D-Gliederpuppe.
+builder_runs_left	Freie Testläufe übrig: %1$d von %2$d. Danach Premium für einen Monat, ein Jahr oder für immer.
+builder_new	Neues Set
+builder_new_name	Mein Set %1$d
+builder_empty	Noch keine Sets – erstelle das erste.
+builder_edit	Bearbeiten
+builder_test	Set testen
+builder_name	Name des Sets
+builder_drag_hint	Lange auf eine Zeile drücken und ziehen, um die Reihenfolge zu ändern. Tippe auf eine Haltung, um sie auf der Gliederpuppe zu sehen.
+builder_no_poses	Noch keine Haltungen – füge sie mit „＋“ hinzu.
+builder_add	Haltungen hinzufügen
+builder_delete	Set löschen
+builder_pick_title	Haltungen hinzufügen
+builder_in_set	Im Set: %1$d
+builder_tab_core	Hauptübungen
+builder_tab_library	Bibliothek
+builder_done	Fertig
+builder_more	Und %1$d weitere – verfeinere die Suche.
+builder_add_to_set	＋ Zum Set hinzufügen
+trial_title	Kostenloser Testlauf
+trial_text	Eigene Sets kannst du insgesamt %1$d-mal kostenlos starten. Übrig: %2$d. Danach brauchst du Premium – für einen Monat, ein Jahr oder für immer.
+trial_over_title	Kostenlose Läufe aufgebraucht
+trial_over_text	Du hast alle %1$d kostenlosen Läufe eigener Sets genutzt. Premium schaltet unbegrenzte Läufe, alle Sets und die ganze Bibliothek frei.
+trial_run	Starten (übrig: %1$d)
+trial_premium	Premium holen
+library_show	Haltungen
+library_hide	Ausblenden
+library_added	Zu „%1$s“ hinzugefügt
+health_n_of	Gesundheitscheck · %1$d von %2$d
+health_body_title	Größe und Gewicht
+health_body_how	Morgens vor dem Frühstück, ohne Schuhe. Daraus berechnen wir den Body-Mass-Index und den Grad des Übergewichts nach WHO-Skala.
+health_height	Größe
+health_weight	Gewicht
+health_waist_title	Taille
+health_waist_how	Auf Höhe des Nabels im Stehen messen, bei ruhigem Ausatmen, das Maßband anliegend, aber nicht drückend. Die Taille zeigt Bauchfett (viszerales Fett) besser als das Gewicht.
+health_pulse_title	Ruhepuls
+health_pulse_how	Sitz 5 Minuten ruhig, dann zähle den Puls am Handgelenk oder Hals 30 Sekunden lang und multipliziere mit 2.
+health_bpm	%1$d S/min
+health_stairs_title	Treppentest
+health_stairs_how	Steig 4 Stockwerke (etwa 60 Stufen) zügig hinauf, ohne Pause und ohne zu rennen. Wie lange hat es gedauert? (Treppentest der Europäischen Gesellschaft für Kardiologie.) Überspringe ihn bei Herzproblemen.
+health_stairs_45	unter 45 s
+health_stairs_60	45–60 s
+health_stairs_90	1–1,5 Min.
+health_stairs_slow	über 1,5 Min.
+health_stairs_cannot	nicht geschafft
+health_sitting_title	Sitzzeit
+health_sitting_how	Wie viele Stunden am Tag sitzt du: Arbeit, Auto, Sofa, Bildschirm?
+health_hours	%1$d Std. am Tag
+health_result_title	Gesundheitscheck
+health_overall_good	Insgesamt: gute Form
+health_overall_ok	Insgesamt: in Ordnung, mit Luft nach oben
+health_overall_risk	Insgesamt: es gibt Risikofaktoren
+health_overall_high	Insgesamt: mehrere ernste Risikofaktoren
+health_m_bmi	Body-Mass-Index %1$s
+health_m_whtr	Taille-zu-Größe %1$s
+health_m_waist	Taille %1$s cm
+health_m_hr	Ruhepuls %1$d
+health_m_stairs	Treppentest
+health_m_sitting	Sitzen %1$d Std. am Tag
+health_bmi_under	Untergewicht (BMI unter 18,5)
+health_bmi_normal	Normalgewicht (18,5–24,9)
+health_bmi_over	Übergewicht, Präadipositas (25–29,9)
+health_bmi_obese1	Adipositas Grad I (30–34,9)
+health_bmi_obese2	Adipositas Grad II (35–39,9)
+health_bmi_obese3	Adipositas Grad III (40 und mehr)
+health_whtr_good	Unter 0,5 – keine Bauchfettleibigkeit
+health_whtr_risk	0,5–0,6 – Bauchfett erhöht das Risiko
+health_whtr_high	0,6 und mehr – hohes kardiometabolisches Risiko
+health_waist_good	Im Normbereich für dein Geschlecht
+health_waist_risk	Über der Norm – erhöhtes Risiko
+health_waist_high	Deutlich über der Norm – hohes Risiko
+health_hr_excellent	Ausgezeichnet: ein trainiertes Herz
+health_hr_good	Gut
+health_hr_average	Durchschnittlich
+health_hr_below	Unterdurchschnittlich – das Herz arbeitet in Ruhe mehr
+health_hr_poor	Schwache Fitness
+health_hr_tachy	100 und mehr – vor intensivem Üben ärztlich abklären
+health_stairs_fit	Etwa 9–10 MET: gute Herz- und Lungenleistung
+health_stairs_good	Gute Leistungsfähigkeit
+health_stairs_average	Durchschnittlich – die Ausdauer lässt sich aufbauen
+health_stairs_low	Unter 8 MET – geringe Ausdauer, besser ärztlich besprechen
+health_stairs_cannot_v	Sehr geringe Ausdauer – sanft beginnen und ärztlich beraten lassen
+health_sit_good	Wenig Sitzen – super
+health_sit_ok	Mäßig: jede Stunde eine Bewegungspause einlegen
+health_sit_risk	Über 8 Stunden: ein Risikofaktor; etwa eine Stunde Bewegung am Tag gleicht ihn aus
+health_target	Zum normalen BMI: minus %1$s kg (auf %2$s kg).
+health_disclaimer	Ein Screening nach offenen Skalen (WHO, NICE, ESC), keine Diagnose.
+health_premium_pitch	Premium baut deinen Plan um diese Werte: alle Sets und die Bibliothek, unbegrenzt eigene Sets, schonende Ersatzhaltungen für Problemzonen.
+health_premium_button	Meinen Premium-Plan holen
+builder_hold	Jede Haltung halten
+builder_hold_n	%1$d Atemzüge
+home_my_sets	Meine Sets
+settings_display	Anzeige
+settings_show_cues	Hinweise und Beschreibung der Haltung
+settings_show_next	„Als Nächstes“ und „aus“ unter dem Titel
+settings_show_sanskrit	Sanskrit-Namen
+settings_show_breath	Atembalken
+settings_large_text	Große Schrift im Player
+settings_thumbnails	Bilder der Haltungen
+settings_thumbnails_hint	Kleine Bilder der Gliederpuppe in der Bibliothek, im Baukasten und auf dem Startbildschirm.
+settings_camera	Kamerawinkel
+camera_side	Seite
+camera_three_quarter	Dreiviertel
+camera_front	Vorne
+account_title	Konto
+account_button	Konto: anmelden oder registrieren
+account_button_signed	Konto: %1$s
+account_login	Anmelden
+account_register	Konto erstellen
+account_email	E-Mail
+account_name	Name
+account_password	Passwort (mindestens %1$d Zeichen)
+account_register_hint	Dein aktueller Fortschritt, deine Sets und Testergebnisse wandern ins neue Konto.
+account_register_do	Konto erstellen
+account_login_do	Anmelden
+account_logout	Abmelden
+account_delete	Konto löschen
+account_delete_title	Konto löschen?
+account_delete_text	Das Konto und sein gesamter Fortschritt – Übungen, eigene Sets, Tests und Messungen – werden endgültig von diesem Gerät gelöscht. Ein Abo wird im Store verwaltet und nicht automatisch gekündigt.
+account_delete_confirm	Endgültig löschen
+account_local_note	Jedes Konto speichert seinen Fortschritt auf diesem Gerät, so können mehrere Personen auf einem Telefon üben. Das Passwort wird nur als Hash gespeichert. Um den Fortschritt auf ein anderes Telefon zu bringen, nutze die Sicherung in den Einstellungen.
+account_err_email	Prüfe die E-Mail-Adresse.
+account_err_short	Das Passwort muss mindestens %1$d Zeichen haben.
+account_err_exists	Ein Konto mit dieser E-Mail gibt es schon – melde dich an.
+account_err_not_found	Auf diesem Gerät gibt es kein Konto mit dieser E-Mail.
+account_err_wrong	Falsches Passwort.
+builder_pin_do	＋ Zum Startbildschirm hinzufügen
+builder_unpin	Vom Startbildschirm entfernen
+builder_preview	Vorschau %1$d / %2$d · %3$s
+settings_voice	Sprachführung
+settings_voice_hint	Nutzt die Sprachausgabe des Telefons. Wenn die Stimme spricht, entfällt der Ton.
+voice_off	Aus
+voice_breath	Nur Atem
+voice_names	Haltungen und Atem
+voice_full	Mit Hinweisen
+settings_vibration	Vibration
+settings_vibration_hint	Ein leichtes Summen bei jedem Wechsel zwischen Ein- und Ausatmen.
+settings_tv	TV
+settings_tv_auto	Auf dem Fernseher zeigen
+settings_tv_auto_hint	Wenn ein zweiter Bildschirm verbunden ist, laufen Figur und Atmung dort und das Telefon wird zur Fernbedienung.
+settings_tv_how	Verbinde den Fernseher per kabellosem Display (Miracast, Cast, Smart View) oder HDMI-Adapter und öffne dann eine Übung.
+settings_tv_open	Cast-Einstellungen öffnen
+reminder_channel	Erinnerungen ans Üben
+reminder_title	Zeit zu üben
+reminder_text	Deine Matte wartet. Schon die kurze Morgeneinheit hält deine Serie.
+trial_reminder_title	Deine Testphase endet bald
+trial_reminder_text	In 2 Tagen bucht der Store das Abo ab. Du kannst es im Profil mit einem Tipp kündigen.
+reminder_section	Erinnerungen
+reminder_toggle	Ans Üben erinnern
+reminder_toggle_hint	Eine Benachrichtigung zur gewählten Zeit. Funktioniert offline.
+reminder_denied	Ohne Berechtigung für Benachrichtigungen können keine Erinnerungen ankommen. Du kannst sie in den Telefoneinstellungen erlauben.
+reminder_hour_step	1 Std.
+backup_section	Sicherung
+backup_hint	Speichere deinen Fortschritt in einer Datei, z. B. in der Cloud oder im Messenger. Praktisch beim Telefonwechsel.
+backup_export	In Datei speichern
+backup_import	Aus Datei wiederherstellen
+backup_saved	Gespeichert.
+backup_failed	Die Datei konnte nicht gelesen oder geschrieben werden.
+backup_empty	Die Datei enthält keine App-Daten.
+backup_confirm_title	Aus Datei wiederherstellen?
+backup_confirm_text	Die aktuellen Daten werden durch die Datei ersetzt: %1$d Einheiten, %2$d Tests.
+backup_confirm_yes	Wiederherstellen
+backup_restored	Daten wiederhergestellt.
+paywall_title	Premium
+paywall_benefit_chandra	Vollständige Übungen „Sonne und Mond“ (bis zu zwei Stunden), Sets für Fortgeschrittene, klassischer Chandra Namaskar
+paywall_benefit_bundle	Eigene Sets aus dem Baukasten – unbegrenzte Läufe
+paywall_benefit_short	Ganze Abschnitte der Haltungsbibliothek als Übungen
+paywall_benefit_future	Neue Sets und Programme, sobald sie erscheinen
+paywall_free_core	Für immer kostenlos: klassischer Surya Namaskar und Chandra Namaskar, das Aufwärmen im Sitzen, das Morgen-Set und „Rücken ohne Schmerz“, die Haltungsbibliothek und der Baukasten (5 Läufe eigener Sets), Beweglichkeitstest und Gesundheitscheck, Fortschritt, Erinnerungen, Übertragung auf den Fernseher.
+paywall_loading	Tarife werden geladen…
+paywall_unavailable	Die Tarife wurden nicht geladen. Bezahlen funktioniert, wenn die App aus %1$s installiert ist und du online bist.
+paywall_trial_terms	%1$d Tage kostenlos. Erste Abbuchung am %2$s, %3$s. Du wirst 2 Tage vorher erinnert.
+paywall_try	%1$d Tage kostenlos testen
+paywall_buy	Für %1$s kaufen
+paywall_cancel_anytime	Jederzeit kündbar: Profil → Abo → Abo kündigen.
+paywall_restore	Käufe wiederherstellen
+paywall_restore_none	Für dieses Konto wurden keine Käufe gefunden.
+paywall_not_now	Nicht jetzt
+plan_month	Monat
+plan_year	Jahr
+plan_lifetime	Für immer
+plan_per_month	%1$s pro Monat
+plan_per_year	%1$s pro Jahr
+plan_once	%1$s einmalig
+sub_section	Abo
+sub_free	Kostenlose Version
+sub_trial	Testphase bis %1$s
+sub_premium	Premium aktiv
+sub_premium_until	Premium bis %1$s
+sub_lifetime	Premium für immer
+sub_get	Premium holen
+sub_cancel	Abo kündigen
+set_locked	Mit Premium freischalten
+settings_debug	Debug
+settings_debug_premium	Premium ohne Kauf
+settings_debug_premium_hint	Nur Testversionen, um gesperrte Sets zu prüfen.
+sets_classic	Klassisch
+sets_classic_hint	Traditioneller Surya und Chandra Namaskar: 12 und 16 Positionen, eine volle Runde vom rechten und vom linken Bein.
+sets_rings	Hauptübungen
+sets_rings_hint	„Sonne“ und „Mond“: fließende Übergänge und ein Atemzug für jede Bewegung.
+sets_full	Voller Zyklus
+sets_full_hint	Eine lange Übung: „Sonne“ geht direkt in „Mond“ über, dann ein Aufwärmen aus sieben kurzen Flows und ein Ausklang bis zur Endentspannung. Für Erfahrene – bis zu zwei Stunden.
+sets_core	Set für Fortgeschrittene und Ausklang
+sets_core_hint	Das Set für Fortgeschrittene, die Überleitung und der abschließende Ausklang.
+sets_extra	Zusatzelemente
+sets_extra_hint	Steigerungen für Aufwärmen und Ausklang, wenn die Grundlagen leichtfallen.
+sets_start	Aufwärmen
+sets_start_hint	Sieben kurze Flows, die den ganzen Körper aufwärmen.
+set_size	%1$d Positionen · ~%2$d Min. · Runden: %3$d
+promo_title	Aktivierungscode
+promo_hint	Du hast einen Code für Premium für einen Monat, ein Jahr oder für immer? Gib ihn hier ein.
+promo_activate	Aktivieren
+promo_ok_month	Premium ist für 30 Tage aktiv
+promo_ok_year	Premium ist für ein Jahr aktiv
+promo_ok_lifetime	Premium ist für immer aktiv
+promo_bad	Der Code ist ungültig. Prüfe Buchstaben und Ziffern.
+promo_used	Dieser Code wurde bereits verwendet
+promo_active_until	Premium per Code bis %1$s
+promo_active_lifetime	Premium per Code: für immer
+health_breath_title	Ruhige Atmung
+health_breath_how	Setz dich bequem hin und atme wie gewohnt, ohne zu steuern. Starte den Timer und zähle eine Minute lang volle Atemzüge (Ein- + Ausatmen). Daraus ergibt sich die Startlänge von Ein- und Ausatmen in der Übung; mit der Phasentaste im Player kannst du sie verlängern.
+health_breath_value	%1$d Atemzüge pro Minute
+health_breath_phase	Startphase in der Übung: einatmen %1$s s, ausatmen genauso
+health_breath_start	1-Minuten-Timer starten
+health_breath_stop	Timer stoppen
+health_breath_left	%1$d s – Atemzüge zählen
+health_breath_done	Die Zeit ist um – gib ein, wie viele Atemzüge du gezählt hast
+health_m_breath	Atmung %1$d pro Minute
+health_breath_slow	Langsame, tiefe Atmung – eine gute Basis für lange Phasen
+health_breath_normal	Normale ruhige Atmung (12–20 pro Minute)
+health_breath_fast	Schnelle Atmung in Ruhe – mit kurzen Phasen beginnen und sie nach und nach verlängern
+sets_favorites	Lieblings-Sets
+sets_ready	Fertige Sets
+sets_ready_hint	Tippe auf ein Set, um vor dem Start Aufbau und Einstellungen zu sehen.
+sets_more	Weitere Sets: Aufwärmen, Ausklang und Extras ▾
+sets_more_hide	Weitere Sets ausblenden ▴
+set_size_short	%1$d Positionen · ~%2$d Min.
+session_minutes	~%1$d Min.
+session_poses	%1$d Positionen
+session_rounds_chip	%1$d Runden
+session_hold	Atemzüge pro Haltung
+session_hold_method	wie im Set
+session_phase_line	Ein- und Ausatmen: je %1$s s. Im Player mit der Phasentaste verlängern.
+session_structure	Aufbau
+session_side_right	rechte Seite
+session_side_left	linke Seite
+session_steps	%1$d Schritte
+session_wrist	Last auf den Handgelenken
+session_wrist_low	Sanft: auf Fäusten
+session_wrist_mid	Mittel: auf Handflächen
+session_wrist_high	Hoch: auf den Fingern
+session_locked	Dieses Set gehört zu Premium.
+session_start	Start
+extras_title	Zusatzelemente
+extras_all	Alle Zusatzelemente
+extras_all_hint	Jedes Element kommt an seinen eigenen Platz im Set
+extras_positions	+%1$d Positionen
+setlib_title	Set-Bibliothek
+setlib_card	Set-Bibliothek
+setlib_open	Set-Bibliothek öffnen
+setlib_card_hint	%1$d Sets für ein Ziel – Rücken, Gelenke, Hüften, Figur, Kraft, Schlaf – plus Zusatzsets und 6 Sets fürs Set-Training. Nach den Tests für dich ausgewählt.
+setlib_hint	Wähle ein Set für dein Ziel. Nach Gesundheitscheck und Bewegungstest stellt die App passende Sets nach vorn; für dich ungeeignete Haltungen werden in jedem Set ersetzt.
+setlib_for_you	Für dich ausgewählt
+setlib_take_test	Mach den Bewegungstest und den Gesundheitscheck – dann wählt die App Sets für dich aus.
+setlib_training	Set-Training: 6 Sets
+setlib_training_hint	Kurze Sets von 15–20 Minuten zweimal am Tag (morgens und abends) bringen mehr als eine lange Einheit. Wechsle die Sets von Tag zu Tag; das integrale Set ist für volle Tage, nicht für die Dauerpraxis. Auf jede starke Haltung folgt ihre Gegenhaltung. Arbeite an deiner Grenze, aber zwinge nie die Gelenke – ein Set zu meistern dauert Monate.
+setlib_book	Zusatzsets
+setlib_book_hint	Zusatzelemente der Übungen „Sonne“ und „Mond“, Aufwärmen, Ausklang und ein Set für Fortgeschrittene als eigene Übungen. Du kannst sie auch auf der Sitzungskarte in die Hauptsets einschalten.
+advice_back	Wegen des unteren Rückens
+advice_neck	Wegen des Nackens
+advice_knees	Wegen der Knie
+advice_wrists	Schonend für die Handgelenke
+advice_goal_joints	Für dein Ziel: gesunde Gelenke
+advice_goal_youth	Für dein Ziel: jung bleiben
+advice_goal_shape	Für dein Ziel: Figur
+advice_goal_strength	Für dein Ziel: Kraft
+advice_goal_calm	Für dein Ziel: Ruhe
+advice_weight	Nach Gewicht und Taille aus dem Gesundheitscheck
+advice_heart	Nach Puls und Treppentest
+advice_sitting	Du sitzt viel
+advice_breath	Deine Ruheatmung ist schnell
+advice_movement_age	Dein Bewegungsalter liegt über deinem Alter
+session_length	Übungsdauer
+session_length_min	%1$d Min.
+session_length_full	Komplett
+session_length_shortest	Kürzer als %1$d Min. geht dieses Set nicht – die Haltezeiten sind schon auf das Minimum gekürzt.
+onb_minutes_title	Wie viele Minuten am Tag?
+onb_minutes_hint	Jedes Set passt sich dieser Zeit an. Du kannst sie jederzeit ändern.
+onb_minutes_10	Passt in jeden Tag
+onb_minutes_20	Die beste Balance für sichtbare Ergebnisse
+onb_minutes_40	Eine tiefe Praxis
+onb_plan_title	Dein Plan ist fertig
+onb_plan_hint	Jeden Tag ein neues Set. Hake die Tage ab und halte deine Serie.
+onb_plan_first	Tag 1: %1$s · ~%2$d Min.
+onb_plan_start	Erste Übung starten
+onb_plan_later	Später
+onb_plan_change	Das Programm kannst du unter „Sets“ → „Programme“ ändern.
+program_day	PROGRAMM · TAG %1$d VON %2$d
+program_rest	Ruhetag
+program_rest_hint	Erholung gehört auch zum Programm. Wenn du magst: eine ruhige Übung.
+program_rest_light	Ruhige Übung
+program_done_title	Programm geschafft!
+program_done_text	Erledigte Tage: %1$d von %2$d. Wähle das nächste Programm – die Gewohnheit ist schon da.
+program_choose	Programm wählen
+program_streak	Serie: %1$d Tage in Folge
+programs_title	Programme
+programs_hint	Ein Plan für 14–30 Tage: für jeden Tag ein Set passend zu deinem Ziel. Die Sets passen sich deinen gewählten Minuten an.
+program_start_btn	Programm starten
+program_active	Läuft · Tag %1$d von %2$d
+program_days	%1$d Tage
+program_stop	Programm beenden
+program_path8	8-Wochen-Weg „Sonne und Mond“
+program_path8_hint	Für Erfahrene: lange Übungen „Sonne“ und „Mond“ im Wechsel, mit einem Test alle zwei Wochen.
+checkin_title	Wie geht es Ihnen heute?
+checkin_energy	Energie
+energy_low	Wenig
+energy_mid	Normal
+energy_high	Voller Energie
+checkin_mood	Stimmung
+mood_calm	Ruhig
+mood_tense	Angespannt
+checkin_zone	Verspannt
+zone_none	Nirgends
+zone_neck	Nacken und Schultern
+zone_back	Rücken
+zone_hips	Hüften
+zone_knees	Knie
+checkin_time	Zeit
+checkin_minutes	%1$d Min.
+checkin_pick	Übung finden
+checkin_for_you	Heute für Sie
+checkin_start	Übung starten
+checkin_change	Antworten ändern
+checkin_breath_first	Zuerst zwei Minuten atmen
+checkin_premium_better	„%1$s“ passt noch besser – in Premium
+checkin_history	Wie Sie sich fühlten
+reason_neck	Sie haben Verspannung in Nacken und Schultern angegeben – wir öffnen sanft die Schultern und entlasten den Nacken, ohne Umkehrhaltungen.
+reason_back	Ihr Rücken braucht Pflege – wir entlasten den unteren Rücken mit sanften Haltungen im Liegen und im Vierfüßlerstand, ohne tiefe Rückbeugen.
+reason_hips	Verspannte Hüften – wir öffnen die Hüftgelenke Schritt für Schritt, mit Pausen zwischen den Haltungen.
+reason_knees	Ihre Knie sind heute empfindlich – Haltungen ohne Kniebelastung und ohne tiefe Hocke.
+reason_low	Wenig Energie – ein sanftes Set ohne Kraftbalancen: den Kreislauf anregen, ohne sich zu verausgaben.
+reason_tense	Anspannung löst sich am besten über das Ausatmen – ruhiges Tempo, Fokus auf dem Ausatmen.
+reason_evening	Abend – keine anregenden Abfolgen: sanfte Haltungen für einen leichteren Schlaf.
+reason_morning	Morgen – ohne ruckartige Bewegungen wach werden: Gelenke, Dehnung, lebhaftes, aber sanftes Tempo.
+reason_high	Viel Energie – ein guter Tag für eine Kraftübung.
+reason_steady	Ein gewöhnlicher Tag – der klassische Sonnengruß hält Form und Rhythmus.
+breath_title	Atmung
+breath_card_hint	Zwei Minuten zum Beruhigen, 4-7-8, Box-Atmung, Ujjayi und Atmung vor dem Schlafen.
+breath_intro	Setzen oder legen Sie sich bequem hin und folgen Sie dem Kreis: Er wächst beim Einatmen und schrumpft beim Ausatmen. Bei Schwindel aufhören und normal atmen.
+breath_no_holds	Ohne Atempausen
+breath_no_holds_hint	Bei Schwangerschaft, Bluthochdruck oder Schwindel: Atempausen entfallen, der Rhythmus bleibt.
+breath_duration	%1$d Min.
+breath_sos	In 2 Minuten zur Ruhe
+breath_sos_hint	Doppeltes Einatmen durch die Nase und langes Ausatmen – der schnellste Weg, akuten Stress zu lösen.
+breath_478	4-7-8
+breath_478_hint	4 ein, 7 halten, 8 aus. Verlangsamt den Puls und beruhigt den Geist.
+breath_box	Box-Atmung
+breath_box_hint	Vier gleiche Seiten: ein, halten, aus, halten – je 4. Sammelt die Aufmerksamkeit vor der Arbeit oder einem schwierigen Gespräch.
+breath_ujjayi	Ujjayi
+breath_ujjayi_hint	Gleichmäßiges Atmen mit leicht verengter Kehle, ein sanftes Meeresrauschen. Der Atem der Yogapraxis.
+breath_sleep	Vor dem Schlafen
+breath_sleep_hint	Doppelt so lange aus- wie einatmen. Im Bett liegend, bei ausgeschaltetem Licht.
+breath_in	Einatmen
+breath_top_up	Noch etwas
+breath_hold	Halten
+breath_out	Ausatmen
+breath_cycle	Runde %1$d von %2$d
+breath_done	Geschafft
+breath_finish	Fertig
+breath_stop	Stopp
+paywall_benefit_today	Alle Themen-Sets – Nacken, Hüften, Knie, Schlaf, Kraft, Ruhe: der Bildschirm „Heute“ wählt das passendste für Ihr Befinden
+paywall_free_extra	Ebenfalls kostenlos: das tägliche Befinden mit Übungsvorschlag und alle Atemübungen.
+player_transition	Übergang in die Haltung
+player_details	Mehr ▾
+player_details_hide	Ausblenden ▴
+breath_nadi	Wechselatmung
+breath_nadi_hint	Rechtes Nasenloch mit dem Daumen schließen, linkes mit dem Ringfinger. Auf einer Seite ein, auf der anderen aus. Gleicht aus und beruhigt.
+breath_full	Volle Yoga-Atmung
+breath_full_hint	Erst den Bauch füllen, dann die Rippen, dann die Brust; in derselben Reihenfolge leeren. Die Grundlage jeder Pranayama.
+breath_bhramari	Summende Biene
+breath_bhramari_hint	Durch die Nase ein; mit einem weichen „mmm“ bei geschlossenen Lippen aus. Beruhigt den Geist, gut vor dem Schlafen.
+breath_sitali	Kühlende Atmung
+breath_sitali_hint	Zunge zu einem Röhrchen rollen und durch sie einatmen; durch die Nase aus. Kühlt an heißen Tagen. Wenn das nicht geht, durch die Zähne einatmen.
+breath_kapala	Kapalabhati
+breath_kapala_hint	Kurze, kräftige Ausatmungen aus dem Bauch, die Einatmung kommt von selbst. 30 Ausatmungen, eine halbe Minute Pause, drei Runden. Belebend – morgens auf nüchternen Magen.
+breath_active_warning	Nicht in der Schwangerschaft, während der Menstruation, bei Bluthochdruck, Bruch, Herzerkrankungen oder nach Bauchoperationen.
+breath_hum	Ausatmen: „mmm“
+breath_cool_in	Durch die Zunge ein
+breath_pump	Aus!
+breath_rest	Pause, frei atmen
+breath_left_nostril	linkes Nasenloch
+breath_right_nostril	rechtes Nasenloch
+med_title	Meditation
+med_card_hint	Kurze geführte Meditationen: Yoga Nidra, Kerzenblick, So-Ham, die Pause zwischen den Atemzügen, vor dem Schlafen. Und Yoga auf dem Stuhl.
+med_intro	Die Stimme führt – folgen Sie ihr einfach. Sitzen oder liegen Sie so, dass nichts stört. Sie können jederzeit aufhören.
+med_no_voice	Auf dem Telefon gibt es keine Stimme für diese Sprache – lesen Sie den Text auf dem Bildschirm.
+med_nidra	Yoga Nidra
+med_nidra_hint	Im Liegen wandert die Aufmerksamkeit Stück für Stück durch den Körper. Tiefe Erholung in zehn Minuten.
+med_trataka	Kerzenblick
+med_trataka_hint	Eine Kerze auf Armlänge, auf Augenhöhe. In die Flamme schauen, dann ihr Bild mit geschlossenen Augen halten.
+med_soham	So-Ham
+med_soham_hint	Innerlich „So“ beim Einatmen und „Ham“ beim Ausatmen. Der Atem wird zum Anker der Aufmerksamkeit.
+med_gap	Die Pause zwischen den Atemzügen
+med_gap_hint	Eine der ältesten Techniken: den Moment bemerken, in dem das Einatmen zum Ausatmen wird.
+med_sleep	Vor dem Schlafen
+med_sleep_hint	Im Bett bei ausgeschaltetem Licht: den Körper weich werden lassen, den Atem verlangsamen und den Tag loslassen.
+med_minutes	%1$d Min.
+med_stop	Stopp
+med_pause	Pause
+med_resume	Weiter
+med_done	Fertig. Lassen Sie sich Zeit beim Aufstehen.
+med_nidra_1	Legen Sie sich auf den Rücken, die Arme etwas vom Körper weg, Handflächen nach oben. Die Augen schließen sich.
+med_nidra_2	Atmen Sie dreimal langsam. Mit jedem Ausatmen wird der Körper schwerer.
+med_nidra_3	Sagen Sie sich innerlich einen kurzen Wunsch für heute, mit Ihren Worten. Einfach und kurz.
+med_nidra_4	Aufmerksamkeit in die rechte Hand: Daumen, Finger, Handfläche, Handgelenk. Der ganze rechte Arm bis zur Schulter.
+med_nidra_5	Die rechte Körperseite, rechte Hüfte, Knie, Schienbein, der rechte Fuß und die Zehen.
+med_nidra_6	Jetzt die linke Hand: Daumen, Finger, Handfläche, Handgelenk. Der ganze linke Arm bis zur Schulter.
+med_nidra_7	Die linke Körperseite, linke Hüfte, Knie, Schienbein, der linke Fuß und die Zehen.
+med_nidra_8	Die Rückseite des Körpers: Fersen, Waden, Oberschenkelrückseiten, Gesäß, der ganze Rücken, der Hinterkopf.
+med_nidra_9	Das Gesicht: Stirn, Augenbrauen, Augen, Wangen, Lippen, Kiefer. Alles darf weich werden.
+med_nidra_10	Spüren Sie den ganzen Körper auf einmal: er liegt und atmet von selbst.
+med_nidra_11	Wiederholen Sie Ihren Wunsch noch einmal.
+med_nidra_12	Bewegen Sie Finger und Zehen, strecken Sie sich, drehen Sie sich auf die Seite und setzen Sie sich langsam auf.
+med_trataka_1	Sitzen Sie bequem, die Kerze auf Armlänge, die Flamme auf Augenhöhe.
+med_trataka_2	Schauen Sie ohne Anstrengung in die Flamme. Blinzeln Sie, wenn nötig. Einfach schauen.
+med_trataka_3	Schließen Sie jetzt die Augen. Das Bild der Flamme bleibt vor Ihnen. Halten Sie es sanft.
+med_trataka_4	Öffnen Sie die Augen und schauen Sie wieder in die Flamme.
+med_trataka_5	Schließen Sie die Augen. Wenn das Bild verblasst, ruhen Sie einfach im Dunkel hinter den Lidern.
+med_trataka_6	Reiben Sie die Handflächen und legen Sie sie auf die Augen. Öffnen Sie die Augen unter den Händen.
+med_soham_1	Sitzen Sie mit geradem Rücken, Hände auf den Knien. Schließen Sie die Augen.
+med_soham_2	Lassen Sie den Atem natürlich fließen. Bemerken Sie nur, wie die Luft ein- und ausströmt.
+med_soham_3	Mit jedem Einatmen innerlich „So“. Mit jedem Ausatmen „Ham“.
+med_soham_4	Wenn Gedanken kommen, kämpfen Sie nicht dagegen. Bemerken Sie sie und kehren Sie zu So und Ham zurück.
+med_soham_5	So – ein. Ham – aus. Sonst ist nichts zu tun.
+med_soham_6	Lassen Sie die Worte los und sitzen Sie einige Atemzüge in Stille.
+med_soham_7	Öffnen Sie langsam die Augen.
+med_gap_1	Setzen oder legen Sie sich bequem hin und schließen Sie die Augen.
+med_gap_2	Folgen Sie dem Einatmen von den Nasenlöchern hinunter in die Brust.
+med_gap_3	Am Ende des Einatmens gibt es eine winzige Pause, bevor das Ausatmen beginnt. Bemerken Sie sie.
+med_gap_4	Und am Ende des Ausatmens eine weitere Pause vor dem nächsten Einatmen.
+med_gap_5	Verlängern Sie die Pausen nicht. Seien Sie einfach da, wenn sie geschehen.
+med_gap_6	In diesem Moment gibt es weder Anstrengung noch Gedanken. Ruhen Sie dort.
+med_gap_7	Atmen Sie etwas tiefer ein und öffnen Sie die Augen.
+med_sleep_1	Legen Sie sich so ins Bett, wie Sie sonst einschlafen. Das Licht ist aus.
+med_sleep_2	Vier Zählzeiten ein, sechs aus. Das Ausatmen wird jedes Mal etwas länger.
+med_sleep_3	Lassen Sie das Gewicht des Körpers in die Matratze sinken: Beine, Becken, Rücken, Schultern, Kopf.
+med_sleep_4	Erinnern Sie sich an drei gute Momente von heute, auch ganz kleine.
+med_sleep_5	Was unerledigt ist, kann bis morgen warten. Lassen Sie es mit dem Ausatmen los.
+med_sleep_6	Wenn Sie möchten, nehmen Sie sich vor: Heute Nacht bemerke ich meine Träume.
+med_sleep_7	Atmen Sie weiter langsam. Jetzt ist nichts weiter zu tun. Gute Nacht.
+card_works	Was wirkt
+card_watch	Darauf achten
+card_easier	Leichter
+card_avoid	Nicht empfohlen
+gloss_title	Yoga-Wörterbuch
+gloss_card_hint	Dreißig Wörter, die im Unterricht fallen – in einfacher Sprache.
+wisdom_title	Gedanke des Tages
+dosha_title	Ayurveda: Ihr Typ
+dosha_card_hint	Acht Fragen zu Körper und Gewohnheiten – und welche Übung, welcher Tagesrhythmus und welches Essen zu Ihnen passen.
+dosha_intro	Antworten Sie, wie Sie seit Jahren meistens sind, nicht wie heute. Das ist eine traditionelle Sicht, keine Diagnose.
+dosha_question	Frage %1$d von %2$d
+dosha_result	Ihr führendes Dosha
+dosha_again	Test wiederholen
+dosha_practice	Übung
+dosha_day	Tagesrhythmus
+dosha_food	Essen
+dosha_sets	Passende Sets
+dosha_vata	Vata – Luft und Raum
+dosha_pitta	Pitta – Feuer und Wasser
+dosha_kapha	Kapha – Erde und Wasser
+dosha_vata_about	Schnell, kreativ, leicht; aus dem Gleichgewicht leicht kalt, unruhig oder ängstlich.
+dosha_pitta_about	Fokussiert, warm, zielstrebig; aus dem Gleichgewicht reizbar und überhitzt.
+dosha_kapha_about	Ruhig, beständig, ausdauernd; aus dem Gleichgewicht schwer und träge.
+dosha_vata_practice	Langsame, erdende Übung: Stehhaltungen, Vorbeugen, lange Savasana, Wechselatmung. Keine Hektik, keine langen schnellen Abfolgen.
+dosha_pitta_practice	Kühlende, ruhige Übung ohne Wettkampf: Vorbeugen, Drehungen, Mondgruß, kühlende Atmung.
+dosha_kapha_practice	Kraftvolle, wärmende Übung: Sonnengrüße, Stehhaltungen, Rückbeugen, morgens Kapalabhati.
+dosha_vata_day	Feste Zeiten für Essen und Schlaf, Wärme, früh ins Bett, Selbstmassage mit warmem Öl.
+dosha_pitta_day	Pausen bei der Arbeit, kein Sport in der Mittagshitze, Zeit in der Natur und am Wasser.
+dosha_kapha_day	Früh aufstehen, täglich bewegen, kein Mittagsschlaf, neue Eindrücke.
+dosha_vata_food	Warmes, gekochtes, leicht öliges Essen; Suppen, Getreide, Wurzelgemüse. Weniger Rohes, Kaltes und Trockenes.
+dosha_pitta_food	Kühlendes, mildes Essen: Gemüse, Obst, Getreide. Weniger Scharfes, Saures, Gebratenes und Alkohol.
+dosha_kapha_food	Leichtes, warmes, gewürztes Essen; viel Gemüse und Hülsenfrüchte. Weniger Süßes, Schweres und Milchprodukte.
+dosha_note	Ayurveda ist ein traditionelles System, keine Medizin. Bei gesundheitlichen Problemen zum Arzt.
+dosha_q1	Ihr Körperbau
+dosha_q1_v	Schlank, leicht, nimmt schwer zu
+dosha_q1_p	Mittel, sportlich
+dosha_q1_k	Kräftig, nehme leicht zu
+dosha_q2	Ihre Haut
+dosha_q2_v	Trocken, dünn, kühl
+dosha_q2_p	Warm, rötet sich leicht, empfindlich
+dosha_q2_k	Dick, glatt, leicht fettig
+dosha_q3	Appetit
+dosha_q3_v	Unregelmäßig, ich vergesse zu essen
+dosha_q3_p	Stark; hungrig – gereizt
+dosha_q3_k	Gleichmäßig, eine Mahlzeit auszulassen fällt leicht
+dosha_q4	Schlaf
+dosha_q4_v	Leicht, ich wache oft auf
+dosha_q4_p	Kurz, aber tief
+dosha_q4_k	Lang und tief, schwer aufzuwachen
+dosha_q5	Unter Stress …
+dosha_q5_v	machen Sie sich Sorgen und werden ängstlich
+dosha_q5_p	werden Sie wütend und kritisch
+dosha_q5_k	ziehen Sie sich zurück und werden langsamer
+dosha_q6	Wetter, das Sie am wenigsten mögen
+dosha_q6_v	Kälte und Wind
+dosha_q6_p	Hitze
+dosha_q6_k	Feucht und grau
+dosha_q7	Wie Sie Dinge tun
+dosha_q7_v	Schnell, vieles gleichzeitig, verliere das Interesse
+dosha_q7_p	Zielstrebig, ich bringe Dinge zu Ende
+dosha_q7_k	Langsam, aber beständig
+dosha_q8	Gedächtnis
+dosha_q8_v	Lerne schnell, vergesse schnell
+dosha_q8_p	Scharf und klar
+dosha_q8_k	Lerne langsam, behalte lange
+gloss_1_t	Asana
+gloss_1_d	Eine Haltung, stabil und mühelos.
+gloss_2_t	Pranayama
+gloss_2_d	Atemübung: den Atem verlängern und lenken.
+gloss_3_t	Prana
+gloss_3_d	Lebensenergie; in der Praxis – der Atem.
+gloss_4_t	Vinyasa
+gloss_4_d	Bewegung mit dem Atem verbinden, eine Bewegung pro Ein- oder Ausatmen.
+gloss_5_t	Drishti
+gloss_5_d	Der Punkt, auf dem der Blick in einer Haltung ruht.
+gloss_6_t	Bandha
+gloss_6_d	Ein sanfter muskulärer „Verschluss“, der Energie hält und den Körper schützt.
+gloss_7_t	Mula bandha
+gloss_7_d	Sanftes Anheben des Beckenbodens.
+gloss_8_t	Uddiyana bandha
+gloss_8_d	Den Bauch nach dem Ausatmen nach innen und oben ziehen.
+gloss_9_t	Jalandhara bandha
+gloss_9_d	Kinn beim Atemanhalten zur Brust senken.
+gloss_10_t	Mudra
+gloss_10_d	Eine Geste oder ein Siegel – der Hände oder des ganzen Körpers.
+gloss_11_t	Ujjayi
+gloss_11_d	Atem mit leicht verengter Kehle und weichem Klang.
+gloss_12_t	Savasana
+gloss_12_d	Völlige Ruhe im Liegen am Ende der Übung.
+gloss_13_t	Surya namaskar
+gloss_13_d	Sonnengruß: eine fließende Folge von Haltungen im Atemrhythmus.
+gloss_14_t	Chandra namaskar
+gloss_14_d	Mondgruß: eine ruhigere, kühlende Abfolge.
+gloss_15_t	Hatha yoga
+gloss_15_d	Yoga von Körper und Atem: Asanas, Pranayama, Reinigung.
+gloss_16_t	Ashtanga
+gloss_16_d	Die „acht Glieder“ des Yoga nach Patanjali; auch ein dynamischer Übungsstil.
+gloss_17_t	Yama
+gloss_17_d	Ethik gegenüber anderen: Gewaltlosigkeit, Wahrhaftigkeit, Nicht-Stehlen, Maß, Nicht-Gier.
+gloss_18_t	Niyama
+gloss_18_d	Persönliche Disziplin: Reinheit, Zufriedenheit, Eifer, Selbststudium, Hingabe.
+gloss_19_t	Pratyahara
+gloss_19_d	Die Sinne nach innen wenden, weg von Ablenkungen.
+gloss_20_t	Dharana
+gloss_20_d	Konzentration auf ein Objekt.
+gloss_21_t	Dhyana
+gloss_21_d	Meditation: gleichmäßige, ununterbrochene Aufmerksamkeit.
+gloss_22_t	Samadhi
+gloss_22_d	Völlige Versenkung; das Ziel des Yoga in den klassischen Texten.
+gloss_23_t	Chakra
+gloss_23_d	Ein „Rad“: eines der Energiezentren entlang der Wirbelsäule in der Yogatradition.
+gloss_24_t	Nadi
+gloss_24_d	Ein Kanal, durch den Prana fließt; Ida links, Pingala rechts.
+gloss_25_t	Kundalini
+gloss_25_d	Ruhende Energie an der Basis der Wirbelsäule in der tantrischen Tradition.
+gloss_26_t	Mantra
+gloss_26_d	Ein Laut oder Wort, das wiederholt wird, um den Geist zu sammeln.
+gloss_27_t	Om
+gloss_27_d	Der Urklang; oft zu Beginn und am Ende der Übung gesungen.
+gloss_28_t	Namaste
+gloss_28_d	„Ich verneige mich vor dir“; ein Gruß mit aneinandergelegten Händen.
+gloss_29_t	Ahimsa
+gloss_29_d	Nicht-Verletzen – auch gegenüber dem eigenen Körper beim Üben.
+gloss_30_t	Santosha
+gloss_30_d	Zufriedenheit mit dem, was ist.
+gloss_31_t	Dosha
+gloss_31_d	Im Ayurveda eine der drei Kräfte im Körper: Vata, Pitta, Kapha.
+wisdom_1	Yoga ist das Zur-Ruhe-Kommen der Bewegungen des Geistes.
+wisdom_2	Eine Haltung soll stabil und angenehm sein.
+wisdom_3	Üben und Loslassen – beides ist nötig.
+wisdom_4	Die Übung wird fest, wenn sie lange, ohne Unterbrechung und mit Sorgfalt geschieht.
+wisdom_5	Leid, das noch nicht gekommen ist, kann vermieden werden.
+wisdom_6	Ist der Atem unruhig, ist der Geist unruhig; ist der Atem still, ist der Geist still.
+wisdom_7	Gewaltlosigkeit beginnt damit, wie Sie Ihren eigenen Körper auf der Matte behandeln.
+wisdom_8	Zufriedenheit bringt das größte Glück.
+wisdom_9	Erfolg im Yoga kommt aus Begeisterung, Mut, Geduld und stetiger Übung.
+wisdom_10	Zu viel Essen, Überanstrengung, viel Reden und zu strenge Regeln verderben die Übung.
+wisdom_11	Ein Gramm Praxis wiegt mehr als Tonnen Theorie.
+wisdom_12	Seien Sie heute sanft zu sich – morgen öffnet sich der Körper leichter.
+wisdom_13	Wohin die Aufmerksamkeit geht, folgt der Atem; wohin der Atem geht, folgt der Körper.
+wisdom_14	Wahrhaftigkeit: Seien Sie in der Haltung ehrlich, wo Sie heute stehen.
+wisdom_15	Zehn Minuten täglich sind mehr wert als eine Stunde einmal pro Woche.
+wisdom_16	Das Ausatmen ist der Ort des Loslassens.
+wisdom_17	Reinheit von Körper und Gedanken macht die Übung leicht.
+wisdom_18	Vergleichen Sie Ihre Haltung nicht mit anderen – nur mit der von gestern.
+wisdom_19	Ruhe ist Teil der Übung, keine Pause davon.
+wisdom_20	Maß bei Essen und Schlaf, bei Arbeit und Ruhe macht Yoga möglich.
+wisdom_21	Lächeln Sie in der Haltung – im Gesicht versteckt sich die Spannung zuerst.
+card_steps	So kommst du hinein
+card_tip	Tipp
+med_practices	Geführte Übungen mit Stimme
+med_chair	Yoga auf dem Stuhl
+med_chair_hint	Fürs Büro, unterwegs oder wenn der Weg zum Boden schwerfällt: Nacken, Schultern, Seitbeugen, Hüften und eine Drehung, ohne vom Stuhl aufzustehen.
+med_chair_1	Setzen Sie sich vorne auf einen festen Stuhl ohne Rollen. Füße flach, hüftbreit, Knie über den Knöcheln, Hände auf den Oberschenkeln. Sitzen Sie aufrecht, der Blick wird weich.
+med_chair_2	Atmen Sie langsam durch die Nase ein und etwas länger aus. Spüren Sie die Sitzbeine auf der Sitzfläche und den Scheitel, der nach oben strebt.
+med_chair_3	Nacken: Beim Ausatmen das Kinn zur Brust senken, beim Einatmen den Kopf wieder heben. Einige Male, langsam.
+med_chair_4	Neigen Sie das rechte Ohr zur rechten Schulter und atmen Sie dort. Zurück zur Mitte, dann nach links. Die Schultern bleiben unten.
+med_chair_5	Legen Sie die Handflächen vor der Brust zusammen. Leicht andrücken, die Brust heben, die Schultern weich.
+med_chair_6	Mit dem Einatmen die Arme über die Seiten nach oben führen, bis sich die Handflächen über dem Kopf treffen. Mit dem Ausatmen über die Seiten senken. Im Atemrhythmus wiederholen.
+med_chair_7	Kuhgesicht-Arme: rechter Arm hoch, Ellbogen beugen, Hand zwischen die Schulterblätter. Die linke Hand kommt von unten hinter den Rücken und greift nach oben. Finger fassen oder einen Ärmel halten. Dann Seitenwechsel.
+med_chair_8	Beim Einatmen die Schultern zu den Ohren ziehen, beim Ausatmen fallen lassen. Dann langsam nach hinten kreisen.
+med_chair_9	Heben Sie beide Arme schulterbreit über den Kopf, Handflächen zueinander. Strecken Sie sich durch die Finger, die Schultern sinken von den Ohren weg.
+med_chair_10	Seitbeuge: rechte Hand neben Ihnen auf den Sitz, linker Arm hoch und über den Kopf nach rechts. Atmen Sie in die linke Flanke. Aufrichten und Seite wechseln.
+med_chair_11	Adlerarme: Arme nach vorn, den linken über den rechten kreuzen, Ellbogen beugen und die Handflächen zueinander bringen. Die Ellbogen etwas anheben. Dann andersherum kreuzen.
+med_chair_12	Knie zur Brust: Finger unter dem rechten Oberschenkel verschränken und das Knie heranziehen, der Rücken bleibt lang. Dann das linke Knie.
+med_chair_13	Hüftdehnung: rechten Knöchel auf das linke Knie legen, die rechte Hand knapp über das rechte Knie, mit langem Rücken leicht nach vorn neigen. Dann das andere Bein.
+med_chair_14	Drehung: nach rechts drehen, eine Hand an der Stuhllehne, die andere auf dem Knie. Beim Einatmen länger werden, beim Ausatmen etwas weiter drehen. Zur Mitte, dann nach links.
+med_chair_15	Vorbeuge: Füße etwas weiter, über die Oberschenkel falten, Arme und Kopf hängen lassen. Langsam aufrichten, der Kopf zuletzt.
+med_chair_16	Ruhe: Arme auf einem Tisch oder den Oberschenkeln verschränken, die Stirn darauflegen und eine Minute oder länger ruhig atmen.
+med_chair_17	Richten Sie sich langsam auf und spüren Sie, wie sich Rücken, Nacken und Schultern jetzt anfühlen. Die Übung ist zu Ende.
+tips_title	Tipps für die Praxis
+tips_card_hint	Sicher üben: Essen, Atem, Hilfsmittel, Alter, Zyklus, Schwangerschaft.
+tips_intro	Aus Yoga-Handbüchern gesammelt und in einfachen Worten wiedergegeben. Ersetzt nicht den Rat von Arzt oder Lehrer.
+tip_basics_t	Vor und während der Praxis
+tip_basics_1	Üben Sie mit leerem Magen: etwa zwei Stunden nach einer leichten und drei bis vier nach einer großen Mahlzeit. Ein Glas Wasser ist in Ordnung.
+tip_basics_2	Ein ruhiger, gelüfteter Raum, eine rutschfeste Matte und Kleidung, die nicht einengt. Barfuß üben.
+tip_basics_3	Beginnen Sie mit ein paar Minuten Sitzen und Atmen, dann aufwärmen. Enden Sie mit mindestens fünf Minuten Entspannung im Liegen.
+tip_basics_4	Halten Sie die Einheit ausgewogen: Vorbeugen, Rückbeugen und Drehungen. Nach einer starken Rückbeuge eine sanfte Vorbeuge oder Drehung.
+tip_basics_5	Dehnen Sie bis zu einer angenehmen Anstrengung, nie in einen stechenden Schmerz. Schmerz im Gelenk heißt: aus der Haltung kommen.
+tip_basics_6	Kurz und täglich bringt mehr als lang und selten. Fünfzehn Minuten sind ein guter Anfang.
+tip_breath_t	Atmung
+tip_breath_1	Halten Sie in den Haltungen nicht den Atem an. Faustregel: heben und öffnen mit dem Einatmen, beugen und drehen mit dem Ausatmen.
+tip_breath_2	Atmen Sie gleichmäßig durch die Nase. Wird der Atem stockend oder bleibt er weg, ist die Haltung zu schwer — nachlassen.
+tip_breath_3	Lassen Sie das Ausatmen etwas länger sein als das Einatmen: Das beruhigt das Nervensystem, besonders vor dem Schlafen.
+tip_breath_4	Atemübungen macht man aufrecht sitzend oder liegend, ohne Anstrengung. Wird Ihnen schwindlig, kehren Sie zum normalen Atem zurück.
+tip_props_t	Hilfsmittel
+tip_props_1	Eine gefaltete Decke unter den Sitzbeinen erleichtert den Schneidersitz und hält den Rücken aufrecht.
+tip_props_2	Ein Block oder ein Stapel Bücher bringt den Boden in Stehhaltungen und Vorbeugen näher.
+tip_props_3	Ein Gurt oder Gürtel hilft, wenn die Hände die Füße nicht erreichen.
+tip_props_4	Eine Rolle oder gerollte Decken stützen Rücken und Knie in Ruhehaltungen; eine Wand hilft bei Gleichgewicht und Ausrichtung.
+tip_mature_t	Ab 50 und bei steifen Gelenken
+tip_mature_1	Beginnen Sie mit Yoga auf dem Stuhl, dem Aufwärmen und den sanften Sets; Stehhaltungen nach und nach dazunehmen.
+tip_mature_2	Halten Sie bei Gleichgewichtshaltungen eine Wand oder Stuhllehne in Reichweite.
+tip_mature_3	Stehen Sie langsam vom Boden auf: zur Seite rollen, in den Vierfüßlerstand, dann aufrichten.
+tip_mature_4	Bei Bluthochdruck, Glaukom oder Herzerkrankungen Umkehrhaltungen weglassen und den Kopf über dem Herzen halten. Vorher mit dem Arzt sprechen.
+tip_cycle_t	Während der Menstruation
+tip_cycle_1	An diesen Tagen tun vielen Frauen ruhige, gestützte Haltungen gut: liegender gebundener Winkel, liegender Held, Haltung des Kindes, sitzende Vorbeugen mit aufgelegtem Kopf.
+tip_cycle_2	Lassen Sie Umkehrhaltungen (Kopfstand, Schulterstand, Pflug, Beine an der Wand), starke Bauchübungen und tiefe Drehungen weg.
+tip_cycle_3	Wenn Sie müde sind, nur Haltungen im Liegen und Atmung. Dafür gibt es das Set „Sanfte Tage des Zyklus“.
+tip_pregnancy_t	In der Schwangerschaft
+tip_pregnancy_1	Üben Sie nur mit Zustimmung Ihres Arztes, am besten mit einer in Schwangerschaftsyoga erfahrenen Lehrkraft.
+tip_pregnancy_2	Vermeiden Sie Bauchlage, starke Drehungen, tiefe Rückbeugen, Sprünge und Bauchübungen. Nach dem ersten Trimester nicht lange flach auf dem Rücken liegen.
+tip_pregnancy_3	Stellen Sie die Füße weiter und nutzen Sie Halt: Stuhl, Wand, Block. Hocke, gebundener Winkel und sanfte Katze-Kuh tun meist gut.
+tip_pregnancy_4	Dehnen Sie nicht bis zum Äußersten: In der Schwangerschaft werden die Bänder weicher und lassen sich leicht überdehnen.
+tip_stop_t	Wann aufhören
+tip_stop_1	Stechender oder einschießender Schmerz, Taubheit, Schwindel, Atemnot oder Brustschmerz — sofort aufhören. Geht es nicht vorbei, zum Arzt.
+tip_stop_2	Nach einer Verletzung oder Operation oder bei einer chronischen Krankheit vor dem Start mit dem Arzt sprechen.
+tip_stop_3	Bei Fieber oder akuter Krankheit lieber ausruhen statt üben.

@@ -1,0 +1,648 @@
+0	Posizione della montagna
+1	Inspirazione a petto aperto
+2	Braccia in alto
+3	Piegamento laterale a destra
+4	Piegamento laterale a sinistra
+5	Piegamento all’indietro in piedi
+6	Mezzo piegamento a schiena piatta
+7	Piegamento in avanti in piedi
+8	Mezzo piegamento, sguardo avanti
+9	Piegamento in avanti tenendo le gambe
+10	Piegamento in avanti, mani intrecciate dietro
+11	Salto in plank
+12	Cane a testa in su scivolato
+13	Plank basso scivolato
+14	Plank basso (chaturanga)
+15	Plank basso, petto in avanti
+16	Cane a testa in su
+17	Cane a testa in giù
+18	Cane a testa in giù con piegamento all’indietro
+19	Cane a testa in giù profondo
+20	Affondo, braccia in alto
+21	Affondo a mezzaluna
+22	Affondo, braccia aperte sull’espirazione
+23	Affondo a mezzaluna, passo 1
+24	Affondo a mezzaluna, passo 2
+25	Cane a tre zampe
+26	Cane a testa in su scivolato su una gamba
+27	Plank basso su una gamba
+28	Cane a tre zampe profondo
+29	Plank, ginocchio alla spalla destra
+30	Plank, ginocchio alla spalla sinistra
+31	Cane a testa in giù con apertura delle spalle
+32	Gatto: schiena in giù
+33	Gatto: schiena in su
+34	Gatto inarcato, gamba indietro
+35	Gatto, ginocchio alla testa di lato
+36	Gatto, cerchio lento con la gamba
+37	Gatto: arco profondo, gamba indietro
+38	Gatto: schiena in su, ginocchio alla fronte
+39	Gatto, oscillazione lenta della gamba indietro
+40	Gatto, oscillazione lenta della gamba di lato
+41	Quadrupedia con braccio e gamba tesi
+42	Mezzo cammello in ginocchio
+43	Quadrupedia, braccio e gamba opposti
+44	Mezzo cammello, presa incrociata
+45	Rilassamento sui talloni
+46	Pranamasana — posizione della preghiera
+47	Hasta Uttanasana — braccia in alto
+48	Padahastasana — piegamento verso i piedi
+49	Ashwa Sanchalanasana — affondo, gamba destra indietro
+50	Ashtanga Namaskara — otto punti
+51	Bhujangasana — cobra
+52	Ashwa Sanchalanasana — piede destro avanti
+53	Ardha Chandrasana — mezzaluna sul ginocchio
+54	Shishuasana — posizione del bambino
+55	Plank orizzontale largo
+56	Arco del serpente con appoggio largo
+57	Coccodrillo: riposo a pancia in giù
+58	Locusta
+59	Sfinge
+60	Sfinge con gamba sollevata
+61	Schiena di cammello
+62	Sfinge allungata
+63	Sfinge allungata con gamba piegata
+64	Cobra, rotazione a sinistra
+65	Cobra, rotazione a destra
+66	Cobra profondo
+67	Allungamento basso
+68	Torsione nell’allungamento basso, sinistra
+69	Torsione nell’allungamento basso, destra
+70	Piramide
+71	Cane a testa in su largo
+72	Cane a testa in su largo, rotazione a sinistra
+73	Cane a testa in su largo, rotazione a destra
+74	Cane a testa in su largo sulle ginocchia
+75	Allungamento profondo della schiena nel cane a testa in su
+76	Cane a testa in su sulle punte
+77	Equilibrio sulle braccia, ginocchia al petto
+78	Equilibrio sulle braccia, gambe in avanti
+79	Savasana — rilassamento sdraiati
+80	Oscillazioni «ad aratro» con entrambe le gambe
+81	Sollevamento graduale delle gambe tese: inizio
+82	Gambe a 30–35°
+83	Gambe a 60°
+84	Gambe verticali
+85	Torsione supina a destra, gambe tese
+86	Torsione supina a sinistra, gambe tese
+87	Torsione supina a destra
+88	Torsione supina a sinistra
+89	Aratro tenendo i piedi
+90	Aratro, ginocchia alle orecchie
+91	Dondolii
+92	Ponte sulle spalle con presa
+93	Mezzo ponte sulle spalle con presa
+94	«Ponte di ferro» sulle spalle
+95	«Ponte di ferro» sulla nuca
+96	Preparazione alla verticale sulla testa
+97	Verticale sulla testa, gambe ad angolo retto
+98	Verticale sulla testa
+99	Verticale sulla testa, piante unite
+100	Verticale sulla testa, gambe larghe
+101	Mezzo anello in verticale sulla testa
+102	Ponte in appoggio sulla testa
+103	Ponte sulla testa a due appoggi (appoggio sinistro)
+104	Ponte sulla testa a due appoggi, gamba su
+105	Ponte sulla testa a due appoggi (appoggio destro)
+106	Ponte in appoggio sulla fronte
+107	Pesce
+108	Sdraiati: gambe su, presa degli alluci
+109	Sdraiati: gambe verso il viso, presa dei piedi
+110	Sdraiati: gambe tese al petto
+111	Candela
+112	Mezza candela
+113	Aratro verticale
+114	Allungamento delle anche in candela
+115	Mezza candela, una gamba su
+116	Allungamento del quadricipite in mezza candela
+117	Mezzo ponte sostenuto
+118	Ponte sulle spalle sostenuto
+119	Ponte sulle spalle su una gamba
+120	Ponte sulle spalle, una gamba su
+121	Posizione capovolta (viparita karani)
+122	Aratro
+123	Aratro allungato
+124	Rilassamento supino
+125	Ponte: salita
+126	Ponte
+127	Ponte a gambe tese
+128	Ponte, mento allo sterno
+129	Allungamento piatto della zona lombare
+130	Piegamento in avanti da seduti, preparazione
+131	Piegamento in avanti da seduti
+132	Piegamento in avanti da seduti, schiena tonda
+133	Tavolo inverso
+134	Triplo allungamento
+135	Plank inverso
+136	Allungamento profondo delle spalle
+137	Piegamento chiuso semicapovolto con allungamento delle spalle
+138	Piegamento capovolto aperto allungato
+139	Piegamento in avanti a gambe divaricate
+140	Ragno
+141	Posizione chiusa, caviglia destra sopra
+142	Posizione della farfalla in equilibrio
+143	Tartaruga
+144	Piegamento in avanti seduti a gambe divaricate
+145	Seduti a gambe divaricate, schiena dritta
+146	Seduti a gambe divaricate, piegamento a destra
+147	Seduti a gambe divaricate, piegamento a sinistra
+148	Piegamento a gambe divaricate, mani intrecciate
+149	Seduti a gambe divaricate con piegamento all’indietro
+150	Farfalla, mani intrecciate
+151	Farfalla
+152	Piegamento in avanti in farfalla
+153	Mezza spaccata, gamba sinistra avanti
+154	Spaccata con piegamento, gamba sinistra avanti
+155	Spaccata con piegamento, gamba dietro a terra
+156	Spaccata, gamba sinistra avanti
+157	Spaccata con piegamento profondo
+158	Mezza spaccata, gamba destra avanti
+159	Spaccata con piegamento, gamba destra avanti
+160	Spaccata, gamba destra avanti
+161	Rana
+162	Rana, torsione a destra
+163	Rana, torsione a sinistra
+164	Rana con piegamento all’indietro
+165	Rana con piegamento in avanti
+166	Mezzo arco in ginocchio
+167	Mezzo arco in ginocchio: raddrizzarsi
+168	Posizione dell’eroe
+169	Eroe, mani intrecciate dietro
+170	Eroe, braccia in alto
+171	Eroe, braccia aperte
+172	Eroe con piegamento in avanti
+173	Eroe, piegamento a schiena tonda
+174	Cammello
+175	Ponte ginocchia-gomiti: braccia in alto
+176	Ponte ginocchia-gomiti: braccia indietro
+177	Ponte ginocchia-gomiti: mani sulle cosce
+178	Ponte ginocchia-gomiti
+179	Ponte ginocchia-mani
+180	Eroe sdraiato
+181	Eroe sdraiato con piegamento all’indietro
+182	Eroe sdraiato, mani dietro la testa
+183	Allungamento lombare
+184	Allungamento lombare con ginocchia sollevate
+185	Pavone
+186	Pavone a gambe piegate
+187	Piegamento in avanti, mani sotto i piedi
+188	Tartaruga d’oro
+189	Tartaruga d’oro: braccia avanti
+190	Sedia
+191	Sedia sulle punte
+192	Sedia, mani al petto
+193	Piegamento a schiena tonda, mani intrecciate dietro
+194	Croce dritta
+195	Piegamento a destra, mani intrecciate dietro
+196	Piegamento a sinistra, mani intrecciate dietro
+197	Aquila
+198	Aquila: raddrizzarsi
+199	Posizione del cavaliere, mani tra le scapole
+200	Posizione del cavaliere, mani sulle cosce
+201	Mani dietro la testa, ginocchia piegate
+202	Ponte con gamba sollevata
+203	Ponte sui gomiti
+204	Scorpione sugli avambracci
+205	Scorpione sugli avambracci, gamba su
+206	Preparazione alla verticale sulla testa e sulle mani
+207	Verticale sulla testa con appoggio delle mani
+208	Verticale sulla testa con loto
+209	Gallo laterale: chiusura
+210	Gallo laterale alto
+211	Torsione in loto completo in verticale sulle mani
+212	Torsione in mezzo loto in verticale sulle mani
+213	Loto alla pancia in verticale sulla testa
+214	Loto sui gomiti
+215	Gallo alto
+216	Verticale sulle mani allungata con loto
+217	Verticale sulle mani con loto destro
+218	Verticale sulle mani
+219	Scorpione alto
+220	Mezzo scorpione alto
+221	Piegamento a gambe divaricate con torsione
+222	Piegamento ad anello completo
+223	Laccio in verticale sulle mani
+224	Laccio: presa davanti
+225	Corvo
+226	Ponte a tre appoggi
+227	Pendolo: talloni alle dita
+228	In piedi: simbolo del flusso compiuto
+229	Piegamento in avanti da seduti, mani intrecciate dietro
+230	Allungamento delle spalle con schiena a «riccio»
+231	Piegamento in avanti, palmi uniti dietro
+232	Farfalla: respirazione addominale
+233	Siddhasana — posizione perfetta
+234	Cammello unilaterale
+235	Cammello unilaterale con doppia fissazione
+236	Scorpione unilaterale chiuso
+237	Scorpione unilaterale allungato
+238	Scorpione unilaterale con rotazione
+239	Verticale sulla testa con rotazione e mezza spaccata
+240	Verticale sulla testa con loto sinistro
+241	Loto in verticale sulla testa, rotazione a destra
+242	Piegamento allungato in verticale sulla testa con loto
+243	Scorpione con loto in verticale sugli avambracci
+244	Scorpione allungato in verticale sui gomiti
+245	Ponte chiuso sui gomiti
+246	Verticale sugli avambracci
+247	Simbolo del flusso inverso con loto
+248	Piegamento capovolto in candela con loto
+249	Candela con loto
+250	Piegamento laterale, mani a sostegno della schiena
+251	Aratro con loto
+252	Mezzo ponte laterale sulle spalle con loto
+253	Super aratro
+254	Candela, presa inversa
+255	Candela senza appoggio
+256	Pendolo: mani tra le scapole, arco
+257	Pendolo: mani sulle cosce
+258	Ponte chiuso sui gomiti con gamba su
+259	Piegamento ad angolo allungato
+260	Fissazione orizzontale in verticale sulle mani
+261	Piegamento allungato in plank
+262	Squadra (L-sit)
+263	Fissazione della radice: bacino in avanti
+264	Fissazione della radice: perineo sopra i piedi
+265	Spaccata con anello unilaterale
+266	Mezzo plank inverso, gamba destra su
+267	Mezzo plank inverso con mezzo loto
+268	Mezzo loto da seduti
+269	Piegamento in avanti in mezzo loto
+270	Piegamento in mezzo loto: presa del piede
+271	Piegamento in avanti in mezzo loto legato
+272	Torsione in mezzo loto
+273	Loto
+274	Torsione in loto a destra
+275	Torsione in loto a sinistra
+276	Rotazioni del collo in loto
+277	Loto, braccia in alto
+278	Piegamento in loto, mani intrecciate dietro
+279	Loto legato
+280	Piegamento in loto legato
+281	Pesce capovolto in doppio loto: dondolio
+282	Pesce capovolto in doppio loto
+283	Pesce capovolto: mani tra le scapole
+284	Pesce capovolto: arco
+285	Sfinge del pesce
+286	Leone
+287	Pesce capovolto chiuso
+288	Pavone con mezzo loto
+289	Cammello unilaterale con mezzo loto legato
+290	Rilassamento del pesce capovolto
+291	Ponte sospeso
+292	Piegamento in loto
+293	Piegamento in loto, mani tra le scapole
+294	Arco in loto: preparazione
+295	Arco in loto
+296	Tartaruga in loto
+297	Loto sollevato sulle mani
+298	Squadra sulle mani
+299	Torsione nel piegamento da seduti: braccio su
+300	Salto nel corvo
+301	Corvo, una gamba indietro
+302	Corvo, gamba tesa indietro
+303	Piegamento a «riccio» con mezzo raccolto
+304	Mezzo arco nel piegamento allungato, gamba sinistra sopra
+305	Piegamento allungato, gamba sinistra sopra
+306	Piegamento allungato con rotazione del bacino
+307	Allungamento delle spalle nel piegamento, gamba sinistra sopra
+308	«Gru bianca nel flusso di rugiada d’ambra»
+309	«Spingere la terra con il cuore dei palmi»
+310	«Sdraiarsi sul flusso d’oro che arriva dall’altra parte»
+311	«Passo volante indietro nel flusso d’oro»
+312	Anello unilaterale nel passo ampio
+313	Anello unilaterale, piede alla spalla destra
+314	Torsione con allungamento del quadricipite
+315	Anello incrociato nel passo ampio
+316	Anello incrociato, piede alla spalla sinistra
+317	Allungamento massimo del quadricipite
+318	Allungamento massimo della coscia con arco
+319	Cammello alto unilaterale allungato
+320	Cammello alto unilaterale
+321	Cammello alto incrociato allungato
+322	Cammello alto incrociato
+323	Mezzo arco nel piegamento allungato, gamba destra sopra
+324	Piegamento allungato, gamba destra sopra
+325	Allungamento delle spalle nel piegamento, gamba destra sopra
+326	Anello unilaterale, piede alla spalla sinistra
+327	Anello incrociato, piede alla spalla destra
+328	Mezzo arco nel piegamento chiuso allungato
+329	Parvatasana — posizione della montagna
+330	Ashwa Sanchalanasana — affondo, gamba sinistra indietro
+331	Ashwa Sanchalanasana — piede sinistro avanti
+332	Dandasana — plank
+333	Marjariasana — gatto
+334	Passaggio al plank inclinato largo
+335	Rotolare a destra nel plank orizzontale largo
+336	Rotolare a sinistra
+337	Ritorno al plank orizzontale largo
+338	Arco del serpente chiuso
+339	Rilassamento a pancia in giù
+340	Arco del serpente aperto
+341	Plank inclinato
+342	Cane a testa in giù profondo sulla punta delle dita
+343	Gambe verticali, mani dietro la testa
+344	Gambe a 30°
+345	Dondolii (fase delle spalle)
+346	Capriola sopra la testa
+347	Candela sostenuta
+348	Mezzo plank inverso aperto
+349	Piegamento allungato da seduti aperto
+350	Piegamento allungato da seduti aperto, completo
+351	Piegamento a «riccio» da seduti aperto
+352	Mezza spaccata laterale capovolta
+353	Posizione chiusa, caviglia sinistra sopra
+354	Farfalla chiusa con schiena a «riccio»
+355	Plank orizzontale sulla punta delle dita
+356	Plank inclinato sulla punta delle dita
+357	Plank inarcato scivolato sulla punta delle dita
+358	Plank orizzontale scivolato sulla punta delle dita
+359	Mezzo arco in plank orizzontale sulla punta delle dita
+360	Plank inarcato sulla punta delle dita
+361	Cane a testa in giù allungato sulla punta delle dita
+362	Mezzo arco nel cane a testa in giù sulla punta delle dita
+363	Cane a testa in giù sulla punta delle dita
+364	Rana con piegamento a «riccio»
+365	Allungamento lombare lato destro
+366	Allungamento lombare lato destro con rotazione
+367	Allungamento lombare lato sinistro
+368	Allungamento lombare lato sinistro con rotazione
+369	Passaggio alla posizione dell’eroe
+370	Plank orizzontale sui pugni
+371	Plank inclinato sui pugni
+372	Plank orizzontale scivolato sui pugni
+373	Plank orizzontale con mezzo arco sui pugni
+374	Plank inarcato sui pugni
+375	Cane a testa in giù allungato sui pugni
+376	Cane a testa in giù con mezzo arco sui pugni
+377	Cane a testa in giù sui pugni
+378	Mezzo arco con i piedi avvicinati
+379	Piegamento chiuso allungato
+380	Allungamento deciso del retro delle gambe
+381	Allungamento deciso, a specchio
+382	Piegamento allungato aperto: mezzo arco
+383	Tartaruga d’oro: pugni
+384	«Sedia»: polsi in avanti
+385	Allungamento delle spalle nel piegamento aperto
+386	Passaggio alla croce dritta: orizzontale
+387	Mezzo arco salendo sulle punte
+388	Allungamento finale: braccia lungo il corpo
+389	Piegamento a destra con presa inversa
+390	Piegamento a sinistra con presa inversa
+391	Piegamento in avanti, presa delle caviglie
+392	Piegamento all’indietro con presa inversa
+393	Piegarsi in giù
+394	Mani a terra accanto ai talloni
+395	Ponte: aumentare la distanza
+396	Testa a terra
+397	Gallo alto, approfondire
+398	Ponte dalla verticale sulle mani
+399	Piegamento allungato
+400	Piegamento a piramide
+401	Laccio: tibie sulle spalle
+402	Laccio: presa a specchio
+403	Laccio completo
+404	Stendere le gambe
+405	Scorpione in verticale sulle mani
+406	Piegamento, mani a terra
+407	Allungarsi, mani dietro la testa
+408	Sollevare testa e spalle
+409	Piegamento chiuso da seduti con presa dei polsi
+410	Mezzo arco attivo nel piegamento
+411	Raddrizzare il busto, braccia avanti
+412	Piegamento chiuso da seduti
+413	Rilassamento nel piegamento
+414	Mezza spaccata laterale con piegamento
+415	Mezzo arco in mezza spaccata
+416	Piegamento con allungamento delle spalle
+417	Rilassamento in mezza spaccata
+418	Piegamento all’indietro intenso
+419	Farfalla: simbolo del flusso compiuto
+420	Chiusura addominale
+421	Rimescolamento addominale
+422	Rilassamento supino in mezza spaccata
+423	Rilassamento finale
+424	Torsione «a corda» in verticale sulla testa
+425	Torsione «dritta» in verticale sulla testa
+426	Loto in verticale sulla testa, rotazione a sinistra
+427	Piegamento a «riccio» in verticale sulla testa con loto
+428	Scorpione in verticale sui gomiti
+429	Ponte sui gomiti
+430	Uscita «inversa»: piedi alle mani
+431	Uscita «inversa»: sollevare le gambe
+432	Piedi a terra, testa a terra
+433	Piegamento capovolto laterale con loto
+434	Mezzo ponte laterale sulle spalle sostenuto
+435	Passaggio alla candela senza appoggio
+436	Pendolo: piedi alle mani
+437	Pendolo: risalire in piedi
+438	Pendolo: piegamento con allungamento delle spalle
+439	Pendolo: braccia indietro, ginocchia piegate
+440	Pendolo: ponte
+441	Ponte chiuso sui gomiti fisso
+442	Ponte chiuso sui gomiti: piedi alle mani
+443	Scorpione in verticale sugli avambracci
+444	Allungamento intenso del retro delle gambe
+445	Verticale sulle mani allungata
+446	Piegamento allungato aperto in plank
+447	Fissazione della radice: piedi verticali
+448	Salto in plank orizzontale sulla punta delle dita
+449	Appoggio raccolto sulla punta delle dita
+450	Appoggio raccolto sui pugni
+451	Piegamento a «riccio» da seduti
+452	Mezzo plank inverso
+453	Piegamento in mezzo loto legato incrociato
+454	Doppia croce del loto: allungamento
+455	Doppio loto, braccia incrociate ai gomiti
+456	Doppio loto: flusso ascendente
+457	Doppio loto: testa indietro
+458	Piegamento a destra, fronte oltre il ginocchio destro
+459	Piegamento a sinistra, fronte oltre il ginocchio sinistro
+460	Piegamento a destra
+461	Piegamento a sinistra
+462	Piegamento a «riccio» in loto libero
+463	Torsione nel piegamento in loto
+464	Gallo
+465	Equilibrio tenendo il loto
+466	Loto sollevato sulla punta delle dita
+467	Loto sollevato sui pugni
+468	Angolo sulla punta delle dita
+469	Angolo sui pugni
+470	Piedi a terra, bacino su
+471	Piegamento allungato da seduti
+472	Torsione nel piegamento da seduti
+473	Cane a testa in giù a tre appoggi
+474	Salto in plank basso
+475	Posizione della montagna. Fine del primo giro
+476	Secondo giro: inspirazione a petto aperto
+477	Posizione della montagna. Fine del secondo giro
+478	Terzo giro: inspirazione a petto aperto
+479	Posizione della montagna. Fine della pratica
+480	Espirazione lenta, palmi in avanti
+481	Farfalla, allungarsi verso l’alto
+482	Farfalla: pompa addominale sull’espirazione
+483	Farfalla: pompa addominale sull’inspirazione
+484	Farfalla: pancia rientrata dopo l’espirazione (uddiyana)
+485	Farfalla: pancia rientrata sull’inspirazione
+486	Farfalla, mani intrecciate: riposo
+487	Loto, mani intrecciate
+488	Loto: pancia rientrata dopo l’espirazione
+489	Loto: pancia rientrata sull’inspirazione
+490	Loto: onda addominale (nauli)
+491	Loto: tenere i muscoli addominali centrali
+492	Loto, allungarsi verso l’alto
+493	Squadra, gambe più alte
+494	Aratro a braccia tese
+495	Aratro, gambe a destra
+496	Aratro, gambe a sinistra
+497	Aratro a gambe larghe
+498	Mezza candela, gambe ad angolo
+499	Candela senza mani
+500	Candela, gamba destra a terra
+501	Candela, gamba sinistra a terra
+502	Candela, gamba destra di lato
+503	Candela, gamba sinistra di lato
+504	Candela, anche di lato
+505	Mezzo ponte laterale sulle spalle
+506	Candela, anche dall’altro lato
+507	Ponte sulle spalle, gamba destra su
+508	Ponte sulle spalle, gamba sinistra su
+509	Candela in loto, gamba destra sopra
+510	Candela in loto, gamba sinistra sopra
+511	Capriola all’indietro sopra la testa
+512	Allungamento laterale intenso
+513	Triangolo
+514	Triangolo in torsione
+515	Triangolo in torsione, palmi uniti
+516	Allungamento laterale, aprire le spalle
+517	Affondo con torsione
+518	Guerriero 2: braccia aperte
+519	Affondo, torsione dall’altro lato
+520	Angolo laterale esteso
+521	Angolo laterale in torsione
+522	Angolo laterale in torsione legato
+523	Equilibrio sulle braccia in torsione, gambe divaricate
+524	Equilibrio sulle braccia in torsione, gambe unite
+525	Guerriero 1, mani intrecciate dietro
+526	Guerriero 1, braccia avanti
+527	Guerriero 1: allungarsi in avanti
+528	Guerriero 3
+529	Mezza luna
+530	Albero
+531	Albero in mezzo loto
+532	Piegamento in piedi in mezzo loto
+533	Mezzo piegamento in piedi in mezzo loto
+534	Piegamento a gambe divaricate, mani a terra
+535	Mezzo piegamento a gambe divaricate
+536	Piegamento a gambe divaricate, mani intrecciate dietro
+537	Piegamento a gambe divaricate, braccia avanti
+538	Torsione a gambe divaricate a destra
+539	Torsione a gambe divaricate a sinistra
+540	Torsione profonda a gambe divaricate a destra
+541	Torsione profonda a gambe divaricate a sinistra
+542	Plank basso, scendere sulla pancia
+543	Cobra
+544	Bastone
+545	Torsione da seduti, un ginocchio su
+546	Piegamento da seduti, braccio intorno alla gamba piegata
+547	Torsione da seduti dall’altro lato
+548	Testa al ginocchio
+549	Testa al ginocchio in torsione
+550	Piegamento da seduti, una gamba piegata indietro
+551	Mezzo signore dei pesci
+552	Testa di mucca, mani intrecciate dietro
+553	Testa di mucca con piegamento in avanti
+554	Plank inverso, gamba destra su
+555	Plank inverso, gamba sinistra su
+556	Tavolo inverso, gamba destra su
+557	Tavolo inverso, gamba sinistra su
+558	Sdraiati: gambe su e divaricate, presa degli alluci
+559	Seduti a gambe divaricate
+560	Barca
+561	Mezza barca
+562	Eroe, mani intrecciate sopra la testa
+563	Pavone
+564	Riposo supino
+565	Montagna con mani legate
+566	Saluto verso l’alto
+567	Mezzaluna in piedi
+568	Danzatore
+569	Albero facile
+570	Albero con mani in preghiera
+571	Albero in mezzo loto legato, una mano su
+572	Mezza luna
+573	Allungamento intenso in mezzo loto legato, preparazione
+574	Allungamento intenso in mezzo loto legato
+575	Garuda
+576	Mezzo piegamento a gambe divaricate
+577	Piegamento a gambe divaricate 1
+578	Piegamento a gambe divaricate 4
+579	Mezzo piegamento a gambe divaricate in torsione
+580	Piegamento a gambe divaricate in torsione legata
+581	Cane a testa in giù
+582	Allungamento laterale intenso, preparazione
+583	Allungamento laterale intenso
+584	Triangolo esteso
+585	Triangolo in torsione
+586	Angolo laterale esteso
+587	Guerriero 2
+588	Angolo laterale in torsione, preparazione
+589	Angolo laterale in torsione, mani libere
+590	Angolo laterale in torsione
+591	Angolo laterale in torsione legato
+592	Guerriero 1, preparazione
+593	Guerriero 1
+594	Guerriero 1 legato
+595	Affondo del cavaliere, preparazione
+596	Affondo della lucertola, braccia aperte
+597	Posizione potente (sedia)
+598	Ghirlanda
+599	Posizione facile
+600	Posizione del saggio Marichi in torsione
+601	Mezzo signore dei pesci 1
+602	Posizione del saggio Marichi 3, preparazione
+603	Angolo legato
+604	Angolo da seduti
+605	Bastone
+606	Pinza da seduti (paschimottanasana)
+607	Posizione del saggio Marichi 1
+608	Piegamento in avanti a tre membra
+609	Testa al ginocchio, mani alla caviglia
+610	Testa al ginocchio, mani al piede
+611	Testa al ginocchio in torsione
+612	Testa di mucca
+613	Barca
+614	Barca completa
+615	Mezza barca
+616	Posizione del bambino
+617	Bambino in torsione laterale
+618	Mucca con allungamento intenso dei polsi
+619	Bastone a quattro appoggi esteso
+620	Bastone del makara
+621	Bastone a quattro appoggi (chaturanga)
+622	Plank laterale (vasishthasana)
+623	Gru
+624	Posizione di Koundinya a due gambe
+625	Delfino
+626	Candela su una gamba
+627	Candela laterale su una gamba
+628	Aratro laterale
+629	Locusta
+630	Mezza locusta
+631	Cobra
+632	Cane a testa in su
+633	Arco
+634	Cucciolo allungato intenso
+635	Tavolo inverso su una gamba
+636	Ponte
+637	Angolo legato sdraiati
+638	Cruna dell’ago
+639	Bambino sdraiato
+640	Torsione supina, preparazione
+641	Bambino felice
+642	Angolo sdraiati
+643	Sdraiati, entrambe le mani alla gamba
+644	Sdraiati, una gamba tesa
+645	Sdraiati, mano all’alluce 1
+646	Sdraiati, gambe tese
+647	Cadavere su un fianco

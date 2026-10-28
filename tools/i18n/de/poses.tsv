@@ -1,0 +1,648 @@
+0	Berghaltung
+1	Einatmen mit offener Brust
+2	Arme nach oben
+3	Seitbeuge nach rechts
+4	Seitbeuge nach links
+5	Rückbeuge im Stehen
+6	Halbe Vorbeuge mit flachem Rücken
+7	Vorbeuge im Stehen
+8	Halbe Vorbeuge, Blick nach vorn
+9	Vorbeuge mit Griff an die Beine
+10	Vorbeuge, Hände hinten verschränkt
+11	Sprung in die Planke
+12	Gleitender heraufschauender Hund
+13	Gleitende tiefe Planke
+14	Tiefe Planke (Chaturanga)
+15	Tiefe Planke, Brust nach vorn
+16	Heraufschauender Hund
+17	Herabschauender Hund
+18	Herabschauender Hund mit Rückbeuge
+19	Tiefer herabschauender Hund
+20	Ausfallschritt, Arme hoch
+21	Halbmond-Ausfallschritt
+22	Ausfallschritt, Arme beim Ausatmen öffnen
+23	Halbmond-Ausfallschritt, Schritt 1
+24	Halbmond-Ausfallschritt, Schritt 2
+25	Dreibeiniger Hund
+26	Gleitender heraufschauender Hund auf einem Bein
+27	Tiefe Planke auf einem Bein
+28	Tiefer dreibeiniger Hund
+29	Planke, Knie zur rechten Schulter
+30	Planke, Knie zur linken Schulter
+31	Herabschauender Hund mit Schulteröffnung
+32	Katze: Rücken nach unten
+33	Katze: Rücken nach oben
+34	Katze mit Rückbeuge, Bein nach hinten
+35	Katze, Knie seitlich zum Kopf
+36	Katze, langsamer Beinkreis
+37	Katze: tiefe Rückbeuge, Bein nach hinten
+38	Katze: Rücken rund, Knie zur Stirn
+39	Katze, langsamer Beinschwung nach hinten
+40	Katze, langsamer Beinschwung zur Seite
+41	Vierfüßlerstand mit Arm und Bein gestreckt
+42	Halbes Kamel auf den Knien
+43	Vierfüßlerstand, Arm und Bein über Kreuz
+44	Halbes Kamel, Kreuzgriff
+45	Entspannung auf den Fersen
+46	Pranamasana – Gebetshaltung
+47	Hasta Uttanasana – Arme hoch
+48	Padahastasana – Beuge zu den Füßen
+49	Ashwa Sanchalanasana – Ausfallschritt, rechtes Bein hinten
+50	Ashtanga Namaskara – acht Punkte
+51	Bhujangasana – Kobra
+52	Ashwa Sanchalanasana – rechter Fuß vorn
+53	Ardha Chandrasana – Halbmond auf dem Knie
+54	Shishuasana – Kindhaltung
+55	Breite gerade Planke
+56	Schlangenbogen mit breiter Stütze
+57	Krokodil: Ruhe auf dem Bauch
+58	Heuschrecke
+59	Sphinx
+60	Sphinx mit angehobenem Bein
+61	Kamelrücken
+62	Gestreckte Sphinx
+63	Gestreckte Sphinx mit gebeugtem Bein
+64	Kobra, Drehung nach links
+65	Kobra, Drehung nach rechts
+66	Tiefe Kobra
+67	Tiefe Dehnung
+68	Drehung in der tiefen Dehnung, links
+69	Drehung in der tiefen Dehnung, rechts
+70	Pyramide
+71	Breiter heraufschauender Hund
+72	Breiter heraufschauender Hund, Drehung nach links
+73	Breiter heraufschauender Hund, Drehung nach rechts
+74	Breiter heraufschauender Hund auf den Knien
+75	Tiefe Wirbelsäulendehnung im heraufschauenden Hund
+76	Heraufschauender Hund auf den Zehen
+77	Armstütz, Knie zur Brust
+78	Armstütz, Beine nach vorn
+79	Savasana – Entspannung im Liegen
+80	„Pflugartige“ Schwünge mit beiden Beinen
+81	Gestreckte Beine stufenweise heben: Start
+82	Beine auf 30–35°
+83	Beine auf 60°
+84	Beine senkrecht
+85	Drehung im Liegen nach rechts, Beine gestreckt
+86	Drehung im Liegen nach links, Beine gestreckt
+87	Drehung im Liegen nach rechts
+88	Drehung im Liegen nach links
+89	Pflug mit Griff an die Füße
+90	Pflug, Knie zu den Ohren
+91	Rollen
+92	Schulterbrücke mit Griff
+93	Halbe Schulterbrücke mit Griff
+94	„Eiserne Brücke“ auf den Schultern
+95	„Eiserne Brücke“ auf dem Hinterkopf
+96	Vorbereitung für den Kopfstand
+97	Kopfstand, Beine im rechten Winkel
+98	Kopfstand
+99	Kopfstand, Fußsohlen zusammen
+100	Kopfstand, Beine weit
+101	Halber Ring im Kopfstand
+102	Brücke mit Kopfstütze
+103	Zweipunkt-Brücke auf dem Kopf (linke Stütze)
+104	Zweipunkt-Brücke auf dem Kopf, Bein hoch
+105	Zweipunkt-Brücke auf dem Kopf (rechte Stütze)
+106	Brücke auf der Stirn
+107	Fisch
+108	Im Liegen: Beine hoch, Griff an die Zehen
+109	Im Liegen: Beine zum Gesicht, Griff an die Füße
+110	Im Liegen: gestreckte Beine zur Brust
+111	Schulterstand
+112	Halber Schulterstand
+113	Senkrechter Pflug
+114	Hüftdehnung im Schulterstand
+115	Halber Schulterstand, ein Bein hoch
+116	Dehnung der Oberschenkelvorderseite im halben Schulterstand
+117	Halbe Brücke mit Stütze
+118	Schulterbrücke mit Stütze
+119	Schulterbrücke auf einem Bein
+120	Schulterbrücke, ein Bein hoch
+121	Umkehrhaltung (Viparita Karani)
+122	Pflug
+123	Gestreckter Pflug
+124	Entspannung auf dem Rücken
+125	Brücke: Aufrichten
+126	Brücke
+127	Brücke mit gestreckten Beinen
+128	Brücke, Kinn zum Brustbein
+129	Flache Dehnung des unteren Rückens
+130	Vorbeuge im Sitzen, Vorbereitung
+131	Vorbeuge im Sitzen
+132	Vorbeuge im Sitzen, Rücken rund
+133	Umgekehrter Tisch
+134	Dreifache Dehnung
+135	Umgekehrte Planke
+136	Tiefe Schulterdehnung
+137	Halbumgekehrte geschlossene Beuge mit Schulterdehnung
+138	Offene umgekehrte gestreckte Beuge
+139	Weite Vorbeuge im Stehen
+140	Spinne
+141	Verschlussstand, rechter Knöchel oben
+142	Schmetterlingsstand
+143	Schildkröte
+144	Vorbeuge im weiten Sitz
+145	Weiter Sitz, Rücken gerade
+146	Weiter Sitz, Beuge nach rechts
+147	Weiter Sitz, Beuge nach links
+148	Vorbeuge im weiten Sitz, Hände verschränkt
+149	Weiter Sitz mit Rückbeuge
+150	Schmetterling, Hände verschränkt
+151	Schmetterling
+152	Vorbeuge im Schmetterling
+153	Halber Spagat, linkes Bein vorn
+154	Spagat mit Vorbeuge, linkes Bein vorn
+155	Spagat mit Beuge, hinteres Bein am Boden
+156	Spagat, linkes Bein vorn
+157	Spagat mit tiefer Vorbeuge
+158	Halber Spagat, rechtes Bein vorn
+159	Spagat mit Vorbeuge, rechtes Bein vorn
+160	Spagat, rechtes Bein vorn
+161	Frosch
+162	Frosch, Drehung nach rechts
+163	Frosch, Drehung nach links
+164	Frosch mit Rückbeuge
+165	Frosch mit Vorbeuge
+166	Halber Bogen im Knien
+167	Halber Bogen im Knien: aufrichten
+168	Heldensitz
+169	Heldensitz, Hände hinten verschränkt
+170	Heldensitz, Arme hoch
+171	Heldensitz, Arme weit
+172	Heldensitz mit Vorbeuge
+173	Heldensitz, runde Vorbeuge
+174	Kamel
+175	Knie-Ellbogen-Brücke: Arme hoch
+176	Knie-Ellbogen-Brücke: Arme zurück
+177	Knie-Ellbogen-Brücke: Hände auf den Oberschenkeln
+178	Knie-Ellbogen-Brücke
+179	Knie-Hand-Brücke
+180	Liegender Held
+181	Liegender Held mit Rückbeuge
+182	Liegender Held, Hände hinter dem Kopf
+183	Dehnung des unteren Rückens
+184	Dehnung des unteren Rückens mit angehobenen Knien
+185	Pfau
+186	Pfau mit gebeugten Beinen
+187	Vorbeuge, Hände unter den Füßen
+188	Goldene Schildkröte
+189	Goldene Schildkröte: Arme nach vorn
+190	Stuhl
+191	Stuhl auf den Zehen
+192	Stuhl, Hände zur Brust
+193	Runde Vorbeuge, Hände hinten verschränkt
+194	Gerades Kreuz
+195	Beuge nach rechts, Hände hinten verschränkt
+196	Beuge nach links, Hände hinten verschränkt
+197	Adler
+198	Adler: aufrichten
+199	Reiterstand, Hände zwischen den Schulterblättern
+200	Reiterstand, Hände auf den Oberschenkeln
+201	Hände hinter dem Kopf, Knie gebeugt
+202	Brücke mit angehobenem Bein
+203	Brücke auf den Ellbogen
+204	Skorpion auf den Unterarmen
+205	Skorpion auf den Unterarmen, Bein hoch
+206	Vorbereitung für den Kopfstand auf den Händen
+207	Kopfstand mit Handstütze
+208	Kopfstand mit Lotus
+209	Seitlicher Hahn: zusammenfalten
+210	Hoher seitlicher Hahn
+211	Voll-Lotus-Drehung im Handstand
+212	Halb-Lotus-Drehung im Handstand
+213	Lotus zum Bauch im Kopfstand
+214	Lotus auf den Ellbogen
+215	Hoher Hahn
+216	Gestreckter Handstand mit Lotus
+217	Handstand mit rechtem Lotus
+218	Senkrechter Handstand
+219	Hoher Skorpion
+220	Hoher halber Skorpion
+221	Weite Vorbeuge mit Drehung
+222	Volle Ringbeuge
+223	Lasso im Handstand
+224	Lasso: Verschluss vorn
+225	Krähe
+226	Dreipunkt-Brücke
+227	Pendel: Fersen zu den Fingern
+228	Im Stehen: Symbol des vollendeten Flusses
+229	Vorbeuge im Sitzen, Hände hinten verschränkt
+230	Schulterdehnung mit „Igelrücken“
+231	Vorbeuge, Handflächen hinten zusammen
+232	Schmetterling: Bauchatmung
+233	Siddhasana – vollendete Haltung
+234	Einseitiges Kamel
+235	Einseitiges Kamel mit doppelter Fixierung
+236	Einseitiger geschlossener Skorpion
+237	Einseitiger gestreckter Skorpion
+238	Einseitiger Skorpion mit Drehung
+239	Kopfstand mit Drehung und halbem Spagat
+240	Kopfstand mit linkem Lotus
+241	Lotus im Kopfstand, Drehung nach rechts
+242	Gestreckte Beuge im Kopfstand mit Lotus
+243	Skorpion mit Lotus im Unterarmstand
+244	Gestreckter Skorpion im Ellbogenstand
+245	Geschlossene Ellbogenbrücke
+246	Unterarmstand
+247	Symbol des umgekehrten Flusses mit Lotus
+248	Umgekehrte Beuge im Schulterstand mit Lotus
+249	Schulterstand mit Lotus
+250	Seitbeuge, Hände stützen den Rücken
+251	Pflug mit Lotus
+252	Seitliche halbe Schulterbrücke mit Lotus
+253	Super-Pflug
+254	Schulterstand, umgekehrter Verschluss
+255	Schulterstand ohne Stütze
+256	Pendel: Hände zwischen den Schulterblättern, Bogen
+257	Pendel: Hände auf den Oberschenkeln
+258	Geschlossene Ellbogenbrücke mit Bein hoch
+259	Gestreckte Winkelbeuge
+260	Waagrechte Fixierung im Handstand
+261	Gestreckte Beuge in der Planke
+262	L-Sitz
+263	Wurzelfixierung: Becken nach vorn
+264	Wurzelfixierung: Damm über den Füßen
+265	Spagat mit einseitigem Ring
+266	Umgekehrte halbe Planke, rechtes Bein hoch
+267	Umgekehrte halbe Planke mit halbem Lotus
+268	Halber Lotus im Sitzen
+269	Vorbeuge mit halbem Lotus
+270	Beuge mit halbem Lotus: Griff an den Fuß
+271	Gebundene Vorbeuge mit halbem Lotus
+272	Drehung im halben Lotus
+273	Lotus
+274	Drehung im Lotus nach rechts
+275	Drehung im Lotus nach links
+276	Nackenkreisen im Lotus
+277	Lotus, Arme hoch
+278	Vorbeuge im Lotus, Hände hinten verschränkt
+279	Gebundener Lotus
+280	Vorbeuge im gebundenen Lotus
+281	Umgekehrter Fisch mit doppeltem Lotus: Rollen
+282	Umgekehrter Fisch mit doppeltem Lotus
+283	Umgekehrter Fisch: Hände zwischen den Schulterblättern
+284	Umgekehrter Fisch: Bogen
+285	Fisch-Sphinx
+286	Löwe
+287	Geschlossener umgekehrter Fisch
+288	Pfau mit halbem Lotus
+289	Einseitiges Kamel mit gebundenem halbem Lotus
+290	Entspannung im umgekehrten Fisch
+291	Hängende Brücke
+292	Vorbeuge im Lotus
+293	Beuge im Lotus, Hände zwischen den Schulterblättern
+294	Lotusbogen: Vorbereitung
+295	Lotusbogen
+296	Lotus-Schildkröte
+297	Lotus auf den Händen angehoben
+298	L-Sitz auf den Händen
+299	Drehung in der Vorbeuge im Sitzen: Arm hoch
+300	Sprung in die Krähe
+301	Krähe, ein Bein nach hinten
+302	Krähe, Bein nach hinten gestreckt
+303	„Igel“-Beuge mit halbem Hockstütz
+304	Halber Bogen in der gestreckten Beuge, linkes Bein oben
+305	Gestreckte Beuge, linkes Bein oben
+306	Gestreckte Beuge mit Beckendrehung
+307	Schulterdehnung in der Beuge, linkes Bein oben
+308	„Weißer Kranich im Strom des Bernsteintaus“
+309	„Die Erde mit den Herzen der Handflächen wegschieben“
+310	„Sich auf den Goldstrom von der anderen Seite legen“
+311	„Fliegender Schritt zurück in den goldenen Strom“
+312	Einseitiger Ring im weiten Schritt
+313	Einseitiger Ring, Fuß zur rechten Schulter
+314	Drehung mit Dehnung der Oberschenkelvorderseite
+315	Kreuzring im weiten Schritt
+316	Kreuzring, Fuß zur linken Schulter
+317	Maximale Dehnung der Oberschenkelvorderseite
+318	Maximale Oberschenkeldehnung mit Bogen
+319	Gestrecktes einseitiges hohes Kamel
+320	Einseitiges hohes Kamel
+321	Gestrecktes hohes Kreuzkamel
+322	Hohes Kreuzkamel
+323	Halber Bogen in der gestreckten Beuge, rechtes Bein oben
+324	Gestreckte Beuge, rechtes Bein oben
+325	Schulterdehnung in der Beuge, rechtes Bein oben
+326	Einseitiger Ring, Fuß zur linken Schulter
+327	Kreuzring, Fuß zur rechten Schulter
+328	Halber Bogen in der geschlossenen gestreckten Beuge
+329	Parvatasana – Berghaltung
+330	Ashwa Sanchalanasana – Ausfallschritt, linkes Bein hinten
+331	Ashwa Sanchalanasana – linker Fuß vorn
+332	Dandasana – Planke
+333	Marjariasana – Katze
+334	In eine breite schräge Planke
+335	Rolle nach rechts in der breiten geraden Planke
+336	Rolle nach links
+337	Zurück in die breite gerade Planke
+338	Geschlossener Schlangenbogen
+339	Entspannung auf dem Bauch
+340	Offener Schlangenbogen
+341	Schräge Planke
+342	Tiefer herabschauender Hund auf den Fingerspitzen
+343	Beine senkrecht, Hände hinter dem Kopf
+344	Beine auf 30°
+345	Rollen (Schulterphase)
+346	Rolle über den Kopf
+347	Schulterstand mit Stütze
+348	Offene umgekehrte halbe Planke
+349	Offene gestreckte Vorbeuge im Sitzen
+350	Offene gestreckte Vorbeuge im Sitzen, voll
+351	Offene „Igel“-Beuge im Sitzen
+352	Umgekehrter halber Seitspagat
+353	Verschlussstand, linker Knöchel oben
+354	Geschlossener Schmetterling mit „Igelrücken“
+355	Gerade Planke auf den Fingerspitzen
+356	Schräge Planke auf den Fingerspitzen
+357	Gleitender Bogenstütz auf den Fingerspitzen
+358	Gleitende gerade Planke auf den Fingerspitzen
+359	Halber Bogen in der geraden Planke auf den Fingerspitzen
+360	Bogenstütz auf den Fingerspitzen
+361	Gestreckter herabschauender Hund auf den Fingerspitzen
+362	Halber Bogen im herabschauenden Hund auf den Fingerspitzen
+363	Herabschauender Hund auf den Fingerspitzen
+364	Frosch mit „Igel“-Beuge
+365	Rechtsseitige Dehnung des unteren Rückens
+366	Rechtsseitige Dehnung des unteren Rückens mit Drehung
+367	Linksseitige Dehnung des unteren Rückens
+368	Linksseitige Dehnung des unteren Rückens mit Drehung
+369	In den Heldensitz
+370	Gerade Planke auf den Fäusten
+371	Schräge Planke auf den Fäusten
+372	Gleitende gerade Planke auf den Fäusten
+373	Gerade Planke mit halbem Bogen auf den Fäusten
+374	Bogenstütz auf den Fäusten
+375	Gestreckter herabschauender Hund auf den Fäusten
+376	Herabschauender Hund mit halbem Bogen auf den Fäusten
+377	Herabschauender Hund auf den Fäusten
+378	Halber Bogen mit herangezogenen Füßen
+379	Geschlossene gestreckte Beuge
+380	Kräftige Dehnung der Beinrückseiten
+381	Kräftige Dehnung, gespiegelt
+382	Offene gestreckte Beuge: halber Bogen
+383	Goldene Schildkröte: Fäuste
+384	„Stuhl“: Handgelenke nach vorn
+385	Schulterdehnung in der offenen Beuge
+386	In das gerade Kreuz: waagrecht
+387	Halber Bogen, auf die Zehen kommen
+388	Schlussdehnung: Arme neben dem Körper
+389	Beuge nach rechts mit umgekehrtem Verschluss
+390	Beuge nach links mit umgekehrtem Verschluss
+391	Vorbeuge, Griff an die Knöchel
+392	Rückbeuge mit umgekehrtem Verschluss
+393	Nach unten beugen
+394	Hände neben den Fersen auf dem Boden
+395	Brücke: Abstand vergrößern
+396	Kopf zum Boden
+397	Hoher Hahn, vertiefen
+398	Brücke aus dem Handstand
+399	Gestreckte Beuge
+400	Pyramidenbeuge
+401	Lasso: Schienbeine auf den Schultern
+402	Lasso: gespiegelter Verschluss
+403	Volles Lasso
+404	Beine strecken
+405	Skorpion im Handstand
+406	Beuge, Hände auf dem Boden
+407	Ausstrecken, Hände hinter dem Kopf
+408	Kopf und Schultern heben
+409	Geschlossene Vorbeuge im Sitzen mit Handgelenkgriff
+410	Aktiver halber Bogen in der Beuge
+411	Oberkörper aufrichten, Arme nach vorn
+412	Geschlossene Vorbeuge im Sitzen
+413	Entspannung in der Beuge
+414	Halber Seitspagat mit Beuge
+415	Halber Bogen im halben Spagat
+416	Beuge mit Schulterdehnung
+417	Entspannung im halben Spagat
+418	Kräftige Rückbeuge
+419	Schmetterling: Symbol des vollendeten Flusses
+420	Bauchverschluss
+421	Bauchwelle
+422	Entspannung in Rückenlage im halben Spagat
+423	Schlussentspannung
+424	„Seil“-Drehung im Kopfstand
+425	„Gerade“ Drehung im Kopfstand
+426	Lotus im Kopfstand, Drehung nach links
+427	„Igel“-Beuge im Kopfstand mit Lotus
+428	Skorpion im Ellbogenstand
+429	Ellbogenbrücke
+430	„Umgekehrter“ Ausstieg: Füße zu den Händen
+431	„Umgekehrter“ Ausstieg: Beine heben
+432	Füße zum Boden, Kopf zum Boden
+433	Seitliche umgekehrte Beuge mit Lotus
+434	Seitliche halbe Schulterbrücke mit Stütze
+435	In den Schulterstand ohne Stütze
+436	Pendel: Füße zu den Händen
+437	Pendel: zum Stand aufrichten
+438	Pendel: Beuge mit Schulterdehnung
+439	Pendel: Arme zurück, Knie gebeugt
+440	Pendel: Brücke
+441	Fixierte geschlossene Ellbogenbrücke
+442	Geschlossene Ellbogenbrücke: Füße zu den Händen
+443	Skorpion im Unterarmstand
+444	Intensive Dehnung der Beinrückseiten
+445	Gestreckter Handstand
+446	Offene gestreckte Beuge in der Planke
+447	Wurzelfixierung: Füße senkrecht
+448	Sprung in die gerade Planke auf den Fingerspitzen
+449	Hockstütz auf den Fingerspitzen
+450	Hockstütz auf den Fäusten
+451	„Igel“-Beuge im Sitzen
+452	Umgekehrte halbe Planke
+453	Beuge im gekreuzt gebundenen halben Lotus
+454	Doppeltes Lotuskreuz: Dehnung
+455	Doppelter Lotus, Arme an den Ellbogen gekreuzt
+456	Doppelter Lotus: aufsteigender Fluss
+457	Doppelter Lotus: Kopf zurück
+458	Beuge nach rechts, Stirn am rechten Knie vorbei
+459	Beuge nach links, Stirn am linken Knie vorbei
+460	Beuge nach rechts
+461	Beuge nach links
+462	„Igel“-Beuge im freien Lotus
+463	Drehung in der Lotusbeuge
+464	Hahn
+465	Gleichgewicht mit Griff an den Lotus
+466	Lotus auf den Fingerspitzen angehoben
+467	Lotus auf den Fäusten angehoben
+468	Winkel auf den Fingerspitzen
+469	Winkel auf den Fäusten
+470	Füße zum Boden, Becken hoch
+471	Gestreckte Vorbeuge im Sitzen
+472	Drehung in der Vorbeuge im Sitzen
+473	Dreipunkt-Hund
+474	Sprung in die tiefe Planke
+475	Berghaltung. Ende der ersten Runde
+476	Zweite Runde: Einatmen mit offener Brust
+477	Berghaltung. Ende der zweiten Runde
+478	Dritte Runde: Einatmen mit offener Brust
+479	Berghaltung. Ende der Übung
+480	Langsam ausatmen, Handflächen nach vorn
+481	Schmetterling, nach oben strecken
+482	Schmetterling: Bauchpumpe beim Ausatmen
+483	Schmetterling: Bauchpumpe beim Einatmen
+484	Schmetterling: Bauch nach dem Ausatmen eingezogen (Uddiyana)
+485	Schmetterling: Bauch beim Einatmen eingezogen
+486	Schmetterling, Hände verschränkt: Ruhe
+487	Lotus, Hände verschränkt
+488	Lotus: Bauch nach dem Ausatmen eingezogen
+489	Lotus: Bauch beim Einatmen eingezogen
+490	Lotus: Bauchwelle (Nauli)
+491	Lotus: mittlere Bauchmuskeln halten
+492	Lotus, nach oben strecken
+493	L-Sitz, Beine höher
+494	Pflug mit gestreckten Armen
+495	Pflug, Beine nach rechts
+496	Pflug, Beine nach links
+497	Pflug mit weiten Beinen
+498	Halber Schulterstand, Beine im Winkel
+499	Schulterstand ohne Hände
+500	Schulterstand, rechtes Bein zum Boden
+501	Schulterstand, linkes Bein zum Boden
+502	Schulterstand, rechtes Bein zur Seite
+503	Schulterstand, linkes Bein zur Seite
+504	Schulterstand, Hüften zur Seite
+505	Seitliche halbe Brücke auf den Schultern
+506	Schulterstand, Hüften zur anderen Seite
+507	Schulterbrücke, rechtes Bein hoch
+508	Schulterbrücke, linkes Bein hoch
+509	Schulterstand im Lotus, rechtes Bein oben
+510	Schulterstand im Lotus, linkes Bein oben
+511	Rolle rückwärts über den Kopf
+512	Intensive Seitdehnung
+513	Dreieck
+514	Gedrehtes Dreieck
+515	Gedrehtes Dreieck, Handflächen zusammen
+516	Seitdehnung, Schultern öffnen
+517	Ausfallschritt mit Drehung
+518	Krieger 2: Arme weit
+519	Ausfallschritt, Drehung zur anderen Seite
+520	Gestreckter seitlicher Winkel
+521	Gedrehter seitlicher Winkel
+522	Gebundener gedrehter seitlicher Winkel
+523	Gedrehte Armbalance, Beine auseinander
+524	Gedrehte Armbalance, Beine zusammen
+525	Krieger 1, Hände hinten verschränkt
+526	Krieger 1, Arme nach vorn
+527	Krieger 1: nach vorn strecken
+528	Krieger 3
+529	Halbmond
+530	Baum
+531	Baum im halben Lotus
+532	Vorbeuge im Stehen mit halbem Lotus
+533	Halbe Vorbeuge im Stehen mit halbem Lotus
+534	Weite Vorbeuge, Hände am Boden
+535	Weite halbe Vorbeuge
+536	Weite Vorbeuge, Hände hinten verschränkt
+537	Weite Vorbeuge, Arme nach vorn
+538	Weite Vorbeuge mit Drehung nach rechts
+539	Weite Vorbeuge mit Drehung nach links
+540	Weite Vorbeuge mit tiefer Drehung nach rechts
+541	Weite Vorbeuge mit tiefer Drehung nach links
+542	Tiefe Planke, auf den Bauch ablegen
+543	Kobra
+544	Stockhaltung
+545	Drehsitz, ein Knie hoch
+546	Vorbeuge im Sitzen, Arm um das gebeugte Bein
+547	Drehsitz zur anderen Seite
+548	Kopf-zum-Knie-Haltung
+549	Gedrehte Kopf-zum-Knie-Haltung
+550	Vorbeuge im Sitzen, ein Bein nach hinten gefaltet
+551	Halber Drehsitz (Herr der Fische)
+552	Kuhgesicht, Hände hinten verschränkt
+553	Kuhgesicht mit Vorbeuge
+554	Umgekehrte Planke, rechtes Bein hoch
+555	Umgekehrte Planke, linkes Bein hoch
+556	Umgekehrter Tisch, rechtes Bein hoch
+557	Umgekehrter Tisch, linkes Bein hoch
+558	Im Liegen: Beine hoch und auseinander, Griff an die Zehen
+559	Weiter Sitz
+560	Boot
+561	Halbes Boot
+562	Heldensitz, Hände über dem Kopf verschränkt
+563	Pfau
+564	Ruhe auf dem Rücken
+565	Berghaltung, Hände gebunden
+566	Gruß nach oben
+567	Stehender Halbmond
+568	Tänzer
+569	Leichter Baum
+570	Baum mit Händen im Gebet
+571	Baum im gebundenen halben Lotus, ein Arm hoch
+572	Halbmond
+573	Intensive Dehnung im gebundenen halben Lotus, Vorbereitung
+574	Intensive Dehnung im gebundenen halben Lotus
+575	Garuda
+576	Halbe weite Vorbeuge
+577	Weite Vorbeuge 1
+578	Weite Vorbeuge 4
+579	Gedrehte halbe weite Vorbeuge
+580	Gebundene gedrehte weite Vorbeuge
+581	Herabschauender Hund
+582	Intensive Seitdehnung, Vorbereitung
+583	Intensive Seitdehnung
+584	Gestrecktes Dreieck
+585	Gedrehtes Dreieck
+586	Gestreckter seitlicher Winkel
+587	Krieger 2
+588	Gedrehter seitlicher Winkel, Vorbereitung
+589	Gedrehter seitlicher Winkel, beide Hände frei
+590	Gedrehter seitlicher Winkel
+591	Gebundener gedrehter seitlicher Winkel
+592	Krieger 1, Vorbereitung
+593	Krieger 1
+594	Gebundener Krieger 1
+595	Reiter-Ausfallschritt, Vorbereitung
+596	Eidechsen-Ausfallschritt, Arme gespreizt
+597	Kraftvolle Haltung (Stuhl)
+598	Girlande
+599	Leichter Sitz
+600	Gedrehte Marichi-Haltung
+601	Halber Drehsitz 1
+602	Marichi-Haltung 3, Vorbereitung
+603	Gebundener Winkel
+604	Sitzender Winkel
+605	Stockhaltung
+606	Sitzende Vorbeuge (Paschimottanasana)
+607	Marichi-Haltung 1
+608	Dreigliedrige Vorbeuge zum Fuß
+609	Kopf zum Knie, beide Hände zum Knöchel
+610	Kopf zum Knie, beide Hände zum Fuß
+611	Gedrehtes Kopf zum Knie
+612	Kuhgesicht
+613	Boot
+614	Volles Boot
+615	Halbes Boot
+616	Kindhaltung
+617	Gedrehte seitliche Kindhaltung
+618	Kuh mit intensiver Handgelenksdehnung
+619	Gestreckte Vierfüßler-Stockhaltung
+620	Makara-Stockhaltung
+621	Vierfüßler-Stockhaltung (Chaturanga)
+622	Seitstütz (Vasishthasana)
+623	Kranich
+624	Koundinya-Haltung auf zwei Beinen
+625	Delfin
+626	Schulterstand auf einem Bein
+627	Seitlicher Schulterstand auf einem Bein
+628	Seitlicher Pflug
+629	Heuschrecke
+630	Halbe Heuschrecke
+631	Kobra
+632	Heraufschauender Hund
+633	Bogen
+634	Intensiver gestreckter Welpe
+635	Umgekehrter Tisch auf einem Bein
+636	Brücke
+637	Liegender gebundener Winkel
+638	Nadelöhr
+639	Liegende Kindhaltung
+640	Liegende Drehung, Vorbereitung
+641	Glückliches Baby
+642	Liegender Winkel
+643	Liegend, beide Hände zum Bein
+644	Liegend, ein Bein gestreckt
+645	Liegend, Hand zum großen Zeh 1
+646	Liegend, Beine gestreckt
+647	Seitliche Totenstellung

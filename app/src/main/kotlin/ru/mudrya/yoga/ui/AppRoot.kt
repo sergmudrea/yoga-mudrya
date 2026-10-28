@@ -1,0 +1,285 @@
+package ru.mudrya.yoga.ui
+
+import androidx.annotation.StringRes
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationBarItemDefaults
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
+import ru.mudrya.yoga.BuildConfig
+import ru.mudrya.yoga.R
+import ru.mudrya.yoga.store.PremiumPolicy
+import ru.mudrya.yoga.store.isPremium
+import ru.mudrya.yoga.ui.paywall.PaywallScreen
+import androidx.compose.runtime.LaunchedEffect
+import ru.mudrya.yoga.engine.Plan
+import ru.mudrya.yoga.engine.UserProfile
+import ru.mudrya.yoga.model.Injury
+import ru.mudrya.yoga.model.Support
+import ru.mudrya.yoga.ui.common.appContainer
+import ru.mudrya.yoga.ui.home.PracticeScreen
+import ru.mudrya.yoga.ui.home.ProfileScreen
+import ru.mudrya.yoga.ui.home.ProgressScreen
+import ru.mudrya.yoga.ui.home.SetsScreen
+import ru.mudrya.yoga.ui.home.LibraryScreen
+import ru.mudrya.yoga.ui.builder.BuilderScreen
+import ru.mudrya.yoga.ui.account.AccountScreen
+import ru.mudrya.yoga.ui.settings.SettingsScreen
+import ru.mudrya.yoga.ui.settings.VideoLibraryScreen
+import ru.mudrya.yoga.data.UserRepository
+import ru.mudrya.yoga.ui.onboarding.OnboardingScreen
+import ru.mudrya.yoga.ui.player.PlayerScreen
+import ru.mudrya.yoga.ui.test.MovementTestScreen
+import ru.mudrya.yoga.ui.theme.MudryaColors
+
+enum class Tab(val route: String, @StringRes val label: Int, @androidx.annotation.DrawableRes val icon: Int) {
+    PRACTICE("practice", R.string.tab_practice, R.drawable.ic_tab_practice),
+    SETS("sets", R.string.tab_sets, R.drawable.ic_tab_sets),
+    PROGRESS("progress", R.string.tab_progress, R.drawable.ic_tab_progress),
+    PROFILE("profile", R.string.tab_profile, R.drawable.ic_tab_profile),
+}
+
+private object Routes {
+    const val ONBOARDING = "onboarding"
+    const val EDIT_PROFILE = "profile/edit"
+    const val FIRST_TEST = "test/first"
+    const val TEST = "test"
+    const val SETTINGS = "settings"
+    const val PAYWALL = "paywall"
+    const val VIDEOS = "settings/videos"
+    const val LIBRARY = "library"
+    const val BUILDER = "builder"
+    const val ACCOUNT = "account"
+    const val PLAYER = "player/{seq}"
+    const val SESSION = "session/{seq}"
+    const val SET_LIBRARY = "setlibrary"
+    const val BREATH = "breath"
+    const val MEDITATION = "meditation"
+    const val GLOSSARY = "glossary"
+    const val TIPS = "tips"
+    const val DOSHA = "dosha"
+    fun session(id: String) = "session/$id"
+    fun player(sequenceId: String) = "player/$sequenceId"
+}
+
+@Composable
+fun AppRoot() {
+    val container = appContainer()
+    val users = container.users
+    val state by users.state.collectAsStateWithLifecycle()
+    val entitlement by container.billing.entitlement.collectAsStateWithLifecycle()
+    val premium = entitlement.isPremium(System.currentTimeMillis()) ||
+        ru.mudrya.yoga.engine.PromoCodes.active(state, System.currentTimeMillis()) ||
+        (BuildConfig.DEBUG && state.settings.debugPremium)
+    // Права проверяются у магазина при каждом запуске: покупка на другом устройстве, отмена, продление.
+    LaunchedEffect(Unit) { container.billing.restore() }
+    val nav = rememberNavController()
+    val backStack by nav.currentBackStackEntryAsState()
+    val current = backStack?.destination?.route
+    val start = remember { if (state.onboarded) Tab.PRACTICE.route else Routes.ONBOARDING }
+    val showTabs = Tab.entries.any { it.route == current }
+
+    Scaffold(
+        containerColor = MudryaColors.Ground,
+        bottomBar = { if (showTabs) TabBar(nav, current) },
+    ) { padding ->
+        NavHost(nav, startDestination = start, modifier = Modifier.padding(padding)) {
+            composable(Routes.ONBOARDING) {
+                OnboardingScreen(initial = null) { r ->
+                    val today = UserRepository.today()
+                    users.update {
+                        it.copy(
+                            profile = r.profile,
+                            params = Plan.initial(r.profile),
+                            planStartDay = today,
+                            settings = it.settings.copy(lengthMin = r.minutes, holdBreaths = 0),
+                            programId = r.programId,
+                            programStart = today,
+                        )
+                    }
+                    val first = ru.mudrya.yoga.catalog.ProgramCatalog.program(r.programId)?.days?.firstOrNull { it != null }
+                    nav.navigate(Tab.PRACTICE.route) { popUpTo(Routes.ONBOARDING) { inclusive = true } }
+                    if (r.startNow && first != null) nav.navigate(Routes.session(first))
+                }
+            }
+            composable(Routes.EDIT_PROFILE) {
+                OnboardingScreen(initial = state.profile, initialMinutes = state.settings.lengthMin) { r ->
+                    val profile = r.profile
+                    users.update { it.copy(profile = profile, params = it.params.respecting(profile), settings = it.settings.copy(lengthMin = r.minutes)) }
+                    nav.popBackStack()
+                }
+            }
+            composable(Routes.FIRST_TEST) {
+                val profile = state.profile
+                if (profile == null) {
+                    Box(Modifier.fillMaxSize())
+                } else {
+                    MovementTestScreen(profile, users, onPremium = { nav.navigate(Routes.PAYWALL) }) { nav.goHome() }
+                }
+            }
+            composable(Routes.TEST) {
+                val profile = state.profile
+                if (profile == null) {
+                    Box(Modifier.fillMaxSize())
+                } else {
+                    MovementTestScreen(profile, users, onPremium = { nav.navigate(Routes.PAYWALL) }) { nav.popBackStack() }
+                }
+            }
+            composable(Routes.PLAYER) { entry ->
+                PlayerScreen(sequenceId = entry.arguments?.getString("seq") ?: "surya", onClose = { nav.popBackStack() })
+            }
+            composable(Routes.SESSION) { entry ->
+                val id = entry.arguments?.getString("seq") ?: "surya"
+                ru.mudrya.yoga.ui.home.SessionCardScreen(
+                    sequenceId = id,
+                    state = state,
+                    users = users,
+                    premium = premium,
+                    onStart = { nav.navigate(Routes.player(id)) { popUpTo(Routes.SESSION) { inclusive = true } } },
+                    onPaywall = { nav.navigate(Routes.PAYWALL) },
+                    onBack = { nav.popBackStack() },
+                )
+            }
+            composable(Routes.GLOSSARY) { ru.mudrya.yoga.ui.learn.GlossaryScreen(onBack = { nav.popBackStack() }) }
+            composable(Routes.TIPS) { ru.mudrya.yoga.ui.learn.TipsScreen(onBack = { nav.popBackStack() }) }
+            composable(Routes.DOSHA) { ru.mudrya.yoga.ui.learn.DoshaScreen(onStart = { nav.startSet(it, premium) }, onBack = { nav.popBackStack() }) }
+            composable(Routes.MEDITATION) { ru.mudrya.yoga.ui.breath.MeditationScreen(premium, onPaywall = { nav.navigate(Routes.PAYWALL) }, onBack = { nav.popBackStack() }) }
+            composable(Routes.BREATH) { ru.mudrya.yoga.ui.breath.BreathScreen(state, onBack = { nav.popBackStack() }) }
+            composable(Routes.PAYWALL) { PaywallScreen(onClose = { nav.popBackStack() }) }
+            composable(Routes.SETTINGS) {
+                SettingsScreen(state, users, onBack = { nav.popBackStack() }, onVideos = { nav.navigate(Routes.VIDEOS) })
+            }
+            composable(Routes.VIDEOS) { VideoLibraryScreen(container.videos, onBack = { nav.popBackStack() }) }
+            composable(Tab.PRACTICE.route) {
+                PracticeScreen(
+                    state,
+                    users,
+                    onStart = { nav.startSet(it, premium) },
+                    onTest = { nav.navigate(Routes.TEST) },
+                    onSets = { nav.goTab(Tab.SETS) },
+                    premium = premium,
+                    onPaywall = { nav.navigate(Routes.PAYWALL) },
+                    onPrograms = { nav.navigate(Routes.SET_LIBRARY) },
+                    onBreath = { nav.navigate(Routes.BREATH) },
+                    onMeditation = { nav.navigate(Routes.MEDITATION) },
+                    onGlossary = { nav.navigate(Routes.GLOSSARY) },
+                    onTips = { nav.navigate(Routes.TIPS) },
+                    onDosha = { nav.navigate(Routes.DOSHA) },
+                )
+            }
+            composable(Tab.SETS.route) {
+                SetsScreen(
+                    state,
+                    users,
+                    premium,
+                    onStart = { nav.startSet(it, premium) },
+                    onLibrary = { nav.navigate(Routes.LIBRARY) },
+                    onBuilder = { nav.navigate(Routes.BUILDER) },
+                    onSetLibrary = { nav.navigate(Routes.SET_LIBRARY) },
+                )
+            }
+            composable(Routes.SET_LIBRARY) {
+                ru.mudrya.yoga.ui.home.SetLibraryScreen(state, users, premium, onStart = { nav.startSet(it, premium) }, onBack = { nav.popBackStack() })
+            }
+            composable(Routes.LIBRARY) { LibraryScreen(state, users, premium, onStart = { nav.startSet(it, premium) }, onBack = { nav.popBackStack() }) }
+            composable(Routes.ACCOUNT) { AccountScreen(container.accounts, users, onBack = { nav.popBackStack() }) }
+            composable(Routes.BUILDER) {
+                BuilderScreen(
+                    state,
+                    users,
+                    premium,
+                    onPlay = { nav.navigate(Routes.player(it)) },
+                    onPaywall = { nav.navigate(Routes.PAYWALL) },
+                    onBack = { nav.popBackStack() },
+                )
+            }
+            composable(Tab.PROGRESS.route) { ProgressScreen(state, users, onTest = { nav.navigate(Routes.TEST) }) }
+            composable(Tab.PROFILE.route) {
+                ProfileScreen(
+                    state,
+                    onEdit = { nav.navigate(Routes.EDIT_PROFILE) },
+                    onSettings = { nav.navigate(Routes.SETTINGS) },
+                    onAccount = { nav.navigate(Routes.ACCOUNT) },
+                    entitlement = entitlement,
+                    onSubscribe = { nav.navigate(Routes.PAYWALL) },
+                    onReset = {
+                        users.reset()
+                        nav.navigate(Routes.ONBOARDING) { popUpTo(nav.graph.id) { inclusive = true } }
+                    },
+                )
+            }
+        }
+    }
+}
+
+/** После смены ограничений опора должна оставаться допустимой. */
+private fun ru.mudrya.yoga.engine.SessionParams.respecting(p: UserProfile) =
+    if (Injury.WRISTS in p.injuries && support != Support.FISTS) copy(support = Support.FISTS) else this
+
+/** Закрытый сет ведёт на экран подписки, открытый — сразу в плеер. Во время практики продаж нет. */
+private fun NavHostController.startSet(id: String, premium: Boolean) = navigate(
+    when {
+        PremiumPolicy.isLocked(id, premium) -> Routes.PAYWALL
+        // Свои сеты уже настроены в конструкторе — сразу в плеер.
+        ru.mudrya.yoga.engine.CustomSets.isCustom(id) -> Routes.player(id)
+        else -> Routes.session(id)
+    },
+)
+
+private fun NavHostController.goTab(tab: Tab) = navigate(tab.route) {
+    popUpTo(Tab.PRACTICE.route) { saveState = true }
+    launchSingleTop = true
+    restoreState = true
+}
+
+private fun NavHostController.goHome() = navigate(Tab.PRACTICE.route) { popUpTo(graph.id) { inclusive = true } }
+
+@Composable
+private fun TabBar(nav: NavHostController, current: String?) {
+    NavigationBar(containerColor = MudryaColors.SurfaceHigh) {
+        Tab.entries.forEach { tab ->
+            val selected = current == tab.route
+            NavigationBarItem(
+                selected = selected,
+                onClick = {
+                    nav.navigate(tab.route) {
+                        // Практика — корень после онбординга, на неё и сворачиваем стек вкладок.
+                        popUpTo(Tab.PRACTICE.route) { saveState = true }
+                        launchSingleTop = true
+                        restoreState = true
+                    }
+                },
+                icon = {
+                    androidx.compose.material3.Icon(
+                        painter = androidx.compose.ui.res.painterResource(tab.icon),
+                        contentDescription = null,
+                        tint = if (selected) MudryaColors.Saffron else MudryaColors.TextMuted,
+                    )
+                },
+                label = { Text(stringResource(tab.label)) },
+                colors = NavigationBarItemDefaults.colors(
+                    selectedTextColor = MudryaColors.Saffron,
+                    unselectedTextColor = MudryaColors.TextMuted,
+                    indicatorColor = Color.Transparent,
+                ),
+            )
+        }
+    }
+}

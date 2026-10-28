@@ -1,0 +1,896 @@
+app_name	Mudrya Yoga
+tab_practice	Prática
+tab_sets	Séries
+tab_progress	Progresso
+tab_profile	Perfil
+today	Hoje
+surya	Surya Namaskar
+chandra	Chandra Namaskar
+start	Começar
+coming_soon	Esta tela chega na próxima etapa.
+store_label	Versão: %1$s
+player_step_of	%1$d de %2$d
+player_phase_move	TRANSIÇÃO
+player_phase_hold	MANTER
+player_side_right	LADO DIREITO
+player_side_left	LADO ESQUERDO
+player_from	De: %1$s
+player_replaced_cycle	No lugar de “%1$s” — modo suave do ciclo
+cycle_title	Dias suaves
+cycle_hint	Durante a menstruação, o app pode substituir as inversões e as flexões para trás mais profundas por posturas calmas parecidas. Você só marca o início e o fim — nada mais é guardado.
+cycle_enable	Ativar
+cycle_start	Começou hoje
+cycle_end	Terminou
+cycle_day	Dia %1$d de no máximo %2$d
+cycle_on	Modo suave: sem inversões nem flexões para trás profundas — elas são substituídas automaticamente.
+cycle_off	Marque o primeiro dia — a prática passa ao modo suave por até cinco dias ou até você marcar o fim.
+cycle_disable	Não acompanhar
+player_hand_lock	Dedos entrelaçados
+player_hand_prayer	Palmas unidas
+player_replaced	No lugar de “%1$s” — para poupar: %2$s
+player_next	A seguir: %1$s
+player_inhale	Inspire
+player_exhale	Expire
+player_breath_of	respiração %1$d de %2$d
+player_belly	Barriga
+player_chest	Peito
+player_hint_inhale	Primeiro enche a barriga, depois o peito. O movimento acompanha a inspiração.
+player_hint_exhale	Primeiro desce o peito, depois a barriga recolhe suavemente. O movimento acompanha a expiração.
+player_prev	Postura anterior
+player_pause	Pausa
+player_next_step	Próxima postura
+player_speed	Ritmo %1$s
+player_hold_n	Respirações ×%1$d
+player_hold_method	Respirações: como na série
+player_phase_len	Fase %1$d s
+player_metal_dog_short	Cão de metal
+player_metal_dog	Respiração do cão de metal
+player_metal_dog_hint	Mantenha a postura. Expirações curtas e rápidas pelo nariz, impulsionadas pela barriga; a inspiração vem sozinha. O tempo de prática fica pausado.
+player_continue	Continuar
+player_done	%1$s concluída
+player_done_stats	%1$d posições · cerca de %2$d min
+player_finish	Pronto
+finish_how	Como foi?
+finish_easy	Fácil
+finish_easy_hint	Vamos acrescentar uma volta ou um apoio das mãos mais exigente
+finish_ok	Na medida
+finish_ok_hint	Mantemos; uma volta a mais a cada três sessões
+finish_hard	Difícil
+finish_hard_hint	Menos carga e respirações mais curtas
+finish_zones	Algo está incomodando?
+goal_joints	Articulações e coluna móveis
+goal_youth	Baixar minha idade de movimento
+goal_shape	Corpo mais magro e tonificado
+goal_strength	Força e resistência
+goal_calm	Calma e energia
+home_age_label	Idade de movimento
+home_age_none	Cinco testes simples mostram quantos anos o seu corpo tem ao se mover. Repita todo mês e veja a idade baixar.
+home_age_retake	Refazer o teste
+home_rounds	Voltas
+home_support	Apoio das mãos
+home_support_wrists	Só sobre os punhos, por causa dos pulsos.
+home_phase	Duração da inspiração e da expiração
+home_phase_hint	O objetivo é 7–9 segundos. Comece onde for fácil; o app vai alongando.
+home_session_line	Voltas: %1$d · ~%2$d min · %3$s · fase %4$s s
+home_tune	Ajustar
+home_tune_hide	Ocultar ajustes
+injury_wrists_hint	Punhos em vez das palmas, menos carga nos pulsos
+injury_lumbar_hint	Flexões para trás profundas trocadas por suaves
+injury_neck_hint	Sem cabeça para trás nem inversões
+injury_knees_hint	Avanços e posturas ajoelhadas mais suaves
+joint_wrists	Pulsos
+joint_shoulders	Ombros
+joint_lumbar	Lombar
+joint_neck	Pescoço
+joint_knees	Joelhos
+level_beginner	Estou começando
+level_beginner_hint	Novo no yoga ou depois de uma longa pausa
+level_experienced	Alguma experiência
+level_experienced_hint	Conheço as posturas básicas e já fiz Surya Namaskar
+level_advanced	Prática regular
+level_advanced_hint	Surya Namaskar é fácil para mim, quero um desafio
+onb_welcome_title	Mudrya Yoga
+onb_welcome_text	Yoga que se adapta a você: práticas curtas todos os dias, uma respiração para cada movimento e uma carga que cresce com você.
+onb_welcome_method	Quatro perguntas rápidas e o seu plano diário fica pronto.
+onb_start	Começar
+onb_next	Avançar
+onb_finish	Pronto
+onb_back	Voltar
+onb_about_title	Sobre você
+onb_about_hint	Para escolher a carga certa e trocar as posturas que não combinam com você.
+onb_sex	Sexo
+onb_age	Idade
+onb_goals_title	O que você quer conseguir?
+onb_goals_hint	Pode escolher mais de um.
+onb_level_title	Sua experiência
+onb_limits_title	Alguma limitação?
+onb_limits_hint	O app remove ou substitui as posturas que sobrecarregam estas áreas.
+onb_limits_none	Sem limitações
+onb_limits_doctor	Se você tem dor, lesões, está grávida ou tem uma doença crônica, converse com um médico antes de começar.
+phase_value	%1$s s
+profile_level	Experiência
+profile_goals	Objetivos
+profile_limits	Limitações
+profile_edit	Editar respostas
+profile_data	Dados
+profile_data_hint	Tudo fica neste telefone. Não precisa de conta.
+profile_reset	Apagar todos os dados
+profile_reset_title	Apagar todos os dados?
+profile_reset_text	Seu perfil, o histórico de prática e os resultados dos testes serão apagados para sempre.
+profile_reset_yes	Apagar
+profile_reset_no	Cancelar
+progress_week	Últimos 7 dias, minutos
+progress_history	Histórico
+progress_empty	Suas práticas vão aparecer aqui.
+progress_minutes	%1$d min
+progress_unfinished	não concluída
+progress_age_better	%1$d mais jovem desde o primeiro teste
+progress_age_worse	%1$d mais velho desde o primeiro teste
+progress_age_same	Sem mudança desde o primeiro teste
+sex_female	Feminino
+sex_male	Masculino
+stat_streak	dias seguidos
+stat_best_streak	melhor sequência
+stat_sessions	sessões
+stat_minutes	minutos
+support_fists	sobre os punhos
+support_palms	sobre as palmas
+support_fingers	sobre as pontas dos dedos
+test_intro_title	Teste de idade de movimento
+test_intro_text	Cinco exercícios e um check-up de saúde com cinco perguntas, cerca de 15 minutos. Você vai precisar de um pouco de espaço, um tapete, um cronômetro e uma fita métrica. Qualquer etapa pode ser pulada. No final: sua idade de movimento, índice de massa corporal e grau de obesidade, risco pela cintura, condição do coração e resistência.
+test_disclaimer	É uma estimativa com base em normas de idade, não uma medição médica.
+test_start	Fazer o teste
+test_later	Mais tarde
+test_n_of	Teste %1$d de %2$d
+test_record	Salvar
+test_skip	Pular
+test_done	Pronto
+test_sit_rise	Sentar e levantar do chão
+test_sit_rise_how	Descalço, sente-se no chão de pernas cruzadas e levante-se de novo, sem apoio se puder. Começa com 10 pontos. Menos 1 para cada apoio (mão, antebraço, joelho, lateral da perna), menos 0,5 por perder o equilíbrio.
+test_fold	Flexão para a frente em pé
+test_fold_how	Suba num degrau ou numa caixa firme, joelhos esticados. Incline-se devagar e desça as mãos. Centímetros abaixo dos pés contam a mais, os que faltam contam a menos.
+test_balance	Equilíbrio de olhos fechados
+test_balance_how	Fique num pé só, mãos na cintura, feche os olhos. Tempo até o outro pé tocar o chão ou o pé de apoio se mexer. O melhor de três tentativas.
+test_push_ups	Flexões de braço
+test_push_ups_how	Flexões clássicas na ponta dos pés, o peito quase toca o chão. Quantas conseguir sem descanso e com boa técnica.
+test_hr	Recuperação cardíaca
+test_hr_how	Faça 6 voltas rápidas da saudação, meça o pulso na hora e de novo depois de 60 segundos. Informe a diferença. Pule se não tiver monitor cardíaco.
+test_result_label	Sua idade de movimento
+test_result_passport	idade real %1$d
+test_result_younger	Seu corpo se move %1$d anos mais jovem que a sua idade.
+test_result_older	Seu corpo se move %1$d anos mais velho que a sua idade. A prática regular vai mudar isso; refaça o teste daqui a um mês.
+test_result_same	Igual à sua idade real.
+unit_points	pontos
+unit_cm	cm
+unit_sec	segundos
+unit_times	repet.
+unit_bpm	bpm
+rest_title	Descanso deitado
+rest_hint	Deite-se de costas, braços ao longo do corpo, palmas para cima. A seguir: volta %1$d.
+rest_skip	Continuar
+path_week	Caminho de 8 semanas · semana %1$d, dia %2$d
+path_again	De novo
+path_done	Feito hoje
+path_rest	Dia de descanso
+path_rest_hint	A recuperação faz parte do treino. Faça uma caminhada ou a sessão curta da manhã.
+path_rest_light	10 minutos de manhã
+path_test	Dia de teste
+path_test_hint	Faça o teste de idade de movimento para ver o que está mudando.
+path_all_sets	Todas as séries →
+home_age_due	Já se passaram duas semanas, é hora de refazer o teste.
+home_relax	Descanso entre voltas
+home_relax_off	desligado
+home_relax_hint	Deitado de costas, com timer. Você pode terminar antes.
+tv_button	TV
+tv_on	A prática está na TV
+tv_remote	Seu telefone é o controle: pausa, voltar, avançar, ritmo.
+settings_title	Configurações
+settings_practice	Durante a prática
+settings_sound	Som na troca de fase
+settings_sound_hint	Um bipe curto: mais agudo na inspiração, mais grave na expiração. Pratique sem olhar para a tela.
+player_scheme	Esquema
+player_video	Vídeo
+videos_title	Vídeos da instrutora
+videos_hint	Associe o seu próprio vídeo a qualquer postura: grave você mesmo ou o seu professor. Um vídeo do lado direito também é exibido, espelhado, para o esquerdo. Ele toca sem som — a respiração e a voz continuam com o app.
+videos_settings_hint	Seus próprios vídeos para as posturas, no lugar do esquema.
+videos_open	Escolher vídeos
+videos_coverage	Vídeos: %1$d de %2$d posturas
+videos_has	vídeo adicionado
+videos_none	esquema
+videos_add	Adicionar
+videos_replace	Substituir
+videos_remove	Remover
+videos_failed	Não foi possível ler este arquivo.
+calendar_summary	Dias com prática: %1$d · minutos: %2$d
+challenge_title	108 voltas
+challenge_hint	O número tradicional: 108 voltas da saudação ao sol no seu ritmo. Contadas a partir do dia de início: cada prática “Sol” concluída ou Surya Namaskar clássico.
+challenge_start	Começar o desafio
+challenge_progress	%1$d de %2$d
+challenge_left	Faltam %1$d voltas · dias de prática: %2$d
+challenge_done	Conseguiu! 108 voltas em %1$d dias de prática.
+challenge_reset	Parar o desafio
+challenge_again	Recomeçar
+body_title	Peso e cintura
+body_hint	Meça uma vez por semana, de manhã: o que importa é a tendência, não um número isolado.
+body_weight	Peso
+body_waist	Cintura
+body_kg	%1$s kg
+body_cm	%1$s cm
+body_add	Adicionar a medida de hoje
+body_save	Salvar
+age_chart_legend	Laranja — idade de movimento, cinza — idade real. Quanto menor, melhor.
+settings_figure3d	Figura 3D
+settings_figure3d_hint	A marionete de madeira: transições suaves, mãos e pés ficam no chão; gire com o dedo. Desligado — o esquema plano com o brilho da respiração.
+library_title	Biblioteca
+library_hint	Todas as %1$d posturas da biblioteca (segundo “2100 Asanas” de D. Lacerda) por capítulos e seções, grátis para consultar: qualquer postura abre na marionete e entra na sua série com “＋”. Tocar seções inteiras é Premium.
+library_search	Buscar: pombo, bakasana, montanha…
+library_found	Seções encontradas: %1$d
+library_poses	%1$d posturas
+library_card	Biblioteca de posturas: %1$d
+library_card_hint	Uma biblioteca com mais de 1800 posturas: nomes, sânscrito, cada postura na marionete.
+library_open	Abrir a biblioteca
+close	Fechar
+back	Voltar
+builder_title	Criador de séries
+builder_card	Crie a sua série
+builder_card_hint	Posturas das práticas principais, do aquecimento e da biblioteca com mais de 1800 posturas; ordem arrastando. Testes grátis restantes: %1$d de 5.
+builder_card_hint_premium	Posturas das práticas principais, do aquecimento e da biblioteca com mais de 1800 posturas; ordem arrastando. Premium: usos ilimitados.
+builder_open	Abrir o criador
+builder_hint	Junte posturas com “＋”, reordene tocando e segurando uma linha e arrastando, e teste a série no player na marionete 3D.
+builder_runs_left	Testes grátis restantes: %1$d de %2$d. Depois disso, Premium por um mês, um ano ou para sempre.
+builder_new	Nova série
+builder_new_name	Minha série %1$d
+builder_empty	Ainda não há séries — crie a primeira.
+builder_edit	Editar
+builder_test	Testar a série
+builder_name	Nome da série
+builder_drag_hint	Toque e segure uma linha e arraste para mudar a ordem. Toque numa postura para vê-la na marionete.
+builder_no_poses	Ainda não há posturas — adicione com “＋”.
+builder_add	Adicionar posturas
+builder_delete	Apagar a série
+builder_pick_title	Adicionar posturas
+builder_in_set	Na série: %1$d
+builder_tab_core	Práticas principais
+builder_tab_library	Biblioteca
+builder_done	Pronto
+builder_more	E mais %1$d — refine a busca.
+builder_add_to_set	＋ Adicionar à série
+trial_title	Teste grátis
+trial_text	Suas próprias séries podem ser iniciadas grátis %1$d vezes no total. Restam: %2$d. Depois você vai precisar do Premium — por um mês, um ano ou para sempre.
+trial_over_title	Os testes grátis acabaram
+trial_over_text	Você usou todos os %1$d inícios grátis das suas séries. O Premium libera usos ilimitados, todas as séries e a biblioteca inteira.
+trial_run	Iniciar (restam: %1$d)
+trial_premium	Assinar o Premium
+library_show	Posturas
+library_hide	Ocultar
+library_added	Adicionada a “%1$s”
+health_n_of	Check-up de saúde · %1$d de %2$d
+health_body_title	Altura e peso
+health_body_how	De manhã, antes do café, sem sapatos. Com isso calculamos o índice de massa corporal e o grau de obesidade pela escala da OMS.
+health_height	Altura
+health_weight	Peso
+health_waist_title	Cintura
+health_waist_how	Meça na altura do umbigo, em pé, numa expiração tranquila, a fita ajustada sem apertar. A cintura mostra a gordura abdominal (visceral) melhor que o peso.
+health_pulse_title	Pulso em repouso
+health_pulse_how	Fique sentado tranquilo por 5 minutos, depois conte o pulso no pulso ou no pescoço por 30 segundos e multiplique por 2.
+health_bpm	%1$d bpm
+health_stairs_title	Teste da escada
+health_stairs_how	Suba 4 andares (cerca de 60 degraus) em passo rápido, sem parar e sem correr. Quanto tempo levou? (Teste da escada da Sociedade Europeia de Cardiologia.) Pule se tiver problemas cardíacos.
+health_stairs_45	menos de 45 s
+health_stairs_60	45–60 s
+health_stairs_90	1–1,5 min
+health_stairs_slow	mais de 1,5 min
+health_stairs_cannot	não consegui
+health_sitting_title	Tempo sentado
+health_sitting_how	Quantas horas por dia você passa sentado: trabalho, carro, sofá, tela?
+health_hours	%1$d h por dia
+health_result_title	Check-up de saúde
+health_overall_good	No geral: boa forma
+health_overall_ok	No geral: bem, com espaço para melhorar
+health_overall_risk	No geral: há fatores de risco
+health_overall_high	No geral: vários fatores de risco sérios
+health_m_bmi	Índice de massa corporal %1$s
+health_m_whtr	Cintura/altura %1$s
+health_m_waist	Cintura %1$s cm
+health_m_hr	Pulso em repouso %1$d
+health_m_stairs	Teste da escada
+health_m_sitting	Sentado %1$d h por dia
+health_bmi_under	Abaixo do peso (IMC menor que 18,5)
+health_bmi_normal	Peso normal (18,5–24,9)
+health_bmi_over	Sobrepeso, pré-obesidade (25–29,9)
+health_bmi_obese1	Obesidade grau I (30–34,9)
+health_bmi_obese2	Obesidade grau II (35–39,9)
+health_bmi_obese3	Obesidade grau III (40 ou mais)
+health_whtr_good	Abaixo de 0,5 — sem obesidade abdominal
+health_whtr_risk	0,5–0,6 — a gordura abdominal aumenta o risco
+health_whtr_high	0,6 ou mais — risco cardiometabólico alto
+health_waist_good	Dentro da norma para o seu sexo
+health_waist_risk	Acima da norma — risco aumentado
+health_waist_high	Bem acima da norma — risco alto
+health_hr_excellent	Excelente: um coração treinado
+health_hr_good	Bom
+health_hr_average	Médio
+health_hr_below	Abaixo da média — o coração trabalha mais em repouso
+health_hr_poor	Condicionamento fraco
+health_hr_tachy	100 ou mais — consulte um médico antes de praticar com intensidade
+health_stairs_fit	Cerca de 9–10 METs: boa capacidade cardíaca e pulmonar
+health_stairs_good	Boa capacidade
+health_stairs_average	Média — a resistência pode ser desenvolvida
+health_stairs_low	Abaixo de 8 METs — resistência baixa, vale conversar com um médico
+health_stairs_cannot_v	Resistência muito baixa — comece devagar e consulte um médico
+health_sit_good	Pouco tempo sentado — ótimo
+health_sit_ok	Moderado: faça pausas de movimento a cada hora
+health_sit_risk	Mais de 8 horas: um fator de risco; cerca de uma hora de movimento por dia compensa
+health_target	Para um IMC normal: menos %1$s kg (até %2$s kg).
+health_disclaimer	Uma triagem por escalas abertas (OMS, NICE, ESC), não um diagnóstico.
+health_premium_pitch	O Premium monta o seu plano em torno desses números: todas as séries e a biblioteca, séries próprias ilimitadas, substituições suaves para as áreas sensíveis.
+health_premium_button	Quero meu plano Premium
+builder_hold	Manter cada postura
+builder_hold_n	%1$d respirações
+home_my_sets	Minhas séries
+settings_display	Exibição
+settings_show_cues	Dicas e descrição da postura
+settings_show_next	“A seguir” e “de” abaixo do título
+settings_show_sanskrit	Nomes em sânscrito
+settings_show_breath	Barra de respiração
+settings_large_text	Texto grande no player
+settings_thumbnails	Imagens das posturas
+settings_thumbnails_hint	Pequenas imagens da marionete na biblioteca, no criador e na tela inicial.
+settings_camera	Ângulo da câmera
+camera_side	Lateral
+camera_three_quarter	Três quartos
+camera_front	Frontal
+account_title	Conta
+account_button	Conta: entrar ou cadastrar-se
+account_button_signed	Conta: %1$s
+account_login	Entrar
+account_register	Criar conta
+account_email	E-mail
+account_name	Nome
+account_password	Senha (pelo menos %1$d caracteres)
+account_register_hint	Seu progresso atual, suas séries e os resultados dos testes passam para a nova conta.
+account_register_do	Criar conta
+account_login_do	Entrar
+account_logout	Sair
+account_delete	Apagar conta
+account_delete_title	Apagar a conta?
+account_delete_text	A conta e todo o seu progresso — práticas, séries próprias, testes e medidas — serão apagados deste dispositivo para sempre. A assinatura é gerenciada na loja e não é cancelada automaticamente.
+account_delete_confirm	Apagar para sempre
+account_local_note	Cada conta guarda o próprio progresso neste dispositivo, então várias pessoas podem praticar no mesmo telefone. A senha é guardada só como hash. Para levar o progresso a outro telefone, use o backup nas Configurações.
+account_err_email	Confira o endereço de e-mail.
+account_err_short	A senha precisa ter pelo menos %1$d caracteres.
+account_err_exists	Já existe uma conta com este e-mail — entre.
+account_err_not_found	Não há conta com este e-mail neste dispositivo.
+account_err_wrong	Senha incorreta.
+builder_pin_do	＋ Adicionar à tela inicial
+builder_unpin	Remover da tela inicial
+builder_preview	Prévia %1$d / %2$d · %3$s
+settings_voice	Guia por voz
+settings_voice_hint	Usa a voz sintetizada do telefone. Quando a voz fala, o bipe é omitido.
+voice_off	Desligada
+voice_breath	Só respiração
+voice_names	Posturas e respiração
+voice_full	Com dicas
+settings_vibration	Vibração
+settings_vibration_hint	Uma vibração leve a cada troca entre inspiração e expiração.
+settings_tv	TV
+settings_tv_auto	Mostrar na TV
+settings_tv_auto_hint	Quando há uma segunda tela conectada, a figura e a respiração vão para lá e o telefone vira controle.
+settings_tv_how	Conecte a TV por tela sem fio (Miracast, Cast, Smart View) ou adaptador HDMI e depois abra uma prática.
+settings_tv_open	Abrir configurações de transmissão
+reminder_channel	Lembretes de prática
+reminder_title	Hora de praticar
+reminder_text	Seu tapete está esperando. Até a sessão curta da manhã mantém a sua sequência.
+trial_reminder_title	Seu teste está acabando
+trial_reminder_text	Em 2 dias a loja vai cobrar a assinatura. Você pode cancelar pelo perfil com um toque.
+reminder_section	Lembretes
+reminder_toggle	Lembrar de praticar
+reminder_toggle_hint	Uma notificação no horário escolhido. Funciona offline.
+reminder_denied	Sem permissão de notificações, os lembretes não chegam. Você pode permitir nas configurações do telefone.
+reminder_hour_step	1 h
+backup_section	Backup
+backup_hint	Salve o seu progresso num arquivo, por exemplo na nuvem ou num mensageiro. Útil ao trocar de telefone.
+backup_export	Salvar em arquivo
+backup_import	Restaurar de arquivo
+backup_saved	Salvo.
+backup_failed	Não foi possível ler ou gravar o arquivo.
+backup_empty	O arquivo não tem dados do app.
+backup_confirm_title	Restaurar do arquivo?
+backup_confirm_text	Os dados atuais serão substituídos pelos do arquivo: %1$d sessões, %2$d testes.
+backup_confirm_yes	Restaurar
+backup_restored	Dados restaurados.
+paywall_title	Premium
+paywall_benefit_chandra	Práticas completas “Sol e Lua” (até duas horas), séries avançadas, Chandra Namaskar clássico
+paywall_benefit_bundle	Suas séries do criador — usos ilimitados
+paywall_benefit_short	Seções inteiras da biblioteca de posturas como práticas
+paywall_benefit_future	Novas séries e programas conforme forem lançados
+paywall_free_core	Grátis para sempre: Surya Namaskar e Chandra Namaskar clássicos, o aquecimento sentado, a série da manhã e “Costas sem dor”, a biblioteca de posturas e o criador (5 usos das suas séries), o teste de mobilidade e o check-up de saúde, progresso, lembretes, transmissão para a TV.
+paywall_loading	Carregando planos…
+paywall_unavailable	Os planos não carregaram. O pagamento funciona quando o app está instalado pela %1$s e você está online.
+paywall_trial_terms	%1$d dias grátis. Primeira cobrança em %2$s, %3$s. Você recebe um lembrete 2 dias antes.
+paywall_try	Experimente %1$d dias grátis
+paywall_buy	Comprar por %1$s
+paywall_cancel_anytime	Cancele quando quiser: Perfil → Assinatura → Cancelar assinatura.
+paywall_restore	Restaurar compras
+paywall_restore_none	Nenhuma compra encontrada para esta conta.
+paywall_not_now	Agora não
+plan_month	Mês
+plan_year	Ano
+plan_lifetime	Vitalício
+plan_per_month	%1$s por mês
+plan_per_year	%1$s por ano
+plan_once	%1$s uma vez
+sub_section	Assinatura
+sub_free	Versão gratuita
+sub_trial	Teste até %1$s
+sub_premium	Premium ativo
+sub_premium_until	Premium até %1$s
+sub_lifetime	Premium vitalício
+sub_get	Assinar o Premium
+sub_cancel	Cancelar assinatura
+set_locked	Desbloquear com Premium
+settings_debug	Depuração
+settings_debug_premium	Premium sem compra
+settings_debug_premium_hint	Só em versões de teste, para conferir as séries bloqueadas.
+sets_classic	Clássico
+sets_classic_hint	Surya e Chandra Namaskar tradicionais: 12 e 16 posições, uma volta completa com a perna direita e com a esquerda.
+sets_rings	Práticas principais
+sets_rings_hint	“Sol” e “Lua”: transições suaves e uma respiração para cada movimento.
+sets_full	Ciclo completo
+sets_full_hint	Uma prática longa: “Sol” passa direto para “Lua”, depois um aquecimento de sete sequências curtas e um desaquecimento até o relaxamento final. Para praticantes experientes — até duas horas.
+sets_core	Série avançada e desaquecimento
+sets_core_hint	A série avançada, a transição e o desaquecimento final.
+sets_extra	Elementos extras
+sets_extra_hint	Progressões para o aquecimento e o desaquecimento, quando o básico ficar fácil.
+sets_start	Aquecimento
+sets_start_hint	Sete sequências curtas que aquecem o corpo todo.
+set_size	%1$d posições · ~%2$d min · voltas: %3$d
+promo_title	Código de ativação
+promo_hint	Tem um código Premium para um mês, um ano ou para sempre? Digite aqui.
+promo_activate	Ativar
+promo_ok_month	Premium ativado por 30 dias
+promo_ok_year	Premium ativado por um ano
+promo_ok_lifetime	Premium ativado para sempre
+promo_bad	O código não é válido. Confira as letras e os números.
+promo_used	Este código já foi usado
+promo_active_until	Premium por código até %1$s
+promo_active_lifetime	Premium por código: para sempre
+health_breath_title	Respiração tranquila
+health_breath_how	Sente-se confortavelmente e respire como sempre, sem controlar. Inicie o timer e conte as respirações completas (inspiração + expiração) durante um minuto. Isso define a duração inicial da inspiração e da expiração na prática; você pode alongá-la com o botão de fase no player.
+health_breath_value	%1$d respirações por minuto
+health_breath_phase	Fase inicial na prática: inspire %1$s s, expire o mesmo
+health_breath_start	Iniciar timer de 1 minuto
+health_breath_stop	Parar o timer
+health_breath_left	%1$d s — conte as respirações
+health_breath_done	O tempo acabou — informe quantas respirações você contou
+health_m_breath	Respiração %1$d por minuto
+health_breath_slow	Respiração lenta e profunda — uma boa base para fases longas
+health_breath_normal	Respiração tranquila normal (12–20 por minuto)
+health_breath_fast	Respiração rápida em repouso — comece com fases curtas e vá alongando aos poucos
+sets_favorites	Séries favoritas
+sets_ready	Séries prontas
+sets_ready_hint	Toque numa série para ver a estrutura e os ajustes antes de começar.
+sets_more	Mais séries: aquecimento, desaquecimento e extras ▾
+sets_more_hide	Ocultar séries extras ▴
+set_size_short	%1$d posições · ~%2$d min
+session_minutes	~%1$d min
+session_poses	%1$d posições
+session_rounds_chip	%1$d voltas
+session_hold	Respirações em cada postura
+session_hold_method	como na série
+session_phase_line	Inspiração e expiração: %1$s s cada. Alongue no player com o botão de fase.
+session_structure	Estrutura
+session_side_right	lado direito
+session_side_left	lado esquerdo
+session_steps	%1$d passos
+session_wrist	Carga nos pulsos
+session_wrist_low	Suave: sobre os punhos
+session_wrist_mid	Média: sobre as palmas
+session_wrist_high	Alta: sobre os dedos
+session_locked	Esta série faz parte do Premium.
+session_start	Começar
+extras_title	Elementos extras
+extras_all	Todos os elementos extras
+extras_all_hint	Cada elemento entra na série no seu próprio lugar
+extras_positions	+%1$d posições
+setlib_title	Biblioteca de séries
+setlib_card	Biblioteca de séries
+setlib_open	Abrir a biblioteca de séries
+setlib_card_hint	%1$d séries por objetivo — costas, articulações, quadris, forma, força, sono — mais séries extras e 6 séries de treino. Escolhidas para você depois dos testes.
+setlib_hint	Escolha uma série para o seu objetivo. Depois do check-up de saúde e do teste de movimento, o app coloca primeiro as que combinam com você; posturas não indicadas para você são substituídas em qualquer série.
+setlib_for_you	Escolhidas para você
+setlib_take_test	Faça o teste de movimento e o check-up de saúde, e o app vai escolher séries para você.
+setlib_training	Treino por séries: 6 séries
+setlib_training_hint	Séries curtas de 15–20 minutos duas vezes por dia (manhã e noite) rendem mais que uma sessão longa. Alterne as séries de um dia para o outro; a série integral é para dias corridos, não para a prática de sempre. Depois de cada postura intensa, a sua contrapostura. Trabalhe no seu limite, mas nunca force as articulações — dominar uma série leva meses.
+setlib_book	Séries extras
+setlib_book_hint	Elementos extras das práticas “Sol” e “Lua”, o aquecimento, o desaquecimento e uma série avançada como práticas separadas. Você também pode ativá-los nas séries principais pela ficha da sessão.
+advice_back	Por causa da lombar
+advice_neck	Por causa do pescoço
+advice_knees	Por causa dos joelhos
+advice_wrists	Suave para os pulsos
+advice_goal_joints	Para o seu objetivo: articulações saudáveis
+advice_goal_youth	Para o seu objetivo: manter-se jovem
+advice_goal_shape	Para o seu objetivo: forma
+advice_goal_strength	Para o seu objetivo: força
+advice_goal_calm	Para o seu objetivo: calma
+advice_weight	Pelo peso e pela cintura do check-up
+advice_heart	Pelo pulso e pelo teste da escada
+advice_sitting	Você passa muito tempo sentado
+advice_breath	Sua respiração em repouso é rápida
+advice_movement_age	Sua idade de movimento está acima da sua idade
+session_length	Duração da prática
+session_length_min	%1$d min
+session_length_full	Completa
+session_length_shortest	Esta série não fica mais curta que %1$d min — as posturas já são mantidas pelo mínimo.
+onb_minutes_title	Quantos minutos por dia?
+onb_minutes_hint	Cada série se adapta a esse tempo. Você pode mudar quando quiser.
+onb_minutes_10	Fácil de encaixar em qualquer dia
+onb_minutes_20	O melhor equilíbrio para resultados visíveis
+onb_minutes_40	Uma prática profunda
+onb_plan_title	Seu plano está pronto
+onb_plan_hint	Uma série nova todo dia. Marque os dias e mantenha a sua sequência.
+onb_plan_first	Dia 1: %1$s · ~%2$d min
+onb_plan_start	Começar a primeira prática
+onb_plan_later	Mais tarde
+onb_plan_change	Você pode trocar o programa em “Séries” → “Programas”.
+program_day	PROGRAMA · DIA %1$d DE %2$d
+program_rest	Dia de descanso
+program_rest_hint	A recuperação também faz parte do programa. Se quiser, uma prática tranquila.
+program_rest_light	Prática tranquila
+program_done_title	Programa concluído!
+program_done_text	Dias cumpridos: %1$d de %2$d. Escolha o próximo programa — o hábito já está aí.
+program_choose	Escolher um programa
+program_streak	Sequência: %1$d dias seguidos
+programs_title	Programas
+programs_hint	Um plano de 14–30 dias: uma série para cada dia, de acordo com o seu objetivo. As séries se ajustam aos minutos que você escolheu.
+program_start_btn	Começar o programa
+program_active	Em andamento · dia %1$d de %2$d
+program_days	%1$d dias
+program_stop	Parar o programa
+program_path8	Caminho de 8 semanas “Sol e Lua”
+program_path8_hint	Para praticantes experientes: práticas longas “Sol” e “Lua” alternadas, com um teste a cada duas semanas.
+checkin_title	Como você está hoje?
+checkin_energy	Energia
+energy_low	Pouca
+energy_mid	Normal
+energy_high	Cheia de energia
+checkin_mood	Mente
+mood_calm	Calma
+mood_tense	Tensa
+checkin_zone	Onde está tenso
+zone_none	Nenhum lugar
+zone_neck	Pescoço e ombros
+zone_back	Costas
+zone_hips	Quadris
+zone_knees	Joelhos
+checkin_time	Tempo
+checkin_minutes	%1$d min
+checkin_pick	Encontrar minha prática
+checkin_for_you	Hoje para você
+checkin_start	Começar
+checkin_change	Mudar respostas
+checkin_breath_first	Primeiro dois minutos de respiração
+checkin_premium_better	“%1$s” combina ainda mais — no Premium
+checkin_history	Como você se sentiu
+reason_neck	Você marcou tensão no pescoço e ombros — vamos abrir os ombros com suavidade e aliviar o pescoço, sem inversões.
+reason_back	Suas costas pedem cuidado — vamos aliviar a lombar com posturas suaves deitada e de quatro, sem extensões profundas.
+reason_hips	Quadris tensos — vamos abrir as articulações do quadril aos poucos, com descanso entre as posturas.
+reason_knees	Seus joelhos estão sensíveis hoje — posturas sem carga nos joelhos e sem agachamentos profundos.
+reason_low	Pouca energia — uma sequência suave sem equilíbrios de força: ativar a circulação sem se esgotar.
+reason_tense	A tensão se solta melhor pela expiração — ritmo calmo, foco em expirar.
+reason_evening	Noite — sem sequências estimulantes: posturas suaves para dormir melhor.
+reason_morning	Manhã — acordar sem movimentos bruscos: articulações, alongamento, ritmo animado mas suave.
+reason_high	Muita energia — um bom dia para uma prática de força.
+reason_steady	Um dia comum — a saudação ao sol clássica mantém a forma e o ritmo.
+breath_title	Respiração
+breath_card_hint	Dois minutos para acalmar, 4-7-8, respiração quadrada, ujjayi e respiração antes de dormir.
+breath_intro	Sente-se ou deite-se confortavelmente e siga o círculo: ele cresce ao inspirar e diminui ao expirar. Se sentir tontura, pare e respire normalmente.
+breath_no_holds	Sem retenções
+breath_no_holds_hint	Na gravidez, com pressão alta ou tontura: as retenções são retiradas, o ritmo continua.
+breath_duration	%1$d min
+breath_sos	Acalmar em 2 minutos
+breath_sos_hint	Inspiração dupla pelo nariz e expiração longa — o jeito mais rápido de aliviar o estresse agudo.
+breath_478	4-7-8
+breath_478_hint	Inspire em 4, segure por 7, expire em 8. Desacelera o coração e acalma a mente.
+breath_box	Respiração quadrada
+breath_box_hint	Quatro lados iguais: inspirar, segurar, expirar, segurar em 4. Concentra antes do trabalho ou de uma conversa difícil.
+breath_ujjayi	Ujjayi
+breath_ujjayi_hint	Respiração uniforme com a garganta levemente fechada, um som suave de mar. A respiração da prática de yoga.
+breath_sleep	Antes de dormir
+breath_sleep_hint	Expire pelo dobro do tempo da inspiração. Deitada na cama, com a luz apagada.
+breath_in	Inspire
+breath_top_up	Mais um pouco
+breath_hold	Segure
+breath_out	Expire
+breath_cycle	Ciclo %1$d de %2$d
+breath_done	Pronto
+breath_finish	Concluir
+breath_stop	Parar
+paywall_benefit_today	Todas as sequências temáticas — pescoço, quadris, joelhos, sono, força, calma: a tela “Hoje” escolhe a mais precisa para como você se sente
+paywall_free_extra	Também grátis: o check-in diário com uma prática sugerida e todas as respirações.
+player_transition	entrando na postura
+player_details	Mais ▾
+player_details_hide	Ocultar ▴
+breath_nadi	Respiração alternada
+breath_nadi_hint	Feche a narina direita com o polegar e a esquerda com o anelar. Inspire por um lado, expire pelo outro. Equilibra e acalma.
+breath_full	Respiração iogue completa
+breath_full_hint	Encha a barriga, depois as costelas, depois o peito; esvazie na mesma ordem. A base de todo pranayama.
+breath_bhramari	Abelha zumbidora
+breath_bhramari_hint	Inspire pelo nariz; expire com um suave “mmm”, lábios fechados. Acalma a mente, bom antes de dormir.
+breath_sitali	Respiração refrescante
+breath_sitali_hint	Enrole a língua como um tubo e inspire por ela; expire pelo nariz. Refresca no calor. Se não conseguir enrolar, inspire entre os dentes.
+breath_kapala	Kapalabhati
+breath_kapala_hint	Expirações curtas e fortes pela barriga, a inspiração vem sozinha. 30 expirações, meio minuto de descanso, três rodadas. Energizante — de manhã, em jejum.
+breath_active_warning	Não durante a gravidez, a menstruação, com pressão alta, hérnia, doença cardíaca ou após cirurgia abdominal.
+breath_hum	Expire: “mmm”
+breath_cool_in	Inspire pela língua
+breath_pump	Fora!
+breath_rest	Descanse, respire livremente
+breath_left_nostril	narina esquerda
+breath_right_nostril	narina direita
+med_title	Meditação
+med_card_hint	Meditações guiadas curtas: yoga nidra, vela, So-Ham, a pausa entre respirações, antes de dormir. E yoga na cadeira.
+med_intro	A voz guia — apenas siga. Sente-se ou deite-se de modo que nada incomode. Você pode parar a qualquer momento.
+med_no_voice	Não há voz para este idioma no telefone — leia o texto na tela.
+med_nidra	Yoga nidra
+med_nidra_hint	Deitada, a atenção percorre o corpo parte por parte. Descanso profundo em dez minutos.
+med_trataka	Olhar a vela
+med_trataka_hint	Uma vela à distância de um braço, na altura dos olhos. Olhe a chama e depois guarde a imagem de olhos fechados.
+med_soham	So-Ham
+med_soham_hint	Em silêncio “So” na inspiração e “Ham” na expiração. A respiração vira a âncora da atenção.
+med_gap	A pausa entre respirações
+med_gap_hint	Uma das técnicas mais antigas: perceber o instante em que a inspiração vira expiração.
+med_sleep	Antes de dormir
+med_sleep_hint	Na cama com a luz apagada: soltar o corpo, desacelerar a respiração e deixar o dia ir.
+med_minutes	%1$d min
+med_stop	Parar
+med_pause	Pausa
+med_resume	Continuar
+med_done	Pronto. Não tenha pressa para levantar.
+med_nidra_1	Deite-se de costas, braços um pouco afastados, palmas para cima. Deixe os olhos se fecharem.
+med_nidra_2	Respire devagar três vezes. A cada expiração o corpo fica mais pesado.
+med_nidra_3	Diga a si mesma um desejo curto para hoje, com suas palavras. Simples e breve.
+med_nidra_4	Atenção na mão direita: polegar, dedos, palma, punho. Todo o braço direito até o ombro.
+med_nidra_5	O lado direito do corpo, o quadril direito, joelho, canela, o pé direito e os dedos.
+med_nidra_6	Agora a mão esquerda: polegar, dedos, palma, punho. Todo o braço esquerdo até o ombro.
+med_nidra_7	O lado esquerdo do corpo, o quadril esquerdo, joelho, canela, o pé esquerdo e os dedos.
+med_nidra_8	A parte de trás do corpo: calcanhares, panturrilhas, a parte de trás das coxas, glúteos, toda a costas, a nuca.
+med_nidra_9	O rosto: testa, sobrancelhas, olhos, bochechas, lábios, maxilar. Deixe tudo suavizar.
+med_nidra_10	Sinta o corpo inteiro de uma vez: deitado, respirando sozinho.
+med_nidra_11	Repita seu desejo mais uma vez.
+med_nidra_12	Mexa os dedos das mãos e dos pés, espreguice, vire de lado e sente-se devagar.
+med_trataka_1	Sente-se confortável, a vela à distância de um braço, a chama na altura dos olhos.
+med_trataka_2	Olhe a chama sem esforço. Pisque se precisar. Apenas observe.
+med_trataka_3	Agora feche os olhos. A imagem da chama fica à sua frente. Segure-a com suavidade.
+med_trataka_4	Abra os olhos e olhe a chama de novo.
+med_trataka_5	Feche os olhos. Quando a imagem sumir, descanse no escuro atrás das pálpebras.
+med_trataka_6	Esfregue as palmas e coloque-as sobre os olhos. Abra os olhos sob as palmas.
+med_soham_1	Sente-se com as costas retas, mãos nos joelhos. Feche os olhos.
+med_soham_2	Deixe a respiração natural. Apenas perceba o ar entrando e saindo.
+med_soham_3	A cada inspiração, ouça em silêncio “So”. A cada expiração, “Ham”.
+med_soham_4	Quando os pensamentos vierem, não lute. Perceba e volte ao So e Ham.
+med_soham_5	So — entra. Ham — sai. Mais nada a fazer.
+med_soham_6	Solte as palavras e fique em silêncio por algumas respirações.
+med_soham_7	Abra os olhos devagar.
+med_gap_1	Sente-se ou deite-se confortável e feche os olhos.
+med_gap_2	Acompanhe a inspiração das narinas até o peito.
+med_gap_3	No fim da inspiração há uma pausa mínima antes da expiração. Perceba-a.
+med_gap_4	E no fim da expiração, outra pausa antes da próxima inspiração.
+med_gap_5	Não alongue as pausas. Apenas esteja nelas quando acontecem.
+med_gap_6	Nesse instante não há esforço nem pensamento. Descanse ali.
+med_gap_7	Respire mais fundo e abra os olhos.
+med_sleep_1	Deite-se na cama como costuma adormecer. Luz apagada.
+med_sleep_2	Inspire em quatro, expire em seis. A expiração fica um pouco mais longa a cada vez.
+med_sleep_3	Deixe o peso do corpo afundar no colchão: pernas, quadril, costas, ombros, cabeça.
+med_sleep_4	Lembre três bons momentos de hoje, mesmo os menores.
+med_sleep_5	O que ficou por fazer pode esperar até amanhã. Solte com a expiração.
+med_sleep_6	Se quiser, decida: esta noite vou perceber meus sonhos.
+med_sleep_7	Continue respirando devagar. Não há mais nada a fazer. Boa noite.
+card_works	O que trabalha
+card_watch	Atenção
+card_easier	Mais fácil
+card_avoid	Não recomendado
+gloss_title	Dicionário de yoga
+gloss_card_hint	Trinta palavras que você vai ouvir na aula — em linguagem simples.
+wisdom_title	Pensamento do dia
+dosha_title	Ayurveda: seu tipo
+dosha_card_hint	Oito perguntas sobre seu corpo e hábitos — e que prática, ritmo do dia e comida combinam com você.
+dosha_intro	Responda como você costuma ser há anos, não hoje. É uma visão tradicional, não um diagnóstico.
+dosha_question	Pergunta %1$d de %2$d
+dosha_result	Seu dosha principal
+dosha_again	Fazer de novo
+dosha_practice	Prática
+dosha_day	Ritmo do dia
+dosha_food	Comida
+dosha_sets	Sequências adequadas
+dosha_vata	Vata — ar e espaço
+dosha_pitta	Pitta — fogo e água
+dosha_kapha	Kapha — terra e água
+dosha_vata_about	Rápida, criativa, leve; fora de equilíbrio, sente frio, fica inquieta ou ansiosa.
+dosha_pitta_about	Focada, calorosa, determinada; fora de equilíbrio, irritável e com calor.
+dosha_kapha_about	Calma, estável, resistente; fora de equilíbrio, pesada e lenta.
+dosha_vata_practice	Prática lenta e de enraizamento: posturas em pé, flexões, savasana longo, respiração alternada. Sem pressa nem sequências rápidas longas.
+dosha_pitta_practice	Prática refrescante e sem pressa nem competição: flexões, torções, saudação à lua, respiração refrescante.
+dosha_kapha_practice	Prática enérgica e que aquece: saudações ao sol, posturas em pé, extensões, kapalabhati de manhã.
+dosha_vata_day	Horários regulares de refeição e sono, calor, dormir cedo, automassagem com óleo morno.
+dosha_pitta_day	Pausas no trabalho, sem exercício no calor do meio-dia, tempo na natureza e perto da água.
+dosha_kapha_day	Acordar cedo, mexer-se todo dia, sem cochilo, novas experiências.
+dosha_vata_food	Comida quente, cozida, levemente oleosa; sopas, grãos, raízes. Menos cru, frio e seco.
+dosha_pitta_food	Comida refrescante e suave: legumes, frutas, grãos. Menos picante, ácido, frito e álcool.
+dosha_kapha_food	Comida leve, quente e temperada; muitos legumes e leguminosas. Menos doce, pesado e laticínios.
+dosha_note	A ayurveda é um sistema tradicional, não medicina. Com problemas de saúde, procure um médico.
+dosha_q1	Seu biotipo
+dosha_q1_v	Magra, leve, difícil ganhar peso
+dosha_q1_p	Médio, atlético
+dosha_q1_k	Robusto, ganho peso fácil
+dosha_q2	Sua pele
+dosha_q2_v	Seca, fina, fria
+dosha_q2_p	Quente, fica vermelha fácil, sensível
+dosha_q2_k	Grossa, lisa, levemente oleosa
+dosha_q3	Apetite
+dosha_q3_v	Irregular, esqueço de comer
+dosha_q3_p	Forte; com fome — irritada
+dosha_q3_k	Estável, pulo uma refeição facilmente
+dosha_q4	Sono
+dosha_q4_v	Leve, acordo muitas vezes
+dosha_q4_p	Curto mas profundo
+dosha_q4_k	Longo e profundo, difícil acordar
+dosha_q5	Sob estresse você…
+dosha_q5_v	se preocupa e fica ansiosa
+dosha_q5_p	fica com raiva e crítica
+dosha_q5_k	se fecha e desacelera
+dosha_q6	O clima de que menos gosta
+dosha_q6_v	Frio e vento
+dosha_q6_p	Calor
+dosha_q6_k	Úmido e nublado
+dosha_q7	Como você faz as coisas
+dosha_q7_v	Rápido, várias ao mesmo tempo, perco o interesse
+dosha_q7_p	Com determinação, termino o que começo
+dosha_q7_k	Devagar, mas com constância
+dosha_q8	Memória
+dosha_q8_v	Aprendo rápido, esqueço rápido
+dosha_q8_p	Afiada e clara
+dosha_q8_k	Aprendo devagar, lembro por muito tempo
+gloss_1_t	Asana
+gloss_1_d	Uma postura firme e confortável.
+gloss_2_t	Pranayama
+gloss_2_d	Prática respiratória: alongar e guiar a respiração.
+gloss_3_t	Prana
+gloss_3_d	Energia vital; na prática, a respiração.
+gloss_4_t	Vinyasa
+gloss_4_d	Unir movimento e respiração, um movimento por inspiração ou expiração.
+gloss_5_t	Drishti
+gloss_5_d	O ponto onde o olhar repousa na postura.
+gloss_6_t	Bandha
+gloss_6_d	Um leve “fecho” muscular que retém a energia e protege o corpo.
+gloss_7_t	Mula bandha
+gloss_7_d	Leve elevação do assoalho pélvico.
+gloss_8_t	Uddiyana bandha
+gloss_8_d	Puxar a barriga para dentro e para cima após expirar.
+gloss_9_t	Jalandhara bandha
+gloss_9_d	Queixo em direção ao peito na retenção.
+gloss_10_t	Mudra
+gloss_10_d	Um gesto ou selo — das mãos ou do corpo todo.
+gloss_11_t	Ujjayi
+gloss_11_d	Respiração com a garganta levemente fechada e som suave.
+gloss_12_t	Savasana
+gloss_12_d	Descanso total deitada no fim da prática.
+gloss_13_t	Surya namaskar
+gloss_13_d	Saudação ao sol: uma sequência fluida no ritmo da respiração.
+gloss_14_t	Chandra namaskar
+gloss_14_d	Saudação à lua: uma sequência mais calma e refrescante.
+gloss_15_t	Hatha yoga
+gloss_15_d	Yoga do corpo e da respiração: ásanas, pranayama, purificações.
+gloss_16_t	Ashtanga
+gloss_16_d	Os “oito membros” do yoga segundo Patanjali; também um estilo dinâmico.
+gloss_17_t	Yama
+gloss_17_d	Ética com os outros: não violência, verdade, não roubar, moderação, desapego.
+gloss_18_t	Niyama
+gloss_18_d	Disciplina pessoal: limpeza, contentamento, esforço, autoestudo, entrega.
+gloss_19_t	Pratyahara
+gloss_19_d	Voltar os sentidos para dentro, longe das distrações.
+gloss_20_t	Dharana
+gloss_20_d	Concentração em um só objeto.
+gloss_21_t	Dhyana
+gloss_21_d	Meditação: atenção estável e contínua.
+gloss_22_t	Samadhi
+gloss_22_d	Absorção completa; a meta do yoga nos textos clássicos.
+gloss_23_t	Chakra
+gloss_23_d	Uma “roda”: um dos centros de energia ao longo da coluna na tradição iogue.
+gloss_24_t	Nadi
+gloss_24_d	Um canal por onde flui o prana; ida à esquerda, pingala à direita.
+gloss_25_t	Kundalini
+gloss_25_d	A energia adormecida na base da coluna na tradição tântrica.
+gloss_26_t	Mantra
+gloss_26_d	Um som ou palavra repetidos para focar a mente.
+gloss_27_t	Om
+gloss_27_d	O som primordial; muitas vezes entoado no início e no fim da prática.
+gloss_28_t	Namaste
+gloss_28_d	“Eu me curvo a você”; saudação com as palmas unidas.
+gloss_29_t	Ahimsa
+gloss_29_d	Não violência — inclusive com o próprio corpo na prática.
+gloss_30_t	Santosha
+gloss_30_d	Contentamento com o que é.
+gloss_31_t	Dosha
+gloss_31_d	Na ayurveda, uma das três forças do corpo: vata, pitta, kapha.
+wisdom_1	Yoga é acalmar os movimentos da mente.
+wisdom_2	Uma postura deve ser firme e confortável.
+wisdom_3	Prática e desapego — os dois são necessários.
+wisdom_4	A prática se firma quando é longa, sem interrupções e com cuidado.
+wisdom_5	A dor que ainda não veio pode ser evitada.
+wisdom_6	Respiração inquieta, mente inquieta; respiração calma, mente calma.
+wisdom_7	A não violência começa pelo modo como você trata o próprio corpo no tapete.
+wisdom_8	O contentamento traz a maior felicidade.
+wisdom_9	O sucesso no yoga vem do entusiasmo, coragem, paciência e constância.
+wisdom_10	Comer demais, esforço excessivo, falar demais e regras rígidas estragam a prática.
+wisdom_11	Um grama de prática vale toneladas de teoria.
+wisdom_12	Seja gentil consigo hoje; amanhã o corpo se abre com mais facilidade.
+wisdom_13	Para onde vai a atenção, vai a respiração; para onde vai a respiração, vai o corpo.
+wisdom_14	Verdade: na postura, seja honesta sobre onde você está hoje.
+wisdom_15	Dez minutos por dia valem mais que uma hora por semana.
+wisdom_16	A expiração é onde você solta.
+wisdom_17	A limpeza do corpo e dos pensamentos torna a prática leve.
+wisdom_18	Não compare sua postura com a de ninguém — só com a de ontem.
+wisdom_19	O descanso faz parte da prática, não é uma pausa.
+wisdom_20	Moderação na comida e no sono, no trabalho e no descanso torna o yoga possível.
+wisdom_21	Sorria na postura — o rosto é o primeiro esconderijo da tensão.
+card_steps	Como entrar
+card_tip	Dica
+med_practices	Práticas guiadas por voz
+med_chair	Yoga na cadeira
+med_chair_hint	Para o escritório, uma viagem ou se for difícil descer ao chão: pescoço, ombros, inclinações laterais, quadris e uma torção sem sair da cadeira.
+med_chair_1	Sente-se perto da borda de uma cadeira firme, sem rodinhas. Pés apoiados, na largura do quadril, joelhos acima dos tornozelos, mãos nas coxas. Cresça para cima e suavize o olhar.
+med_chair_2	Inspire devagar pelo nariz e expire um pouco mais longo. Sinta os ísquios apoiados no assento e o topo da cabeça subindo.
+med_chair_3	Pescoço: ao expirar, desça o queixo em direção ao peito; ao inspirar, volte a cabeça. Algumas vezes, devagar.
+med_chair_4	Incline a orelha direita em direção ao ombro direito e respire ali. Volte ao centro e incline para a esquerda. Os ombros ficam baixos.
+med_chair_5	Junte as palmas na frente do peito. Pressione-as levemente, eleve o peito, ombros relaxados.
+med_chair_6	Ao inspirar, leve os braços pelos lados para cima até as palmas se encontrarem acima da cabeça. Ao expirar, desça pelos lados. Repita com a respiração.
+med_chair_7	Braços de cara de vaca: braço direito para cima, dobre o cotovelo, mão entre as escápulas. A mão esquerda passa por trás das costas, por baixo, e sobe em direção a ela. Encaixe os dedos ou segure uma manga. Depois troque de lado.
+med_chair_8	Ao inspirar, suba os ombros até as orelhas; ao expirar, deixe-os cair. Depois faça círculos lentos para trás.
+med_chair_9	Eleve os dois braços acima da cabeça, na largura dos ombros, palmas uma de frente para a outra. Estique-se pelos dedos enquanto os ombros se afastam das orelhas.
+med_chair_10	Inclinação lateral: mão direita no assento ao seu lado, braço esquerdo para cima e por cima da cabeça para a direita. Respire na lateral esquerda. Volte e troque de lado.
+med_chair_11	Braços de águia: braços à frente, cruze o esquerdo sobre o direito, dobre os cotovelos e aproxime as palmas. Eleve um pouco os cotovelos. Depois cruze ao contrário.
+med_chair_12	Joelho ao peito: entrelace os dedos sob a coxa direita e puxe o joelho para cima, com as costas longas. Depois o joelho esquerdo.
+med_chair_13	Alongamento do quadril: tornozelo direito sobre o joelho esquerdo, mão direita logo acima do joelho direito, incline-se um pouco à frente com as costas longas. Depois a outra perna.
+med_chair_14	Torção: gire para a direita, uma mão no encosto da cadeira e a outra no joelho. Cresça ao inspirar, gire um pouco mais ao expirar. Volte ao centro e depois para a esquerda.
+med_chair_15	Flexão à frente: pés um pouco mais afastados, dobre-se sobre as coxas e deixe braços e cabeça penderem. Suba devagar, a cabeça por último.
+med_chair_16	Descanso: cruze os braços sobre uma mesa ou sobre as coxas, apoie a testa neles e respire com calma por um minuto ou mais.
+med_chair_17	Endireite-se devagar e perceba como estão agora as costas, o pescoço e os ombros. A prática terminou.
+tips_title	Dicas de prática
+tips_card_hint	Praticar com segurança: comida, respiração, apoios, idade, ciclo, gravidez.
+tips_intro	Reunidas de manuais de yoga e recontadas em palavras simples. Não substituem a orientação de um médico ou professor.
+tip_basics_t	Antes e durante a prática
+tip_basics_1	Pratique de estômago vazio: cerca de duas horas após uma refeição leve e três a quatro após uma farta. Um copo de água pode.
+tip_basics_2	Um cômodo tranquilo e arejado, um tapete antiderrapante e roupas que não limitem os movimentos. Pratique descalço.
+tip_basics_3	Comece com alguns minutos sentado respirando e depois aqueça. Termine com pelo menos cinco minutos de relaxamento deitado.
+tip_basics_4	Mantenha a sessão equilibrada: flexões à frente, extensões e torções. Depois de uma extensão forte, uma flexão suave ou uma torção.
+tip_basics_5	Alongue até um esforço confortável, nunca até a dor aguda. Dor numa articulação é sinal para sair da postura.
+tip_basics_6	Uma prática curta todos os dias rende mais do que uma longa de vez em quando. Quinze minutos é um bom começo.
+tip_breath_t	Respiração
+tip_breath_1	Não prenda a respiração nas posturas. Regra: subir e abrir ao inspirar, dobrar e torcer ao expirar.
+tip_breath_2	Respire pelo nariz, de forma regular. Se a respiração ficar entrecortada ou parar, a postura está difícil demais: alivie.
+tip_breath_3	Deixe a expiração um pouco mais longa que a inspiração: isso acalma o sistema nervoso, sobretudo antes de dormir.
+tip_breath_4	Exercícios respiratórios se fazem sentado com a coluna ereta ou deitado, sem esforço. Se sentir tontura, volte à respiração normal.
+tip_props_t	Apoios
+tip_props_1	Uma manta dobrada sob os ísquios facilita sentar de pernas cruzadas e mantém as costas eretas.
+tip_props_2	Um bloco ou uma pilha de livros aproxima o chão nas posturas em pé e nas flexões.
+tip_props_3	Uma faixa ou um cinto ajuda quando as mãos não alcançam os pés.
+tip_props_4	Um rolo ou mantas enroladas apoiam as costas e os joelhos nas posturas de descanso; uma parede ajuda no equilíbrio e no alinhamento.
+tip_mature_t	Depois dos 50 e com articulações rígidas
+tip_mature_1	Comece com o yoga na cadeira, os aquecimentos e as séries suaves; acrescente as posturas em pé aos poucos.
+tip_mature_2	Nas posturas de equilíbrio, mantenha uma parede ou o encosto de uma cadeira ao alcance.
+tip_mature_3	Levante-se do chão devagar: role para o lado, fique de quatro e depois levante-se.
+tip_mature_4	Com pressão alta, glaucoma ou doença cardíaca, evite as posturas invertidas e mantenha a cabeça acima do coração. Converse antes com seu médico.
+tip_cycle_t	Durante a menstruação
+tip_cycle_1	Nesses dias muitas mulheres preferem posturas tranquilas e apoiadas: ângulo preso deitado, herói reclinado, postura da criança, flexões sentada com a cabeça apoiada.
+tip_cycle_2	Evite as posturas invertidas (sobre a cabeça, vela, arado, pernas na parede), o trabalho abdominal forte e as torções profundas.
+tip_cycle_3	Se estiver cansada, apenas posturas deitada e respiração. Para isso existe a série «Dias suaves do ciclo».
+tip_pregnancy_t	Durante a gravidez
+tip_pregnancy_1	Pratique apenas com a aprovação do seu médico, de preferência com um professor experiente em yoga para gestantes.
+tip_pregnancy_2	Evite ficar de bruços, torções fortes, extensões profundas, saltos e abdominais. Depois do primeiro trimestre, não fique muito tempo deitada de costas.
+tip_pregnancy_3	Afaste mais os pés e use apoio: cadeira, parede, bloco. Agachamento, ângulo preso e gato-vaca suave costumam fazer bem.
+tip_pregnancy_4	Não alongue até o limite: na gravidez os ligamentos ficam mais frouxos e é fácil estirá-los demais.
+tip_stop_t	Quando parar
+tip_stop_1	Dor aguda ou em pontada, dormência, tontura, falta de ar ou dor no peito: pare imediatamente. Se não passar, procure um médico.
+tip_stop_2	Depois de uma lesão ou cirurgia, ou com uma doença crônica, converse com seu médico antes de começar.
+tip_stop_3	Com febre ou doença aguda, descanse em vez de praticar.
