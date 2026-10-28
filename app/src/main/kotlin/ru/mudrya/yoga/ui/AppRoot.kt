@@ -73,6 +73,7 @@ private object Routes {
     const val BREATH = "breath"
     const val MEDITATION = "meditation"
     const val GLOSSARY = "glossary"
+    const val TIPS = "tips"
     const val DOSHA = "dosha"
     fun session(id: String) = "session/$id"
     fun player(sequenceId: String) = "player/$sequenceId"
@@ -157,6 +158,7 @@ fun AppRoot() {
                 )
             }
             composable(Routes.GLOSSARY) { ru.mudrya.yoga.ui.learn.GlossaryScreen(onBack = { nav.popBackStack() }) }
+            composable(Routes.TIPS) { ru.mudrya.yoga.ui.learn.TipsScreen(onBack = { nav.popBackStack() }) }
             composable(Routes.DOSHA) { ru.mudrya.yoga.ui.learn.DoshaScreen(onStart = { nav.startSet(it, premium) }, onBack = { nav.popBackStack() }) }
             composable(Routes.MEDITATION) { ru.mudrya.yoga.ui.breath.MeditationScreen(premium, onPaywall = { nav.navigate(Routes.PAYWALL) }, onBack = { nav.popBackStack() }) }
             composable(Routes.BREATH) { ru.mudrya.yoga.ui.breath.BreathScreen(state, onBack = { nav.popBackStack() }) }
@@ -178,6 +180,7 @@ fun AppRoot() {
                     onBreath = { nav.navigate(Routes.BREATH) },
                     onMeditation = { nav.navigate(Routes.MEDITATION) },
                     onGlossary = { nav.navigate(Routes.GLOSSARY) },
+                    onTips = { nav.navigate(Routes.TIPS) },
                     onDosha = { nav.navigate(Routes.DOSHA) },
                 )
             }

@@ -52,6 +52,7 @@ private fun medName(id: String) = when (id) {
     "trataka" -> R.string.med_trataka
     "soham" -> R.string.med_soham
     "gap" -> R.string.med_gap
+    "chair" -> R.string.med_chair
     else -> R.string.med_sleep
 }
 
@@ -60,6 +61,7 @@ private fun medHint(id: String) = when (id) {
     "trataka" -> R.string.med_trataka_hint
     "soham" -> R.string.med_soham_hint
     "gap" -> R.string.med_gap_hint
+    "chair" -> R.string.med_chair_hint
     else -> R.string.med_sleep_hint
 }
 
@@ -98,24 +100,31 @@ fun MeditationScreen(premium: Boolean, onPaywall: () -> Unit, onBack: () -> Unit
     ) {
         ScreenTitle(stringResource(R.string.med_title))
         Body(stringResource(R.string.med_intro))
-        Meditations.all.forEachIndexed { i, m ->
+        Meditations.meditations.forEachIndexed { i, m ->
             // Первая медитация бесплатно, остальные — в премиуме.
-            val locked = !premium && i > 0
-            Card(Modifier.clickable { if (locked) onPaywall() else running = m.id }) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(stringResource(medName(m.id)), color = MudryaColors.Text, fontSize = 17.sp, fontWeight = FontWeight.Bold, modifier = Modifier.weight(1f))
-                    val sec = Meditations.estimateSeconds(m) { lineText(context, m.id, it).length }
-                    Text(
-                        if (locked) "🔒 " + stringResource(R.string.med_minutes, (sec + 30) / 60) else stringResource(R.string.med_minutes, (sec + 30) / 60),
-                        color = MudryaColors.Saffron,
-                        fontSize = 14.sp,
-                    )
-                }
-                Body(stringResource(medHint(m.id)))
-            }
+            MeditationRow(m, locked = !premium && i > 0) { if (it) onPaywall() else running = m.id }
+        }
+        // Практики с голосом (йога на стуле) — бесплатно: она для тех, кому трудно на полу.
+        SectionLabel(stringResource(R.string.med_practices))
+        Meditations.practices.forEach { m ->
+            MeditationRow(m, locked = false) { running = m.id }
         }
         TextAction(stringResource(R.string.back), onBack)
         Spacer(Modifier.height(8.dp))
+    }
+}
+
+@Composable
+private fun MeditationRow(m: Meditations.Meditation, locked: Boolean, onClick: (locked: Boolean) -> Unit) {
+    val context = LocalContext.current
+    Card(Modifier.clickable { onClick(locked) }) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Text(stringResource(medName(m.id)), color = MudryaColors.Text, fontSize = 17.sp, fontWeight = FontWeight.Bold, modifier = Modifier.weight(1f))
+            val sec = Meditations.estimateSeconds(m) { lineText(context, m.id, it).length }
+            val minutes = stringResource(R.string.med_minutes, (sec + 30) / 60)
+            Text(if (locked) "🔒 $minutes" else minutes, color = MudryaColors.Saffron, fontSize = 14.sp)
+        }
+        Body(stringResource(medHint(m.id)))
     }
 }
 

@@ -633,7 +633,7 @@ breath_rest	Pause, frei atmen
 breath_left_nostril	linkes Nasenloch
 breath_right_nostril	rechtes Nasenloch
 med_title	Meditation
-med_card_hint	Kurze geführte Meditationen: Yoga Nidra, Kerzenblick, So-Ham, die Pause zwischen den Atemzügen, vor dem Schlafen.
+med_card_hint	Kurze geführte Meditationen: Yoga Nidra, Kerzenblick, So-Ham, die Pause zwischen den Atemzügen, vor dem Schlafen. Und Yoga auf dem Stuhl.
 med_intro	Die Stimme führt – folgen Sie ihr einfach. Sitzen oder liegen Sie so, dass nichts stört. Sie können jederzeit aufhören.
 med_no_voice	Auf dem Telefon gibt es keine Stimme für diese Sprache – lesen Sie den Text auf dem Bildschirm.
 med_nidra	Yoga Nidra
@@ -840,3 +840,61 @@ wisdom_20	Maß bei Essen und Schlaf, bei Arbeit und Ruhe macht Yoga möglich.
 wisdom_21	Lächeln Sie in der Haltung – im Gesicht versteckt sich die Spannung zuerst.
 card_steps	So kommst du hinein
 card_tip	Tipp
+med_practices	Geführte Übungen mit Stimme
+med_chair	Yoga auf dem Stuhl
+med_chair_hint	Fürs Büro, unterwegs oder wenn der Weg zum Boden schwerfällt: Nacken, Schultern, Seitbeugen, Hüften und eine Drehung, ohne vom Stuhl aufzustehen.
+med_chair_1	Setzen Sie sich vorne auf einen festen Stuhl ohne Rollen. Füße flach, hüftbreit, Knie über den Knöcheln, Hände auf den Oberschenkeln. Sitzen Sie aufrecht, der Blick wird weich.
+med_chair_2	Atmen Sie langsam durch die Nase ein und etwas länger aus. Spüren Sie die Sitzbeine auf der Sitzfläche und den Scheitel, der nach oben strebt.
+med_chair_3	Nacken: Beim Ausatmen das Kinn zur Brust senken, beim Einatmen den Kopf wieder heben. Einige Male, langsam.
+med_chair_4	Neigen Sie das rechte Ohr zur rechten Schulter und atmen Sie dort. Zurück zur Mitte, dann nach links. Die Schultern bleiben unten.
+med_chair_5	Legen Sie die Handflächen vor der Brust zusammen. Leicht andrücken, die Brust heben, die Schultern weich.
+med_chair_6	Mit dem Einatmen die Arme über die Seiten nach oben führen, bis sich die Handflächen über dem Kopf treffen. Mit dem Ausatmen über die Seiten senken. Im Atemrhythmus wiederholen.
+med_chair_7	Kuhgesicht-Arme: rechter Arm hoch, Ellbogen beugen, Hand zwischen die Schulterblätter. Die linke Hand kommt von unten hinter den Rücken und greift nach oben. Finger fassen oder einen Ärmel halten. Dann Seitenwechsel.
+med_chair_8	Beim Einatmen die Schultern zu den Ohren ziehen, beim Ausatmen fallen lassen. Dann langsam nach hinten kreisen.
+med_chair_9	Heben Sie beide Arme schulterbreit über den Kopf, Handflächen zueinander. Strecken Sie sich durch die Finger, die Schultern sinken von den Ohren weg.
+med_chair_10	Seitbeuge: rechte Hand neben Ihnen auf den Sitz, linker Arm hoch und über den Kopf nach rechts. Atmen Sie in die linke Flanke. Aufrichten und Seite wechseln.
+med_chair_11	Adlerarme: Arme nach vorn, den linken über den rechten kreuzen, Ellbogen beugen und die Handflächen zueinander bringen. Die Ellbogen etwas anheben. Dann andersherum kreuzen.
+med_chair_12	Knie zur Brust: Finger unter dem rechten Oberschenkel verschränken und das Knie heranziehen, der Rücken bleibt lang. Dann das linke Knie.
+med_chair_13	Hüftdehnung: rechten Knöchel auf das linke Knie legen, die rechte Hand knapp über das rechte Knie, mit langem Rücken leicht nach vorn neigen. Dann das andere Bein.
+med_chair_14	Drehung: nach rechts drehen, eine Hand an der Stuhllehne, die andere auf dem Knie. Beim Einatmen länger werden, beim Ausatmen etwas weiter drehen. Zur Mitte, dann nach links.
+med_chair_15	Vorbeuge: Füße etwas weiter, über die Oberschenkel falten, Arme und Kopf hängen lassen. Langsam aufrichten, der Kopf zuletzt.
+med_chair_16	Ruhe: Arme auf einem Tisch oder den Oberschenkeln verschränken, die Stirn darauflegen und eine Minute oder länger ruhig atmen.
+med_chair_17	Richten Sie sich langsam auf und spüren Sie, wie sich Rücken, Nacken und Schultern jetzt anfühlen. Die Übung ist zu Ende.
+tips_title	Tipps für die Praxis
+tips_card_hint	Sicher üben: Essen, Atem, Hilfsmittel, Alter, Zyklus, Schwangerschaft.
+tips_intro	Aus Yoga-Handbüchern gesammelt und in einfachen Worten wiedergegeben. Ersetzt nicht den Rat von Arzt oder Lehrer.
+tip_basics_t	Vor und während der Praxis
+tip_basics_1	Üben Sie mit leerem Magen: etwa zwei Stunden nach einer leichten und drei bis vier nach einer großen Mahlzeit. Ein Glas Wasser ist in Ordnung.
+tip_basics_2	Ein ruhiger, gelüfteter Raum, eine rutschfeste Matte und Kleidung, die nicht einengt. Barfuß üben.
+tip_basics_3	Beginnen Sie mit ein paar Minuten Sitzen und Atmen, dann aufwärmen. Enden Sie mit mindestens fünf Minuten Entspannung im Liegen.
+tip_basics_4	Halten Sie die Einheit ausgewogen: Vorbeugen, Rückbeugen und Drehungen. Nach einer starken Rückbeuge eine sanfte Vorbeuge oder Drehung.
+tip_basics_5	Dehnen Sie bis zu einer angenehmen Anstrengung, nie in einen stechenden Schmerz. Schmerz im Gelenk heißt: aus der Haltung kommen.
+tip_basics_6	Kurz und täglich bringt mehr als lang und selten. Fünfzehn Minuten sind ein guter Anfang.
+tip_breath_t	Atmung
+tip_breath_1	Halten Sie in den Haltungen nicht den Atem an. Faustregel: heben und öffnen mit dem Einatmen, beugen und drehen mit dem Ausatmen.
+tip_breath_2	Atmen Sie gleichmäßig durch die Nase. Wird der Atem stockend oder bleibt er weg, ist die Haltung zu schwer — nachlassen.
+tip_breath_3	Lassen Sie das Ausatmen etwas länger sein als das Einatmen: Das beruhigt das Nervensystem, besonders vor dem Schlafen.
+tip_breath_4	Atemübungen macht man aufrecht sitzend oder liegend, ohne Anstrengung. Wird Ihnen schwindlig, kehren Sie zum normalen Atem zurück.
+tip_props_t	Hilfsmittel
+tip_props_1	Eine gefaltete Decke unter den Sitzbeinen erleichtert den Schneidersitz und hält den Rücken aufrecht.
+tip_props_2	Ein Block oder ein Stapel Bücher bringt den Boden in Stehhaltungen und Vorbeugen näher.
+tip_props_3	Ein Gurt oder Gürtel hilft, wenn die Hände die Füße nicht erreichen.
+tip_props_4	Eine Rolle oder gerollte Decken stützen Rücken und Knie in Ruhehaltungen; eine Wand hilft bei Gleichgewicht und Ausrichtung.
+tip_mature_t	Ab 50 und bei steifen Gelenken
+tip_mature_1	Beginnen Sie mit Yoga auf dem Stuhl, dem Aufwärmen und den sanften Sets; Stehhaltungen nach und nach dazunehmen.
+tip_mature_2	Halten Sie bei Gleichgewichtshaltungen eine Wand oder Stuhllehne in Reichweite.
+tip_mature_3	Stehen Sie langsam vom Boden auf: zur Seite rollen, in den Vierfüßlerstand, dann aufrichten.
+tip_mature_4	Bei Bluthochdruck, Glaukom oder Herzerkrankungen Umkehrhaltungen weglassen und den Kopf über dem Herzen halten. Vorher mit dem Arzt sprechen.
+tip_cycle_t	Während der Menstruation
+tip_cycle_1	An diesen Tagen tun vielen Frauen ruhige, gestützte Haltungen gut: liegender gebundener Winkel, liegender Held, Haltung des Kindes, sitzende Vorbeugen mit aufgelegtem Kopf.
+tip_cycle_2	Lassen Sie Umkehrhaltungen (Kopfstand, Schulterstand, Pflug, Beine an der Wand), starke Bauchübungen und tiefe Drehungen weg.
+tip_cycle_3	Wenn Sie müde sind, nur Haltungen im Liegen und Atmung. Dafür gibt es das Set „Sanfte Tage des Zyklus“.
+tip_pregnancy_t	In der Schwangerschaft
+tip_pregnancy_1	Üben Sie nur mit Zustimmung Ihres Arztes, am besten mit einer in Schwangerschaftsyoga erfahrenen Lehrkraft.
+tip_pregnancy_2	Vermeiden Sie Bauchlage, starke Drehungen, tiefe Rückbeugen, Sprünge und Bauchübungen. Nach dem ersten Trimester nicht lange flach auf dem Rücken liegen.
+tip_pregnancy_3	Stellen Sie die Füße weiter und nutzen Sie Halt: Stuhl, Wand, Block. Hocke, gebundener Winkel und sanfte Katze-Kuh tun meist gut.
+tip_pregnancy_4	Dehnen Sie nicht bis zum Äußersten: In der Schwangerschaft werden die Bänder weicher und lassen sich leicht überdehnen.
+tip_stop_t	Wann aufhören
+tip_stop_1	Stechender oder einschießender Schmerz, Taubheit, Schwindel, Atemnot oder Brustschmerz — sofort aufhören. Geht es nicht vorbei, zum Arzt.
+tip_stop_2	Nach einer Verletzung oder Operation oder bei einer chronischen Krankheit vor dem Start mit dem Arzt sprechen.
+tip_stop_3	Bei Fieber oder akuter Krankheit lieber ausruhen statt üben.

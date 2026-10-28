@@ -52,5 +52,9 @@ class BreathworkTest {
     @Test
     fun `every meditation line has a pause`() {
         assertTrue(Meditations.all.all { m -> m.pauses.isNotEmpty() && m.pauses.all { it > 0 } })
+        assertEquals(listOf("chair"), Meditations.practices.map { it.id })
+        assertEquals(17, Meditations.get("chair")?.lines)
+        assertEquals(Meditations.all.size, Meditations.meditations.size + Meditations.practices.size)
+        assertEquals(28, Tips.sections.sumOf { it.count })
     }
 }

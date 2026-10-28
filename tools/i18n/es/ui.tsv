@@ -633,7 +633,7 @@ breath_rest	Descansa, respira libremente
 breath_left_nostril	fosa izquierda
 breath_right_nostril	fosa derecha
 med_title	Meditación
-med_card_hint	Meditaciones guiadas breves: yoga nidra, vela, So-Ham, la pausa entre respiraciones, antes de dormir.
+med_card_hint	Meditaciones guiadas breves: yoga nidra, vela, So-Ham, la pausa entre respiraciones, antes de dormir. Y yoga en una silla.
 med_intro	La voz te guía: solo síguela. Siéntate o túmbate de forma que nada moleste. Puedes parar en cualquier momento.
 med_no_voice	El teléfono no tiene voz para este idioma: lee el texto en la pantalla.
 med_nidra	Yoga nidra
@@ -840,3 +840,61 @@ wisdom_20	La moderación en comida y sueño, trabajo y descanso hace posible el 
 wisdom_21	Sonríe en la postura: la cara es el primer escondite de la tensión.
 card_steps	Cómo entrar
 card_tip	Consejo
+med_practices	Prácticas guiadas por voz
+med_chair	Yoga en una silla
+med_chair_hint	Para la oficina, un viaje o si cuesta bajar al suelo: cuello, hombros, inclinaciones laterales, caderas y una torsión sin levantarte de la silla.
+med_chair_1	Siéntate cerca del borde de una silla estable sin ruedas. Pies apoyados, separados a la anchura de la cadera, rodillas sobre los tobillos, manos en los muslos. Crece hacia arriba y suaviza la mirada.
+med_chair_2	Inhala despacio por la nariz y exhala un poco más largo. Siente los isquiones apoyados en el asiento y la coronilla subiendo.
+med_chair_3	Cuello: al exhalar, baja la barbilla hacia el pecho; al inhalar, vuelve a subir la cabeza. Varias veces, despacio.
+med_chair_4	Inclina la oreja derecha hacia el hombro derecho y respira ahí. Vuelve al centro e inclínate a la izquierda. Los hombros se quedan abajo.
+med_chair_5	Junta las palmas delante del pecho. Presiónalas suavemente, eleva el pecho, hombros relajados.
+med_chair_6	Al inhalar, lleva los brazos por los lados hacia arriba hasta juntar las palmas sobre la cabeza. Al exhalar, bájalos por los lados. Repite con la respiración.
+med_chair_7	Brazos de cara de vaca: brazo derecho arriba, dobla el codo, mano entre los omóplatos. La mano izquierda va por detrás de la espalda desde abajo y sube hacia ella. Engancha los dedos o sujeta una manga. Luego cambia de lado.
+med_chair_8	Al inhalar, sube los hombros hacia las orejas; al exhalar, déjalos caer. Luego haz círculos lentos hacia atrás.
+med_chair_9	Sube los dos brazos por encima de la cabeza, a la anchura de los hombros, palmas enfrentadas. Estírate con los dedos mientras los hombros se alejan de las orejas.
+med_chair_10	Inclinación lateral: mano derecha en el asiento a tu lado, brazo izquierdo arriba y hacia la derecha. Respira en el costado izquierdo. Sube y cambia de lado.
+med_chair_11	Brazos de águila: brazos al frente, cruza el izquierdo sobre el derecho, dobla los codos y acerca las palmas. Eleva un poco los codos. Luego cruza al revés.
+med_chair_12	Rodilla al pecho: entrelaza los dedos bajo el muslo derecho y sube la rodilla, con la espalda larga. Luego la rodilla izquierda.
+med_chair_13	Estiramiento de cadera: tobillo derecho sobre la rodilla izquierda, mano derecha justo encima de la rodilla derecha, inclínate un poco hacia delante con la espalda larga. Luego la otra pierna.
+med_chair_14	Torsión: gira a la derecha, una mano en el respaldo de la silla y la otra en la rodilla. Crece al inhalar, gira un poco más al exhalar. Vuelve al centro y gira a la izquierda.
+med_chair_15	Flexión hacia delante: pies algo más separados, dóblate sobre los muslos y deja colgar brazos y cabeza. Sube despacio, la cabeza al final.
+med_chair_16	Descanso: cruza los brazos sobre una mesa o sobre los muslos, apoya la frente en ellos y respira con calma un minuto o más.
+med_chair_17	Incorpórate despacio y nota cómo sientes ahora la espalda, el cuello y los hombros. La práctica ha terminado.
+tips_title	Consejos de práctica
+tips_card_hint	Practicar con seguridad: comida, respiración, apoyos, edad, ciclo, embarazo.
+tips_intro	Reunidos de manuales de yoga y contados con palabras sencillas. No sustituyen el consejo de un médico o de un profesor.
+tip_basics_t	Antes y durante la práctica
+tip_basics_1	Practica con el estómago vacío: unas dos horas después de una comida ligera y tres o cuatro después de una copiosa. Un vaso de agua, sí.
+tip_basics_2	Una habitación tranquila y ventilada, una esterilla antideslizante y ropa que no limite el movimiento. Practica descalzo.
+tip_basics_3	Empieza con unos minutos sentado respirando y luego calienta. Termina con al menos cinco minutos de relajación tumbado.
+tip_basics_4	Equilibra la sesión: flexiones hacia delante, extensiones y torsiones. Tras una extensión fuerte, una flexión suave o una torsión.
+tip_basics_5	Estira hasta un esfuerzo cómodo, nunca hasta un dolor agudo. El dolor en una articulación es la señal para salir de la postura.
+tip_basics_6	Una práctica corta cada día da más que una larga de vez en cuando. Quince minutos es un buen comienzo.
+tip_breath_t	Respiración
+tip_breath_1	No contengas la respiración en las posturas. Regla: subir y abrir al inhalar, plegarse y girar al exhalar.
+tip_breath_2	Respira por la nariz, de forma regular. Si la respiración se entrecorta o se detiene, la postura es demasiado difícil: afloja.
+tip_breath_3	Que la exhalación sea un poco más larga que la inhalación: calma el sistema nervioso, sobre todo antes de dormir.
+tip_breath_4	Los ejercicios de respiración se hacen sentado con la espalda recta o tumbado, sin esfuerzo. Si te mareas, vuelve a la respiración normal.
+tip_props_t	Apoyos
+tip_props_1	Una manta doblada bajo los isquiones facilita sentarse con las piernas cruzadas y mantiene la espalda recta.
+tip_props_2	Un bloque o una pila de libros acercan el suelo en las posturas de pie y las flexiones.
+tip_props_3	Una cinta o un cinturón ayudan cuando las manos no llegan a los pies.
+tip_props_4	Un cojín largo o mantas enrolladas sostienen la espalda y las rodillas en las posturas de descanso; una pared ayuda con el equilibrio y la alineación.
+tip_mature_t	Después de los 50 y con articulaciones rígidas
+tip_mature_1	Empieza con el yoga en silla, los calentamientos y las series suaves; añade las posturas de pie poco a poco.
+tip_mature_2	En las posturas de equilibrio, ten una pared o el respaldo de una silla al alcance.
+tip_mature_3	Levántate del suelo despacio: rueda de lado, ponte a cuatro patas y luego incorpórate.
+tip_mature_4	Con presión alta, glaucoma o enfermedades del corazón, omite las posturas invertidas y mantén la cabeza por encima del corazón. Consulta antes a tu médico.
+tip_cycle_t	Durante la menstruación
+tip_cycle_1	Esos días muchas mujeres prefieren posturas tranquilas con apoyo: ángulo atado tumbado, héroe reclinado, postura del niño, flexiones sentada con la cabeza apoyada.
+tip_cycle_2	Omite las posturas invertidas (sobre la cabeza, vela, arado, piernas en la pared), el trabajo abdominal fuerte y las torsiones profundas.
+tip_cycle_3	Si te sientes cansada, solo posturas tumbada y respiración. Para eso está la serie «Días suaves del ciclo».
+tip_pregnancy_t	Durante el embarazo
+tip_pregnancy_1	Practica solo con el visto bueno de tu médico, mejor con un profesor con experiencia en yoga prenatal.
+tip_pregnancy_2	Evita tumbarte boca abajo, las torsiones fuertes, las extensiones profundas, los saltos y el trabajo abdominal. Después del primer trimestre, no estés mucho tiempo boca arriba.
+tip_pregnancy_3	Separa más los pies y usa apoyos: una silla, una pared, un bloque. La sentadilla, el ángulo atado y el gato-vaca suave suelen sentar bien.
+tip_pregnancy_4	No estires al límite: en el embarazo los ligamentos se vuelven más laxos y es fácil sobreestirarlos.
+tip_stop_t	Cuándo parar
+tip_stop_1	Dolor agudo o punzante, entumecimiento, mareo, falta de aire o dolor en el pecho: para de inmediato. Si no pasa, ve al médico.
+tip_stop_2	Después de una lesión u operación, o con una enfermedad crónica, consulta a tu médico antes de empezar.
+tip_stop_3	Con fiebre o una enfermedad aguda, descansa en lugar de practicar.

@@ -82,6 +82,7 @@ fun PracticeScreen(
     onBreath: () -> Unit = {},
     onMeditation: () -> Unit = {},
     onGlossary: () -> Unit = {},
+    onTips: () -> Unit = {},
     onDosha: () -> Unit = {},
 ) {
     val today = UserRepository.today()
@@ -110,7 +111,7 @@ fun PracticeScreen(
         }
         ru.mudrya.yoga.ui.breath.BreathCardContent(onBreath)
         ru.mudrya.yoga.ui.breath.MeditationCardContent(onMeditation)
-        ru.mudrya.yoga.ui.learn.LearnTiles(onGlossary, onDosha)
+        ru.mudrya.yoga.ui.learn.LearnTiles(onGlossary, onDosha, onTips)
         PinnedSets(state, users, premium, onStart, onPaywall)
         FavoriteSets(state, users, premium, onStart)
         ForYouSets(state, users, premium, onStart)

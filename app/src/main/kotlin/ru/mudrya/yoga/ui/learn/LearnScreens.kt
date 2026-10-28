@@ -31,6 +31,7 @@ import ru.mudrya.yoga.R
 import ru.mudrya.yoga.catalog.SuryaCatalog
 import ru.mudrya.yoga.engine.DoshaQuiz
 import ru.mudrya.yoga.engine.Glossary
+import ru.mudrya.yoga.engine.Tips
 import ru.mudrya.yoga.engine.Wisdom
 import ru.mudrya.yoga.ui.common.Body
 import ru.mudrya.yoga.ui.common.Card
@@ -59,9 +60,13 @@ fun WisdomCard(localDay: Long) {
     }
 }
 
-/** Две плитки на главном: словарь и аюрведа. */
+/** Плитки на главном: словарь и аюрведа, под ними — советы. */
 @Composable
-fun LearnTiles(onGlossary: () -> Unit, onDosha: () -> Unit) {
+fun LearnTiles(onGlossary: () -> Unit, onDosha: () -> Unit, onTips: () -> Unit = {}) {
+    Card(Modifier.fillMaxWidth().clickable(onClick = onTips)) {
+        SectionLabel(stringResource(R.string.tips_title))
+        Text(stringResource(R.string.tips_card_hint), color = MudryaColors.TextMuted, fontSize = 13.sp, lineHeight = 18.sp)
+    }
     Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
         Card(Modifier.weight(1f).clickable(onClick = onGlossary)) {
             SectionLabel(stringResource(R.string.gloss_title))
@@ -71,6 +76,32 @@ fun LearnTiles(onGlossary: () -> Unit, onDosha: () -> Unit) {
             SectionLabel(stringResource(R.string.dosha_title))
             Text(stringResource(R.string.dosha_card_hint), color = MudryaColors.TextMuted, fontSize = 13.sp, lineHeight = 18.sp)
         }
+    }
+}
+
+/** Советы по практике: разделы из [Tips], тексты — tip_<раздел>_t и tip_<раздел>_<n>. */
+@Composable
+fun TipsScreen(onBack: () -> Unit) {
+    val context = LocalContext.current
+    Column(
+        Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState())
+            .padding(20.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp),
+    ) {
+        ScreenTitle(stringResource(R.string.tips_title))
+        Body(stringResource(R.string.tips_intro))
+        Tips.sections.forEach { sec ->
+            Card {
+                SectionLabel(res(context, "tip_${sec.key}_t"))
+                (1..sec.count).forEach { n ->
+                    Text("• " + res(context, "tip_${sec.key}_$n"), color = MudryaColors.Text, fontSize = 15.sp, lineHeight = 21.sp)
+                }
+            }
+        }
+        TextAction(stringResource(R.string.back), onBack)
+        Spacer(Modifier.height(8.dp))
     }
 }
 
