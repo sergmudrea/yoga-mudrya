@@ -132,7 +132,7 @@ def main():
     items = sorted(by.items())
     parts = [items[i:i + 300] for i in range(0, len(items), 300)]
     kt.append('    val byAsana: Map<String, String> = HashMap<String, String>(%d).apply { %s }' % (
-        len(items) * 2, ' '.join(f'part{i}(this)' for i in range(len(parts)))))
+        len(items) * 2, '; '.join(f'part{i}(this)' for i in range(len(parts)))))
     for i, part in enumerate(parts):
         kt.append('')
         kt.append(f'    private fun part{i}(m: HashMap<String, String>) {{')

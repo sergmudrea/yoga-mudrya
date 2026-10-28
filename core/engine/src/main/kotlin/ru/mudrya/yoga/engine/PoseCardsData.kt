@@ -5,7 +5,7 @@ package ru.mudrya.yoga.engine
 
 /** Какая карточка позы показывается для асаны. */
 internal object PoseCardsData {
-    val byAsana: Map<String, String> = HashMap<String, String>(654).apply { part0(this) part1(this) }
+    val byAsana: Map<String, String> = HashMap<String, String>(654).apply { part0(this); part1(this) }
 
     private fun part0(m: HashMap<String, String>) {
         m["at_a8"] = "eight"; m["at_antcat"] = "cat"; m["at_antknee"] = "extcat"; m["at_antknee_m"] = "extcat"; m["at_ardhach"] = "lunge"; m["at_ardhach_m"] = "lunge"
