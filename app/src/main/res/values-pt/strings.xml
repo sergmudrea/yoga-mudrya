@@ -612,4 +612,7 @@
     <string name="breath_stop">Parar</string>
     <string name="paywall_benefit_today">Todas as sequências temáticas — pescoço, quadris, joelhos, sono, força, calma: a tela “Hoje” escolhe a mais precisa para como você se sente</string>
     <string name="paywall_free_extra">Também grátis: o check-in diário com uma prática sugerida e todas as respirações.</string>
+    <string name="player_transition">entrando na postura</string>
+    <string name="player_details">Mais ▾</string>
+    <string name="player_details_hide">Ocultar ▴</string>
 </resources>

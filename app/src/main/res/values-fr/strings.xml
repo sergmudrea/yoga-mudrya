@@ -612,4 +612,7 @@
     <string name="breath_stop">Arrêter</string>
     <string name="paywall_benefit_today">Toutes les séances thématiques — nuque, hanches, genoux, sommeil, force, calme : l\'écran « Aujourd\'hui » choisit la plus juste selon votre ressenti</string>
     <string name="paywall_free_extra">Également gratuit : le point du jour avec une pratique suggérée et toutes les respirations.</string>
+    <string name="player_transition">entrée dans la posture</string>
+    <string name="player_details">Plus ▾</string>
+    <string name="player_details_hide">Masquer ▴</string>
 </resources>

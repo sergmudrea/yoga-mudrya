@@ -198,14 +198,10 @@ fun PlayerScreen(
     }
     val controls: @Composable () -> Unit = {
         Controls(
-                paused = c.paused,
                 speed = c.speed,
                 phaseSec = c.phaseMs / 1000,
                 holdCycles = c.holdCycles,
                 metalDogOffered = frame.step.metalDog,
-                onPrev = { act { c.previousStep() } },
-                onPause = { act { c.togglePause() } },
-                onNext = { act { c.nextStep() } },
                 onSpeed = { act { vm.cycleSpeed() } },
                 onPhase = { act { vm.cyclePhaseLength() } },
                 onHold = { act { vm.cycleHold() } },
@@ -213,22 +209,34 @@ fun PlayerScreen(
             )
     }
 
+    var details by rememberSaveable { mutableStateOf(false) }
+    // Подробнее: описание позы, дыхание по фазам, темп и счёт вдохов. Свёрнуто — на экране только поза.
+    val detailsPanel: @Composable () -> Unit = {
+        Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+            frame.step.asana.shownDescription()?.let {
+                Text(it, color = MudryaColors.TextMuted, fontSize = 14.sp, lineHeight = 20.sp, modifier = Modifier.fillMaxWidth())
+            }
+            if (settings.showBreath) BreathPanel(frame)
+            if (settings.showSanskrit) frame.step.asana.sanskrit?.let { Text(it, color = MudryaColors.TextMuted, fontSize = 14.sp) }
+            controls()
+        }
+    }
+
     BoxWithConstraints(
         Modifier
             .fillMaxSize()
             .background(MudryaColors.Ground)
-            .padding(horizontal = 16.dp, vertical = 8.dp),
+            .padding(horizontal = 12.dp, vertical = 6.dp),
     ) {
         val landscape = maxWidth > maxHeight
         Column(Modifier.fillMaxSize()) {
             TopBar(frame, title, close, onTv = { openCastSettings(context) })
-            Spacer(Modifier.height(8.dp))
             ProgressLine(frame.elapsedMs.toFloat() / frame.totalMs.coerceAtLeast(1).toFloat())
-            Spacer(Modifier.height(12.dp))
+            Spacer(Modifier.height(6.dp))
             if (landscape) {
-                // Альбомная ориентация: фигура слева, всё остальное справа.
-                Row(Modifier.fillMaxWidth().weight(1f), horizontalArrangement = Arrangement.spacedBy(16.dp)) {
-                    figure(Modifier.weight(1.1f).fillMaxHeight())
+                // Альбомная ориентация: поза слева почти во всю высоту, название и таймер справа.
+                Row(Modifier.fillMaxWidth().weight(1f), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                    figure(Modifier.weight(1.6f).fillMaxHeight())
                     Column(
                         Modifier
                             .weight(1f)
@@ -236,23 +244,158 @@ fun PlayerScreen(
                             .verticalScroll(rememberScrollState()),
                         verticalArrangement = Arrangement.spacedBy(10.dp),
                     ) {
-                        StepTitle(frame, settings)
-                        if (settings.showBreath) BreathPanel(frame)
-                        if (settings.showCues) Cue(frame, c.paused, settings.largeText)
-                        controls()
+                        PoseTitle(frame, settings.largeText)
+                        PoseFooter(frame, c.paused, settings, onPrev = { act { c.previousStep() } }, onPause = { act { c.togglePause() } }, onNext = { act { c.nextStep() } })
+                        DetailsToggle(details) { details = !details }
+                        if (details) detailsPanel()
                     }
                 }
             } else {
-                StepTitle(frame, settings)
-                figure(Modifier.fillMaxWidth().weight(1f))
-                if (settings.showBreath) BreathPanel(frame)
-                Spacer(Modifier.height(10.dp))
-                if (settings.showCues) Cue(frame, c.paused, settings.largeText)
-                Spacer(Modifier.height(12.dp))
-                controls()
+                PoseTitle(frame, settings.largeText)
+                // Поза — главное на экране: около трёх четвертей высоты; «Подробнее» раскрывается поверх нижней части.
+                Box(Modifier.fillMaxWidth().weight(1f)) {
+                    figure(Modifier.fillMaxSize())
+                    if (details) {
+                        Column(
+                            Modifier
+                                .align(Alignment.BottomCenter)
+                                .fillMaxWidth()
+                                .fillMaxHeight(0.62f)
+                                .background(MudryaColors.Ground.copy(alpha = 0.96f), RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp))
+                                .verticalScroll(rememberScrollState())
+                                .padding(14.dp),
+                        ) { detailsPanel() }
+                    }
+                }
+                Spacer(Modifier.height(6.dp))
+                PoseFooter(frame, c.paused, settings, onPrev = { act { c.previousStep() } }, onPause = { act { c.togglePause() } }, onNext = { act { c.nextStep() } })
+                DetailsToggle(details) { details = !details }
             }
         }
     }
+}
+
+/** Название позы крупно и контрастно; сторона и замок кистей — короткими метками. */
+@Composable
+private fun PoseTitle(f: PlayerFrame, large: Boolean) {
+    Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
+        Text(
+            f.step.shownTitle(),
+            color = Color.White,
+            fontSize = if (large) 32.sp else 26.sp,
+            lineHeight = if (large) 36.sp else 30.sp,
+            fontWeight = FontWeight.Bold,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.fillMaxWidth(),
+        )
+        val tags = buildList {
+            sideLabel(f.step.side)?.let { add(it to MudryaColors.Saffron) }
+            when (f.step.asana.figure?.hands) {
+                ru.mudrya.yoga.model.HandShape.LOCK -> add(stringResource(R.string.player_hand_lock) to MudryaColors.Saffron)
+                ru.mudrya.yoga.model.HandShape.PRAYER -> add(stringResource(R.string.player_hand_prayer) to MudryaColors.Moon)
+                null -> Unit
+            }
+        }
+        if (tags.isNotEmpty()) {
+            Spacer(Modifier.height(4.dp))
+            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) { tags.forEach { (t, col) -> Tag(t, col) } }
+        }
+        val replacedFor = f.step.replacedFor
+        val replacedTitle = f.step.replacedTitle
+        if (replacedFor != null && replacedTitle != null) {
+            Text(
+                if (f.step.replacedForCycle) stringResource(R.string.player_replaced_cycle, replacedTitle)
+                else stringResource(R.string.player_replaced, replacedTitle, jointLabel(replacedFor)),
+                color = MudryaColors.Moon,
+                fontSize = 13.sp,
+                textAlign = TextAlign.Center,
+            )
+        }
+    }
+}
+
+/** Сколько секунд осталось до конца шага (переход + удержание). */
+private fun secondsLeftInStep(f: PlayerFrame): Int {
+    val len = f.phase.durationMs
+    val leftInPhase = (len * (1 - f.phaseProgress)).toLong()
+    val after = when (f.phase.kind) {
+        PhaseKind.ENTER -> (f.phase.count - f.phase.index - 1) + f.step.hold.size
+        PhaseKind.HOLD -> f.phase.count - f.phase.index - 1
+    }
+    return ((leftInPhase + after * len + 999) / 1000).toInt()
+}
+
+/**
+ * Низ экрана: таймер позы, «вдох»/«выдох» словом, круг дыхания «N из M» (столько, сколько выбрано),
+ * одна короткая подсказка и три кнопки. Без «далее» — не отвлекает.
+ */
+@Composable
+private fun PoseFooter(
+    f: PlayerFrame,
+    paused: Boolean,
+    settings: ru.mudrya.yoga.engine.AppSettings,
+    onPrev: () -> Unit,
+    onPause: () -> Unit,
+    onNext: () -> Unit,
+) {
+    val inhale = f.phase.breath == Breath.INHALE
+    val hold = f.phase.kind == PhaseKind.HOLD
+    Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+        Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+            val left = secondsLeftInStep(f)
+            Text(
+                "%d:%02d".format(left / 60, left % 60),
+                color = Color.White,
+                fontSize = 34.sp,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.weight(1f),
+            )
+            Column(horizontalAlignment = Alignment.End) {
+                Text(
+                    stringResource(if (inhale) R.string.player_inhale else R.string.player_exhale),
+                    color = if (inhale) MudryaColors.Moon else MudryaColors.Saffron,
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold,
+                )
+                Text(
+                    if (hold) {
+                        val total = (f.phase.count + 1) / 2
+                        stringResource(R.string.player_breath_of, (f.phase.index / 2 + 1).coerceAtMost(total), total)
+                    } else {
+                        stringResource(R.string.player_transition)
+                    },
+                    color = MudryaColors.TextMuted,
+                    fontSize = 13.sp,
+                )
+            }
+        }
+        if (settings.showCues) {
+            val cues = f.step.shownCues()
+            if (cues.isNotEmpty()) {
+                val i = (f.phase.index + if (hold) 1 else 0) % cues.size
+                Text(cues[i], color = MudryaColors.Text, fontSize = if (settings.largeText) 18.sp else 15.sp, maxLines = 2, modifier = Modifier.fillMaxWidth())
+            }
+        }
+        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly, verticalAlignment = Alignment.CenterVertically) {
+            RoundButton("⏮", 48, MudryaColors.Surface, MudryaColors.Text, stringResource(R.string.player_prev), onPrev)
+            RoundButton(if (paused) "▶" else "❚❚", 60, MudryaColors.Saffron, MudryaColors.Ground, stringResource(R.string.player_pause), onPause)
+            RoundButton("⏭", 48, MudryaColors.Surface, MudryaColors.Text, stringResource(R.string.player_next_step), onNext)
+        }
+    }
+}
+
+@Composable
+private fun DetailsToggle(open: Boolean, onClick: () -> Unit) {
+    Text(
+        stringResource(if (open) R.string.player_details_hide else R.string.player_details),
+        color = MudryaColors.TextMuted,
+        fontSize = 14.sp,
+        textAlign = TextAlign.Center,
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable(onClick = onClick)
+            .padding(vertical = 8.dp),
+    )
 }
 
 /** Вместо фигуры на телефоне, пока картинка идёт на ТВ. */
@@ -325,51 +468,6 @@ private fun ProgressLine(value: Float) {
 }
 
 @Composable
-private fun StepTitle(f: PlayerFrame, settings: ru.mudrya.yoga.engine.AppSettings) {
-    val asana = f.step.asana
-    val enter = f.phase.kind == PhaseKind.ENTER
-    Column(Modifier.fillMaxWidth()) {
-        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            Tag(
-                if (enter) stringResource(R.string.player_phase_move) else stringResource(R.string.player_phase_hold),
-                if (enter) MudryaColors.Moon else MudryaColors.Saffron,
-            )
-            sideLabel(f.step.side)?.let { Tag(it, MudryaColors.TextMuted) }
-            when (f.step.asana.figure?.hands) {
-                ru.mudrya.yoga.model.HandShape.LOCK -> Tag(stringResource(R.string.player_hand_lock), MudryaColors.Saffron)
-                ru.mudrya.yoga.model.HandShape.PRAYER -> Tag(stringResource(R.string.player_hand_prayer), MudryaColors.Moon)
-                null -> Unit
-            }
-        }
-        Spacer(Modifier.height(6.dp))
-        Text(f.step.shownTitle(), color = MudryaColors.Text, fontSize = if (settings.largeText) 30.sp else 24.sp, fontWeight = FontWeight.Bold)
-        if (settings.showSanskrit) asana.sanskrit?.let { Text(it, color = MudryaColors.TextMuted, fontSize = if (settings.largeText) 17.sp else 14.sp) }
-        val replacedFor = f.step.replacedFor
-        val replacedTitle = f.step.replacedTitle
-        if (replacedFor != null && replacedTitle != null) {
-            Text(
-                if (f.step.replacedForCycle) {
-                    stringResource(R.string.player_replaced_cycle, replacedTitle)
-                } else {
-                    stringResource(R.string.player_replaced, replacedTitle, jointLabel(replacedFor))
-                },
-                color = MudryaColors.Moon,
-                fontSize = 13.sp,
-            )
-        }
-        val from = f.previous?.shownTitle()
-        val next = f.next?.shownTitle()
-        if (!settings.showNext) {
-            Unit
-        } else if (enter && from != null) {
-            Text(stringResource(R.string.player_from, from), color = MudryaColors.TextMuted, fontSize = 13.sp)
-        } else if (next != null) {
-            Text(stringResource(R.string.player_next, next), color = MudryaColors.TextMuted, fontSize = 13.sp)
-        }
-    }
-}
-
-@Composable
 private fun sideLabel(side: Side): String? = when (side) {
     Side.RIGHT -> stringResource(R.string.player_side_right)
     Side.LEFT -> stringResource(R.string.player_side_left)
@@ -408,9 +506,10 @@ private fun BreathPanel(f: PlayerFrame) {
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.weight(1f),
             )
-            if (f.phase.count > 1) {
+            if (f.phase.kind == PhaseKind.HOLD && f.phase.count > 1) {
+                val total = (f.phase.count + 1) / 2
                 Text(
-                    stringResource(R.string.player_breath_of, f.phase.index + 1, f.phase.count),
+                    stringResource(R.string.player_breath_of, (f.phase.index / 2 + 1).coerceAtMost(total), total),
                     color = MudryaColors.TextMuted,
                     fontSize = 13.sp,
                     modifier = Modifier.padding(end = 10.dp),
@@ -449,46 +548,17 @@ private fun Bar(label: String, value: Float, color: Color) {
 }
 
 @Composable
-private fun Cue(f: PlayerFrame, paused: Boolean, large: Boolean = false) {
-    // На паузе — полное описание позы: есть время прочитать.
-    if (paused) {
-        f.step.asana.shownDescription()?.let {
-            Text(it, color = MudryaColors.TextMuted, fontSize = 14.sp, lineHeight = 20.sp, modifier = Modifier.fillMaxWidth())
-            return
-        }
-    }
-    val cues = f.step.shownCues()
-    if (cues.isEmpty()) return
-    // Подсказки сменяются по фазам: одна строка — меньше читать во время практики.
-    val i = (f.phase.index + if (f.phase.kind == PhaseKind.HOLD) 1 else 0) % cues.size
-    Text(cues[i], color = MudryaColors.Text, fontSize = if (large) 19.sp else 15.sp, modifier = Modifier.fillMaxWidth())
-}
-
-@Composable
 private fun Controls(
-    paused: Boolean,
     speed: Double,
     phaseSec: Long,
     holdCycles: Int?,
     metalDogOffered: Boolean,
-    onPrev: () -> Unit,
-    onPause: () -> Unit,
-    onNext: () -> Unit,
     onSpeed: () -> Unit,
     onPhase: () -> Unit,
     onHold: () -> Unit,
     onMetalDog: () -> Unit,
 ) {
     Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-        Row(
-            Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceEvenly,
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            RoundButton("⏮", 52, MudryaColors.Surface, MudryaColors.Text, stringResource(R.string.player_prev), onPrev)
-            RoundButton(if (paused) "▶" else "❚❚", 68, MudryaColors.Saffron, MudryaColors.Ground, stringResource(R.string.player_pause), onPause)
-            RoundButton("⏭", 52, MudryaColors.Surface, MudryaColors.Text, stringResource(R.string.player_next_step), onNext)
-        }
         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             SmallButton(stringResource(R.string.player_speed, formatSpeed(speed)), Modifier.weight(1f), onSpeed)
             SmallButton(stringResource(R.string.player_phase_len, phaseSec), Modifier.weight(1f), onPhase)

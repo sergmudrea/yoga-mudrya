@@ -65,15 +65,21 @@ class PlayerViewModel(private val users: UserRepository, sequenceId: String) : V
     val controller = PlayerController(
         session,
         phaseMs = params.phaseMs,
-        holdCycles = users.state.value.settings.holdBreaths.takeIf { it > 0 },
+        // У своего сета счёт вдохов задан в конструкторе и важнее общей настройки.
+        holdCycles = custom?.holdCycles ?: users.state.value.settings.holdBreaths.takeIf { it > 0 },
     )
 
     /** Вдохов-выдохов на удержании: по методике → 1 → 2 → 3 → 5; выбор запоминается. */
     fun cycleHold() {
-        val i = HOLDS.indexOf(controller.holdCycles).let { if (it < 0) 0 else it }
-        val next = HOLDS[(i + 1) % HOLDS.size]
+        val options = if (custom != null) HOLDS.filterNotNull() else HOLDS
+        val i = options.indexOf(controller.holdCycles).let { if (it < 0) -1 else it }
+        val next = options[(i + 1) % options.size]
         controller.setHold(next)
-        users.update { it.copy(settings = it.settings.copy(holdBreaths = next ?: 0)) }
+        if (custom != null && next != null) {
+            users.update { s -> s.copy(customSets = s.customSets.map { if (it.id == custom.id) it.copy(holdCycles = next) else it }) }
+        } else {
+            users.update { it.copy(settings = it.settings.copy(holdBreaths = next ?: 0)) }
+        }
     }
 
     var usedMetalDog = false

@@ -612,4 +612,7 @@
     <string name="breath_stop">Parar</string>
     <string name="paywall_benefit_today">Todas las series temáticas — cuello, caderas, rodillas, sueño, fuerza, calma: la pantalla «Hoy» elige la más precisa según cómo te sientes</string>
     <string name="paywall_free_extra">También gratis: el registro diario con una práctica sugerida y todas las respiraciones.</string>
+    <string name="player_transition">entrando en la postura</string>
+    <string name="player_details">Más ▾</string>
+    <string name="player_details_hide">Ocultar ▴</string>
 </resources>

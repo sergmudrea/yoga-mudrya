@@ -612,4 +612,7 @@
     <string name="breath_stop">Stop</string>
     <string name="paywall_benefit_today">Every themed set — neck, hips, knees, sleep, strength, calm: the “Today” screen picks the most precise one for how you feel</string>
     <string name="paywall_free_extra">Also free: the daily check-in with a practice suggestion and all breathing practices.</string>
+    <string name="player_transition">moving into the pose</string>
+    <string name="player_details">More ▾</string>
+    <string name="player_details_hide">Hide ▴</string>
 </resources>

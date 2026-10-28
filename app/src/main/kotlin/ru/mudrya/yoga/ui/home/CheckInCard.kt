@@ -117,7 +117,7 @@ fun CheckInCard(
                 PrimaryButton(stringResource(R.string.checkin_breath_first), onBreath, color = MudryaColors.Moon)
             }
             PrimaryButton(stringResource(R.string.checkin_start), {
-                users.update { it.copy(settings = it.settings.copy(lengthMin = saved.minutes)) }
+                users.update { it.copy(settings = it.settings.copy(lengthMin = saved.minutes, holdBreaths = 0)) }
                 onStart(pick)
             })
             if (better != null) {

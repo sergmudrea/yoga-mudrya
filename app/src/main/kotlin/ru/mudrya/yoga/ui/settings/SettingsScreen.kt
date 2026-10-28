@@ -89,7 +89,6 @@ fun SettingsScreen(
         Card {
             SectionLabel(stringResource(R.string.settings_display))
             Toggle(stringResource(R.string.settings_show_cues), null, s.showCues) { v -> set { it.copy(showCues = v) } }
-            Toggle(stringResource(R.string.settings_show_next), null, s.showNext) { v -> set { it.copy(showNext = v) } }
             Toggle(stringResource(R.string.settings_show_sanskrit), null, s.showSanskrit) { v -> set { it.copy(showSanskrit = v) } }
             Toggle(stringResource(R.string.settings_show_breath), null, s.showBreath) { v -> set { it.copy(showBreath = v) } }
             Toggle(stringResource(R.string.settings_large_text), null, s.largeText) { v -> set { it.copy(largeText = v) } }

@@ -612,4 +612,7 @@
     <string name="breath_stop">Остановить</string>
     <string name="paywall_benefit_today">Все сеты под задачу — шея, бёдра, колени, сон, сила, антистресс: экран «Сегодня» подбирает самый точный под ваше самочувствие</string>
     <string name="paywall_free_extra">Тоже бесплатно: отметка самочувствия с подбором практики и все дыхательные практики.</string>
+    <string name="player_transition">переход в позу</string>
+    <string name="player_details">Подробнее ▾</string>
+    <string name="player_details_hide">Скрыть ▴</string>
 </resources>

@@ -612,4 +612,7 @@
     <string name="breath_stop">Stopp</string>
     <string name="paywall_benefit_today">Alle Themen-Sets – Nacken, Hüften, Knie, Schlaf, Kraft, Ruhe: der Bildschirm „Heute“ wählt das passendste für Ihr Befinden</string>
     <string name="paywall_free_extra">Ebenfalls kostenlos: das tägliche Befinden mit Übungsvorschlag und alle Atemübungen.</string>
+    <string name="player_transition">Übergang in die Haltung</string>
+    <string name="player_details">Mehr ▾</string>
+    <string name="player_details_hide">Ausblenden ▴</string>
 </resources>
