@@ -550,7 +550,7 @@ program_stop	Programm beenden
 program_path8	8-Wochen-Weg „Sonne und Mond“
 program_path8_hint	Für Erfahrene: lange Übungen „Sonne“ und „Mond“ im Wechsel, mit einem Test alle zwei Wochen.
 settings_model	Realistisches Modell
-settings_model_hint	Eine Frau im eng anliegenden Anzug zeigt die Haltungen mit denselben weichen Übergängen. Aus – die Holzpuppe mit orangen rechten und blauen linken Gliedern.
+settings_model_hint	Eine realistische Figur im eng anliegenden Anzug – weiblich oder männlich – mit denselben weichen Übergängen. Aus – die Holzpuppe mit orangen rechten und blauen linken Gliedern.
 checkin_title	Wie geht es Ihnen heute?
 checkin_energy	Energie
 energy_low	Wenig
@@ -613,3 +613,5 @@ paywall_free_extra	Ebenfalls kostenlos: das tägliche Befinden mit Übungsvorsch
 player_transition	Übergang in die Haltung
 player_details	Mehr ▾
 player_details_hide	Ausblenden ▴
+settings_model_female	Weiblich
+settings_model_male	Männlich

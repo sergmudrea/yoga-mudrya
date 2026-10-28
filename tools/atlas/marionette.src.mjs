@@ -97,10 +97,10 @@ async function createFigure3D(){
 
   let theme=null;
   function setTheme(t){if(theme===t)return;theme=t;const pal=COLORS[t];for(const k in M)M[k].color.set(pal[k]);
-    if(skin)skin.setTheme(t);floorM.color.set(pal.floor);matM.map=stripeTex(pal);matM.needsUpdate=true;scene.background=new T.Color(pal.bg);}
+    for(const k in skins)skins[k].setTheme(t);floorM.color.set(pal.floor);matM.map=stripeTex(pal);matM.needsUpdate=true;scene.background=new T.Color(pal.bg);}
 
   /* ---------- forward kinematics: TW -> joint positions ---------- */
-  let J=null, root=V3(), lastTW=null, skin=null;
+  let J=null, root=V3(), lastTW=null, skin=null; const skins={};
   const ax=(q,v)=>v.clone().applyQuaternion(q);
   function fk(TW,origin){
     const o=origin.clone(), j={O:o};
@@ -420,8 +420,13 @@ async function createFigure3D(){
 
   setTheme('light');
   /* реалистичная модель поверх марионетки: решатель тот же, рисуется кожа */
-  async function loadSkin(url){skin=await createSkin(T,scene,{REST,DIM,url});skin.setTheme(theme||'light');doll.visible=!skin.active;if(J)layout(lastTW,J,true);return skin;}
-  function setFigure(kind){if(!skin)return;skin.active=kind!=='doll';doll.visible=!skin.active;if(J)layout(lastTW,J,true);}
+  /* модели: 'model' — женская (model.glb), 'male' — мужская (model_m.glb, грузится по запросу); 'doll' — марионетка */
+  const SKIN_URL={model:'model.glb',male:'model_m.glb'};
+  async function loadSkin(url,key='model'){const s=await createSkin(T,scene,{REST,DIM,url});s.setTheme(theme||'light');s.active=false;skins[key]=s;return s;}
+  async function setFigure(kind){
+    if(kind!=='doll'&&!skins[kind]&&SKIN_URL[kind]){try{await loadSkin(SKIN_URL[kind],kind);}catch(e){console.warn('model',kind,e);kind='doll';}}
+    if(kind!=='doll'&&!skins[kind])kind='doll';
+    for(const k in skins)skins[k].active=k===kind;skin=kind==='doll'?null:skins[kind];doll.visible=!skin;if(J)layout(lastTW,J,true);}
   return {scene,setTheme,loadSkin,setFigure,skinAudit(){return skin&&skin.active?skin.audit:null;},skinRadius(){return skin&&skin.radius;},solveLegacy,solveJoint,showTW,shift,endPos,points,frameOf,makeView,
     get lastTW(){return lastTW;},regionMins,vmin(){const m=regionMins();return Math.min(...Object.values(m));},vminsAll:regionMins,
     centerOf:pts=>frameOf(pts).c,LOTUS,HALF,BUTTER,SEGS,matMesh:mat};
@@ -604,9 +609,9 @@ async function boot(){
     resetView(){view.userMoved=false;if(cur)frameCam(cur.center,camYaw);},
     setYaw(d){view.yaw=d;view.userMoved=false;if(cur)frameCam(cur.center,camYaw);},
     has(id){return !!(P[id]||(window.JP&&JP[id]));},
-    setFigure(k){fig.setFigure(k);view.render();}
+    setFigure(k){fig.setFigure(k).then(()=>view.render());}
   };
-  try{await fig.loadSkin('model.glb');}catch(e){console.warn('model unavailable, keeping the doll',e);}
+  try{await fig.setFigure('model');}catch(e){console.warn('model unavailable, keeping the doll',e);}
   view.render();window.Mudrya.loaded=true;window.__skinAudit=()=>fig.skinAudit();window.__skinRadius=()=>fig.skinRadius();
   if(window.AndroidBridge)AndroidBridge.onReady();
 }

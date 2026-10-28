@@ -550,7 +550,7 @@ program_stop	Parar o programa
 program_path8	Caminho de 8 semanas “Sol e Lua”
 program_path8_hint	Para praticantes experientes: práticas longas “Sol” e “Lua” alternadas, com um teste a cada duas semanas.
 settings_model	Modelo realista
-settings_model_hint	Uma mulher com roupa justa faz as posturas com as mesmas transições suaves. Desligado — a marionete de madeira, membros direitos laranja e esquerdos azuis.
+settings_model_hint	Uma figura realista com roupa justa, feminina ou masculina, com as mesmas transições suaves. Desligado — a marionete de madeira, membros direitos laranja e esquerdos azuis.
 checkin_title	Como você está hoje?
 checkin_energy	Energia
 energy_low	Pouca
@@ -613,3 +613,5 @@ paywall_free_extra	Também grátis: o check-in diário com uma prática sugerida
 player_transition	entrando na postura
 player_details	Mais ▾
 player_details_hide	Ocultar ▴
+settings_model_female	Feminino
+settings_model_male	Masculino

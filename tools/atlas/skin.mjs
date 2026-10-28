@@ -170,6 +170,7 @@ export async function createSkin(T, scene, {REST, DIM, url = 'model.glb'}) {
     const target = j.hipL.clone().add(j.hipR).multiplyScalar(.5).add(hipOff.clone().applyQuaternion(TW.pelvis));
     const hp = B.Hips.parent; B.Hips.position.copy(hp ? hp.worldToLocal(target.clone()) : target);
     root.updateMatrixWorld(true);
+    fixLegs(j);
     fixArms(TW, j, shape);
     for (const s of ['L', 'R']) {
       if (shape && shape[s] === 'lock') {
@@ -194,8 +195,8 @@ export async function createSkin(T, scene, {REST, DIM, url = 'model.glb'}) {
     return moved;
   }
   const setWorldQ = (b, w) => { b.quaternion.copy(wq(b.parent).invert().multiply(w)); b.updateMatrixWorld(true); };
-  function ik2(side, target, poleHint) {
-    const A = B[side + 'Arm'], E = B[side + 'ForeArm'], H = B[side + 'Hand'];
+  function ik2(side, target, poleHint, chain) {
+    const [A, E, H] = (chain || ['Arm', 'ForeArm', 'Hand']).map(n => B[side + n]);
     const handW = wq(H);
     const s = wp(A), e = wp(E), w = wp(H);
     const a = s.distanceTo(e), b = e.distanceTo(w);
@@ -248,7 +249,8 @@ export async function createSkin(T, scene, {REST, DIM, url = 'model.glb'}) {
       const skip = new RegExp('(uarm|farm)' + s + '|(uarm|farm)' + o);
       const pen = () => { let m = 0; const elbow = wp(B[side + 'ForeArm']), wr = wp(B[side + 'Hand']);
         for (const p of [elbow, elbow.clone().lerp(wr, .5), wr.clone().add(palmOff(side))]) { const q = p.clone(); m = Math.max(m, push(q, caps, skip, 0)); } return m; };
-      audit.pen0 = Math.max(audit.pen0, pen());
+      const a0 = pen(); audit.pen0 = Math.max(audit.pen0, a0);
+      const savedArm = ['Arm', 'ForeArm', 'Hand'].map(n => B[side + n].quaternion.clone());
       const before = palmT.clone();
       push(palmT, caps, skip, .012);
       const wristT = palmT.clone().sub(off);
@@ -264,9 +266,43 @@ export async function createSkin(T, scene, {REST, DIM, url = 'model.glb'}) {
           ik2(side, wristT, elbow);
         }
       }
+      if (pen() > Math.max(a0, .01) + .005) { ['Arm', 'ForeArm', 'Hand'].forEach((n, i) => B[side + n].quaternion.copy(savedArm[i])); root.updateMatrixWorld(true); }
       audit.pen1 = Math.max(audit.pen1, pen());
     }
+    audit.legs0 = legAudit.pen0; audit.legs1 = legAudit.pen1;
     lastAudit = audit;
+  }
+
+  /* ---- ноги: свободная (не опорная) нога не проходит сквозь другую ногу и корпус ---- */
+  const LEG = ['UpLeg', 'Leg', 'Foot'];
+  let legAudit = {pen0: 0, pen1: 0};
+  function fixLegs(j) {
+    const caps = capNow();
+    legAudit = {pen0: 0, pen1: 0};
+    for (const s of ['L', 'R']) {
+      const side = s === 'L' ? 'Left' : 'Right', o = s === 'L' ? 'R' : 'L';
+      const skip = new RegExp('(thigh|shin|foot)' + s + '|uarm|farm');
+      const pts = () => { const k = wp(B[side + 'Leg']), a = wp(B[side + 'Foot']); return [k, k.clone().lerp(a, .5), a]; };
+      const pen = () => { let m = 0; for (const p of pts()) m = Math.max(m, push(p.clone(), caps, skip, 0)); return m; };
+      const p0 = pen(); legAudit.pen0 = Math.max(legAudit.pen0, p0);
+      /* опорная нога (стопа или колено на полу) остаётся на месте: её держит решатель */
+      const planted = j['A' + s].y < .09 || j['K' + s].y < .09;
+      if (!planted && p0 > .006) {
+        const footW = wq(B[side + 'Foot']);
+        const saved = LEG.map(n => B[side + n].quaternion.clone());
+        for (let it = 0; it < 4; it++) {
+          const [k, mid, a] = pts(); const a0 = a.clone(), m0 = mid.clone();
+          const mk = push(k, caps, skip, .01), mm = push(mid, caps, skip, .008), ma = push(a, caps, skip, .008);
+          if (mk < .003 && mm < .003 && ma < .003) break;
+          a.add(mid.sub(m0).multiplyScalar(1.2));
+          ik2(side, a, k, LEG);
+        }
+        setWorldQ(B[side + 'Foot'], footW);
+        /* стало хуже — оставляем как было */
+        if (pen() > p0) { LEG.forEach((n, i) => B[side + n].quaternion.copy(saved[i])); root.updateMatrixWorld(true); }
+      }
+      legAudit.pen1 = Math.max(legAudit.pen1, pen());
+    }
   }
 
   setTheme('light');

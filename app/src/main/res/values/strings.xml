@@ -552,7 +552,7 @@
     <string name="program_path8">8-week path “Sun and Moon”</string>
     <string name="program_path8_hint">For experienced practitioners: long “Sun” and “Moon” practices in turn, with a test every two weeks.</string>
     <string name="settings_model">Realistic model</string>
-    <string name="settings_model_hint">A woman in a fitted suit moves through the poses with the same smooth transitions. Off — the wooden marionette with orange right and blue left limbs.</string>
+    <string name="settings_model_hint">A realistic figure in a fitted suit, female or male, with the same smooth transitions. Off — the wooden marionette with orange right and blue left limbs.</string>
     <string name="checkin_title">How are you today?</string>
     <string name="checkin_energy">Energy</string>
     <string name="energy_low">Low</string>
@@ -615,4 +615,6 @@
     <string name="player_transition">moving into the pose</string>
     <string name="player_details">More ▾</string>
     <string name="player_details_hide">Hide ▴</string>
+    <string name="settings_model_female">Female</string>
+    <string name="settings_model_male">Male</string>
 </resources>

@@ -552,7 +552,7 @@
     <string name="program_path8">Camino de 8 semanas «Sol y Luna»</string>
     <string name="program_path8_hint">Para practicantes con experiencia: prácticas largas «Sol» y «Luna» alternas, con una prueba cada dos semanas.</string>
     <string name="settings_model">Modelo realista</string>
-    <string name="settings_model_hint">Una mujer con ropa ajustada realiza las posturas con las mismas transiciones suaves. Desactivado: la marioneta de madera, extremidades derechas naranjas e izquierdas azules.</string>
+    <string name="settings_model_hint">Una figura realista con ropa ajustada, mujer u hombre, con las mismas transiciones suaves. Desactivado: la marioneta de madera, extremidades derechas naranjas e izquierdas azules.</string>
     <string name="checkin_title">¿Cómo te sientes hoy?</string>
     <string name="checkin_energy">Energía</string>
     <string name="energy_low">Poca</string>
@@ -615,4 +615,6 @@
     <string name="player_transition">entrando en la postura</string>
     <string name="player_details">Más ▾</string>
     <string name="player_details_hide">Ocultar ▴</string>
+    <string name="settings_model_female">Mujer</string>
+    <string name="settings_model_male">Hombre</string>
 </resources>

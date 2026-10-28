@@ -550,7 +550,7 @@ program_stop	Arrêter le programme
 program_path8	Parcours de 8 semaines « Soleil et Lune »
 program_path8_hint	Pour pratiquants expérimentés : longues pratiques « Soleil » et « Lune » en alternance, avec un test toutes les deux semaines.
 settings_model	Modèle réaliste
-settings_model_hint	Une femme en tenue ajustée enchaîne les postures avec les mêmes transitions fluides. Désactivé — la marionnette en bois, membres droits orange et gauches bleus.
+settings_model_hint	Une silhouette réaliste en tenue ajustée, femme ou homme, avec les mêmes transitions fluides. Désactivé — la marionnette en bois, membres droits orange et gauches bleus.
 checkin_title	Comment allez-vous aujourd'hui ?
 checkin_energy	Énergie
 energy_low	Faible
@@ -613,3 +613,5 @@ paywall_free_extra	Également gratuit : le point du jour avec une pratique sugg�
 player_transition	entrée dans la posture
 player_details	Plus ▾
 player_details_hide	Masquer ▴
+settings_model_female	Femme
+settings_model_male	Homme

@@ -58,7 +58,12 @@ fun Figure3D(
     placeholder: @Composable () -> Unit = {},
 ) {
     val context = LocalContext.current
-    val realistic = ru.mudrya.yoga.ui.common.appContainer().users.state.collectAsState().value.settings.realisticModel
+    val userState = ru.mudrya.yoga.ui.common.appContainer().users.state.collectAsState().value
+    val figureKind = when {
+        !userState.settings.realisticModel -> "doll"
+        userState.settings.modelMale ?: (userState.profile?.sex == ru.mudrya.yoga.engine.Sex.MALE) -> "male"
+        else -> "model"
+    }
     var ready by remember { mutableStateOf(false) }
     val failed by rememberUpdatedState(onUnavailable)
     val main = remember { Handler(Looper.getMainLooper()) }
@@ -111,8 +116,8 @@ fun Figure3D(
     LaunchedEffect(ready) {
         if (ready) webView.evaluateJavascript("Mudrya.setTheme('dark')", null)
     }
-    LaunchedEffect(ready, realistic) {
-        if (ready) webView.evaluateJavascript("Mudrya.setFigure('${if (realistic) "model" else "doll"}')", null)
+    LaunchedEffect(ready, figureKind) {
+        if (ready) webView.evaluateJavascript("Mudrya.setFigure('$figureKind')", null)
     }
     LaunchedEffect(ready, cameraYaw) {
         if (ready) webView.evaluateJavascript("Mudrya.setYaw($cameraYaw)", null)

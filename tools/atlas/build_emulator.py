@@ -191,16 +191,21 @@ boot();
 # ---- реалистичная модель (tools/atlas/skin.mjs) поверх решателя: кожа повторяет повороты сегментов ----
 head = sub(head, "import {OrbitControls} from 'three/addons/controls/OrbitControls.js';",
            "import {OrbitControls} from 'three/addons/controls/OrbitControls.js';\nimport {createSkin} from './skin.mjs';")
-head = sub(head, "  let J=null, root=V3(), lastTW=null;", "  let J=null, root=V3(), lastTW=null, skin=null;")
+head = sub(head, "  let J=null, root=V3(), lastTW=null;", "  let J=null, root=V3(), lastTW=null, skin=null; const skins={};")
 head = sub(head, "    return mins;}\n  function regionMins()", "    if(apply&&skin)skin.update(TW,j,shape);\n    return mins;}\n  function regionMins()")
-head = sub(head, "floorM.color.set(pal.floor);matM.map=stripeTex(pal);", "if(skin)skin.setTheme(t);floorM.color.set(pal.floor);matM.map=stripeTex(pal);")
+head = sub(head, "floorM.color.set(pal.floor);matM.map=stripeTex(pal);", "for(const k in skins)skins[k].setTheme(t);floorM.color.set(pal.floor);matM.map=stripeTex(pal);")
 head = sub(head, "  return {scene,setTheme,", """  /* реалистичная модель поверх марионетки: решатель тот же, рисуется кожа */
-  async function loadSkin(url){skin=await createSkin(T,scene,{REST,DIM,url});skin.setTheme(theme||'light');doll.visible=!skin.active;if(J)layout(lastTW,J,true);return skin;}
-  function setFigure(kind){if(!skin)return;skin.active=kind!=='doll';doll.visible=!skin.active;if(J)layout(lastTW,J,true);}
+  /* модели: 'model' — женская (model.glb), 'male' — мужская (model_m.glb, грузится по запросу); 'doll' — марионетка */
+  const SKIN_URL={model:'model.glb',male:'model_m.glb'};
+  async function loadSkin(url,key='model'){const s=await createSkin(T,scene,{REST,DIM,url});s.setTheme(theme||'light');s.active=false;skins[key]=s;return s;}
+  async function setFigure(kind){
+    if(kind!=='doll'&&!skins[kind]&&SKIN_URL[kind]){try{await loadSkin(SKIN_URL[kind],kind);}catch(e){console.warn('model',kind,e);kind='doll';}}
+    if(kind!=='doll'&&!skins[kind])kind='doll';
+    for(const k in skins)skins[k].active=k===kind;skin=kind==='doll'?null:skins[kind];doll.visible=!skin;if(J)layout(lastTW,J,true);}
   return {scene,setTheme,loadSkin,setFigure,""")
 boot = sub(boot, "  if(window.AndroidBridge)AndroidBridge.onReady();\n}",
-           "  try{await fig.loadSkin('model.glb');}catch(e){console.warn('model unavailable, keeping the doll',e);}\n  view.render();window.Mudrya.loaded=true;\n  if(window.AndroidBridge)AndroidBridge.onReady();\n}")
-boot = sub(boot, "    has(id){return !!(P[id]||(window.JP&&JP[id]));}", "    has(id){return !!(P[id]||(window.JP&&JP[id]));},\n    setFigure(k){fig.setFigure(k);view.render();}")
+           "  try{await fig.setFigure('model');}catch(e){console.warn('model unavailable, keeping the doll',e);}\n  view.render();window.Mudrya.loaded=true;\n  if(window.AndroidBridge)AndroidBridge.onReady();\n}")
+boot = sub(boot, "    has(id){return !!(P[id]||(window.JP&&JP[id]));}", "    has(id){return !!(P[id]||(window.JP&&JP[id]));},\n    setFigure(k){fig.setFigure(k).then(()=>view.render());}")
 
 # ---- переходы по очереди (таз и ноги → корпус → руки, голова), продолжение с середины перехода, отладка кожи ----
 import json as _json
