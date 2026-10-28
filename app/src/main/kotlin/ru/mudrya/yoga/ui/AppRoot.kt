@@ -70,6 +70,7 @@ private object Routes {
     const val PLAYER = "player/{seq}"
     const val SESSION = "session/{seq}"
     const val SET_LIBRARY = "setlibrary"
+    const val BREATH = "breath"
     fun session(id: String) = "session/$id"
     fun player(sequenceId: String) = "player/$sequenceId"
 }
@@ -152,6 +153,7 @@ fun AppRoot() {
                     onBack = { nav.popBackStack() },
                 )
             }
+            composable(Routes.BREATH) { ru.mudrya.yoga.ui.breath.BreathScreen(state, onBack = { nav.popBackStack() }) }
             composable(Routes.PAYWALL) { PaywallScreen(onClose = { nav.popBackStack() }) }
             composable(Routes.SETTINGS) {
                 SettingsScreen(state, users, onBack = { nav.popBackStack() }, onVideos = { nav.navigate(Routes.VIDEOS) })
@@ -167,6 +169,7 @@ fun AppRoot() {
                     premium = premium,
                     onPaywall = { nav.navigate(Routes.PAYWALL) },
                     onPrograms = { nav.navigate(Routes.SET_LIBRARY) },
+                    onBreath = { nav.navigate(Routes.BREATH) },
                 )
             }
             composable(Tab.SETS.route) {

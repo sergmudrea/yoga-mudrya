@@ -85,10 +85,11 @@ fun PaywallScreen(onClose: () -> Unit) {
     ) {
         ScreenTitle(stringResource(R.string.paywall_title))
         Card {
-            listOf(R.string.paywall_benefit_chandra, R.string.paywall_benefit_bundle, R.string.paywall_benefit_short, R.string.paywall_benefit_future).forEach {
+            listOf(R.string.paywall_benefit_today, R.string.paywall_benefit_chandra, R.string.paywall_benefit_bundle, R.string.paywall_benefit_short, R.string.paywall_benefit_future).forEach {
                 Text("•  " + stringResource(it), color = MudryaColors.Text, fontSize = 15.sp, lineHeight = 21.sp)
             }
             Body(stringResource(R.string.paywall_free_core))
+            Body(stringResource(R.string.paywall_free_extra))
         }
 
         val list = offers

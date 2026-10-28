@@ -8,6 +8,7 @@
    the light half. Right limbs orange, left limbs blue. */
 import * as T from 'three';
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+import {createSkin} from './skin.mjs';
 
 const V3=(x=0,y=0,z=0)=>new T.Vector3(x,y,z);
 const DEG=Math.PI/180;
@@ -96,10 +97,10 @@ async function createFigure3D(){
 
   let theme=null;
   function setTheme(t){if(theme===t)return;theme=t;const pal=COLORS[t];for(const k in M)M[k].color.set(pal[k]);
-    floorM.color.set(pal.floor);matM.map=stripeTex(pal);matM.needsUpdate=true;scene.background=new T.Color(pal.bg);}
+    if(skin)skin.setTheme(t);floorM.color.set(pal.floor);matM.map=stripeTex(pal);matM.needsUpdate=true;scene.background=new T.Color(pal.bg);}
 
   /* ---------- forward kinematics: TW -> joint positions ---------- */
-  let J=null, root=V3(), lastTW=null;
+  let J=null, root=V3(), lastTW=null, skin=null;
   const ax=(q,v)=>v.clone().applyQuaternion(q);
   function fk(TW,origin){
     const o=origin.clone(), j={O:o};
@@ -168,6 +169,7 @@ async function createFigure3D(){
       const fc=j['A'+s].clone().add(up.clone().multiplyScalar(-.035)).add(fwd.clone().multiplyScalar(.055));
       ell(P['foot'+s],fc,fb,[.046,.04,.13],'L_'+s+'f');
     }
+    if(apply&&skin)skin.update(TW,j,shape);
     return mins;}
   function regionMins(){return layout(lastTW,J,false);}
 
@@ -417,7 +419,10 @@ async function createFigure3D(){
     return {c:V3((x0+x1)/2,Math.max(H/2,s/2-0.12)-0.02,(z0+z1)/2*0.5),s};}
 
   setTheme('light');
-  return {scene,setTheme,solveLegacy,solveJoint,showTW,shift,endPos,points,frameOf,makeView,
+  /* реалистичная модель поверх марионетки: решатель тот же, рисуется кожа */
+  async function loadSkin(url){skin=await createSkin(T,scene,{REST,DIM,url});skin.setTheme(theme||'light');doll.visible=!skin.active;if(J)layout(lastTW,J,true);return skin;}
+  function setFigure(kind){if(!skin)return;skin.active=kind!=='doll';doll.visible=!skin.active;if(J)layout(lastTW,J,true);}
+  return {scene,setTheme,loadSkin,setFigure,solveLegacy,solveJoint,showTW,shift,endPos,points,frameOf,makeView,
     get lastTW(){return lastTW;},regionMins,vmin(){const m=regionMins();return Math.min(...Object.values(m));},vminsAll:regionMins,
     centerOf:pts=>frameOf(pts).c,LOTUS,HALF,BUTTER,SEGS,matMesh:mat};
 }
@@ -580,8 +585,11 @@ async function boot(){
     setTheme(t){fig.setTheme(t);document.body.style.background=t==='dark'?'#0F1115':'#f3f1ec';},
     resetView(){view.userMoved=false;if(cur)frameCam(cur.center,camYaw);},
     setYaw(d){view.yaw=d;view.userMoved=false;if(cur)frameCam(cur.center,camYaw);},
-    has(id){return !!(P[id]||(window.JP&&JP[id]));}
+    has(id){return !!(P[id]||(window.JP&&JP[id]));},
+    setFigure(k){fig.setFigure(k);view.render();}
   };
+  try{await fig.loadSkin('model.glb');}catch(e){console.warn('model unavailable, keeping the doll',e);}
+  view.render();window.Mudrya.loaded=true;
   if(window.AndroidBridge)AndroidBridge.onReady();
 }
 boot();

@@ -21,7 +21,7 @@ class UserStateCodecTest {
         tests = listOf(MovementRecord(5_000, 20_000, 41, 37, mapOf(MovementTest.BALANCE to 8.5, MovementTest.SIT_RISE to 9.0))),
         planStartDay = 19_990,
         relaxSeconds = 90,
-        settings = AppSettings(sound = false, voice = VoiceLevel.FULL, vibration = true, tvOutput = false, figure3d = false, showCues = false, largeText = true, camera = CameraView.FRONT, thumbnails = false, holdBreaths = 3),
+        settings = AppSettings(sound = false, voice = VoiceLevel.FULL, vibration = true, tvOutput = false, figure3d = false, realisticModel = false, showCues = false, largeText = true, camera = CameraView.FRONT, thumbnails = false, holdBreaths = 3),
         reminder = ReminderSettings(enabled = true, hour = 19, minute = 30, days = setOf(1, 3, 5)),
         body = listOf(BodyRecord(19_990, 72.5, null), BodyRecord(20_000, 71.8, 84.0)),
         challengeStart = 19_995,
@@ -33,6 +33,7 @@ class UserStateCodecTest {
         promoUntilMs = 99_000,
         usedCodes = listOf("YABCDE"),
         health = listOf(HealthRecord(7_000, 20_000, 178.0, 86.5, 92.0, 66, 52, 9, 14), HealthRecord(8_000, 20_001, weightKg = 85.0)),
+        checkIns = listOf(CheckIn(20_000, Energy.LOW, Mood.TENSE, TensionZone.NECK, 10), CheckIn(20_001, Energy.HIGH, Mood.CALM, TensionZone.NONE, 40)),
     )
 
     @Test

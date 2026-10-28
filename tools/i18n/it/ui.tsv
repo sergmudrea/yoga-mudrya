@@ -549,3 +549,64 @@ program_days	%1$d giorni
 program_stop	Interrompi il programma
 program_path8	Percorso di 8 settimane «Sole e Luna»
 program_path8_hint	Per chi ha esperienza: lunghe pratiche «Sole» e «Luna» alternate, con un test ogni due settimane.
+settings_model	Modello realistico
+settings_model_hint	Una donna in tuta aderente esegue le posizioni con le stesse transizioni fluide. Disattivato: la marionetta di legno, arti destri arancioni e sinistri blu.
+checkin_title	Come ti senti oggi?
+checkin_energy	Energia
+energy_low	Poca
+energy_mid	Normale
+energy_high	Piena di energia
+checkin_mood	Mente
+mood_calm	Calma
+mood_tense	Tesa
+checkin_zone	Zona tesa
+zone_none	Nessuna
+zone_neck	Collo e spalle
+zone_back	Schiena
+zone_hips	Anche
+zone_knees	Ginocchia
+checkin_time	Tempo
+checkin_minutes	%1$d min
+checkin_pick	Trova la mia pratica
+checkin_for_you	Oggi per te
+checkin_start	Inizia
+checkin_change	Cambia risposte
+checkin_breath_first	Prima due minuti di respiro
+checkin_premium_better	«%1$s» è ancora più adatto — in Premium
+checkin_history	Come ti sentivi
+reason_neck	Hai indicato tensione a collo e spalle: apriremo dolcemente le spalle e scaricheremo il collo, senza posizioni capovolte.
+reason_back	La schiena chiede attenzione: scaricheremo la zona lombare con posizioni dolci sdraiate e a quattro zampe, senza inarcamenti profondi.
+reason_hips	Anche tese: apriremo le articolazioni dell'anca gradualmente, con pause tra le posizioni.
+reason_knees	Oggi le ginocchia sono sensibili: posizioni senza carico sulle ginocchia e senza accosciate profonde.
+reason_low	Poca energia: una sequenza dolce senza equilibri di forza, per riattivare la circolazione senza sfinirti.
+reason_tense	La tensione si scioglie meglio con l'espirazione: ritmo calmo, attenzione all'espiro.
+reason_evening	Sera: niente sequenze energizzanti, posizioni dolci per addormentarsi meglio.
+reason_morning	Mattina: svegliarsi senza movimenti bruschi, articolazioni, allungamento, ritmo vivace ma dolce.
+reason_high	Tanta energia: una buona giornata per una pratica di forza.
+reason_steady	Una giornata normale: il saluto al sole classico mantiene forma e ritmo.
+breath_title	Respiro
+breath_card_hint	Due minuti per calmarsi, 4-7-8, respiro quadrato, ujjayi e respiro prima di dormire.
+breath_intro	Siediti o sdraiati comoda e segui il cerchio: cresce quando inspiri e si restringe quando espiri. Se ti gira la testa, fermati e respira normalmente.
+breath_no_holds	Senza apnee
+breath_no_holds_hint	In gravidanza, con pressione alta o capogiri: le apnee vengono tolte, il ritmo resta.
+breath_duration	%1$d min
+breath_sos	Calmarsi in 2 minuti
+breath_sos_hint	Doppia inspirazione dal naso e lunga espirazione: il modo più rapido per allentare lo stress acuto.
+breath_478	4-7-8
+breath_478_hint	Inspira in 4, trattieni per 7, espira in 8. Rallenta il battito e calma la mente.
+breath_box	Respiro quadrato
+breath_box_hint	Quattro lati uguali: inspira, trattieni, espira, trattieni per 4. Raccoglie l'attenzione prima del lavoro o di una conversazione difficile.
+breath_ujjayi	Ujjayi
+breath_ujjayi_hint	Respiro regolare con la gola leggermente chiusa, un dolce suono di mare. Il respiro della pratica yoga.
+breath_sleep	Prima di dormire
+breath_sleep_hint	Espira il doppio di quanto inspiri. Sdraiata a letto, a luci spente.
+breath_in	Inspira
+breath_top_up	Ancora un po'
+breath_hold	Trattieni
+breath_out	Espira
+breath_cycle	Ciclo %1$d di %2$d
+breath_done	Fatto
+breath_finish	Fine
+breath_stop	Ferma
+paywall_benefit_today	Tutte le sequenze a tema — collo, anche, ginocchia, sonno, forza, calma: la schermata «Oggi» sceglie la più precisa per come ti senti
+paywall_free_extra	Gratis anche: il check-in quotidiano con una pratica suggerita e tutti gli esercizi di respiro.

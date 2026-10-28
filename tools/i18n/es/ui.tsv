@@ -549,3 +549,64 @@ program_days	%1$d días
 program_stop	Detener el programa
 program_path8	Camino de 8 semanas «Sol y Luna»
 program_path8_hint	Para practicantes con experiencia: prácticas largas «Sol» y «Luna» alternas, con una prueba cada dos semanas.
+settings_model	Modelo realista
+settings_model_hint	Una mujer con ropa ajustada realiza las posturas con las mismas transiciones suaves. Desactivado: la marioneta de madera, extremidades derechas naranjas e izquierdas azules.
+checkin_title	¿Cómo te sientes hoy?
+checkin_energy	Energía
+energy_low	Poca
+energy_mid	Normal
+energy_high	Con mucha energía
+checkin_mood	Mente
+mood_calm	Tranquila
+mood_tense	Tensa
+checkin_zone	Zona tensa
+zone_none	Ninguna
+zone_neck	Cuello y hombros
+zone_back	Espalda
+zone_hips	Caderas
+zone_knees	Rodillas
+checkin_time	Tiempo
+checkin_minutes	%1$d min
+checkin_pick	Encontrar mi práctica
+checkin_for_you	Hoy para ti
+checkin_start	Empezar
+checkin_change	Cambiar respuestas
+checkin_breath_first	Primero dos minutos de respiración
+checkin_premium_better	«%1$s» encaja aún mejor — en Premium
+checkin_history	Cómo te sentiste
+reason_neck	Marcaste tensión en cuello y hombros: abriremos los hombros con suavidad y descargaremos el cuello, sin posturas invertidas.
+reason_back	Tu espalda pide cuidado: descargaremos la zona lumbar con posturas suaves tumbada y a cuatro patas, sin extensiones profundas.
+reason_hips	Caderas tensas: abriremos las articulaciones de la cadera poco a poco, con descanso entre posturas.
+reason_knees	Hoy tus rodillas están sensibles: posturas sin carga en las rodillas ni sentadillas profundas.
+reason_low	Poca energía: una serie suave sin equilibrios de fuerza, para activar la circulación sin agotarte.
+reason_tense	La tensión se libera mejor con la exhalación: ritmo tranquilo, atención en exhalar.
+reason_evening	Noche: sin secuencias activadoras, posturas suaves para dormir mejor.
+reason_morning	Mañana: despertar sin movimientos bruscos, articulaciones, estiramiento, ritmo vivo pero suave.
+reason_high	Mucha energía: buen día para una práctica de fuerza.
+reason_steady	Un día normal: el saludo al sol clásico mantiene la forma y el ritmo.
+breath_title	Respiración
+breath_card_hint	Dos minutos para calmarte, 4-7-8, respiración cuadrada, ujjayi y respiración antes de dormir.
+breath_intro	Siéntate o túmbate cómoda y sigue el círculo: crece al inhalar y se encoge al exhalar. Si te mareas, para y respira con normalidad.
+breath_no_holds	Sin retenciones
+breath_no_holds_hint	En el embarazo, con presión alta o mareos: se quitan las retenciones y se mantiene el ritmo.
+breath_duration	%1$d min
+breath_sos	Calmarse en 2 minutos
+breath_sos_hint	Doble inhalación por la nariz y una exhalación larga: la forma más rápida de aliviar el estrés agudo.
+breath_478	4-7-8
+breath_478_hint	Inhala en 4, retén en 7, exhala en 8. Baja el pulso y calma la mente.
+breath_box	Respiración cuadrada
+breath_box_hint	Cuatro lados iguales: inhalar, retener, exhalar, retener en 4. Centra la atención antes del trabajo o de una conversación difícil.
+breath_ujjayi	Ujjayi
+breath_ujjayi_hint	Respiración pareja con la garganta un poco cerrada, un suave sonido de mar. La respiración de la práctica de yoga.
+breath_sleep	Antes de dormir
+breath_sleep_hint	Exhala el doble de lo que inhalas. Tumbada en la cama, con la luz apagada.
+breath_in	Inhala
+breath_top_up	Un poco más
+breath_hold	Retén
+breath_out	Exhala
+breath_cycle	Ciclo %1$d de %2$d
+breath_done	Hecho
+breath_finish	Terminar
+breath_stop	Parar
+paywall_benefit_today	Todas las series temáticas — cuello, caderas, rodillas, sueño, fuerza, calma: la pantalla «Hoy» elige la más precisa según cómo te sientes
+paywall_free_extra	También gratis: el registro diario con una práctica sugerida y todas las respiraciones.

@@ -79,6 +79,7 @@ fun PracticeScreen(
     premium: Boolean = false,
     onPaywall: () -> Unit = {},
     onPrograms: () -> Unit = onSets,
+    onBreath: () -> Unit = {},
 ) {
     val today = UserRepository.today()
     val stats = remember(state) { ProgressStats.of(state, today) }
@@ -96,12 +97,14 @@ fun PracticeScreen(
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         Text(stringResource(R.string.today), color = MudryaColors.TextMuted, fontSize = 14.sp)
+        CheckInCard(state, users, premium, onStart, onBreath, onPaywall)
         val program = ru.mudrya.yoga.catalog.ProgramCatalog.program(state.programId)
         if (program != null) {
             ProgramCard(program, state, users, today, stats.currentStreak, onStart, onPrograms)
         } else {
             TodayCard(state, today, onStart, onTest, onSets)
         }
+        ru.mudrya.yoga.ui.breath.BreathCardContent(onBreath)
         PinnedSets(state, users, premium, onStart, onPaywall)
         FavoriteSets(state, users, premium, onStart)
         ForYouSets(state, users, premium, onStart)

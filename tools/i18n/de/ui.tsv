@@ -549,3 +549,64 @@ program_days	%1$d Tage
 program_stop	Programm beenden
 program_path8	8-Wochen-Weg „Sonne und Mond“
 program_path8_hint	Für Erfahrene: lange Übungen „Sonne“ und „Mond“ im Wechsel, mit einem Test alle zwei Wochen.
+settings_model	Realistisches Modell
+settings_model_hint	Eine Frau im eng anliegenden Anzug zeigt die Haltungen mit denselben weichen Übergängen. Aus – die Holzpuppe mit orangen rechten und blauen linken Gliedern.
+checkin_title	Wie geht es Ihnen heute?
+checkin_energy	Energie
+energy_low	Wenig
+energy_mid	Normal
+energy_high	Voller Energie
+checkin_mood	Stimmung
+mood_calm	Ruhig
+mood_tense	Angespannt
+checkin_zone	Verspannt
+zone_none	Nirgends
+zone_neck	Nacken und Schultern
+zone_back	Rücken
+zone_hips	Hüften
+zone_knees	Knie
+checkin_time	Zeit
+checkin_minutes	%1$d Min.
+checkin_pick	Übung finden
+checkin_for_you	Heute für Sie
+checkin_start	Übung starten
+checkin_change	Antworten ändern
+checkin_breath_first	Zuerst zwei Minuten atmen
+checkin_premium_better	„%1$s“ passt noch besser – in Premium
+checkin_history	Wie Sie sich fühlten
+reason_neck	Sie haben Verspannung in Nacken und Schultern angegeben – wir öffnen sanft die Schultern und entlasten den Nacken, ohne Umkehrhaltungen.
+reason_back	Ihr Rücken braucht Pflege – wir entlasten den unteren Rücken mit sanften Haltungen im Liegen und im Vierfüßlerstand, ohne tiefe Rückbeugen.
+reason_hips	Verspannte Hüften – wir öffnen die Hüftgelenke Schritt für Schritt, mit Pausen zwischen den Haltungen.
+reason_knees	Ihre Knie sind heute empfindlich – Haltungen ohne Kniebelastung und ohne tiefe Hocke.
+reason_low	Wenig Energie – ein sanftes Set ohne Kraftbalancen: den Kreislauf anregen, ohne sich zu verausgaben.
+reason_tense	Anspannung löst sich am besten über das Ausatmen – ruhiges Tempo, Fokus auf dem Ausatmen.
+reason_evening	Abend – keine anregenden Abfolgen: sanfte Haltungen für einen leichteren Schlaf.
+reason_morning	Morgen – ohne ruckartige Bewegungen wach werden: Gelenke, Dehnung, lebhaftes, aber sanftes Tempo.
+reason_high	Viel Energie – ein guter Tag für eine Kraftübung.
+reason_steady	Ein gewöhnlicher Tag – der klassische Sonnengruß hält Form und Rhythmus.
+breath_title	Atmung
+breath_card_hint	Zwei Minuten zum Beruhigen, 4-7-8, Box-Atmung, Ujjayi und Atmung vor dem Schlafen.
+breath_intro	Setzen oder legen Sie sich bequem hin und folgen Sie dem Kreis: Er wächst beim Einatmen und schrumpft beim Ausatmen. Bei Schwindel aufhören und normal atmen.
+breath_no_holds	Ohne Atempausen
+breath_no_holds_hint	Bei Schwangerschaft, Bluthochdruck oder Schwindel: Atempausen entfallen, der Rhythmus bleibt.
+breath_duration	%1$d Min.
+breath_sos	In 2 Minuten zur Ruhe
+breath_sos_hint	Doppeltes Einatmen durch die Nase und langes Ausatmen – der schnellste Weg, akuten Stress zu lösen.
+breath_478	4-7-8
+breath_478_hint	4 ein, 7 halten, 8 aus. Verlangsamt den Puls und beruhigt den Geist.
+breath_box	Box-Atmung
+breath_box_hint	Vier gleiche Seiten: ein, halten, aus, halten – je 4. Sammelt die Aufmerksamkeit vor der Arbeit oder einem schwierigen Gespräch.
+breath_ujjayi	Ujjayi
+breath_ujjayi_hint	Gleichmäßiges Atmen mit leicht verengter Kehle, ein sanftes Meeresrauschen. Der Atem der Yogapraxis.
+breath_sleep	Vor dem Schlafen
+breath_sleep_hint	Doppelt so lange aus- wie einatmen. Im Bett liegend, bei ausgeschaltetem Licht.
+breath_in	Einatmen
+breath_top_up	Noch etwas
+breath_hold	Halten
+breath_out	Ausatmen
+breath_cycle	Runde %1$d von %2$d
+breath_done	Geschafft
+breath_finish	Fertig
+breath_stop	Stopp
+paywall_benefit_today	Alle Themen-Sets – Nacken, Hüften, Knie, Schlaf, Kraft, Ruhe: der Bildschirm „Heute“ wählt das passendste für Ihr Befinden
+paywall_free_extra	Ebenfalls kostenlos: das tägliche Befinden mit Übungsvorschlag und alle Atemübungen.

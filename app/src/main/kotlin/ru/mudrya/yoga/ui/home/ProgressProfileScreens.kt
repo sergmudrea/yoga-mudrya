@@ -87,6 +87,7 @@ fun ProgressScreen(state: UserState, users: UserRepository, onTest: () -> Unit) 
         }
 
         CalendarCard(state, today)
+        CheckInHistory(state)
         ChallengeCard(state, users, today)
 
         Card {

@@ -80,6 +80,9 @@ fun SettingsScreen(
                 }
             }
             Toggle(stringResource(R.string.settings_figure3d), stringResource(R.string.settings_figure3d_hint), s.figure3d) { v -> set { it.copy(figure3d = v) } }
+            if (s.figure3d) {
+                Toggle(stringResource(R.string.settings_model), stringResource(R.string.settings_model_hint), s.realisticModel) { v -> set { it.copy(realisticModel = v) } }
+            }
             Toggle(stringResource(R.string.settings_vibration), stringResource(R.string.settings_vibration_hint), s.vibration) { v -> set { it.copy(vibration = v) } }
         }
 

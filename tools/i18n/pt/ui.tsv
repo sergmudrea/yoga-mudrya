@@ -549,3 +549,64 @@ program_days	%1$d dias
 program_stop	Parar o programa
 program_path8	Caminho de 8 semanas “Sol e Lua”
 program_path8_hint	Para praticantes experientes: práticas longas “Sol” e “Lua” alternadas, com um teste a cada duas semanas.
+settings_model	Modelo realista
+settings_model_hint	Uma mulher com roupa justa faz as posturas com as mesmas transições suaves. Desligado — a marionete de madeira, membros direitos laranja e esquerdos azuis.
+checkin_title	Como você está hoje?
+checkin_energy	Energia
+energy_low	Pouca
+energy_mid	Normal
+energy_high	Cheia de energia
+checkin_mood	Mente
+mood_calm	Calma
+mood_tense	Tensa
+checkin_zone	Onde está tenso
+zone_none	Nenhum lugar
+zone_neck	Pescoço e ombros
+zone_back	Costas
+zone_hips	Quadris
+zone_knees	Joelhos
+checkin_time	Tempo
+checkin_minutes	%1$d min
+checkin_pick	Encontrar minha prática
+checkin_for_you	Hoje para você
+checkin_start	Começar
+checkin_change	Mudar respostas
+checkin_breath_first	Primeiro dois minutos de respiração
+checkin_premium_better	“%1$s” combina ainda mais — no Premium
+checkin_history	Como você se sentiu
+reason_neck	Você marcou tensão no pescoço e ombros — vamos abrir os ombros com suavidade e aliviar o pescoço, sem inversões.
+reason_back	Suas costas pedem cuidado — vamos aliviar a lombar com posturas suaves deitada e de quatro, sem extensões profundas.
+reason_hips	Quadris tensos — vamos abrir as articulações do quadril aos poucos, com descanso entre as posturas.
+reason_knees	Seus joelhos estão sensíveis hoje — posturas sem carga nos joelhos e sem agachamentos profundos.
+reason_low	Pouca energia — uma sequência suave sem equilíbrios de força: ativar a circulação sem se esgotar.
+reason_tense	A tensão se solta melhor pela expiração — ritmo calmo, foco em expirar.
+reason_evening	Noite — sem sequências estimulantes: posturas suaves para dormir melhor.
+reason_morning	Manhã — acordar sem movimentos bruscos: articulações, alongamento, ritmo animado mas suave.
+reason_high	Muita energia — um bom dia para uma prática de força.
+reason_steady	Um dia comum — a saudação ao sol clássica mantém a forma e o ritmo.
+breath_title	Respiração
+breath_card_hint	Dois minutos para acalmar, 4-7-8, respiração quadrada, ujjayi e respiração antes de dormir.
+breath_intro	Sente-se ou deite-se confortavelmente e siga o círculo: ele cresce ao inspirar e diminui ao expirar. Se sentir tontura, pare e respire normalmente.
+breath_no_holds	Sem retenções
+breath_no_holds_hint	Na gravidez, com pressão alta ou tontura: as retenções são retiradas, o ritmo continua.
+breath_duration	%1$d min
+breath_sos	Acalmar em 2 minutos
+breath_sos_hint	Inspiração dupla pelo nariz e expiração longa — o jeito mais rápido de aliviar o estresse agudo.
+breath_478	4-7-8
+breath_478_hint	Inspire em 4, segure por 7, expire em 8. Desacelera o coração e acalma a mente.
+breath_box	Respiração quadrada
+breath_box_hint	Quatro lados iguais: inspirar, segurar, expirar, segurar em 4. Concentra antes do trabalho ou de uma conversa difícil.
+breath_ujjayi	Ujjayi
+breath_ujjayi_hint	Respiração uniforme com a garganta levemente fechada, um som suave de mar. A respiração da prática de yoga.
+breath_sleep	Antes de dormir
+breath_sleep_hint	Expire pelo dobro do tempo da inspiração. Deitada na cama, com a luz apagada.
+breath_in	Inspire
+breath_top_up	Mais um pouco
+breath_hold	Segure
+breath_out	Expire
+breath_cycle	Ciclo %1$d de %2$d
+breath_done	Pronto
+breath_finish	Concluir
+breath_stop	Parar
+paywall_benefit_today	Todas as sequências temáticas — pescoço, quadris, joelhos, sono, força, calma: a tela “Hoje” escolhe a mais precisa para como você se sente
+paywall_free_extra	Também grátis: o check-in diário com uma prática sugerida e todas as respirações.

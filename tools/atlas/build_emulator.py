@@ -188,6 +188,20 @@ boot += r"""
 boot();
 """
 
+# ---- реалистичная модель (tools/atlas/skin.mjs) поверх решателя: кожа повторяет повороты сегментов ----
+head = sub(head, "import {OrbitControls} from 'three/addons/controls/OrbitControls.js';",
+           "import {OrbitControls} from 'three/addons/controls/OrbitControls.js';\nimport {createSkin} from './skin.mjs';")
+head = sub(head, "  let J=null, root=V3(), lastTW=null;", "  let J=null, root=V3(), lastTW=null, skin=null;")
+head = sub(head, "    return mins;}\n  function regionMins()", "    if(apply&&skin)skin.update(TW,j,shape);\n    return mins;}\n  function regionMins()")
+head = sub(head, "floorM.color.set(pal.floor);matM.map=stripeTex(pal);", "if(skin)skin.setTheme(t);floorM.color.set(pal.floor);matM.map=stripeTex(pal);")
+head = sub(head, "  return {scene,setTheme,", """  /* реалистичная модель поверх марионетки: решатель тот же, рисуется кожа */
+  async function loadSkin(url){skin=await createSkin(T,scene,{REST,DIM,url});skin.setTheme(theme||'light');doll.visible=!skin.active;if(J)layout(lastTW,J,true);return skin;}
+  function setFigure(kind){if(!skin)return;skin.active=kind!=='doll';doll.visible=!skin.active;if(J)layout(lastTW,J,true);}
+  return {scene,setTheme,loadSkin,setFigure,""")
+boot = sub(boot, "  if(window.AndroidBridge)AndroidBridge.onReady();\n}",
+           "  try{await fig.loadSkin('model.glb');}catch(e){console.warn('model unavailable, keeping the doll',e);}\n  view.render();window.Mudrya.loaded=true;\n  if(window.AndroidBridge)AndroidBridge.onReady();\n}")
+boot = sub(boot, "    has(id){return !!(P[id]||(window.JP&&JP[id]));}", "    has(id){return !!(P[id]||(window.JP&&JP[id]));},\n    setFigure(k){fig.setFigure(k);view.render();}")
+
 esbuild = sys.argv[3] if len(sys.argv) > 3 else 'esbuild'
 html = """<!doctype html><html><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">

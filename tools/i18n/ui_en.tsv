@@ -549,3 +549,64 @@ program_days	%1$d days
 program_stop	Stop the program
 program_path8	8-week path “Sun and Moon”
 program_path8_hint	For experienced practitioners: long “Sun” and “Moon” practices in turn, with a test every two weeks.
+settings_model	Realistic model
+settings_model_hint	A woman in a fitted suit moves through the poses with the same smooth transitions. Off — the wooden marionette with orange right and blue left limbs.
+checkin_title	How are you today?
+checkin_energy	Energy
+energy_low	Low
+energy_mid	Normal
+energy_high	Full of energy
+checkin_mood	Mind
+mood_calm	Calm
+mood_tense	Tense
+checkin_zone	Tight spot
+zone_none	Nowhere
+zone_neck	Neck and shoulders
+zone_back	Back
+zone_hips	Hips
+zone_knees	Knees
+checkin_time	Time
+checkin_minutes	%1$d min
+checkin_pick	Find my practice
+checkin_for_you	Today for you
+checkin_start	Start practice
+checkin_change	Change my answers
+checkin_breath_first	Two minutes of breathing first
+checkin_premium_better	“%1$s” fits even better — in Premium
+checkin_history	How you felt
+reason_neck	You marked tension in the neck and shoulders — we'll gently open the shoulders and unload the neck, no inversions.
+reason_back	Your back needs care — we'll unload the lower back with gentle lying and all-fours poses, no deep backbends.
+reason_hips	Tightness in the hips — we'll open the hip joints step by step, with rest between poses.
+reason_knees	Your knees are sensitive today — poses without load on the knees and without deep squats.
+reason_low	Low on energy — a gentle set without strength balances: get the blood moving without draining yourself.
+reason_tense	Tension is best released through the exhale — a calm pace with the focus on breathing out.
+reason_evening	Evening — no energising flows: soft poses to help you fall asleep.
+reason_morning	Morning — wake up without sudden moves: joints, stretching, a lively but soft pace.
+reason_high	Plenty of energy — a good day for a strength practice.
+reason_steady	An ordinary day — the classic sun salutation keeps your shape and rhythm.
+breath_title	Breathing
+breath_card_hint	Two minutes to calm down, 4-7-8, box breathing, ujjayi and breathing before sleep.
+breath_intro	Sit or lie comfortably and follow the circle: it grows as you breathe in and shrinks as you breathe out. If you feel dizzy, stop and breathe normally.
+breath_no_holds	No breath holds
+breath_no_holds_hint	For pregnancy, high blood pressure or dizziness: holds are removed, the rhythm stays.
+breath_duration	%1$d min
+breath_sos	Calm down in 2 minutes
+breath_sos_hint	A double inhale through the nose and a long exhale — the quickest way to ease acute stress.
+breath_478	4-7-8
+breath_478_hint	Inhale for 4, hold for 7, exhale for 8. Slows the heart rate and settles the mind.
+breath_box	Box breathing
+breath_box_hint	Four equal sides: inhale, hold, exhale, hold for 4 each. Brings focus before work or a hard conversation.
+breath_ujjayi	Ujjayi
+breath_ujjayi_hint	Even breathing with a slightly narrowed throat, a soft ocean sound. The breath of yoga practice.
+breath_sleep	Before sleep
+breath_sleep_hint	Exhale twice as long as you inhale. Lying in bed, with the lights off.
+breath_in	Inhale
+breath_top_up	A little more
+breath_hold	Hold
+breath_out	Exhale
+breath_cycle	Cycle %1$d of %2$d
+breath_done	Well done
+breath_finish	Finish
+breath_stop	Stop
+paywall_benefit_today	Every themed set — neck, hips, knees, sleep, strength, calm: the “Today” screen picks the most precise one for how you feel
+paywall_free_extra	Also free: the daily check-in with a practice suggestion and all breathing practices.

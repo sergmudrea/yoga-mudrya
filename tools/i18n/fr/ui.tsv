@@ -549,3 +549,64 @@ program_days	%1$d jours
 program_stop	Arrêter le programme
 program_path8	Parcours de 8 semaines « Soleil et Lune »
 program_path8_hint	Pour pratiquants expérimentés : longues pratiques « Soleil » et « Lune » en alternance, avec un test toutes les deux semaines.
+settings_model	Modèle réaliste
+settings_model_hint	Une femme en tenue ajustée enchaîne les postures avec les mêmes transitions fluides. Désactivé — la marionnette en bois, membres droits orange et gauches bleus.
+checkin_title	Comment allez-vous aujourd'hui ?
+checkin_energy	Énergie
+energy_low	Faible
+energy_mid	Normale
+energy_high	Plein d'énergie
+checkin_mood	Esprit
+mood_calm	Calme
+mood_tense	Tendue
+checkin_zone	Zone tendue
+zone_none	Nulle part
+zone_neck	Nuque et épaules
+zone_back	Dos
+zone_hips	Hanches
+zone_knees	Genoux
+checkin_time	Temps
+checkin_minutes	%1$d min
+checkin_pick	Trouver ma pratique
+checkin_for_you	Aujourd'hui pour vous
+checkin_start	Commencer
+checkin_change	Modifier mes réponses
+checkin_breath_first	D'abord deux minutes de respiration
+checkin_premium_better	« %1$s » convient encore mieux — en Premium
+checkin_history	Votre ressenti
+reason_neck	Vous avez signalé des tensions dans la nuque et les épaules — nous ouvrons doucement les épaules et soulageons la nuque, sans inversions.
+reason_back	Votre dos a besoin d'attention — nous soulageons le bas du dos avec des postures douces allongées et à quatre pattes, sans flexions arrière profondes.
+reason_hips	Hanches tendues — nous ouvrons les articulations des hanches progressivement, avec du repos entre les postures.
+reason_knees	Vos genoux sont sensibles aujourd'hui — des postures sans charge sur les genoux ni squats profonds.
+reason_low	Peu d'énergie — une séance douce sans équilibres de force : relancer la circulation sans vous épuiser.
+reason_tense	La tension se relâche mieux par l'expiration — rythme calme, attention sur l'expiration.
+reason_evening	Soir — pas d'enchaînements tonifiants : des postures douces pour mieux vous endormir.
+reason_morning	Matin — se réveiller sans mouvements brusques : articulations, étirements, rythme vif mais doux.
+reason_high	Beaucoup d'énergie — une bonne journée pour une pratique de renforcement.
+reason_steady	Une journée ordinaire — la salutation au soleil classique entretient forme et rythme.
+breath_title	Respiration
+breath_card_hint	Deux minutes pour se calmer, 4-7-8, respiration carrée, ujjayi et respiration avant le sommeil.
+breath_intro	Asseyez-vous ou allongez-vous et suivez le cercle : il grandit à l'inspiration et rétrécit à l'expiration. En cas de vertige, arrêtez et respirez normalement.
+breath_no_holds	Sans rétention
+breath_no_holds_hint	En cas de grossesse, d'hypertension ou de vertiges : les rétentions sont supprimées, le rythme reste.
+breath_duration	%1$d min
+breath_sos	Se calmer en 2 minutes
+breath_sos_hint	Double inspiration par le nez et longue expiration — le moyen le plus rapide d'apaiser un stress aigu.
+breath_478	4-7-8
+breath_478_hint	Inspirez sur 4, retenez sur 7, expirez sur 8. Ralentit le cœur et apaise l'esprit.
+breath_box	Respiration carrée
+breath_box_hint	Quatre côtés égaux : inspirer, retenir, expirer, retenir sur 4. Recentre l'attention avant le travail ou une conversation difficile.
+breath_ujjayi	Ujjayi
+breath_ujjayi_hint	Respiration régulière, gorge légèrement resserrée, un doux bruit d'océan. Le souffle de la pratique du yoga.
+breath_sleep	Avant de dormir
+breath_sleep_hint	Expirez deux fois plus longtemps que vous n'inspirez. Allongée au lit, lumière éteinte.
+breath_in	Inspirez
+breath_top_up	Encore un peu
+breath_hold	Retenez
+breath_out	Expirez
+breath_cycle	Cycle %1$d sur %2$d
+breath_done	Bravo
+breath_finish	Terminer
+breath_stop	Arrêter
+paywall_benefit_today	Toutes les séances thématiques — nuque, hanches, genoux, sommeil, force, calme : l'écran « Aujourd'hui » choisit la plus juste selon votre ressenti
+paywall_free_extra	Également gratuit : le point du jour avec une pratique suggérée et toutes les respirations.

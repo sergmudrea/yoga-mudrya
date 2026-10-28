@@ -76,6 +76,8 @@ data class UserState(
     /** Выбранная программа на 14–30 дней и день её старта. */
     val programId: String? = null,
     val programStart: Long? = null,
+    /** Отметки самочувствия на экране «Сегодня». */
+    val checkIns: List<CheckIn> = emptyList(),
 ) {
     val onboarded: Boolean get() = profile != null
 }
@@ -129,6 +131,8 @@ data class AppSettings(
     val tvOutput: Boolean = true,
     /** Объёмная марионетка из атласа вместо плоской схемы. */
     val figure3d: Boolean = true,
+    /** Реалистичная модель (женская фигура в костюме) поверх решателя марионетки; выкл. — деревянная марионетка. */
+    val realisticModel: Boolean = true,
     /** Показ в плеере: подсказки, «далее», санскрит, полоса дыхания, крупный текст, ракурс камеры. */
     val showCues: Boolean = true,
     val showNext: Boolean = true,
@@ -297,6 +301,7 @@ object UserStateCodec {
         line("settings.vibration", s.settings.vibration.toString())
         line("settings.tv", s.settings.tvOutput.toString())
         line("settings.figure3d", s.settings.figure3d.toString())
+        line("settings.model", s.settings.realisticModel.toString())
         line("settings.showCues", s.settings.showCues.toString())
         line("settings.showNext", s.settings.showNext.toString())
         line("settings.showSanskrit", s.settings.showSanskrit.toString())
@@ -337,6 +342,7 @@ object UserStateCodec {
                     .joinToString(";"),
             )
         }
+        s.checkIns.forEach { c -> line("checkin", listOf(c.localDay, c.energy.name, c.mood.name, c.zone.name, c.minutes).joinToString(";")) }
         s.tests.forEach { t ->
             line(
                 "test",
@@ -353,6 +359,7 @@ object UserStateCodec {
         val body = mutableListOf<BodyRecord>()
         val custom = mutableListOf<CustomSet>()
         val health = mutableListOf<HealthRecord>()
+        val checkIns = mutableListOf<CheckIn>()
         text.lineSequence().forEach { raw ->
             val i = raw.indexOf('=')
             if (i <= 0) return@forEach
@@ -364,6 +371,7 @@ object UserStateCodec {
                 "body" -> parseBody(value)?.let(body::add)
                 "custom" -> parseCustom(value)?.let(custom::add)
                 "health" -> parseHealth(value)?.let(health::add)
+                "checkin" -> parseCheckIn(value)?.let(checkIns::add)
                 else -> single[key] = value
             }
         }
@@ -380,6 +388,7 @@ object UserStateCodec {
                 vibration = single["settings.vibration"]?.toBooleanStrictOrNull() ?: false,
                 tvOutput = single["settings.tv"]?.toBooleanStrictOrNull() ?: true,
                 figure3d = single["settings.figure3d"]?.toBooleanStrictOrNull() ?: true,
+                realisticModel = single["settings.model"]?.toBooleanStrictOrNull() ?: true,
                 showCues = single["settings.showCues"]?.toBooleanStrictOrNull() ?: true,
                 showNext = single["settings.showNext"]?.toBooleanStrictOrNull() ?: true,
                 showSanskrit = single["settings.showSanskrit"]?.toBooleanStrictOrNull() ?: true,
@@ -402,6 +411,7 @@ object UserStateCodec {
             promoLifetime = single["promo.lifetime"]?.toBooleanStrictOrNull() ?: false,
             usedCodes = single["promo.used"]?.split(',')?.filter { it.isNotBlank() }.orEmpty(),
             health = health.sortedBy { it.atMs },
+            checkIns = checkIns.sortedBy { it.localDay }.takeLast(DailyCheck.KEEP),
             programId = single["program.id"]?.takeIf { it.isNotBlank() },
             programStart = single["program.start"]?.toLongOrNull(),
             cycle = CycleSettings(
@@ -450,6 +460,18 @@ object UserStateCodec {
             hour = time?.getOrNull(0)?.toIntOrNull()?.coerceIn(0, 23) ?: d.hour,
             minute = time?.getOrNull(1)?.toIntOrNull()?.coerceIn(0, 59) ?: d.minute,
             days = m["reminder.days"]?.split(',')?.mapNotNull { it.trim().toIntOrNull()?.takeIf { x -> x in 1..7 } }?.toSet() ?: d.days,
+        )
+    }
+
+    private fun parseCheckIn(v: String): CheckIn? {
+        val p = v.split(';')
+        if (p.size < 5) return null
+        return CheckIn(
+            localDay = p[0].toLongOrNull() ?: return null,
+            energy = enumOrNull<Energy>(p[1]) ?: return null,
+            mood = enumOrNull<Mood>(p[2]) ?: return null,
+            zone = enumOrNull<TensionZone>(p[3]) ?: return null,
+            minutes = p[4].toIntOrNull()?.coerceIn(5, 90) ?: 20,
         )
     }
 
