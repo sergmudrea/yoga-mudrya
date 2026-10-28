@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ru.mudrya.yoga.R
 import ru.mudrya.yoga.catalog.BookSetsCatalog
+import ru.mudrya.yoga.catalog.ExtraSetsCatalog
 import ru.mudrya.yoga.catalog.ProgramCatalog
 import ru.mudrya.yoga.catalog.ThemeCatalog
 import ru.mudrya.yoga.data.UserRepository
@@ -101,6 +102,8 @@ fun SetLibraryScreen(state: UserState, users: UserRepository, premium: Boolean, 
             }
         }
 
+        ExtraSection(ExtraSetsCatalog.Section.PILATES, ru, state, users, premium, onStart)
+
         Spacer(Modifier.height(4.dp))
         SectionLabel(stringResource(R.string.setlib_training))
         Body(stringResource(R.string.setlib_training_hint))
@@ -109,11 +112,33 @@ fun SetLibraryScreen(state: UserState, users: UserRepository, premium: Boolean, 
             Text(if (ru) b.hintRu else tr(b.hintEn), color = MudryaColors.TextMuted, fontSize = 13.sp, modifier = Modifier.padding(start = 6.dp))
         }
 
+        ExtraSetsCatalog.Section.entries.filter { it != ExtraSetsCatalog.Section.PILATES }.forEach { section ->
+            ExtraSection(section, ru, state, users, premium, onStart)
+        }
+
         Spacer(Modifier.height(4.dp))
         SectionLabel(stringResource(R.string.setlib_book))
         Body(stringResource(R.string.setlib_book_hint))
         BOOK_EXTRAS.forEach { ThemeRow(it, state, users, premium, onStart) }
         Spacer(Modifier.height(8.dp))
+    }
+}
+
+/** Раздел дополнительных сетов (классика из книг, мягкая йога 50+, суставы, йога характера, пилатес-йога). */
+@Composable
+private fun ExtraSection(
+    section: ExtraSetsCatalog.Section,
+    ru: Boolean,
+    state: UserState,
+    users: UserRepository,
+    premium: Boolean,
+    onStart: (String) -> Unit,
+) {
+    Spacer(Modifier.height(4.dp))
+    SectionLabel(if (ru) section.titleRu else tr(section.titleEn))
+    ExtraSetsCatalog.sets.filter { it.section == section }.forEach { x ->
+        ThemeRow(x.id, state, users, premium, onStart)
+        Text(if (ru) x.hintRu else tr(x.hintEn), color = MudryaColors.TextMuted, fontSize = 13.sp, modifier = Modifier.padding(start = 6.dp))
     }
 }
 

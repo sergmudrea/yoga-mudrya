@@ -209,4 +209,23 @@ class SuryaCatalogTest {
         // интегральный сет — самый длинный
         assertEquals("bk_in", BookSetsCatalog.sets.maxBy { catalog.block(it.id).steps.size }.id)
     }
+
+    @Test
+    fun `extra sets and pilates yoga use known poses and build for every injury`() {
+        assertTrue(ExtraSetsCatalog.sets.size >= 30)
+        assertEquals(ExtraSetsCatalog.sets.size, ExtraSetsCatalog.sets.map { it.id }.toSet().size)
+        assertTrue(ExtraSetsCatalog.sets.count { it.section == ExtraSetsCatalog.Section.PILATES } >= 6)
+        ExtraSetsCatalog.sequences.forEach { seq ->
+            catalog.block(seq.items.single().blockId).steps.forEach { assertTrue(it.asanaId in catalog.asanas, "${seq.id}: ${it.asanaId}") }
+        }
+        assertEquals(emptyList(), CatalogValidator.validate(catalog, ExtraSetsCatalog.sequences))
+        Injury.entries.forEach { inj ->
+            ExtraSetsCatalog.sequences.forEach { seq ->
+                val s = SessionBuilder(catalog).build(BuildRequest(seq, 1, Support.PALMS, constraints = Constraints(injuries = setOf(inj))))
+                assertTrue(s.steps.isNotEmpty(), "${seq.id} / $inj")
+            }
+        }
+        // пилатес-основа: сразу после дыхания — сотня
+        assertEquals("lb_B1054", catalog.block("pl_base").steps[1].asanaId)
+    }
 }

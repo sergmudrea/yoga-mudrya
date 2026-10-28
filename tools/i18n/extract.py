@@ -44,6 +44,11 @@ libnames = {m[0]: m[1] for m in re.findall(r'a\("(lb_B\d+)", "[^"]*", ' + S, l)}
 add('poses', [libnames[i] for i in sorted(used_lb, key=lambda s: int(s[4:]))])
 # 3. подсказки шагов
 add('cues', [m[3] for m in steps])
+# 3а. дополнительные сеты и пилатес-йога (ExtraSetsCatalog): разделы, названия, описания, шаги
+ex = rd('ExtraSetsCatalog.kt')
+add('extra', [m[1] for m in re.findall(r'\n        [A-Z]+\(' + S + ', ' + S + r'\),', ex)])
+add('extra', [x for m in re.findall(r'ExtraSet\("\w+", Section\.\w+, ' + S + ', ' + S + ', ' + S + ', ' + S, ex) for x in (m[1], m[3])])
+add('extra', [m[1] for m in re.findall(r's\("[^"]+", \w+, \d+, ' + S + ', ' + S + r'\)', ex)])
 # 4. описания поз атласа
 add('desc', re.findall(r'descriptionEn = ' + S + r',\n', a))
 # 5. разделы библиотеки и 6. названия поз библиотеки

@@ -14,6 +14,7 @@ import ru.mudrya.yoga.model.Support
  * - кольца книги Сидерского — «Солнечное кольцо» (77 позиций) и «Лунное кольцо» (99) по разделам книги,
  *   старт-сет, стержневой сет, стоп-сет, дополнительные элементы, классические Сурья и Чандра Намаскар;
  * - шесть сетов «Сетового тренинга» (Ясочка, Сидорцов, Зенченко);
+ * - дополнительные сеты второй подборки книг и раздел «Пилатес-йога» (ExtraSetsCatalog);
  * - библиотека 2100 асан Д. Лакерды по главам и разделам книги.
  * Позы, дыхание, подсказки и описания — из атласа, переводы — в генераторе (tools/atlas).
  */
@@ -25,7 +26,7 @@ object SuryaCatalog {
     val coreSequences: List<SequenceDef> = AtlasCatalog.sequences
 
     /** Все сеты: сначала Сидерский, потом разделы библиотеки. */
-    val sequences: List<SequenceDef> by lazy { coreSequences + ThemeCatalog.sequences + BookSetsCatalog.sequences + LibraryCatalog.sequences }
+    val sequences: List<SequenceDef> by lazy { coreSequences + ThemeCatalog.sequences + BookSetsCatalog.sequences + ExtraSetsCatalog.sequences + LibraryCatalog.sequences }
 
     private val byId: Map<String, SequenceDef> by lazy { sequences.associateBy { it.id } }
 
@@ -34,7 +35,7 @@ object SuryaCatalog {
     /** Каталог с нагрузками, заменами и графом переходов. */
     val catalog: Catalog by lazy {
         val base = AtlasCatalog.asanas + LibraryCatalog.asanas
-        val all = base + ThemeCatalog.mirroredLibraryAsanas(LibraryCatalog.asanas.associateBy { it.id }, BookSetsCatalog.mirroredLibraryIds)
+        val all = base + ThemeCatalog.mirroredLibraryAsanas(LibraryCatalog.asanas.associateBy { it.id }, BookSetsCatalog.mirroredLibraryIds + ExtraSetsCatalog.mirroredLibraryIds)
         // Нагрузка считается по геометрии позы; поверх — ручная выверка по биомеханике.
         val computedProfiles = all.associate { it.id to LoadAnalyzer.analyze(it.pose) }
         val profiles = computedProfiles.mapValues { (id, p) ->
@@ -52,7 +53,7 @@ object SuryaCatalog {
         }
         val subs = Substitutions.build(loaded, profiles)
         val finalAsanas = loaded.map { a -> subs[a.id]?.let { a.copy(alternatives = it) } ?: a }
-        val blockMap = (AtlasCatalog.blocks + ThemeCatalog.blocks + BookSetsCatalog.blocks + LibraryCatalog.blocks).associateBy { it.id }
+        val blockMap = (AtlasCatalog.blocks + ThemeCatalog.blocks + BookSetsCatalog.blocks + ExtraSetsCatalog.blocks + LibraryCatalog.blocks).associateBy { it.id }
         Catalog(
             asanas = finalAsanas.associateBy { it.id },
             blocks = blockMap,

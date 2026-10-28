@@ -71,6 +71,25 @@ for i, (slot, c) in enumerate(slot_count.most_common(), 1):
                   'mirror': os.path.exists(os.path.join(ROOT, f'app/src/main/assets/thumbs/{slot}_m.webp'))})
 json.dump(shoot, open(os.path.join(out, 'shoot.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
 
+# Четвёртая очередь: позы новых сетов (классика из книг, 50+, суставы, йога характера, пилатес-йога),
+# которых нет в основном списке. Основной список не трогаем, чтобы не сбить уже сделанные отметки.
+extra = read('ExtraSetsCatalog.kt')
+ex_count, ex_title, ex_sets = Counter(), {}, {}
+for m in re.finditer(r'private fun steps_(\w+)\(\): List<Step> = listOf\((.*?)\n    \)', extra, re.S):
+    w = 3 if m.group(1) in ('pl_base', 'ex_cyp', 'ex_ybreak') else 1
+    for a, t in re.findall(r's\("([^"]+)", \w+, \d+, "([^"]*)"', m.group(2)):
+        slot = a[:-2] if a.endswith('_m') else a
+        if slot in slot_count:
+            continue
+        ex_count[slot] += w
+        ex_title.setdefault(slot, re.sub(r' — (правая|левая) сторона$', '', t))
+        ex_sets.setdefault(slot, set()).add(m.group(1))
+shoot_extra = []
+for i, (slot, c) in enumerate(ex_count.most_common(), len(shoot) + 1):
+    ru, en = names.get(slot, (slot, slot))
+    shoot_extra.append({'n': i, 'slot': slot, 'ru': ru, 'en': en, 'step': ex_title[slot], 'weight': c, 'sets': sorted(ex_sets[slot])})
+json.dump(shoot_extra, open(os.path.join(out, 'shoot_extra.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
+
 def spoken(s):
     s = re.sub(r'\([^)]*\)', '', s)
     s = re.sub(r'[«»"“”]', '', s)
@@ -81,4 +100,4 @@ phrases = list(OrderedDict.fromkeys(words + [spoken(t) for t, _ in titles.most_c
 with open(os.path.join(out, 'voice_ru.tsv'), 'w', encoding='utf-8') as f:
     for i, p in enumerate(phrases, 1):
         f.write(f'{i:03d}.ogg\t{p}\n')
-print(len(shoot), 'poses,', len(phrases), 'phrases')
+print(len(shoot), 'poses,', len(shoot_extra), 'extra poses,', len(phrases), 'phrases')
