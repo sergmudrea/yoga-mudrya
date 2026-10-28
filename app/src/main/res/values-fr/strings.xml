@@ -406,7 +406,7 @@
     <string name="paywall_benefit_bundle">Vos séances du créateur — lancements illimités</string>
     <string name="paywall_benefit_short">Des sections entières de la bibliothèque de postures en pratique</string>
     <string name="paywall_benefit_future">Nouvelles séances et programmes dès leur sortie</string>
-    <string name="paywall_free_core">Gratuit pour toujours : les pratiques « Soleil » et « Lune », la Surya Namaskar classique, la séance du matin et « Dos sans douleur », la bibliothèque de postures et le créateur (5 lancements de vos séances), le test de mobilité et le bilan de santé, les progrès, les rappels, la diffusion sur TV.</string>
+    <string name="paywall_free_core">Gratuit pour toujours : la Surya Namaskar et la Chandra Namaskar classiques, l’échauffement assis, la séance du matin et « Dos sans douleur », la bibliothèque de postures et le créateur (5 lancements de vos séances), le test de mobilité et le bilan de santé, les progrès, les rappels, la diffusion sur TV.</string>
     <string name="paywall_loading">Chargement des offres…</string>
     <string name="paywall_unavailable">Les offres n’ont pas pu être chargées. Le paiement fonctionne si l’application est installée depuis %1$s et que vous êtes en ligne.</string>
     <string name="paywall_trial_terms">%1$d jours gratuits. Premier prélèvement le %2$s, %3$s. Vous recevrez un rappel 2 jours avant.</string>

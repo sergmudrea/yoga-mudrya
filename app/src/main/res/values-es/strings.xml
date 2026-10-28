@@ -406,7 +406,7 @@
     <string name="paywall_benefit_bundle">Tus series del creador: usos ilimitados</string>
     <string name="paywall_benefit_short">Secciones enteras de la biblioteca de posturas como prácticas</string>
     <string name="paywall_benefit_future">Nuevas series y programas a medida que salgan</string>
-    <string name="paywall_free_core">Gratis para siempre: las prácticas «Sol» y «Luna», Surya Namaskar clásico, la serie de la mañana y «Espalda sin dolor», la biblioteca de posturas y el creador (5 usos de tus series), la prueba de movilidad y el chequeo de salud, progreso, recordatorios y transmisión a la TV.</string>
+    <string name="paywall_free_core">Gratis para siempre: Surya Namaskar y Chandra Namaskar clásicos, el calentamiento sentado, la serie de la mañana y «Espalda sin dolor», la biblioteca de posturas y el creador (5 usos de tus series), la prueba de movilidad y el chequeo de salud, progreso, recordatorios y transmisión a la TV.</string>
     <string name="paywall_loading">Cargando planes…</string>
     <string name="paywall_unavailable">No se cargaron los planes. El pago funciona si la app está instalada desde %1$s y tienes conexión.</string>
     <string name="paywall_trial_terms">%1$d días gratis. Primer cobro el %2$s, %3$s. Recibirás un aviso 2 días antes.</string>

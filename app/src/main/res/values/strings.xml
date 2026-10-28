@@ -406,7 +406,7 @@
     <string name="paywall_benefit_bundle">Your own sets from the builder — unlimited runs</string>
     <string name="paywall_benefit_short">Whole sections of the pose library as practices</string>
     <string name="paywall_benefit_future">New sets and programs as they come out</string>
-    <string name="paywall_free_core">Free forever: the “Sun” and “Moon” practices, classic Surya Namaskar, the morning set and “Back without pain”, the pose library and the builder (5 runs of your own sets), the mobility test and health check, progress, reminders, TV casting.</string>
+    <string name="paywall_free_core">Free forever: classic Surya Namaskar and Chandra Namaskar, the seated warm-up, the morning set and “Back without pain”, the pose library and the builder (5 runs of your own sets), the mobility test and health check, progress, reminders, TV casting.</string>
     <string name="paywall_loading">Loading plans…</string>
     <string name="paywall_unavailable">Plans did not load. Payment works when the app is installed from %1$s and you are online.</string>
     <string name="paywall_trial_terms">%1$d days free. First charge on %2$s, %3$s. You will get a reminder 2 days before.</string>

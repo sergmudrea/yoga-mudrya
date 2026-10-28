@@ -107,7 +107,7 @@ fun PracticeScreen(
         if (program != null) {
             ProgramCard(program, state, users, today, stats.currentStreak, onStart, onPrograms)
         } else {
-            TodayCard(state, today, onStart, onTest, onSets)
+            TodayCard(state, today, premium, onStart, onTest, onSets)
         }
         ru.mudrya.yoga.ui.breath.BreathCardContent(onBreath)
         ru.mudrya.yoga.ui.breath.MeditationCardContent(onMeditation)
@@ -153,7 +153,7 @@ fun PracticeScreen(
 
 /** Карточка «Сегодня» по «Пути 8 недель». */
 @Composable
-private fun TodayCard(state: UserState, today: Long, onStart: (String) -> Unit, onTest: () -> Unit, onSets: () -> Unit) {
+private fun TodayCard(state: UserState, today: Long, premium: Boolean, onStart: (String) -> Unit, onTest: () -> Unit, onSets: () -> Unit) {
     val start = state.planStartDay ?: today
     val day = Path8.today(start, today)
     val done = Path8.done(state, today, day.kind)
@@ -169,7 +169,7 @@ private fun TodayCard(state: UserState, today: Long, onStart: (String) -> Unit, 
         Text(stringResource(R.string.path_week, day.week, day.index % 7 + 1), color = sub, fontSize = 13.sp, fontWeight = FontWeight.Bold)
         when (day.kind) {
             DayKind.SURYA, DayKind.CHANDRA -> {
-                val id = if (day.kind == DayKind.SURYA) "surya" else "chandra"
+                val id = ru.mudrya.yoga.store.PremiumPolicy.pathSet(if (day.kind == DayKind.SURYA) "surya" else "chandra", premium)
                 val constraints = state.constraints(today)
                 val minutes = remember(params, constraints, id, state.settings.lengthMin) { estimateMinutes(id, params, constraints, state.settings.lengthMin) }
                 Text(sequenceName(id), color = fg, fontSize = 26.sp, fontWeight = FontWeight.Bold)

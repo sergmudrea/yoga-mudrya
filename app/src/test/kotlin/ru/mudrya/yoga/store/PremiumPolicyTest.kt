@@ -9,9 +9,16 @@ import kotlin.test.assertTrue
 class PremiumPolicyTest {
 
     @Test
-    fun `rings and classic surya are free, other sets need premium`() {
-        assertFalse(PremiumPolicy.isLocked("surya", premium = false))
-        assertFalse(PremiumPolicy.isLocked("chandra", premium = false))
+    fun `classic surya and chandra namaskar are free, book rings and other sets need premium`() {
+        assertTrue(PremiumPolicy.isLocked("surya", premium = false))
+        assertTrue(PremiumPolicy.isLocked("chandra", premium = false))
+        assertTrue(PremiumPolicy.isLocked("bk_mk", premium = false))
+        assertTrue(PremiumPolicy.isLocked("ex_cyp", premium = false))
+        assertFalse(PremiumPolicy.isLocked("at_cn", premium = false))
+        assertFalse(PremiumPolicy.isLocked("wu_seated", premium = false))
+        assertEquals("at_sn", PremiumPolicy.pathSet("surya", premium = false))
+        assertEquals("at_cn", PremiumPolicy.pathSet("chandra", premium = false))
+        assertEquals("chandra", PremiumPolicy.pathSet("chandra", premium = true))
         assertFalse(PremiumPolicy.isLocked("my_abc", premium = false))
         assertTrue(PremiumPolicy.isLocked("lib0", premium = false))
         assertFalse(PremiumPolicy.isLocked("at_sn", premium = false))

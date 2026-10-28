@@ -38,7 +38,7 @@ Practise your way
 • Works offline. Reminders. Progress backup to a file.
 
 Honest subscription
-Free forever: the daily check-in with a suggested practice, all breathing practices, classic Surya Namaskar, the Sun and Moon practices, energising morning and Back without pain, the asana library and builder (5 runs of your own sets), the movement test, progress, reminders, TV output.
+Free forever: the daily check-in with a suggested practice, all breathing practices, classic Surya Namaskar and Chandra Namaskar, the seated warm-up, energising morning and Back without pain, the asana library and builder (5 runs of your own sets), the movement test, progress, reminders, TV output.
 Premium — monthly, yearly or lifetime: every themed set and program, the full Sun and Moon practices, unlimited own sets, playing library sections. 7-day trial, a reminder 2 days before the first charge, cancel with one tap in your profile. No sales pop-ups during practice.
 
 Not a medical service. If you have pain, injuries, heart disease or are pregnant, consult your doctor.
