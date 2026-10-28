@@ -26,7 +26,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import ru.mudrya.yoga.ui.theme.MudryaColors
 
-/** Маленькие картинки поз (кадры марионетки атласа) из ассетов thumbs/<id асаны>.webp. */
+/** Маленькие картинки поз (кадры 3D-модели) из ассетов thumbs/<id асаны>.webp. */
 private object Thumbs {
     private val cache = LruCache<String, Bitmap>(220)
 
