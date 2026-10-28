@@ -69,6 +69,17 @@ def main():
             for f, v in fields.items():
                 text[l].setdefault(key, {})[f] = v
 
+    # Первые 38 карточек проверены раньше: их поля works/watch/easier/avoid сохраняются как были,
+    # из книг к ним добавляются только steps и tip. Заменять поле можно лишь там, где старый текст
+    # оказался неверным, — такие поля перечислены в OVERRIDE с причиной.
+    OVERRIDE = {}
+    for key, (aids, fields) in base.CARDS.items():
+        for fi, f in enumerate(base.F):
+            if f in OVERRIDE.get(key, ()):
+                continue
+            for li, l in enumerate(base.LANGS):
+                text[l][key][f] = fields[fi][li]
+
     errs = []
     for key, en in text['en'].items():
         for l in LANGS[1:]:
