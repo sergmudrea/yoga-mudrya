@@ -232,13 +232,17 @@ export async function createSkin(T, scene, {REST, DIM, url = 'model.glb'}) {
       for (const m of marks) { const gap = palmM.distanceTo(m[1]) - m[2]; if (gap < .07 && (!best || gap < best.gap)) best = {m, gap}; }
       const off = palmOff(side);
       let palmT = wp(B[side + 'Hand']).add(off);
+      /* касание включается плавно (по расстоянию), чтобы в переходах кисть не «прилипала» рывком */
+      const sm = x => { x = Math.max(0, Math.min(1, x)); return x * x * (3 - 2 * x); };
       if (best) {
         const [name, pm, , modelPt, capName] = best.m;
         const lm = modelPt(), dir = palmM.clone().sub(pm).normalize();
-        palmT = lm.addScaledVector(dir, (radius[capName] || .06) + .022);
-        audit.contact[s] = name;
-      } else if (palmM.y < .05) {
-        palmT.y = .03; audit.contact[s] = 'floor';
+        const w = sm(1 - (best.gap - .03) / .04);
+        palmT.lerp(lm.addScaledVector(dir, (radius[capName] || .06) + .022), w);
+        if (w > .5) audit.contact[s] = name;
+      } else if (palmM.y < .12) {
+        const w = sm(1 - (palmM.y - .05) / .07);
+        palmT.y += (.03 - palmT.y) * w; if (w > .5) audit.contact[s] = 'floor';
       }
       /* forearm, elbow and palm outside the body (own arm and, for clasped hands, the other arm skipped) */
       const skip = new RegExp('(uarm|farm)' + s + '|(uarm|farm)' + o);
