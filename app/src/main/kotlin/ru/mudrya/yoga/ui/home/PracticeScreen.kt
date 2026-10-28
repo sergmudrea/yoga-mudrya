@@ -80,6 +80,7 @@ fun PracticeScreen(
     onPaywall: () -> Unit = {},
     onPrograms: () -> Unit = onSets,
     onBreath: () -> Unit = {},
+    onMeditation: () -> Unit = {},
 ) {
     val today = UserRepository.today()
     val stats = remember(state) { ProgressStats.of(state, today) }
@@ -105,6 +106,7 @@ fun PracticeScreen(
             TodayCard(state, today, onStart, onTest, onSets)
         }
         ru.mudrya.yoga.ui.breath.BreathCardContent(onBreath)
+        ru.mudrya.yoga.ui.breath.MeditationCardContent(onMeditation)
         PinnedSets(state, users, premium, onStart, onPaywall)
         FavoriteSets(state, users, premium, onStart)
         ForYouSets(state, users, premium, onStart)

@@ -21,6 +21,7 @@ object ExtraSetsCatalog {
         JOINTS("Суставная гимнастика", "Joint mobility"),
         CHARACTER("Йога характера", "Yoga of character"),
         PILATES("Пилатес-йога", "Pilates yoga"),
+        HEALTH("Йога для самочувствия", "Yoga for wellbeing"),
     }
 
     data class ExtraSet(val id: String, val section: Section, val nameRu: String, val nameEn: String, val hintRu: String, val hintEn: String)
@@ -56,6 +57,14 @@ object ExtraSetsCatalog {
         ExtraSet("pl_glutes", Section.PILATES, "Ягодицы и бёдра", "Glutes and hips", "Мост по позвонку, махи лёжа на боку, «ракушка», планки с подъёмом ноги.", "Pelvic curl, side-lying kicks, clam, plank leg pulls."),
         ExtraSet("pl_stand", Section.PILATES, "Пилатес стоя", "Standing Pilates", "Без коврика: скругления, руки балерины, наклоны, работа стоп, самолёт.", "No mat needed: roll downs, ballerina arms, side bends, footwork, aeroplane."),
         ExtraSet("pl_flow", Section.PILATES, "Пилатес-йога флоу", "Pilates-yoga flow", "Йога и пилатес в одном потоке: планки, собака, лебедь, тизер, сотня, мост.", "Yoga and Pilates in one flow: planks, dog, swan, teaser, hundred, bridge."),
+        ExtraSet("hl_stress", Section.HEALTH, "Снять стресс", "Ease stress", "Стоячие позы, наклоны с опущенной головой, ноги вверх и долгая шавасана. Около 45 минут.", "Standing poses, forward bends with the head down, legs up and a long savasana. About 45 minutes."),
+        ExtraSet("hl_sleep", Section.HEALTH, "Крепкий сон: вечерняя", "Deep sleep: evening", "Тихие наклоны и позы лёжа за час до сна. Без прогибов и бодрящих связок.", "Quiet forward bends and lying poses an hour before bed. No backbends, nothing energising."),
+        ExtraSet("hl_head", Section.HEALTH, "Голова без напряжения", "A head free of tension", "При головной боли от усталости и стресса: наклоны, где голова опирается, и расслабление лица. Сильная, внезапная или необычная боль — к врачу.", "For headaches from tiredness and stress: forward bends with the head supported and a relaxed face. Severe, sudden or unusual pain — see a doctor."),
+        ExtraSet("hl_legs", Section.HEALTH, "Лёгкие ноги", "Light legs", "После дня на ногах: герой, широкий угол, нога вверх и долгая поза «ноги вверх».", "After a day on your feet: hero, wide angle, leg up and a long legs-up pose."),
+        ExtraSet("hl_neck", Section.HEALTH, "Шея и плечи: стоячая серия", "Neck and shoulders: standing series", "Боковые позы и скрутки, где голова поворачивается последней. Без стоек на голове и плечах.", "Side poses and twists where the head turns last. No headstands or shoulderstands."),
+        ExtraSet("hl_joints", Section.HEALTH, "Суставы без нагрузки", "Joints without strain", "Мягкая стоячая серия: суставы двигаются, но не перегружаются. Опоры — ладонь на голень, подушка под ягодицы.", "A gentle standing series: joints move without overload. Support — hand on the shin, a cushion under the buttocks."),
+        ExtraSet("hl_cycle", Section.HEALTH, "Мягкие дни цикла", "Gentle days of the cycle", "Позы лёжа и сидя с опорами, без перевёрнутых поз и прогибов.", "Supported lying and seated poses, no inversions or backbends."),
+        ExtraSet("hl_breath", Section.HEALTH, "Свободное дыхание", "Breathe freely", "Раскрыть грудь и рёбра, закончить спокойным дыханием уджайи лёжа.", "Open the chest and ribs, finish with calm ujjayi breathing lying down."),
     )
 
     private val IN = Breath.INHALE
@@ -778,6 +787,139 @@ object ExtraSetsCatalog {
         s("at_shava", EX, 10, "Расслабление", "Relaxation"),
     )
 
+    private fun steps_hl_stress(): List<Step> = listOf(
+        s("at_tad", EX, 5, "Поза горы: стопы вместе, макушка тянется вверх", "Mountain pose: feet together, crown reaching up"),
+        s("lb_B5", IN, 3, "Руки вверх: вытянуть бока", "Arms up: lengthen the sides"),
+        s("lb_B308", EX, 3, "Треугольник — правая сторона", "Triangle pose — right side"),
+        s("lb_B308_m", EX, 3, "Треугольник — левая сторона", "Triangle pose — left side"),
+        s("lb_B316", EX, 3, "Боковой угол — правая сторона", "Extended side angle — right side"),
+        s("lb_B316_m", EX, 3, "Боковой угол — левая сторона", "Extended side angle — left side"),
+        s("lb_B132", EX, 3, "Полумесяц: можно у стены — правая сторона", "Half moon: by a wall if needed — right side"),
+        s("lb_B132_m", EX, 3, "Полумесяц: можно у стены — левая сторона", "Half moon: by a wall if needed — left side"),
+        s("at_padah", EX, 5, "Наклон стоя: голова свободно вниз", "Standing forward bend: let the head hang"),
+        s("at_prasarita", EX, 5, "Широкий наклон: макушка к полу", "Wide-leg forward bend: crown towards the floor"),
+        s("at_edog", EX, 5, "Собака мордой вниз", "Downward-facing dog"),
+        s("lb_B775", EX, 3, "Посох: сидя, ноги вперёд, спина прямая", "Staff pose: seated, legs forward, back straight"),
+        s("at_vira", EX, 5, "Поза героя: сидя между стоп или на пятках", "Hero pose: sit between the feet or on the heels"),
+        s("lb_B720", EX, 5, "Бабочка: стопы вместе, колени вниз", "Bound angle: soles together, knees drop"),
+        s("lb_B1005", EX, 3, "Лёгкая лодка: колени согнуты", "Easy boat: knees bent"),
+        s("lb_B765", EX, 5, "Широкий угол сидя", "Seated wide angle"),
+        s("at_pasch", EX, 10, "Наклон к ногам сидя", "Seated forward bend"),
+        s("lb_B1068", EX, 10, "Поза ребёнка: лоб на полу", "Child’s pose: forehead on the floor"),
+        s("lb_B853", EX, 3, "Голова к колену — правая сторона", "Head to knee — right side"),
+        s("lb_B853_m", EX, 3, "Голова к колену — левая сторона", "Head to knee — left side"),
+        s("lb_B887", EX, 3, "Скрутка Бхарадваджи — правая сторона", "Bharadvaja twist — right side"),
+        s("lb_B887_m", EX, 3, "Скрутка Бхарадваджи — левая сторона", "Bharadvaja twist — left side"),
+        s("lb_B709", EX, 3, "Скрутка Маричи сидя — правая сторона", "Marichi seated twist — right side"),
+        s("lb_B709_m", EX, 3, "Скрутка Маричи сидя — левая сторона", "Marichi seated twist — left side"),
+        s("lb_B1703", EX, 5, "Мост", "Bridge pose"),
+        s("at_legs90", EX, 10, "Ноги вверх: можно у стены", "Legs up: against a wall if you like"),
+        s("lb_B1819", EX, 3, "Лёжа: нога вверх, ремень за стопу — правая сторона", "Lying: leg up, a strap around the foot — right side"),
+        s("lb_B1819_m", EX, 3, "Лёжа: нога вверх, ремень за стопу — левая сторона", "Lying: leg up, a strap around the foot — left side"),
+        s("lb_B1761", EX, 10, "Лёжа, стопы вместе, колени в стороны", "Lying, soles together, knees apart"),
+        s("at_shava", EX, 20, "Шавасана: длинный спокойный выдох", "Savasana: long quiet exhale"),
+    )
+
+    private fun steps_hl_sleep(): List<Step> = listOf(
+        s("at_padah", EX, 5, "Наклон стоя: голова свободно вниз", "Standing forward bend: let the head hang"),
+        s("at_prasarita", EX, 5, "Широкий наклон: макушка к полу", "Wide-leg forward bend: crown towards the floor"),
+        s("at_edog", EX, 5, "Собака мордой вниз: мягко, колени можно согнуть", "Downward dog: soft, knees may bend"),
+        s("lb_B1068", EX, 10, "Поза ребёнка: лоб на полу", "Child’s pose: forehead on the floor"),
+        s("lb_B853", EX, 3, "Голова к колену — правая сторона", "Head to knee — right side"),
+        s("lb_B853_m", EX, 3, "Голова к колену — левая сторона", "Head to knee — left side"),
+        s("at_pasch", EX, 10, "Наклон к ногам сидя: лоб можно на подушку", "Seated forward bend: forehead on a cushion if needed"),
+        s("lb_B1761", EX, 10, "Лёжа, стопы вместе, колени в стороны", "Lying, soles together, knees apart"),
+        s("at_legs90", EX, 10, "Ноги вверх: можно у стены", "Legs up: against a wall if you like"),
+        s("at_shava", EX, 20, "Шавасана: выдох длиннее вдоха", "Savasana: exhale longer than inhale"),
+    )
+
+    private fun steps_hl_head(): List<Step> = listOf(
+        s("lb_B1068", EX, 10, "Поза ребёнка: лоб на полу или на кулаках", "Child’s pose: forehead on the floor or on your fists"),
+        s("lb_B853", EX, 3, "Голова к колену: лоб опирается — правая сторона", "Head to knee: rest the forehead — right side"),
+        s("lb_B853_m", EX, 3, "Голова к колену: лоб опирается — левая сторона", "Head to knee: rest the forehead — left side"),
+        s("at_pasch", EX, 10, "Наклон к ногам сидя: голова опирается", "Seated forward bend: head supported"),
+        s("at_prasarita", EX, 5, "Широкий наклон: макушка к полу", "Wide-leg forward bend: crown towards the floor"),
+        s("at_edog", EX, 5, "Собака мордой вниз: шея расслаблена", "Downward dog: neck relaxed"),
+        s("at_padah", EX, 5, "Наклон стоя: держаться за локти", "Standing forward bend: hold the elbows"),
+        s("lb_B1761", EX, 10, "Лёжа, стопы вместе, колени в стороны", "Lying, soles together, knees apart"),
+        s("at_shava", EX, 20, "Шавасана: расслабить лоб, глаза, челюсть", "Savasana: soften the forehead, eyes and jaw"),
+    )
+
+    private fun steps_hl_legs(): List<Step> = listOf(
+        s("at_vira", EX, 5, "Поза героя: икры отведены руками", "Hero pose: move the calves aside with your hands"),
+        s("lb_B765", EX, 5, "Широкий угол сидя", "Seated wide angle"),
+        s("lb_B720", EX, 5, "Бабочка", "Bound angle"),
+        s("lb_B853", EX, 3, "Голова к колену — правая сторона", "Head to knee — right side"),
+        s("lb_B853_m", EX, 3, "Голова к колену — левая сторона", "Head to knee — left side"),
+        s("lb_B1819", EX, 3, "Лёжа: нога вверх, ремень за стопу — правая сторона", "Lying: leg up, a strap around the foot — right side"),
+        s("lb_B1819_m", EX, 3, "Лёжа: нога вверх, ремень за стопу — левая сторона", "Lying: leg up, a strap around the foot — left side"),
+        s("at_legs90", EX, 20, "Ноги вверх: можно у стены", "Legs up: against a wall if you like"),
+        s("at_padah", EX, 5, "Наклон стоя", "Standing forward bend"),
+        s("at_prasarita", EX, 5, "Широкий наклон", "Wide-leg forward bend"),
+        s("at_shava", EX, 10, "Шавасана", "Savasana"),
+    )
+
+    private fun steps_hl_neck(): List<Step> = listOf(
+        s("at_tad", EX, 5, "Поза горы: плечи вниз, шея длинная", "Mountain pose: shoulders down, long neck"),
+        s("lb_B943", EX, 3, "Коровья морда: руки за спиной — правая сторона", "Cow face: arms behind the back — right side"),
+        s("lb_B943_m", EX, 3, "Коровья морда: руки за спиной — левая сторона", "Cow face: arms behind the back — left side"),
+        s("lb_B316", EX, 3, "Боковой угол: взгляд вперёд, не вверх — правая сторона", "Extended side angle: look forward, not up — right side"),
+        s("lb_B316_m", EX, 3, "Боковой угол: взгляд вперёд, не вверх — левая сторона", "Extended side angle: look forward, not up — left side"),
+        s("lb_B132", EX, 3, "Полумесяц у стены — правая сторона", "Half moon by a wall — right side"),
+        s("lb_B132_m", EX, 3, "Полумесяц у стены — левая сторона", "Half moon by a wall — left side"),
+        s("lb_B887", EX, 3, "Скрутка Бхарадваджи: голова поворачивается последней — правая сторона", "Bharadvaja twist: the head turns last — right side"),
+        s("lb_B887_m", EX, 3, "Скрутка Бхарадваджи: голова поворачивается последней — левая сторона", "Bharadvaja twist: the head turns last — left side"),
+        s("lb_B709", EX, 3, "Скрутка Маричи сидя — правая сторона", "Marichi seated twist — right side"),
+        s("lb_B709_m", EX, 3, "Скрутка Маричи сидя — левая сторона", "Marichi seated twist — left side"),
+        s("at_pasch", EX, 5, "Наклон к ногам сидя: шея свободна", "Seated forward bend: neck free"),
+        s("lb_B1761", EX, 10, "Лёжа, стопы вместе, колени в стороны", "Lying, soles together, knees apart"),
+        s("at_shava", EX, 10, "Шавасана: затылок длинный", "Savasana: long back of the neck"),
+    )
+
+    private fun steps_hl_joints(): List<Step> = listOf(
+        s("at_tad", EX, 5, "Поза горы: вес поровну на стопы", "Mountain pose: weight evenly on both feet"),
+        s("lb_B5", IN, 3, "Руки вверх", "Arms up"),
+        s("lb_B308", EX, 3, "Треугольник: можно ладонь на голень — правая сторона", "Triangle: hand on the shin is fine — right side"),
+        s("lb_B308_m", EX, 3, "Треугольник: можно ладонь на голень — левая сторона", "Triangle: hand on the shin is fine — left side"),
+        s("lb_B316", EX, 3, "Боковой угол: предплечье на бедро — правая сторона", "Side angle: forearm on the thigh — right side"),
+        s("lb_B316_m", EX, 3, "Боковой угол: предплечье на бедро — левая сторона", "Side angle: forearm on the thigh — left side"),
+        s("lb_B132", EX, 3, "Полумесяц у стены — правая сторона", "Half moon by a wall — right side"),
+        s("lb_B132_m", EX, 3, "Полумесяц у стены — левая сторона", "Half moon by a wall — left side"),
+        s("lb_B943", EX, 3, "Коровья морда: руки — правая сторона", "Cow face: arms — right side"),
+        s("lb_B943_m", EX, 3, "Коровья морда: руки — левая сторона", "Cow face: arms — left side"),
+        s("lb_B853", EX, 3, "Голова к колену — правая сторона", "Head to knee — right side"),
+        s("lb_B853_m", EX, 3, "Голова к колену — левая сторона", "Head to knee — left side"),
+        s("at_vira", EX, 5, "Поза героя: под ягодицы подушку", "Hero pose: a cushion under the buttocks"),
+        s("at_shava", EX, 10, "Шавасана", "Savasana"),
+    )
+
+    private fun steps_hl_cycle(): List<Step> = listOf(
+        s("lb_B1761", EX, 20, "Лёжа, стопы вместе, колени в стороны: под колени подушки", "Lying, soles together, knees apart: cushions under the knees"),
+        s("lb_B720", EX, 5, "Бабочка: спина прямая", "Bound angle: back straight"),
+        s("lb_B765", EX, 5, "Широкий угол сидя", "Seated wide angle"),
+        s("lb_B853", EX, 3, "Голова к колену: лоб на подушку — правая сторона", "Head to knee: forehead on a cushion — right side"),
+        s("lb_B853_m", EX, 3, "Голова к колену: лоб на подушку — левая сторона", "Head to knee: forehead on a cushion — left side"),
+        s("at_pasch", EX, 10, "Наклон к ногам сидя: голова опирается", "Seated forward bend: head supported"),
+        s("lb_B1068", EX, 10, "Поза ребёнка: колени широко", "Child’s pose: knees wide"),
+        s("at_vira", EX, 5, "Поза героя", "Hero pose"),
+        s("at_shava", EX, 20, "Шавасана: под колени валик", "Savasana: a roll under the knees"),
+    )
+
+    private fun steps_hl_breath(): List<Step> = listOf(
+        s("at_tad", EX, 5, "Поза горы: рёбра раскрываются на вдохе", "Mountain pose: ribs open as you inhale"),
+        s("lb_B5", IN, 3, "Руки вверх: вдох в боковые рёбра", "Arms up: breathe into the side ribs"),
+        s("lb_B316", EX, 3, "Боковой угол: грудь развёрнута — правая сторона", "Side angle: chest turned open — right side"),
+        s("lb_B316_m", EX, 3, "Боковой угол: грудь развёрнута — левая сторона", "Side angle: chest turned open — left side"),
+        s("lb_B132", EX, 3, "Полумесяц у стены — правая сторона", "Half moon by a wall — right side"),
+        s("lb_B132_m", EX, 3, "Полумесяц у стены — левая сторона", "Half moon by a wall — left side"),
+        s("at_padah", EX, 5, "Наклон стоя", "Standing forward bend"),
+        s("at_prasarita", EX, 5, "Широкий наклон", "Wide-leg forward bend"),
+        s("at_edog", EX, 5, "Собака мордой вниз", "Downward-facing dog"),
+        s("lb_B1703", EX, 5, "Мост: грудь раскрыта", "Bridge: chest open"),
+        s("lb_B1761", EX, 10, "Лёжа, стопы вместе, колени в стороны: под спину валик", "Lying, soles together, knees apart: a roll under the back"),
+        s("at_shava", EX, 20, "Шавасана: уджайи — ровный вдох и долгий выдох", "Savasana: ujjayi — even inhale, long exhale"),
+    )
+
     val blocks: List<Block> by lazy {
         listOf(
             Block("ex_cyp", steps_ex_cyp(), titleRu = "Общий протокол йоги", titleEn = "Common Yoga Protocol"),
@@ -810,6 +952,14 @@ object ExtraSetsCatalog {
             Block("pl_glutes", steps_pl_glutes(), titleRu = "Ягодицы и бёдра", titleEn = "Glutes and hips"),
             Block("pl_stand", steps_pl_stand(), titleRu = "Пилатес стоя", titleEn = "Standing Pilates"),
             Block("pl_flow", steps_pl_flow(), titleRu = "Пилатес-йога флоу", titleEn = "Pilates-yoga flow"),
+            Block("hl_stress", steps_hl_stress(), titleRu = "Снять стресс", titleEn = "Ease stress"),
+            Block("hl_sleep", steps_hl_sleep(), titleRu = "Крепкий сон: вечерняя", titleEn = "Deep sleep: evening"),
+            Block("hl_head", steps_hl_head(), titleRu = "Голова без напряжения", titleEn = "A head free of tension"),
+            Block("hl_legs", steps_hl_legs(), titleRu = "Лёгкие ноги", titleEn = "Light legs"),
+            Block("hl_neck", steps_hl_neck(), titleRu = "Шея и плечи: стоячая серия", titleEn = "Neck and shoulders: standing series"),
+            Block("hl_joints", steps_hl_joints(), titleRu = "Суставы без нагрузки", titleEn = "Joints without strain"),
+            Block("hl_cycle", steps_hl_cycle(), titleRu = "Мягкие дни цикла", titleEn = "Gentle days of the cycle"),
+            Block("hl_breath", steps_hl_breath(), titleRu = "Свободное дыхание", titleEn = "Breathe freely"),
         )
     }
 
@@ -822,6 +972,7 @@ object ExtraSetsCatalog {
         "lb_B1134_m",
         "lb_B1178_m",
         "lb_B131_m",
+        "lb_B132_m",
         "lb_B133_m",
         "lb_B1499_m",
         "lb_B1679_m",
@@ -831,6 +982,7 @@ object ExtraSetsCatalog {
         "lb_B1813_m",
         "lb_B1817_m",
         "lb_B1818_m",
+        "lb_B1819_m",
         "lb_B1828_m",
         "lb_B214_m",
         "lb_B308_m",
@@ -842,6 +994,7 @@ object ExtraSetsCatalog {
         "lb_B604_m",
         "lb_B700_m",
         "lb_B703_m",
+        "lb_B709_m",
         "lb_B774_m",
         "lb_B784_m",
         "lb_B788_m",

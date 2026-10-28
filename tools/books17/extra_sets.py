@@ -520,6 +520,113 @@ PL_FLOW = seq(
     S('at_shava', 'Расслабление', 'Relaxation', 'L'),
 )
 
+
+# ============================================================ ЙОГА ДЛЯ САМОЧУВСТВИЯ
+# По мотивам последовательностей Б. К. С. Айенгара («Yoga: The Path to Holistic Health», DK, 2014):
+# глава «Йога при стрессе» и раздел «Йога при недомоганиях». В книге позы с опорами (стул, болстер, стена);
+# здесь — их варианты без опор, перевёрнутые позы заменены на «ноги вверх». Это поддержка самочувствия, не лечение.
+HL_STRESS = seq(
+    S('at_tad', 'Поза горы: стопы вместе, макушка тянется вверх', 'Mountain pose: feet together, crown reaching up', 'R'),
+    S('lb_B5', 'Руки вверх: вытянуть бока', 'Arms up: lengthen the sides', 'I'),
+    both('lb_B308', 'Треугольник', 'Triangle pose'),
+    both('lb_B316', 'Боковой угол', 'Extended side angle'),
+    both('lb_B132', 'Полумесяц: можно у стены', 'Half moon: by a wall if needed'),
+    S('at_padah', 'Наклон стоя: голова свободно вниз', 'Standing forward bend: let the head hang', 'R'),
+    S('at_prasarita', 'Широкий наклон: макушка к полу', 'Wide-leg forward bend: crown towards the floor', 'R'),
+    S('at_edog', 'Собака мордой вниз', 'Downward-facing dog', 'R'),
+    S('lb_B775', 'Посох: сидя, ноги вперёд, спина прямая', 'Staff pose: seated, legs forward, back straight', 'E'),
+    S('at_vira', 'Поза героя: сидя между стоп или на пятках', 'Hero pose: sit between the feet or on the heels', 'R'),
+    S('lb_B720', 'Бабочка: стопы вместе, колени вниз', 'Bound angle: soles together, knees drop', 'R'),
+    S('lb_B1005', 'Лёгкая лодка: колени согнуты', 'Easy boat: knees bent', 'E'),
+    S('lb_B765', 'Широкий угол сидя', 'Seated wide angle', 'R'),
+    S('at_pasch', 'Наклон к ногам сидя', 'Seated forward bend', 'L'),
+    S('lb_B1068', 'Поза ребёнка: лоб на полу', 'Child’s pose: forehead on the floor', 'L'),
+    both('lb_B853', 'Голова к колену', 'Head to knee'),
+    both('lb_B887', 'Скрутка Бхарадваджи', 'Bharadvaja twist'),
+    both('lb_B709', 'Скрутка Маричи сидя', 'Marichi seated twist'),
+    S('lb_B1703', 'Мост', 'Bridge pose', 'R'),
+    S('at_legs90', 'Ноги вверх: можно у стены', 'Legs up: against a wall if you like', 'L'),
+    both('lb_B1819', 'Лёжа: нога вверх, ремень за стопу', 'Lying: leg up, a strap around the foot'),
+    S('lb_B1761', 'Лёжа, стопы вместе, колени в стороны', 'Lying, soles together, knees apart', 'L'),
+    S('at_shava', 'Шавасана: длинный спокойный выдох', 'Savasana: long quiet exhale', 'X'),
+)
+HL_SLEEP = seq(
+    S('at_padah', 'Наклон стоя: голова свободно вниз', 'Standing forward bend: let the head hang', 'R'),
+    S('at_prasarita', 'Широкий наклон: макушка к полу', 'Wide-leg forward bend: crown towards the floor', 'R'),
+    S('at_edog', 'Собака мордой вниз: мягко, колени можно согнуть', 'Downward dog: soft, knees may bend', 'R'),
+    S('lb_B1068', 'Поза ребёнка: лоб на полу', 'Child’s pose: forehead on the floor', 'L'),
+    both('lb_B853', 'Голова к колену', 'Head to knee'),
+    S('at_pasch', 'Наклон к ногам сидя: лоб можно на подушку', 'Seated forward bend: forehead on a cushion if needed', 'L'),
+    S('lb_B1761', 'Лёжа, стопы вместе, колени в стороны', 'Lying, soles together, knees apart', 'L'),
+    S('at_legs90', 'Ноги вверх: можно у стены', 'Legs up: against a wall if you like', 'L'),
+    S('at_shava', 'Шавасана: выдох длиннее вдоха', 'Savasana: exhale longer than inhale', 'X'),
+)
+HL_HEAD = seq(
+    S('lb_B1068', 'Поза ребёнка: лоб на полу или на кулаках', 'Child’s pose: forehead on the floor or on your fists', 'L'),
+    both('lb_B853', 'Голова к колену: лоб опирается', 'Head to knee: rest the forehead'),
+    S('at_pasch', 'Наклон к ногам сидя: голова опирается', 'Seated forward bend: head supported', 'L'),
+    S('at_prasarita', 'Широкий наклон: макушка к полу', 'Wide-leg forward bend: crown towards the floor', 'R'),
+    S('at_edog', 'Собака мордой вниз: шея расслаблена', 'Downward dog: neck relaxed', 'R'),
+    S('at_padah', 'Наклон стоя: держаться за локти', 'Standing forward bend: hold the elbows', 'R'),
+    S('lb_B1761', 'Лёжа, стопы вместе, колени в стороны', 'Lying, soles together, knees apart', 'L'),
+    S('at_shava', 'Шавасана: расслабить лоб, глаза, челюсть', 'Savasana: soften the forehead, eyes and jaw', 'X'),
+)
+HL_LEGS = seq(
+    S('at_vira', 'Поза героя: икры отведены руками', 'Hero pose: move the calves aside with your hands', 'R'),
+    S('lb_B765', 'Широкий угол сидя', 'Seated wide angle', 'R'),
+    S('lb_B720', 'Бабочка', 'Bound angle', 'R'),
+    both('lb_B853', 'Голова к колену', 'Head to knee'),
+    both('lb_B1819', 'Лёжа: нога вверх, ремень за стопу', 'Lying: leg up, a strap around the foot'),
+    S('at_legs90', 'Ноги вверх: можно у стены', 'Legs up: against a wall if you like', 'X'),
+    S('at_padah', 'Наклон стоя', 'Standing forward bend', 'R'),
+    S('at_prasarita', 'Широкий наклон', 'Wide-leg forward bend', 'R'),
+    S('at_shava', 'Шавасана', 'Savasana', 'L'),
+)
+HL_NECK = seq(
+    S('at_tad', 'Поза горы: плечи вниз, шея длинная', 'Mountain pose: shoulders down, long neck', 'R'),
+    both('lb_B943', 'Коровья морда: руки за спиной', 'Cow face: arms behind the back'),
+    both('lb_B316', 'Боковой угол: взгляд вперёд, не вверх', 'Extended side angle: look forward, not up'),
+    both('lb_B132', 'Полумесяц у стены', 'Half moon by a wall'),
+    both('lb_B887', 'Скрутка Бхарадваджи: голова поворачивается последней', 'Bharadvaja twist: the head turns last'),
+    both('lb_B709', 'Скрутка Маричи сидя', 'Marichi seated twist'),
+    S('at_pasch', 'Наклон к ногам сидя: шея свободна', 'Seated forward bend: neck free', 'R'),
+    S('lb_B1761', 'Лёжа, стопы вместе, колени в стороны', 'Lying, soles together, knees apart', 'L'),
+    S('at_shava', 'Шавасана: затылок длинный', 'Savasana: long back of the neck', 'L'),
+)
+HL_JOINTS = seq(
+    S('at_tad', 'Поза горы: вес поровну на стопы', 'Mountain pose: weight evenly on both feet', 'R'),
+    S('lb_B5', 'Руки вверх', 'Arms up', 'I'),
+    both('lb_B308', 'Треугольник: можно ладонь на голень', 'Triangle: hand on the shin is fine'),
+    both('lb_B316', 'Боковой угол: предплечье на бедро', 'Side angle: forearm on the thigh'),
+    both('lb_B132', 'Полумесяц у стены', 'Half moon by a wall'),
+    both('lb_B943', 'Коровья морда: руки', 'Cow face: arms'),
+    both('lb_B853', 'Голова к колену', 'Head to knee'),
+    S('at_vira', 'Поза героя: под ягодицы подушку', 'Hero pose: a cushion under the buttocks', 'R'),
+    S('at_shava', 'Шавасана', 'Savasana', 'L'),
+)
+HL_CYCLE = seq(
+    S('lb_B1761', 'Лёжа, стопы вместе, колени в стороны: под колени подушки', 'Lying, soles together, knees apart: cushions under the knees', 'X'),
+    S('lb_B720', 'Бабочка: спина прямая', 'Bound angle: back straight', 'R'),
+    S('lb_B765', 'Широкий угол сидя', 'Seated wide angle', 'R'),
+    both('lb_B853', 'Голова к колену: лоб на подушку', 'Head to knee: forehead on a cushion'),
+    S('at_pasch', 'Наклон к ногам сидя: голова опирается', 'Seated forward bend: head supported', 'L'),
+    S('lb_B1068', 'Поза ребёнка: колени широко', 'Child’s pose: knees wide', 'L'),
+    S('at_vira', 'Поза героя', 'Hero pose', 'R'),
+    S('at_shava', 'Шавасана: под колени валик', 'Savasana: a roll under the knees', 'X'),
+)
+HL_BREATH = seq(
+    S('at_tad', 'Поза горы: рёбра раскрываются на вдохе', 'Mountain pose: ribs open as you inhale', 'R'),
+    S('lb_B5', 'Руки вверх: вдох в боковые рёбра', 'Arms up: breathe into the side ribs', 'I'),
+    both('lb_B316', 'Боковой угол: грудь развёрнута', 'Side angle: chest turned open'),
+    both('lb_B132', 'Полумесяц у стены', 'Half moon by a wall'),
+    S('at_padah', 'Наклон стоя', 'Standing forward bend', 'R'),
+    S('at_prasarita', 'Широкий наклон', 'Wide-leg forward bend', 'R'),
+    S('at_edog', 'Собака мордой вниз', 'Downward-facing dog', 'R'),
+    S('lb_B1703', 'Мост: грудь раскрыта', 'Bridge: chest open', 'R'),
+    S('lb_B1761', 'Лёжа, стопы вместе, колени в стороны: под спину валик', 'Lying, soles together, knees apart: a roll under the back', 'L'),
+    S('at_shava', 'Шавасана: уджайи — ровный вдох и долгий выдох', 'Savasana: ujjayi — even inhale, long exhale', 'X'),
+)
+
 # ============================================================ СПИСОК
 SECTIONS = [
     ('CLASSIC', 'Классические комплексы', 'Classic sequences'),
@@ -527,6 +634,7 @@ SECTIONS = [
     ('JOINTS', 'Суставная гимнастика', 'Joint mobility'),
     ('CHARACTER', 'Йога характера', 'Yoga of character'),
     ('PILATES', 'Пилатес-йога', 'Pilates yoga'),
+    ('HEALTH', 'Йога для самочувствия', 'Yoga for wellbeing'),
 ]
 
 SETS = [
@@ -620,6 +728,30 @@ SETS = [
     ('pl_flow', 'PILATES', 'Пилатес-йога флоу', 'Pilates-yoga flow',
      'Йога и пилатес в одном потоке: планки, собака, лебедь, тизер, сотня, мост.',
      'Yoga and Pilates in one flow: planks, dog, swan, teaser, hundred, bridge.', PL_FLOW),
+    ('hl_stress', 'HEALTH', 'Снять стресс', 'Ease stress',
+     'Стоячие позы, наклоны с опущенной головой, ноги вверх и долгая шавасана. Около 45 минут.',
+     'Standing poses, forward bends with the head down, legs up and a long savasana. About 45 minutes.', HL_STRESS),
+    ('hl_sleep', 'HEALTH', 'Крепкий сон: вечерняя', 'Deep sleep: evening',
+     'Тихие наклоны и позы лёжа за час до сна. Без прогибов и бодрящих связок.',
+     'Quiet forward bends and lying poses an hour before bed. No backbends, nothing energising.', HL_SLEEP),
+    ('hl_head', 'HEALTH', 'Голова без напряжения', 'A head free of tension',
+     'При головной боли от усталости и стресса: наклоны, где голова опирается, и расслабление лица. Сильная, внезапная или необычная боль — к врачу.',
+     'For headaches from tiredness and stress: forward bends with the head supported and a relaxed face. Severe, sudden or unusual pain — see a doctor.', HL_HEAD),
+    ('hl_legs', 'HEALTH', 'Лёгкие ноги', 'Light legs',
+     'После дня на ногах: герой, широкий угол, нога вверх и долгая поза «ноги вверх».',
+     'After a day on your feet: hero, wide angle, leg up and a long legs-up pose.', HL_LEGS),
+    ('hl_neck', 'HEALTH', 'Шея и плечи: стоячая серия', 'Neck and shoulders: standing series',
+     'Боковые позы и скрутки, где голова поворачивается последней. Без стоек на голове и плечах.',
+     'Side poses and twists where the head turns last. No headstands or shoulderstands.', HL_NECK),
+    ('hl_joints', 'HEALTH', 'Суставы без нагрузки', 'Joints without strain',
+     'Мягкая стоячая серия: суставы двигаются, но не перегружаются. Опоры — ладонь на голень, подушка под ягодицы.',
+     'A gentle standing series: joints move without overload. Support — hand on the shin, a cushion under the buttocks.', HL_JOINTS),
+    ('hl_cycle', 'HEALTH', 'Мягкие дни цикла', 'Gentle days of the cycle',
+     'Позы лёжа и сидя с опорами, без перевёрнутых поз и прогибов.',
+     'Supported lying and seated poses, no inversions or backbends.', HL_CYCLE),
+    ('hl_breath', 'HEALTH', 'Свободное дыхание', 'Breathe freely',
+     'Раскрыть грудь и рёбра, закончить спокойным дыханием уджайи лёжа.',
+     'Open the chest and ribs, finish with calm ujjayi breathing lying down.', HL_BREATH),
 ]
 
 

@@ -615,3 +615,78 @@ player_details	More ▾
 player_details_hide	Hide ▴
 settings_model_female	Female
 settings_model_male	Male
+breath_nadi	Alternate nostril
+breath_nadi_hint	Close the right nostril with the thumb, the left with the ring finger. In through one side, out through the other. Balances and calms.
+breath_full	Full yogic breath
+breath_full_hint	Fill the belly, then the ribs, then the chest; empty in the same order. The base of every pranayama.
+breath_bhramari	Humming bee
+breath_bhramari_hint	Breathe in through the nose; breathe out with a soft “mmm”, lips closed. Calms the mind, good before sleep.
+breath_sitali	Cooling breath
+breath_sitali_hint	Roll the tongue into a tube and breathe in through it; breathe out through the nose. Cools on a hot day. If the tongue doesn't roll, breathe in through the teeth.
+breath_kapala	Skull-shining breath
+breath_kapala_hint	Short sharp exhales from the belly, the inhale happens by itself. 30 exhales, then half a minute of rest, three rounds. Energising — do it in the morning, on an empty stomach.
+breath_active_warning	Not during pregnancy, menstruation, with high blood pressure, hernia, heart disease or after abdominal surgery.
+breath_hum	Exhale: “mmm”
+breath_cool_in	Inhale through the tongue
+breath_pump	Out!
+breath_rest	Rest, breathe freely
+breath_left_nostril	left nostril
+breath_right_nostril	right nostril
+med_title	Meditation
+med_card_hint	Short guided meditations: yoga nidra, candle gazing, So-Ham, the pause between breaths, before sleep.
+med_intro	The voice leads; just follow it. Sit or lie so that nothing hurts. You can stop at any moment.
+med_no_voice	No voice for this language on the phone — read the text on the screen.
+med_nidra	Yoga nidra
+med_nidra_hint	Lying down, attention travels through the body part by part. Deep rest in ten minutes.
+med_trataka	Candle gazing
+med_trataka_hint	A candle at arm's length, at eye level. Look at the flame, then hold its image with the eyes closed.
+med_soham	So-Ham
+med_soham_hint	Silently “So” with the inhale and “Ham” with the exhale. The breath becomes the anchor of attention.
+med_gap	The pause between breaths
+med_gap_hint	One of the oldest techniques: notice the moment where the inhale turns into the exhale.
+med_sleep	Before sleep
+med_sleep_hint	In bed with the lights off: soften the body, slow the breath and let the day go.
+med_minutes	%1$d min
+med_stop	Stop
+med_pause	Pause
+med_resume	Continue
+med_done	Done. Take your time before getting up.
+med_nidra_1	Lie on your back, arms a little away from the body, palms up. Let the eyes close.
+med_nidra_2	Take three slow breaths. With each exhale the body becomes heavier.
+med_nidra_3	Say to yourself a short wish for today, in your own words. Keep it simple.
+med_nidra_4	Bring attention to the right hand: thumb, fingers, palm, wrist. The whole right arm up to the shoulder.
+med_nidra_5	The right side of the body, the right hip, knee, shin, the right foot and toes.
+med_nidra_6	Now the left hand: thumb, fingers, palm, wrist. The whole left arm up to the shoulder.
+med_nidra_7	The left side of the body, the left hip, knee, shin, the left foot and toes.
+med_nidra_8	The back of the body: heels, calves, the back of the thighs, the buttocks, the whole back, the back of the head.
+med_nidra_9	The face: forehead, eyebrows, eyes, cheeks, lips, jaw. Let everything soften.
+med_nidra_10	Feel the whole body at once, lying on the floor, breathing by itself.
+med_nidra_11	Repeat your wish once more.
+med_nidra_12	Move the fingers and toes, stretch, turn onto your side and sit up slowly.
+med_trataka_1	Sit comfortably, the candle at arm's length, the flame at the level of your eyes.
+med_trataka_2	Look at the flame without straining. Blink if you need to. Just watch.
+med_trataka_3	Now close the eyes. The image of the flame stays in front of you. Keep it there gently.
+med_trataka_4	Open the eyes and look at the flame again.
+med_trataka_5	Close the eyes. When the image fades, simply rest in the dark behind the eyelids.
+med_trataka_6	Rub the palms and place them over the eyes. Open the eyes under the palms.
+med_soham_1	Sit with a straight back, hands on the knees. Close the eyes.
+med_soham_2	Let the breath be natural. Just notice the air coming in and going out.
+med_soham_3	With each inhale, silently hear “So”. With each exhale, “Ham”.
+med_soham_4	When thoughts come, don't fight them. Notice, and return to So and Ham.
+med_soham_5	So — in. Ham — out. Nothing else to do.
+med_soham_6	Let the words go and sit in silence for a few breaths.
+med_soham_7	Slowly open the eyes.
+med_gap_1	Sit or lie comfortably and close the eyes.
+med_gap_2	Follow the inhale from the nostrils down into the chest.
+med_gap_3	At the end of the inhale there is a tiny pause before the exhale begins. Notice it.
+med_gap_4	And at the end of the exhale, another pause before the next inhale.
+med_gap_5	Don't make the pauses longer. Only be there when they happen.
+med_gap_6	In that moment there is no effort and no thought. Rest there.
+med_gap_7	Take a deeper breath and open the eyes.
+med_sleep_1	Lie in bed in the position you usually fall asleep in. Lights off.
+med_sleep_2	Breathe in for four, out for six. The exhale is a little longer every time.
+med_sleep_3	Let the weight of the body sink into the mattress: legs, hips, back, shoulders, head.
+med_sleep_4	Recall three good moments of today, however small.
+med_sleep_5	Whatever is unfinished can wait until tomorrow. Let it go with the exhale.
+med_sleep_6	If you like, decide: tonight I will notice my dreams.
+med_sleep_7	Keep breathing slowly. There is nothing else to do now. Good night.

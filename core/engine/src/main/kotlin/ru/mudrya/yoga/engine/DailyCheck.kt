@@ -42,10 +42,10 @@ object DailyCheck {
             c.zone == TensionZone.BACK -> listOf("th_back_relief") to Reason.BACK
             c.zone == TensionZone.HIPS -> listOf("th_hips", "ex_cyp") to Reason.HIPS
             c.zone == TensionZone.KNEES -> listOf("th_knees", "ex_cyp") to Reason.KNEES
-            c.energy == Energy.LOW && evening -> listOf("th_sleep", "chandra") to Reason.EVENING
+            c.energy == Energy.LOW && evening -> listOf("hl_sleep") to Reason.EVENING
             c.energy == Energy.LOW -> listOf("ex_sh_tired", "th_back_relief") to Reason.LOW_ENERGY
-            tense -> listOf("th_calm", "chandra") to Reason.TENSE
-            evening -> listOf("th_sleep", "chandra") to Reason.EVENING
+            tense -> listOf("hl_stress", "th_calm", "chandra") to Reason.TENSE
+            evening -> listOf("hl_sleep") to Reason.EVENING
             c.energy == Energy.HIGH && morning -> listOf("th_morning") to Reason.MORNING
             c.energy == Energy.HIGH -> listOf("th_strength", "surya") to Reason.HIGH_ENERGY
             morning -> listOf("th_morning") to Reason.MORNING

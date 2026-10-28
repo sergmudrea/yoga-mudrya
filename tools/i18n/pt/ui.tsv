@@ -615,3 +615,78 @@ player_details	Mais ▾
 player_details_hide	Ocultar ▴
 settings_model_female	Feminino
 settings_model_male	Masculino
+breath_nadi	Respiração alternada
+breath_nadi_hint	Feche a narina direita com o polegar e a esquerda com o anelar. Inspire por um lado, expire pelo outro. Equilibra e acalma.
+breath_full	Respiração iogue completa
+breath_full_hint	Encha a barriga, depois as costelas, depois o peito; esvazie na mesma ordem. A base de todo pranayama.
+breath_bhramari	Abelha zumbidora
+breath_bhramari_hint	Inspire pelo nariz; expire com um suave “mmm”, lábios fechados. Acalma a mente, bom antes de dormir.
+breath_sitali	Respiração refrescante
+breath_sitali_hint	Enrole a língua como um tubo e inspire por ela; expire pelo nariz. Refresca no calor. Se não conseguir enrolar, inspire entre os dentes.
+breath_kapala	Kapalabhati
+breath_kapala_hint	Expirações curtas e fortes pela barriga, a inspiração vem sozinha. 30 expirações, meio minuto de descanso, três rodadas. Energizante — de manhã, em jejum.
+breath_active_warning	Não durante a gravidez, a menstruação, com pressão alta, hérnia, doença cardíaca ou após cirurgia abdominal.
+breath_hum	Expire: “mmm”
+breath_cool_in	Inspire pela língua
+breath_pump	Fora!
+breath_rest	Descanse, respire livremente
+breath_left_nostril	narina esquerda
+breath_right_nostril	narina direita
+med_title	Meditação
+med_card_hint	Meditações guiadas curtas: yoga nidra, vela, So-Ham, a pausa entre respirações, antes de dormir.
+med_intro	A voz guia — apenas siga. Sente-se ou deite-se de modo que nada incomode. Você pode parar a qualquer momento.
+med_no_voice	Não há voz para este idioma no telefone — leia o texto na tela.
+med_nidra	Yoga nidra
+med_nidra_hint	Deitada, a atenção percorre o corpo parte por parte. Descanso profundo em dez minutos.
+med_trataka	Olhar a vela
+med_trataka_hint	Uma vela à distância de um braço, na altura dos olhos. Olhe a chama e depois guarde a imagem de olhos fechados.
+med_soham	So-Ham
+med_soham_hint	Em silêncio “So” na inspiração e “Ham” na expiração. A respiração vira a âncora da atenção.
+med_gap	A pausa entre respirações
+med_gap_hint	Uma das técnicas mais antigas: perceber o instante em que a inspiração vira expiração.
+med_sleep	Antes de dormir
+med_sleep_hint	Na cama com a luz apagada: soltar o corpo, desacelerar a respiração e deixar o dia ir.
+med_minutes	%1$d min
+med_stop	Parar
+med_pause	Pausa
+med_resume	Continuar
+med_done	Pronto. Não tenha pressa para levantar.
+med_nidra_1	Deite-se de costas, braços um pouco afastados, palmas para cima. Deixe os olhos se fecharem.
+med_nidra_2	Respire devagar três vezes. A cada expiração o corpo fica mais pesado.
+med_nidra_3	Diga a si mesma um desejo curto para hoje, com suas palavras. Simples e breve.
+med_nidra_4	Atenção na mão direita: polegar, dedos, palma, punho. Todo o braço direito até o ombro.
+med_nidra_5	O lado direito do corpo, o quadril direito, joelho, canela, o pé direito e os dedos.
+med_nidra_6	Agora a mão esquerda: polegar, dedos, palma, punho. Todo o braço esquerdo até o ombro.
+med_nidra_7	O lado esquerdo do corpo, o quadril esquerdo, joelho, canela, o pé esquerdo e os dedos.
+med_nidra_8	A parte de trás do corpo: calcanhares, panturrilhas, a parte de trás das coxas, glúteos, toda a costas, a nuca.
+med_nidra_9	O rosto: testa, sobrancelhas, olhos, bochechas, lábios, maxilar. Deixe tudo suavizar.
+med_nidra_10	Sinta o corpo inteiro de uma vez: deitado, respirando sozinho.
+med_nidra_11	Repita seu desejo mais uma vez.
+med_nidra_12	Mexa os dedos das mãos e dos pés, espreguice, vire de lado e sente-se devagar.
+med_trataka_1	Sente-se confortável, a vela à distância de um braço, a chama na altura dos olhos.
+med_trataka_2	Olhe a chama sem esforço. Pisque se precisar. Apenas observe.
+med_trataka_3	Agora feche os olhos. A imagem da chama fica à sua frente. Segure-a com suavidade.
+med_trataka_4	Abra os olhos e olhe a chama de novo.
+med_trataka_5	Feche os olhos. Quando a imagem sumir, descanse no escuro atrás das pálpebras.
+med_trataka_6	Esfregue as palmas e coloque-as sobre os olhos. Abra os olhos sob as palmas.
+med_soham_1	Sente-se com as costas retas, mãos nos joelhos. Feche os olhos.
+med_soham_2	Deixe a respiração natural. Apenas perceba o ar entrando e saindo.
+med_soham_3	A cada inspiração, ouça em silêncio “So”. A cada expiração, “Ham”.
+med_soham_4	Quando os pensamentos vierem, não lute. Perceba e volte ao So e Ham.
+med_soham_5	So — entra. Ham — sai. Mais nada a fazer.
+med_soham_6	Solte as palavras e fique em silêncio por algumas respirações.
+med_soham_7	Abra os olhos devagar.
+med_gap_1	Sente-se ou deite-se confortável e feche os olhos.
+med_gap_2	Acompanhe a inspiração das narinas até o peito.
+med_gap_3	No fim da inspiração há uma pausa mínima antes da expiração. Perceba-a.
+med_gap_4	E no fim da expiração, outra pausa antes da próxima inspiração.
+med_gap_5	Não alongue as pausas. Apenas esteja nelas quando acontecem.
+med_gap_6	Nesse instante não há esforço nem pensamento. Descanse ali.
+med_gap_7	Respire mais fundo e abra os olhos.
+med_sleep_1	Deite-se na cama como costuma adormecer. Luz apagada.
+med_sleep_2	Inspire em quatro, expire em seis. A expiração fica um pouco mais longa a cada vez.
+med_sleep_3	Deixe o peso do corpo afundar no colchão: pernas, quadril, costas, ombros, cabeça.
+med_sleep_4	Lembre três bons momentos de hoje, mesmo os menores.
+med_sleep_5	O que ficou por fazer pode esperar até amanhã. Solte com a expiração.
+med_sleep_6	Se quiser, decida: esta noite vou perceber meus sonhos.
+med_sleep_7	Continue respirando devagar. Não há mais nada a fazer. Boa noite.

@@ -53,6 +53,11 @@ private fun nameOf(id: String) = when (id) {
     "calm478" -> R.string.breath_478
     "box" -> R.string.breath_box
     "ujjayi" -> R.string.breath_ujjayi
+    "nadi" -> R.string.breath_nadi
+    "full" -> R.string.breath_full
+    "bhramari" -> R.string.breath_bhramari
+    "sitali" -> R.string.breath_sitali
+    "kapala" -> R.string.breath_kapala
     else -> R.string.breath_sleep
 }
 
@@ -61,6 +66,11 @@ private fun hintOf(id: String) = when (id) {
     "calm478" -> R.string.breath_478_hint
     "box" -> R.string.breath_box_hint
     "ujjayi" -> R.string.breath_ujjayi_hint
+    "nadi" -> R.string.breath_nadi_hint
+    "full" -> R.string.breath_full_hint
+    "bhramari" -> R.string.breath_bhramari_hint
+    "sitali" -> R.string.breath_sitali_hint
+    "kapala" -> R.string.breath_kapala_hint
     else -> R.string.breath_sleep_hint
 }
 
@@ -69,6 +79,10 @@ private fun phaseLabel(k: Breathwork.Kind) = when (k) {
     Breathwork.Kind.TOP_UP -> R.string.breath_top_up
     Breathwork.Kind.HOLD -> R.string.breath_hold
     Breathwork.Kind.OUT -> R.string.breath_out
+    Breathwork.Kind.HUM -> R.string.breath_hum
+    Breathwork.Kind.COOL_IN -> R.string.breath_cool_in
+    Breathwork.Kind.PUMP -> R.string.breath_pump
+    Breathwork.Kind.REST -> R.string.breath_rest
 }
 
 /** Карточка на главном экране: вход в дыхательные практики. */
@@ -117,7 +131,7 @@ fun BreathScreen(state: UserState, onBack: () -> Unit) {
             }
             androidx.compose.material3.Switch(checked = noHolds, onCheckedChange = { noHolds = it })
         }
-        Breathwork.patterns.forEach { p ->
+        Breathwork.patterns.filter { !noHolds || it.id !in Breathwork.ACTIVE }.forEach { p ->
             Card(Modifier.clickable { running = p.id }) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(stringResource(nameOf(p.id)), color = MudryaColors.Text, fontSize = 17.sp, fontWeight = FontWeight.Bold, modifier = Modifier.weight(1f))
@@ -125,6 +139,7 @@ fun BreathScreen(state: UserState, onBack: () -> Unit) {
                     Text(stringResource(R.string.breath_duration, (sec + 30) / 60), color = MudryaColors.Moon, fontSize = 14.sp)
                 }
                 Body(stringResource(hintOf(p.id)))
+                if (p.id in Breathwork.ACTIVE) Text(stringResource(R.string.breath_active_warning), color = MudryaColors.Saffron, fontSize = 13.sp, lineHeight = 18.sp)
             }
         }
         TextAction(stringResource(R.string.back), onBack)
@@ -172,7 +187,14 @@ private fun BreathSession(p: Breathwork.Pattern, noHolds: Boolean, onDone: () ->
                 if (now.done) {
                     Text(stringResource(R.string.breath_done), color = MudryaColors.Text, fontSize = 26.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
                 } else {
-                    Text(stringResource(phaseLabel(now.phase.kind)), color = MudryaColors.Text, fontSize = 28.sp, fontWeight = FontWeight.Bold)
+                    Text(stringResource(phaseLabel(now.phase.kind)), color = MudryaColors.Text, fontSize = 28.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
+                    now.phase.nostril?.let {
+                        Text(
+                            stringResource(if (it == Breathwork.Nostril.LEFT) R.string.breath_left_nostril else R.string.breath_right_nostril),
+                            color = MudryaColors.Saffron,
+                            fontSize = 18.sp,
+                        )
+                    }
                     Text("${now.secondsLeft}", color = MudryaColors.Moon, fontSize = 40.sp, fontWeight = FontWeight.Bold)
                 }
             }

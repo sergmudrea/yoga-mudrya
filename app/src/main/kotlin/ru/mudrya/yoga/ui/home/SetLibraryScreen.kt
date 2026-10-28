@@ -102,6 +102,7 @@ fun SetLibraryScreen(state: UserState, users: UserRepository, premium: Boolean, 
             }
         }
 
+        ExtraSection(ExtraSetsCatalog.Section.HEALTH, ru, state, users, premium, onStart)
         ExtraSection(ExtraSetsCatalog.Section.PILATES, ru, state, users, premium, onStart)
 
         Spacer(Modifier.height(4.dp))
@@ -112,7 +113,7 @@ fun SetLibraryScreen(state: UserState, users: UserRepository, premium: Boolean, 
             Text(if (ru) b.hintRu else tr(b.hintEn), color = MudryaColors.TextMuted, fontSize = 13.sp, modifier = Modifier.padding(start = 6.dp))
         }
 
-        ExtraSetsCatalog.Section.entries.filter { it != ExtraSetsCatalog.Section.PILATES }.forEach { section ->
+        ExtraSetsCatalog.Section.entries.filter { it != ExtraSetsCatalog.Section.PILATES && it != ExtraSetsCatalog.Section.HEALTH }.forEach { section ->
             ExtraSection(section, ru, state, users, premium, onStart)
         }
 

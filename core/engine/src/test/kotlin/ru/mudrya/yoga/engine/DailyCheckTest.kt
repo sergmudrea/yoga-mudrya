@@ -17,7 +17,7 @@ class DailyCheckTest {
 
     @Test
     fun `tired in the evening gets sleep, tired by day gets the gentle set`() {
-        assertEquals("th_sleep", DailyCheck.recommend(c(Energy.LOW), 22).candidates.first())
+        assertEquals("hl_sleep", DailyCheck.recommend(c(Energy.LOW), 22).candidates.first())
         assertEquals("ex_sh_tired", DailyCheck.recommend(c(Energy.LOW), 14).candidates.first())
     }
 
@@ -29,7 +29,7 @@ class DailyCheckTest {
 
     @Test
     fun `every recommendation ends with a set that exists for free users`() {
-        val free = setOf("surya", "chandra", "at_sn", "th_back_relief", "th_morning", "bk_mk", "ex_ybreak", "ex_cyp", "pl_base")
+        val free = setOf("surya", "chandra", "at_sn", "th_back_relief", "th_morning", "bk_mk", "ex_ybreak", "ex_cyp", "pl_base", "hl_sleep")
         for (e in Energy.entries) for (m in Mood.entries) for (z in TensionZone.entries) for (h in 0..23) {
             val r = DailyCheck.recommend(c(e, m, z), h)
             assertTrue(r.candidates.last() in free, "$e $m $z $h -> ${r.candidates}")
