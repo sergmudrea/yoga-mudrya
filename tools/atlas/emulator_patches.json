@@ -1,0 +1,37 @@
+[
+ [
+  "boot",
+  "      let TW0;\n      if(mode==='L'){let p2=lerpPose(A.p,B.p,e);p2.fl=0;p2.h=e<.5?A.p.h:B.p.h;\n        if(!front(p2)&&!armsTouch){const fx=armFloorFix(p2),w=Math.min(1,3*Math.sin(Math.PI*e));for(const a of ['A1','A2'])p2[a]=p2[a].map((v,i)=>v+(fx[a][i]-v)*w);}\n        const qa=plan3({...p2,h:A.p.h}),qb=plan3({...p2,h:B.p.h}),hp={};for(const key of ['A1','A2'])hp[key]={mix:true,a:qa[key],b:qb[key],t:e};\n        TW0=fig.solveLegacy(p2,lerpFeat(A.f,B.f,e),hp);}\n      else if(mode==='J')TW0=fig.solveJoint(lerpJ(A.jp,B.jp,e));\n      else if(mode==='H')TW0=slerpLocal(A.TW,B.TW,e);\n      else{TW0={};for(const n in A.TW)TW0[n]=A.TW[n].clone().slerp(B.TW[n],e);}\n",
+  "      const solveAt=ee=>{\n        if(mode==='L'){let p2=lerpPose(A.p,B.p,ee);p2.fl=0;p2.h=ee<.5?A.p.h:B.p.h;\n          if(!front(p2)&&!armsTouch){const fx=armFloorFix(p2),w=Math.min(1,3*Math.sin(Math.PI*ee));for(const a of ['A1','A2'])p2[a]=p2[a].map((v,i)=>v+(fx[a][i]-v)*w);}\n          const qa=plan3({...p2,h:A.p.h}),qb=plan3({...p2,h:B.p.h}),hp={};for(const key of ['A1','A2'])hp[key]={mix:true,a:qa[key],b:qb[key],t:ee};\n          return fig.solveLegacy(p2,lerpFeat(A.f,B.f,ee),hp);}\n        if(mode==='J')return fig.solveJoint(lerpJ(A.jp,B.jp,ee));\n        if(mode==='H')return slerpLocal(A.TW,B.TW,ee);\n        const o={};for(const n in A.TW)o[n]=A.TW[n].clone().slerp(B.TW[n],ee);return o;};\n      /* движение по очереди, как у человека: таз и ноги начинают, корпус следует, руки и голова заканчивают */\n      const win=(a,b)=>{const x=Math.min(1,Math.max(0,(k-a)/(b-a)));return x*x*x*(x*(6*x-15)+10);};\n      const eL=win(0,.8),eT=win(.08,.9),eA=win(.18,1),eH=win(.22,1);\n      let TW0;\n      if(k<=0||k>=1||Math.abs(eL-eA)<1e-3)TW0=solveAt(e);\n      else{const G={L:solveAt(eL),T:solveAt(eT),A:solveAt(eA),H:solveAt(eH)};\n        const grp=n=>/^(pelvis|thigh|shin|foot)/.test(n)?'L':/^(lumbar|chest)/.test(n)?'T':/^(neck|head)/.test(n)?'H':'A';\n        TW0={pelvis:G.L.pelvis.clone()};\n        for(const n of ORDER){if(n==='pelvis')continue;const g=G[grp(n)],p=PARENT[n];TW0[n]=TW0[p].clone().multiply(g[p].clone().invert().multiply(g[n]));}\n        for(const n in G.L)if(!TW0[n])TW0[n]=G.L[n].clone();}\n"
+ ],
+ [
+  "boot",
+  "    const at=k=>atM(k,mode);\n",
+  "    let lastK=0;\n    const at=k=>{lastK=k;atM(k,mode);};\n"
+ ],
+ [
+  "boot",
+  "    return {at,finish,B,pin};}",
+  "    /* новая поза пришла посреди перехода: следующий переход начинается с текущего положения, без рывка назад */\n    const interrupt=()=>{atM(lastK,mode);const e=ease(lastK);\n      cur={...B,kind:'Q',TW:Object.fromEntries(Object.entries(fig.lastTW).map(([n,q])=>[n,q.clone()])),pts:fig.points(),ik:{},ends:{},\n        hands:e<.5?A.hands:B.hands,cam:camYaw,center:lerpFr(A.center,centerB,e),hipX:worldX};};\n    return {at,finish,B,pin,interrupt};}"
+ ],
+ [
+  "boot",
+  "  function go(toPose,toId,dur){\n    cancelAnimationFrame(raf);\n    const tr=makeTransition(toPose,toId);",
+  "  let running=null;\n  function go(toPose,toId,dur){\n    cancelAnimationFrame(raf);\n    if(running){try{running.interrupt();}catch(e){}running=null;}\n    const tr=makeTransition(toPose,toId);"
+ ],
+ [
+  "boot",
+  "    const step=now=>{const k=Math.min(1,(now-t0)/dur);if(k<1){tr.at(k);raf=requestAnimationFrame(step);}else tr.finish();};\n    raf=requestAnimationFrame(step);}",
+  "    running=tr;\n    const step=now=>{const k=Math.min(1,(now-t0)/dur);if(k<1){tr.at(k);raf=requestAnimationFrame(step);}else{running=null;tr.finish();}};\n    raf=requestAnimationFrame(step);}"
+ ],
+ [
+  "head",
+  "  return {scene,setTheme,loadSkin,setFigure,",
+  "  return {scene,setTheme,loadSkin,setFigure,skinAudit(){return skin&&skin.active?skin.audit:null;},skinRadius(){return skin&&skin.radius;},"
+ ],
+ [
+  "boot",
+  "view.render();window.Mudrya.loaded=true;",
+  "view.render();window.Mudrya.loaded=true;window.__skinAudit=()=>fig.skinAudit();window.__skinRadius=()=>fig.skinRadius();"
+ ]
+]

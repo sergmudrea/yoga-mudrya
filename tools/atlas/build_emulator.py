@@ -202,6 +202,14 @@ boot = sub(boot, "  if(window.AndroidBridge)AndroidBridge.onReady();\n}",
            "  try{await fig.loadSkin('model.glb');}catch(e){console.warn('model unavailable, keeping the doll',e);}\n  view.render();window.Mudrya.loaded=true;\n  if(window.AndroidBridge)AndroidBridge.onReady();\n}")
 boot = sub(boot, "    has(id){return !!(P[id]||(window.JP&&JP[id]));}", "    has(id){return !!(P[id]||(window.JP&&JP[id]));},\n    setFigure(k){fig.setFigure(k);view.render();}")
 
+# ---- переходы по очереди (таз и ноги → корпус → руки, голова), продолжение с середины перехода, отладка кожи ----
+import json as _json
+for _part, _a, _b in _json.loads((root / 'tools/atlas/emulator_patches.json').read_text(encoding='utf-8')):
+    if _part == 'head':
+        head = sub(head, _a, _b)
+    else:
+        boot = sub(boot, _a, _b)
+
 esbuild = sys.argv[3] if len(sys.argv) > 3 else 'esbuild'
 html = """<!doctype html><html><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">

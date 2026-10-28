@@ -422,7 +422,7 @@ async function createFigure3D(){
   /* реалистичная модель поверх марионетки: решатель тот же, рисуется кожа */
   async function loadSkin(url){skin=await createSkin(T,scene,{REST,DIM,url});skin.setTheme(theme||'light');doll.visible=!skin.active;if(J)layout(lastTW,J,true);return skin;}
   function setFigure(kind){if(!skin)return;skin.active=kind!=='doll';doll.visible=!skin.active;if(J)layout(lastTW,J,true);}
-  return {scene,setTheme,loadSkin,setFigure,solveLegacy,solveJoint,showTW,shift,endPos,points,frameOf,makeView,
+  return {scene,setTheme,loadSkin,setFigure,skinAudit(){return skin&&skin.active?skin.audit:null;},skinRadius(){return skin&&skin.radius;},solveLegacy,solveJoint,showTW,shift,endPos,points,frameOf,makeView,
     get lastTW(){return lastTW;},regionMins,vmin(){const m=regionMins();return Math.min(...Object.values(m));},vminsAll:regionMins,
     centerOf:pts=>frameOf(pts).c,LOTUS,HALF,BUTTER,SEGS,matMesh:mat};
 }
@@ -532,14 +532,24 @@ async function boot(){
     const atM=(k,mode)=>{
       const e=ease(k);const ign=(A.bd&&B.bd)||(!armsTouch&&k<1);
       const hands=e<.5?A.hands:B.hands;
+      const solveAt=ee=>{
+        if(mode==='L'){let p2=lerpPose(A.p,B.p,ee);p2.fl=0;p2.h=ee<.5?A.p.h:B.p.h;
+          if(!front(p2)&&!armsTouch){const fx=armFloorFix(p2),w=Math.min(1,3*Math.sin(Math.PI*ee));for(const a of ['A1','A2'])p2[a]=p2[a].map((v,i)=>v+(fx[a][i]-v)*w);}
+          const qa=plan3({...p2,h:A.p.h}),qb=plan3({...p2,h:B.p.h}),hp={};for(const key of ['A1','A2'])hp[key]={mix:true,a:qa[key],b:qb[key],t:ee};
+          return fig.solveLegacy(p2,lerpFeat(A.f,B.f,ee),hp);}
+        if(mode==='J')return fig.solveJoint(lerpJ(A.jp,B.jp,ee));
+        if(mode==='H')return slerpLocal(A.TW,B.TW,ee);
+        const o={};for(const n in A.TW)o[n]=A.TW[n].clone().slerp(B.TW[n],ee);return o;};
+      /* движение по очереди, как у человека: таз и ноги начинают, корпус следует, руки и голова заканчивают */
+      const win=(a,b)=>{const x=Math.min(1,Math.max(0,(k-a)/(b-a)));return x*x*x*(x*(6*x-15)+10);};
+      const eL=win(0,.8),eT=win(.08,.9),eA=win(.18,1),eH=win(.22,1);
       let TW0;
-      if(mode==='L'){let p2=lerpPose(A.p,B.p,e);p2.fl=0;p2.h=e<.5?A.p.h:B.p.h;
-        if(!front(p2)&&!armsTouch){const fx=armFloorFix(p2),w=Math.min(1,3*Math.sin(Math.PI*e));for(const a of ['A1','A2'])p2[a]=p2[a].map((v,i)=>v+(fx[a][i]-v)*w);}
-        const qa=plan3({...p2,h:A.p.h}),qb=plan3({...p2,h:B.p.h}),hp={};for(const key of ['A1','A2'])hp[key]={mix:true,a:qa[key],b:qb[key],t:e};
-        TW0=fig.solveLegacy(p2,lerpFeat(A.f,B.f,e),hp);}
-      else if(mode==='J')TW0=fig.solveJoint(lerpJ(A.jp,B.jp,e));
-      else if(mode==='H')TW0=slerpLocal(A.TW,B.TW,e);
-      else{TW0={};for(const n in A.TW)TW0[n]=A.TW[n].clone().slerp(B.TW[n],e);}
+      if(k<=0||k>=1||Math.abs(eL-eA)<1e-3)TW0=solveAt(e);
+      else{const G={L:solveAt(eL),T:solveAt(eT),A:solveAt(eA),H:solveAt(eH)};
+        const grp=n=>/^(pelvis|thigh|shin|foot)/.test(n)?'L':/^(lumbar|chest)/.test(n)?'T':/^(neck|head)/.test(n)?'H':'A';
+        TW0={pelvis:G.L.pelvis.clone()};
+        for(const n of ORDER){if(n==='pelvis')continue;const g=G[grp(n)],p=PARENT[n];TW0[n]=TW0[p].clone().multiply(g[p].clone().invert().multiply(g[n]));}
+        for(const n in G.L)if(!TW0[n])TW0[n]=G.L[n].clone();}
       let pts=fig.showTW(TW0,{hipX:0,ignoreArms:ign,hands});
       let hx;if(pin){const q=ptByName(pts,pin);hx=ptByName(A.pts,pin).v.x-q.v.x;}else hx=A.hipX+(hipXB-A.hipX)*e;
       const ik={};for(const key of new Set([...Object.keys(A.ik||{}),...Object.keys(B.ik||{})])){
@@ -547,7 +557,8 @@ async function boot(){
         else if(A.ik&&A.ik[key])ik[key]={p:A.ends[key],w:Math.pow(Math.max(0,1-e/0.35),2)};else ik[key]={p:B.ends[key],w:Math.pow(Math.max(0,(e-0.65)/0.35),2)};}
       pts=fig.showTW(TW0,{hipX:hx,ignoreArms:ign,ik,hands});worldX=hx;snapMat();
       camYaw=A.cam+(B.cam-A.cam)*e;frameCam(lerpFr(A.center,centerB,e),camYaw);};
-    const at=k=>atM(k,mode);
+    let lastK=0;
+    const at=k=>{lastK=k;atM(k,mode);};
     if(mode!=='Q'){
       const sc=m=>{const rows=[];for(let j=0;j<=8;j++){atM(j/8,m);const P={};for(const q of fig.points())P[q.name]=q.v;rows.push(BENDS.map(t=>bendOf(P,t)));}
         let worst=0;for(let t=0;t<BENDS.length;t++){const lim=Math.max(rows[0][t],rows[8][t]);for(let j=1;j<8;j++)worst=Math.max(worst,rows[j][t]-lim);}return worst;};
@@ -556,13 +567,20 @@ async function boot(){
         let w=0;for(let t=0;t<BENDS.length;t++){const lim=Math.max(rows[0][t],rows[8][t]);for(let j=1;j<8;j++)w=Math.max(w,rows[j][t]-lim);}return w;})();
       if(s0>25)mode='H';}
     const finish=()=>{const pts=show(B,hipXB);worldX=hipXB;snapMat();cur={...B,hipX:hipXB,pts,center:centerB};camYaw=B.cam;frameCam(centerB,camYaw);};
-    return {at,finish,B,pin};}
+    /* новая поза пришла посреди перехода: следующий переход начинается с текущего положения, без рывка назад */
+    const interrupt=()=>{atM(lastK,mode);const e=ease(lastK);
+      cur={...B,kind:'Q',TW:Object.fromEntries(Object.entries(fig.lastTW).map(([n,q])=>[n,q.clone()])),pts:fig.points(),ik:{},ends:{},
+        hands:e<.5?A.hands:B.hands,cam:camYaw,center:lerpFr(A.center,centerB,e),hipX:worldX};};
+    return {at,finish,B,pin,interrupt};}
+  let running=null;
   function go(toPose,toId,dur){
     cancelAnimationFrame(raf);
+    if(running){try{running.interrupt();}catch(e){}running=null;}
     const tr=makeTransition(toPose,toId);
     if(tr.instant||!dur){if(tr.instant){worldX=0;const pts=show(tr.B,0);cur={...tr.B,hipX:0,pts,center:fig.frameOf(pts,aspect())};snapMat();camYaw=tr.B.cam;frameCam(cur.center,camYaw);}else tr.finish();return;}
     const t0=performance.now();
-    const step=now=>{const k=Math.min(1,(now-t0)/dur);if(k<1){tr.at(k);raf=requestAnimationFrame(step);}else tr.finish();};
+    running=tr;
+    const step=now=>{const k=Math.min(1,(now-t0)/dur);if(k<1){tr.at(k);raf=requestAnimationFrame(step);}else{running=null;tr.finish();}};
     raf=requestAnimationFrame(step);}
 
 
@@ -589,7 +607,7 @@ async function boot(){
     setFigure(k){fig.setFigure(k);view.render();}
   };
   try{await fig.loadSkin('model.glb');}catch(e){console.warn('model unavailable, keeping the doll',e);}
-  view.render();window.Mudrya.loaded=true;
+  view.render();window.Mudrya.loaded=true;window.__skinAudit=()=>fig.skinAudit();window.__skinRadius=()=>fig.skinRadius();
   if(window.AndroidBridge)AndroidBridge.onReady();
 }
 boot();
