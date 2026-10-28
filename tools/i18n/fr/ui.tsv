@@ -690,3 +690,159 @@ med_sleep_4	Rappelez-vous trois bons moments d'aujourd'hui, même tout petits.
 med_sleep_5	Ce qui reste à faire peut attendre demain. Laissez-le partir avec l'expiration.
 med_sleep_6	Si vous le souhaitez, décidez : cette nuit, je remarquerai mes rêves.
 med_sleep_7	Continuez à respirer lentement. Il n'y a plus rien à faire. Bonne nuit.
+card_works	Ce qui travaille
+card_watch	Attention
+card_easier	Plus facile
+card_avoid	Déconseillé
+card_shava_works	Repos profond du système nerveux ; le corps intègre la pratique.
+card_shava_watch	Bas du dos creusé, menton relevé, esprit agité.
+card_shava_easier	Un rouleau sous les genoux, une couverture pliée sous la tête.
+card_shava_avoid	Fin de grossesse : allongez-vous plutôt sur le côté gauche.
+card_tad_works	Posture, équilibre, jambes et pieds forts ; base de toutes les postures debout.
+card_tad_watch	Genoux verrouillés, poids sur les talons, côtes projetées en avant.
+card_tad_easier	Pieds écartés de la largeur du bassin ; dos contre un mur.
+card_tad_avoid	Aucune restriction ; en cas de vertige, écartez les pieds.
+card_armsup_works	Allonge les flancs et la colonne, ouvre épaules et poitrine.
+card_armsup_watch	Épaules aux oreilles, bas du dos qui se creuse.
+card_armsup_easier	Bras plus écartés que les épaules, ou mains sur les hanches.
+card_armsup_avoid	Blessure à l'épaule : levez les bras seulement sans douleur.
+card_uttan_works	Étire l'arrière des jambes et le dos, apaise l'esprit.
+card_uttan_watch	Dos rond pour toucher le sol ; ce sont les hanches qui plient, pas la colonne.
+card_uttan_easier	Pliez les genoux ; mains sur des briques ou sur les tibias.
+card_uttan_avoid	Hernie discale aiguë, glaucome, hypertension non contrôlée.
+card_edog_works	Étire mollets, ischio-jambiers et épaules ; renforce les bras ; revitalise.
+card_edog_watch	Dos rond et talons forcés au sol ; allongez d'abord la colonne.
+card_edog_easier	Pliez les genoux, mains sur une chaise ou contre un mur.
+card_edog_avoid	Douleur aux poignets — sur les avant-bras ; fin de grossesse ; hypertension.
+card_plank_works	Sangle abdominale, épaules et bras forts ; garder le corps aligné.
+card_plank_watch	Bassin qui s'affaisse ou remonte, épaules loin derrière les poignets.
+card_plank_easier	Genoux au sol, ou avant-bras au lieu des paumes.
+card_plank_avoid	Blessure du poignet ou de l'épaule, grossesse après le premier trimestre.
+card_chat_works	Force des bras, de la poitrine et de la sangle ; prépare aux équilibres sur les bras.
+card_chat_watch	Coudes qui s'écartent, poitrine plus basse que les épaules.
+card_chat_easier	Posez d'abord les genoux, puis la poitrine.
+card_chat_avoid	Blessures aux poignets et épaules, grossesse.
+card_updog_works	Ouvre la poitrine et l'avant du corps, renforce le dos et les bras.
+card_updog_watch	Épaules haussées, bas du dos tassé ; répartissez la flexion sur toute la colonne.
+card_updog_easier	Faites plutôt le cobra : bassin et jambes restent au sol.
+card_updog_avoid	Blessure lombaire, grossesse, douleur aux poignets.
+card_cobra_works	Renforce les muscles du dos, ouvre la poitrine, mobilise la colonne.
+card_cobra_watch	Pousser uniquement avec les bras ; c'est le dos qui soulève, les mains aident.
+card_cobra_easier	Sphinx : avant-bras au sol, coudes sous les épaules.
+card_cobra_avoid	Grossesse, lombalgie aiguë, chirurgie abdominale récente.
+card_locust_works	Renforce tout l'arrière du corps : dos, fessiers, jambes.
+card_locust_watch	Tête rejetée en arrière ; la nuque prolonge la colonne.
+card_locust_easier	Levez une jambe à la fois, ou seulement la poitrine.
+card_locust_avoid	Grossesse, mal de dos aigu, après une chirurgie abdominale.
+card_child_works	Repose le dos, étire doucement hanches et chevilles, apaise.
+card_child_watch	Fesses loin des talons et épaules tendues.
+card_child_easier	Un coussin entre fesses et talons ; genoux écartés ; front sur les poings.
+card_child_avoid	Blessure au genou ; enceinte — genoux bien écartés.
+card_cat_works	Mobilité douce de toute la colonne, réchauffe le dos, relie mouvement et souffle.
+card_cat_watch	Bouger seulement le bas du dos ; la vague va du coccyx à la tête.
+card_cat_easier	Une couverture pliée sous les genoux ; possible assise sur une chaise.
+card_cat_avoid	Douleur aux poignets — sur les poings ou les avant-bras.
+card_easy_works	Une assise stable pour respirer et méditer ; ouvre doucement les hanches.
+card_easy_watch	Genoux plus hauts que les hanches et dos affaissé.
+card_easy_easier	Asseyez-vous sur un coussin ou une couverture pliée ; dos au mur.
+card_easy_avoid	Douleur aux genoux — asseyez-vous sur une chaise, dos droit.
+card_hero_works	Étire cuisses et chevilles ; bonne posture après une journée debout.
+card_hero_watch	Pieds tournés vers l'extérieur et douleur vive aux genoux — ne forcez jamais.
+card_hero_easier	Une brique ou un coussin sous les fesses, une serviette roulée sous les chevilles.
+card_hero_avoid	Blessure ou opération du genou.
+card_staff_works	Apprend une colonne droite en position assise ; base des postures assises.
+card_staff_watch	Assise sur le coccyx, dos arrondi.
+card_staff_easier	Une couverture pliée sous les fesses ; genoux légèrement fléchis.
+card_staff_avoid	Lombalgie aiguë — asseyez-vous contre un mur.
+card_pasch_works	Étire tout l'arrière du corps, apaise les nerfs, aide la digestion.
+card_pasch_watch	Tirer la tête vers les genoux, dos rond ; c'est la poitrine qui avance.
+card_pasch_easier	Une sangle autour des pieds, genoux fléchis, couverture sous les fesses.
+card_pasch_avoid	Hernie discale aiguë, sciatique ; grossesse — jambes écartées.
+card_headknee_works	Étire une jambe et le côté du dos ; apaise.
+card_headknee_watch	La poitrine s'écarte de la jambe tendue ; tournez le ventre vers elle.
+card_headknee_easier	Une sangle autour du pied, un coussin sous le genou plié.
+card_headknee_avoid	Blessure du genou plié ; problèmes discaux aigus.
+card_bound_works	Ouvre hanches et aine, bon pour les organes du bassin.
+card_bound_watch	Appuyer sur les genoux avec les mains.
+card_bound_easier	Asseyez-vous haut sur un coussin ; coussins sous les genoux.
+card_bound_avoid	Blessure à l'aine ou au genou.
+card_reclbound_works	Relaxation profonde, poitrine et hanches ouvertes ; apaise le ventre.
+card_reclbound_watch	Tension dans l'aine ; les genoux n'ont pas besoin de toucher le sol.
+card_reclbound_easier	Coussins sous les genoux, un traversin le long de la colonne.
+card_reclbound_avoid	Fin de grossesse — surélevez bien le buste.
+card_twist_works	Mobilise la colonne, masse le ventre, soulage les raideurs du dos.
+card_twist_watch	Tourner d'abord le cou et s'affaisser ; allongez-vous, puis tournez depuis le ventre.
+card_twist_easier	Asseyez-vous sur un coussin ; une torsion sur chaise fonctionne aussi.
+card_twist_avoid	Grossesse — seulement des torsions ouvertes, loin du ventre ; problèmes discaux aigus.
+card_supinetwist_works	Relâche le bas du dos et les hanches en fin de pratique.
+card_supinetwist_watch	L'épaule opposée décolle ; laissez descendre les genoux tant que l'épaule reste au sol.
+card_supinetwist_easier	Un coussin sous les genoux.
+card_supinetwist_avoid	Lombalgie aiguë, fin de grossesse.
+card_bridge_works	Renforce fessiers et jambes, ouvre la poitrine, stimule doucement.
+card_bridge_watch	Genoux qui s'écartent, tête qui tourne dans la posture.
+card_bridge_easier	Une brique sous le sacrum, le bassin repose dessus.
+card_bridge_avoid	Blessure au cou ; fin de grossesse.
+card_kneeschest_works	Relâche le bas du dos, soulage gaz et ballonnements.
+card_kneeschest_watch	Lever la tête et crisper la nuque.
+card_kneeschest_easier	Un genou à la fois.
+card_kneeschest_avoid	Grossesse après le premier trimestre — genoux bien écartés.
+card_legsup_works	Repose les jambes fatiguées, apaise cœur et esprit ; alternative douce aux inversions.
+card_legsup_watch	Tenir les jambes avec effort ; laissez le mur ou une chaise les porter.
+card_legsup_easier	Mollets posés sur une chaise, genoux fléchis.
+card_legsup_avoid	Règles (certaines traditions le déconseillent), glaucome, fin de grossesse.
+card_shoulderstand_works	Apaise et revitalise ; inverse l'effet de la pesanteur sur jambes et organes.
+card_shoulderstand_watch	Poids sur la nuque — il doit reposer sur les épaules ; ne tournez jamais la tête.
+card_shoulderstand_easier	Couvertures pliées sous les épaules ; ou jambes contre le mur.
+card_shoulderstand_avoid	Problèmes de cou, hypertension, glaucome, règles, grossesse.
+card_plough_works	Étire le dos et les épaules, apaise le système nerveux.
+card_plough_watch	Forcer les pieds au sol et rouler sur la nuque.
+card_plough_easier	Pieds sur une chaise derrière la tête.
+card_plough_avoid	Problèmes de cou, hypertension, glaucome, règles, grossesse.
+card_triangle_works	Étire jambes et flancs, ouvre poitrine et hanches, donne de la stabilité.
+card_triangle_watch	S'effondrer vers l'avant pour toucher le sol ; gardez les deux côtés de la taille longs.
+card_triangle_easier	Main sur le tibia ou une brique ; dos contre un mur.
+card_triangle_avoid	Tension basse — regard vers le bas ; problèmes de cou — ne regardez pas en haut.
+card_sideangle_works	Jambes fortes, flancs longs, poitrine ouverte ; développe l'endurance.
+card_sideangle_watch	Le genou avant qui rentre ; gardez-le au-dessus de la cheville.
+card_sideangle_easier	Avant-bras sur la cuisse au lieu de la main au sol.
+card_sideangle_avoid	Blessure du genou ou de la hanche ; problèmes de cou — regardez devant.
+card_warrior_works	Force des jambes et du dos, endurance et concentration.
+card_warrior_watch	Genou avant au-delà des orteils, jambe arrière molle.
+card_warrior_easier	Position plus courte, mains sur les hanches.
+card_warrior_avoid	Hypertension — bras pas au-dessus de la tête ; blessure au genou.
+card_tree_works	Équilibre, chevilles fortes, attention stable.
+card_tree_watch	Pied qui appuie sur le genou ; placez-le au-dessus ou en dessous.
+card_tree_easier	Orteils au sol, talon contre la cheville ; une main au mur.
+card_tree_avoid	Vertiges, tension basse — près d'un mur.
+card_halfmoon_works	Équilibre, jambe d'appui forte, hanches et poitrine ouvertes.
+card_halfmoon_watch	La hanche du dessus bascule en avant ; empilez les hanches.
+card_halfmoon_easier	Dos contre un mur, main sur une brique.
+card_halfmoon_avoid	Vertiges, tension basse, blessure à la cheville.
+card_wide_works	Étire l'intérieur des jambes et le dos ; tête sous le cœur, apaisant.
+card_wide_watch	Pieds tournés vers l'extérieur et poids sur les talons.
+card_wide_easier	Mains sur des briques ou une chaise, dos plat.
+card_wide_avoid	Blessure lombaire ; hypertension non contrôlée.
+card_camel_works	Ouvre la poitrine et l'avant du corps, renforce le dos.
+card_camel_watch	Bassin qui recule et tête qui tombe ; bassin en avant, la poitrine guide.
+card_camel_easier	Mains sur le bas du dos ; orteils retournés.
+card_camel_avoid	Blessure au cou ou au bas du dos, tension haute ou basse.
+card_cowface_works	Ouvre épaules et hanches, redresse le haut du dos.
+card_cowface_watch	Forcer les mains à se joindre et creuser le bas du dos.
+card_cowface_easier	Tenez une sangle entre les mains ; asseyez-vous sur un coussin.
+card_cowface_avoid	Blessure à l'épaule ou au genou.
+card_lotus_works	Une assise de méditation très stable ; ouverture profonde des hanches.
+card_lotus_watch	Tordre le genou pour monter le pied — l'ouverture doit venir de la hanche.
+card_lotus_easier	Demi-lotus ou simple position en tailleur sur un coussin.
+card_lotus_avoid	Toute douleur ou blessure au genou.
+card_boat_works	Renforce abdominaux et fléchisseurs de hanche, équilibre sur les ischions.
+card_boat_watch	Dos rond et poitrine affaissée.
+card_boat_easier	Genoux fléchis, mains derrière les cuisses.
+card_boat_avoid	Grossesse, lombalgie, règles.
+card_bigtoe_works	Étire les ischio-jambiers, dos entièrement soutenu.
+card_bigtoe_watch	L'autre jambe et la hanche décollent du sol.
+card_bigtoe_easier	Une sangle autour du pied ; pliez le genou du bas.
+card_bigtoe_avoid	Sciatique aiguë ou déchirure des ischio-jambiers.
+card_croc_works	Repos sur le ventre, détend le dos, ralentit le souffle.
+card_croc_watch	Garder longtemps la tête tournée d'un côté — changez de côté.
+card_croc_easier	Front sur les mains superposées, un coussin sous le ventre.
+card_croc_avoid	Grossesse — reposez-vous plutôt sur le côté.

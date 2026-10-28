@@ -690,3 +690,159 @@ med_sleep_4	Recall three good moments of today, however small.
 med_sleep_5	Whatever is unfinished can wait until tomorrow. Let it go with the exhale.
 med_sleep_6	If you like, decide: tonight I will notice my dreams.
 med_sleep_7	Keep breathing slowly. There is nothing else to do now. Good night.
+card_works	What works
+card_watch	Watch out
+card_easier	Easier
+card_avoid	Not recommended
+card_shava_works	Deep rest for the nervous system; the body absorbs the practice.
+card_shava_watch	Lower back arched off the floor, chin lifted, a busy mind.
+card_shava_easier	A roll under the knees, a folded blanket under the head.
+card_shava_avoid	Late pregnancy: lie on the left side instead.
+card_tad_works	Posture, balance, strong legs and feet; the base of all standing poses.
+card_tad_watch	Locked knees, weight on the heels, ribs pushed forward.
+card_tad_easier	Feet hip-width apart; stand with the back against a wall.
+card_tad_avoid	No restrictions; with dizziness, keep the feet apart.
+card_armsup_works	Lengthens the sides and spine, opens the shoulders and chest.
+card_armsup_watch	Shoulders up to the ears, lower back collapsing into an arch.
+card_armsup_easier	Arms wider than the shoulders, or hands on the hips.
+card_armsup_avoid	Shoulder injury: raise the arms only as far as is painless.
+card_uttan_works	Stretches the back of the legs and the back, calms the mind.
+card_uttan_watch	Rounding the back to reach the floor; the hips should fold, not the spine.
+card_uttan_easier	Bend the knees; hands on blocks or on the shins.
+card_uttan_avoid	Disc herniation in the acute phase, glaucoma, uncontrolled high blood pressure.
+card_edog_works	Stretches calves, hamstrings and shoulders; strengthens arms; refreshes.
+card_edog_watch	Round back and heels forced to the floor; first lengthen the spine.
+card_edog_easier	Bend the knees, hands on a chair seat or against a wall.
+card_edog_avoid	Wrist pain — on forearms; late pregnancy; uncontrolled high blood pressure.
+card_plank_works	Strong core, shoulders and arms; teaches the body to stay in one line.
+card_plank_watch	Hips sagging or piked up, shoulders far behind the wrists.
+card_plank_easier	Knees on the floor, or forearms instead of palms.
+card_plank_avoid	Wrist or shoulder injury, pregnancy after the first trimester.
+card_chat_works	Arms, chest and core strength; prepares for arm balances.
+card_chat_watch	Elbows flaring out, chest dropping below the shoulders.
+card_chat_easier	Lower the knees first, then the chest.
+card_chat_avoid	Wrist and shoulder injuries, pregnancy.
+card_updog_works	Opens the chest and the front of the body, strengthens the back and arms.
+card_updog_watch	Shoulders shrugged, lower back pinched; spread the bend along the whole spine.
+card_updog_easier	Do the cobra instead: hips and legs stay on the floor.
+card_updog_avoid	Lower back injury, pregnancy, wrist pain.
+card_cobra_works	Strengthens the back muscles, opens the chest, mobilises the spine.
+card_cobra_watch	Pushing up with the arms only; lift with the back, the hands just help.
+card_cobra_easier	Sphinx: forearms on the floor, elbows under the shoulders.
+card_cobra_avoid	Pregnancy, acute lower back pain, recent abdominal surgery.
+card_locust_works	Strengthens the whole back of the body: back, buttocks, legs.
+card_locust_watch	Throwing the head back; the neck continues the line of the spine.
+card_locust_easier	Lift one leg at a time, or only the chest.
+card_locust_avoid	Pregnancy, acute back pain, after abdominal surgery.
+card_child_works	Rests the back, gently stretches the hips and ankles, calms.
+card_child_watch	Buttocks far from the heels and tense shoulders.
+card_child_easier	A cushion between buttocks and heels; knees wide; forehead on the fists.
+card_child_avoid	Knee injury; in pregnancy — knees wide apart.
+card_cat_works	Gentle mobility of the whole spine, warms the back, links movement to breath.
+card_cat_watch	Moving only in the lower back; let the bend travel from tailbone to head.
+card_cat_easier	A folded blanket under the knees; sitting on a chair.
+card_cat_avoid	Wrist pain — on fists or forearms.
+card_easy_works	A steady seat for breathing and meditation; opens the hips gently.
+card_easy_watch	Knees higher than the hips and a slumped back.
+card_easy_easier	Sit on a cushion or folded blanket; back against a wall.
+card_easy_avoid	Knee pain — sit on a chair with a straight back.
+card_hero_works	Stretches the thighs and ankles; a good seat after standing on your feet.
+card_hero_watch	Feet turned out and sharp pain in the knees — never push through.
+card_hero_easier	A block or cushion under the buttocks, a rolled towel under the ankles.
+card_hero_avoid	Knee injury or knee surgery.
+card_staff_works	Teaches an upright spine in sitting; the base of the seated poses.
+card_staff_watch	Sitting on the tailbone with a rounded back.
+card_staff_easier	A folded blanket under the buttocks; knees slightly bent.
+card_staff_avoid	Acute lower back pain — sit against a wall.
+card_pasch_works	Stretches the whole back of the body, calms the nerves, aids digestion.
+card_pasch_watch	Pulling the head to the knees with a round back; lead with the chest.
+card_pasch_easier	A strap around the feet, knees bent, a blanket under the buttocks.
+card_pasch_avoid	Acute disc herniation, sciatica; pregnancy — legs wide.
+card_headknee_works	Stretches one leg and the side of the back; calms.
+card_headknee_watch	Twisting the chest away from the straight leg; turn the belly towards it.
+card_headknee_easier	A strap around the foot, the bent knee supported by a cushion.
+card_headknee_avoid	Knee injury of the bent leg; acute disc problems.
+card_bound_works	Opens the hips and groin, good for the pelvic organs.
+card_bound_watch	Pressing the knees down with the hands.
+card_bound_easier	Sit high on a cushion; cushions under the knees.
+card_bound_avoid	Groin or knee injury.
+card_reclbound_works	Deep relaxation with an open chest and hips; eases the belly.
+card_reclbound_watch	Strain in the groin; the knees don't need to reach the floor.
+card_reclbound_easier	Cushions under the knees, a bolster along the spine.
+card_reclbound_avoid	Late pregnancy — prop the upper body high.
+card_twist_works	Mobilises the spine, massages the belly, relieves stiffness in the back.
+card_twist_watch	Twisting from the neck first and collapsing; lengthen up, then turn from the belly.
+card_twist_easier	Sit on a cushion; a twist on a chair works too.
+card_twist_avoid	Pregnancy — only open twists, away from the belly; acute disc problems.
+card_supinetwist_works	Releases the lower back and hips at the end of a practice.
+card_supinetwist_watch	The opposite shoulder lifting off the floor; let the knees go only as far as the shoulder stays down.
+card_supinetwist_easier	A cushion under the knees.
+card_supinetwist_avoid	Acute lower back pain, late pregnancy.
+card_bridge_works	Strengthens buttocks and legs, opens the chest, gently stimulates.
+card_bridge_watch	Knees falling apart, turning the head while up.
+card_bridge_easier	A block under the sacrum, hips resting on it.
+card_bridge_avoid	Neck injury; late pregnancy.
+card_kneeschest_works	Releases the lower back, eases gas and bloating.
+card_kneeschest_watch	Lifting the head and straining the neck.
+card_kneeschest_easier	One knee at a time.
+card_kneeschest_avoid	Pregnancy after the first trimester — knees wide apart.
+card_legsup_works	Rests tired legs, calms the heart and the mind; a gentle substitute for inversions.
+card_legsup_watch	Holding the legs up with effort; let the wall or a chair hold them.
+card_legsup_easier	Calves on a chair seat, knees bent.
+card_legsup_avoid	Menstruation (some traditions advise against), glaucoma, late pregnancy.
+card_shoulderstand_works	Calms and refreshes; reverses the pull of gravity on the legs and organs.
+card_shoulderstand_watch	Weight on the neck — it must rest on the shoulders; never turn the head.
+card_shoulderstand_easier	Folded blankets under the shoulders; or legs up the wall.
+card_shoulderstand_avoid	Neck problems, high blood pressure, glaucoma, menstruation, pregnancy.
+card_plough_works	Stretches the back and shoulders, calms the nervous system.
+card_plough_watch	Forcing the feet to the floor and rolling onto the neck.
+card_plough_easier	Feet on a chair seat behind the head.
+card_plough_avoid	Neck problems, high blood pressure, glaucoma, menstruation, pregnancy.
+card_triangle_works	Stretches the legs and sides, opens the chest and hips, builds stability.
+card_triangle_watch	Collapsing forward to reach the floor; keep both sides of the waist long.
+card_triangle_easier	Hand on the shin or a block; back against a wall.
+card_triangle_avoid	Low blood pressure — look down; neck problems — don't look up.
+card_sideangle_works	Strong legs, long sides, open chest; builds stamina.
+card_sideangle_watch	The front knee falling inwards; keep it over the ankle.
+card_sideangle_easier	Forearm on the thigh instead of the hand on the floor.
+card_sideangle_avoid	Knee or hip injury; neck problems — look forward.
+card_warrior_works	Strength in the legs and back, stamina and focus.
+card_warrior_watch	Front knee past the toes, back leg soft.
+card_warrior_easier	Shorter stance, hands on the hips.
+card_warrior_avoid	High blood pressure — arms not overhead; knee injury.
+card_tree_works	Balance, strong ankles, steady attention.
+card_tree_watch	Foot pressing on the knee joint; place it above or below the knee.
+card_tree_easier	Toes on the floor, heel on the ankle; a hand on the wall.
+card_tree_avoid	Dizziness, low blood pressure — near a wall.
+card_halfmoon_works	Balance, strong standing leg, open hips and chest.
+card_halfmoon_watch	The top hip rolling forward; stack the hips.
+card_halfmoon_easier	Back against a wall, hand on a block.
+card_halfmoon_avoid	Dizziness, low blood pressure, ankle injury.
+card_wide_works	Stretches the inner legs and back; head below the heart calms.
+card_wide_watch	Feet turned out and weight on the heels.
+card_wide_easier	Hands on blocks or a chair, back flat.
+card_wide_avoid	Lower back injury; uncontrolled high blood pressure.
+card_camel_works	Opens the chest and the front of the body, strengthens the back.
+card_camel_watch	Hips going back and the head dropping; push the hips forward, lead with the chest.
+card_camel_easier	Hands on the lower back; toes tucked under.
+card_camel_avoid	Neck or lower back injury, high or low blood pressure.
+card_cowface_works	Opens shoulders and hips, straightens the upper back.
+card_cowface_watch	Forcing the hands together and arching the lower back.
+card_cowface_easier	Hold a strap between the hands; sit on a cushion.
+card_cowface_avoid	Shoulder or knee injury.
+card_lotus_works	A very stable meditation seat; deep hip opening.
+card_lotus_watch	Twisting the knee to get the foot up — the opening must come from the hip.
+card_lotus_easier	Half lotus or easy cross-legged seat on a cushion.
+card_lotus_avoid	Any knee pain or injury.
+card_boat_works	Strengthens the abdomen and the hip flexors, balance on the sitting bones.
+card_boat_watch	Rounded back and collapsed chest.
+card_boat_easier	Knees bent, hands holding the back of the thighs.
+card_boat_avoid	Pregnancy, lower back pain, menstruation.
+card_bigtoe_works	Stretches the hamstrings with the back fully supported.
+card_bigtoe_watch	The other leg and hip lifting off the floor.
+card_bigtoe_easier	A strap around the foot; bend the lower knee.
+card_bigtoe_avoid	Acute sciatica or hamstring tear.
+card_croc_works	Rest on the belly, relaxes the back, slows the breath.
+card_croc_watch	Keeping the neck twisted to one side for long — change sides.
+card_croc_easier	Forehead on stacked hands, a cushion under the belly.
+card_croc_avoid	Pregnancy — rest on the side instead.

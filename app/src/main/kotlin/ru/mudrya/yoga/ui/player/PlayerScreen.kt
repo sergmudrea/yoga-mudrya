@@ -213,6 +213,7 @@ fun PlayerScreen(
     // Подробнее: описание позы, дыхание по фазам, темп и счёт вдохов. Свёрнуто — на экране только поза.
     val detailsPanel: @Composable () -> Unit = {
         Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+            ru.mudrya.yoga.ui.common.PoseCardView(frame.step.asana.id)
             frame.step.asana.shownDescription()?.let {
                 Text(it, color = MudryaColors.TextMuted, fontSize = 14.sp, lineHeight = 20.sp, modifier = Modifier.fillMaxWidth())
             }

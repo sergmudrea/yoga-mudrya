@@ -50,7 +50,8 @@ fun PosePreview(asana: Asana, onAdd: (() -> Unit)?, onClose: () -> Unit) {
                 Modifier.fillMaxWidth().height(300.dp),
                 placeholder = { PoseThumb(asana.id, 300.dp, Modifier.fillMaxWidth()) },
             )
-            Column(Modifier.height(120.dp).verticalScroll(rememberScrollState())) {
+            Column(Modifier.height(170.dp).verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                ru.mudrya.yoga.ui.common.PoseCardView(asana.id)
                 Text(asana.shownDescription() ?: asana.cuesRu.firstOrNull().orEmpty(), color = MudryaColors.TextMuted, fontSize = 14.sp)
             }
             onAdd?.let { PrimaryButton(stringResource(R.string.builder_add_to_set), it) }

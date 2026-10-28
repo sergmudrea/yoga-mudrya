@@ -690,3 +690,159 @@ med_sleep_4	Ricorda tre bei momenti di oggi, anche piccolissimi.
 med_sleep_5	Ciò che è in sospeso può aspettare domani. Lascialo andare con l'espirazione.
 med_sleep_6	Se vuoi, decidi: stanotte noterò i miei sogni.
 med_sleep_7	Continua a respirare lentamente. Non c'è nient'altro da fare. Buona notte.
+card_works	Cosa lavora
+card_watch	Attenzione
+card_easier	Più facile
+card_avoid	Sconsigliato
+card_shava_works	Riposo profondo del sistema nervoso; il corpo assimila la pratica.
+card_shava_watch	Zona lombare inarcata, mento sollevato, mente agitata.
+card_shava_easier	Un rullo sotto le ginocchia, una coperta piegata sotto la testa.
+card_shava_avoid	Gravidanza avanzata: sdraiati sul fianco sinistro.
+card_tad_works	Postura, equilibrio, gambe e piedi forti; base di tutte le posizioni in piedi.
+card_tad_watch	Ginocchia bloccate, peso sui talloni, costole spinte in avanti.
+card_tad_easier	Piedi alla larghezza del bacino; in piedi con la schiena al muro.
+card_tad_avoid	Nessuna restrizione; con capogiri, piedi più larghi.
+card_armsup_works	Allunga fianchi e colonna, apre spalle e petto.
+card_armsup_watch	Spalle alle orecchie, zona lombare che sprofonda.
+card_armsup_easier	Braccia più larghe delle spalle o mani sui fianchi.
+card_armsup_avoid	Lesione alla spalla: alza le braccia solo fin dove non fa male.
+card_uttan_works	Allunga il retro delle gambe e la schiena, calma la mente.
+card_uttan_watch	Schiena tonda per arrivare a terra; si piega l'anca, non la colonna.
+card_uttan_easier	Piega le ginocchia; mani su blocchi o sugli stinchi.
+card_uttan_avoid	Ernia del disco acuta, glaucoma, pressione alta non controllata.
+card_edog_works	Allunga polpacci, femorali e spalle; rinforza le braccia; rinfresca.
+card_edog_watch	Schiena tonda e talloni forzati a terra; prima allunga la colonna.
+card_edog_easier	Piega le ginocchia, mani su una sedia o al muro.
+card_edog_avoid	Dolore ai polsi: sugli avambracci; gravidanza avanzata; pressione alta.
+card_plank_works	Core, spalle e braccia forti; insegna a tenere il corpo in linea.
+card_plank_watch	Bacino che cede o sale, spalle lontane dietro i polsi.
+card_plank_easier	Ginocchia a terra o avambracci invece dei palmi.
+card_plank_avoid	Lesioni a polsi o spalle, gravidanza dopo il primo trimestre.
+card_chat_works	Forza di braccia, petto e core; prepara agli equilibri sulle braccia.
+card_chat_watch	Gomiti che si aprono, petto sotto le spalle.
+card_chat_easier	Abbassa prima le ginocchia, poi il petto.
+card_chat_avoid	Lesioni a polsi e spalle, gravidanza.
+card_updog_works	Apre il petto e la parte anteriore, rinforza schiena e braccia.
+card_updog_watch	Spalle alzate, lombare schiacciata; distribuisci l'inarcamento su tutta la colonna.
+card_updog_easier	Fai il cobra: bacino e gambe restano a terra.
+card_updog_avoid	Lesione lombare, gravidanza, dolore ai polsi.
+card_cobra_works	Rinforza i muscoli della schiena, apre il petto, mobilizza la colonna.
+card_cobra_watch	Spingere solo con le braccia; solleva la schiena, le mani aiutano.
+card_cobra_easier	Sfinge: avambracci a terra, gomiti sotto le spalle.
+card_cobra_avoid	Gravidanza, lombalgia acuta, intervento addominale recente.
+card_locust_works	Rinforza tutto il retro del corpo: schiena, glutei, gambe.
+card_locust_watch	Testa rovesciata indietro; il collo prolunga la colonna.
+card_locust_easier	Solleva una gamba alla volta o solo il petto.
+card_locust_avoid	Gravidanza, mal di schiena acuto, dopo interventi addominali.
+card_child_works	Riposa la schiena, allunga dolcemente anche e caviglie, calma.
+card_child_watch	Glutei lontani dai talloni e spalle tese.
+card_child_easier	Un cuscino tra glutei e talloni; ginocchia larghe; fronte sui pugni.
+card_child_avoid	Lesione al ginocchio; in gravidanza ginocchia ben aperte.
+card_cat_works	Mobilità dolce di tutta la colonna, scalda la schiena, unisce movimento e respiro.
+card_cat_watch	Muovere solo la zona lombare; l'onda va dal coccige alla testa.
+card_cat_easier	Una coperta piegata sotto le ginocchia; anche seduta su una sedia.
+card_cat_avoid	Dolore ai polsi: sui pugni o sugli avambracci.
+card_easy_works	Una seduta stabile per respiro e meditazione; apre dolcemente le anche.
+card_easy_watch	Ginocchia più alte delle anche e schiena curva.
+card_easy_easier	Siediti su un cuscino o una coperta piegata; schiena al muro.
+card_easy_avoid	Dolore alle ginocchia: siediti su una sedia con la schiena dritta.
+card_hero_works	Allunga cosce e caviglie; buona dopo una giornata in piedi.
+card_hero_watch	Piedi girati in fuori e dolore acuto alle ginocchia: mai forzare.
+card_hero_easier	Un blocco o cuscino sotto i glutei, un asciugamano arrotolato sotto le caviglie.
+card_hero_avoid	Lesione o intervento al ginocchio.
+card_staff_works	Insegna una colonna dritta da seduta; base delle posizioni sedute.
+card_staff_watch	Seduta sul coccige con la schiena tonda.
+card_staff_easier	Una coperta piegata sotto i glutei; ginocchia leggermente piegate.
+card_staff_avoid	Lombalgia acuta: siediti contro il muro.
+card_pasch_works	Allunga tutto il retro del corpo, calma i nervi, aiuta la digestione.
+card_pasch_watch	Tirare la testa alle ginocchia con la schiena tonda; avanza il petto.
+card_pasch_easier	Una cinghia ai piedi, ginocchia piegate, coperta sotto i glutei.
+card_pasch_avoid	Ernia del disco acuta, sciatica; gravidanza: gambe larghe.
+card_headknee_works	Allunga una gamba e il lato della schiena; calma.
+card_headknee_watch	Il petto si allontana dalla gamba tesa; ruota la pancia verso di essa.
+card_headknee_easier	Una cinghia al piede, un cuscino sotto il ginocchio piegato.
+card_headknee_avoid	Lesione al ginocchio piegato; problemi discali acuti.
+card_bound_works	Apre anche e inguine, utile per gli organi pelvici.
+card_bound_watch	Spingere le ginocchia in basso con le mani.
+card_bound_easier	Siediti in alto su un cuscino; cuscini sotto le ginocchia.
+card_bound_avoid	Lesione all'inguine o al ginocchio.
+card_reclbound_works	Rilassamento profondo con petto e anche aperti; distende la pancia.
+card_reclbound_watch	Tensione all'inguine; le ginocchia non devono toccare terra.
+card_reclbound_easier	Cuscini sotto le ginocchia, un cuscino lungo sotto la colonna.
+card_reclbound_avoid	Gravidanza avanzata: solleva bene il busto.
+card_twist_works	Mobilizza la colonna, massaggia la pancia, allevia la rigidità della schiena.
+card_twist_watch	Ruotare prima il collo e afflosciarsi; allungati e ruota dalla pancia.
+card_twist_easier	Siediti su un cuscino; va bene anche una torsione su una sedia.
+card_twist_avoid	Gravidanza: solo torsioni aperte, lontano dalla pancia; problemi discali acuti.
+card_supinetwist_works	Rilascia zona lombare e anche alla fine della pratica.
+card_supinetwist_watch	La spalla opposta si stacca; scendi con le ginocchia finché la spalla resta a terra.
+card_supinetwist_easier	Un cuscino sotto le ginocchia.
+card_supinetwist_avoid	Lombalgia acuta, gravidanza avanzata.
+card_bridge_works	Rinforza glutei e gambe, apre il petto, stimola dolcemente.
+card_bridge_watch	Ginocchia che si aprono, girare la testa nella posizione.
+card_bridge_easier	Un blocco sotto il sacro, il bacino appoggiato.
+card_bridge_avoid	Lesione al collo; gravidanza avanzata.
+card_kneeschest_works	Rilassa la zona lombare, allevia gas e gonfiore.
+card_kneeschest_watch	Sollevare la testa e tendere il collo.
+card_kneeschest_easier	Un ginocchio alla volta.
+card_kneeschest_avoid	Gravidanza dopo il primo trimestre: ginocchia ben aperte.
+card_legsup_works	Riposo per le gambe stanche, calma cuore e mente; alternativa dolce alle capovolte.
+card_legsup_watch	Tenere le gambe con sforzo; lascia che le sostenga il muro o una sedia.
+card_legsup_easier	Polpacci su una sedia, ginocchia piegate.
+card_legsup_avoid	Mestruazioni (alcune tradizioni lo sconsigliano), glaucoma, gravidanza avanzata.
+card_shoulderstand_works	Calma e rinfresca; inverte la gravità su gambe e organi.
+card_shoulderstand_watch	Peso sul collo: deve stare sulle spalle; non girare mai la testa.
+card_shoulderstand_easier	Coperte piegate sotto le spalle; o gambe in su al muro.
+card_shoulderstand_avoid	Problemi al collo, pressione alta, glaucoma, mestruazioni, gravidanza.
+card_plough_works	Allunga schiena e spalle, calma il sistema nervoso.
+card_plough_watch	Forzare i piedi a terra e rotolare sul collo.
+card_plough_easier	Piedi su una sedia dietro la testa.
+card_plough_avoid	Problemi al collo, pressione alta, glaucoma, mestruazioni, gravidanza.
+card_triangle_works	Allunga gambe e fianchi, apre petto e anche, dà stabilità.
+card_triangle_watch	Crollare in avanti per toccare terra; tieni lunghi entrambi i lati della vita.
+card_triangle_easier	Mano sullo stinco o su un blocco; schiena al muro.
+card_triangle_avoid	Pressione bassa: sguardo in basso; problemi al collo: non guardare in alto.
+card_sideangle_works	Gambe forti, fianchi lunghi, petto aperto; aumenta la resistenza.
+card_sideangle_watch	Il ginocchio davanti cade all'interno; tienilo sopra la caviglia.
+card_sideangle_easier	Avambraccio sulla coscia invece della mano a terra.
+card_sideangle_avoid	Lesione a ginocchio o anca; problemi al collo: sguardo avanti.
+card_warrior_works	Forza di gambe e schiena, resistenza e concentrazione.
+card_warrior_watch	Ginocchio davanti oltre le dita, gamba dietro molle.
+card_warrior_easier	Posizione più corta, mani sui fianchi.
+card_warrior_avoid	Pressione alta: braccia non sopra la testa; lesione al ginocchio.
+card_tree_works	Equilibrio, caviglie forti, attenzione stabile.
+card_tree_watch	Il piede preme sul ginocchio; mettilo sopra o sotto.
+card_tree_easier	Dita a terra, tallone alla caviglia; una mano al muro.
+card_tree_avoid	Capogiri, pressione bassa: vicino al muro.
+card_halfmoon_works	Equilibrio, gamba d'appoggio forte, anche e petto aperti.
+card_halfmoon_watch	L'anca sopra cade in avanti; impila le anche.
+card_halfmoon_easier	Schiena al muro, mano su un blocco.
+card_halfmoon_avoid	Capogiri, pressione bassa, lesione alla caviglia.
+card_wide_works	Allunga l'interno delle gambe e la schiena; la testa sotto il cuore calma.
+card_wide_watch	Piedi girati in fuori e peso sui talloni.
+card_wide_easier	Mani su blocchi o una sedia, schiena piatta.
+card_wide_avoid	Lesione lombare; pressione alta non controllata.
+card_camel_works	Apre il petto e la parte anteriore, rinforza la schiena.
+card_camel_watch	Bacino indietro e testa che cade; bacino avanti, guida il petto.
+card_camel_easier	Mani sulla zona lombare; dita dei piedi flesse.
+card_camel_avoid	Lesione al collo o lombare, pressione alta o bassa.
+card_cowface_works	Apre spalle e anche, raddrizza la parte alta della schiena.
+card_cowface_watch	Forzare le mani a unirsi e inarcare la zona lombare.
+card_cowface_easier	Tieni una cinghia tra le mani; siediti su un cuscino.
+card_cowface_avoid	Lesione alla spalla o al ginocchio.
+card_lotus_works	Una seduta di meditazione molto stabile; apertura profonda delle anche.
+card_lotus_watch	Torcere il ginocchio per salire con il piede: l'apertura deve venire dall'anca.
+card_lotus_easier	Mezzo loto o gambe incrociate su un cuscino.
+card_lotus_avoid	Qualsiasi dolore o lesione al ginocchio.
+card_boat_works	Rinforza addome e flessori dell'anca, equilibrio sugli ischi.
+card_boat_watch	Schiena tonda e petto incassato.
+card_boat_easier	Ginocchia piegate, mani dietro le cosce.
+card_boat_avoid	Gravidanza, lombalgia, mestruazioni.
+card_bigtoe_works	Allunga i femorali con la schiena completamente sostenuta.
+card_bigtoe_watch	L'altra gamba e l'anca si staccano da terra.
+card_bigtoe_easier	Una cinghia al piede; piega il ginocchio sotto.
+card_bigtoe_avoid	Sciatica acuta o strappo dei femorali.
+card_croc_works	Riposo a pancia in giù, rilassa la schiena, rallenta il respiro.
+card_croc_watch	Tenere a lungo il collo girato da un lato: cambia lato.
+card_croc_easier	Fronte sulle mani sovrapposte, un cuscino sotto la pancia.
+card_croc_avoid	Gravidanza: riposa sul fianco.
