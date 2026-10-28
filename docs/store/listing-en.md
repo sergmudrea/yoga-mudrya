@@ -19,8 +19,8 @@ Open the app and tell it in ten seconds how you are today: how much energy you h
 Practices for what you need
 Back without pain, neck and shoulders, free hips, knees, posture, flexibility, strength, endurance, balance, energising morning, stress relief, deep sleep, easy digestion. Classic Surya and Chandra Namaskar, Pilates-yoga, gentle sets, 14–30-day programs. 10, 20 or 40 minutes.
 
-Breathing
-Calm down in 2 minutes, 4-7-8, box breathing, ujjayi, breathing before sleep. The circle grows as you inhale and shrinks as you exhale. A "no breath holds" mode for pregnancy and high blood pressure.
+Breathing and meditation
+Calm down in 2 minutes, 4-7-8, box breathing, ujjayi, alternate nostril, humming bee, cooling breath, kapalabhati, breathing before sleep. Guided meditations: yoga nidra, candle gazing, So-Ham, before sleep. The circle grows as you inhale and shrinks as you exhale. A "no breath holds" mode for pregnancy and high blood pressure.
 
 Kind to your body
 • Mark wrists, lower back, neck or knees — the app replaces poses that load them.
