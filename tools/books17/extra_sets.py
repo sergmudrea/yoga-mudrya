@@ -684,6 +684,82 @@ ASHTANGA = seq(
     S('at_shava', 'Отдых', 'Rest', 'X'),
 )
 
+
+# ============================================================ РАССЛАБЛЕНИЕ, АНТИСТРЕСС, РАЗМИНКИ
+# Порядок поз — по практикам из Maran «Yoga Illustrated» (гл. 15); подсказки написаны заново.
+NECK = S(SEAT, 'Наклоны и повороты головы', 'Neck bends and turns', 'E')
+SHOULDERS = S(SEAT, 'Круги плечами, плечи вниз', 'Shoulder circles, shoulders down', 'E')
+
+CALM_RELAX = seq(
+    S(SEAT, 'Сядьте удобно, следите за дыханием', 'Sit comfortably, watch the breath', 'R'),
+    NECK, SHOULDERS,
+    both('lb_B647', 'Боковой наклон сидя', 'Seated side bend'),
+    both('lb_B784', 'Простая скрутка', 'Simple twist'),
+    S(SEAT, 'Мягкий наклон вперёд сидя', 'Easy seated forward bend', 'R'),
+    S('at_cat', 'Кошка-корова', 'Cat and cow', 'E'),
+    both('lb_B1073', 'Нитка в иголку', 'Thread the needle', 'R'),
+    S('at_sphinx', 'Сфинкс', 'Sphinx', 'R'),
+    S('lb_B1487', 'Лодка на животе: мягко, без рывков', 'Belly boat: gently, no jerking', 'I'),
+    S('at_croc', 'Крокодил: отдых на животе', 'Crocodile: rest on the belly', 'L'),
+    S('lb_B1068', 'Ребёнок с валиком под грудью', 'Child with a bolster under the chest', 'L'),
+    S('at_viparita', 'Ноги вверх по стене', 'Legs up the wall', 'X'),
+    S('lb_B1804', 'Герой лёжа на валике', 'Reclined hero on a bolster', 'L'),
+    S('lb_B1761', 'Связанный угол лёжа на одеялах', 'Reclined bound angle on blankets', 'L'),
+    S('at_shava', 'Расслабление: 5–15 минут', 'Relaxation: 5–15 minutes', 'X'),
+)
+
+CALM_STRESS = seq(
+    S('at_rollball', 'Перекаты на спине', 'Rolling on the spine', 'E'),
+    S(SEAT, 'Лёгкая поза: замедлить дыхание', 'Easy pose: slow the breath', 'R'),
+    both('lb_B784', 'Простая скрутка', 'Simple twist'),
+    S('lb_B775', 'Посох', 'Staff pose', 'I'),
+    both('lb_B853', 'Голова к колену', 'Head to knee'),
+    S('at_cat', 'Кошка-корова', 'Cat and cow', 'E'),
+    S('lb_B567', 'Присед с ладонями у груди', 'Squat with palms at the chest', 'R'),
+    S('at_uttan', 'Подъём позвонок за позвонком', 'Roll up one vertebra at a time', 'E'),
+    S('at_tad', 'Гора', 'Mountain pose', 'I'),
+    both('at_bok', 'Полумесяц стоя', 'Standing crescent moon'),
+    S('at_full', 'Прогиб стоя, локти сцеплены за спиной', 'Standing backbend, elbows clasped behind', 'I'),
+    S('at_uttan', 'Тряпичная кукла: держитесь за локти, голова висит', 'Rag doll: hold the elbows, let the head hang', 'R'),
+    S('at_sphinx', 'Сфинкс', 'Sphinx', 'R'),
+    S('lb_B1068', 'Поза ребёнка', "Child's pose", 'L'),
+    S('lb_B676', 'Йога-мудра сидя', 'Seated yoga mudra', 'R'),
+    S('at_viparita', 'Ноги вверх по стене', 'Legs up the wall', 'X'),
+    both('at_parivr', 'Скрутка лёжа, колени вниз', 'Knee-down twist'),
+    S('at_shava', 'Расслабление: 5–15 минут', 'Relaxation: 5–15 minutes', 'X'),
+)
+
+WU_SEATED = seq(
+    S(SEAT, 'Лёгкая поза: седалищные кости вниз, макушка вверх', 'Easy pose: sitting bones down, crown up', 'I'),
+    NECK, SHOULDERS,
+    both('lb_B647', 'Боковой наклон сидя', 'Seated side bend'),
+    both('lb_B784', 'Простая скрутка', 'Simple twist'),
+    S('lb_B720', 'Связанный угол', 'Bound angle', 'R'),
+    both('lb_B853', 'Голова к колену', 'Head to knee'),
+)
+
+WU_RECLINED = seq(
+    S('at_shava', 'Лёжа: плечи и руки отпустить', 'Lying down: let the shoulders and arms go', 'I'),
+    S('at_shava', 'Перекатывайте голову вправо и влево', 'Roll the head right and left', 'E'),
+    S('lb_B1772', 'Колени к груди', 'Knees to the chest', 'E'),
+    S('at_halfbridge', 'Наклоны таза: поясница мягко к полу и обратно', 'Pelvic tilts: lower back gently to the floor and back', 'E'),
+    both('at_parivr', 'Колени набок: скрутка лёжа', 'Knees to the side: lying twist'),
+    both('lb_B1819', 'Нога вверх с ремнём', 'Leg up with a strap'),
+    S('at_shava', 'Отдых на спине', 'Rest on the back', 'R'),
+)
+
+WU_STANDING = seq(
+    S('at_tad', 'Гора: низ устойчив, верх лёгкий', 'Mountain: steady below, light above', 'I'),
+    S('lb_B5', 'Руки вверх, плечи вниз', 'Arms up, shoulders down', 'I'),
+    S('lb_B2', 'Ладони у груди', 'Palms at the chest', 'I'),
+    S('lb_B5', 'Круги руками через стороны вверх', 'Arm circles out to the sides and up', 'E'),
+    both('at_bok', 'Наклон в сторону стоя', 'Standing side bend'),
+    both('at_garudaup', 'Руки орла', 'Eagle arms'),
+    S('at_utkata', 'Стул', 'Chair pose', 'I'),
+    S('at_hnak', 'Прямой угол: ладони на стену, спина длинная', 'Right angle: palms on the wall, long back', 'R'),
+    S('at_uttan', 'Тряпичная кукла: колени мягкие', 'Rag doll: soft knees', 'R'),
+)
+
 # ============================================================ СПИСОК
 SECTIONS = [
     ('CLASSIC', 'Классические комплексы', 'Classic sequences'),
@@ -692,6 +768,8 @@ SECTIONS = [
     ('CHARACTER', 'Йога характера', 'Yoga of character'),
     ('PILATES', 'Пилатес-йога', 'Pilates yoga'),
     ('HEALTH', 'Йога для самочувствия', 'Yoga for wellbeing'),
+    ('CALM', 'Расслабление и антистресс', 'Relaxation and stress relief'),
+    ('WARMUP', 'Разминки', 'Warm-ups'),
 ]
 
 SETS = [
@@ -812,6 +890,21 @@ SETS = [
     ('hl_breath', 'HEALTH', 'Свободное дыхание', 'Breathe freely',
      'Раскрыть грудь и рёбра, закончить спокойным дыханием уджайи лёжа.',
      'Open the chest and ribs, finish with calm ujjayi breathing lying down.', HL_BREATH),
+    ('calm_relax', 'CALM', 'Расслабление перед сном', 'Unwind before sleep',
+     'Тихие позы сидя и лёжа с опорами: валик и три одеяла. Тело остывает — наденьте что-то тёплое. Около 40 минут.',
+     'Quiet seated and lying poses with props: a bolster and three blankets. The body cools down, so wear something warm. About 40 minutes.', CALM_RELAX),
+    ('calm_stress', 'CALM', 'Антистресс-практика', 'Stress relief practice',
+     'Перекаты, скрутки, наклоны с опущенной головой и долгий отдых с ногами вверх. Около 40 минут.',
+     'Rolling, twists, forward bends with the head down and a long rest with the legs up. About 40 minutes.', CALM_STRESS),
+    ('wu_seated', 'WARMUP', 'Разминка сидя', 'Seated warm-up',
+     'Шея, плечи, боковые наклоны, скрутка и раскрытие бёдер — перед любой практикой. 10 минут.',
+     'Neck, shoulders, side bends, a twist and hip openers — before any practice. 10 minutes.', WU_SEATED),
+    ('wu_reclined', 'WARMUP', 'Разминка лёжа', 'Reclined warm-up',
+     'Мягко разбудить спину и бёдра, не вставая с коврика. Успокаивает нервную систему. 10 минут.',
+     'Gently wake up the back and hips without leaving the mat. Calms the nervous system. 10 minutes.', WU_RECLINED),
+    ('wu_standing', 'WARMUP', 'Разминка стоя', 'Standing warm-up',
+     'Руки, бока, плечи и ноги — перед силовой практикой. Растягивайтесь без усилия. 10 минут.',
+     'Arms, sides, shoulders and legs — before a strong practice. Stretch without forcing. 10 minutes.', WU_STANDING),
 ]
 
 

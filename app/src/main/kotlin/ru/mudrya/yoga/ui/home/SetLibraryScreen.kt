@@ -103,6 +103,7 @@ fun SetLibraryScreen(state: UserState, users: UserRepository, premium: Boolean, 
         }
 
         ExtraSection(ExtraSetsCatalog.Section.HEALTH, ru, state, users, premium, onStart)
+        ExtraSection(ExtraSetsCatalog.Section.CALM, ru, state, users, premium, onStart)
         ExtraSection(ExtraSetsCatalog.Section.PILATES, ru, state, users, premium, onStart)
 
         Spacer(Modifier.height(4.dp))
@@ -113,7 +114,7 @@ fun SetLibraryScreen(state: UserState, users: UserRepository, premium: Boolean, 
             Text(if (ru) b.hintRu else tr(b.hintEn), color = MudryaColors.TextMuted, fontSize = 13.sp, modifier = Modifier.padding(start = 6.dp))
         }
 
-        ExtraSetsCatalog.Section.entries.filter { it != ExtraSetsCatalog.Section.PILATES && it != ExtraSetsCatalog.Section.HEALTH }.forEach { section ->
+        ExtraSetsCatalog.Section.entries.filter { it !in TOP_SECTIONS }.forEach { section ->
             ExtraSection(section, ru, state, users, premium, onStart)
         }
 
@@ -124,6 +125,9 @@ fun SetLibraryScreen(state: UserState, users: UserRepository, premium: Boolean, 
         Spacer(Modifier.height(8.dp))
     }
 }
+
+/** Разделы, показанные выше учебных сетов. */
+private val TOP_SECTIONS = setOf(ExtraSetsCatalog.Section.HEALTH, ExtraSetsCatalog.Section.CALM, ExtraSetsCatalog.Section.PILATES)
 
 /** Раздел дополнительных сетов (классика из книг, мягкая йога 50+, суставы, йога характера, пилатес-йога). */
 @Composable

@@ -227,5 +227,12 @@ class SuryaCatalogTest {
         }
         // пилатес-основа: сразу после дыхания — сотня
         assertEquals("lb_B1054", catalog.block("pl_base").steps[1].asanaId)
+        // расслабление и антистресс: заканчиваются шавасаной, перед ней — ноги вверх
+        listOf("calm_relax", "calm_stress").forEach { id ->
+            assertEquals(ExtraSetsCatalog.Section.CALM, ExtraSetsCatalog.set(id)?.section)
+            assertEquals("at_shava", catalog.block(id).steps.last().asanaId)
+            assertTrue(catalog.block(id).steps.any { it.asanaId == "at_viparita" }, id)
+        }
+        assertEquals(3, ExtraSetsCatalog.sets.count { it.section == ExtraSetsCatalog.Section.WARMUP })
     }
 }

@@ -22,6 +22,8 @@ object ExtraSetsCatalog {
         CHARACTER("Йога характера", "Yoga of character"),
         PILATES("Пилатес-йога", "Pilates yoga"),
         HEALTH("Йога для самочувствия", "Yoga for wellbeing"),
+        CALM("Расслабление и антистресс", "Relaxation and stress relief"),
+        WARMUP("Разминки", "Warm-ups"),
     }
 
     data class ExtraSet(val id: String, val section: Section, val nameRu: String, val nameEn: String, val hintRu: String, val hintEn: String)
@@ -66,6 +68,11 @@ object ExtraSetsCatalog {
         ExtraSet("hl_joints", Section.HEALTH, "Суставы без нагрузки", "Joints without strain", "Мягкая стоячая серия: суставы двигаются, но не перегружаются. Опоры — ладонь на голень, подушка под ягодицы.", "A gentle standing series: joints move without overload. Support — hand on the shin, a cushion under the buttocks."),
         ExtraSet("hl_cycle", Section.HEALTH, "Мягкие дни цикла", "Gentle days of the cycle", "Позы лёжа и сидя с опорами, без перевёрнутых поз и прогибов.", "Supported lying and seated poses, no inversions or backbends."),
         ExtraSet("hl_breath", Section.HEALTH, "Свободное дыхание", "Breathe freely", "Раскрыть грудь и рёбра, закончить спокойным дыханием уджайи лёжа.", "Open the chest and ribs, finish with calm ujjayi breathing lying down."),
+        ExtraSet("calm_relax", Section.CALM, "Расслабление перед сном", "Unwind before sleep", "Тихие позы сидя и лёжа с опорами: валик и три одеяла. Тело остывает — наденьте что-то тёплое. Около 40 минут.", "Quiet seated and lying poses with props: a bolster and three blankets. The body cools down, so wear something warm. About 40 minutes."),
+        ExtraSet("calm_stress", Section.CALM, "Антистресс-практика", "Stress relief practice", "Перекаты, скрутки, наклоны с опущенной головой и долгий отдых с ногами вверх. Около 40 минут.", "Rolling, twists, forward bends with the head down and a long rest with the legs up. About 40 minutes."),
+        ExtraSet("wu_seated", Section.WARMUP, "Разминка сидя", "Seated warm-up", "Шея, плечи, боковые наклоны, скрутка и раскрытие бёдер — перед любой практикой. 10 минут.", "Neck, shoulders, side bends, a twist and hip openers — before any practice. 10 minutes."),
+        ExtraSet("wu_reclined", Section.WARMUP, "Разминка лёжа", "Reclined warm-up", "Мягко разбудить спину и бёдра, не вставая с коврика. Успокаивает нервную систему. 10 минут.", "Gently wake up the back and hips without leaving the mat. Calms the nervous system. 10 minutes."),
+        ExtraSet("wu_standing", Section.WARMUP, "Разминка стоя", "Standing warm-up", "Руки, бока, плечи и ноги — перед силовой практикой. Растягивайтесь без усилия. 10 минут.", "Arms, sides, shoulders and legs — before a strong practice. Stretch without forcing. 10 minutes."),
     )
 
     private val IN = Breath.INHALE
@@ -1012,6 +1019,92 @@ object ExtraSetsCatalog {
         s("at_shava", EX, 20, "Шавасана: уджайи — ровный вдох и долгий выдох", "Savasana: ujjayi — even inhale, long exhale"),
     )
 
+    private fun steps_calm_relax(): List<Step> = listOf(
+        s("lb_B642", EX, 5, "Сядьте удобно, следите за дыханием", "Sit comfortably, watch the breath"),
+        s("lb_B642", EX, 3, "Наклоны и повороты головы", "Neck bends and turns"),
+        s("lb_B642", EX, 3, "Круги плечами, плечи вниз", "Shoulder circles, shoulders down"),
+        s("lb_B647", EX, 3, "Боковой наклон сидя — правая сторона", "Seated side bend — right side"),
+        s("lb_B647_m", EX, 3, "Боковой наклон сидя — левая сторона", "Seated side bend — left side"),
+        s("lb_B784", EX, 3, "Простая скрутка — правая сторона", "Simple twist — right side"),
+        s("lb_B784_m", EX, 3, "Простая скрутка — левая сторона", "Simple twist — left side"),
+        s("lb_B642", EX, 5, "Мягкий наклон вперёд сидя", "Easy seated forward bend"),
+        s("at_cat", EX, 3, "Кошка-корова", "Cat and cow"),
+        s("lb_B1073", EX, 5, "Нитка в иголку — правая сторона", "Thread the needle — right side"),
+        s("lb_B1073_m", EX, 5, "Нитка в иголку — левая сторона", "Thread the needle — left side"),
+        s("at_sphinx", EX, 5, "Сфинкс", "Sphinx"),
+        s("lb_B1487", IN, 3, "Лодка на животе: мягко, без рывков", "Belly boat: gently, no jerking"),
+        s("at_croc", EX, 10, "Крокодил: отдых на животе", "Crocodile: rest on the belly"),
+        s("lb_B1068", EX, 10, "Ребёнок с валиком под грудью", "Child with a bolster under the chest"),
+        s("at_viparita", EX, 20, "Ноги вверх по стене", "Legs up the wall"),
+        s("lb_B1804", EX, 10, "Герой лёжа на валике", "Reclined hero on a bolster"),
+        s("lb_B1761", EX, 10, "Связанный угол лёжа на одеялах", "Reclined bound angle on blankets"),
+        s("at_shava", EX, 20, "Расслабление: 5–15 минут", "Relaxation: 5–15 minutes"),
+    )
+
+    private fun steps_calm_stress(): List<Step> = listOf(
+        s("at_rollball", EX, 3, "Перекаты на спине", "Rolling on the spine"),
+        s("lb_B642", EX, 5, "Лёгкая поза: замедлить дыхание", "Easy pose: slow the breath"),
+        s("lb_B784", EX, 3, "Простая скрутка — правая сторона", "Simple twist — right side"),
+        s("lb_B784_m", EX, 3, "Простая скрутка — левая сторона", "Simple twist — left side"),
+        s("lb_B775", IN, 3, "Посох", "Staff pose"),
+        s("lb_B853", EX, 3, "Голова к колену — правая сторона", "Head to knee — right side"),
+        s("lb_B853_m", EX, 3, "Голова к колену — левая сторона", "Head to knee — left side"),
+        s("at_cat", EX, 3, "Кошка-корова", "Cat and cow"),
+        s("lb_B567", EX, 5, "Присед с ладонями у груди", "Squat with palms at the chest"),
+        s("at_uttan", EX, 3, "Подъём позвонок за позвонком", "Roll up one vertebra at a time"),
+        s("at_tad", IN, 3, "Гора", "Mountain pose"),
+        s("at_bok", EX, 3, "Полумесяц стоя — правая сторона", "Standing crescent moon — right side"),
+        s("at_bok_m", EX, 3, "Полумесяц стоя — левая сторона", "Standing crescent moon — left side"),
+        s("at_full", IN, 3, "Прогиб стоя, локти сцеплены за спиной", "Standing backbend, elbows clasped behind"),
+        s("at_uttan", EX, 5, "Тряпичная кукла: держитесь за локти, голова висит", "Rag doll: hold the elbows, let the head hang"),
+        s("at_sphinx", EX, 5, "Сфинкс", "Sphinx"),
+        s("lb_B1068", EX, 10, "Поза ребёнка", "Child's pose"),
+        s("lb_B676", EX, 5, "Йога-мудра сидя", "Seated yoga mudra"),
+        s("at_viparita", EX, 20, "Ноги вверх по стене", "Legs up the wall"),
+        s("at_parivr", EX, 3, "Скрутка лёжа, колени вниз — правая сторона", "Knee-down twist — right side"),
+        s("at_parivr_m", EX, 3, "Скрутка лёжа, колени вниз — левая сторона", "Knee-down twist — left side"),
+        s("at_shava", EX, 20, "Расслабление: 5–15 минут", "Relaxation: 5–15 minutes"),
+    )
+
+    private fun steps_wu_seated(): List<Step> = listOf(
+        s("lb_B642", IN, 3, "Лёгкая поза: седалищные кости вниз, макушка вверх", "Easy pose: sitting bones down, crown up"),
+        s("lb_B642", EX, 3, "Наклоны и повороты головы", "Neck bends and turns"),
+        s("lb_B642", EX, 3, "Круги плечами, плечи вниз", "Shoulder circles, shoulders down"),
+        s("lb_B647", EX, 3, "Боковой наклон сидя — правая сторона", "Seated side bend — right side"),
+        s("lb_B647_m", EX, 3, "Боковой наклон сидя — левая сторона", "Seated side bend — left side"),
+        s("lb_B784", EX, 3, "Простая скрутка — правая сторона", "Simple twist — right side"),
+        s("lb_B784_m", EX, 3, "Простая скрутка — левая сторона", "Simple twist — left side"),
+        s("lb_B720", EX, 5, "Связанный угол", "Bound angle"),
+        s("lb_B853", EX, 3, "Голова к колену — правая сторона", "Head to knee — right side"),
+        s("lb_B853_m", EX, 3, "Голова к колену — левая сторона", "Head to knee — left side"),
+    )
+
+    private fun steps_wu_reclined(): List<Step> = listOf(
+        s("at_shava", IN, 3, "Лёжа: плечи и руки отпустить", "Lying down: let the shoulders and arms go"),
+        s("at_shava", EX, 3, "Перекатывайте голову вправо и влево", "Roll the head right and left"),
+        s("lb_B1772", EX, 3, "Колени к груди", "Knees to the chest"),
+        s("at_halfbridge", EX, 3, "Наклоны таза: поясница мягко к полу и обратно", "Pelvic tilts: lower back gently to the floor and back"),
+        s("at_parivr", EX, 3, "Колени набок: скрутка лёжа — правая сторона", "Knees to the side: lying twist — right side"),
+        s("at_parivr_m", EX, 3, "Колени набок: скрутка лёжа — левая сторона", "Knees to the side: lying twist — left side"),
+        s("lb_B1819", EX, 3, "Нога вверх с ремнём — правая сторона", "Leg up with a strap — right side"),
+        s("lb_B1819_m", EX, 3, "Нога вверх с ремнём — левая сторона", "Leg up with a strap — left side"),
+        s("at_shava", EX, 5, "Отдых на спине", "Rest on the back"),
+    )
+
+    private fun steps_wu_standing(): List<Step> = listOf(
+        s("at_tad", IN, 3, "Гора: низ устойчив, верх лёгкий", "Mountain: steady below, light above"),
+        s("lb_B5", IN, 3, "Руки вверх, плечи вниз", "Arms up, shoulders down"),
+        s("lb_B2", IN, 3, "Ладони у груди", "Palms at the chest"),
+        s("lb_B5", EX, 3, "Круги руками через стороны вверх", "Arm circles out to the sides and up"),
+        s("at_bok", EX, 3, "Наклон в сторону стоя — правая сторона", "Standing side bend — right side"),
+        s("at_bok_m", EX, 3, "Наклон в сторону стоя — левая сторона", "Standing side bend — left side"),
+        s("at_garudaup", EX, 3, "Руки орла — правая сторона", "Eagle arms — right side"),
+        s("at_garudaup_m", EX, 3, "Руки орла — левая сторона", "Eagle arms — left side"),
+        s("at_utkata", IN, 3, "Стул", "Chair pose"),
+        s("at_hnak", EX, 5, "Прямой угол: ладони на стену, спина длинная", "Right angle: palms on the wall, long back"),
+        s("at_uttan", EX, 5, "Тряпичная кукла: колени мягкие", "Rag doll: soft knees"),
+    )
+
     val blocks: List<Block> by lazy {
         listOf(
             Block("ex_ashtanga", steps_ex_ashtanga(), titleRu = "Аштанга: основная серия (коротко)", titleEn = "Ashtanga: primary series (short)"),
@@ -1053,6 +1146,11 @@ object ExtraSetsCatalog {
             Block("hl_joints", steps_hl_joints(), titleRu = "Суставы без нагрузки", titleEn = "Joints without strain"),
             Block("hl_cycle", steps_hl_cycle(), titleRu = "Мягкие дни цикла", titleEn = "Gentle days of the cycle"),
             Block("hl_breath", steps_hl_breath(), titleRu = "Свободное дыхание", titleEn = "Breathe freely"),
+            Block("calm_relax", steps_calm_relax(), titleRu = "Расслабление перед сном", titleEn = "Unwind before sleep"),
+            Block("calm_stress", steps_calm_stress(), titleRu = "Антистресс-практика", titleEn = "Stress relief practice"),
+            Block("wu_seated", steps_wu_seated(), titleRu = "Разминка сидя", titleEn = "Seated warm-up"),
+            Block("wu_reclined", steps_wu_reclined(), titleRu = "Разминка лёжа", titleEn = "Reclined warm-up"),
+            Block("wu_standing", steps_wu_standing(), titleRu = "Разминка стоя", titleEn = "Standing warm-up"),
         )
     }
 
@@ -1087,6 +1185,7 @@ object ExtraSetsCatalog {
         "lb_B342_m",
         "lb_B59_m",
         "lb_B604_m",
+        "lb_B647_m",
         "lb_B700_m",
         "lb_B703_m",
         "lb_B709_m",
