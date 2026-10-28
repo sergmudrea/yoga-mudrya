@@ -846,3 +846,147 @@ card_croc_works	Rest on the belly, relaxes the back, slows the breath.
 card_croc_watch	Keeping the neck twisted to one side for long — change sides.
 card_croc_easier	Forehead on stacked hands, a cushion under the belly.
 card_croc_avoid	Pregnancy — rest on the side instead.
+gloss_title	Yoga dictionary
+gloss_card_hint	Thirty words you will hear in class — in plain language.
+wisdom_title	Thought of the day
+dosha_title	Ayurveda: your type
+dosha_card_hint	Eight questions about your body and habits — and which practice, rhythm of the day and food suit you.
+dosha_intro	Answer as you have usually been for years, not as you feel today. This is a traditional view, not a diagnosis.
+dosha_question	Question %1$d of %2$d
+dosha_result	Your leading dosha
+dosha_again	Take the test again
+dosha_practice	Practice
+dosha_day	Rhythm of the day
+dosha_food	Food
+dosha_sets	Suitable sets
+dosha_vata	Vata — air and space
+dosha_pitta	Pitta — fire and water
+dosha_kapha	Kapha — earth and water
+dosha_vata_about	Quick, creative, light; easily cold, restless or anxious when out of balance.
+dosha_pitta_about	Focused, warm, determined; irritable and overheated when out of balance.
+dosha_kapha_about	Calm, steady, enduring; heavy and sluggish when out of balance.
+dosha_vata_practice	Slow, grounding practice: standing poses, forward bends, long savasana, alternate nostril breathing. Avoid rushing and long fast flows.
+dosha_pitta_practice	Cooling, unhurried practice without competition: forward bends, twists, moon salutation, cooling breath.
+dosha_kapha_practice	Energetic, warming practice: sun salutations, standing poses, backbends, kapalabhati in the morning.
+dosha_vata_day	Regular hours for meals and sleep, warmth, an early night, a warm oil self-massage.
+dosha_pitta_day	Breaks in work, no exercise in the midday heat, time in nature and by water.
+dosha_kapha_day	Get up early, move every day, no sleep during the day, new impressions.
+dosha_vata_food	Warm, cooked, slightly oily food; soups, grains, root vegetables. Less raw, cold and dry food.
+dosha_pitta_food	Cooling, mild food: vegetables, fruit, grains. Less spicy, sour, fried food and alcohol.
+dosha_kapha_food	Light, warm, spiced food; plenty of vegetables and legumes. Less sweet, heavy and dairy food.
+dosha_note	Ayurveda is a traditional system, not medicine. With health problems, see a doctor.
+dosha_q1	Your build
+dosha_q1_v	Slim, light, hard to gain weight
+dosha_q1_p	Medium, athletic
+dosha_q1_k	Solid, gain weight easily
+dosha_q2	Your skin
+dosha_q2_v	Dry, thin, cool
+dosha_q2_p	Warm, reddens easily, sensitive
+dosha_q2_k	Thick, smooth, slightly oily
+dosha_q3	Appetite
+dosha_q3_v	Irregular, I forget to eat
+dosha_q3_p	Strong; hungry — irritable
+dosha_q3_k	Steady, I can skip a meal easily
+dosha_q4	Sleep
+dosha_q4_v	Light, I wake up often
+dosha_q4_p	Short but sound
+dosha_q4_k	Long and deep, hard to wake up
+dosha_q5	Under stress you…
+dosha_q5_v	worry and get anxious
+dosha_q5_p	get angry and critical
+dosha_q5_k	withdraw and slow down
+dosha_q6	Weather you dislike most
+dosha_q6_v	Cold and wind
+dosha_q6_p	Heat
+dosha_q6_k	Damp and grey
+dosha_q7	How you do things
+dosha_q7_v	Fast, many at once, I lose interest
+dosha_q7_p	Purposefully, I finish what I start
+dosha_q7_k	Slowly but steadily
+dosha_q8	Memory
+dosha_q8_v	Learn quickly, forget quickly
+dosha_q8_p	Sharp and clear
+dosha_q8_k	Learn slowly, remember for a long time
+gloss_1_t	Asana
+gloss_1_d	A posture held with steadiness and ease.
+gloss_2_t	Pranayama
+gloss_2_d	Breathing practice: lengthening and guiding the breath.
+gloss_3_t	Prana
+gloss_3_d	Life energy; in practice — the breath.
+gloss_4_t	Vinyasa
+gloss_4_d	Linking movement with breath, one movement per inhale or exhale.
+gloss_5_t	Drishti
+gloss_5_d	The point where the gaze rests in a pose.
+gloss_6_t	Bandha
+gloss_6_d	A gentle muscular “lock” that holds energy and protects the body.
+gloss_7_t	Mula bandha
+gloss_7_d	Gentle lift of the pelvic floor.
+gloss_8_t	Uddiyana bandha
+gloss_8_d	Drawing the belly in and up after an exhale.
+gloss_9_t	Jalandhara bandha
+gloss_9_d	Chin lowered towards the chest during a breath hold.
+gloss_10_t	Mudra
+gloss_10_d	A gesture or seal — of the hands or the whole body.
+gloss_11_t	Ujjayi
+gloss_11_d	Breath with a slightly narrowed throat and a soft sound.
+gloss_12_t	Savasana
+gloss_12_d	Lying in complete rest at the end of practice.
+gloss_13_t	Surya namaskar
+gloss_13_d	Sun salutation: a flowing series of poses with the breath.
+gloss_14_t	Chandra namaskar
+gloss_14_d	Moon salutation: a calmer, cooling flow.
+gloss_15_t	Hatha yoga
+gloss_15_d	Yoga of the body and breath: asanas, pranayama, cleansing.
+gloss_16_t	Ashtanga
+gloss_16_d	“Eight limbs” of yoga by Patanjali; also a dynamic style of practice.
+gloss_17_t	Yama
+gloss_17_d	Ethics towards others: non-harm, truthfulness, not stealing, moderation, non-greed.
+gloss_18_t	Niyama
+gloss_18_d	Personal discipline: cleanliness, contentment, effort, self-study, surrender.
+gloss_19_t	Pratyahara
+gloss_19_d	Turning the senses inwards, away from distractions.
+gloss_20_t	Dharana
+gloss_20_d	Concentration on one object.
+gloss_21_t	Dhyana
+gloss_21_d	Meditation: steady, unbroken attention.
+gloss_22_t	Samadhi
+gloss_22_d	Complete absorption; the goal of yoga in the classical texts.
+gloss_23_t	Chakra
+gloss_23_d	A “wheel”: one of the energy centres along the spine in yogic tradition.
+gloss_24_t	Nadi
+gloss_24_d	A channel through which prana flows; ida on the left, pingala on the right.
+gloss_25_t	Kundalini
+gloss_25_d	Dormant energy at the base of the spine in tantric tradition.
+gloss_26_t	Mantra
+gloss_26_d	A sound or word repeated to focus the mind.
+gloss_27_t	Om
+gloss_27_d	The primordial sound; often chanted at the start and end of practice.
+gloss_28_t	Namaste
+gloss_28_d	“I bow to you”; a greeting with palms together.
+gloss_29_t	Ahimsa
+gloss_29_d	Non-harm — including to your own body in practice.
+gloss_30_t	Santosha
+gloss_30_d	Contentment with what is.
+gloss_31_t	Dosha
+gloss_31_d	In Ayurveda, one of three forces in the body: vata, pitta, kapha.
+wisdom_1	Yoga is calming the movements of the mind.
+wisdom_2	A pose should be steady and comfortable.
+wisdom_3	Practice and letting go — both are needed.
+wisdom_4	Practice becomes firm when done for a long time, without breaks and with care.
+wisdom_5	Pain that has not yet come can be avoided.
+wisdom_6	When the breath is unsteady, the mind is unsteady; when the breath is still, the mind is still.
+wisdom_7	Non-harm begins with the way you treat your own body on the mat.
+wisdom_8	Contentment brings the greatest happiness.
+wisdom_9	Success in yoga comes from enthusiasm, courage, patience and steady practice.
+wisdom_10	Overeating, overexertion, too much talk and too strict rules spoil practice.
+wisdom_11	An ounce of practice is worth tons of theory.
+wisdom_12	Be gentle with yourself today; tomorrow the body will open more easily.
+wisdom_13	Where attention goes, the breath follows; where the breath goes, the body follows.
+wisdom_14	Truthfulness: in the pose, be honest about where you are today.
+wisdom_15	Ten minutes every day are worth more than an hour once a week.
+wisdom_16	The exhale is where you let go.
+wisdom_17	Cleanliness of body and of thought makes the practice light.
+wisdom_18	Do not compare your pose with anyone else's — only with yesterday's.
+wisdom_19	Rest is part of the practice, not a break from it.
+wisdom_20	Moderation in food and sleep, in work and rest, makes yoga possible.
+wisdom_21	Smile in the pose — the face is the first place tension hides.

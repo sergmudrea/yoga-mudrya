@@ -627,6 +627,63 @@ HL_BREATH = seq(
     S('at_shava', 'Шавасана: уджайи — ровный вдох и долгий выдох', 'Savasana: ujjayi — even inhale, long exhale', 'X'),
 )
 
+
+# ============================================================ АШТАНГА
+# По книге Кино Макгрегор «The Power of Ashtanga Yoga» (основная серия школы Паттабхи Джойса): приветствия
+# солнцу A и B, стоячая последовательность и завершающие позы; сидячая часть сокращена. Удержание — 5 дыханий.
+SUR_A = seq(
+    S('at_tad', 'Самастхити: стопы вместе, ладони у бёдер', 'Samasthiti: feet together, hands by the thighs', 'e'),
+    S('lb_B5', 'Вдох: руки вверх', 'Inhale: arms up', 'i'),
+    S('at_uttan', 'Выдох: наклон', 'Exhale: fold', 'e'),
+    S('at_pnak', 'Вдох: спина ровная, взгляд вперёд', 'Inhale: flat back, look forward', 'i'),
+    S('at_chat', 'Выдох: шаг или прыжок назад, чатуранга', 'Exhale: step or jump back, chaturanga', 'e'),
+    S('at_updog', 'Вдох: собака мордой вверх', 'Inhale: upward dog', 'i'),
+    S('at_edog', 'Выдох: собака мордой вниз, пять дыханий', 'Exhale: downward dog, five breaths', 'R'),
+    S('at_pnak', 'Вдох: шаг вперёд, взгляд вперёд', 'Inhale: step forward, look forward', 'i'),
+    S('at_uttan', 'Выдох: наклон', 'Exhale: fold', 'e'),
+    S('lb_B5', 'Вдох: подняться, руки вверх', 'Inhale: rise, arms up', 'i'),
+)
+SUR_B = seq(
+    S('at_utkata', 'Вдох: стул, руки вверх', 'Inhale: chair, arms up', 'i'),
+    S('at_uttan', 'Выдох: наклон', 'Exhale: fold', 'e'),
+    S('at_pnak', 'Вдох: взгляд вперёд', 'Inhale: look forward', 'i'),
+    S('at_chat', 'Выдох: чатуранга', 'Exhale: chaturanga', 'e'),
+    S('at_updog', 'Вдох: собака мордой вверх', 'Inhale: upward dog', 'i'),
+    S('at_edog', 'Выдох: собака мордой вниз', 'Exhale: downward dog', 'e'),
+    S('lb_B342', 'Вдох: воин I — правая нога вперёд', 'Inhale: warrior I — right foot forward', 'i'),
+    S('at_chat', 'Выдох: чатуранга', 'Exhale: chaturanga', 'e'),
+    S('at_updog', 'Вдох: собака мордой вверх', 'Inhale: upward dog', 'i'),
+    S('at_edog', 'Выдох: собака мордой вниз', 'Exhale: downward dog', 'e'),
+    S('lb_B342_m', 'Вдох: воин I — левая нога вперёд', 'Inhale: warrior I — left foot forward', 'i'),
+    S('at_chat', 'Выдох: чатуранга', 'Exhale: chaturanga', 'e'),
+    S('at_updog', 'Вдох: собака мордой вверх', 'Inhale: upward dog', 'i'),
+    S('at_edog', 'Выдох: собака мордой вниз, пять дыханий', 'Exhale: downward dog, five breaths', 'R'),
+    S('at_uttan', 'Выдох: шаг вперёд, наклон', 'Exhale: step forward, fold', 'e'),
+    S('at_utkata', 'Вдох: стул', 'Inhale: chair', 'i'),
+)
+ASHTANGA = seq(
+    SUR_A, SUR_A, SUR_A, SUR_B, SUR_B,
+    S('at_padah', 'Наклон, захват больших пальцев ног', 'Forward bend, holding the big toes', 'R'),
+    both('lb_B308', 'Треугольник', 'Triangle pose', 'R'),
+    both('lb_B314', 'Треугольник со скруткой', 'Revolved triangle', 'R'),
+    both('lb_B316', 'Боковой угол', 'Extended side angle', 'R'),
+    S('at_prasarita', 'Широкий наклон', 'Wide-leg forward bend', 'R'),
+    both('lb_B303', 'Интенсивное вытяжение в сторону', 'Intense side stretch', 'R'),
+    S('at_utkata', 'Стул', 'Chair pose', 'R'),
+    both('lb_B342', 'Воин I', 'Warrior I', 'R'),
+    both('lb_B317', 'Воин II', 'Warrior II', 'R'),
+    S('lb_B775', 'Посох', 'Staff pose', 'R'),
+    S('at_pasch', 'Наклон к ногам сидя', 'Seated forward bend', 'R'),
+    S('at_purvo', 'Обратная планка', 'Reverse plank', 'R'),
+    both('lb_B853', 'Голова к колену', 'Head to knee', 'R'),
+    S('lb_B1007', 'Лодка', 'Boat pose', 'R'),
+    S('at_sarvanga', 'Стойка на плечах', 'Shoulderstand', 'L'),
+    S('at_hala', 'Плуг', 'Plough', 'R'),
+    S('at_matsya', 'Рыба', 'Fish pose', 'R'),
+    S('at_padma', 'Лотос или лёгкая поза: дыхание', 'Lotus or easy seat: breathe', 'L'),
+    S('at_shava', 'Отдых', 'Rest', 'X'),
+)
+
 # ============================================================ СПИСОК
 SECTIONS = [
     ('CLASSIC', 'Классические комплексы', 'Classic sequences'),
@@ -638,6 +695,9 @@ SECTIONS = [
 ]
 
 SETS = [
+    ('ex_ashtanga', 'CLASSIC', 'Аштанга: основная серия (коротко)', 'Ashtanga: primary series (short)',
+     'Приветствия солнцу A и B, стоячая последовательность и завершающие позы. Пять дыханий в каждой позе, около 50 минут.',
+     'Sun salutations A and B, the standing sequence and the finishing poses. Five breaths in each pose, about 50 minutes.', ASHTANGA),
     ('ex_cyp', 'CLASSIC', 'Общий протокол йоги', 'Common Yoga Protocol',
      'Официальная практика Международного дня йоги: разминка, стоя, сидя, лёжа, дыхание, медитация. 45 минут.',
      'The official International Yoga Day practice: warm-up, standing, seated, lying, breathing, meditation. 45 minutes.', CYP),

@@ -81,6 +81,8 @@ fun PracticeScreen(
     onPrograms: () -> Unit = onSets,
     onBreath: () -> Unit = {},
     onMeditation: () -> Unit = {},
+    onGlossary: () -> Unit = {},
+    onDosha: () -> Unit = {},
 ) {
     val today = UserRepository.today()
     val stats = remember(state) { ProgressStats.of(state, today) }
@@ -99,6 +101,7 @@ fun PracticeScreen(
     ) {
         Text(stringResource(R.string.today), color = MudryaColors.TextMuted, fontSize = 14.sp)
         CheckInCard(state, users, premium, onStart, onBreath, onPaywall)
+        ru.mudrya.yoga.ui.learn.WisdomCard(today)
         val program = ru.mudrya.yoga.catalog.ProgramCatalog.program(state.programId)
         if (program != null) {
             ProgramCard(program, state, users, today, stats.currentStreak, onStart, onPrograms)
@@ -107,6 +110,7 @@ fun PracticeScreen(
         }
         ru.mudrya.yoga.ui.breath.BreathCardContent(onBreath)
         ru.mudrya.yoga.ui.breath.MeditationCardContent(onMeditation)
+        ru.mudrya.yoga.ui.learn.LearnTiles(onGlossary, onDosha)
         PinnedSets(state, users, premium, onStart, onPaywall)
         FavoriteSets(state, users, premium, onStart)
         ForYouSets(state, users, premium, onStart)

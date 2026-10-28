@@ -44,3 +44,13 @@ class DailyCheckTest {
         assertEquals(Energy.HIGH, DailyCheck.today(b, 5)?.energy)
     }
 }
+
+class WisdomTest {
+    @org.junit.jupiter.api.Test
+    fun `thought of the day cycles and the dosha with most answers wins`() {
+        kotlin.test.assertEquals(1, Wisdom.forDay(0))
+        kotlin.test.assertEquals(1, Wisdom.forDay(Wisdom.COUNT.toLong()))
+        val d = DoshaQuiz.Dosha.entries
+        kotlin.test.assertEquals(DoshaQuiz.Dosha.KAPHA, DoshaQuiz.result(listOf(d[2], d[0], d[2], d[1])))
+    }
+}

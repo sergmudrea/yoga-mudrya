@@ -846,3 +846,147 @@ card_croc_works	Riposo a pancia in giù, rilassa la schiena, rallenta il respiro
 card_croc_watch	Tenere a lungo il collo girato da un lato: cambia lato.
 card_croc_easier	Fronte sulle mani sovrapposte, un cuscino sotto la pancia.
 card_croc_avoid	Gravidanza: riposa sul fianco.
+gloss_title	Dizionario dello yoga
+gloss_card_hint	Trenta parole che sentirai a lezione, in parole semplici.
+wisdom_title	Pensiero del giorno
+dosha_title	Ayurveda: il tuo tipo
+dosha_card_hint	Otto domande su corpo e abitudini, e quale pratica, ritmo e alimentazione fanno per te.
+dosha_intro	Rispondi come sei di solito da anni, non oggi. È una visione tradizionale, non una diagnosi.
+dosha_question	Domanda %1$d di %2$d
+dosha_result	Il tuo dosha prevalente
+dosha_again	Rifai il test
+dosha_practice	Pratica
+dosha_day	Ritmo della giornata
+dosha_food	Alimentazione
+dosha_sets	Sequenze adatte
+dosha_vata	Vata — aria e spazio
+dosha_pitta	Pitta — fuoco e acqua
+dosha_kapha	Kapha — terra e acqua
+dosha_vata_about	Rapida, creativa, leggera; fuori equilibrio, freddolosa, irrequieta o ansiosa.
+dosha_pitta_about	Concentrata, calorosa, determinata; fuori equilibrio, irritabile e accaldata.
+dosha_kapha_about	Calma, stabile, resistente; fuori equilibrio, pesante e fiacca.
+dosha_vata_practice	Pratica lenta e radicante: posizioni in piedi, piegamenti, savasana lungo, respirazione alternata. Niente fretta né lunghe sequenze veloci.
+dosha_pitta_practice	Pratica rinfrescante, senza fretta né competizione: piegamenti, torsioni, saluto alla luna, respiro rinfrescante.
+dosha_kapha_practice	Pratica energica e riscaldante: saluti al sole, posizioni in piedi, inarcamenti, kapalabhati al mattino.
+dosha_vata_day	Orari regolari per pasti e sonno, calore, a letto presto, automassaggio con olio tiepido.
+dosha_pitta_day	Pause nel lavoro, niente sforzi nel caldo di mezzogiorno, tempo nella natura e vicino all'acqua.
+dosha_kapha_day	Alzarsi presto, muoversi ogni giorno, niente pisolino, nuove esperienze.
+dosha_vata_food	Cibo caldo, cotto, un po' oleoso; zuppe, cereali, ortaggi a radice. Meno crudo, freddo e secco.
+dosha_pitta_food	Cibo rinfrescante e delicato: verdure, frutta, cereali. Meno piccante, acido, fritto e alcol.
+dosha_kapha_food	Cibo leggero, caldo e speziato; molte verdure e legumi. Meno dolce, pesante e latticini.
+dosha_note	L'ayurveda è un sistema tradizionale, non medicina. Per problemi di salute, rivolgiti al medico.
+dosha_q1	La tua corporatura
+dosha_q1_v	Magra, leggera, fatico a ingrassare
+dosha_q1_p	Media, atletica
+dosha_q1_k	Robusta, ingrasso facilmente
+dosha_q2	La tua pelle
+dosha_q2_v	Secca, sottile, fresca
+dosha_q2_p	Calda, arrossisce facilmente, sensibile
+dosha_q2_k	Spessa, liscia, un po' grassa
+dosha_q3	Appetito
+dosha_q3_v	Irregolare, mi dimentico di mangiare
+dosha_q3_p	Forte; affamata, irritabile
+dosha_q3_k	Costante, salto un pasto facilmente
+dosha_q4	Sonno
+dosha_q4_v	Leggero, mi sveglio spesso
+dosha_q4_p	Breve ma profondo
+dosha_q4_k	Lungo e profondo, faccio fatica a svegliarmi
+dosha_q5	Sotto stress…
+dosha_q5_v	ti preoccupi e diventi ansiosa
+dosha_q5_p	ti arrabbi e critichi
+dosha_q5_k	ti chiudi e rallenti
+dosha_q6	Il tempo che ami di meno
+dosha_q6_v	Freddo e vento
+dosha_q6_p	Caldo
+dosha_q6_k	Umido e grigio
+dosha_q7	Come fai le cose
+dosha_q7_v	In fretta, tante insieme, perdo interesse
+dosha_q7_p	Con determinazione, finisco ciò che inizio
+dosha_q7_k	Lentamente ma con costanza
+dosha_q8	Memoria
+dosha_q8_v	Imparo in fretta, dimentico in fretta
+dosha_q8_p	Acuta e chiara
+dosha_q8_k	Imparo lentamente, ricordo a lungo
+gloss_1_t	Asana
+gloss_1_d	Una posizione stabile e comoda.
+gloss_2_t	Pranayama
+gloss_2_d	Pratica respiratoria: allungare e guidare il respiro.
+gloss_3_t	Prana
+gloss_3_d	Energia vitale; nella pratica, il respiro.
+gloss_4_t	Vinyasa
+gloss_4_d	Unire movimento e respiro, un movimento per inspirazione o espirazione.
+gloss_5_t	Drishti
+gloss_5_d	Il punto in cui si posa lo sguardo nella posizione.
+gloss_6_t	Bandha
+gloss_6_d	Un leggero «blocco» muscolare che trattiene l'energia e protegge il corpo.
+gloss_7_t	Mula bandha
+gloss_7_d	Leggera risalita del pavimento pelvico.
+gloss_8_t	Uddiyana bandha
+gloss_8_d	Portare la pancia dentro e in su dopo l'espirazione.
+gloss_9_t	Jalandhara bandha
+gloss_9_d	Mento verso il petto durante la ritenzione.
+gloss_10_t	Mudra
+gloss_10_d	Un gesto o sigillo, delle mani o di tutto il corpo.
+gloss_11_t	Ujjayi
+gloss_11_d	Respiro con la gola leggermente chiusa e un suono morbido.
+gloss_12_t	Savasana
+gloss_12_d	Riposo completo da sdraiata alla fine della pratica.
+gloss_13_t	Surya namaskar
+gloss_13_d	Saluto al sole: una sequenza fluida al ritmo del respiro.
+gloss_14_t	Chandra namaskar
+gloss_14_d	Saluto alla luna: una sequenza più calma e rinfrescante.
+gloss_15_t	Hatha yoga
+gloss_15_d	Yoga del corpo e del respiro: asana, pranayama, purificazioni.
+gloss_16_t	Ashtanga
+gloss_16_d	Gli «otto rami» dello yoga secondo Patanjali; anche uno stile dinamico.
+gloss_17_t	Yama
+gloss_17_d	Etica verso gli altri: non violenza, verità, non rubare, moderazione, non avidità.
+gloss_18_t	Niyama
+gloss_18_d	Disciplina personale: pulizia, appagamento, impegno, studio di sé, abbandono.
+gloss_19_t	Pratyahara
+gloss_19_d	Rivolgere i sensi all'interno, lontano dalle distrazioni.
+gloss_20_t	Dharana
+gloss_20_d	Concentrazione su un solo oggetto.
+gloss_21_t	Dhyana
+gloss_21_d	Meditazione: attenzione stabile e ininterrotta.
+gloss_22_t	Samadhi
+gloss_22_d	Assorbimento completo; la meta dello yoga nei testi classici.
+gloss_23_t	Chakra
+gloss_23_d	Una «ruota»: uno dei centri energetici lungo la colonna nella tradizione yogica.
+gloss_24_t	Nadi
+gloss_24_d	Un canale in cui scorre il prana; ida a sinistra, pingala a destra.
+gloss_25_t	Kundalini
+gloss_25_d	L'energia dormiente alla base della colonna nella tradizione tantrica.
+gloss_26_t	Mantra
+gloss_26_d	Un suono o una parola ripetuti per concentrare la mente.
+gloss_27_t	Om
+gloss_27_d	Il suono primordiale; spesso cantato all'inizio e alla fine della pratica.
+gloss_28_t	Namaste
+gloss_28_d	«Mi inchino a te»; saluto a mani giunte.
+gloss_29_t	Ahimsa
+gloss_29_d	Non violenza, anche verso il proprio corpo nella pratica.
+gloss_30_t	Santosha
+gloss_30_d	Appagamento per ciò che c'è.
+gloss_31_t	Dosha
+gloss_31_d	Nell'ayurveda, una delle tre forze del corpo: vata, pitta, kapha.
+wisdom_1	Lo yoga è calmare i movimenti della mente.
+wisdom_2	Una posizione dev'essere stabile e comoda.
+wisdom_3	Pratica e distacco: servono entrambi.
+wisdom_4	La pratica si rafforza se è lunga, senza interruzioni e con cura.
+wisdom_5	Il dolore che non è ancora arrivato può essere evitato.
+wisdom_6	Respiro agitato, mente agitata; respiro calmo, mente calma.
+wisdom_7	La non violenza inizia da come tratti il tuo corpo sul tappetino.
+wisdom_8	L'appagamento porta la felicità più grande.
+wisdom_9	Il successo nello yoga viene da entusiasmo, coraggio, pazienza e costanza.
+wisdom_10	Mangiare troppo, sforzarsi troppo, parlare troppo e regole troppo rigide rovinano la pratica.
+wisdom_11	Un grammo di pratica vale tonnellate di teoria.
+wisdom_12	Sii gentile con te oggi; domani il corpo si aprirà più facilmente.
+wisdom_13	Dove va l'attenzione, segue il respiro; dove va il respiro, segue il corpo.
+wisdom_14	Verità: nella posizione, sii onesta su dove sei oggi.
+wisdom_15	Dieci minuti al giorno valgono più di un'ora a settimana.
+wisdom_16	L'espirazione è dove lasci andare.
+wisdom_17	La pulizia del corpo e dei pensieri rende leggera la pratica.
+wisdom_18	Non confrontare la tua posizione con quella degli altri, solo con quella di ieri.
+wisdom_19	Il riposo fa parte della pratica, non è una pausa.
+wisdom_20	La moderazione nel cibo e nel sonno, nel lavoro e nel riposo rende possibile lo yoga.
+wisdom_21	Sorridi nella posizione: il viso è il primo nascondiglio della tensione.
