@@ -19,9 +19,15 @@ const PAL = {
   dark:{top:[0x2c,0x8e,0x8b],low:[0x4e,0x5a,0xa8],feet:[0x6e,0x69,0x62]},
 };
 const clean = n => n.replace(/^mixamorig\d*:?/, '');
+/* 'sides': как у марионетки — правые конечности оранжевые, левые синие, корпус и голова свои */
+const sideOf = n => /^Right(Shoulder|Arm|ForeArm|Hand|UpLeg|Leg|Foot|Toe)/.test(n) ? 'right' : /^Left(Shoulder|Arm|ForeArm|Hand|UpLeg|Leg|Foot|Toe)/.test(n) ? 'left' : 'skin';
+const SIDES = {right: [.93, .47, .16], left: [.27, .47, .9], skin: [.78, .76, .72]};
+/* 'fitness': человек в спортивной форме — кожа, синяя майка, чёрные шорты, серые кроссовки */
+const fitOf = n => /Foot|Toe/.test(n) ? 'shoe' : /UpLeg|Hips/.test(n) ? 'shorts' : /Spine|Shoulder/.test(n) ? 'shirt' : 'skin';
+const FIT = {skin: [.93, .66, .52], shirt: [.27, .62, .8], shorts: [.16, .17, .2], shoe: [.42, .42, .44]};
 const regionOf = n => /Foot|Toe/.test(n) ? 'feet' : /UpLeg|Leg|Hips/.test(n) ? 'low' : /Head|Eye|Neck|Hand/.test(n) ? 'skin' : 'top';
 
-export async function createSkin(T, scene, {REST, DIM, url = 'model.glb'}) {
+export async function createSkin(T, scene, {REST, DIM, url = 'model.glb', tint: tintMode = 'suit'}) {
   const gltf = await new GLTFLoader().loadAsync(url);
   const root = gltf.scene;
   const B = {}; const meshes = [];
@@ -111,21 +117,29 @@ export async function createSkin(T, scene, {REST, DIM, url = 'model.glb'}) {
 
   /* region colours */
   const regions = meshes.map(m => {
-    const tint = !/Face|Eye|lash|hair/i.test(m.name);
+    const tint = tintMode !== 'none' && !/(^|[_\s:])(Face|Eye|lash|hair)/i.test(m.name) && !(tintMode === 'sides' && /Joint/i.test(m.name));
     if (!tint) return null;
     const g = m.geometry, si = g.attributes.skinIndex, sw = g.attributes.skinWeight, n = si.count, reg = new Array(n);
     for (let v = 0; v < n; v++) {
       let best = 0, bi = 0;
       for (let k = 0; k < 4; k++) { const w = sw.getComponent(v, k); if (w > best) { best = w; bi = si.getComponent(v, k); } }
-      reg[v] = regionOf(clean(m.skeleton.bones[bi].name));
+      const bn = clean(m.skeleton.bones[bi].name);
+      reg[v] = tintMode === 'sides' ? sideOf(bn) : tintMode === 'fitness' ? fitOf(bn) : regionOf(bn);
     }
     g.setAttribute('color', new T.BufferAttribute(new Float32Array(n * 3), 3));
-    for (const mat of [].concat(m.material)) { mat.vertexColors = true; mat.needsUpdate = true; }
+    for (const mat of [].concat(m.material)) {
+      mat.vertexColors = true;
+      /* у робота цвет задают вершины: основа белая, без металлического блеска */
+      if (tintMode === 'sides' || tintMode === 'fitness') { mat.color.setRGB(1, 1, 1); mat.metalness = 0; mat.roughness = .75; }
+      mat.needsUpdate = true;
+    }
     return {g, reg};
   });
   function setTheme(t) {
     const p = PAL[t] || PAL.light, mul = 1.85;
     const col = {skin: [1, 1, 1]}; for (const k of ['top', 'low', 'feet']) col[k] = p[k].map(x => Math.min(1, x / 255 * mul));
+    if (tintMode === 'sides') Object.assign(col, SIDES);
+    if (tintMode === 'fitness') Object.assign(col, FIT);
     for (const r of regions) {
       if (!r) continue; const a = r.g.attributes.color;
       for (let v = 0; v < r.reg.length; v++) a.setXYZ(v, ...col[r.reg[v]]);

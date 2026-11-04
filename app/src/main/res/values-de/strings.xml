@@ -222,7 +222,7 @@
     <string name="body_save">Speichern</string>
     <string name="age_chart_legend">Orange – Bewegungsalter, grau – Lebensalter. Niedriger ist besser.</string>
     <string name="settings_figure3d">3D-Figur</string>
-    <string name="settings_figure3d_hint">Die Holz-Gliederpuppe: weiche Übergänge, Hände und Füße bleiben am Boden; mit dem Finger drehbar. Aus – das flache Schema mit Atemleuchten.</string>
+    <string name="settings_figure3d_hint">Eine 3D-Figur (Mensch, Roboter oder Gliederpuppe): weiche Übergänge, Hände und Füße bleiben am Boden; mit dem Finger drehbar. Aus – das flache Schema mit Atemleuchten.</string>
     <string name="library_title">Bibliothek</string>
     <string name="library_hint">Alle %1$d Haltungen der Bibliothek (nach D. Lacerdas „2100 Asanas“) nach Kapiteln und Abschnitten – kostenlos ansehen: Jede Haltung öffnet sich auf der Gliederpuppe und lässt sich mit „＋“ zu deinem Set hinzufügen. Ganze Abschnitte abspielen ist Premium.</string>
     <string name="library_search">Suche: Taube, Bakasana, Berg…</string>
@@ -896,4 +896,7 @@
     <string name="tip_stop_1">Stechender oder einschießender Schmerz, Taubheit, Schwindel, Atemnot oder Brustschmerz — sofort aufhören. Geht es nicht vorbei, zum Arzt.</string>
     <string name="tip_stop_2">Nach einer Verletzung oder Operation oder bei einer chronischen Krankheit vor dem Start mit dem Arzt sprechen.</string>
     <string name="tip_stop_3">Bei Fieber oder akuter Krankheit lieber ausruhen statt üben.</string>
+    <string name="settings_figure_human">Mensch</string>
+    <string name="settings_figure_robot">Roboter</string>
+    <string name="settings_figure_doll">Marionette</string>
 </resources>

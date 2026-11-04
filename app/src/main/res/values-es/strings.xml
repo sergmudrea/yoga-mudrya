@@ -222,7 +222,7 @@
     <string name="body_save">Guardar</string>
     <string name="age_chart_legend">Naranja — edad de movimiento, gris — edad real. Más bajo es mejor.</string>
     <string name="settings_figure3d">Figura 3D</string>
-    <string name="settings_figure3d_hint">La marioneta de madera: transiciones suaves, manos y pies se quedan en el suelo; gírala con el dedo. Desactivado — el esquema plano con el brillo de la respiración.</string>
+    <string name="settings_figure3d_hint">Una figura 3D (persona, robot o marioneta): transiciones suaves, manos y pies se quedan en el suelo; gírala con el dedo. Desactivado — el esquema plano con el brillo de la respiración.</string>
     <string name="library_title">Biblioteca</string>
     <string name="library_hint">Las %1$d posturas de la biblioteca (según «2100 Asanas» de D. Lacerda) por capítulos y secciones, gratis para consultar: cualquier postura se abre en la marioneta y se añade a tu serie con «＋». Reproducir secciones enteras es Premium.</string>
     <string name="library_search">Buscar: paloma, bakasana, montaña…</string>
@@ -896,4 +896,7 @@
     <string name="tip_stop_1">Dolor agudo o punzante, entumecimiento, mareo, falta de aire o dolor en el pecho: para de inmediato. Si no pasa, ve al médico.</string>
     <string name="tip_stop_2">Después de una lesión u operación, o con una enfermedad crónica, consulta a tu médico antes de empezar.</string>
     <string name="tip_stop_3">Con fiebre o una enfermedad aguda, descansa en lugar de practicar.</string>
+    <string name="settings_figure_human">Persona</string>
+    <string name="settings_figure_robot">Robot</string>
+    <string name="settings_figure_doll">Marioneta</string>
 </resources>

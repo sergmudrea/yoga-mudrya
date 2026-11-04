@@ -41,6 +41,9 @@ data class MovementRecord(
 /** Ракурс камеры у марионетки: угол поворота вокруг фигуры, градусы. */
 enum class CameraView(val yaw: Int) { SIDE(16), THREE_QUARTER(45), FRONT(80) }
 
+/** Кого показывает объёмная фигура: человека в спортивной форме, робота или деревянную марионетку. */
+enum class FigureKind(val js: String) { HUMAN("human"), ROBOT("robot"), DOLL("doll") }
+
 /** Всё, что приложение хранит о пользователе. */
 data class UserState(
     val profile: UserProfile? = null,
@@ -131,6 +134,8 @@ data class AppSettings(
     val tvOutput: Boolean = true,
     /** Объёмная марионетка из атласа вместо плоской схемы. */
     val figure3d: Boolean = true,
+    /** Вид объёмной фигуры. */
+    val figureKind: FigureKind = FigureKind.HUMAN,
     /** Показ в плеере: подсказки, «далее», санскрит, полоса дыхания, крупный текст, ракурс камеры. */
     val showCues: Boolean = true,
     val showNext: Boolean = true,
@@ -299,6 +304,7 @@ object UserStateCodec {
         line("settings.vibration", s.settings.vibration.toString())
         line("settings.tv", s.settings.tvOutput.toString())
         line("settings.figure3d", s.settings.figure3d.toString())
+        line("settings.figureKind", s.settings.figureKind.name)
         line("settings.showCues", s.settings.showCues.toString())
         line("settings.showNext", s.settings.showNext.toString())
         line("settings.showSanskrit", s.settings.showSanskrit.toString())
@@ -385,6 +391,7 @@ object UserStateCodec {
                 vibration = single["settings.vibration"]?.toBooleanStrictOrNull() ?: false,
                 tvOutput = single["settings.tv"]?.toBooleanStrictOrNull() ?: true,
                 figure3d = single["settings.figure3d"]?.toBooleanStrictOrNull() ?: true,
+                figureKind = single["settings.figureKind"]?.let { v -> FigureKind.entries.firstOrNull { it.name == v } } ?: FigureKind.HUMAN,
                 showCues = single["settings.showCues"]?.toBooleanStrictOrNull() ?: true,
                 showNext = single["settings.showNext"]?.toBooleanStrictOrNull() ?: true,
                 showSanskrit = single["settings.showSanskrit"]?.toBooleanStrictOrNull() ?: true,

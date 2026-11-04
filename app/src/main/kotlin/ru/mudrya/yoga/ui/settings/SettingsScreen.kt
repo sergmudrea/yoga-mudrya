@@ -80,6 +80,15 @@ fun SettingsScreen(
                 }
             }
             Toggle(stringResource(R.string.settings_figure3d), stringResource(R.string.settings_figure3d_hint), s.figure3d) { v -> set { it.copy(figure3d = v) } }
+            if (s.figure3d) {
+                ChipRow {
+                    listOf(
+                        ru.mudrya.yoga.engine.FigureKind.HUMAN to R.string.settings_figure_human,
+                        ru.mudrya.yoga.engine.FigureKind.ROBOT to R.string.settings_figure_robot,
+                        ru.mudrya.yoga.engine.FigureKind.DOLL to R.string.settings_figure_doll,
+                    ).forEach { (k, label) -> Chip(stringResource(label), s.figureKind == k, { set { it.copy(figureKind = k) } }) }
+                }
+            }
             Toggle(stringResource(R.string.settings_vibration), stringResource(R.string.settings_vibration_hint), s.vibration) { v -> set { it.copy(vibration = v) } }
         }
 

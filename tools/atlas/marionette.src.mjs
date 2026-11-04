@@ -419,10 +419,11 @@ async function createFigure3D(){
     return {c:V3((x0+x1)/2,Math.max(H/2,s/2-0.12)-0.02,(z0+z1)/2*0.5),s};}
 
   setTheme('light');
-  /* модель поверх марионетки (skin.mjs): решатель тот же, рисуется кожа. Человеческие модели убраны;
-     сюда можно подключить другую (например, робота): SKIN_URL={bot:'bot.glb'}. По умолчанию — марионетка ('doll'). */
-  const SKIN_URL={};
-  async function loadSkin(url,key='model'){const s=await createSkin(T,scene,{REST,DIM,url});s.setTheme(theme||'light');s.active=false;skins[key]=s;return s;}
+  /* модели поверх марионетки (skin.mjs): решатель тот же, рисуется кожа. Обе — Mixamo (X Bot, Y Bot).
+     'human' — человек в спортивной форме (кожа, синяя майка, тёмные шорты, серые кроссовки);
+     'robot' — робот: правые конечности оранжевые, левые синие, как у марионетки; 'doll' — марионетка. */
+  const SKIN_URL={human:{url:'xbot.glb',tint:'fitness'},robot:{url:'ybot.glb',tint:'sides'}};
+  async function loadSkin(src,key='model'){const o=typeof src==='string'?{url:src}:src;const s=await createSkin(T,scene,{REST,DIM,url:o.url,tint:o.tint});s.setTheme(theme||'light');s.active=false;skins[key]=s;return s;}
   async function setFigure(kind){
     if(kind!=='doll'&&!skins[kind]&&SKIN_URL[kind]){try{await loadSkin(SKIN_URL[kind],kind);}catch(e){console.warn('model',kind,e);kind='doll';}}
     if(kind!=='doll'&&!skins[kind])kind='doll';

@@ -222,7 +222,7 @@
     <string name="body_save">Salva</string>
     <string name="age_chart_legend">Arancione — età di movimento, grigio — età anagrafica. Più bassa è meglio.</string>
     <string name="settings_figure3d">Figura 3D</string>
-    <string name="settings_figure3d_hint">La marionetta di legno: transizioni fluide, mani e piedi restano a terra; ruotala con il dito. Disattivato — lo schema piatto con il bagliore del respiro.</string>
+    <string name="settings_figure3d_hint">Una figura 3D (persona, robot o marionetta): transizioni fluide, mani e piedi restano a terra; ruotala con il dito. Disattivato — lo schema piatto con il bagliore del respiro.</string>
     <string name="library_title">Biblioteca</string>
     <string name="library_hint">Tutte le %1$d posizioni della biblioteca (da «2100 Asanas» di D. Lacerda) per capitoli e sezioni, da consultare gratis: ogni posizione si apre sulla marionetta e si aggiunge alla tua sequenza con «＋». Riprodurre intere sezioni è Premium.</string>
     <string name="library_search">Cerca: piccione, bakasana, montagna…</string>
@@ -896,4 +896,7 @@
     <string name="tip_stop_1">Dolore acuto o lancinante, intorpidimento, capogiri, affanno o dolore al petto: fermati subito. Se non passa, vai dal medico.</string>
     <string name="tip_stop_2">Dopo un infortunio o un intervento, o con una malattia cronica, parla con il medico prima di iniziare.</string>
     <string name="tip_stop_3">Con la febbre o una malattia acuta, riposa invece di praticare.</string>
+    <string name="settings_figure_human">Persona</string>
+    <string name="settings_figure_robot">Robot</string>
+    <string name="settings_figure_doll">Marionetta</string>
 </resources>
