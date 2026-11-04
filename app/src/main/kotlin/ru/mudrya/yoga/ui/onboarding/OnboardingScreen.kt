@@ -195,7 +195,7 @@ private fun minutesHint(m: Int): String = stringResource(
 @Composable
 private fun PlanStep(profile: UserProfile, minutes: Int) {
     val program = androidx.compose.runtime.remember(profile) { ru.mudrya.yoga.catalog.ProgramCatalog.recommend(profile) }
-    val first = program.days.firstOrNull { it != null } ?: "at_sn"
+    val first = ru.mudrya.yoga.store.PremiumPolicy.firstPractice(program.days, premium = false)
     ScreenTitle(stringResource(R.string.onb_plan_title))
     Body(stringResource(R.string.onb_plan_hint))
     ru.mudrya.yoga.ui.common.Card(color = MudryaColors.SaffronDeep) {

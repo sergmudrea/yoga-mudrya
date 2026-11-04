@@ -922,4 +922,6 @@
     <string name="muscle_adductors">Adduttori</string>
     <string name="muscle_calves">Polpacci</string>
     <string name="muscle_shins">Stinchi e piedi</string>
+    <string name="settings_figure_female">Femminile</string>
+    <string name="settings_figure_male">Maschile</string>
 </resources>

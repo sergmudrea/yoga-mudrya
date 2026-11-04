@@ -922,4 +922,6 @@
     <string name="muscle_adductors">Adducteurs</string>
     <string name="muscle_calves">Mollets</string>
     <string name="muscle_shins">Tibias et pieds</string>
+    <string name="settings_figure_female">Féminine</string>
+    <string name="settings_figure_male">Masculine</string>
 </resources>

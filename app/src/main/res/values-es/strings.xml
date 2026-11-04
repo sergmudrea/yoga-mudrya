@@ -922,4 +922,6 @@
     <string name="muscle_adductors">Aductores</string>
     <string name="muscle_calves">Gemelos</string>
     <string name="muscle_shins">Espinillas y pies</string>
+    <string name="settings_figure_female">Femenina</string>
+    <string name="settings_figure_male">Masculina</string>
 </resources>

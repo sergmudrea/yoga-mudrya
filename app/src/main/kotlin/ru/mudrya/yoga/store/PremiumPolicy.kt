@@ -10,6 +10,13 @@ object PremiumPolicy {
     /** Классические Сурья и Чандра Намаскар и вводные сеты — бесплатно; кольца книги Сидерского — в премиуме. */
     val FREE_SETS = setOf("at_sn", "at_cn", "wu_seated", "th_back_relief", "th_morning", "ex_ybreak", "pl_base", "hl_sleep")
 
+    /**
+     * Первая практика после онбординга: первый день программы, который можно запустить без премиума;
+     * если вся программа платная — классическая Сурья Намаскар. Новичок не должен упираться в оплату на первом шаге.
+     */
+    fun firstPractice(days: List<String?>, premium: Boolean): String =
+        days.filterNotNull().firstOrNull { !isLocked(it, premium) } ?: "at_sn"
+
     /** Чем заменить кольцо книги в плане «Путь 8 недель», если премиума нет: классическим приветствием. */
     fun pathSet(ringId: String, premium: Boolean): String =
         if (!isLocked(ringId, premium)) ringId else if (ringId == "chandra") "at_cn" else "at_sn"

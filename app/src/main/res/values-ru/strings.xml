@@ -922,4 +922,6 @@
     <string name="muscle_adductors">Внутренняя поверхность бедра</string>
     <string name="muscle_calves">Икроножные</string>
     <string name="muscle_shins">Голени и стопы</string>
+    <string name="settings_figure_female">Женская</string>
+    <string name="settings_figure_male">Мужская</string>
 </resources>

@@ -922,4 +922,6 @@
     <string name="muscle_adductors">Adutores</string>
     <string name="muscle_calves">Panturrilhas</string>
     <string name="muscle_shins">Canelas e pés</string>
+    <string name="settings_figure_female">Feminina</string>
+    <string name="settings_figure_male">Masculina</string>
 </resources>

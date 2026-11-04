@@ -88,6 +88,13 @@ fun SettingsScreen(
                         ru.mudrya.yoga.engine.FigureKind.DOLL to R.string.settings_figure_doll,
                     ).forEach { (k, label) -> Chip(stringResource(label), s.figureKind == k, { set { it.copy(figureKind = k) } }) }
                 }
+                if (s.figureKind != ru.mudrya.yoga.engine.FigureKind.DOLL) {
+                    val male = s.figureMale ?: (state.profile?.sex == ru.mudrya.yoga.engine.Sex.MALE)
+                    ChipRow {
+                        Chip(stringResource(R.string.settings_figure_female), !male, { set { it.copy(figureMale = false) } })
+                        Chip(stringResource(R.string.settings_figure_male), male, { set { it.copy(figureMale = true) } })
+                    }
+                }
             }
             Toggle(stringResource(R.string.settings_vibration), stringResource(R.string.settings_vibration_hint), s.vibration) { v -> set { it.copy(vibration = v) } }
         }

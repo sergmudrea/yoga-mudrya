@@ -44,6 +44,13 @@ enum class CameraView(val yaw: Int) { SIDE(16), THREE_QUARTER(45), FRONT(80) }
 /** Кого показывает объёмная фигура: человека в спортивной форме, робота или деревянную марионетку. */
 enum class FigureKind(val js: String) { HUMAN("human"), ROBOT("robot"), DOLL("doll") }
 
+/** Имя фигуры для эмулятора: человек и робот бывают мужские и женские; без выбора — по полу в профиле. */
+fun figureJs(settings: AppSettings, profile: UserProfile?): String {
+    if (settings.figureKind == FigureKind.DOLL) return "doll"
+    val male = settings.figureMale ?: (profile?.sex == Sex.MALE)
+    return settings.figureKind.js + if (male) "_m" else "_f"
+}
+
 /** Всё, что приложение хранит о пользователе. */
 data class UserState(
     val profile: UserProfile? = null,
@@ -136,6 +143,8 @@ data class AppSettings(
     val figure3d: Boolean = true,
     /** Вид объёмной фигуры. */
     val figureKind: FigureKind = FigureKind.HUMAN,
+    /** Мужская фигура вместо женской; null — по полу в профиле. */
+    val figureMale: Boolean? = null,
     /** Показ в плеере: подсказки, «далее», санскрит, полоса дыхания, крупный текст, ракурс камеры. */
     val showCues: Boolean = true,
     val showNext: Boolean = true,
@@ -305,6 +314,7 @@ object UserStateCodec {
         line("settings.tv", s.settings.tvOutput.toString())
         line("settings.figure3d", s.settings.figure3d.toString())
         line("settings.figureKind", s.settings.figureKind.name)
+        s.settings.figureMale?.let { line("settings.figureMale", it.toString()) }
         line("settings.showCues", s.settings.showCues.toString())
         line("settings.showNext", s.settings.showNext.toString())
         line("settings.showSanskrit", s.settings.showSanskrit.toString())
@@ -392,6 +402,7 @@ object UserStateCodec {
                 tvOutput = single["settings.tv"]?.toBooleanStrictOrNull() ?: true,
                 figure3d = single["settings.figure3d"]?.toBooleanStrictOrNull() ?: true,
                 figureKind = single["settings.figureKind"]?.let { v -> FigureKind.entries.firstOrNull { it.name == v } } ?: FigureKind.HUMAN,
+                figureMale = single["settings.figureMale"]?.toBooleanStrictOrNull(),
                 showCues = single["settings.showCues"]?.toBooleanStrictOrNull() ?: true,
                 showNext = single["settings.showNext"]?.toBooleanStrictOrNull() ?: true,
                 showSanskrit = single["settings.showSanskrit"]?.toBooleanStrictOrNull() ?: true,

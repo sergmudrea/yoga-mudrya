@@ -922,4 +922,6 @@
     <string name="muscle_adductors">Oberschenkelinnenseite</string>
     <string name="muscle_calves">Waden</string>
     <string name="muscle_shins">Schienbeine und Füße</string>
+    <string name="settings_figure_female">Weiblich</string>
+    <string name="settings_figure_male">Männlich</string>
 </resources>

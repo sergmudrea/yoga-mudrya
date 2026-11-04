@@ -922,4 +922,6 @@
     <string name="muscle_adductors">Inner thighs</string>
     <string name="muscle_calves">Calves</string>
     <string name="muscle_shins">Shins and feet</string>
+    <string name="settings_figure_female">Female</string>
+    <string name="settings_figure_male">Male</string>
 </resources>

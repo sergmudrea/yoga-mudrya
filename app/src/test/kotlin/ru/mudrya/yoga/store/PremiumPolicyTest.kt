@@ -19,6 +19,10 @@ class PremiumPolicyTest {
         assertEquals("at_sn", PremiumPolicy.pathSet("surya", premium = false))
         assertEquals("at_cn", PremiumPolicy.pathSet("chandra", premium = false))
         assertEquals("chandra", PremiumPolicy.pathSet("chandra", premium = true))
+        // первая практика после онбординга не упирается в оплату
+        assertEquals("th_morning", PremiumPolicy.firstPractice(listOf("th_slim", null, "th_morning"), premium = false))
+        assertEquals("at_sn", PremiumPolicy.firstPractice(listOf("th_slim", "th_strength"), premium = false))
+        assertEquals("th_slim", PremiumPolicy.firstPractice(listOf("th_slim", "th_strength"), premium = true))
         assertFalse(PremiumPolicy.isLocked("my_abc", premium = false))
         assertTrue(PremiumPolicy.isLocked("lib0", premium = false))
         assertFalse(PremiumPolicy.isLocked("at_sn", premium = false))

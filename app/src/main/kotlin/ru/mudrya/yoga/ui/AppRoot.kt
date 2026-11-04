@@ -114,9 +114,9 @@ fun AppRoot() {
                             programStart = today,
                         )
                     }
-                    val first = ru.mudrya.yoga.catalog.ProgramCatalog.program(r.programId)?.days?.firstOrNull { it != null }
+                    val first = PremiumPolicy.firstPractice(ru.mudrya.yoga.catalog.ProgramCatalog.program(r.programId)?.days.orEmpty(), premium)
                     nav.navigate(Tab.PRACTICE.route) { popUpTo(Routes.ONBOARDING) { inclusive = true } }
-                    if (r.startNow && first != null) nav.navigate(Routes.session(first))
+                    if (r.startNow) nav.navigate(Routes.session(first))
                 }
             }
             composable(Routes.EDIT_PROFILE) {

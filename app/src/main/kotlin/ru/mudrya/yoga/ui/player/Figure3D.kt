@@ -58,7 +58,8 @@ fun Figure3D(
     placeholder: @Composable () -> Unit = {},
 ) {
     val context = LocalContext.current
-    val figureKind = ru.mudrya.yoga.ui.common.appContainer().users.state.collectAsState().value.settings.figureKind.js
+    val userState = ru.mudrya.yoga.ui.common.appContainer().users.state.collectAsState().value
+    val figureKind = ru.mudrya.yoga.engine.figureJs(userState.settings, userState.profile)
     var ready by remember { mutableStateOf(false) }
     val failed by rememberUpdatedState(onUnavailable)
     val main = remember { Handler(Looper.getMainLooper()) }
