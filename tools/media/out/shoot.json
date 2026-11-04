@@ -1,0 +1,1597 @@
+[
+ {
+  "n": 1,
+  "slot": "at_tad",
+  "ru": "Поза горы",
+  "en": "Mountain pose",
+  "weight": 69,
+  "sets": [
+   "bk_mk",
+   "bk_pz",
+   "bk_v",
+   "th_back_strong",
+   "th_balance",
+   "th_endurance",
+   "th_flex",
+   "th_hips",
+   "th_joints",
+   "th_morning",
+   "th_posture",
+   "th_slim",
+   "th_strength"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 2,
+  "slot": "at_edog",
+  "ru": "Собака мордой вниз",
+  "en": "Downward-facing dog",
+  "weight": 58,
+  "sets": [
+   "at_sn",
+   "bk_mk",
+   "bk_pz",
+   "bk_v"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 3,
+  "slot": "at_shava",
+  "ru": "Шавасана — расслабление лёжа",
+  "en": "Savasana — relaxation lying down",
+  "weight": 41,
+  "sets": [
+   "bk_pz",
+   "bk_v",
+   "th_back_relief",
+   "th_back_strong",
+   "th_calm",
+   "th_digest",
+   "th_flex",
+   "th_hips",
+   "th_joints",
+   "th_neck",
+   "th_sleep",
+   "th_slim",
+   "th_strength"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 4,
+  "slot": "lb_B1773",
+  "ru": "Скручивание живота лёжа (джатхара париварттанасана)",
+  "en": "Also Known As: Reclining Waist Pose Prep.(Supta Madhyasana), Sideways Wind Releaser Pose",
+  "weight": 36,
+  "sets": [
+   "th_back_relief",
+   "th_back_strong",
+   "th_calm",
+   "th_digest",
+   "th_joints",
+   "th_sleep"
+  ],
+  "mirror": true
+ },
+ {
+  "n": 5,
+  "slot": "at_polu",
+  "ru": "Руки вверх, лёгкий прогиб",
+  "en": "Upward salute",
+  "weight": 32,
+  "sets": [
+   "bk_mk",
+   "bk_pz",
+   "bk_v"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 6,
+  "slot": "at_padahasta",
+  "ru": "Наклон вперёд, ладони под стопами",
+  "en": "Forward bend, palms under the feet",
+  "weight": 32,
+  "sets": [
+   "bk_mk",
+   "bk_pz",
+   "bk_v"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 7,
+  "slot": "at_pnak",
+  "ru": "Полунаклон, взгляд вперёд",
+  "en": "Half lift",
+  "weight": 32,
+  "sets": [
+   "bk_mk",
+   "bk_pz",
+   "bk_v"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 8,
+  "slot": "at_chat",
+  "ru": "Низкая планка (чатуранга)",
+  "en": "Low plank (chaturanga)",
+  "weight": 32,
+  "sets": [
+   "bk_mk",
+   "bk_pz",
+   "bk_v"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 9,
+  "slot": "at_updog",
+  "ru": "Собака мордой вверх",
+  "en": "Upward-facing dog",
+  "weight": 31,
+  "sets": [
+   "bk_mk",
+   "bk_pz",
+   "bk_v"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 10,
+  "slot": "lb_B359",
+  "ru": "Выпад всадника, подготовка",
+  "en": "Equestrian Riding Horse Lunge Pose Prep.",
+  "weight": 30,
+  "sets": [
+   "th_endurance",
+   "th_hips",
+   "th_morning"
+  ],
+  "mirror": true
+ },
+ {
+  "n": 11,
+  "slot": "lb_B1068",
+  "ru": "Поза ребёнка: руки вперёд",
+  "en": "Child’s Pose",
+  "weight": 27,
+  "sets": [
+   "th_back_relief",
+   "th_calm",
+   "th_digest",
+   "th_morning",
+   "th_neck",
+   "th_posture",
+   "th_sleep"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 12,
+  "slot": "lb_B89",
+  "ru": "Дерево с ладонями вместе",
+  "en": "Tree Pose with Hands in Prayer",
+  "weight": 26,
+  "sets": [
+   "th_balance",
+   "th_morning"
+  ],
+  "mirror": true
+ },
+ {
+  "n": 13,
+  "slot": "at_ppchat",
+  "ru": "Низкая планка, грудь вперёд",
+  "en": "Low plank, chest forward",
+  "weight": 25,
+  "sets": [
+   "bk_mk",
+   "bk_pz",
+   "bk_v"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 14,
+  "slot": "lb_B10",
+  "ru": "Стоячий полумесяц",
+  "en": "Standing Crescent Pose",
+  "weight": 24,
+  "sets": [
+   "th_joints",
+   "th_morning"
+  ],
+  "mirror": true
+ },
+ {
+  "n": 15,
+  "slot": "at_cat",
+  "ru": "Кошка: прогиб",
+  "en": "Cat: back down",
+  "weight": 20,
+  "sets": [
+   "th_back_relief",
+   "th_back_strong",
+   "th_calm",
+   "th_digest",
+   "th_joints",
+   "th_neck",
+   "th_posture"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 16,
+  "slot": "at_antcat",
+  "ru": "Кошка: спина вверх",
+  "en": "Cat: back up",
+  "weight": 18,
+  "sets": [
+   "th_back_relief",
+   "th_back_strong",
+   "th_calm",
+   "th_digest",
+   "th_joints",
+   "th_neck",
+   "th_posture"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 17,
+  "slot": "lb_B853",
+  "ru": "Голова к колену: обе руки к лодыжке",
+  "en": "Both Hands to Ankle Head to Knee Pose",
+  "weight": 18,
+  "sets": [
+   "th_calm",
+   "th_flex",
+   "th_joints"
+  ],
+  "mirror": true
+ },
+ {
+  "n": 18,
+  "slot": "lb_B133",
+  "ru": "Воин 3",
+  "en": "Warrior 3",
+  "weight": 18,
+  "sets": [
+   "bk_v",
+   "th_balance",
+   "th_endurance",
+   "th_strength"
+  ],
+  "mirror": true
+ },
+ {
+  "n": 19,
+  "slot": "at_vdoh",
+  "ru": "Вдох с раскрытием груди",
+  "en": "Chest-opening inhale",
+  "weight": 17,
+  "sets": [
+   "bk_mk",
+   "bk_pz",
+   "bk_v"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 20,
+  "slot": "lb_B1750",
+  "ru": "Связанный угол лёжа",
+  "en": "Reclined Bound Angle Pose",
+  "weight": 16,
+  "sets": [
+   "th_back_relief",
+   "th_calm",
+   "th_hips",
+   "th_sleep"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 21,
+  "slot": "lb_B5",
+  "ru": "Руки вверх",
+  "en": "Upward Salute Pose",
+  "weight": 15,
+  "sets": [
+   "th_endurance",
+   "th_joints",
+   "th_morning",
+   "th_posture"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 22,
+  "slot": "at_uttan",
+  "ru": "Наклон вперёд стоя",
+  "en": "Standing forward bend",
+  "weight": 15,
+  "sets": [
+   "th_endurance",
+   "th_flex",
+   "th_morning"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 23,
+  "slot": "lb_B270",
+  "ru": "Собака мордой вниз",
+  "en": "Downward Facing Dog Pose",
+  "weight": 14,
+  "sets": [
+   "th_endurance",
+   "th_morning",
+   "th_slim"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 24,
+  "slot": "lb_B504",
+  "ru": "Поза стула, высокая стойка",
+  "en": "Fierce Pose",
+  "weight": 14,
+  "sets": [
+   "th_endurance",
+   "th_morning",
+   "th_slim"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 25,
+  "slot": "lb_B1813",
+  "ru": "Обе руки к ноге лёжа",
+  "en": "Reclining Both Hands to the Leg Pose",
+  "weight": 14,
+  "sets": [
+   "th_back_relief",
+   "th_digest"
+  ],
+  "mirror": true
+ },
+ {
+  "n": 26,
+  "slot": "lb_B149",
+  "ru": "Орёл",
+  "en": "Garuda",
+  "weight": 14,
+  "sets": [
+   "th_balance",
+   "th_joints",
+   "th_neck"
+  ],
+  "mirror": true
+ },
+ {
+  "n": 27,
+  "slot": "lb_B943",
+  "ru": "Поза коровьей морды",
+  "en": "Cow Face Pose",
+  "weight": 14,
+  "sets": [
+   "bk_pz",
+   "th_joints",
+   "th_neck",
+   "th_posture"
+  ],
+  "mirror": true
+ },
+ {
+  "n": 28,
+  "slot": "lb_B1510",
+  "ru": "Кобра",
+  "en": "Cobra Pose",
+  "weight": 12,
+  "sets": [
+   "th_back_strong",
+   "th_morning"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 29,
+  "slot": "lb_B1783",
+  "ru": "Счастливый ребёнок (ананда баласана)",
+  "en": "Happy Baby Pose",
+  "weight": 12,
+  "sets": [
+   "th_back_relief",
+   "th_hips",
+   "th_sleep"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 30,
+  "slot": "at_pranam",
+  "ru": "Пранамасана — поза молитвы",
+  "en": "Pranamasana — prayer pose",
+  "weight": 12,
+  "sets": [
+   "at_sn"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 31,
+  "slot": "at_hastaut",
+  "ru": "Хаста уттанасана — руки вверх",
+  "en": "Hasta Uttanasana — arms up",
+  "weight": 12,
+  "sets": [
+   "at_sn"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 32,
+  "slot": "at_padah",
+  "ru": "Падахастасана — наклон к стопам",
+  "en": "Padahastasana — bend to the feet",
+  "weight": 12,
+  "sets": [
+   "at_sn"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 33,
+  "slot": "at_ashwa",
+  "ru": "Ашва санчаланасана — выпад, правая нога назад",
+  "en": "Ashwa Sanchalanasana — lunge, right leg back",
+  "weight": 12,
+  "sets": [
+   "at_sn"
+  ],
+  "mirror": true
+ },
+ {
+  "n": 34,
+  "slot": "at_croc",
+  "ru": "Крокодил: отдых на животе",
+  "en": "Crocodile rest",
+  "weight": 11,
+  "sets": [
+   "bk_pz",
+   "th_back_relief",
+   "th_back_strong"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 35,
+  "slot": "lb_B779",
+  "ru": "Западное вытяжение: захват подушечек стоп",
+  "en": "Western Intense Stretch Pose",
+  "weight": 11,
+  "sets": [
+   "th_calm",
+   "th_digest",
+   "th_flex",
+   "th_sleep"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 36,
+  "slot": "at_sphinx",
+  "ru": "Сфинкс",
+  "en": "Sphinx",
+  "weight": 10,
+  "sets": [
+   "bk_pz",
+   "th_back_relief",
+   "th_back_strong",
+   "th_posture"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 37,
+  "slot": "lb_B342",
+  "ru": "Воин 1, руки вперёд",
+  "en": "Warrior 1",
+  "weight": 10,
+  "sets": [
+   "bk_v",
+   "th_endurance",
+   "th_slim"
+  ],
+  "mirror": true
+ },
+ {
+  "n": 38,
+  "slot": "lb_B1178",
+  "ru": "Поза мудреца Васиштхи (боковая планка)",
+  "en": "Pose Dedicated to Sage Vasishta",
+  "weight": 10,
+  "sets": [
+   "th_slim",
+   "th_strength"
+  ],
+  "mirror": true
+ },
+ {
+  "n": 39,
+  "slot": "at_lcres",
+  "ru": "Выпад-полумесяц",
+  "en": "Crescent lunge",
+  "weight": 10,
+  "sets": [
+   "bk_mk"
+  ],
+  "mirror": true
+ },
+ {
+  "n": 40,
+  "slot": "lb_B720",
+  "ru": "Связанный угол, пальцы на полу",
+  "en": "Bound Angle Pose",
+  "weight": 8,
+  "sets": [
+   "th_flex",
+   "th_hips",
+   "th_joints"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 41,
+  "slot": "lb_B132",
+  "ru": "Полумесяц",
+  "en": "Half Moon Pose",
+  "weight": 8,
+  "sets": [
+   "bk_v",
+   "th_balance"
+  ],
+  "mirror": true
+ },
+ {
+  "n": 42,
+  "slot": "lb_B303",
+  "ru": "Интенсивное боковое вытяжение",
+  "en": "Intense Side Stretch Pose",
+  "weight": 8,
+  "sets": [
+   "bk_v"
+  ],
+  "mirror": true
+ },
+ {
+  "n": 43,
+  "slot": "lb_B1771",
+  "ru": "Поза ребёнка лёжа",
+  "en": "Reclined Child’s Pose",
+  "weight": 7,
+  "sets": [
+   "th_back_relief",
+   "th_digest"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 44,
+  "slot": "lb_B1703",
+  "ru": "Мост (сету бандха сарвангасана)",
+  "en": "Bridge Whole Body Pose",
+  "weight": 7,
+  "sets": [
+   "th_back_strong",
+   "th_slim",
+   "th_strength"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 45,
+  "slot": "at_sarp",
+  "ru": "Бхуджангасана — кобра",
+  "en": "Bhujangasana — cobra",
+  "weight": 7,
+  "sets": [
+   "at_sn",
+   "bk_pz"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 46,
+  "slot": "lb_B1129",
+  "ru": "Планка (вытянутый посох на четырёх опорах)",
+  "en": "Extended Four Limbs Staff Pose",
+  "weight": 7,
+  "sets": [
+   "th_endurance",
+   "th_slim",
+   "th_strength"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 47,
+  "slot": "at_baka",
+  "ru": "Ворона",
+  "en": "Crow pose",
+  "weight": 7,
+  "sets": [
+   "bk_mk",
+   "bk_pz",
+   "bk_v"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 48,
+  "slot": "lb_B299",
+  "ru": "Интенсивное боковое вытяжение: ладони у стопы",
+  "en": "Intense Side Stretch Pose Prep.",
+  "weight": 6,
+  "sets": [
+   "th_flex"
+  ],
+  "mirror": true
+ },
+ {
+  "n": 49,
+  "slot": "lb_B253",
+  "ru": "Широкий наклон 1, локти под прямым углом",
+  "en": "Feet Spread Out Intense Stretch Pose 1",
+  "weight": 6,
+  "sets": [
+   "th_flex",
+   "th_hips"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 50,
+  "slot": "lb_B775",
+  "ru": "Поза посоха",
+  "en": "Staff Pose",
+  "weight": 6,
+  "sets": [
+   "bk_pz",
+   "th_flex"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 51,
+  "slot": "lb_B1818",
+  "ru": "Рука к большому пальцу лёжа 1",
+  "en": "Reclining Big Toe Pose 1",
+  "weight": 6,
+  "sets": [
+   "th_flex"
+  ],
+  "mirror": true
+ },
+ {
+  "n": 52,
+  "slot": "lb_B642",
+  "ru": "Лёгкая поза",
+  "en": "Easy Pose",
+  "weight": 6,
+  "sets": [
+   "th_calm",
+   "th_neck"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 53,
+  "slot": "lb_B365",
+  "ru": "Ящерица, кисти разведены",
+  "en": "Hands Spread Out Extended Lizard Tail Lunge Pose",
+  "weight": 6,
+  "sets": [
+   "th_hips"
+  ],
+  "mirror": true
+ },
+ {
+  "n": 54,
+  "slot": "lb_B1763",
+  "ru": "Поза игольного ушка",
+  "en": "Eye of the Needle Pose",
+  "weight": 6,
+  "sets": [
+   "th_hips"
+  ],
+  "mirror": true
+ },
+ {
+  "n": 55,
+  "slot": "at_a8",
+  "ru": "Аштанга намаскара — восемь точек",
+  "en": "Ashtanga Namaskara — eight points",
+  "weight": 6,
+  "sets": [
+   "at_sn"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 56,
+  "slot": "lb_B29",
+  "ru": "Танец Натараджи, подготовка",
+  "en": "Lord of the Dance Pose",
+  "weight": 6,
+  "sets": [
+   "th_balance"
+  ],
+  "mirror": true
+ },
+ {
+  "n": 57,
+  "slot": "lb_B317",
+  "ru": "Воин 2",
+  "en": "Warrior 2",
+  "weight": 6,
+  "sets": [
+   "bk_v",
+   "th_slim"
+  ],
+  "mirror": true
+ },
+ {
+  "n": 58,
+  "slot": "lb_B316",
+  "ru": "Боковой угол",
+  "en": "Extended Side Angle Pose",
+  "weight": 6,
+  "sets": [
+   "bk_v",
+   "th_slim"
+  ],
+  "mirror": true
+ },
+ {
+  "n": 59,
+  "slot": "lb_B609",
+  "ru": "Гирлянда",
+  "en": "Garland Pose",
+  "weight": 5,
+  "sets": [
+   "th_hips",
+   "th_joints"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 60,
+  "slot": "lb_B1487",
+  "ru": "Поза саранчи: ноги на полу",
+  "en": "Locust Pose",
+  "weight": 5,
+  "sets": [
+   "bk_pz",
+   "th_back_strong",
+   "th_posture"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 61,
+  "slot": "lb_B1007",
+  "ru": "Поза лодки",
+  "en": "Boat Pose",
+  "weight": 5,
+  "sets": [
+   "th_slim",
+   "th_strength"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 62,
+  "slot": "lb_B1159",
+  "ru": "Чатуранга (посох на четырёх опорах)",
+  "en": "Four Limbed Staff Pose",
+  "weight": 5,
+  "sets": [
+   "th_endurance",
+   "th_strength"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 63,
+  "slot": "lb_B1499",
+  "ru": "Полусаранча: противоположные рука и нога",
+  "en": "Half Locust Pose",
+  "weight": 4,
+  "sets": [
+   "th_back_strong"
+  ],
+  "mirror": true
+ },
+ {
+  "n": 64,
+  "slot": "lb_B1073",
+  "ru": "Скрученная поза ребёнка на боку",
+  "en": "Revolved Side Child’s Pose",
+  "weight": 4,
+  "sets": [
+   "th_neck"
+  ],
+  "mirror": true
+ },
+ {
+  "n": 65,
+  "slot": "lb_B1327",
+  "ru": "Поза Каундиньи на двух ногах",
+  "en": "Two-Legged Pose Dedicated to Koundinya",
+  "weight": 4,
+  "sets": [
+   "bk_v"
+  ],
+  "mirror": true
+ },
+ {
+  "n": 66,
+  "slot": "at_vira",
+  "ru": "Поза героя",
+  "en": "Hero pose",
+  "weight": 4,
+  "sets": [
+   "bk_pz",
+   "bk_v"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 67,
+  "slot": "at_purvo",
+  "ru": "Обратная планка",
+  "en": "Reverse plank",
+  "weight": 4,
+  "sets": [
+   "bk_pz"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 68,
+  "slot": "at_frog",
+  "ru": "Лягушка",
+  "en": "Frog",
+  "weight": 3,
+  "sets": [
+   "th_hips"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 69,
+  "slot": "lb_B1823",
+  "ru": "Ноги вверх лёжа",
+  "en": "Reclining Legs Extended Pose",
+  "weight": 3,
+  "sets": [
+   "th_sleep"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 70,
+  "slot": "lb_B4",
+  "ru": "Поза горы, кисти в замке за спиной",
+  "en": "Hands Bound Mountain Pose",
+  "weight": 3,
+  "sets": [
+   "th_neck",
+   "th_posture"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 71,
+  "slot": "lb_B1598",
+  "ru": "Интенсивная поза вытянутого щенка",
+  "en": "Intense Extended Puppy Dog Pose",
+  "weight": 3,
+  "sets": [
+   "th_neck",
+   "th_posture"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 72,
+  "slot": "lb_B505",
+  "ru": "Поза стула, низкий присед",
+  "en": "Fierce Pose",
+  "weight": 3,
+  "sets": [
+   "th_strength"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 73,
+  "slot": "lb_B1344",
+  "ru": "Поза дельфина",
+  "en": "Downward Facing Pose Dedicated to Makara",
+  "weight": 3,
+  "sets": [
+   "th_strength"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 74,
+  "slot": "lb_B1145",
+  "ru": "Поза дельфина-планки (Макара)",
+  "en": "Staff Pose Dedicated to Makara",
+  "weight": 3,
+  "sets": [
+   "th_strength"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 75,
+  "slot": "lb_B1305",
+  "ru": "Журавль (бакасана)",
+  "en": "Crane Pose",
+  "weight": 3,
+  "sets": [
+   "th_strength"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 76,
+  "slot": "lb_B250",
+  "ru": "Полунаклон в широкой стойке",
+  "en": "Half Feet Spread Out Intense Stretch Pose",
+  "weight": 3,
+  "sets": [
+   "bk_v"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 77,
+  "slot": "lb_B255",
+  "ru": "Широкий наклон 4",
+  "en": "Feet Spread Out Intense Stretch Pose 4",
+  "weight": 3,
+  "sets": [
+   "bk_v"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 78,
+  "slot": "lb_B1094",
+  "ru": "Поза коровы с растяжкой запястий",
+  "en": "Intense Wrist Stretch Cow Pose",
+  "weight": 2,
+  "sets": [
+   "th_joints"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 79,
+  "slot": "at_darnika",
+  "ru": "Расслабление на пятках",
+  "en": "Relaxation on the heels",
+  "weight": 2,
+  "sets": [
+   "th_back_strong"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 80,
+  "slot": "lb_B1523",
+  "ru": "Собака мордой вверх: колени на полу",
+  "en": "Upward Facing Dog Pose",
+  "weight": 2,
+  "sets": [
+   "th_endurance"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 81,
+  "slot": "lb_B308",
+  "ru": "Треугольник",
+  "en": "Extended Triangle Pose",
+  "weight": 2,
+  "sets": [
+   "bk_v"
+  ],
+  "mirror": true
+ },
+ {
+  "n": 82,
+  "slot": "lb_B314",
+  "ru": "Скрученный треугольник",
+  "en": "Revolved Triangle Pose",
+  "weight": 2,
+  "sets": [
+   "bk_v"
+  ],
+  "mirror": true
+ },
+ {
+  "n": 83,
+  "slot": "lb_B313",
+  "ru": "Скрученный треугольник с ладонями вместе",
+  "en": "Revolved Triangle Pose",
+  "weight": 2,
+  "sets": [
+   "bk_v"
+  ],
+  "mirror": true
+ },
+ {
+  "n": 84,
+  "slot": "at_lvdoh",
+  "ru": "Выпад, руки вверх",
+  "en": "Lunge, arms up",
+  "weight": 2,
+  "sets": [
+   "bk_v"
+  ],
+  "mirror": true
+ },
+ {
+  "n": 85,
+  "slot": "lb_B329",
+  "ru": "Скрученный боковой угол с ладонями вместе",
+  "en": "Revolved Side Angle Pose Prep.",
+  "weight": 2,
+  "sets": [
+   "bk_v"
+  ],
+  "mirror": true
+ },
+ {
+  "n": 86,
+  "slot": "lb_B330",
+  "ru": "Скрученный боковой угол, руки свободны",
+  "en": "Both Hands Free Revolved Side Angle Pose",
+  "weight": 2,
+  "sets": [
+   "bk_v"
+  ],
+  "mirror": true
+ },
+ {
+  "n": 87,
+  "slot": "lb_B332",
+  "ru": "Скрученный боковой угол",
+  "en": "Revolved Side Angle Pose",
+  "weight": 2,
+  "sets": [
+   "bk_v"
+  ],
+  "mirror": true
+ },
+ {
+  "n": 88,
+  "slot": "lb_B333",
+  "ru": "Связанный скрученный боковой угол",
+  "en": "Bound Revolved Side Angle Pose",
+  "weight": 2,
+  "sets": [
+   "bk_v"
+  ],
+  "mirror": true
+ },
+ {
+  "n": 89,
+  "slot": "lb_B343",
+  "ru": "Связанный воин 1",
+  "en": "Bound Warrior 1",
+  "weight": 2,
+  "sets": [
+   "bk_v"
+  ],
+  "mirror": true
+ },
+ {
+  "n": 90,
+  "slot": "lb_B340",
+  "ru": "Воин 1, подготовка",
+  "en": "Warrior 1 Prep.",
+  "weight": 2,
+  "sets": [
+   "bk_v"
+  ],
+  "mirror": true
+ },
+ {
+  "n": 91,
+  "slot": "lb_B88",
+  "ru": "Лёгкое дерево",
+  "en": "Easy Tree Pose Modification",
+  "weight": 2,
+  "sets": [
+   "bk_v"
+  ],
+  "mirror": true
+ },
+ {
+  "n": 92,
+  "slot": "lb_B97",
+  "ru": "Дерево в полулотосе, рука вверх",
+  "en": "Upward One Hand Half Bound Lotus Tree Pose",
+  "weight": 2,
+  "sets": [
+   "bk_v"
+  ],
+  "mirror": true
+ },
+ {
+  "n": 93,
+  "slot": "lb_B147",
+  "ru": "Полулотос в наклоне вперёд",
+  "en": "Half Bound Lotus Intense Stretch Pose",
+  "weight": 2,
+  "sets": [
+   "bk_v"
+  ],
+  "mirror": true
+ },
+ {
+  "n": 94,
+  "slot": "lb_B145",
+  "ru": "Полулотос в наклоне, подготовка",
+  "en": "Half Bound Lotus Intense Stretch Pose Prep.",
+  "weight": 2,
+  "sets": [
+   "bk_v"
+  ],
+  "mirror": true
+ },
+ {
+  "n": 95,
+  "slot": "lb_B262",
+  "ru": "Скрученный наклон в широкой стойке",
+  "en": "Revolved Half Feet Spread Out Intense Stretch Pose",
+  "weight": 2,
+  "sets": [
+   "bk_v"
+  ],
+  "mirror": true
+ },
+ {
+  "n": 96,
+  "slot": "lb_B264",
+  "ru": "Связанный скрученный наклон в широкой стойке",
+  "en": "Bound Revolved Feet Spread Out Intense Stretch Pose",
+  "weight": 2,
+  "sets": [
+   "bk_v"
+  ],
+  "mirror": true
+ },
+ {
+  "n": 97,
+  "slot": "at_virabend",
+  "ru": "Поза героя, руки вверх",
+  "en": "Hero pose, arms up",
+  "weight": 2,
+  "sets": [
+   "bk_pz",
+   "bk_v"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 98,
+  "slot": "at_ustra",
+  "ru": "Верблюд",
+  "en": "Camel pose",
+  "weight": 2,
+  "sets": [
+   "bk_pz",
+   "bk_v"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 99,
+  "slot": "at_paryanka",
+  "ru": "Поза героя лёжа",
+  "en": "Reclined hero pose",
+  "weight": 2,
+  "sets": [
+   "bk_pz",
+   "bk_v"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 100,
+  "slot": "at_sarpturn",
+  "ru": "Кобра с поворотом влево",
+  "en": "Cobra, turn to the left",
+  "weight": 2,
+  "sets": [
+   "bk_pz"
+  ],
+  "mirror": true
+ },
+ {
+  "n": 101,
+  "slot": "at_pasch",
+  "ru": "Наклон вперёд сидя",
+  "en": "Seated forward bend",
+  "weight": 2,
+  "sets": [
+   "bk_pz"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 102,
+  "slot": "lb_B704",
+  "ru": "Поза Маричи 3, подготовка: скручивание",
+  "en": "Pose Dedicated to Sage Marichi 3 Prep.",
+  "weight": 2,
+  "sets": [
+   "bk_pz"
+  ],
+  "mirror": true
+ },
+ {
+  "n": 103,
+  "slot": "lb_B802",
+  "ru": "Поза Маричи 1",
+  "en": "Pose Dedicated to Sage Marichi 1",
+  "weight": 2,
+  "sets": [
+   "bk_pz"
+  ],
+  "mirror": true
+ },
+ {
+  "n": 104,
+  "slot": "lb_B686",
+  "ru": "Скрученная поза Маричи",
+  "en": "Revolved Pose Dedicated to Sage Marichi",
+  "weight": 2,
+  "sets": [
+   "bk_pz"
+  ],
+  "mirror": true
+ },
+ {
+  "n": 105,
+  "slot": "lb_B854",
+  "ru": "Голова к колену: обе руки к стопе",
+  "en": "Both Hands to Foot Head to Knee Pose",
+  "weight": 2,
+  "sets": [
+   "bk_pz"
+  ],
+  "mirror": true
+ },
+ {
+  "n": 106,
+  "slot": "lb_B867",
+  "ru": "Скрученная голова к колену",
+  "en": "Revolved Head to Knee Pose",
+  "weight": 2,
+  "sets": [
+   "bk_pz"
+  ],
+  "mirror": true
+ },
+ {
+  "n": 107,
+  "slot": "at_hlbindfold",
+  "ru": "Наклон с полулотосом и захватом",
+  "en": "Bound half lotus forward bend",
+  "weight": 2,
+  "sets": [
+   "bk_pz"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 108,
+  "slot": "at_hltwist",
+  "ru": "Скрутка в полулотосе",
+  "en": "Half lotus twist",
+  "weight": 2,
+  "sets": [
+   "bk_pz"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 109,
+  "slot": "lb_B831",
+  "ru": "Трёхчастное западное вытяжение",
+  "en": "Three Limbed Face to Foot Western Intense Stretch Pose",
+  "weight": 2,
+  "sets": [
+   "bk_pz"
+  ],
+  "mirror": true
+ },
+ {
+  "n": 110,
+  "slot": "lb_B700",
+  "ru": "Полу-царь рыб 1",
+  "en": "Half Lord of the Fishes Pose 1",
+  "weight": 2,
+  "sets": [
+   "bk_pz"
+  ],
+  "mirror": true
+ },
+ {
+  "n": 111,
+  "slot": "lb_B1679",
+  "ru": "Обратный стол на одной ноге",
+  "en": "One-Legged Half Eastern Intense Stretch Pose",
+  "weight": 2,
+  "sets": [
+   "bk_pz"
+  ],
+  "mirror": true
+ },
+ {
+  "n": 112,
+  "slot": "at_hala",
+  "ru": "Плуг",
+  "en": "Plough",
+  "weight": 2,
+  "sets": [
+   "bk_pz"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 113,
+  "slot": "at_upavside",
+  "ru": "Широкий сед, наклон вправо",
+  "en": "Wide-angle seat, bend to the right",
+  "weight": 2,
+  "sets": [
+   "bk_pz"
+  ],
+  "mirror": true
+ },
+ {
+  "n": 114,
+  "slot": "lb_B1492",
+  "ru": "Поза саранчи: руки широко",
+  "en": "Locust Pose",
+  "weight": 1,
+  "sets": [
+   "th_posture"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 115,
+  "slot": "at_prasarita",
+  "ru": "Широкий наклон вперёд",
+  "en": "Wide-legged forward bend",
+  "weight": 1,
+  "sets": [
+   "bk_v"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 116,
+  "slot": "lb_B254",
+  "ru": "Широкий наклон 1, руки прямые",
+  "en": "Feet Spread Out Intense Stretch Pose 1",
+  "weight": 1,
+  "sets": [
+   "bk_v"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 117,
+  "slot": "at_sarpfull",
+  "ru": "Глубокая кобра",
+  "en": "Deep cobra",
+  "weight": 1,
+  "sets": [
+   "bk_pz"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 118,
+  "slot": "lb_B1543",
+  "ru": "Поза лука (дханурасана)",
+  "en": "Bow Pose",
+  "weight": 1,
+  "sets": [
+   "bk_pz"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 119,
+  "slot": "at_revtable",
+  "ru": "Обратный стол",
+  "en": "Reverse tabletop",
+  "weight": 1,
+  "sets": [
+   "bk_pz"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 120,
+  "slot": "at_triple",
+  "ru": "Тройное вытяжение",
+  "en": "Triple stretch",
+  "weight": 1,
+  "sets": [
+   "bk_pz"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 121,
+  "slot": "at_angstr",
+  "ru": "Лёжа: ноги вверх, захват пальцев",
+  "en": "Lying: legs up, holding the toes",
+  "weight": 1,
+  "sets": [
+   "bk_pz"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 122,
+  "slot": "at_bhadralock",
+  "ru": "Бабочка",
+  "en": "Butterfly",
+  "weight": 1,
+  "sets": [
+   "bk_pz"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 123,
+  "slot": "at_bhadrafold",
+  "ru": "Наклон в бабочке",
+  "en": "Butterfly forward bend",
+  "weight": 1,
+  "sets": [
+   "bk_pz"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 124,
+  "slot": "at_upavfold",
+  "ru": "Наклон в широком седе",
+  "en": "Wide-angle seated forward bend",
+  "weight": 1,
+  "sets": [
+   "bk_pz"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 125,
+  "slot": "lb_B765",
+  "ru": "Сидячий угол",
+  "en": "Seated Angle Pose",
+  "weight": 1,
+  "sets": [
+   "bk_pz"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 126,
+  "slot": "at_baddhaup",
+  "ru": "Лёжа: ноги к лицу, захват стоп",
+  "en": "Lying: legs to the face, holding the feet",
+  "weight": 1,
+  "sets": [
+   "bk_pz"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 127,
+  "slot": "at_lsit",
+  "ru": "Упор на руках, ноги вперёд (уголок)",
+  "en": "L-sit",
+  "weight": 1,
+  "sets": [
+   "bk_pz"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 128,
+  "slot": "lb_B1016",
+  "ru": "Полная лодка",
+  "en": "Complete Boat Pose",
+  "weight": 1,
+  "sets": [
+   "bk_pz"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 129,
+  "slot": "lb_B1017",
+  "ru": "Полулодка",
+  "en": "Half Boat Pose",
+  "weight": 1,
+  "sets": [
+   "bk_pz"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 130,
+  "slot": "at_virash",
+  "ru": "Поза героя, руки в замке за спиной",
+  "en": "Hero pose, hands clasped behind",
+  "weight": 1,
+  "sets": [
+   "bk_pz"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 131,
+  "slot": "at_kneelbend",
+  "ru": "Полулук на коленях",
+  "en": "Kneeling half bow",
+  "weight": 1,
+  "sets": [
+   "bk_pz"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 132,
+  "slot": "at_mayura",
+  "ru": "Павлин",
+  "en": "Peacock",
+  "weight": 1,
+  "sets": [
+   "bk_pz"
+  ],
+  "mirror": false
+ },
+ {
+  "n": 133,
+  "slot": "at_matsya",
+  "ru": "Рыба",
+  "en": "Fish pose",
+  "weight": 1,
+  "sets": [
+   "bk_pz"
+  ],
+  "mirror": false
+ }
+]

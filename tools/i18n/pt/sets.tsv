@@ -1,0 +1,119 @@
+0	Sol
+1	Lua
+2	Surya Namaskar (clássico)
+3	Chandra Namaskar (clássico)
+4	Entrada no aquecimento
+5	Aquecimento 1
+6	Aquecimento 2
+7	Aquecimento 3: inversões
+8	Aquecimento 4
+9	Aquecimento 5
+10	Aquecimento 6
+11	Aquecimento 7
+12	Série avançada
+13	Entrada no desaquecimento
+14	Desaquecimento
+15	Aquecimento: elementos extras
+16	Desaquecimento: elementos extras
+17	Sol: elementos extras
+18	Lua: elementos extras
+19	Sol e Lua: prática completa
+20	Lua: prática completa
+21	Abertura
+22	Vinyasa
+23	Volta com avanço, perna direita
+24	Sequência numa perna, direita
+25	Volta com avanço, perna esquerda
+26	Sequência numa perna, esquerda
+27	Encerramento
+28	Sequência
+29	Volta lunar, lado direito
+30	Volta lunar, lado esquerdo
+31	Surya Namaskar (clássico) — lado direito
+32	Surya Namaskar (clássico) — lado esquerdo
+33	Chandra Namaskar (clássico) — lado direito
+34	Chandra Namaskar (clássico) — lado esquerdo
+35	Sol: extras
+36	Lua: camelos altos
+37	Flexões para trás de bruços: camelo e escorpião
+38	Naja real
+39	Parada de cabeça: lótus, escorpião, parada de antebraços
+40	Inversões com lótus
+41	Superarado e vela sem apoio
+42	Pêndulo e paradas de mão
+43	Apoios invertidos
+44	Trava da raiz
+45	Espacate: equilíbrio agrupado e anel do pombo
+46	Sequência em lótus
+47	Costas e postura
+48	Articulações e flexibilidade
+49	Forma, força, resistência
+50	Calma e sono
+51	Casos especiais
+52	Fortaleça suas costas
+53	Extensores das costas e core: gato, esfinge, naja, gafanhoto, ponte.
+54	Costas sem dor
+55	Aliviar a lombar com suavidade: joelhos ao peito, gato, criança, torção deitada.
+56	Postura ereta
+57	Abrir o peito e os ombros, fortalecer as costas.
+58	Pescoço e ombros sem tensão
+59	Depois de um dia na mesa: braços de águia, cara de vaca, filhote, linha na agulha.
+60	Devolva o movimento às articulações
+61	Ombros, pulsos, quadris, joelhos e pés — um círculo completo sem sobrecarga.
+62	Liberte os quadris
+63	Articulações do quadril: avanço, lagarto, guirlanda, borboleta, buraco da agulha, bebê feliz.
+64	Flexibilidade: toque o chão
+65	Posteriores da coxa e costas: flexões em pé e sentado, dedão deitado.
+66	Joelhos sem dor
+67	Fortalecer em volta do joelho sem flexão profunda.
+68	Corpo esguio
+69	Os grandes músculos em ação: cadeira, guerreiros, prancha, prancha lateral, barco, ponte.
+70	Resistência: aguente mais sem perder o fôlego
+71	Uma sequência contínua: flexão, avanço, prancha, chaturanga, cachorros, cadeira, guerreiros.
+72	Força e definição
+73	Ombros, braços e core: prancha, chaturanga, golfinho, corvo, barco, guerreiro 3.
+74	Equilíbrio e foco
+75	Equilíbrios numa perna: árvore, águia, guerreiro 3, meia-lua, dançarino.
+76	Manhã com energia
+77	Acordado em 10 minutos.
+78	Antiestresse: expire
+79	Ritmo lento, expiração longa.
+80	Sono profundo
+81	Antes de dormir: criança, borboleta deitada, torção, bebê feliz, pernas para cima.
+82	Barriga leve
+83	Torções e alívio: joelhos ao peito, torções deitado, flexão sentado.
+84	Parto mais fácil
+85	Para gestantes com liberação médica: pelve, assoalho pélvico, costas; sem flexões para trás de bruços, torções fechadas ou inversões; descanso deitada de lado.
+86	Três pequenos sóis
+87	Três voltas curtas de saudação ao sol: a segunda com salto para o corvo, a terceira com avanços. Um aquecimento de 10 minutos.
+88	Acenda o fogo interior
+89	Respiração abdominal, contrações da barriga e a onda abdominal em borboleta e lótus. Só em jejum.
+90	Vire o mundo de cabeça para baixo
+91	Arados, velas, pontes e uma parada de cabeça. Inversões só depois do aquecimento.
+92	Pernas fortes, coluna flexível
+93	Triângulos, ângulos laterais, guerreiros, árvore e flexões de pernas abertas — tudo em pé.
+94	Flexibilidade de serpente
+95	Flexões para trás de bruços, flexões e torções sentado, prancha invertida, pavão.
+96	Tudo de uma vez
+97	Um pouco de cada série — para os dias sem tempo para séries separadas.
+98	Começar do zero: 14 dias
+99	Um começo suave: manhã, costas, articulações, flexibilidade e sono — 10 minutos por dia.
+100	Costas sem dor em 21 dias
+101	Aliviar a lombar, fortalecer os músculos das costas, soltar o pescoço e endireitar a postura.
+102	Flexibilidade em 30 dias
+103	Um pouco mais fundo a cada dia: flexões para a frente, quadris, articulações. A meta: tocar o chão com facilidade.
+104	Esguia e tonificada em 30 dias
+105	Séries dinâmicas para o corpo todo, resistência e equilíbrio. De preferência de manhã, antes de comer.
+106	Corpo forte em 30 dias
+107	Força de braços, pernas e core: posturas em pé, pranchas, equilíbrios. Para quem já tem alguma experiência.
+108	Manhãs com energia: 21 dias
+109	Uma prática curta logo ao acordar — um hábito que dá energia o dia inteiro.
+110	Calma e sono: 21 dias
+111	Práticas da noite: soltar tensões, relaxar o pescoço e a barriga, adormecer com facilidade.
+112	Em pé
+113	Sentado
+114	Core
+115	De quatro apoios
+116	Inversões
+117	De bruços
+118	Deitado de costas

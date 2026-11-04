@@ -1,0 +1,2228 @@
+{
+ "anticat_knee": {
+  "KNEES": 1,
+  "LUMBAR": 0,
+  "NECK": 0,
+  "SHOULDERS": 1,
+  "WRISTS": 2,
+  "inversion": false,
+  "why": "Колено к голове снизу: сгибание колена без нагрузки — K1"
+ },
+ "at_a8": {
+  "KNEES": 1,
+  "LUMBAR": 1,
+  "NECK": 1,
+  "SHOULDERS": 1,
+  "WRISTS": 1,
+  "inversion": false,
+  "why": "Аштанга намаскара: руки согнуты и держат часть веса, подбородок на полу"
+ },
+ "at_angstr": {
+  "KNEES": 0,
+  "LUMBAR": 0,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Лёжа, крестец и шея прижаты, тянем пальцы ног — растяжка задней поверхности, L3 ошибочно"
+ },
+ "at_ardhach": {
+  "KNEES": 2,
+  "LUMBAR": 2,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Полумесяц на колене: заднее колено на полу под весом + выпад — K2 (как kneel_backbend)"
+ },
+ "at_ardhach_m": {
+  "KNEES": 2,
+  "LUMBAR": 2,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Полумесяц на колене: заднее колено на полу под весом + выпад — K2 (как kneel_backbend)"
+ },
+ "at_ardhasarv": {
+  "KNEES": 0,
+  "LUMBAR": 1,
+  "NECK": 3,
+  "SHOULDERS": 2,
+  "WRISTS": 0,
+  "inversion": true,
+  "why": "Полустойка на плечах / плуг: вес на плечах и шее — перевёрнутая (как hala)"
+ },
+ "at_ashwa": {
+  "KNEES": 2,
+  "LUMBAR": 1,
+  "NECK": 1,
+  "SHOULDERS": 0,
+  "WRISTS": 1,
+  "inversion": false,
+  "why": "Ашва санчаланасана: колено на полу + глубокий выпад (K2), руки лишь касаются пола, лёгкий прогиб с взглядом вверх"
+ },
+ "at_ashwa_m": {
+  "KNEES": 2,
+  "LUMBAR": 1,
+  "NECK": 1,
+  "SHOULDERS": 0,
+  "WRISTS": 1,
+  "inversion": false,
+  "why": "Ашва санчаланасана: колено на полу + глубокий выпад (K2), руки лишь касаются пола, лёгкий прогиб с взглядом вверх"
+ },
+ "at_baddhafold": {
+  "KNEES": 3,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 2,
+  "WRISTS": 0,
+  "base": "STANDING",
+  "inversion": false,
+  "why": "Наклон в баддха-падмасане — не баланс на руках"
+ },
+ "at_baddhapadma": {
+  "KNEES": 3,
+  "LUMBAR": 0,
+  "NECK": 0,
+  "SHOULDERS": 2,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Захват стоп из-за спины — S2"
+ },
+ "at_baddhapadma_m": {
+  "KNEES": 3,
+  "LUMBAR": 0,
+  "NECK": 0,
+  "SHOULDERS": 2,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Захват стоп из-за спины — S2"
+ },
+ "at_baddhaup": {
+  "KNEES": 0,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Лёжа, ноги к груди — сгибание без нагрузки; L3 ошибочно"
+ },
+ "at_bearbend": {
+  "KNEES": 0,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 2,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "«Медвежий замок» (руки гомукхасаны) — S2; наклон — L1"
+ },
+ "at_bearbend_m": {
+  "KNEES": 0,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 2,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "«Медвежий замок» (руки гомукхасаны) — S2; наклон — L1"
+ },
+ "at_bearfold": {
+  "KNEES": 0,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 2,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "«Медвежий замок» (руки гомукхасаны) — S2; наклон — L1"
+ },
+ "at_bearfold_m": {
+  "KNEES": 0,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 2,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "«Медвежий замок» (руки гомукхасаны) — S2; наклон — L1"
+ },
+ "at_bhadra": {
+  "KNEES": 2,
+  "LUMBAR": 0,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Бабочка/сиддхасана — не лотос: вращение в колене умеренное, K2"
+ },
+ "at_bhadrafold": {
+  "KNEES": 2,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "base": "STANDING",
+  "inversion": false,
+  "why": "Наклон в бабочке: грудь на полу — не баланс на руках"
+ },
+ "at_bhadraknees": {
+  "KNEES": 2,
+  "LUMBAR": 0,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Бабочка/сиддхасана — не лотос: вращение в колене умеренное, K2"
+ },
+ "at_bhadralock": {
+  "KNEES": 2,
+  "LUMBAR": 0,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 1,
+  "inversion": false,
+  "why": "Бабочка с захватом стоп — K2 (не лотос)"
+ },
+ "at_bhuj": {
+  "KNEES": 0,
+  "LUMBAR": 3,
+  "NECK": 1,
+  "SHOULDERS": 1,
+  "WRISTS": 2,
+  "base": "LYING",
+  "inversion": false,
+  "why": "Змеиный прогиб на прямых руках, торс вертикален, макушка назад — глубокий прогиб; не SEATED"
+ },
+ "at_bok": {
+  "KNEES": 0,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 1,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Боковой наклон с вывернутым замком вверху — как side_crescent (L1), плечи на пределе"
+ },
+ "at_bok_m": {
+  "KNEES": 0,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 1,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Боковой наклон с вывернутым замком вверху — как side_crescent (L1), плечи на пределе"
+ },
+ "at_bridge": {
+  "KNEES": 1,
+  "LUMBAR": 2,
+  "NECK": 2,
+  "SHOULDERS": 1,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Плечевой мост (сету бандха): прогиб L2, вес на плечах при согнутой шее — N2"
+ },
+ "at_cat": {
+  "KNEES": 1,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 1,
+  "WRISTS": 2,
+  "inversion": false,
+  "why": "Кошка-прогиб на четвереньках — мягкое разгибание, L1 (лечебная поза для спины)"
+ },
+ "at_chat": {
+  "KNEES": 0,
+  "LUMBAR": 0,
+  "NECK": 0,
+  "SHOULDERS": 2,
+  "WRISTS": 2,
+  "inversion": false,
+  "why": "Чатуранга/планка: плечи несут вес тела — S2 (как у chaturanga/plank)"
+ },
+ "at_cring1": {
+  "KNEES": 2,
+  "LUMBAR": 3,
+  "NECK": 1,
+  "SHOULDERS": 2,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Кольцо в выпаде: макушка к стопе — глубокий прогиб; рука из-за головы держит стопу — S2"
+ },
+ "at_cring2": {
+  "KNEES": 2,
+  "LUMBAR": 3,
+  "NECK": 1,
+  "SHOULDERS": 2,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Кольцо в выпаде: макушка к стопе — глубокий прогиб; рука из-за головы держит стопу — S2"
+ },
+ "at_cverb1": {
+  "KNEES": 1,
+  "LUMBAR": 3,
+  "NECK": 0,
+  "SHOULDERS": 2,
+  "WRISTS": 2,
+  "inversion": false,
+  "why": "Верхний верблюд: рука вывернута в плече, локоть вверх — S2"
+ },
+ "at_cverb2": {
+  "KNEES": 1,
+  "LUMBAR": 3,
+  "NECK": 0,
+  "SHOULDERS": 2,
+  "WRISTS": 2,
+  "inversion": false,
+  "why": "Верхний верблюд: рука вывернута в плече, локоть вверх — S2"
+ },
+ "at_darnika": {
+  "KNEES": 2,
+  "LUMBAR": 0,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Сидя на пятках/поза ребёнка: глубокое сгибание коленей под весом — K2; руки не нагружены"
+ },
+ "at_deepsh": {
+  "KNEES": 1,
+  "LUMBAR": 0,
+  "NECK": 0,
+  "SHOULDERS": 2,
+  "WRISTS": 2,
+  "inversion": false,
+  "why": "Глубокое плечевое вытягивание с опорой на руки — S2"
+ },
+ "at_ekabaka": {
+  "KNEES": 0,
+  "LUMBAR": 0,
+  "NECK": 0,
+  "SHOULDERS": 3,
+  "WRISTS": 3,
+  "inversion": false,
+  "why": "Стойка-полусборка: баланс на руках, поясница не нагружена"
+ },
+ "at_ekoshtra": {
+  "KNEES": 1,
+  "LUMBAR": 3,
+  "NECK": 1,
+  "SHOULDERS": 2,
+  "WRISTS": 2,
+  "base": "LYING",
+  "inversion": false,
+  "why": "Односторонний верблюд из кобры: одна рука держит верх тела, другая вывернута — W2 S2"
+ },
+ "at_ekoshtra2": {
+  "KNEES": 1,
+  "LUMBAR": 3,
+  "NECK": 1,
+  "SHOULDERS": 2,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Обе руки тянут стопу ко лбу — глубокий прогиб, плечи вывернуты"
+ },
+ "at_ekoshtralotus": {
+  "KNEES": 2,
+  "LUMBAR": 3,
+  "NECK": 1,
+  "SHOULDERS": 2,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Односторонний верблюд с замкнутым полулотосом: рука вывернута"
+ },
+ "at_ekscorp": {
+  "KNEES": 1,
+  "LUMBAR": 2,
+  "NECK": 2,
+  "SHOULDERS": 2,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Односторонний скорпион: лоб на предплечье под весом, таз поднят, прогиб"
+ },
+ "at_ekscorptw": {
+  "KNEES": 0,
+  "LUMBAR": 3,
+  "NECK": 1,
+  "SHOULDERS": 2,
+  "WRISTS": 1,
+  "base": "STANDING",
+  "inversion": false,
+  "why": "Скорпион с поворотом: плечи и верх груди на полу — не баланс на руках"
+ },
+ "at_ekscorpup": {
+  "KNEES": 0,
+  "LUMBAR": 1,
+  "NECK": 2,
+  "SHOULDERS": 1,
+  "WRISTS": 1,
+  "inversion": false,
+  "why": "Подбородок на кистях при поднятом тазе — шея в разгибании под весом (сейчас ошибочно служит заменой планки по запястьям)"
+ },
+ "at_fbridge": {
+  "KNEES": 0,
+  "LUMBAR": 3,
+  "NECK": 3,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Мост с опорой на лоб: глубокий прогиб, вес на голове — «требует большого внимания к шее»; было всё 0"
+ },
+ "at_fishsphinx": {
+  "KNEES": 3,
+  "LUMBAR": 2,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 1,
+  "inversion": false,
+  "why": "Сфинкс в лотосе — лотос K3"
+ },
+ "at_foldreach": {
+  "KNEES": 0,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "base": "STANDING",
+  "inversion": false,
+  "why": "Открытый наклон стоя, пальцы едва касаются пола — не баланс на руках"
+ },
+ "at_freeup": {
+  "KNEES": 0,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Лёжа, ноги к груди — сгибание без нагрузки; L3 ошибочно"
+ },
+ "at_frogfold": {
+  "KNEES": 3,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "base": "STANDING",
+  "inversion": false,
+  "why": "Лягушка с наклоном: торс на полу — не баланс на руках"
+ },
+ "at_fscorp": {
+  "KNEES": 0,
+  "LUMBAR": 3,
+  "NECK": 2,
+  "SHOULDERS": 3,
+  "WRISTS": 0,
+  "inversion": true,
+  "why": "Скорпион на предплечьях: вес на предплечьях/плечах (не на голове), глубокий прогиб, голова поднята"
+ },
+ "at_fscorp1": {
+  "KNEES": 0,
+  "LUMBAR": 3,
+  "NECK": 2,
+  "SHOULDERS": 3,
+  "WRISTS": 0,
+  "inversion": true,
+  "why": "Скорпион на предплечьях: вес на предплечьях/плечах (не на голове), глубокий прогиб, голова поднята"
+ },
+ "at_fscorpext": {
+  "KNEES": 0,
+  "LUMBAR": 3,
+  "NECK": 2,
+  "SHOULDERS": 3,
+  "WRISTS": 0,
+  "inversion": true,
+  "why": "Скорпион на предплечьях: вес на предплечьях/плечах (не на голове), глубокий прогиб, голова поднята"
+ },
+ "at_fscorplotus": {
+  "KNEES": 3,
+  "LUMBAR": 3,
+  "NECK": 2,
+  "SHOULDERS": 3,
+  "WRISTS": 0,
+  "inversion": true,
+  "why": "Скорпион на предплечьях с лотосом: плечи, предельный прогиб, лотос"
+ },
+ "at_full": {
+  "KNEES": 0,
+  "LUMBAR": 3,
+  "NECK": 2,
+  "SHOULDERS": 1,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Полный прогиб стоя: макушка назад — явное разгибание шеи; руки в вывернутом замке назад — плечи. at_full = та же поза, было L2"
+ },
+ "at_fwheel": {
+  "KNEES": 0,
+  "LUMBAR": 3,
+  "NECK": 1,
+  "SHOULDERS": 3,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Мост на предплечьях: плечи в полном сгибании под весом — S3, не STANDING"
+ },
+ "at_fwheeltight": {
+  "KNEES": 0,
+  "LUMBAR": 3,
+  "NECK": 1,
+  "SHOULDERS": 3,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Мост на предплечьях: плечи в полном сгибании под весом — S3, не STANDING"
+ },
+ "at_fwheelup": {
+  "KNEES": 0,
+  "LUMBAR": 3,
+  "NECK": 1,
+  "SHOULDERS": 3,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Мост на предплечьях: плечи в полном сгибании под весом — S3, не STANDING"
+ },
+ "at_galava": {
+  "KNEES": 2,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 3,
+  "WRISTS": 3,
+  "inversion": false,
+  "why": "Баланс на руках со скрещёнными голенями/полулотосом"
+ },
+ "at_galavahead": {
+  "KNEES": 3,
+  "LUMBAR": 0,
+  "NECK": 2,
+  "SHOULDERS": 3,
+  "WRISTS": 3,
+  "inversion": false,
+  "why": "Переход: голова на полу, лотос на руке"
+ },
+ "at_garuda": {
+  "KNEES": 1,
+  "LUMBAR": 0,
+  "NECK": 0,
+  "SHOULDERS": 1,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Гарудасана: обвитые руки и ноги, полуприсед с закруткой колена"
+ },
+ "at_garuda_m": {
+  "KNEES": 1,
+  "LUMBAR": 0,
+  "NECK": 0,
+  "SHOULDERS": 1,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Гарудасана: обвитые руки и ноги, полуприсед с закруткой колена"
+ },
+ "at_garudaup": {
+  "KNEES": 0,
+  "LUMBAR": 0,
+  "NECK": 0,
+  "SHOULDERS": 1,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Обвитые руки вытянуты вверх — S1"
+ },
+ "at_garudaup_m": {
+  "KNEES": 0,
+  "LUMBAR": 0,
+  "NECK": 0,
+  "SHOULDERS": 1,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Обвитые руки вытянуты вверх — S1"
+ },
+ "at_gturtle": {
+  "KNEES": 2,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Полуприсед со спиной горизонтально: колени под весом в сгибании, поясница держит наклон"
+ },
+ "at_gturtlefw": {
+  "KNEES": 2,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Полуприсед со спиной горизонтально: колени под весом в сгибании, поясница держит наклон"
+ },
+ "at_halabaddha": {
+  "KNEES": 0,
+  "LUMBAR": 1,
+  "NECK": 3,
+  "SHOULDERS": 2,
+  "WRISTS": 0,
+  "inversion": true,
+  "why": "Замкнутый плуг: ноги за головой — вес на плечах и шее (как uthala); перевёрнутая"
+ },
+ "at_halfbridge": {
+  "KNEES": 1,
+  "LUMBAR": 2,
+  "NECK": 2,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Полумост на затылке: шея выгнута и пола не касается, опора на затылок; колени без веса — K1"
+ },
+ "at_halfinv": {
+  "KNEES": 0,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 1,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Лёжа, ноги к животу, руки в плечевом вытягивании; запястья без опоры"
+ },
+ "at_handL": {
+  "KNEES": 0,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 3,
+  "WRISTS": 3,
+  "inversion": false,
+  "why": "Стойка на руках с ногами горизонтально — поясница не L3"
+ },
+ "at_handlotus": {
+  "KNEES": 3,
+  "LUMBAR": 0,
+  "NECK": 0,
+  "SHOULDERS": 3,
+  "WRISTS": 3,
+  "inversion": false,
+  "why": "Стойка на руках с лотосом — лотос K3"
+ },
+ "at_handlotus_m": {
+  "KNEES": 3,
+  "LUMBAR": 0,
+  "NECK": 0,
+  "SHOULDERS": 3,
+  "WRISTS": 3,
+  "inversion": false,
+  "why": "Стойка на руках с лотосом — лотос K3"
+ },
+ "at_handscorp": {
+  "KNEES": 0,
+  "LUMBAR": 3,
+  "NECK": 1,
+  "SHOULDERS": 3,
+  "WRISTS": 3,
+  "inversion": false,
+  "why": "Скорпион в стойке на руках — глубокий прогиб («кольцо от носков до макушки»)"
+ },
+ "at_handscorp1": {
+  "KNEES": 0,
+  "LUMBAR": 3,
+  "NECK": 1,
+  "SHOULDERS": 3,
+  "WRISTS": 3,
+  "inversion": false,
+  "why": "Скорпион в стойке на руках — глубокий прогиб («кольцо от носков до макушки»)"
+ },
+ "at_hanu": {
+  "KNEES": 0,
+  "LUMBAR": 2,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 1,
+  "inversion": false,
+  "why": "Шпагат с прогибом: умеренное разгибание поясницы (тянет задняя нога) — L2, не L3"
+ },
+ "at_hanu_m": {
+  "KNEES": 0,
+  "LUMBAR": 2,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 1,
+  "inversion": false,
+  "why": "Шпагат с прогибом: умеренное разгибание поясницы (тянет задняя нога) — L2, не L3"
+ },
+ "at_hanuring": {
+  "KNEES": 1,
+  "LUMBAR": 3,
+  "NECK": 1,
+  "SHOULDERS": 2,
+  "WRISTS": 1,
+  "inversion": false,
+  "why": "Кольцо в шпагате: рука вывернута, локоть вверх — S2"
+ },
+ "at_hbridge": {
+  "KNEES": 0,
+  "LUMBAR": 3,
+  "NECK": 3,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": true,
+  "why": "Мост на голове — глубокий прогиб (L0/L2 ошибочны; зеркальные варианты расходились)"
+ },
+ "at_hbridgek": {
+  "KNEES": 0,
+  "LUMBAR": 3,
+  "NECK": 3,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": true,
+  "why": "Мост на голове — глубокий прогиб (L0/L2 ошибочны; зеркальные варианты расходились)"
+ },
+ "at_hbridgek_m": {
+  "KNEES": 0,
+  "LUMBAR": 3,
+  "NECK": 3,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": true,
+  "why": "Мост на голове — глубокий прогиб (L0/L2 ошибочны; зеркальные варианты расходились)"
+ },
+ "at_hbridgeup_m": {
+  "KNEES": 0,
+  "LUMBAR": 3,
+  "NECK": 3,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": true,
+  "why": "Мост на голове — глубокий прогиб (L0/L2 ошибочны; зеркальные варианты расходились)"
+ },
+ "at_hdanda": {
+  "KNEES": 0,
+  "LUMBAR": 3,
+  "NECK": 3,
+  "SHOULDERS": 2,
+  "WRISTS": 1,
+  "inversion": true,
+  "why": "Стойка на голове: плечи несут вес (S2)"
+ },
+ "at_hedgeplech": {
+  "KNEES": 0,
+  "LUMBAR": 2,
+  "NECK": 1,
+  "SHOULDERS": 2,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "«Ежовый» наклон с плечевым вытягиванием: принудительное сгибание, голова между ногами"
+ },
+ "at_hgoraksha": {
+  "KNEES": 0,
+  "LUMBAR": 0,
+  "NECK": 3,
+  "SHOULDERS": 2,
+  "WRISTS": 1,
+  "inversion": true,
+  "why": "Стойка на голове на предплечьях — плечи несут значительную часть веса (S2)"
+ },
+ "at_hkona": {
+  "KNEES": 0,
+  "LUMBAR": 0,
+  "NECK": 3,
+  "SHOULDERS": 2,
+  "WRISTS": 1,
+  "inversion": true,
+  "why": "Стойка на голове на предплечьях — плечи несут значительную часть веса (S2)"
+ },
+ "at_hlbind": {
+  "KNEES": 2,
+  "LUMBAR": 0,
+  "NECK": 0,
+  "SHOULDERS": 2,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Захват стопы из-за спины — S2; поясница не нагружена"
+ },
+ "at_hlbindfold": {
+  "KNEES": 2,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 2,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Наклон с замкнутым полулотосом"
+ },
+ "at_hlfold": {
+  "KNEES": 2,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Наклон сидя с полулотосом: L1, полулотос K2"
+ },
+ "at_hlseat": {
+  "KNEES": 2,
+  "LUMBAR": 0,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Сидя в полулотосе, прямой позвоночник — поясница не нагружена"
+ },
+ "at_hltwist": {
+  "KNEES": 2,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 1,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Полускручивание сидя, позвоночник прямой"
+ },
+ "at_hnak": {
+  "KNEES": 0,
+  "LUMBAR": 2,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Горизонтальный наклон стоя = horiz_fold (L2); сейчас служит «заменой» horiz_fold по пояснице, хотя это та же поза"
+ },
+ "at_horse": {
+  "KNEES": 1,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 2,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Стойка всадника, ладони между лопаток (обратное намасте) — S2; колени согнуты под весом"
+ },
+ "at_horse2": {
+  "KNEES": 1,
+  "LUMBAR": 2,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Стойка всадника с прогибом назад (подготовка к мосту) — L2"
+ },
+ "at_horse3": {
+  "KNEES": 1,
+  "LUMBAR": 2,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Стойка всадника с прогибом назад (подготовка к мосту) — L2"
+ },
+ "at_hprep": {
+  "KNEES": 0,
+  "LUMBAR": 0,
+  "NECK": 2,
+  "SHOULDERS": 2,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Подготовка к стойке на голове: голова на полу под частью веса, опора на предплечья; запястья не нагружены"
+ },
+ "at_hring": {
+  "KNEES": 0,
+  "LUMBAR": 3,
+  "NECK": 3,
+  "SHOULDERS": 2,
+  "WRISTS": 1,
+  "inversion": true,
+  "why": "Стойка на голове: плечи несут вес (S2)"
+ },
+ "at_ironocc": {
+  "KNEES": 0,
+  "LUMBAR": 2,
+  "NECK": 3,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Железный мост с опорой на затылок — вес тела на голове/шее"
+ },
+ "at_ironsh": {
+  "KNEES": 0,
+  "LUMBAR": 3,
+  "NECK": 2,
+  "SHOULDERS": 1,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Железный мост на плечах и пятках: вес на плечах/шее"
+ },
+ "at_jathara": {
+  "KNEES": 0,
+  "LUMBAR": 2,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Скручивание лёжа с прямыми ногами на весу — скручивание под нагрузкой"
+ },
+ "at_jathara_m": {
+  "KNEES": 0,
+  "LUMBAR": 2,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Скручивание лёжа с прямыми ногами на весу — скручивание под нагрузкой"
+ },
+ "at_kaphand": {
+  "KNEES": 1,
+  "LUMBAR": 3,
+  "NECK": 1,
+  "SHOULDERS": 2,
+  "WRISTS": 2,
+  "inversion": false,
+  "why": "Коленно-кистевой мост: прямые руки, «запястья сильно растягиваются» под весом"
+ },
+ "at_kapota": {
+  "KNEES": 1,
+  "LUMBAR": 3,
+  "NECK": 2,
+  "SHOULDERS": 2,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Капотасана: голова на полу в разгибании, локти на полу — плечи в полном сгибании"
+ },
+ "at_karnalotus": {
+  "KNEES": 3,
+  "LUMBAR": 2,
+  "NECK": 3,
+  "SHOULDERS": 2,
+  "WRISTS": 0,
+  "inversion": true,
+  "why": "Плуг/карнапида с лотосом — лотос K3"
+ },
+ "at_karnalotus_m": {
+  "KNEES": 3,
+  "LUMBAR": 2,
+  "NECK": 3,
+  "SHOULDERS": 2,
+  "WRISTS": 0,
+  "inversion": true,
+  "why": "Плуг/карнапида с лотосом — лотос K3"
+ },
+ "at_kneelbend": {
+  "KNEES": 1,
+  "LUMBAR": 2,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Прогиб назад стоя на коленях с подъёмом таза — L2"
+ },
+ "at_kokila": {
+  "KNEES": 3,
+  "LUMBAR": 2,
+  "NECK": 1,
+  "SHOULDERS": 1,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Висячий мост: перекат на колени в лотосе, расслабленный прогиб"
+ },
+ "at_kukelb": {
+  "KNEES": 3,
+  "LUMBAR": 0,
+  "NECK": 0,
+  "SHOULDERS": 3,
+  "WRISTS": 3,
+  "inversion": false,
+  "why": "Петух: баланс на руках с лотосом; поясница не нагружена; не SEATED"
+ },
+ "at_kukkuta": {
+  "KNEES": 3,
+  "LUMBAR": 0,
+  "NECK": 0,
+  "SHOULDERS": 3,
+  "WRISTS": 3,
+  "base": "ARM_BALANCE",
+  "inversion": false,
+  "why": "Петух: баланс на руках с лотосом; поясница не нагружена; не SEATED"
+ },
+ "at_kukprep": {
+  "KNEES": 3,
+  "LUMBAR": 1,
+  "NECK": 3,
+  "SHOULDERS": 2,
+  "WRISTS": 2,
+  "base": "HANDS_AND_FEET",
+  "inversion": true,
+  "why": "Лотос к животу в СТОЙКЕ НА ГОЛОВЕ — вес на голове, перевёрнутая; лотос"
+ },
+ "at_kundala": {
+  "KNEES": 0,
+  "LUMBAR": 2,
+  "NECK": 1,
+  "SHOULDERS": 1,
+  "WRISTS": 1,
+  "inversion": false,
+  "why": "Кольцевой наклон стоя: голова и плечи между ногами — сильное сгибание, не упор на руки"
+ },
+ "at_kurma": {
+  "KNEES": 0,
+  "LUMBAR": 2,
+  "NECK": 0,
+  "SHOULDERS": 1,
+  "WRISTS": 0,
+  "base": "STANDING",
+  "inversion": false,
+  "why": "Черепаха: лежим грудью на полу, ноги на руках — не баланс на руках; глубокое сгибание под весом ног"
+ },
+ "at_lcres3": {
+  "KNEES": 2,
+  "LUMBAR": 3,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Полумесяц с коленом на полу: колено на полу + переднее колено (как kneel_backbend)"
+ },
+ "at_legs30": {
+  "KNEES": 0,
+  "LUMBAR": 2,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Подъём прямых ног на 30° лёжа: максимальная тяга подвздошно-поясничной на поясницу"
+ },
+ "at_legs60": {
+  "KNEES": 0,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Ноги на 60° — нагрузка на поясницу меньше, но есть"
+ },
+ "at_letstep": {
+  "KNEES": 2,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Широкий шаг (выпад) без прогиба, торс вертикален: L1; переднее колено под весом — K2 (выровнено)"
+ },
+ "at_lola": {
+  "KNEES": 0,
+  "LUMBAR": 0,
+  "NECK": 0,
+  "SHOULDERS": 3,
+  "WRISTS": 3,
+  "base": "ARM_BALANCE",
+  "inversion": false,
+  "why": "Лоласана: зависание на прямых руках с поджатыми ногами — баланс на руках, поясница не нагружена (не KNEELING)"
+ },
+ "at_lotusrelax": {
+  "KNEES": 3,
+  "LUMBAR": 0,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Лёжа на животе в лотосе — нагрузка на колени лотосная"
+ },
+ "at_lotusturtle": {
+  "KNEES": 3,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 1,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Гарбха пиндасана: баланс на ягодицах с лотосом — поясница не L3"
+ },
+ "at_lowstr": {
+  "KNEES": 0,
+  "LUMBAR": 0,
+  "NECK": 2,
+  "SHOULDERS": 1,
+  "WRISTS": 1,
+  "inversion": false,
+  "why": "Подбородок на полу при поднятом тазе — шея в разгибании под весом; руки в упоре"
+ },
+ "at_lowtwist": {
+  "KNEES": 0,
+  "LUMBAR": 1,
+  "NECK": 1,
+  "SHOULDERS": 1,
+  "WRISTS": 1,
+  "inversion": false,
+  "why": "Скручивание с головой/подбородком на полу и опорой на руку"
+ },
+ "at_lowtwist_m": {
+  "KNEES": 0,
+  "LUMBAR": 1,
+  "NECK": 1,
+  "SHOULDERS": 1,
+  "WRISTS": 1,
+  "inversion": false,
+  "why": "Скручивание с головой/подбородком на полу и опорой на руку"
+ },
+ "at_lsit": {
+  "KNEES": 0,
+  "LUMBAR": 0,
+  "NECK": 0,
+  "SHOULDERS": 3,
+  "WRISTS": 3,
+  "base": "ARM_BALANCE",
+  "inversion": false,
+  "why": "Угол в упоре: весь вес тела на руках"
+ },
+ "at_lvdoh": {
+  "KNEES": 2,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Широкий шаг (выпад) без прогиба, торс вертикален: L1; переднее колено под весом — K2 (выровнено)"
+ },
+ "at_matsya": {
+  "KNEES": 0,
+  "LUMBAR": 3,
+  "NECK": 3,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Рыба с опорой на лоб/макушку, спина выгнута до предела — вес на голове при разгибании шеи"
+ },
+ "at_matsyendra": {
+  "KNEES": 3,
+  "LUMBAR": 3,
+  "NECK": 0,
+  "SHOULDERS": 3,
+  "WRISTS": 3,
+  "base": "ARM_BALANCE",
+  "inversion": false,
+  "why": "Лотосовое скручивание на руках: таз висит над полом — вес на руках, предельное скручивание под весом, лотос; не SEATED"
+ },
+ "at_mayuralotus": {
+  "KNEES": 2,
+  "LUMBAR": 0,
+  "NECK": 0,
+  "SHOULDERS": 3,
+  "WRISTS": 3,
+  "inversion": false,
+  "why": "Павлин с полулотосом"
+ },
+ "at_mula2": {
+  "KNEES": 3,
+  "LUMBAR": 0,
+  "NECK": 0,
+  "SHOULDERS": 1,
+  "WRISTS": 2,
+  "inversion": false,
+  "why": "Руками упираемся в пол и поднимаем таз — запястья под весом"
+ },
+ "at_openinv": {
+  "KNEES": 0,
+  "LUMBAR": 2,
+  "NECK": 1,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Перевёрнутый открытый наклон: сильное сгибание, голова между ногами — L2, шея в сгибании"
+ },
+ "at_padabhuja": {
+  "KNEES": 0,
+  "LUMBAR": 0,
+  "NECK": 0,
+  "SHOULDERS": 3,
+  "WRISTS": 3,
+  "inversion": false,
+  "why": "Бхуджапидасана: баланс на руках, поясница/шея не нагружены"
+ },
+ "at_padah": {
+  "KNEES": 0,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 1,
+  "base": "STANDING",
+  "inversion": false,
+  "why": "Падахастасана: наклон стоя, ладони у стоп — не баланс на руках"
+ },
+ "at_padahasta": {
+  "KNEES": 0,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 1,
+  "WRISTS": 2,
+  "base": "HANDS_AND_FEET",
+  "inversion": false,
+  "why": "Пада хастасана: стоим на ладонях (запястья в разгибании под весом стоп), наклон — не баланс на руках"
+ },
+ "at_padmadhanu1": {
+  "KNEES": 3,
+  "LUMBAR": 0,
+  "NECK": 0,
+  "SHOULDERS": 1,
+  "WRISTS": 1,
+  "inversion": false,
+  "why": "Лотос, ладони позади таза"
+ },
+ "at_padmadhanu2": {
+  "KNEES": 3,
+  "LUMBAR": 2,
+  "NECK": 1,
+  "SHOULDERS": 2,
+  "WRISTS": 2,
+  "base": "HANDS_AND_FEET",
+  "inversion": false,
+  "why": "Лотосовый лук: таз поднят с опорой на руки, голова назад; лотос"
+ },
+ "at_padmafold": {
+  "KNEES": 3,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 2,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Наклон в лотосе с плечевым вытягиванием/ладонями между лопаток"
+ },
+ "at_padmafold2": {
+  "KNEES": 3,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "base": "STANDING",
+  "inversion": false,
+  "why": "Наклон в лотосе, лоб на полу — не баланс на руках"
+ },
+ "at_padmafoldnam": {
+  "KNEES": 3,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 2,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Наклон в лотосе с плечевым вытягиванием/ладонями между лопаток"
+ },
+ "at_padmahala": {
+  "KNEES": 3,
+  "LUMBAR": 2,
+  "NECK": 3,
+  "SHOULDERS": 2,
+  "WRISTS": 0,
+  "inversion": true,
+  "why": "Плуг/карнапида с лотосом — лотос K3"
+ },
+ "at_padmaneck": {
+  "KNEES": 3,
+  "LUMBAR": 0,
+  "NECK": 1,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Вращение головы с максимальной амплитудой — шея"
+ },
+ "at_parivr": {
+  "KNEES": 0,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Пассивное скручивание лёжа — лёгкая нагрузка на поясницу"
+ },
+ "at_parivr_m": {
+  "KNEES": 0,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Пассивное скручивание лёжа — лёгкая нагрузка на поясницу"
+ },
+ "at_parshvak": {
+  "KNEES": 3,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 3,
+  "WRISTS": 3,
+  "inversion": false,
+  "why": "Боковой петух с лотосом — лотос K3"
+ },
+ "at_paryarch": {
+  "KNEES": 2,
+  "LUMBAR": 3,
+  "NECK": 2,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "base": "STANDING",
+  "inversion": false,
+  "why": "Прогиб из супта-вирасаны: голова и таз на полу, спина и шея выгнуты — не баланс на руках"
+ },
+ "at_pasch": {
+  "KNEES": 0,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Наклон сидя — сгибание поясницы, L1"
+ },
+ "at_paschprep": {
+  "KNEES": 0,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Наклон сидя — сгибание поясницы, L1"
+ },
+ "at_paschsh": {
+  "KNEES": 0,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 2,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Наклон сидя с плечевым вытягиванием/ладонями между лопаток — S2"
+ },
+ "at_paschtw": {
+  "KNEES": 0,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 1,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Скручивание в наклоне сидя"
+ },
+ "at_pashini": {
+  "KNEES": 0,
+  "LUMBAR": 3,
+  "NECK": 2,
+  "SHOULDERS": 3,
+  "WRISTS": 3,
+  "inversion": false,
+  "why": "Ноги за головой с опорой на руки: предельное сгибание позвоночника, голени давят на шею"
+ },
+ "at_pashini2": {
+  "KNEES": 0,
+  "LUMBAR": 3,
+  "NECK": 2,
+  "SHOULDERS": 3,
+  "WRISTS": 3,
+  "inversion": false,
+  "why": "Ноги за головой с опорой на руки: предельное сгибание позвоночника, голени давят на шею"
+ },
+ "at_pincha": {
+  "KNEES": 0,
+  "LUMBAR": 0,
+  "NECK": 1,
+  "SHOULDERS": 3,
+  "WRISTS": 0,
+  "inversion": true,
+  "why": "Стойка на предплечьях: вес на плечах/предплечьях, голова не нагружена"
+ },
+ "at_plank": {
+  "KNEES": 0,
+  "LUMBAR": 0,
+  "NECK": 0,
+  "SHOULDERS": 2,
+  "WRISTS": 2,
+  "inversion": false,
+  "why": "Чатуранга/планка: плечи несут вес тела — S2 (как у chaturanga/plank)"
+ },
+ "at_plech": {
+  "KNEES": 0,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 2,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Наклон стоя с замком за спиной: нагрузка в плечах (S2), поясница — обычный наклон L1"
+ },
+ "at_plechup": {
+  "KNEES": 0,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 2,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Наклон с ногой вверх и вывернутым замком — S2"
+ },
+ "at_plough": {
+  "KNEES": 0,
+  "LUMBAR": 2,
+  "NECK": 2,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": true,
+  "why": "Плугообразные махи: ноги за голову до пола 10–12 раз — динамическая нагрузка на шею и сгибание поясницы; перевёрнутая"
+ },
+ "at_pnak": {
+  "KNEES": 0,
+  "LUMBAR": 2,
+  "NECK": 2,
+  "SHOULDERS": 1,
+  "WRISTS": 1,
+  "inversion": false,
+  "why": "Полупрогиб в наклоне: ладони лишь подпирают (не упор всем весом), прогиб спины, взгляд в потолок — сильное разгибание шеи"
+ },
+ "at_polu": {
+  "KNEES": 0,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Грудной полупрогиб на носках — как arms_up (L1)"
+ },
+ "at_povtaz": {
+  "KNEES": 0,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 1,
+  "WRISTS": 1,
+  "base": "STANDING",
+  "inversion": false,
+  "why": "Наклон на одной ноге с поворотом таза, руки на полу — не баланс на руках"
+ },
+ "at_ppchat": {
+  "KNEES": 0,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 2,
+  "WRISTS": 2,
+  "inversion": false,
+  "why": "Полупрогиб в горизонтальном упоре: вес на согнутых руках + грудной прогиб; выровнено между дубликатами"
+ },
+ "at_prasarita": {
+  "KNEES": 0,
+  "LUMBAR": 1,
+  "NECK": 2,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Широкий наклон с опорой макушкой в пол: вес частично на голове — N2; поясница — наклон L1"
+ },
+ "at_purvo": {
+  "KNEES": 0,
+  "LUMBAR": 0,
+  "NECK": 0,
+  "SHOULDERS": 2,
+  "WRISTS": 2,
+  "inversion": false,
+  "why": "Обратный упор: плечи в разгибании под весом тела — S2"
+ },
+ "at_quad": {
+  "KNEES": 2,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Торс лежит на переднем бедре — поясница почти не нагружена"
+ },
+ "at_quadbend": {
+  "KNEES": 2,
+  "LUMBAR": 2,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Растягивание бедра с прогибом назад — L2"
+ },
+ "at_rajasarp": {
+  "KNEES": 1,
+  "LUMBAR": 3,
+  "NECK": 2,
+  "SHOULDERS": 1,
+  "WRISTS": 2,
+  "base": "LYING",
+  "inversion": false,
+  "why": "Королевская кобра: прямые руки, лоб к пальцам ног — предельный прогиб с запрокинутой головой"
+ },
+ "at_revtable": {
+  "KNEES": 0,
+  "LUMBAR": 0,
+  "NECK": 0,
+  "SHOULDERS": 2,
+  "WRISTS": 2,
+  "inversion": false,
+  "why": "Обратный упор: плечи в разгибании под весом тела — S2"
+ },
+ "at_revtablehl": {
+  "KNEES": 2,
+  "LUMBAR": 0,
+  "NECK": 0,
+  "SHOULDERS": 2,
+  "WRISTS": 2,
+  "inversion": false,
+  "why": "Обратный полуупор: S2"
+ },
+ "at_revtableup": {
+  "KNEES": 0,
+  "LUMBAR": 0,
+  "NECK": 0,
+  "SHOULDERS": 2,
+  "WRISTS": 2,
+  "inversion": false,
+  "why": "Обратный упор: плечи в разгибании под весом тела — S2"
+ },
+ "at_ring1": {
+  "KNEES": 2,
+  "LUMBAR": 3,
+  "NECK": 1,
+  "SHOULDERS": 2,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Кольцо в выпаде: макушка к стопе — глубокий прогиб; рука из-за головы держит стопу — S2"
+ },
+ "at_ring2": {
+  "KNEES": 2,
+  "LUMBAR": 3,
+  "NECK": 1,
+  "SHOULDERS": 2,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Кольцо в выпаде: макушка к стопе — глубокий прогиб; рука из-за головы держит стопу — S2"
+ },
+ "at_sarpfull": {
+  "KNEES": 0,
+  "LUMBAR": 3,
+  "NECK": 2,
+  "SHOULDERS": 1,
+  "WRISTS": 2,
+  "base": "LYING",
+  "inversion": false,
+  "why": "Предельный змеиный прогиб: толчок руками, голова назад-вверх — сильное разгибание шеи"
+ },
+ "at_sarvlotus": {
+  "KNEES": 3,
+  "LUMBAR": 0,
+  "NECK": 3,
+  "SHOULDERS": 2,
+  "WRISTS": 0,
+  "inversion": true,
+  "why": "Перевёрнутая поза с лотосом — лотос K3"
+ },
+ "at_sarvone": {
+  "KNEES": 0,
+  "LUMBAR": 1,
+  "NECK": 3,
+  "SHOULDERS": 2,
+  "WRISTS": 0,
+  "inversion": true,
+  "why": "Полустойка на плечах / плуг: вес на плечах и шее — перевёрнутая (как hala)"
+ },
+ "at_sarvone_m": {
+  "KNEES": 0,
+  "LUMBAR": 1,
+  "NECK": 3,
+  "SHOULDERS": 2,
+  "WRISTS": 0,
+  "inversion": true,
+  "why": "Полустойка на плечах / плуг: вес на плечах и шее — перевёрнутая (как hala)"
+ },
+ "at_sarvonebent": {
+  "KNEES": 1,
+  "LUMBAR": 1,
+  "NECK": 3,
+  "SHOULDERS": 2,
+  "WRISTS": 0,
+  "inversion": true,
+  "why": "Полустойка на плечах с согнутой ногой — та же нагрузка на шею, что у at_sarvone; перевёрнутая"
+ },
+ "at_sarvonebent_m": {
+  "KNEES": 1,
+  "LUMBAR": 1,
+  "NECK": 3,
+  "SHOULDERS": 2,
+  "WRISTS": 0,
+  "inversion": true,
+  "why": "Полустойка на плечах с согнутой ногой — та же нагрузка на шею, что у at_sarvone; перевёрнутая"
+ },
+ "at_sblotus": {
+  "KNEES": 3,
+  "LUMBAR": 2,
+  "NECK": 3,
+  "SHOULDERS": 2,
+  "WRISTS": 0,
+  "inversion": true,
+  "why": "Боковой полумост из стойки на плечах с лотосом: прогиб в пояснице, лотос"
+ },
+ "at_shirlotus": {
+  "KNEES": 3,
+  "LUMBAR": 0,
+  "NECK": 3,
+  "SHOULDERS": 2,
+  "WRISTS": 1,
+  "inversion": true,
+  "why": "Стойка на голове с лотосом: плечи S2, лотос K3"
+ },
+ "at_shirlotus_m": {
+  "KNEES": 3,
+  "LUMBAR": 0,
+  "NECK": 3,
+  "SHOULDERS": 2,
+  "WRISTS": 1,
+  "inversion": true,
+  "why": "Стойка на голове с лотосом: плечи S2, лотос K3"
+ },
+ "at_shirlotusfold": {
+  "KNEES": 3,
+  "LUMBAR": 2,
+  "NECK": 3,
+  "SHOULDERS": 2,
+  "WRISTS": 1,
+  "inversion": true,
+  "why": "Наклон в стойке на голове с лотосом"
+ },
+ "at_shirsha": {
+  "KNEES": 0,
+  "LUMBAR": 0,
+  "NECK": 3,
+  "SHOULDERS": 2,
+  "WRISTS": 1,
+  "inversion": true,
+  "why": "Стойка на голове на предплечьях — плечи несут значительную часть веса (S2)"
+ },
+ "at_shirsplit": {
+  "KNEES": 0,
+  "LUMBAR": 1,
+  "NECK": 3,
+  "SHOULDERS": 2,
+  "WRISTS": 1,
+  "inversion": true,
+  "why": "Стойка на голове: плечи S2"
+ },
+ "at_shishu": {
+  "KNEES": 2,
+  "LUMBAR": 0,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Сидя на пятках/поза ребёнка: глубокое сгибание коленей под весом — K2; руки не нагружены"
+ },
+ "at_siddha": {
+  "KNEES": 2,
+  "LUMBAR": 0,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Бабочка/сиддхасана — не лотос: вращение в колене умеренное, K2"
+ },
+ "at_simha": {
+  "KNEES": 3,
+  "LUMBAR": 2,
+  "NECK": 1,
+  "SHOULDERS": 1,
+  "WRISTS": 2,
+  "base": "HANDS_AND_FEET",
+  "inversion": false,
+  "why": "Лев: прямые руки, тело провисает между плечами и коленями в лотосе — не баланс на руках"
+ },
+ "at_skrut": {
+  "KNEES": 2,
+  "LUMBAR": 2,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Скручивание в выпаде без веса на позвоночнике — L2"
+ },
+ "at_sphinx": {
+  "KNEES": 0,
+  "LUMBAR": 2,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Сфинкс: опора на предплечья — запястья не нагружены"
+ },
+ "at_sphinxleg": {
+  "KNEES": 0,
+  "LUMBAR": 2,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Сфинкс: опора на предплечья — запястья не нагружены"
+ },
+ "at_spider": {
+  "KNEES": 0,
+  "LUMBAR": 0,
+  "NECK": 1,
+  "SHOULDERS": 3,
+  "WRISTS": 3,
+  "inversion": false,
+  "why": "Паук: баланс на руках, поясница не нагружена"
+ },
+ "at_standback": {
+  "KNEES": 0,
+  "LUMBAR": 2,
+  "NECK": 1,
+  "SHOULDERS": 2,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Прогиб стоя, ладони между лопаток, голова назад"
+ },
+ "at_standback2": {
+  "KNEES": 0,
+  "LUMBAR": 3,
+  "NECK": 1,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Прогиб стоя до горизонтали грудины — глубокий прогиб"
+ },
+ "at_tittibha": {
+  "KNEES": 0,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 3,
+  "WRISTS": 3,
+  "inversion": false,
+  "why": "Титтибхасана: баланс на руках, сгибание без веса на пояснице"
+ },
+ "at_tola": {
+  "KNEES": 3,
+  "LUMBAR": 0,
+  "NECK": 0,
+  "SHOULDERS": 3,
+  "WRISTS": 3,
+  "base": "ARM_BALANCE",
+  "inversion": false,
+  "why": "Толасана: лотос на весу на ладонях — весь вес на руках, лотос"
+ },
+ "at_tolang": {
+  "KNEES": 0,
+  "LUMBAR": 0,
+  "NECK": 0,
+  "SHOULDERS": 3,
+  "WRISTS": 3,
+  "base": "ARM_BALANCE",
+  "inversion": false,
+  "why": "Угол в упоре: весь вес тела на руках"
+ },
+ "at_triple": {
+  "KNEES": 2,
+  "LUMBAR": 0,
+  "NECK": 0,
+  "SHOULDERS": 2,
+  "WRISTS": 2,
+  "inversion": false,
+  "why": "Руки вывернуты в плечах под весом — S2"
+ },
+ "at_tripod": {
+  "KNEES": 0,
+  "LUMBAR": 0,
+  "NECK": 3,
+  "SHOULDERS": 2,
+  "WRISTS": 2,
+  "base": "HANDS_AND_FEET",
+  "inversion": true,
+  "why": "Стойка на голове с опорой на ладони — вес на макушке; перевёрнутая (было N0, не INV)"
+ },
+ "at_tripodlotus": {
+  "KNEES": 3,
+  "LUMBAR": 0,
+  "NECK": 3,
+  "SHOULDERS": 2,
+  "WRISTS": 2,
+  "base": "HANDS_AND_FEET",
+  "inversion": true,
+  "why": "Стойка на голове с лотосом — вес на макушке; лотос"
+ },
+ "at_tripprep": {
+  "KNEES": 0,
+  "LUMBAR": 0,
+  "NECK": 2,
+  "SHOULDERS": 2,
+  "WRISTS": 2,
+  "base": "HANDS_AND_FEET",
+  "inversion": false,
+  "why": "Подготовка к стойке на голове с ладонями: голова на полу, стопы на полу — не баланс на руках"
+ },
+ "at_uchat": {
+  "KNEES": 0,
+  "LUMBAR": 0,
+  "NECK": 0,
+  "SHOULDERS": 2,
+  "WRISTS": 2,
+  "inversion": false,
+  "why": "Чатуранга/планка: плечи несут вес тела — S2 (как у chaturanga/plank)"
+ },
+ "at_ugra": {
+  "KNEES": 0,
+  "LUMBAR": 2,
+  "NECK": 1,
+  "SHOULDERS": 1,
+  "WRISTS": 0,
+  "base": "STANDING",
+  "inversion": false,
+  "why": "«Ежовый» наклон сидя: принудительное скругление спины, лоб к пупку; не баланс на руках"
+ },
+ "at_upavfix": {
+  "KNEES": 0,
+  "LUMBAR": 2,
+  "NECK": 1,
+  "SHOULDERS": 1,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Подъём с прогибом, спина напряжена до предела, голова назад"
+ },
+ "at_upavfold": {
+  "KNEES": 0,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Наклон сидя — сгибание поясницы, L1"
+ },
+ "at_upavnam": {
+  "KNEES": 0,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 2,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Наклон сидя с плечевым вытягиванием/ладонями между лопаток — S2"
+ },
+ "at_upavsh": {
+  "KNEES": 0,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 2,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Наклон сидя с плечевым вытягиванием/ладонями между лопаток — S2"
+ },
+ "at_upavside": {
+  "KNEES": 0,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Наклон сидя — сгибание поясницы, L1"
+ },
+ "at_upavside_m": {
+  "KNEES": 0,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Наклон сидя — сгибание поясницы, L1"
+ },
+ "at_upavup": {
+  "KNEES": 0,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Наклон сидя — сгибание поясницы, L1"
+ },
+ "at_updog": {
+  "KNEES": 0,
+  "LUMBAR": 2,
+  "NECK": 0,
+  "SHOULDERS": 1,
+  "WRISTS": 2,
+  "base": "LYING",
+  "inversion": false,
+  "why": "Упор-прогиб на прямых руках (как updog), не SEATED/STANDING"
+ },
+ "at_updogtoes": {
+  "KNEES": 0,
+  "LUMBAR": 2,
+  "NECK": 0,
+  "SHOULDERS": 1,
+  "WRISTS": 2,
+  "inversion": false,
+  "why": "Упор-прогиб на прямых руках (как updog), не SEATED/STANDING"
+ },
+ "at_urdhvaeka": {
+  "KNEES": 0,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 1,
+  "WRISTS": 1,
+  "base": "STANDING",
+  "inversion": false,
+  "why": "Вертикальный шпагат стоя: одна рука держит лодыжку — не баланс на руках"
+ },
+ "at_urdhvahala": {
+  "KNEES": 0,
+  "LUMBAR": 1,
+  "NECK": 3,
+  "SHOULDERS": 2,
+  "WRISTS": 0,
+  "inversion": true,
+  "why": "Полустойка на плечах / плуг: вес на плечах и шее — перевёрнутая (как hala)"
+ },
+ "at_uslide": {
+  "KNEES": 0,
+  "LUMBAR": 2,
+  "NECK": 0,
+  "SHOULDERS": 1,
+  "WRISTS": 2,
+  "base": "LYING",
+  "inversion": false,
+  "why": "Скользящий упор-прогиб: таз провисает, позвоночник в разгибании — L2; at_uslide: опора на прямые руки, не SEATED"
+ },
+ "at_ustra": {
+  "KNEES": 1,
+  "LUMBAR": 3,
+  "NECK": 0,
+  "SHOULDERS": 1,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Уштрасана (верблюд/лук из вирасаны): глубокий прогиб — L3"
+ },
+ "at_utkata": {
+  "KNEES": 2,
+  "LUMBAR": 0,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Стул: бёдра горизонтальны — колени несут вес в глубоком сгибании"
+ },
+ "at_utkatapull": {
+  "KNEES": 2,
+  "LUMBAR": 0,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Стул: бёдра горизонтальны — колени несут вес в глубоком сгибании"
+ },
+ "at_utkatatoe": {
+  "KNEES": 2,
+  "LUMBAR": 0,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Стул: бёдра горизонтальны — колени несут вес в глубоком сгибании"
+ },
+ "at_uttan": {
+  "KNEES": 0,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 1,
+  "WRISTS": 1,
+  "inversion": false,
+  "why": "Уттанасана: пальцы лишь давят в пол, вес на ногах — запястья/плечи не несут вес тела"
+ },
+ "at_verb1": {
+  "KNEES": 1,
+  "LUMBAR": 3,
+  "NECK": 0,
+  "SHOULDERS": 2,
+  "WRISTS": 2,
+  "inversion": false,
+  "why": "Верхний верблюд: рука вывернута в плече, локоть вверх — S2"
+ },
+ "at_verb2": {
+  "KNEES": 1,
+  "LUMBAR": 3,
+  "NECK": 0,
+  "SHOULDERS": 2,
+  "WRISTS": 2,
+  "inversion": false,
+  "why": "Верхний верблюд: рука вывернута в плече, локоть вверх — S2"
+ },
+ "at_viplotus": {
+  "KNEES": 3,
+  "LUMBAR": 0,
+  "NECK": 3,
+  "SHOULDERS": 2,
+  "WRISTS": 0,
+  "inversion": true,
+  "why": "Перевёрнутая поза с лотосом — лотос K3"
+ },
+ "at_virafold": {
+  "KNEES": 2,
+  "LUMBAR": 0,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Вирасана с наклоном — колени в вирасане (K2), не STANDING"
+ },
+ "at_virahedge": {
+  "KNEES": 2,
+  "LUMBAR": 1,
+  "NECK": 1,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "base": "STANDING",
+  "inversion": false,
+  "why": "«Ежовый» наклон в вирасане: скругление спины, колени в вирасане; не баланс на руках"
+ },
+ "at_virash": {
+  "KNEES": 2,
+  "LUMBAR": 0,
+  "NECK": 0,
+  "SHOULDERS": 2,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Вирасана, вывернутый замок за спиной поднят высоко — S2"
+ },
+ "at_vmatsya1": {
+  "KNEES": 3,
+  "LUMBAR": 1,
+  "NECK": 1,
+  "SHOULDERS": 2,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Перекат на колени в лотосе, грудь на полу, захват стоп из-за спины"
+ },
+ "at_vmatsya2": {
+  "KNEES": 3,
+  "LUMBAR": 2,
+  "NECK": 1,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Перевёрнутая рыба с двойным лотосом — лотос K3"
+ },
+ "at_vmatsya3": {
+  "KNEES": 3,
+  "LUMBAR": 0,
+  "NECK": 0,
+  "SHOULDERS": 2,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Подбородок на полу, ладони между лопаток — лотос"
+ },
+ "at_vmatsya4": {
+  "KNEES": 3,
+  "LUMBAR": 2,
+  "NECK": 1,
+  "SHOULDERS": 2,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Прогиб в лотосе, ладони между лопаток"
+ },
+ "at_vmatsya5": {
+  "KNEES": 3,
+  "LUMBAR": 3,
+  "NECK": 1,
+  "SHOULDERS": 2,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Захват голеней, прогиб до предела в лотосе"
+ },
+ "at_vsphinx": {
+  "KNEES": 0,
+  "LUMBAR": 3,
+  "NECK": 0,
+  "SHOULDERS": 1,
+  "WRISTS": 2,
+  "base": "LYING",
+  "inversion": false,
+  "why": "Вытянутый сфинкс на прямых руках — вес верха тела на запястьях"
+ },
+ "at_vsphinxknee": {
+  "KNEES": 0,
+  "LUMBAR": 3,
+  "NECK": 0,
+  "SHOULDERS": 1,
+  "WRISTS": 2,
+  "base": "LYING",
+  "inversion": false,
+  "why": "Вытянутый сфинкс на прямых руках — вес верха тела на запястьях"
+ },
+ "at_wchat": {
+  "KNEES": 0,
+  "LUMBAR": 0,
+  "NECK": 0,
+  "SHOULDERS": 3,
+  "WRISTS": 2,
+  "base": "HANDS_AND_FEET",
+  "inversion": false,
+  "why": "Широкая чатуранга: стопы на полу (не баланс на руках) — W2; плечи под боковыми перекатами — S3"
+ },
+ "at_wheel1": {
+  "KNEES": 0,
+  "LUMBAR": 3,
+  "NECK": 1,
+  "SHOULDERS": 2,
+  "WRISTS": 2,
+  "inversion": false,
+  "why": "Мост на одной ноге — как at_wheel, руки в упоре; не STANDING"
+ },
+ "at_wheelprep": {
+  "KNEES": 0,
+  "LUMBAR": 3,
+  "NECK": 1,
+  "SHOULDERS": 2,
+  "WRISTS": 2,
+  "base": "HANDS_AND_FEET",
+  "inversion": false,
+  "why": "Подъём в мост: стопы на полу, не баланс на руках"
+ },
+ "at_wideknees": {
+  "KNEES": 2,
+  "LUMBAR": 3,
+  "NECK": 1,
+  "SHOULDERS": 1,
+  "WRISTS": 2,
+  "base": "LYING",
+  "inversion": false,
+  "why": "Предельный прогиб на прямых руках с коленями на полу"
+ },
+ "at_wideup": {
+  "KNEES": 0,
+  "LUMBAR": 2,
+  "NECK": 0,
+  "SHOULDERS": 1,
+  "WRISTS": 2,
+  "inversion": false,
+  "why": "Широкий упор-прогиб: прямые руки в упоре — запястья под весом"
+ },
+ "at_wideupturn": {
+  "KNEES": 0,
+  "LUMBAR": 2,
+  "NECK": 0,
+  "SHOULDERS": 1,
+  "WRISTS": 2,
+  "inversion": false,
+  "why": "Широкий упор-прогиб: прямые руки в упоре — запястья под весом"
+ },
+ "at_wideupturn_m": {
+  "KNEES": 0,
+  "LUMBAR": 2,
+  "NECK": 0,
+  "SHOULDERS": 1,
+  "WRISTS": 2,
+  "inversion": false,
+  "why": "Широкий упор-прогиб: прямые руки в упоре — запястья под весом"
+ },
+ "at_yozh": {
+  "KNEES": 0,
+  "LUMBAR": 2,
+  "NECK": 1,
+  "SHOULDERS": 1,
+  "WRISTS": 1,
+  "base": "STANDING",
+  "inversion": false,
+  "why": "«Ежовый» наклон на одной ноге: ладони у стопы, принудительное скругление — не баланс на руках"
+ },
+ "at_zamk": {
+  "KNEES": 0,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 1,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Наклон стоя с захватом лодыжек — не баланс на руках; W3/S3/L3 ошибочны"
+ },
+ "cat": {
+  "KNEES": 1,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 1,
+  "WRISTS": 2,
+  "inversion": false,
+  "why": "Кошка-прогиб на четвереньках — мягкое разгибание, L1 (лечебная поза для спины)"
+ },
+ "cat_knee_side": {
+  "KNEES": 1,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 1,
+  "WRISTS": 2,
+  "inversion": false,
+  "why": "Колено к уху сбоку без прогиба — L3 ошибка; колено сгибается без нагрузки"
+ },
+ "dog_bend": {
+  "KNEES": 0,
+  "LUMBAR": 1,
+  "NECK": 1,
+  "SHOULDERS": 2,
+  "WRISTS": 2,
+  "inversion": false,
+  "why": "Упор-горка с прогибом: прогиб спины и голова вперёд-вверх (как at_dogbend)"
+ },
+ "fold_ankles": {
+  "KNEES": 0,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 1,
+  "WRISTS": 0,
+  "base": "STANDING",
+  "inversion": false,
+  "why": "Наклон стоя с захватом лодыжек — не баланс на руках; W3/S3/L3 ошибочны"
+ },
+ "full_backbend": {
+  "KNEES": 0,
+  "LUMBAR": 3,
+  "NECK": 2,
+  "SHOULDERS": 1,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Полный прогиб стоя: макушка назад — явное разгибание шеи; руки в вывернутом замке назад — плечи. at_full = та же поза, было L2"
+ },
+ "glide_updog": {
+  "KNEES": 0,
+  "LUMBAR": 2,
+  "NECK": 0,
+  "SHOULDERS": 1,
+  "WRISTS": 2,
+  "inversion": false,
+  "why": "Скользящий упор-прогиб: таз провисает, позвоночник в разгибании — L2; at_uslide: опора на прямые руки, не SEATED"
+ },
+ "half_lift": {
+  "KNEES": 0,
+  "LUMBAR": 2,
+  "NECK": 2,
+  "SHOULDERS": 1,
+  "WRISTS": 1,
+  "inversion": false,
+  "why": "Полупрогиб в наклоне: ладони лишь подпирают (не упор всем весом), прогиб спины, взгляд в потолок — сильное разгибание шеи"
+ },
+ "half_up_plank": {
+  "KNEES": 0,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 2,
+  "WRISTS": 2,
+  "inversion": false,
+  "why": "Полупрогиб в горизонтальном упоре: вес на согнутых руках + грудной прогиб; выровнено между дубликатами"
+ },
+ "shoulder_fold": {
+  "KNEES": 0,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 2,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Наклон стоя с замком за спиной: нагрузка в плечах (S2), поясница — обычный наклон L1"
+ },
+ "tp_glide_updog": {
+  "KNEES": 0,
+  "LUMBAR": 2,
+  "NECK": 0,
+  "SHOULDERS": 1,
+  "WRISTS": 2,
+  "inversion": false,
+  "why": "Скользящий упор-прогиб: таз провисает, позвоночник в разгибании — L2; at_uslide: опора на прямые руки, не SEATED"
+ },
+ "uttanasana": {
+  "KNEES": 0,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 1,
+  "WRISTS": 1,
+  "inversion": false,
+  "why": "Уттанасана: пальцы лишь давят в пол, вес на ногах — запястья/плечи не несут вес тела"
+ },
+ "wide_step": {
+  "KNEES": 2,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Широкий шаг (выпад) без прогиба, торс вертикален: L1; переднее колено под весом — K2 (выровнено)"
+ },
+ "wings": {
+  "KNEES": 2,
+  "LUMBAR": 1,
+  "NECK": 0,
+  "SHOULDERS": 0,
+  "WRISTS": 0,
+  "inversion": false,
+  "why": "Выпад с разведёнными руками, без прогиба — L1"
+ }
+}
