@@ -196,11 +196,33 @@ async function createFigure3D(){
   const gapOf=(mins,key)=>{const e=mins[key+(key[0]==='A'?'h':'f')]??Infinity,sg=mins[key]??Infinity;return sg<-0.005?Math.min(e,sg):e;};
   const endOf=(j,key)=>{const s=key.slice(-1);return (key[0]==='A'?j['W'+s]:j['A'+s]).clone();};
 
+  /* тело не проходит сквозь себя: голова и грудь не входят в бёдра и голени. Если входят глубже 1,5 см —
+     корпус выше таза (поясница, грудь, шея, голова и руки) поворачивается вокруг оси бёдер прочь от ног
+     шагами по 3°, пока не останется касание. Так наклон вперёд останавливается на бёдрах, как у живого человека. */
+  const UPPER=['lumbar','chest','neck','head','uarmL','farmL','handL','uarmR','farmR','handR'];
+  function bodyPen(j){
+    const segD=(p,a,b)=>{const ab=b.clone().sub(a),t=clamp(p.clone().sub(a).dot(ab)/(ab.lengthSq()||1),0,1);return p.distanceTo(a.clone().add(ab.multiplyScalar(t)));};
+    const chest=j.C.clone().lerp(j.N,.55);let pen=0;
+    for(const s of ['L','R'])for(const [a,b,r] of [[j['hip'+s],j['K'+s],.062],[j['K'+s],j['A'+s],.047]])
+      for(const [q,rq] of [[j.H,.095],[chest,.11]]){const d=segD(q,a,b)-(r+rq);if(d<pen)pen=d;}
+    return pen;}
+  /* угол корпус—бедро: 180 — стоя прямо, 0 — бедро прижато к груди; живое тело даже очень гибкое не уходит ниже ~22° */
+  function hipFold(j){const tr=j.C.clone().sub(j.O);let m=180;for(const s of ['L','R'])m=Math.min(m,tr.angleTo(j['K'+s].clone().sub(j['hip'+s]))/DEG);return m;}
+  const bad=j=>Math.min(bodyPen(j)+0.012,(hipFold(j)-22)/400);   /* < 0 — нарушение */
+  function unclip(TW,j){
+    if(bad(j)>=0)return false;
+    const axis=j.hipR.clone().sub(j.hipL).normalize(),orig={};for(const k of UPPER)orig[k]=TW[k].clone();
+    const turn=a=>{const R=Q().setFromAxisAngle(axis,a);for(const k of UPPER)TW[k]=R.clone().multiply(orig[k]);return bad(fk(TW,j.O));};
+    const step=3*DEG,b0=bad(j);let sign=turn(step)>=b0?1:-1;if(turn(sign*step)<b0){for(const k of UPPER)TW[k]=orig[k];return false;}
+    let best=1;for(let n=1;n<=15;n++){best=n;if(turn(sign*step*n)>=0)break;}
+    turn(sign*step*best);return true;}
+
   /* show a pose; ik: {A_L|A_R|L_L|L_R: 'floor' | V3 | {p,w}} */
   function showTW(TW0,{hipX=0,ignoreArms=false,ik=null,hands=null}={}){
     const TW={};for(const k in TW0)TW[k]=TW0[k].clone();
     fist.L=!!(hands&&hands.L==='fist');fist.R=!!(hands&&hands.R==='fist');shape.L=(hands&&hands.L)||'open';shape.R=(hands&&hands.R)||'open';
     let j=place(TW,hipX,ignoreArms);
+    if(unclip(TW,j))j=place(TW,hipX,ignoreArms);
     const spec={...(ik||{})};
     if(ignoreArms){const mins=layout(TW,j,false);for(const key of ['A_L','A_R'])if(!(key in spec)&&gapOf(mins,key)<-0.005)spec[key]='lift';}
     for(let pass=0;pass<3&&Object.keys(spec).length;pass++){
@@ -538,6 +560,7 @@ async function boot(){
     let mode=A.kind==='J'&&B.kind==='J'?'J':(A.kind==='L'&&B.kind==='L'&&front(A.p)===front(B.p))?'L':'Q';
     const armsTouch=[...cA,...cB].some(n=>/wrist|finger|elbow/.test(n));
     const planted=Object.keys(A.ik||{}).filter(key=>B.ik&&B.ik[key]&&A.ends[key].distanceTo(B.ends[key])<0.25);
+    let stagger=true;
     const atM=(k,mode)=>{
       const e=ease(k);const ign=(A.bd&&B.bd)||(!armsTouch&&k<1);
       const hands=e<.5?A.hands:B.hands;
@@ -553,7 +576,7 @@ async function boot(){
       const win=(a,b)=>{const x=Math.min(1,Math.max(0,(k-a)/(b-a)));return x*x*x*(x*(6*x-15)+10);};
       const eL=win(0,.8),eT=win(.08,.9),eA=win(.18,1),eH=win(.22,1);
       let TW0;
-      if(k<=0||k>=1||Math.abs(eL-eA)<1e-3)TW0=solveAt(e);
+      if(!stagger||k<=0||k>=1||Math.abs(eL-eA)<1e-3)TW0=solveAt(e);
       else{const G={L:solveAt(eL),T:solveAt(eT),A:solveAt(eA),H:solveAt(eH)};
         const grp=n=>/^(pelvis|thigh|shin|foot)/.test(n)?'L':/^(lumbar|chest)/.test(n)?'T':/^(neck|head)/.test(n)?'H':'A';
         TW0={pelvis:G.L.pelvis.clone()};
@@ -575,6 +598,11 @@ async function boot(){
     else{const s0=(()=>{const rows=[];for(let j=0;j<=8;j++){atM(j/8,'Q');const P={};for(const q of fig.points())P[q.name]=q.v;rows.push(BENDS.map(t=>bendOf(P,t)));}
         let w=0;for(let t=0;t<BENDS.length;t++){const lim=Math.max(rows[0][t],rows[8][t]);for(let j=1;j<8;j++)w=Math.max(w,rows[j][t]-lim);}return w;})();
       if(s0>25)mode='H';}
+    /* поочерёдное движение частей тела красиво, но иногда сгибает локти или колени сильнее, чем в начале и конце
+       (руки на полу, ноги шагают): тогда все части двигаются вместе */
+    {const over=()=>{const rows=[];for(let j=0;j<=8;j++){atM(j/8,mode);const P={};for(const q of fig.points())P[q.name]=q.v;rows.push(BENDS.map(t=>bendOf(P,t)));}
+       let w=0;for(let t=0;t<BENDS.length;t++){const lim=Math.max(rows[0][t],rows[8][t]);for(let j=1;j<8;j++)w=Math.max(w,rows[j][t]-lim);}return w;};
+     const s1=over();if(s1>10){stagger=false;const s2=over();if(s2>=s1)stagger=true;}}
     const finish=()=>{const pts=show(B,hipXB);worldX=hipXB;snapMat();cur={...B,hipX:hipXB,pts,center:centerB};camYaw=B.cam;frameCam(centerB,camYaw);};
     /* новая поза пришла посреди перехода: следующий переход начинается с текущего положения, без рывка назад */
     const interrupt=()=>{atM(lastK,mode);const e=ease(lastK);
