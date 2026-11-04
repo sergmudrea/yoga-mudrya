@@ -155,7 +155,7 @@ fun PlayerScreen(
     SideEffect {
         tv.restLeft = restLeft
         tv.transitionMs = transitionMs(frame, c.phaseMs, c.speed)
-        tv.use3d = settings.figure3d
+        tv.use3d = false  // 3D-марионетка в архиве (tools/atlas/archive): показываем плоскую фигуру
         tv.cameraYaw = settings.camera.yaw
     }
 
@@ -184,7 +184,7 @@ fun PlayerScreen(
             } else if (clip != null && showVideo) {
                 VideoPane(clip, videos::uri, paused = c.paused, description = frame.step.shownTitle(), modifier = Modifier.fillMaxSize())
             } else {
-                PracticeFigure(frame, transitionMs(frame, c.phaseMs, c.speed), settings.figure3d, Modifier.fillMaxSize(), settings.camera.yaw)
+                PracticeFigure(frame, transitionMs(frame, c.phaseMs, c.speed), false, Modifier.fillMaxSize(), settings.camera.yaw)
             }
             if (!onTv && clip != null) {
                 Row(Modifier.align(Alignment.TopEnd).padding(8.dp), horizontalArrangement = Arrangement.spacedBy(6.dp)) {

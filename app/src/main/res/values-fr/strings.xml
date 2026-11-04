@@ -221,8 +221,6 @@
     <string name="body_add">Ajouter la mesure du jour</string>
     <string name="body_save">Enregistrer</string>
     <string name="age_chart_legend">Orange — âge de mouvement, gris — âge civil. Plus bas, c’est mieux.</string>
-    <string name="settings_figure3d">Figure 3D</string>
-    <string name="settings_figure3d_hint">Une figure 3D (humain, robot ou marionnette) : transitions fluides, mains et pieds restent au sol ; faites-la tourner du doigt. Désactivé — le schéma plat avec la lueur de la respiration.</string>
     <string name="library_title">Bibliothèque</string>
     <string name="library_hint">Les %1$d postures de la bibliothèque (d’après « 2100 Asanas » de D. Lacerda) par chapitres et sections — consultation gratuite : chaque posture s’ouvre sur la marionnette et s’ajoute à votre séance avec « ＋ ». Lire des sections entières fait partie de Premium.</string>
     <string name="library_search">Recherche : pigeon, bakasana, montagne…</string>
@@ -896,9 +894,6 @@
     <string name="tip_stop_1">Douleur vive ou fulgurante, engourdissement, vertige, essoufflement ou douleur thoracique : arrêtez immédiatement. Si cela persiste, consultez un médecin.</string>
     <string name="tip_stop_2">Après une blessure ou une opération, ou en cas de maladie chronique, parlez-en à votre médecin avant de commencer.</string>
     <string name="tip_stop_3">En cas de fièvre ou de maladie aiguë, reposez-vous au lieu de pratiquer.</string>
-    <string name="settings_figure_human">Humain</string>
-    <string name="settings_figure_robot">Robot</string>
-    <string name="settings_figure_doll">Marionnette</string>
     <string name="muscles_title">Muscles sollicités</string>
     <string name="muscles_main">Principaux</string>
     <string name="muscles_supporting">Secondaires</string>
@@ -922,6 +917,4 @@
     <string name="muscle_adductors">Adducteurs</string>
     <string name="muscle_calves">Mollets</string>
     <string name="muscle_shins">Tibias et pieds</string>
-    <string name="settings_figure_female">Féminine</string>
-    <string name="settings_figure_male">Masculine</string>
 </resources>

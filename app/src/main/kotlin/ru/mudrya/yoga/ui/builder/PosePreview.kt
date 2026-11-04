@@ -19,12 +19,10 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import ru.mudrya.yoga.R
 import ru.mudrya.yoga.model.Asana
-import ru.mudrya.yoga.model.FigureRef
 import ru.mudrya.yoga.ui.common.PrimaryButton
 import ru.mudrya.yoga.ui.common.TextAction
 import ru.mudrya.yoga.ui.common.english
 import ru.mudrya.yoga.ui.common.shownDescription
-import ru.mudrya.yoga.ui.player.Figure3D
 import ru.mudrya.yoga.ui.theme.MudryaColors
 
 /** Название позы на языке интерфейса. */
@@ -43,13 +41,7 @@ fun PosePreview(asana: Asana, onAdd: (() -> Unit)?, onClose: () -> Unit) {
         ) {
             Text(asana.shownName(), color = MudryaColors.Text, fontSize = 20.sp, fontWeight = FontWeight.Bold)
             asana.sanskrit?.let { Text(it, color = MudryaColors.TextMuted, fontSize = 14.sp) }
-            Figure3D(
-                asana.figure ?: FigureRef("tad"),
-                0,
-                asana.shownName(),
-                Modifier.fillMaxWidth().height(300.dp),
-                placeholder = { PoseThumb(asana.id, 300.dp, Modifier.fillMaxWidth()) },
-            )
+            PoseThumb(asana.id, 300.dp, Modifier.fillMaxWidth())
             Column(Modifier.height(170.dp).verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 ru.mudrya.yoga.ui.common.PoseCardView(asana.id)
                 Text(asana.shownDescription() ?: asana.cuesRu.firstOrNull().orEmpty(), color = MudryaColors.TextMuted, fontSize = 14.sp)

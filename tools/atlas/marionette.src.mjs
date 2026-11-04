@@ -441,13 +441,9 @@ async function createFigure3D(){
     return {c:V3((x0+x1)/2,Math.max(H/2,s/2-0.12)-0.02,(z0+z1)/2*0.5),s};}
 
   setTheme('light');
-  /* модели поверх марионетки (skin.mjs): решатель тот же, рисуется кожа. Mixamo: X Bot — женская фигура, Y Bot — мужская.
-     'human_*' — человек в спортивной форме (кожа, синяя майка, тёмные шорты, серые кроссовки);
-     'robot_*' — робот: правые конечности оранжевые, левые синие, как у марионетки; 'doll' — марионетка.
-     Окончание _f / _m — женская / мужская фигура; 'human' и 'robot' без окончания — женская. */
-  const SKIN_URL={human_f:{url:'xbot.glb',tint:'fitness'},human_m:{url:'ybot.glb',tint:'fitness'},
-    robot_f:{url:'xbot.glb',tint:'sides'},robot_m:{url:'ybot.glb',tint:'sides'}};
-  SKIN_URL.human=SKIN_URL.human_f;SKIN_URL.robot=SKIN_URL.robot_f;
+  /* модели поверх марионетки (skin.mjs): решатель тот же, рисуется кожа. Сейчас в приложении только марионетка ('doll');
+     человек и робот (Mixamo X Bot / Y Bot) лежат в tools/atlas/archive — как вернуть, написано там. */
+  const SKIN_URL={};
   async function loadSkin(src,key='model'){const o=typeof src==='string'?{url:src}:src;const s=await createSkin(T,scene,{REST,DIM,url:o.url,tint:o.tint});s.setTheme(theme||'light');s.active=false;skins[key]=s;return s;}
   async function setFigure(kind){
     if(kind!=='doll'&&!skins[kind]&&SKIN_URL[kind]){try{await loadSkin(SKIN_URL[kind],kind);}catch(e){console.warn('model',kind,e);kind='doll';}}

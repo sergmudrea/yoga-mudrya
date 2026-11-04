@@ -219,8 +219,6 @@ body_cm	%1$s cm
 body_add	Aggiungi la misura di oggi
 body_save	Salva
 age_chart_legend	Arancione — età di movimento, grigio — età anagrafica. Più bassa è meglio.
-settings_figure3d	Figura 3D
-settings_figure3d_hint	Una figura 3D (persona, robot o marionetta): transizioni fluide, mani e piedi restano a terra; ruotala con il dito. Disattivato — lo schema piatto con il bagliore del respiro.
 library_title	Biblioteca
 library_hint	Tutte le %1$d posizioni della biblioteca (da «2100 Asanas» di D. Lacerda) per capitoli e sezioni, da consultare gratis: ogni posizione si apre sulla marionetta e si aggiunge alla tua sequenza con «＋». Riprodurre intere sezioni è Premium.
 library_search	Cerca: piccione, bakasana, montagna…
@@ -894,9 +892,6 @@ tip_stop_t	Quando fermarsi
 tip_stop_1	Dolore acuto o lancinante, intorpidimento, capogiri, affanno o dolore al petto: fermati subito. Se non passa, vai dal medico.
 tip_stop_2	Dopo un infortunio o un intervento, o con una malattia cronica, parla con il medico prima di iniziare.
 tip_stop_3	Con la febbre o una malattia acuta, riposa invece di praticare.
-settings_figure_human	Persona
-settings_figure_robot	Robot
-settings_figure_doll	Marionetta
 muscles_title	Muscoli coinvolti
 muscles_main	Principali
 muscles_supporting	Secondari
@@ -920,5 +915,3 @@ muscle_hamstrings	Femorali
 muscle_adductors	Adduttori
 muscle_calves	Polpacci
 muscle_shins	Stinchi e piedi
-settings_figure_female	Femminile
-settings_figure_male	Maschile

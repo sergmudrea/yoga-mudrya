@@ -8,7 +8,7 @@ import vm from 'vm';
 import { pathToFileURL, fileURLToPath } from 'url';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
-const emu = path.join(here, '../../app/src/main/assets/emulator');
+const emu = path.join(here, 'archive/emulator');
 const T = await import(pathToFileURL(path.join(process.argv[2], 'build/three.module.js')).href);
 
 // Заглушки браузера: марионетке нужен только canvas для полосатой текстуры коврика.

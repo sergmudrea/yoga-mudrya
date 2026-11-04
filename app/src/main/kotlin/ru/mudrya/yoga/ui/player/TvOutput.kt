@@ -55,7 +55,7 @@ class TvState(frame: PlayerFrame, title: String) {
     var title by mutableStateOf(title)
     var restLeft by mutableStateOf<Int?>(null)
     var transitionMs by mutableStateOf(4_000L)
-    var use3d by mutableStateOf(true)
+    var use3d by mutableStateOf(false)
     var cameraYaw by mutableStateOf(16)
 }
 

@@ -219,8 +219,6 @@ body_cm	%1$s cm
 body_add	Añadir la medida de hoy
 body_save	Guardar
 age_chart_legend	Naranja — edad de movimiento, gris — edad real. Más bajo es mejor.
-settings_figure3d	Figura 3D
-settings_figure3d_hint	Una figura 3D (persona, robot o marioneta): transiciones suaves, manos y pies se quedan en el suelo; gírala con el dedo. Desactivado — el esquema plano con el brillo de la respiración.
 library_title	Biblioteca
 library_hint	Las %1$d posturas de la biblioteca (según «2100 Asanas» de D. Lacerda) por capítulos y secciones, gratis para consultar: cualquier postura se abre en la marioneta y se añade a tu serie con «＋». Reproducir secciones enteras es Premium.
 library_search	Buscar: paloma, bakasana, montaña…
@@ -894,9 +892,6 @@ tip_stop_t	Cuándo parar
 tip_stop_1	Dolor agudo o punzante, entumecimiento, mareo, falta de aire o dolor en el pecho: para de inmediato. Si no pasa, ve al médico.
 tip_stop_2	Después de una lesión u operación, o con una enfermedad crónica, consulta a tu médico antes de empezar.
 tip_stop_3	Con fiebre o una enfermedad aguda, descansa en lugar de practicar.
-settings_figure_human	Persona
-settings_figure_robot	Robot
-settings_figure_doll	Marioneta
 muscles_title	Músculos implicados
 muscles_main	Principales
 muscles_supporting	Secundarios
@@ -920,5 +915,3 @@ muscle_hamstrings	Isquiotibiales
 muscle_adductors	Aductores
 muscle_calves	Gemelos
 muscle_shins	Espinillas y pies
-settings_figure_female	Femenina
-settings_figure_male	Masculina

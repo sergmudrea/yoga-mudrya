@@ -68,7 +68,7 @@ shoot = []
 for i, (slot, c) in enumerate(slot_count.most_common(), 1):
     ru, en = names.get(slot, (slot, slot))
     shoot.append({'n': i, 'slot': slot, 'ru': ru, 'en': en, 'weight': c, 'sets': sorted(slot_sets[slot]),
-                  'mirror': os.path.exists(os.path.join(ROOT, f'app/src/main/assets/thumbs/{slot}_m.webp'))})
+                  'mirror': os.path.exists(os.path.join(ROOT, f'tools/atlas/archive/thumbs/{slot}_m.webp'))})
 json.dump(shoot, open(os.path.join(out, 'shoot.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
 
 # Четвёртая очередь: позы новых сетов (классика из книг, 50+, суставы, йога характера, пилатес-йога),

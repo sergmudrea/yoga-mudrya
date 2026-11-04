@@ -3,7 +3,7 @@
 **Title (up to 30 characters):** Mudrya Yoga: yoga for your day
 
 **Short description (up to 80 characters):**
-Yoga that adapts to your body and your day: 3D coach, breathing, plans
+Yoga that adapts to your body and your day: a clear visual coach, breathing, plans
 
 **Full description:**
 
@@ -11,9 +11,9 @@ Yoga that adapts to your body — instead of asking you to keep up with a video.
 
 Open the app and tell it in ten seconds how you are today: how much energy you have, calm or tense, where you feel tight, how much time you've got. The app suggests a practice and explains why: "You marked tension in the neck and shoulders — we'll gently open the shoulders and unload the neck, no inversions." One button, and you're practising.
 
-3D coach
-• A 3D marionette shows every pose and the smooth transition into it. Joints move within anatomical limits, supporting palms and feet don't slide, finger locks are highlighted.
-• Turn the model with your finger to see the pose from every side. Or switch to the wooden marionette with orange right and blue left limbs.
+Visual coach
+• A simple figure of sticks and circles shows every pose: you see at once where the arms, legs and trunk go.
+• On the inhale the belly and chest light up, so you see the breath on the figure.
 • The voice names the poses and leads the breath: "inhale", "exhale", cues during holds.
 
 Practices for what you need

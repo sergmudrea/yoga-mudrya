@@ -41,7 +41,7 @@ data class MovementRecord(
 /** Ракурс камеры у марионетки: угол поворота вокруг фигуры, градусы. */
 enum class CameraView(val yaw: Int) { SIDE(16), THREE_QUARTER(45), FRONT(80) }
 
-/** Кого показывает объёмная фигура: человека в спортивной форме, робота или деревянную марионетку. */
+/** Кого показывает объёмная фигура: марионетку (по умолчанию) или, из архива, человека в спортивной форме и робота. */
 enum class FigureKind(val js: String) { HUMAN("human"), ROBOT("robot"), DOLL("doll") }
 
 /** Имя фигуры для эмулятора: человек и робот бывают мужские и женские; без выбора — по полу в профиле. */
@@ -140,9 +140,9 @@ data class AppSettings(
     /** Показывать практику на втором экране (ТВ), когда он подключён. */
     val tvOutput: Boolean = true,
     /** Объёмная марионетка из атласа вместо плоской схемы. */
-    val figure3d: Boolean = true,
+    val figure3d: Boolean = false,
     /** Вид объёмной фигуры. */
-    val figureKind: FigureKind = FigureKind.HUMAN,
+    val figureKind: FigureKind = FigureKind.DOLL,
     /** Мужская фигура вместо женской; null — по полу в профиле. */
     val figureMale: Boolean? = null,
     /** Показ в плеере: подсказки, «далее», санскрит, полоса дыхания, крупный текст, ракурс камеры. */
@@ -400,8 +400,8 @@ object UserStateCodec {
                 voice = single["settings.voice"]?.let { v -> VoiceLevel.entries.firstOrNull { it.name == v } } ?: VoiceLevel.NAMES,
                 vibration = single["settings.vibration"]?.toBooleanStrictOrNull() ?: false,
                 tvOutput = single["settings.tv"]?.toBooleanStrictOrNull() ?: true,
-                figure3d = single["settings.figure3d"]?.toBooleanStrictOrNull() ?: true,
-                figureKind = single["settings.figureKind"]?.let { v -> FigureKind.entries.firstOrNull { it.name == v } } ?: FigureKind.HUMAN,
+                figure3d = single["settings.figure3d"]?.toBooleanStrictOrNull() ?: false,
+                figureKind = single["settings.figureKind"]?.let { v -> FigureKind.entries.firstOrNull { it.name == v } } ?: FigureKind.DOLL,
                 figureMale = single["settings.figureMale"]?.toBooleanStrictOrNull(),
                 showCues = single["settings.showCues"]?.toBooleanStrictOrNull() ?: true,
                 showNext = single["settings.showNext"]?.toBooleanStrictOrNull() ?: true,

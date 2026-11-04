@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Эмулятор из атласа → ассеты приложения (app/src/main/assets/emulator/).
+Эмулятор из атласа → архив tools/atlas/archive/emulator/ (в приложение не входит, пока 3D в архиве).
 
 Берёт из страницы атласа (сохранённый HTML) данные поз и объёмную марионетку как есть
 и добавляет мост для приложения: window.Mudrya.go(id, mirror, ms) — плавный переход
@@ -17,7 +17,7 @@ import pathlib, re, shutil, subprocess, sys, tempfile
 src = pathlib.Path(sys.argv[1]).read_text(encoding='utf-8')
 three = pathlib.Path(sys.argv[2])
 root = pathlib.Path(__file__).resolve().parents[2]
-out = root / 'app/src/main/assets/emulator'
+out = root / 'tools/atlas/archive/emulator'  # в архиве: 3D-марионетка сейчас не в приложении
 out.mkdir(parents=True, exist_ok=True)
 lines = src.split('\n')
 

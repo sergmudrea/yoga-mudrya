@@ -221,8 +221,6 @@
     <string name="body_add">Adicionar a medida de hoje</string>
     <string name="body_save">Salvar</string>
     <string name="age_chart_legend">Laranja — idade de movimento, cinza — idade real. Quanto menor, melhor.</string>
-    <string name="settings_figure3d">Figura 3D</string>
-    <string name="settings_figure3d_hint">Uma figura 3D (pessoa, robô ou marionete): transições suaves, mãos e pés ficam no chão; gire com o dedo. Desligado — o esquema plano com o brilho da respiração.</string>
     <string name="library_title">Biblioteca</string>
     <string name="library_hint">Todas as %1$d posturas da biblioteca (segundo “2100 Asanas” de D. Lacerda) por capítulos e seções, grátis para consultar: qualquer postura abre na marionete e entra na sua série com “＋”. Tocar seções inteiras é Premium.</string>
     <string name="library_search">Buscar: pombo, bakasana, montanha…</string>
@@ -896,9 +894,6 @@
     <string name="tip_stop_1">Dor aguda ou em pontada, dormência, tontura, falta de ar ou dor no peito: pare imediatamente. Se não passar, procure um médico.</string>
     <string name="tip_stop_2">Depois de uma lesão ou cirurgia, ou com uma doença crônica, converse com seu médico antes de começar.</string>
     <string name="tip_stop_3">Com febre ou doença aguda, descanse em vez de praticar.</string>
-    <string name="settings_figure_human">Pessoa</string>
-    <string name="settings_figure_robot">Robô</string>
-    <string name="settings_figure_doll">Marionete</string>
     <string name="muscles_title">Músculos envolvidos</string>
     <string name="muscles_main">Principais</string>
     <string name="muscles_supporting">Secundários</string>
@@ -922,6 +917,4 @@
     <string name="muscle_adductors">Adutores</string>
     <string name="muscle_calves">Panturrilhas</string>
     <string name="muscle_shins">Canelas e pés</string>
-    <string name="settings_figure_female">Feminina</string>
-    <string name="settings_figure_male">Masculina</string>
 </resources>

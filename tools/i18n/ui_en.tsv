@@ -219,8 +219,6 @@ body_cm	%1$s cm
 body_add	Add today\'s measurement
 body_save	Save
 age_chart_legend	Orange — movement age, grey — passport age. Lower is better.
-settings_figure3d	3D figure
-settings_figure3d_hint	A 3D figure (person, robot or marionette): smooth transitions, palms and feet stay planted; turn it with your finger. Off — the flat scheme with breath glow.
 library_title	Library
 library_hint	All %1$d poses of the library (after D. Lacerda’s “2100 Asanas”) by chapters and sections — free to browse: open any pose on the marionette and add it to your set with “＋”. Playing whole sections is Premium.
 library_search	Search: pigeon, bakasana, mountain…
@@ -894,9 +892,6 @@ tip_stop_t	When to stop
 tip_stop_1	Sharp or shooting pain, numbness, dizziness, shortness of breath or chest pain — stop at once. If it does not pass, see a doctor.
 tip_stop_2	After an injury or surgery, or with a chronic illness, talk to your doctor before you start.
 tip_stop_3	With a fever or an acute illness, rest instead of practising.
-settings_figure_human	Human
-settings_figure_robot	Robot
-settings_figure_doll	Marionette
 muscles_title	Muscles at work
 muscles_main	Main
 muscles_supporting	Supporting
@@ -920,5 +915,3 @@ muscle_hamstrings	Hamstrings
 muscle_adductors	Inner thighs
 muscle_calves	Calves
 muscle_shins	Shins and feet
-settings_figure_female	Female
-settings_figure_male	Male

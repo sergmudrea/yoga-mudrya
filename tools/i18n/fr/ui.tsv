@@ -219,8 +219,6 @@ body_cm	%1$s cm
 body_add	Ajouter la mesure du jour
 body_save	Enregistrer
 age_chart_legend	Orange — âge de mouvement, gris — âge civil. Plus bas, c’est mieux.
-settings_figure3d	Figure 3D
-settings_figure3d_hint	Une figure 3D (humain, robot ou marionnette) : transitions fluides, mains et pieds restent au sol ; faites-la tourner du doigt. Désactivé — le schéma plat avec la lueur de la respiration.
 library_title	Bibliothèque
 library_hint	Les %1$d postures de la bibliothèque (d’après « 2100 Asanas » de D. Lacerda) par chapitres et sections — consultation gratuite : chaque posture s’ouvre sur la marionnette et s’ajoute à votre séance avec « ＋ ». Lire des sections entières fait partie de Premium.
 library_search	Recherche : pigeon, bakasana, montagne…
@@ -894,9 +892,6 @@ tip_stop_t	Quand s’arrêter
 tip_stop_1	Douleur vive ou fulgurante, engourdissement, vertige, essoufflement ou douleur thoracique : arrêtez immédiatement. Si cela persiste, consultez un médecin.
 tip_stop_2	Après une blessure ou une opération, ou en cas de maladie chronique, parlez-en à votre médecin avant de commencer.
 tip_stop_3	En cas de fièvre ou de maladie aiguë, reposez-vous au lieu de pratiquer.
-settings_figure_human	Humain
-settings_figure_robot	Robot
-settings_figure_doll	Marionnette
 muscles_title	Muscles sollicités
 muscles_main	Principaux
 muscles_supporting	Secondaires
@@ -920,5 +915,3 @@ muscle_hamstrings	Ischio-jambiers
 muscle_adductors	Adducteurs
 muscle_calves	Mollets
 muscle_shins	Tibias et pieds
-settings_figure_female	Féminine
-settings_figure_male	Masculine

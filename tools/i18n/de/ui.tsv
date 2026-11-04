@@ -219,8 +219,6 @@ body_cm	%1$s cm
 body_add	Heutige Messung hinzufügen
 body_save	Speichern
 age_chart_legend	Orange – Bewegungsalter, grau – Lebensalter. Niedriger ist besser.
-settings_figure3d	3D-Figur
-settings_figure3d_hint	Eine 3D-Figur (Mensch, Roboter oder Gliederpuppe): weiche Übergänge, Hände und Füße bleiben am Boden; mit dem Finger drehbar. Aus – das flache Schema mit Atemleuchten.
 library_title	Bibliothek
 library_hint	Alle %1$d Haltungen der Bibliothek (nach D. Lacerdas „2100 Asanas“) nach Kapiteln und Abschnitten – kostenlos ansehen: Jede Haltung öffnet sich auf der Gliederpuppe und lässt sich mit „＋“ zu deinem Set hinzufügen. Ganze Abschnitte abspielen ist Premium.
 library_search	Suche: Taube, Bakasana, Berg…
@@ -894,9 +892,6 @@ tip_stop_t	Wann aufhören
 tip_stop_1	Stechender oder einschießender Schmerz, Taubheit, Schwindel, Atemnot oder Brustschmerz — sofort aufhören. Geht es nicht vorbei, zum Arzt.
 tip_stop_2	Nach einer Verletzung oder Operation oder bei einer chronischen Krankheit vor dem Start mit dem Arzt sprechen.
 tip_stop_3	Bei Fieber oder akuter Krankheit lieber ausruhen statt üben.
-settings_figure_human	Mensch
-settings_figure_robot	Roboter
-settings_figure_doll	Marionette
 muscles_title	Beanspruchte Muskeln
 muscles_main	Hauptsächlich
 muscles_supporting	Unterstützend
@@ -920,5 +915,3 @@ muscle_hamstrings	Beinbeuger
 muscle_adductors	Oberschenkelinnenseite
 muscle_calves	Waden
 muscle_shins	Schienbeine und Füße
-settings_figure_female	Weiblich
-settings_figure_male	Männlich
