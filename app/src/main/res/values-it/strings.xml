@@ -899,4 +899,27 @@
     <string name="settings_figure_human">Persona</string>
     <string name="settings_figure_robot">Robot</string>
     <string name="settings_figure_doll">Marionetta</string>
+    <string name="muscles_title">Muscoli coinvolti</string>
+    <string name="muscles_main">Principali</string>
+    <string name="muscles_supporting">Secondari</string>
+    <string name="muscles_front">Davanti</string>
+    <string name="muscles_back">Dietro</string>
+    <string name="muscle_neck">Collo</string>
+    <string name="muscle_shoulders">Spalle</string>
+    <string name="muscle_chest">Petto</string>
+    <string name="muscle_upperback">Parte alta della schiena</string>
+    <string name="muscle_lats">Dorsali</string>
+    <string name="muscle_biceps">Bicipiti</string>
+    <string name="muscle_triceps">Tricipiti</string>
+    <string name="muscle_forearms">Avambracci e polsi</string>
+    <string name="muscle_abs">Addominali</string>
+    <string name="muscle_obliques">Obliqui</string>
+    <string name="muscle_lowerback">Zona lombare</string>
+    <string name="muscle_glutes">Glutei</string>
+    <string name="muscle_hipflexors">Flessori dell’anca</string>
+    <string name="muscle_quads">Quadricipiti</string>
+    <string name="muscle_hamstrings">Femorali</string>
+    <string name="muscle_adductors">Adduttori</string>
+    <string name="muscle_calves">Polpacci</string>
+    <string name="muscle_shins">Stinchi e piedi</string>
 </resources>

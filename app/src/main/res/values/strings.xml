@@ -899,4 +899,27 @@
     <string name="settings_figure_human">Human</string>
     <string name="settings_figure_robot">Robot</string>
     <string name="settings_figure_doll">Marionette</string>
+    <string name="muscles_title">Muscles at work</string>
+    <string name="muscles_main">Main</string>
+    <string name="muscles_supporting">Supporting</string>
+    <string name="muscles_front">Front</string>
+    <string name="muscles_back">Back</string>
+    <string name="muscle_neck">Neck</string>
+    <string name="muscle_shoulders">Shoulders</string>
+    <string name="muscle_chest">Chest</string>
+    <string name="muscle_upperback">Upper back</string>
+    <string name="muscle_lats">Lats</string>
+    <string name="muscle_biceps">Biceps</string>
+    <string name="muscle_triceps">Triceps</string>
+    <string name="muscle_forearms">Forearms and wrists</string>
+    <string name="muscle_abs">Abs</string>
+    <string name="muscle_obliques">Obliques</string>
+    <string name="muscle_lowerback">Lower back</string>
+    <string name="muscle_glutes">Glutes</string>
+    <string name="muscle_hipflexors">Hip flexors</string>
+    <string name="muscle_quads">Quadriceps</string>
+    <string name="muscle_hamstrings">Hamstrings</string>
+    <string name="muscle_adductors">Inner thighs</string>
+    <string name="muscle_calves">Calves</string>
+    <string name="muscle_shins">Shins and feet</string>
 </resources>

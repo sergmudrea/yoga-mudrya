@@ -899,4 +899,27 @@
     <string name="settings_figure_human">Humain</string>
     <string name="settings_figure_robot">Robot</string>
     <string name="settings_figure_doll">Marionnette</string>
+    <string name="muscles_title">Muscles sollicités</string>
+    <string name="muscles_main">Principaux</string>
+    <string name="muscles_supporting">Secondaires</string>
+    <string name="muscles_front">Face</string>
+    <string name="muscles_back">Dos</string>
+    <string name="muscle_neck">Cou</string>
+    <string name="muscle_shoulders">Épaules</string>
+    <string name="muscle_chest">Poitrine</string>
+    <string name="muscle_upperback">Haut du dos</string>
+    <string name="muscle_lats">Grands dorsaux</string>
+    <string name="muscle_biceps">Biceps</string>
+    <string name="muscle_triceps">Triceps</string>
+    <string name="muscle_forearms">Avant-bras et poignets</string>
+    <string name="muscle_abs">Abdominaux</string>
+    <string name="muscle_obliques">Obliques</string>
+    <string name="muscle_lowerback">Bas du dos</string>
+    <string name="muscle_glutes">Fessiers</string>
+    <string name="muscle_hipflexors">Fléchisseurs de la hanche</string>
+    <string name="muscle_quads">Quadriceps</string>
+    <string name="muscle_hamstrings">Ischio-jambiers</string>
+    <string name="muscle_adductors">Adducteurs</string>
+    <string name="muscle_calves">Mollets</string>
+    <string name="muscle_shins">Tibias et pieds</string>
 </resources>

@@ -899,4 +899,27 @@
     <string name="settings_figure_human">Человек</string>
     <string name="settings_figure_robot">Робот</string>
     <string name="settings_figure_doll">Марионетка</string>
+    <string name="muscles_title">Мышцы в работе</string>
+    <string name="muscles_main">Основные</string>
+    <string name="muscles_supporting">Вспомогательные</string>
+    <string name="muscles_front">Спереди</string>
+    <string name="muscles_back">Сзади</string>
+    <string name="muscle_neck">Шея</string>
+    <string name="muscle_shoulders">Плечи</string>
+    <string name="muscle_chest">Грудь</string>
+    <string name="muscle_upperback">Верх спины</string>
+    <string name="muscle_lats">Широчайшие</string>
+    <string name="muscle_biceps">Бицепсы</string>
+    <string name="muscle_triceps">Трицепсы</string>
+    <string name="muscle_forearms">Предплечья и запястья</string>
+    <string name="muscle_abs">Пресс</string>
+    <string name="muscle_obliques">Косые мышцы живота</string>
+    <string name="muscle_lowerback">Поясница</string>
+    <string name="muscle_glutes">Ягодичные</string>
+    <string name="muscle_hipflexors">Сгибатели бедра</string>
+    <string name="muscle_quads">Четырёхглавые</string>
+    <string name="muscle_hamstrings">Задняя поверхность бедра</string>
+    <string name="muscle_adductors">Внутренняя поверхность бедра</string>
+    <string name="muscle_calves">Икроножные</string>
+    <string name="muscle_shins">Голени и стопы</string>
 </resources>

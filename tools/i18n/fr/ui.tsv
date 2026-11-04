@@ -897,3 +897,26 @@ tip_stop_3	En cas de fièvre ou de maladie aiguë, reposez-vous au lieu de prati
 settings_figure_human	Humain
 settings_figure_robot	Robot
 settings_figure_doll	Marionnette
+muscles_title	Muscles sollicités
+muscles_main	Principaux
+muscles_supporting	Secondaires
+muscles_front	Face
+muscles_back	Dos
+muscle_neck	Cou
+muscle_shoulders	Épaules
+muscle_chest	Poitrine
+muscle_upperback	Haut du dos
+muscle_lats	Grands dorsaux
+muscle_biceps	Biceps
+muscle_triceps	Triceps
+muscle_forearms	Avant-bras et poignets
+muscle_abs	Abdominaux
+muscle_obliques	Obliques
+muscle_lowerback	Bas du dos
+muscle_glutes	Fessiers
+muscle_hipflexors	Fléchisseurs de la hanche
+muscle_quads	Quadriceps
+muscle_hamstrings	Ischio-jambiers
+muscle_adductors	Adducteurs
+muscle_calves	Mollets
+muscle_shins	Tibias et pieds

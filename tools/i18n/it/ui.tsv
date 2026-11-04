@@ -897,3 +897,26 @@ tip_stop_3	Con la febbre o una malattia acuta, riposa invece di praticare.
 settings_figure_human	Persona
 settings_figure_robot	Robot
 settings_figure_doll	Marionetta
+muscles_title	Muscoli coinvolti
+muscles_main	Principali
+muscles_supporting	Secondari
+muscles_front	Davanti
+muscles_back	Dietro
+muscle_neck	Collo
+muscle_shoulders	Spalle
+muscle_chest	Petto
+muscle_upperback	Parte alta della schiena
+muscle_lats	Dorsali
+muscle_biceps	Bicipiti
+muscle_triceps	Tricipiti
+muscle_forearms	Avambracci e polsi
+muscle_abs	Addominali
+muscle_obliques	Obliqui
+muscle_lowerback	Zona lombare
+muscle_glutes	Glutei
+muscle_hipflexors	Flessori dell’anca
+muscle_quads	Quadricipiti
+muscle_hamstrings	Femorali
+muscle_adductors	Adduttori
+muscle_calves	Polpacci
+muscle_shins	Stinchi e piedi

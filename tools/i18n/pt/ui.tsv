@@ -897,3 +897,26 @@ tip_stop_3	Com febre ou doença aguda, descanse em vez de praticar.
 settings_figure_human	Pessoa
 settings_figure_robot	Robô
 settings_figure_doll	Marionete
+muscles_title	Músculos envolvidos
+muscles_main	Principais
+muscles_supporting	Secundários
+muscles_front	Frente
+muscles_back	Costas
+muscle_neck	Pescoço
+muscle_shoulders	Ombros
+muscle_chest	Peito
+muscle_upperback	Parte superior das costas
+muscle_lats	Dorsais
+muscle_biceps	Bíceps
+muscle_triceps	Tríceps
+muscle_forearms	Antebraços e punhos
+muscle_abs	Abdominais
+muscle_obliques	Oblíquos
+muscle_lowerback	Lombar
+muscle_glutes	Glúteos
+muscle_hipflexors	Flexores do quadril
+muscle_quads	Quadríceps
+muscle_hamstrings	Posteriores da coxa
+muscle_adductors	Adutores
+muscle_calves	Panturrilhas
+muscle_shins	Canelas e pés

@@ -897,3 +897,26 @@ tip_stop_3	Bei Fieber oder akuter Krankheit lieber ausruhen statt üben.
 settings_figure_human	Mensch
 settings_figure_robot	Roboter
 settings_figure_doll	Marionette
+muscles_title	Beanspruchte Muskeln
+muscles_main	Hauptsächlich
+muscles_supporting	Unterstützend
+muscles_front	Vorne
+muscles_back	Hinten
+muscle_neck	Nacken
+muscle_shoulders	Schultern
+muscle_chest	Brust
+muscle_upperback	Oberer Rücken
+muscle_lats	Latissimus
+muscle_biceps	Bizeps
+muscle_triceps	Trizeps
+muscle_forearms	Unterarme und Handgelenke
+muscle_abs	Bauchmuskeln
+muscle_obliques	Schräge Bauchmuskeln
+muscle_lowerback	Unterer Rücken
+muscle_glutes	Gesäß
+muscle_hipflexors	Hüftbeuger
+muscle_quads	Quadrizeps
+muscle_hamstrings	Beinbeuger
+muscle_adductors	Oberschenkelinnenseite
+muscle_calves	Waden
+muscle_shins	Schienbeine und Füße

@@ -899,4 +899,27 @@
     <string name="settings_figure_human">Mensch</string>
     <string name="settings_figure_robot">Roboter</string>
     <string name="settings_figure_doll">Marionette</string>
+    <string name="muscles_title">Beanspruchte Muskeln</string>
+    <string name="muscles_main">Hauptsächlich</string>
+    <string name="muscles_supporting">Unterstützend</string>
+    <string name="muscles_front">Vorne</string>
+    <string name="muscles_back">Hinten</string>
+    <string name="muscle_neck">Nacken</string>
+    <string name="muscle_shoulders">Schultern</string>
+    <string name="muscle_chest">Brust</string>
+    <string name="muscle_upperback">Oberer Rücken</string>
+    <string name="muscle_lats">Latissimus</string>
+    <string name="muscle_biceps">Bizeps</string>
+    <string name="muscle_triceps">Trizeps</string>
+    <string name="muscle_forearms">Unterarme und Handgelenke</string>
+    <string name="muscle_abs">Bauchmuskeln</string>
+    <string name="muscle_obliques">Schräge Bauchmuskeln</string>
+    <string name="muscle_lowerback">Unterer Rücken</string>
+    <string name="muscle_glutes">Gesäß</string>
+    <string name="muscle_hipflexors">Hüftbeuger</string>
+    <string name="muscle_quads">Quadrizeps</string>
+    <string name="muscle_hamstrings">Beinbeuger</string>
+    <string name="muscle_adductors">Oberschenkelinnenseite</string>
+    <string name="muscle_calves">Waden</string>
+    <string name="muscle_shins">Schienbeine und Füße</string>
 </resources>
