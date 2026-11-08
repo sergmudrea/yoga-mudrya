@@ -178,7 +178,7 @@ object ThemeCatalog {
     /** Зеркальные копии поз библиотеки, которые нужны темам (правая/левая сторона). */
     fun mirroredLibraryAsanas(library: Map<String, Asana>, extra: List<String> = emptyList()): List<Asana> =
         (themes.flatMap { expand(it.poses) } + extra).filter { it.startsWith("lb_") && it.endsWith("_m") }.distinct().mapNotNull { id ->
-            library[id.removeSuffix("_m")]?.let { a -> a.copy(id = id, figure = a.figure?.copy(mirror = true)) }
+            library[id.removeSuffix("_m")]?.let { a -> a.copy(id = id, pose = a.pose.otherSide(), figure = a.figure?.copy(mirror = true)) }
         }
 
     fun theme(id: String): Theme? = themes.firstOrNull { it.id == id }

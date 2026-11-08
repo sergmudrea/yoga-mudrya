@@ -93,6 +93,20 @@ data class Pose(
         upperTorso = changes[PoseParam.UPPER_TORSO] ?: upperTorso,
     )
 
+    /**
+     * Та же поза на другую сторону. В виде сбоку меняются местами ближние (правые) и дальние (левые) рука и нога;
+     * в виде спереди картинка ещё и отражается по горизонтали.
+     */
+    fun otherSide(): Pose {
+        val m: (Double) -> Double = if (front > 0.5) { a -> ((180 - a) % 360 + 360) % 360 } else { a -> a }
+        return Pose(
+            torso = m(torso), neck = m(neck),
+            upperArm = m(farUpperArm), foreArm = m(farForeArm), thigh = m(farThigh), shin = m(farShin), foot = m(farFoot),
+            upperArm2 = m(upperArm), foreArm2 = m(foreArm), thigh2 = m(thigh), shin2 = m(shin), foot2 = m(foot),
+            upperTorso = upperTorso?.let(m), front = front, spineScale = spineScale,
+        )
+    }
+
     companion object {
         fun fromList(v: List<Double>): Pose {
             require(v.size == 7 || v.size == 12 || v.size == 13) { "Pose needs 7, 12 or 13 angles, got ${v.size}" }

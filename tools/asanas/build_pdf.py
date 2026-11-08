@@ -13,7 +13,7 @@ ROOT = os.path.dirname(os.path.dirname(HERE))
 D = os.path.join(ROOT, 'docs/asanas/')
 W = os.path.join(HERE, 'work'); os.makedirs(W, exist_ok=True)
 sys.path.insert(0, HERE)
-from figures import pose_svg, body_svg  # noqa: E402
+from figures import pose_svg, body_svg, mirror_pts  # noqa: E402
 
 cat = json.load(open(D + 'catalog.json', encoding='utf-8'))
 PTS = {p['id']: p for p in json.load(open(os.path.join(HERE, 'pose_points.json'), encoding='utf-8'))}
@@ -23,7 +23,9 @@ FAM = ['Стоячие', 'Балансы на ногах', 'Наклоны вп�
 
 
 def pose(src, w, h):
-    p = PTS.get(src) or PTS.get(src.removesuffix('_m'))
+    p = PTS.get(src)
+    if p is None and src.endswith('_m') and src.removesuffix('_m') in PTS:
+        p = mirror_pts(PTS[src.removesuffix('_m')])  # та же поза на другую сторону
     return pose_svg(p, w, h) if p else ''
 
 
@@ -92,7 +94,7 @@ def build(sex):
     full_toc = ''.join(f'<div class="tb"><a href="#full-{i}">{i} {E(byid[i]["ru"])}</a></div>' for i in sorted(full, key=lambda i: re.search(f'id="full-{i}"', b1).start()))
     legend = (f'<div class="leg"><span class="sw" style="background:#E0761C"></span>основные мышцы '
               f'<span class="sw" style="background:#F4B97A"></span>вспомогательные <span class="sw" style="background:#C9CDD5"></span>не задействованы'
-              f' · рисунок позы — вид сбоку, дальние рука и нога светлее</div>')
+              f' · на рисунке позы <b style="color:#D23B32">правые</b> рука и нога красные, <b style="color:#2D6AD6">левые</b> — синие (в виде сбоку дальние светлее)</div>')
     css = open(os.path.join(HERE, 'style.css'), encoding='utf-8').read()
     doc = f"""<!doctype html><html lang="ru"><head><meta charset="utf-8"><style>{css}</style></head><body>
 <div class="cover"><div class="t">Каталог асан</div><div class="s">«Мудря йога» · базовые асаны и вариации · {label}</div>

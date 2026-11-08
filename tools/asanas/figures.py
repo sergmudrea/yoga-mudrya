@@ -9,6 +9,28 @@ sys.path.insert(0, os.path.join(os.path.dirname(HERE), 'cards'))
 import muscle_body as body  # noqa: E402
 
 INK, FAR, FLOOR = '#2B2F38', '#A3A8B2', '#D9DBE0'
+# Стороны тела: правая — красная, левая — синяя; дальняя сторона в виде сбоку бледнее.
+RIGHT, LEFT, LEFT_FAR = '#D23B32', '#2D6AD6', '#9DBBEE'
+
+
+def mirror_pts(f):
+    """Та же поза на другую сторону: в виде сбоку меняются местами ближние и дальние конечности,
+    в виде спереди — ещё и отражение по горизонтали."""
+    g = dict(f)
+    if f['front'] > 0.5:
+        flip = lambda v: [-v[0], v[1]] if isinstance(v[0], (int, float)) else [flip(x) for x in v]
+        g = {k: (flip(v) if isinstance(v, list) else v) for k, v in f.items()}
+    g['near'], g['far'], g['arm'], g['arm2'] = g['far'], g['near'], g['arm2'], g['arm']
+    g['shl'], g['hpl'] = g['shl'][::-1], g['hpl'][::-1]
+    return g
+
+
+def side_colors(f):
+    """Цвета (ближняя, дальняя). Фигура смотрит вправо: в виде сбоку к зрителю обращена правая сторона;
+    в виде спереди ближние конечности лежат справа на экране — это левая сторона тела."""
+    if f['front'] > 0.5:
+        return LEFT, RIGHT
+    return RIGHT, LEFT_FAR
 
 
 def pose_svg(f, w=150, h=120):
@@ -24,7 +46,7 @@ def pose_svg(f, w=150, h=120):
     def pl(ps, col, wd):
         return f'<polyline points="{" ".join("%.1f,%.1f" % o(p) for p in ps)}" fill="none" stroke="{col}" stroke-width="{wd:.2f}" stroke-linecap="round" stroke-linejoin="round"/>'
     limb = 6.5 * sc / 1.75; trunk = 9 * sc / 1.75
-    far = INK if f['front'] > 0.5 else FAR
+    near, far = side_colors(f)
     s = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}">',
          f'<line x1="{w*.06:.1f}" y1="{g+2*sc/1.75:.1f}" x2="{w*.94:.1f}" y2="{g+2*sc/1.75:.1f}" stroke="{FLOOR}" stroke-width="{4*sc/1.75:.2f}" stroke-linecap="round"/>',
          pl(f['far'], far, limb), pl(f['arm2'], far, limb)]
@@ -33,7 +55,7 @@ def pose_svg(f, w=150, h=120):
     hp, wa, sh, nk = o(f['hip']), o(f['waist']), o(f['sh']), o(f['neck'])
     c1 = (2 * wa[0] - (hp[0] + sh[0]) / 2, 2 * wa[1] - (hp[1] + sh[1]) / 2)
     s.append(f'<path d="M{hp[0]:.1f},{hp[1]:.1f} Q{c1[0]:.1f},{c1[1]:.1f} {sh[0]:.1f},{sh[1]:.1f} L{nk[0]:.1f},{nk[1]:.1f}" fill="none" stroke="{INK}" stroke-width="{trunk:.2f}" stroke-linecap="round" stroke-linejoin="round"/>')
-    s += [pl(f['near'], INK, limb), pl(f['arm'], INK, limb)]
+    s += [pl(f['near'], near, limb), pl(f['arm'], near, limb)]
     hx, hy = o(f['head'])
     s.append(f'<circle cx="{hx:.1f}" cy="{hy:.1f}" r="{r*sc:.1f}" fill="{INK}"/></svg>')
     return ''.join(s)

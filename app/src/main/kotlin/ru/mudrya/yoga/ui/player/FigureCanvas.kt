@@ -22,11 +22,22 @@ import ru.mudrya.yoga.model.Pose
 import ru.mudrya.yoga.ui.theme.MudryaColors
 import kotlin.math.min
 
-private val FarLimb = Color(0xFF5B6170)
 private val Floor = Color(0xFF2A2E37)
 
+/** Стороны тела: правая — красная, левая — синяя. Дальняя сторона в виде сбоку темнее. */
+private val RightLimb = Color(0xFFE5534B)
+private val LeftLimb = Color(0xFF4C8DF0)
+private val LeftFar = Color(0xFF34588F)
+
 /**
- * Схематичная фигура: ближние рука и нога светлые, дальние — серые.
+ * Цвета ближних и дальних конечностей. Фигура смотрит вправо, поэтому в виде сбоку к зрителю обращена
+ * правая сторона тела; в виде спереди ближние конечности оказываются справа на экране — это левая сторона.
+ */
+internal fun limbColors(front: Double): Pair<Color, Color> =
+    if (front > 0.5) LeftLimb to RightLimb else RightLimb to LeftFar
+
+/**
+ * Схематичная фигура: правые рука и нога красные, левые — синие, корпус и голова светлые.
  * На вдохе подсвечиваются живот (шафран) и грудь (голубой), по порядку полного дыхания.
  */
 @Composable
@@ -54,8 +65,7 @@ fun FigureCanvas(
 
         val limb = Stroke(width = 6.5f * scale / 1.75f, cap = StrokeCap.Round, join = StrokeJoin.Round)
         val trunk = Stroke(width = 9f * scale / 1.75f, cap = StrokeCap.Round, join = StrokeJoin.Round)
-        // В виде спереди обе стороны одинаково близко — дальние конечности тоже светлые.
-        val far = if (f.front > 0.5) MudryaColors.Text else FarLimb
+        val (near, far) = limbColors(f.front)
         drawPath(pathOf(listOf(f.farHip, f.knee2, f.ankle2, f.toe2), ::o), far, style = limb)
         drawPath(pathOf(listOf(f.farShoulder, f.elbow2, f.wrist2), ::o), far, style = limb)
         if (f.front > 0.05) {
@@ -63,8 +73,8 @@ fun FigureCanvas(
             drawPath(pathOf(listOf(f.nearHip, f.farHip), ::o), MudryaColors.Text, style = limb)
         }
         drawPath(spinePath(f, ::o), MudryaColors.Text, style = trunk)
-        drawPath(pathOf(listOf(f.nearHip, f.knee, f.ankle, f.toe), ::o), MudryaColors.Text, style = limb)
-        drawPath(pathOf(listOf(f.nearShoulder, f.elbow, f.wrist), ::o), MudryaColors.Text, style = limb)
+        drawPath(pathOf(listOf(f.nearHip, f.knee, f.ankle, f.toe), ::o), near, style = limb)
+        drawPath(pathOf(listOf(f.nearShoulder, f.elbow, f.wrist), ::o), near, style = limb)
         drawCircle(MudryaColors.Text, radius = f.headRadius.toFloat() * scale, center = o(f.head))
     }
 }
