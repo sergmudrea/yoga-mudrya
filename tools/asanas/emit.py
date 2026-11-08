@@ -4,6 +4,8 @@ import sys, json, csv, re, os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from build import *
 from varinfo import describe
+from figures import var_muscles
+from muscles_bases import M as MB
 
 OUT = sys.argv[1]
 os.makedirs(OUT, exist_ok=True)
@@ -156,11 +158,17 @@ for k in keys:
     syn = sorted({r['ru'] for r in members(k) if out[r['id']][0].startswith('Дубль')} - {b['ru']})
     ck = card_of_base.get(k); card = cards_ru.get(ck) if ck else None
     mu = MU.M.get(ck) if ck else None
+    if not mu or not mu[0]: mu = MB.get(bid[k])
+    mg = (mu[0].split(), mu[1].split()) if mu else ([], [])
+    for v in vs:
+        vm = var_muscles(mg[0], mg[1], v['tags'])
+        v['muscle_groups'] = vm
+        v['muscles'] = ([MUSCLE_RU[g] for g in vm[0]], [MUSCLE_RU[g] for g in vm[1]])
     data.append(dict(id=bid[k], key=k, sanskrit=b['sa'], ru=b['ru'], en=b['en'], synonyms=syn, family=fam[k], level=level(k), load=LOAD[fam[k]],
                      used=[USE[s] for s in USE if s in used[k]], free=bool(used[k] & FREE), gaze=gaze(b), type=typ(b), source=b['id'],
                      short=(card['works'] if card else (b['short'] if b['src'] != 'Лакерда' else '')), card=ck, steps=(card or {}).get('steps'),
                      watch=(card or {}).get('watch'), easier=(card or {}).get('easier'), tip=(card or {}).get('tip'), avoid=(card or {}).get('avoid'),
-                     muscles=([MUSCLE_RU[g] for g in mu[0].split()], [MUSCLE_RU[g] for g in mu[1].split()]) if mu else None,
+                     muscles=([MUSCLE_RU[g] for g in mg[0]], [MUSCLE_RU[g] for g in mg[1]]) if mg[0] else None, muscle_groups=mg,
                      contra=CONTRA[fam[k]], variations=vs))
 json.dump(dict(summary=summary, bases=data), open(os.path.join(OUT, 'catalog.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
 
@@ -203,6 +211,7 @@ def base_card(d, full_ids):
             L.append(f'- **{v["id"]} {v["ru"]}** ({v["sanskrit"] or "—"} / {v["en"]})')
             L.append(f'  - Что меняется: {"; ".join(v["what"])}.')
             L.append(f'  - Для кого: {v["role"]}.')
+            if v['muscles'][0]: L.append(f'  - Мышцы: основные — {", ".join(v["muscles"][0])}' + (f'; вспомогательные — {", ".join(v["muscles"][1])}' if v['muscles'][1] else '') + '.')
             L.append(f'  - Замена базовой: {v["replace"]}')
             L.append(f'  - Дополнительно нельзя или осторожно: {"; ".join(v["extra"]) if v["extra"] else "сверх противопоказаний базовой — нет"}.')
             if v['note']: L.append(f'  - В атласе: {v["note"]}')

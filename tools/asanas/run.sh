@@ -5,6 +5,7 @@ set -e
 cd "$(dirname "$0")/../.."
 python3 tools/asanas/extract.py
 python3 tools/asanas/emit.py docs/asanas tools/asanas/sequences.tsv app/src/main/assets/cards/ru.json tools/cards
-# PDF: HTML из Markdown и печать в Chromium (Playwright)
+# PDF с рисунками поз и картами мышц (женский и мужской силуэт). Точки поз — pose_points.json (выгрузка FigureGeometry.grounded, см. pose_points.kt)
 python3 tools/asanas/build_pdf.py
-NODE_PATH=$(npm root -g) node tools/asanas/render.js "$PWD/tools/asanas/work/catalog.html" "$PWD/docs/asanas/catalog.pdf"
+for s in f m; do NODE_PATH=$(npm root -g) node tools/asanas/render.js "$PWD/tools/asanas/work/catalog_$s.html" "$PWD/tools/asanas/work/catalog_$s.pdf"; done
+cp tools/asanas/work/catalog_f.pdf "docs/asanas/catalog_female.pdf"; cp tools/asanas/work/catalog_m.pdf "docs/asanas/catalog_male.pdf"

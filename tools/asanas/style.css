@@ -11,3 +11,14 @@ code{font-family:'DejaVu Sans Mono',monospace;font-size:8.5pt;background:#f2f2f4
 .cover .t{font-size:30pt;color:#7a4b12;font-weight:bold}.cover .s{font-size:14pt;margin-top:10pt;color:#444}.cover .d{margin-top:30pt;color:#666}
 .toc{columns:2;column-gap:18pt;font-size:8.4pt;line-height:1.35}.tf{font-weight:bold;color:#7a4b12;margin-top:6pt;break-after:avoid}.tb a{color:#1d1f24;text-decoration:none}
 .sect{page-break-before:always} a{color:#22324a}
+.fig{display:flex;align-items:flex-end;gap:10pt;margin:4pt 0 6pt}.fig svg{display:block}.bodies{display:flex;gap:4pt}
+.base{margin-top:6pt}.base h3{margin-top:16pt}.pass{margin:2pt 0 4pt}.note{color:#7a4b12;font-style:italic}
+h2.fam{page-break-before:always;font-size:16pt}
+h4{font-size:10.5pt;color:#7a4b12;margin:10pt 0 4pt;page-break-after:avoid}
+.var{display:flex;gap:8pt;align-items:flex-start;border-top:0.5pt solid #e3e5ea;padding:5pt 0;page-break-inside:avoid}
+.var .fig{margin:0;gap:4pt;flex:0 0 auto}.vt{flex:1 1 auto;min-width:0}.vt ul{margin:1pt 0;padding-left:12pt}.vt li{font-size:8.7pt;margin:0}
+.vh{font-weight:bold;color:#22324a}.vs{font-size:8.2pt;color:#6b7080}
+.mm{color:#C25F0C}.ms{color:#B8803F}
+.leg{font-size:8.4pt;color:#555;margin:4pt 0 8pt}.sw{display:inline-block;width:9pt;height:9pt;border-radius:2pt;vertical-align:-1pt;margin:0 3pt 0 8pt}
+.legend{font-size:8.8pt;margin:0 0 6pt}
+.cv{display:flex;justify-content:center;gap:6pt;margin-top:24pt}
