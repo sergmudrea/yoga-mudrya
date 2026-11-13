@@ -1,0 +1,648 @@
+0	Posture de la montagne
+1	Inspiration poitrine ouverte
+2	Bras vers le haut
+3	Flexion latérale à droite
+4	Flexion latérale à gauche
+5	Flexion arrière debout
+6	Demi-flexion dos plat
+7	Flexion avant debout
+8	Demi-flexion, regard devant
+9	Flexion avant en tenant les jambes
+10	Flexion avant, mains jointes derrière
+11	Saut en planche
+12	Chien tête en haut glissé
+13	Planche basse glissée
+14	Planche basse (chaturanga)
+15	Planche basse, poitrine en avant
+16	Chien tête en haut
+17	Chien tête en bas
+18	Chien tête en bas avec flexion arrière
+19	Chien tête en bas profond
+20	Fente, bras en haut
+21	Fente en croissant de lune
+22	Fente, bras ouverts à l’expiration
+23	Fente en croissant, étape 1
+24	Fente en croissant, étape 2
+25	Chien à trois pattes
+26	Chien tête en haut glissé sur une jambe
+27	Planche basse sur une jambe
+28	Chien à trois pattes profond
+29	Planche, genou vers l’épaule droite
+30	Planche, genou vers l’épaule gauche
+31	Chien tête en bas, ouverture des épaules
+32	Chat : dos creusé
+33	Chat : dos rond
+34	Chat dos creusé, jambe en arrière
+35	Chat, genou vers la tête par le côté
+36	Chat, cercle lent de la jambe
+37	Chat : dos très creusé, jambe en arrière
+38	Chat : dos rond, genou vers le front
+39	Chat, balancement lent de la jambe en arrière
+40	Chat, balancement lent de la jambe sur le côté
+41	Chat-chien d’arrêt, bras et jambe tendus
+42	Demi-chameau à genoux
+43	Chien d’arrêt, bras et jambe opposés
+44	Demi-chameau, prise croisée
+45	Relaxation sur les talons
+46	Pranamasana — posture de la prière
+47	Hasta Uttanasana — bras en haut
+48	Padahastasana — flexion vers les pieds
+49	Ashwa Sanchalanasana — fente, jambe droite en arrière
+50	Ashtanga Namaskara — huit points
+51	Bhujangasana — cobra
+52	Ashwa Sanchalanasana — pied droit devant
+53	Ardha Chandrasana — croissant sur le genou
+54	Shishuasana — posture de l’enfant
+55	Planche horizontale large
+56	Arche du serpent en appui large
+57	Crocodile : repos sur le ventre
+58	Sauterelle
+59	Sphinx
+60	Sphinx jambe levée
+61	Dos de chameau
+62	Sphinx allongé
+63	Sphinx allongé, jambe pliée
+64	Cobra, rotation à gauche
+65	Cobra, rotation à droite
+66	Cobra profond
+67	Étirement bas
+68	Torsion dans l’étirement bas, gauche
+69	Torsion dans l’étirement bas, droite
+70	Pyramide
+71	Chien tête en haut large
+72	Chien tête en haut large, rotation à gauche
+73	Chien tête en haut large, rotation à droite
+74	Chien tête en haut large sur les genoux
+75	Étirement profond du dos en chien tête en haut
+76	Chien tête en haut sur les orteils
+77	Équilibre sur les bras, genoux à la poitrine
+78	Équilibre sur les bras, jambes devant
+79	Savasana — relaxation allongée
+80	Balancements « en charrue » des deux jambes
+81	Montée progressive des jambes tendues : départ
+82	Jambes à 30–35°
+83	Jambes à 60°
+84	Jambes à la verticale
+85	Torsion allongée à droite, jambes tendues
+86	Torsion allongée à gauche, jambes tendues
+87	Torsion allongée à droite
+88	Torsion allongée à gauche
+89	Charrue en tenant les pieds
+90	Charrue, genoux aux oreilles
+91	Roulades
+92	Pont sur les épaules avec prise
+93	Demi-pont sur les épaules avec prise
+94	« Pont de fer » sur les épaules
+95	« Pont de fer » sur l’arrière de la tête
+96	Préparation à l’équilibre sur la tête
+97	Équilibre sur la tête, jambes à angle droit
+98	Équilibre sur la tête
+99	Équilibre sur la tête, plantes des pieds jointes
+100	Équilibre sur la tête, jambes écartées
+101	Demi-anneau en équilibre sur la tête
+102	Pont en appui sur la tête
+103	Pont sur la tête à deux appuis (appui gauche)
+104	Pont sur la tête à deux appuis, jambe levée
+105	Pont sur la tête à deux appuis (appui droit)
+106	Pont en appui sur le front
+107	Poisson
+108	Allongé : jambes levées, prise des orteils
+109	Allongé : jambes vers le visage, prise des pieds
+110	Allongé : jambes tendues vers la poitrine
+111	Chandelle
+112	Demi-chandelle
+113	Charrue verticale
+114	Étirement des hanches en chandelle
+115	Demi-chandelle, une jambe levée
+116	Étirement de l’avant de la cuisse en demi-chandelle
+117	Demi-pont soutenu
+118	Pont sur les épaules soutenu
+119	Pont sur les épaules sur une jambe
+120	Pont sur les épaules, une jambe levée
+121	Posture inversée (viparita karani)
+122	Charrue
+123	Charrue allongée
+124	Relaxation sur le dos
+125	Pont : montée
+126	Pont
+127	Pont jambes tendues
+128	Pont, menton vers le sternum
+129	Étirement à plat du bas du dos
+130	Flexion avant assise, préparation
+131	Flexion avant assise
+132	Flexion avant assise, dos rond
+133	Table inversée
+134	Triple étirement
+135	Planche inversée
+136	Étirement profond des épaules
+137	Flexion fermée semi-inversée avec étirement des épaules
+138	Flexion inversée ouverte allongée
+139	Flexion avant jambes écartées
+140	Araignée
+141	Posture verrouillée, cheville droite dessus
+142	Posture du papillon en équilibre
+143	Tortue
+144	Flexion avant assis jambes écartées
+145	Assis jambes écartées, dos droit
+146	Assis jambes écartées, flexion à droite
+147	Assis jambes écartées, flexion à gauche
+148	Flexion jambes écartées, mains jointes
+149	Assis jambes écartées avec flexion arrière
+150	Papillon, mains jointes
+151	Papillon
+152	Flexion avant en papillon
+153	Demi-grand écart, jambe gauche devant
+154	Grand écart avec flexion avant, jambe gauche devant
+155	Grand écart avec flexion, jambe arrière au sol
+156	Grand écart, jambe gauche devant
+157	Grand écart avec flexion avant profonde
+158	Demi-grand écart, jambe droite devant
+159	Grand écart avec flexion avant, jambe droite devant
+160	Grand écart, jambe droite devant
+161	Grenouille
+162	Grenouille, torsion à droite
+163	Grenouille, torsion à gauche
+164	Grenouille avec flexion arrière
+165	Grenouille avec flexion avant
+166	Demi-arc à genoux
+167	Demi-arc à genoux : se redresser
+168	Posture du héros
+169	Héros, mains jointes derrière
+170	Héros, bras en haut
+171	Héros, bras écartés
+172	Héros avec flexion avant
+173	Héros, flexion avant dos rond
+174	Chameau
+175	Pont genoux-coudes : bras en haut
+176	Pont genoux-coudes : bras en arrière
+177	Pont genoux-coudes : mains sur les cuisses
+178	Pont genoux-coudes
+179	Pont genoux-mains
+180	Héros allongé
+181	Héros allongé avec flexion arrière
+182	Héros allongé, mains derrière la tête
+183	Étirement du bas du dos
+184	Étirement du bas du dos, genoux levés
+185	Paon
+186	Paon jambes pliées
+187	Flexion avant, mains sous les pieds
+188	Tortue dorée
+189	Tortue dorée : bras devant
+190	Chaise
+191	Chaise sur les orteils
+192	Chaise, mains vers la poitrine
+193	Flexion avant dos rond, mains jointes derrière
+194	Croix droite
+195	Flexion à droite, mains jointes derrière
+196	Flexion à gauche, mains jointes derrière
+197	Aigle
+198	Aigle : se redresser
+199	Posture du cavalier, mains entre les omoplates
+200	Posture du cavalier, mains sur les cuisses
+201	Mains derrière la tête, genoux pliés
+202	Pont jambe levée
+203	Pont sur les coudes
+204	Scorpion sur les avant-bras
+205	Scorpion sur les avant-bras, jambe levée
+206	Préparation à l’équilibre sur la tête et les mains
+207	Équilibre sur la tête en appui sur les mains
+208	Équilibre sur la tête avec lotus
+209	Coq latéral : repli
+210	Coq latéral haut
+211	Torsion en lotus complet en équilibre sur les mains
+212	Torsion en demi-lotus en équilibre sur les mains
+213	Lotus vers le ventre en équilibre sur la tête
+214	Lotus sur les coudes
+215	Coq haut
+216	Équilibre sur les mains allongé avec lotus
+217	Équilibre sur les mains avec lotus droit
+218	Équilibre vertical sur les mains
+219	Scorpion haut
+220	Demi-scorpion haut
+221	Flexion jambes écartées avec torsion
+222	Flexion en anneau complet
+223	Lasso en équilibre sur les mains
+224	Lasso : prise devant
+225	Corbeau
+226	Pont à trois appuis
+227	Pendule : talons vers les doigts
+228	Debout : symbole du flux accompli
+229	Flexion avant assise, mains jointes derrière
+230	Étirement des épaules, dos en « hérisson »
+231	Flexion avant, paumes jointes derrière
+232	Papillon : respiration abdominale
+233	Siddhasana — posture accomplie
+234	Chameau unilatéral
+235	Chameau unilatéral à double fixation
+236	Scorpion unilatéral fermé
+237	Scorpion unilatéral allongé
+238	Scorpion unilatéral avec rotation
+239	Équilibre sur la tête avec rotation et demi-grand écart
+240	Équilibre sur la tête avec lotus gauche
+241	Lotus en équilibre sur la tête, rotation à droite
+242	Flexion allongée en équilibre sur la tête avec lotus
+243	Scorpion avec lotus en équilibre sur les avant-bras
+244	Scorpion allongé en équilibre sur les coudes
+245	Pont fermé sur les coudes
+246	Équilibre sur les avant-bras
+247	Symbole du flux inversé avec lotus
+248	Flexion inversée en chandelle avec lotus
+249	Chandelle avec lotus
+250	Flexion latérale, mains soutenant le dos
+251	Charrue avec lotus
+252	Demi-pont latéral sur les épaules avec lotus
+253	Super charrue
+254	Chandelle, prise inversée
+255	Chandelle sans appui
+256	Pendule : mains entre les omoplates, arche
+257	Pendule : mains sur les cuisses
+258	Pont fermé sur les coudes, jambe levée
+259	Flexion en angle allongée
+260	Fixation horizontale en équilibre sur les mains
+261	Flexion allongée en planche
+262	Équerre (L-sit)
+263	Fixation racine : bassin en avant
+264	Fixation racine : périnée au-dessus des pieds
+265	Grand écart avec anneau unilatéral
+266	Demi-planche inversée, jambe droite levée
+267	Demi-planche inversée avec demi-lotus
+268	Demi-lotus assis
+269	Flexion avant en demi-lotus
+270	Flexion en demi-lotus : prise du pied
+271	Flexion avant en demi-lotus lié
+272	Torsion en demi-lotus
+273	Lotus
+274	Torsion en lotus à droite
+275	Torsion en lotus à gauche
+276	Rotations du cou en lotus
+277	Lotus, bras en haut
+278	Flexion avant en lotus, mains jointes derrière
+279	Lotus lié
+280	Flexion avant en lotus lié
+281	Poisson inversé en double lotus : roulade
+282	Poisson inversé en double lotus
+283	Poisson inversé : mains entre les omoplates
+284	Poisson inversé : arche
+285	Sphinx du poisson
+286	Lion
+287	Poisson inversé fermé
+288	Paon en demi-lotus
+289	Chameau unilatéral en demi-lotus lié
+290	Relaxation du poisson inversé
+291	Pont suspendu
+292	Flexion avant en lotus
+293	Flexion en lotus, mains entre les omoplates
+294	Arc en lotus : préparation
+295	Arc en lotus
+296	Tortue en lotus
+297	Lotus soulevé sur les mains
+298	Équerre sur les mains
+299	Torsion en flexion assise : bras en haut
+300	Saut en corbeau
+301	Corbeau, une jambe en arrière
+302	Corbeau, jambe tendue en arrière
+303	Flexion en « hérisson » avec demi-groupé
+304	Demi-arche dans la flexion allongée, jambe gauche en haut
+305	Flexion allongée, jambe gauche en haut
+306	Flexion allongée avec rotation du bassin
+307	Étirement des épaules en flexion, jambe gauche en haut
+308	« La grue blanche dans un flot de rosée d’ambre »
+309	« Repousser la terre avec le cœur des paumes »
+310	« S’allonger sur le flot d’or venu de l’autre côté »
+311	« Pas volant en arrière dans le flot d’or »
+312	Anneau unilatéral en grande fente
+313	Anneau unilatéral, pied vers l’épaule droite
+314	Torsion avec étirement de l’avant de la cuisse
+315	Anneau croisé en grande fente
+316	Anneau croisé, pied vers l’épaule gauche
+317	Étirement maximal de l’avant de la cuisse
+318	Étirement maximal de la cuisse avec arche
+319	Chameau haut unilatéral allongé
+320	Chameau haut unilatéral
+321	Chameau haut croisé allongé
+322	Chameau haut croisé
+323	Demi-arche dans la flexion allongée, jambe droite en haut
+324	Flexion allongée, jambe droite en haut
+325	Étirement des épaules en flexion, jambe droite en haut
+326	Anneau unilatéral, pied vers l’épaule gauche
+327	Anneau croisé, pied vers l’épaule droite
+328	Demi-arche dans la flexion fermée allongée
+329	Parvatasana — posture de la montagne
+330	Ashwa Sanchalanasana — fente, jambe gauche en arrière
+331	Ashwa Sanchalanasana — pied gauche devant
+332	Dandasana — planche
+333	Marjariasana — chat
+334	Passage en planche inclinée large
+335	Roulade à droite en planche horizontale large
+336	Roulade à gauche
+337	Retour en planche horizontale large
+338	Arche du serpent fermée
+339	Relaxation sur le ventre
+340	Arche du serpent ouverte
+341	Planche inclinée
+342	Chien tête en bas profond sur le bout des doigts
+343	Jambes à la verticale, mains derrière la tête
+344	Jambes à 30°
+345	Roulades (phase épaules)
+346	Roulade par-dessus la tête
+347	Chandelle soutenue
+348	Demi-planche inversée ouverte
+349	Flexion allongée assise ouverte
+350	Flexion allongée assise ouverte, complète
+351	Flexion en « hérisson » assise ouverte
+352	Demi-grand écart latéral inversé
+353	Posture verrouillée, cheville gauche dessus
+354	Papillon fermé, dos en « hérisson »
+355	Planche horizontale sur le bout des doigts
+356	Planche inclinée sur le bout des doigts
+357	Planche arquée glissée sur le bout des doigts
+358	Planche horizontale glissée sur le bout des doigts
+359	Demi-arche en planche horizontale sur le bout des doigts
+360	Planche arquée sur le bout des doigts
+361	Chien tête en bas allongé sur le bout des doigts
+362	Demi-arche en chien tête en bas sur le bout des doigts
+363	Chien tête en bas sur le bout des doigts
+364	Grenouille en flexion « hérisson »
+365	Étirement du bas du dos côté droit
+366	Étirement du bas du dos côté droit avec rotation
+367	Étirement du bas du dos côté gauche
+368	Étirement du bas du dos côté gauche avec rotation
+369	Passage en posture du héros
+370	Planche horizontale sur les poings
+371	Planche inclinée sur les poings
+372	Planche horizontale glissée sur les poings
+373	Planche horizontale en demi-arche sur les poings
+374	Planche arquée sur les poings
+375	Chien tête en bas allongé sur les poings
+376	Chien tête en bas en demi-arche sur les poings
+377	Chien tête en bas sur les poings
+378	Demi-arche pieds rapprochés
+379	Flexion fermée allongée
+380	Étirement ferme de l’arrière des jambes
+381	Étirement ferme, en miroir
+382	Flexion allongée ouverte : demi-arche
+383	Tortue dorée : poings
+384	« Chaise » : poignets en avant
+385	Étirement des épaules en flexion ouverte
+386	Passage en croix droite : horizontale
+387	Demi-arche en montant sur les orteils
+388	Étirement final : bras le long du corps
+389	Flexion à droite, prise inversée
+390	Flexion à gauche, prise inversée
+391	Flexion avant, prise des chevilles
+392	Flexion arrière, prise inversée
+393	Se pencher
+394	Mains au sol près des talons
+395	Pont : augmenter la distance
+396	Tête au sol
+397	Coq haut, approfondir
+398	Pont depuis l’équilibre sur les mains
+399	Flexion allongée
+400	Flexion en pyramide
+401	Lasso : tibias sur les épaules
+402	Lasso : prise en miroir
+403	Lasso complet
+404	Tendre les jambes
+405	Scorpion en équilibre sur les mains
+406	Flexion, mains au sol
+407	S’étirer, mains derrière la tête
+408	Lever la tête et les épaules
+409	Flexion assise fermée, prise des poignets
+410	Demi-arche active dans la flexion
+411	Redresser le buste, bras devant
+412	Flexion assise fermée
+413	Relaxation dans la flexion
+414	Demi-grand écart latéral avec flexion
+415	Demi-arche en demi-grand écart
+416	Flexion avec étirement des épaules
+417	Relaxation en demi-grand écart
+418	Flexion arrière tonique
+419	Papillon : symbole du flux accompli
+420	Verrou abdominal
+421	Barattage abdominal
+422	Relaxation sur le dos en demi-grand écart
+423	Relaxation finale
+424	Torsion « en corde » en équilibre sur la tête
+425	Torsion « droite » en équilibre sur la tête
+426	Lotus en équilibre sur la tête, rotation à gauche
+427	Flexion « hérisson » en équilibre sur la tête avec lotus
+428	Scorpion en équilibre sur les coudes
+429	Pont sur les coudes
+430	Sortie « inversée » : pieds vers les mains
+431	Sortie « inversée » : lever les jambes
+432	Pieds au sol, tête au sol
+433	Flexion inversée latérale avec lotus
+434	Demi-pont latéral sur les épaules soutenu
+435	Passage en chandelle sans appui
+436	Pendule : pieds vers les mains
+437	Pendule : remonter debout
+438	Pendule : flexion avec étirement des épaules
+439	Pendule : bras en arrière, genoux pliés
+440	Pendule : pont
+441	Pont fermé sur les coudes fixé
+442	Pont fermé sur les coudes : pieds vers les mains
+443	Scorpion en équilibre sur les avant-bras
+444	Étirement intense de l’arrière des jambes
+445	Équilibre sur les mains allongé
+446	Flexion allongée ouverte en planche
+447	Fixation racine : pieds à la verticale
+448	Saut en planche horizontale sur le bout des doigts
+449	Planche groupée sur le bout des doigts
+450	Planche groupée sur les poings
+451	Flexion assise en « hérisson »
+452	Demi-planche inversée
+453	Flexion en demi-lotus lié croisé
+454	Double croix du lotus : étirement
+455	Double lotus, bras croisés aux coudes
+456	Double lotus : flux montant
+457	Double lotus : tête en arrière
+458	Flexion à droite, front au-delà du genou droit
+459	Flexion à gauche, front au-delà du genou gauche
+460	Flexion à droite
+461	Flexion à gauche
+462	Flexion « hérisson » en lotus libre
+463	Torsion dans la flexion en lotus
+464	Coq
+465	Équilibre en tenant le lotus
+466	Lotus soulevé sur le bout des doigts
+467	Lotus soulevé sur les poings
+468	Angle sur le bout des doigts
+469	Angle sur les poings
+470	Pieds au sol, bassin en haut
+471	Flexion assise allongée
+472	Torsion en flexion assise
+473	Chien tête en bas à trois appuis
+474	Saut en planche basse
+475	Posture de la montagne. Fin du premier tour
+476	Deuxième tour : inspiration poitrine ouverte
+477	Posture de la montagne. Fin du deuxième tour
+478	Troisième tour : inspiration poitrine ouverte
+479	Posture de la montagne. Fin de la pratique
+480	Expiration lente, paumes vers l’avant
+481	Papillon, s’allonger vers le haut
+482	Papillon : pompe abdominale à l’expiration
+483	Papillon : pompe abdominale à l’inspiration
+484	Papillon : ventre rentré après l’expiration (uddiyana)
+485	Papillon : ventre rentré à l’inspiration
+486	Papillon, mains jointes : repos
+487	Lotus, mains jointes
+488	Lotus : ventre rentré après l’expiration
+489	Lotus : ventre rentré à l’inspiration
+490	Lotus : vague abdominale (nauli)
+491	Lotus : tenir les muscles abdominaux centraux
+492	Lotus, s’allonger vers le haut
+493	Équerre, jambes plus hautes
+494	Charrue bras tendus
+495	Charrue, jambes à droite
+496	Charrue, jambes à gauche
+497	Charrue jambes écartées
+498	Demi-chandelle, jambes en angle
+499	Chandelle sans les mains
+500	Chandelle, jambe droite au sol
+501	Chandelle, jambe gauche au sol
+502	Chandelle, jambe droite sur le côté
+503	Chandelle, jambe gauche sur le côté
+504	Chandelle, hanches sur le côté
+505	Demi-pont latéral sur les épaules
+506	Chandelle, hanches de l’autre côté
+507	Pont sur les épaules, jambe droite levée
+508	Pont sur les épaules, jambe gauche levée
+509	Chandelle en lotus, jambe droite dessus
+510	Chandelle en lotus, jambe gauche dessus
+511	Roulade arrière par-dessus la tête
+512	Étirement latéral intense
+513	Triangle
+514	Triangle en torsion
+515	Triangle en torsion, paumes jointes
+516	Étirement latéral, ouvrir les épaules
+517	Fente avec torsion
+518	Guerrier 2 : bras écartés
+519	Fente, torsion de l’autre côté
+520	Angle latéral étiré
+521	Angle latéral en torsion
+522	Angle latéral en torsion lié
+523	Équilibre sur les bras en torsion, jambes écartées
+524	Équilibre sur les bras en torsion, jambes jointes
+525	Guerrier 1, mains jointes derrière
+526	Guerrier 1, bras devant
+527	Guerrier 1 : s’étirer vers l’avant
+528	Guerrier 3
+529	Demi-lune
+530	Arbre
+531	Arbre en demi-lotus
+532	Flexion avant debout en demi-lotus
+533	Demi-flexion debout en demi-lotus
+534	Flexion jambes écartées, paumes au sol
+535	Demi-flexion jambes écartées
+536	Flexion jambes écartées, mains jointes derrière
+537	Flexion jambes écartées, bras devant
+538	Torsion jambes écartées à droite
+539	Torsion jambes écartées à gauche
+540	Torsion profonde jambes écartées à droite
+541	Torsion profonde jambes écartées à gauche
+542	Planche basse, descendre sur le ventre
+543	Cobra
+544	Bâton
+545	Torsion assise, un genou levé
+546	Flexion assise, bras autour de la jambe pliée
+547	Torsion assise de l’autre côté
+548	Tête au genou
+549	Tête au genou en torsion
+550	Flexion assise, une jambe repliée en arrière
+551	Demi-seigneur des poissons
+552	Tête de vache, mains jointes derrière
+553	Tête de vache avec flexion avant
+554	Planche inversée, jambe droite levée
+555	Planche inversée, jambe gauche levée
+556	Table inversée, jambe droite levée
+557	Table inversée, jambe gauche levée
+558	Allongé : jambes levées et écartées, prise des orteils
+559	Assis jambes écartées
+560	Bateau
+561	Demi-bateau
+562	Héros, mains jointes au-dessus de la tête
+563	Paon
+564	Repos sur le dos
+565	Montagne, mains liées
+566	Salut vers le haut
+567	Croissant debout
+568	Danseur
+569	Arbre facile
+570	Arbre, mains en prière
+571	Arbre en demi-lotus lié, une main en haut
+572	Demi-lune
+573	Étirement intense en demi-lotus lié, préparation
+574	Étirement intense en demi-lotus lié
+575	Garuda
+576	Demi-flexion jambes écartées
+577	Flexion jambes écartées 1
+578	Flexion jambes écartées 4
+579	Demi-flexion jambes écartées en torsion
+580	Flexion jambes écartées en torsion liée
+581	Chien tête en bas
+582	Étirement latéral intense, préparation
+583	Étirement latéral intense
+584	Triangle étiré
+585	Triangle en torsion
+586	Angle latéral étiré
+587	Guerrier 2
+588	Angle latéral en torsion, préparation
+589	Angle latéral en torsion, mains libres
+590	Angle latéral en torsion
+591	Angle latéral en torsion lié
+592	Guerrier 1, préparation
+593	Guerrier 1
+594	Guerrier 1 lié
+595	Fente du cavalier, préparation
+596	Fente du lézard, bras écartés
+597	Posture puissante (chaise)
+598	Guirlande
+599	Posture facile
+600	Posture du sage Marichi en torsion
+601	Demi-seigneur des poissons 1
+602	Posture du sage Marichi 3, préparation
+603	Angle lié
+604	Angle assis
+605	Bâton
+606	Pince assise (paschimottanasana)
+607	Posture du sage Marichi 1
+608	Flexion avant à trois membres
+609	Tête au genou, mains à la cheville
+610	Tête au genou, mains au pied
+611	Tête au genou en torsion
+612	Tête de vache
+613	Bateau
+614	Bateau complet
+615	Demi-bateau
+616	Posture de l’enfant
+617	Enfant en torsion latérale
+618	Vache, étirement intense des poignets
+619	Bâton à quatre membres étiré
+620	Bâton du makara
+621	Bâton à quatre membres (chaturanga)
+622	Planche latérale (vasishthasana)
+623	Grue
+624	Posture de Koundinya sur deux jambes
+625	Dauphin
+626	Chandelle sur une jambe
+627	Chandelle latérale sur une jambe
+628	Charrue latérale
+629	Sauterelle
+630	Demi-sauterelle
+631	Cobra
+632	Chien tête en haut
+633	Arc
+634	Chiot étiré intense
+635	Table inversée sur une jambe
+636	Pont
+637	Angle lié allongé
+638	Chas de l’aiguille
+639	Enfant allongé
+640	Torsion allongée, préparation
+641	Bébé heureux
+642	Angle allongé
+643	Allongé, deux mains à la jambe
+644	Allongé, une jambe tendue
+645	Allongé, main au gros orteil 1
+646	Allongé, jambes tendues
+647	Cadavre sur le côté
