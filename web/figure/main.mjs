@@ -55,7 +55,11 @@ async function boot() {
   const infoOf = k => { if (!infoCache.has(k)) { const jp = window.__prepJP(k); const [id, mm] = k.split('|'); const name = id === 'ashwa' ? (+mm ? 'ashwaL' : 'ashwaR') : id === 'ardhach' ? (+mm ? 'ardhachL' : 'ardhachR') : id; infoCache.set(k, {name, jp, info: AV.keyInfo({jp})}); } return infoCache.get(k); };
   let PC = null, PA = null; /* текущая поза {it, x, z}; анимация */
   function placeRest(it, x, z) { AV.show(it.jp, x, z); }
-  function camTo(snap, cy) { fig.view.camYaw = cy; const f = fig.frameTarget(); fig.placeCam(f, cy || 0, snap); }
+  /* камера: своё сглаживание кадра (центр, размер, поворот), в three — всегда точная установка */
+  let FR = null, settle = 0;
+  function camTo(snap, cy) { const f = fig.frameTarget(); cy = cy || 0;
+    if (snap || !FR) FR = {c: f.c.clone(), s: f.s, cy}; else { FR.c.lerp(f.c, .07); FR.s += (f.s - FR.s) * .07; FR.cy += (cy - FR.cy) * .07; }
+    fig.placeCam({c: FR.c, s: FR.s}, FR.cy, true); }
   function play(k, ms) {
     const it = infoOf(k);
     if (PA) { const e = PA; PA = null; PC = {it: e.to, x: e.end.x, z: e.end.z}; }
@@ -67,7 +71,10 @@ async function boot() {
   function loop(now) {
     if (PA) { const k = Math.min(1, (now - PA.t0) / PA.ms); AV.frameAt(PA.tl, k * PA.tl.T);
       camTo(false, (PA.from.jp.cam || 0) + ((PA.to.jp.cam || 0) - (PA.from.jp.cam || 0)) * k);
-      if (k >= 1) { PC = {it: PA.to, x: PA.end.x, z: PA.end.z}; PA = null; placeRest(PC.it, PC.x, PC.z); } fig.render(); }
+      if (k >= 1) { settle = 90; PC = {it: PA.to, x: PA.end.x, z: PA.end.z}; PA = null; placeRest(PC.it, PC.x, PC.z); } fig.render(); }
+    else if (PC && FR && settle > 0) { settle--; if (!fig.view.userMoved) camTo(false, PC.it.jp.cam);
+      /* коврик подтягивается под фигуру, пока она стоит в позе */
+      const mp = fig.mat.position; mp.x += (FR.c.x - mp.x) * .06; mp.z += (FR.c.z - mp.z) * .06; }
     requestAnimationFrame(loop);
   window.__scan = (pairs) => { const out = []; const hull = pts => { pts.sort((a, b) => a[0] - b[0] || a[1] - b[1]); const cr = (o, a, b) => (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0]);
       const lo = [], up = []; for (const p of pts) { while (lo.length >= 2 && cr(lo[lo.length - 2], lo[lo.length - 1], p) <= 0) lo.pop(); lo.push(p); }
