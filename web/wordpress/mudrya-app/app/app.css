@@ -53,3 +53,6 @@ h1{font-size:40px}h2{font-size:30px}h3{font-size:22px}
 .stat{font-size:34px;font-weight:800;font-family:'Cormorant Garamond',serif}
 .days{display:flex;gap:4px;flex-wrap:wrap}.days span{width:16px;height:16px;border-radius:4px;background:#eadfcb}.days span.on{background:var(--sage)}
 .note{font-size:13px;color:var(--ink2);background:#fff4e2;border-radius:12px;padding:10px 12px}
+
+.card.desc{margin-top:16px;line-height:1.5}.card.desc h2{margin:0 0 4px}.card.desc h3{margin:14px 0 4px;font-size:1.02em}.card.desc ol,.card.desc ul{margin:4px 0 0 20px;padding:0}.card.desc li{margin:3px 0}
+.howto{margin:6px 0 8px;font-size:.92em}.howto summary{cursor:pointer;font-weight:600}.howto ol,.howto ul{margin:4px 0 0 18px;padding:0}

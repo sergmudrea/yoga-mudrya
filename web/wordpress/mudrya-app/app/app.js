@@ -149,13 +149,33 @@
     side.appendChild(box); const list = el('div', 'card list'); side.appendChild(list);
     const ready = setInterval(() => { try { const M = ifr.contentWindow.Mudrya; if (M && M.loaded) { clearInterval(ready); const l = $('.loading', stage); if (l) l.remove(); M.setTheme('dark'); } } catch (e) {} }, 300);
     if (!CATD) CATD = await fetch(BASE + 'emulator/catalog.json?v=' + encodeURIComponent(CFG.ver || '1')).then(r => r.json());
+    const dcard = el('div', 'card desc', '<p class="muted">Выберите позу в списке — здесь появится описание: польза, как выполнять, ошибки, облегчение, противопоказания и работающие мышцы.</p>'); w.appendChild(dcard);
+    let DESC = null; const descP = fetch(BASE + 'emulator/desc.json?v=' + encodeURIComponent(CFG.ver || '1')).then(r => r.json()).then(j => DESC = j).catch(() => null);
+    const LVN = { beginner: 'начальный', intermediate: 'средний', advanced: 'продвинутый' };
+    const ul = a => a && a.length ? '<ul>' + a.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul>' : '';
+    async function showDesc(id) { await descP; if (!DESC || !DESC[id]) { dcard.innerHTML = '<p class="muted">Описание не найдено.</p>'; return; }
+      const v = DESC[id], c = CATD[id] || {}, b = v.base ? DESC[v.base] : v, bn = v.base ? (CATD[v.base] || {}).n : null; let h = '';
+      h += '<h2>' + esc(c.n || v.nm.ru) + '</h2><p class="muted">' + esc([v.nm.sanskrit, v.nm.en].filter(Boolean).join(' · ')) + '</p>';
+      h += '<p><span class="chip">' + esc(LVN[c.lvl] || '') + '</span>' + (FAM[c.fam] ? '<span class="chip">' + esc(FAM[c.fam]) + '</span>' : '') + (v.rl && v.base ? '<span class="chip">' + esc(v.rl) + '</span>' : '') + '</p>';
+      if (v.base) { h += '<p>Вариация позы <b>' + esc(bn || '') + '</b>.' + (v.rp ? ' ' + esc(v.rp) : '') + '</p>'; if (v.ch && v.ch.length) h += '<h3>Чем отличается</h3>' + ul(v.ch); }
+      if (b.b) h += '<h3>Польза</h3><p>' + esc(b.b) + '</p>';
+      if (b.st && b.st.length) h += '<h3>' + (v.base ? 'Как выполнять (основа — базовая поза)' : 'Как выполнять') + '</h3><ol>' + b.st.map(x => '<li>' + esc(x) + '</li>').join('') + '</ol>';
+      if (b.er) h += '<h3>Частая ошибка</h3><p>' + esc(b.er) + '</p>';
+      if (b.ez) h += '<h3>Облегчение</h3><p>' + esc(b.ez) + '</p>';
+      if (b.tp) h += '<h3>Совет</h3><p>' + esc(b.tp) + '</p>';
+      if (v.gz || b.gz) h += '<p><b>Взгляд:</b> ' + esc(v.gz || b.gz) + '</p>';
+      const mu = v.mu || b.mu; if (mu) h += '<h3>Мышцы</h3><p><b>Основные:</b> ' + esc((mu.p || []).join(', ')) + (mu.s && mu.s.length ? '<br><b>Помогают:</b> ' + esc(mu.s.join(', ')) : '') + '</p>';
+      const ci = (b.ci || []).concat(v.xc || []); if (ci.length) h += '<h3>Противопоказания</h3>' + ul(ci);
+      if (b.ca && b.ca.length) h += '<h3>Осторожно</h3>' + ul(b.ca);
+      h += '<p class="note">Описание из каталога приложения (Айенгар, Маран, Лакерда — пересказ). Уровень и противопоказания предварительные; при сомнениях посоветуйтесь с врачом или опытным преподавателем.</p>';
+      dcard.innerHTML = h; }
     const FAM = { standing: 'Стоячие', standing_balance: 'Балансы на ногах', forward_bend: 'Наклоны вперёд', backbend: 'Прогибы', twist: 'Скрутки', side_bend: 'Боковые наклоны', inversion: 'Перевёрнутые', arm_balance: 'Балансы на руках', seated_hip: 'Сидячие', supine: 'Лёжа на спине', prone: 'Лёжа на животе', kneeling: 'На коленях', restorative: 'Расслабляющие' };
     const sel = $('select', box); Object.keys(FAM).forEach(k => { const o = el('option', '', FAM[k]); o.value = k; sel.appendChild(o); });
     const LV = { beginner: 'начальный', intermediate: 'средний', advanced: 'продвинутый' };
     const draw = () => { const q = $('input[type=search]', box).value.trim().toLowerCase(), f = sel.value, base = $('input[type=checkbox]', box).checked;
       const ids = Object.keys(CATD).filter(id => (!f || CATD[id].fam === f) && (!base || !id.includes('-V')) && (!q || (CATD[id].n + ' ' + (CATD[id].s || '')).toLowerCase().includes(q)));
       $('.cnt', box).textContent = 'Найдено: ' + ids.length + (ids.length > 150 ? ' (показаны первые 150)' : ''); list.innerHTML = '';
-      ids.slice(0, 150).forEach(id => { const c = CATD[id]; const d = el('div', '', esc(c.n) + ' <span class="muted">· ' + (LV[c.lvl] || '') + '</span>'); d.onclick = () => { [...list.children].forEach(x => x.classList.remove('on')); d.classList.add('on'); try { ifr.contentWindow.Mudrya.go(id, 0, 900); } catch (e) {} }; list.appendChild(d); }); };
+      ids.slice(0, 150).forEach(id => { const c = CATD[id]; const d = el('div', '', esc(c.n) + ' <span class="muted">· ' + (LV[c.lvl] || '') + '</span>'); d.onclick = () => { [...list.children].forEach(x => x.classList.remove('on')); d.classList.add('on'); try { ifr.contentWindow.Mudrya.go(id, 0, 900); } catch (e) {} showDesc(id); }; list.appendChild(d); }); };
     $('input[type=search]', box).oninput = draw; sel.onchange = draw; $('input[type=checkbox]', box).onchange = draw; draw();
   }
   function sets(w) {
@@ -267,7 +287,8 @@
     const stage = el('div', 'stage', '<div class="loading">Загружаем фигуру…</div><div class="step-no"></div><div class="breath"><div class="orb"></div><span></span></div>');
     const ifr = el('iframe'); ifr.title = 'Фигура'; ifr.src = BASE + 'emulator/index.html?v=' + encodeURIComponent(CFG.ver || '1'); stage.insertBefore(ifr, stage.firstChild); pl.appendChild(stage);
     const side = el('div', 'side'); pl.appendChild(side);
-    const now = el('div', 'card now', '<div class="muted blk"></div><h3 class="ttl">Приготовьтесь</h3><p class="cue muted">Встаньте на коврик. Начнём, когда будете готовы.</p><div class="bar"><i></i></div>');
+    const now = el('div', 'card now', '<div class="muted blk"></div><h3 class="ttl">Приготовьтесь</h3><p class="cue muted">Встаньте на коврик. Начнём, когда будете готовы.</p><details class="howto" style="display:none"><summary>Как выполнять</summary><div></div></details><div class="bar"><i></i></div>');
+    if (!window.__DESCP) window.__DESCP = fetch(BASE + 'emulator/desc.json?v=' + encodeURIComponent(CFG.ver || '1')).then(r => r.json()).catch(() => null);
     side.appendChild(now);
     const ctrl = el('div', 'ctrl', '<button data-a="prev">⟨ Назад</button><button data-a="play" style="background:var(--ink);color:#fff">▶ Старт</button><button data-a="next">Дальше ⟩</button><button data-a="stop">Завершить</button>');
     side.appendChild(ctrl);
@@ -291,6 +312,13 @@
       if (!P) return;
       const s = P.steps[P.i]; if (!s) return finish();
       $('.blk', now).textContent = s.block || ''; $('.ttl', now).textContent = s.t || ''; $('.cue', now).textContent = s.c || '';
+      window.__DESCP.then(D => { const hw = $('.howto', now); if (!D) return; let id = s.p && /^A-/.test(s.p) ? s.p : null;
+        if (!id) { const f = s.p && !/^mv:/.test(s.p) ? s.p : (DATA.A[s.a] || {}).f; id = f ? D._map[f] : null; }
+        const v = id && D[id]; if (!v) { hw.style.display = 'none'; return; } const b = v.base ? D[v.base] : v;
+        const li = a => (a || []).map(x => '<li>' + esc(x) + '</li>').join('');
+        let h = (b.b ? '<p>' + esc(b.b) + '</p>' : '') + (v.ch && v.ch.length ? '<p><b>Отличие:</b> ' + esc(v.ch.join('; ')) + '</p>' : '') + (b.st && b.st.length ? '<ol>' + li(b.st) + '</ol>' : '') + (b.ez ? '<p><b>Облегчение:</b> ' + esc(b.ez) + '</p>' : '') + (b.er ? '<p><b>Ошибка:</b> ' + esc(b.er) + '</p>' : '');
+        const ci = (b.ci || []).concat(v.xc || []); if (ci.length) h += '<p><b>Противопоказания:</b></p><ul>' + li(ci) + '</ul>';
+        $('div', hw).innerHTML = h; hw.style.display = ''; });
       $('.bar i', now).style.width = (100 * P.i / P.steps.length) + '%';
       $('.step-no', stage).textContent = (P.i + 1) + ' / ' + P.steps.length;
       [...list.children].forEach((d, k) => d.classList.toggle('on', k === P.i));
