@@ -150,7 +150,42 @@ async function boot() {
     if (OVR[id]) { let o = AV.fit(OVR[id]); o = +mm ? mirrorJP(o) : o; o.cam = o.cam || 0; return o; }
     const L = limitJP(twToJP(catTW(c.g))); let jp = roundJP(L.jp); jp.root[2] = 0; jp.hands = {L: 'open', R: 'open'}; jp.cam = c.g[13] ? 90 : 0;
     jp.armBal = c.fam === 'arm_balance' || /arm_balance|forearm_balance/.test((c.pos || []).join(' '));
-    if (+mm) jp = mirrorJP(jp); support(jp, {autoHands: true}); jp.viol = L.viol; return jp; };
+    const f = c.c || 0, lotus = (c.tags || []).includes('lotus') || /лотос/i.test(c.n);
+    /* ноги в лотосе: рисунок сбоку их не передаёт — берём скрещённые ноги из 3D-позы */
+    if (lotus) { const E = MV.easy; const half = /полулотос/i.test(c.n); const sides = half ? [(jp.kL || 0) >= (jp.kR || 0) ? 'L' : 'R'] : ['L', 'R'];
+      for (const s of sides) for (const k of ['h', 'k', 'a']) jp[k + s] = JSON.parse(JSON.stringify(E[k + s])); }
+    const seated = !!(f & 256) || (lotus && (f & 512) && !(f & 2) && !jp.armBal && !(f & 192) && jp.root[0] < 60);
+    if (+mm) jp = mirrorJP(jp);
+    /* опоры — по рисунку каталога: что касалось пола там, касается пола и здесь */
+    const sw = +mm ? {R: 'L', L: 'R'} : {R: 'R', L: 'L'};
+    const hand = {R: !!(f & 64), L: !!(f & 128)}, foot = {R: !!(f & 16), L: !!(f & 32)}, knee = !!(f & 12);
+    for (const s of ['R', 'L']) if (hand[s]) jp.hands[sw[s]] = 'floor';
+    if (seated) jp.seat = .015;
+    support(jp, {});
+    jp.pins = jp.pins.filter(p => p.startsWith('hand') || (seated ? false : (foot.R || foot.L) ? foot[p === 'foot' + sw.R ? 'R' : 'L'] : true));
+    if (seated) { for (const s of ['R', 'L']) if (foot[s]) jp.pins.push('foot' + sw[s]); }
+    for (const s of ['R', 'L']) if (hand[s] && !jp.pins.includes('hand' + sw[s])) jp.pins.push('hand' + sw[s]);
+    if (knee && !seated && !jp.drop) { AV.show(jp, 0, 0); const kn = Math.min(fig.wp(fig.B.calf_l).y, fig.wp(fig.B.calf_r).y); if (kn > .07 && kn < .5) jp.drop = kn - .055; }
+    if (!seated) balance(jp); jp.viol = L.viol; jp.flags = f; return jp; };
+  /* равновесие: центр масс над опорой (стопы, ладони, колени). Если тело «падает» — наклоняем его целиком
+     (таз, а с ним всё тело) маленькими шагами, пока проекция центра масс не окажется над опорой */
+  function comOff(jp) { AV.show(jp, 0, 0); const P = fig.sampleWorld(); let cx = 0, cz = 0; const n = P.length / 3; const sp = [];
+    for (let j = 0; j < P.length; j += 3) { cx += P[j]; cz += P[j + 2]; if (P[j + 1] < .03) sp.push([P[j], P[j + 2]]); }
+    cx /= n; cz /= n; if (sp.length < 3) return 0;
+    sp.sort((a, b) => a[0] - b[0] || a[1] - b[1]); const cr = (o, a, b) => (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0]);
+    const lo = [], up = []; for (const p of sp) { while (lo.length >= 2 && cr(lo[lo.length - 2], lo[lo.length - 1], p) <= 0) lo.pop(); lo.push(p); }
+    for (const p of sp.slice().reverse()) { while (up.length >= 2 && cr(up[up.length - 2], up[up.length - 1], p) <= 0) up.pop(); up.push(p); }
+    const h = lo.slice(0, -1).concat(up.slice(0, -1)); if (h.length < 3) { let m = 9; for (const p of sp) m = Math.min(m, Math.hypot(p[0] - cx, p[1] - cz)); return m; }
+    let inside = true, md = 9; for (let i = 0; i < h.length; i++) { const a = h[i], b = h[(i + 1) % h.length];
+      if ((b[0] - a[0]) * (cz - a[1]) - (b[1] - a[1]) * (cx - a[0]) < 0) inside = false;
+      const L = Math.hypot(b[0] - a[0], b[1] - a[1]) || 1e-9; let t = ((cx - a[0]) * (b[0] - a[0]) + (cz - a[1]) * (b[1] - a[1])) / (L * L); t = Math.max(0, Math.min(1, t));
+      md = Math.min(md, Math.hypot(a[0] + t * (b[0] - a[0]) - cx, a[1] + t * (b[1] - a[1]) - cz)); }
+    return inside ? 0 : md; }
+  function balance(jp) { if (jp.armBal || jp.seat) return; let d = comOff(jp); if (d < .02) return;
+    for (let it = 0; it < 14 && d >= .02; it++) { let best = null;
+      for (const [i, s] of [[0, 3], [0, -3], [1, 3], [1, -3]]) { const r0 = jp.root.slice(); jp.root[i] += s; const dd = comOff(jp); if (!best || dd < best.d) best = {d: dd, i, s}; jp.root = r0; }
+      if (best.d >= d) break; jp.root[best.i] += best.s; d = best.d; }
+    jp.balanced = +d.toFixed(3); }
   window.__shotOld = (k, rel) => { const st = fig.stateOf(k); const yaw = (window.__prepJP(k).root[2]); fig.view.yaw = yaw - (rel ?? 55); fig.view.pitch = 8; fig.placeStatic(st, 0, 0); const f = fig.frameTarget(); fig.view.userMoved = false; fig.placeCam(f, 0, true); fig.render(); return fig.renderer.domElement.toDataURL('image/jpeg', .85); };
   window.__shot = (jp, rel, w, h) => { fig.view.yaw = (jp.root ? jp.root[2] : 0) - (rel ?? 55); fig.view.pitch = 8; AV.show(jp, 0, 0); placeChair(jp); const f = focusFrame(jp) || fig.frameTarget(); fig.view.userMoved = false; fig.placeCam(f, 0, true); fig.render(); return fig.renderer.domElement.toDataURL('image/jpeg', .85); };
   window.__showA = (name, yaw, pitch, dofit) => { let jp = AV.POSES[name] || AV.PHASES[name]; if (dofit) jp = AV.fit(jp); fig.view.yaw = yaw ?? 90; fig.view.pitch = pitch ?? 6; const r = AV.show(jp, 0, 0); let f = fig.frameTarget(); if (window.__zoom) f = {c: fig.wp(fig.B.pelvis), s: window.__zoom}; fig.placeCam(f, 0, true); fig.render(); return JSON.stringify({fit: jp.fitted || null}); };

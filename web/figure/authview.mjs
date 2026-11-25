@@ -38,8 +38,7 @@ export function makeAuthView(fig) {
     for (const r of pins) {
       const [mm, k] = regMin(P, r); if (k < 0) continue;
       const tgt = opt.targets && opt.targets[r] ? opt.targets[r].clone() : V(P[k * 3], .003, P[k * 3 + 2]);
-      const pole = r.startsWith('hand') ? fw.clone().negate().add(V(0, jp.elbowUp || 0, 0)) : fw.clone();
-      reach(r, k, tgt, pole); out[r] = {k, p: tgt};
+      reach(r, k, tgt, curPole(r) || (r.startsWith('hand') ? fw.clone().negate().add(V(0, jp.elbowUp || 0, 0)) : fw.clone())); out[r] = {k, p: tgt};
     }
     if (jp.pray) { /* ладони вместе перед грудиной */
       const ch = wp(B.spine_03), f = V(0, 0, 1).applyQuaternion(wq(B.spine_03)), up = V(0, 1, 0).applyQuaternion(wq(B.spine_03));
@@ -53,6 +52,9 @@ export function makeAuthView(fig) {
     toes(); syncHair();
     return {y, pins: out};
   }
+  /* полюс IK по текущему сгибу колена/локтя: нога, согнутая в сторону (боковой угол), остаётся согнутой в сторону */
+  function curPole(r) { const [a, m, e] = CHAIN[r].map(n => wp(B[n])); const mid = a.clone().add(e).multiplyScalar(.5); const p = m.sub(mid);
+    return p.length() > .03 ? p.normalize() : null; }
   /* «замок»: кисти сцеплены — сводим запястья к общей точке (IK, плоскость сгиба локтя сохраняется) */
   function joinHands() {
     const hl = wp(B.hand_l), hr = wp(B.hand_r); const d = hl.distanceTo(hr); if (d > .45) return;
@@ -150,7 +152,7 @@ export function makeAuthView(fig) {
       const ka = A.info.c[r], kb = Bk.info.c[r]; if (ka == null || kb == null) continue;
       const pa = V(A.info.P[ka * 3] + A.x, .003, A.info.P[ka * 3 + 2] + A.z), pb = V(Bk.info.P[kb * 3] + Bk.x, .003, Bk.info.P[kb * 3 + 2] + Bk.z);
       if (pa.distanceTo(pb) > .08 && r.startsWith('foot')) continue;
-      const pole = r.startsWith('hand') ? fw.clone().negate().add(V(0, jp.elbowUp || 0, 0)) : fw.clone();
+      const pole = curPole(r) || (r.startsWith('hand') ? fw.clone().negate().add(V(0, jp.elbowUp || 0, 0)) : fw.clone());
       reach(r, ka, pa.lerp(pb, u), pole);
     }
     /* кисти без опоры не уходят под пол */
