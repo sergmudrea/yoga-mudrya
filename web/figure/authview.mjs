@@ -30,7 +30,7 @@ export function makeAuthView(fig) {
     const TW = build(jp); fig.pose(TW, jp.hands || {}); setPelvisPos(V(0, 1, 0));
     let P = sampleWorld(); let m = Infinity;
     for (let j = 0; j < samp.length; j++) { const r = samp[j].reg; if (!jp.armBal && /^(hand|farm)/.test(r) && (jp.pins || []).some(p => p.startsWith('hand'))) continue; if (jp.fitT && opt.fitting && r === jp.fitT) continue; if (r.startsWith('hand') && !jp.armBal) continue; m = Math.min(m, P[j * 3 + 1]); }
-    const y = (opt.y != null ? opt.y : 1 - m); setPelvisPos(V(x, y, z));
+    const y = (opt.y != null ? opt.y : 1 - m - (opt.fitting ? 0 : jp.drop || 0)); setPelvisPos(V(x, y, z));
     const fw = V(0, 0, 1).applyQuaternion(Q().setFromAxisAngle(V(0, 1, 0), ((jp.root || [])[2] || 0) * Math.PI / 180));
     const pins = opt.pins || jp.pins || [];
     P = sampleWorld();
@@ -84,7 +84,8 @@ export function makeAuthView(fig) {
   const unvec = (v, src) => { const o = {...src}; let i = 0; for (const k of VK3) { o[k] = [v[i], v[i + 1], v[i + 2]]; i += 3; } for (const k of VK1) o[k] = v[i++]; return o; };
   const fitted = new Map();
   const get = n => { if (!fitted.has(n)) { const jp = POSES[n] || PHASES[n]; fitted.set(n, fit(jp)); } return fitted.get(n); };
-  const CONTACT = ['footL', 'footR', 'handL', 'handR', 'shinL', 'shinR'];
+  const CONTACT = ['footL', 'footR', 'handL', 'handR', 'shinL', 'shinR', 'pelvis', 'thighL', 'thighR', 'chest', 'head'];
+  const BODYC = ['pelvis', 'thighL', 'thighR', 'shinL', 'shinR', 'chest', 'head'];
   function keyInfo(n) { const jp = typeof n === 'object' ? n.jp : get(n); show(jp, 0, 0); const P = sampleWorld(); const c = {};
     for (const r of CONTACT) { const [m, k] = regMin(P, r); if (m < .03 || (jp.pins || []).includes(r)) c[r] = k; }
     const pv = wp(B.pelvis); return {n, jp, c, P, pel: pv}; }
@@ -122,10 +123,18 @@ export function makeAuthView(fig) {
     const jp = unvec(v, {hands: src.hands, pray: A.info.jp.pray && Bk.info.jp.pray, elbowUp: (A.info.jp.elbowUp || 0) * (1 - u) + (Bk.info.jp.elbowUp || 0) * u});
     /* поза без IK, потом: горизонталь — по опорной вершине, высота — самая низкая точка (кроме кистей) на полу */
     const TW = build(jp); fig.pose(TW, jp.hands || {}); setPelvisPos(V(0, 1, 0)); let P = sampleWorld();
-    let m = Infinity; for (let j = 0; j < samp.length; j++) { const r = samp[j].reg; if (r.startsWith('hand')) continue; m = Math.min(m, P[j * 3 + 1]); }
+    /* общая опора телом (таз, бёдра, голени, грудь, голова) в начале и в конце — по ней и держим высоту: сидя тело не «всплывает» */
+    /* высота: опора телом в начале (A) и в конце (B) — смешиваем; стопы/кисти ниже пола поднимает IK; остальное тело не ниже пола */
+    const ground = regs => { let mm = Infinity; for (let j = 0; j < samp.length; j++) { const r = samp[j].reg; if (regs ? !regs.includes(r) : /^(hand|foot)/.test(r)) continue; mm = Math.min(mm, P[j * 3 + 1]); } return mm; };
+    const ra = BODYC.filter(r => A.info.c[r] != null), rb = BODYC.filter(r => Bk.info.c[r] != null);
+    const mAll = (() => { let mm = Infinity; for (let j = 0; j < samp.length; j++) { if (samp[j].reg.startsWith('hand')) continue; mm = Math.min(mm, P[j * 3 + 1]); } return mm; })();
+    let m;
+    const gi = (info, rs) => Math.min(...rs.map(r => P[info.c[r] * 3 + 1]));
+    if (ra.length || rb.length) { const ma = ra.length ? gi(A.info, ra) : ground(null), mb = rb.length ? gi(Bk.info, rb) : ground(null); m = ma + (mb - ma) * u; m = Math.min(m, ground(["pelvis", "chest", "head", "uarmL", "uarmR"])); }
+    else m = mAll;
     let x, z; const an = Bk.anchor;
     if (an) { x = A.info.P[an.k * 3] + A.x - P[an.k * 3]; z = A.info.P[an.k * 3 + 2] + A.z - P[an.k * 3 + 2]; } else { x = A.x + (Bk.x - A.x) * u; z = A.z + (Bk.z - A.z) * u; }
-    setPelvisPos(V(x, 1 - m, z));
+    setPelvisPos(V(x, 1 - m - ((A.info.jp.drop || 0) * (1 - u) + (Bk.info.jp.drop || 0) * u), z));
     /* кисти/стопы, стоящие на полу и в начале, и в конце сегмента, держатся на месте (IK) */
     const fw = V(0, 0, 1);
     for (const r of ['handL', 'handR', 'footL', 'footR']) {
@@ -137,7 +146,7 @@ export function makeAuthView(fig) {
     }
     /* кисти без опоры не уходят под пол */
     P = sampleWorld();
-    for (const r of ['handL', 'handR']) { const [mm, k] = regMin(P, r); if (k >= 0 && mm < -.003) reach(r, k, V(P[k * 3], .003, P[k * 3 + 2]), fw.clone().negate()); }
+    for (const r of ['handL', 'handR', 'footL', 'footR']) { const [mm, k] = regMin(P, r); if (k >= 0 && mm < -.003) reach(r, k, V(P[k * 3], .003, P[k * 3 + 2]), r.startsWith('hand') ? fw.clone().negate() : fw.clone()); }
     if (jp.pray) show(jp, x, z, {y: 1 - m, pins: []});
     toes(); syncHair();
     return {x, z, i};

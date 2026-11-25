@@ -110,4 +110,8 @@ export const ROUTES = {
   'edog>ashwaL': ['kneeToChestR', 'highLungeL'], 'edog>ashwaR': ['kneeToChestL', 'highLungeR'],
   'ashwaL>padah': ['highLungeL', 'stepFwdL', 'squatFold'], 'ashwaR>padah': ['highLungeR', 'stepFwdR', 'squatFold'],
   'padah>hastaut': ['squatFold', 'riseHalf'], 'hastaut>pranam': [],
+  /* Чандра: полумесяц на колене — сначала ладони на пол, потом шаг */
+  'ardhachR>plank': ['ashwaR', 'highLungeR', 'stepBackL'], 'ardhachL>plank': ['ashwaL', 'highLungeL', 'stepBackR'],
+  'ardhachR>padah': ['ashwaR', 'highLungeR', 'stepFwdR', 'squatFold'], 'ardhachL>padah': ['ashwaL', 'highLungeL', 'stepFwdL', 'squatFold'],
+  'ardhachR>edog': ['ashwaR', 'highLungeR', 'stepBackL', 'plank'], 'ardhachL>edog': ['ashwaL', 'highLungeL', 'stepBackR', 'plank'],
 };
