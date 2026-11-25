@@ -71,9 +71,9 @@ export async function createFigure(canvas, {base = '', poses, model = 'female', 
   const floorM = new T.MeshStandardMaterial({roughness: 1});
   const floor = new T.Mesh(new T.PlaneGeometry(40, 40), floorM); floor.rotation.x = -Math.PI / 2; floor.receiveShadow = true; scene.add(floor);
   const matM = new T.MeshStandardMaterial({roughness: .95});
-  const mat = new T.Mesh(new T.PlaneGeometry(1.85, .64), matM); mat.rotation.x = -Math.PI / 2; mat.position.y = .003; mat.receiveShadow = true; scene.add(mat);
+  const mat = new T.Mesh(new T.PlaneGeometry(.64, 1.85), matM); mat.rotation.x = -Math.PI / 2; mat.position.y = .003; mat.receiveShadow = true; scene.add(mat);
   const stripeTex = c => { const cv = document.createElement('canvas'); cv.width = 512; cv.height = 64; const g = cv.getContext('2d');
-    g.fillStyle = c.mat; g.fillRect(0, 0, 512, 64); g.fillStyle = c.stripe; for (let x = 0; x < 512; x += 64) g.fillRect(x, 0, 2, 64);
+    g.fillStyle = c.mat; g.fillRect(0, 0, 512, 64); g.fillStyle = c.stripe; for (let x = 0; x < 512; x += 64) g.fillRect(x, 0, 2, 64); /* полосы поперёк коврика */
     const t = new T.CanvasTexture(cv); t.colorSpace = T.SRGBColorSpace; return t; };
 
   const cam = new T.PerspectiveCamera(24, 1, .05, 60);
@@ -106,7 +106,14 @@ export async function createFigure(canvas, {base = '', poses, model = 'female', 
   const restW = new Map(order.map(b => [b, wq(b)]));
   const SEGBONE = {pelvis: 'pelvis', spine_03: 'chest', Head: 'head', upperarm_l: 'uarmL', lowerarm_l: 'farmL', hand_l: 'handL',
     upperarm_r: 'uarmR', lowerarm_r: 'farmR', hand_r: 'handR', thigh_l: 'thighL', calf_l: 'shinL', foot_l: 'footL', thigh_r: 'thighR', calf_r: 'shinR', foot_r: 'footR'};
-  const pelvisOff = wp(B.pelvis); /* положение таза в покое (стоя, стопы на полу) */
+  const pelvisOff = wp(B.pelvis);
+  /* направление пальцев и нормаль ладони в покое (для постановки ладони на пол и в намасте) */
+  const handRest = {};
+  for (const s of ['l', 'r']) { const h = wp(B['hand_' + s]), m = wp(B['middle_01_' + s]), ix = wp(B['index_01_' + s]), pk = wp(B['pinky_01_' + s]);
+    const d = m.clone().sub(h).normalize(); const across = ix.clone().sub(pk); across.addScaledVector(d, -across.dot(d)).normalize();
+    let n = V().crossVectors(d, across).normalize(); /* ладонь смотрит к бедру */
+    const med = V(s === 'l' ? -1 : 1, 0, 0); if (n.dot(med) < 0) n.negate();
+    handRest[s === 'l' ? 'L' : 'R'] = {d, n}; } /* положение таза в покое (стоя, стопы на полу) */
 
   /* оси сгиба фаланг */
   const curl = new Map();
@@ -226,12 +233,12 @@ export async function createFigure(canvas, {base = '', poses, model = 'female', 
 
   /* двухзвенный IK по костям модели, плоскость сгиба сохраняется (полюс — текущий локоть/колено) */
   const setWorldQ = (b, w) => { b.quaternion.copy(wq(b.parent).invert().multiply(w)); b.updateMatrixWorld(true); };
-  function ik2(chain, target) {
+  function ik2(chain, target, poleDir) {
     const [A, E, H] = chain.map(n => B[n]); const endW = wq(H);
     const s = wp(A), e = wp(E), w = wp(H), a = s.distanceTo(e), b = e.distanceTo(w);
     const to = V().subVectors(target, s); let d = to.length(); if (d < 1e-6) return; const dir = to.divideScalar(d);
     d = clamp(d, Math.abs(a - b) + 1e-3, a + b - 1e-3);
-    const pole = V().subVectors(e, s); pole.addScaledVector(dir, -pole.dot(dir)); if (pole.lengthSq() < 1e-8) pole.set(0, 0, 1); pole.normalize();
+    const pole = poleDir ? poleDir.clone() : V().subVectors(e, s); pole.addScaledVector(dir, -pole.dot(dir)); if (pole.lengthSq() < 1e-8) pole.set(0, 0, 1); pole.normalize();
     const cosA = (a * a + d * d - b * b) / (2 * a * d), sinA = Math.sqrt(Math.max(0, 1 - cosA * cosA));
     const e2 = V().copy(s).addScaledVector(dir, a * cosA).addScaledVector(pole, a * sinA);
     setWorldQ(A, Qn().setFromUnitVectors(V().subVectors(e, s).normalize(), V().subVectors(e2, s).normalize()).multiply(wq(A)));
@@ -498,5 +505,5 @@ export async function createFigure(canvas, {base = '', poses, model = 'female', 
   function shiftCenter() { const bb = bounds(); const c = bb.getCenter(V()); return {x: c.x, z: c.z}; }
 
   return {go, setTheme, resize, render, cam, controls, view, renderer, scene, stateOf, makeTransition, placeStatic, frameTarget, placeCam,
-    sampleWorld, samp, B, get cur() { return cur; }, set cur(v) { cur = v; }, pose, setPelvisPos, toes, syncHair};
+    sampleWorld, samp, B, mat, handRest, applyTW, ik2, reachVertex, CHAIN, wp, wq, restW, lowest, get cur() { return cur; }, set cur(v) { cur = v; }, pose, setPelvisPos, toes, syncHair};
 }

@@ -1,5 +1,6 @@
 /* Мост для приложения и сайта: window.Mudrya — тот же интерфейс, что у прежнего эмулятора. */
 import {createFigure} from './fig2.mjs';
+import {makeAuthView} from './authview.mjs';
 const host = document.getElementById('stage'), canvas = document.getElementById('c');
 const q = new URLSearchParams(location.search);
 let fig = null, poses = null, lastKey = '', theme = 'light', model = q.get('model') || (window.MUDRYA_MODEL || 'female');
@@ -25,6 +26,20 @@ async function boot() {
   window.__tr = (a, b, k) => { const A = fig.stateOf(a), B2 = fig.stateOf(b); fig.placeStatic(A, 0, 0); const tr = fig.makeTransition(A, 0, 0, B2); tr.at(k);
     const f = fig.frameTarget(); fig.placeCam(f, A.cam, true); fig.render(); return {pin: tr.pin, held: tr.held, lift: Object.keys(tr.lift)}; };
   window.__keys = () => Object.keys(poses);
+  let TL = null; window.__tl = (seq, yaw, pitch) => { TL = AV.timeline(seq); fig.view.yaw = yaw; fig.view.pitch = pitch;
+    const lo = [1e9,1e9,1e9], hi = [-1e9,-1e9,-1e9]; for (let t = 0; t <= TL.T; t += .25) { AV.frameAt(TL, t); const P = fig.sampleWorld(); for (let j = 0; j < P.length; j += 3) for (let a = 0; a < 3; a++) { lo[a] = Math.min(lo[a], P[j+a]); hi[a] = Math.max(hi[a], P[j+a]); } }
+    TL.fr = {c: fig.cam.position.clone().set((lo[0]+hi[0])/2, Math.max(.55,(lo[1]+hi[1])/2), (lo[2]+hi[2])/2), s: Math.max(hi[0]-lo[0], (hi[1]-lo[1])*1.1, hi[2]-lo[2]) * .9};
+    fig.mat.position.set((lo[0]+hi[0])/2, .003, (lo[2]+hi[2])/2); TL.fr.s *= .82; fig.mat.material.map && (fig.mat.material.map.rotation = Math.PI / 2, fig.mat.material.map.center.set(.5,.5));
+    TL.end = AV.frameAt(TL, TL.T); return {T: TL.T, n: TL.keys.length, names: TL.keys.map(k => k.n + (k.anchor ? '@' + k.anchor.r : '')).join(' ')}; };
+  window.__tlFrame = (t, jpg) => { const f = AV.frameAt(TL, t); const g = TL.end ? t / TL.T : 0;
+    if (TL.end) { const p = fig.B.pelvis.getWorldPosition(fig.cam.position.clone()); p.x -= TL.end.x * g; p.z -= TL.end.z * g; fig.setPelvisPos(p); fig.syncHair(); }
+    fig.view.userMoved = false; fig.placeCam(TL.fr, 0, true); fig.render(); return jpg ? fig.renderer.domElement.toDataURL('image/jpeg', .9) : ''; };
+  window.__handDbg = (name) => { const jp = (window.__AV.POSES[name] || window.__AV.PHASES[name]); window.__AV.show(jp, 0, 0, {pins: []}); const o = {};
+    for (const s of ['l','r']) { const h = fig.B['hand_'+s], m = fig.B['middle_01_'+s], lo = fig.B['lowerarm_'+s]; const a = fig.wp(h), b = fig.wp(m), c = fig.wp(lo);
+      const d = b.clone().sub(a).normalize(); o[s] = {fingerDir: d.toArray().map(v=>+v.toFixed(2)), wrist: a.toArray().map(v=>+v.toFixed(2)), elbow: c.toArray().map(v=>+v.toFixed(2)), sh: fig.wp(fig.B['upperarm_'+s]).toArray().map(v=>+v.toFixed(2))}; }
+    return JSON.stringify(o); };
+  const AV = makeAuthView(fig); window.__AV = AV;
+  window.__showA = (name, yaw, pitch, dofit) => { let jp = AV.POSES[name] || AV.PHASES[name]; if (dofit) jp = AV.fit(jp); fig.view.yaw = yaw ?? 90; fig.view.pitch = pitch ?? 6; const r = AV.show(jp, 0, 0); const f = fig.frameTarget(); fig.placeCam(f, 0, true); fig.render(); return JSON.stringify({fit: jp.fitted || null}); };
   /* съёмка ролика: неподвижная камера, переходы по шагам времени */
   let FILM = null;
   window.__filmInit = (keys, yaw, pitch) => { fig.view.yaw = yaw; fig.view.pitch = pitch; let st = fig.stateOf(keys[0]); fig.placeStatic(st, 0, 0); let x = 0, z = 0;
