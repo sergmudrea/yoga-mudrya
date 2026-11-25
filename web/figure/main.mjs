@@ -39,7 +39,7 @@ async function boot() {
       const d = b.clone().sub(a).normalize(); o[s] = {fingerDir: d.toArray().map(v=>+v.toFixed(2)), wrist: a.toArray().map(v=>+v.toFixed(2)), elbow: c.toArray().map(v=>+v.toFixed(2)), sh: fig.wp(fig.B['upperarm_'+s]).toArray().map(v=>+v.toFixed(2))}; }
     return JSON.stringify(o); };
   const AV = makeAuthView(fig); window.__AV = AV;
-  window.__showA = (name, yaw, pitch, dofit) => { let jp = AV.POSES[name] || AV.PHASES[name]; if (dofit) jp = AV.fit(jp); fig.view.yaw = yaw ?? 90; fig.view.pitch = pitch ?? 6; const r = AV.show(jp, 0, 0); const f = fig.frameTarget(); fig.placeCam(f, 0, true); fig.render(); return JSON.stringify({fit: jp.fitted || null}); };
+  window.__showA = (name, yaw, pitch, dofit) => { let jp = AV.POSES[name] || AV.PHASES[name]; if (dofit) jp = AV.fit(jp); fig.view.yaw = yaw ?? 90; fig.view.pitch = pitch ?? 6; const r = AV.show(jp, 0, 0); let f = fig.frameTarget(); if (window.__zoom) f = {c: fig.wp(fig.B.pelvis), s: window.__zoom}; fig.placeCam(f, 0, true); fig.render(); return JSON.stringify({fit: jp.fitted || null}); };
   /* съёмка ролика: неподвижная камера, переходы по шагам времени */
   let FILM = null;
   window.__filmInit = (keys, yaw, pitch) => { fig.view.yaw = yaw; fig.view.pitch = pitch; let st = fig.stateOf(keys[0]); fig.placeStatic(st, 0, 0); let x = 0, z = 0;

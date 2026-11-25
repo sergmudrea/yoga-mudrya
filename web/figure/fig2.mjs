@@ -129,6 +129,40 @@ export async function createFigure(canvas, {base = '', poses, model = 'female', 
 
   /* ---------- одежда: ровные края — маска считается в шейдере по высоте вершины в покое ---------- */
   const body = meshes.reduce((a, m) => (m.geometry.attributes.position.count > (a ? a.geometry.attributes.position.count : 0) ? m : a), null);
+  if (!/noW=1/.test(location.search)) /* ---------- коррекция привязки: ягодица и верх бедра частично следуют за тазом ----------
+     В исходной модели ягодичная область почти целиком привязана к кости бедра, и при наклоне вперёд
+     она остаётся «стоять», выпирая над поясницей. У человека ягодица крепится к тазу и поворачивается с ним. */
+  {
+    body.skeleton.update(); body.updateMatrixWorld(true);
+    const g = body.geometry, si = g.attributes.skinIndex, sw = g.attributes.skinWeight, n = g.attributes.position.count, v = V();
+    const bones = body.skeleton.bones, idx = nm => bones.findIndex(b => b.name === nm);
+    const iP = idx('pelvis'), iS = idx('spine_01');
+    for (const s of ['l', 'r']) {
+      const iT = idx('thigh_' + s); if (iT < 0 || iP < 0) continue;
+      const hip = wp(B['thigh_' + s]), knee = wp(B['calf_' + s]); const len = hip.distanceTo(knee);
+      for (let i = 0; i < n; i++) {
+        let kT = -1; for (let k = 0; k < 4; k++) if (si.getComponent(i, k) === iT) kT = k; if (kT < 0) continue;
+        const wT = sw.getComponent(i, kT); if (wT <= 0) continue;
+        body.getVertexPosition(i, v); body.localToWorld(v);
+        const h = (hip.y - v.y) / len;               /* 0 у сустава, 1 у колена */
+        const back = clamp((hip.z - v.z) / .08, -1, 1); /* + сзади (ягодица), − спереди (пах) */
+        const side = clamp((Math.abs(v.x) - Math.abs(hip.x)) / .07, 0, 1); /* наружная сторона (большой вертел) */
+        const up = 1 - smooth((h + .02) / .5);        /* верхняя половина бедра и выше */
+        let f = up * (back > 0 ? .5 + .42 * back : .22 + .3 * side);
+        f = clamp(f, 0, .9); if (f < .01) continue;
+        const move = wT * f; window.__wcnt = (window.__wcnt || 0) + 1;
+        sw.setComponent(i, kT, wT - move);
+        let kP = -1; for (let k = 0; k < 4; k++) if (si.getComponent(i, k) === iP) kP = k;
+        if (kP < 0) { let mk = 0, mw = 9; for (let k = 0; k < 4; k++) { const w = sw.getComponent(i, k); if (k !== kT && w < mw) { mw = w; mk = k; } }
+          /* слот с наименьшим весом отдаём тазу (его вес переносится туда же) */
+          const lost = sw.getComponent(i, mk); si.setComponent(i, mk, iP); sw.setComponent(i, mk, move + lost * 0); 
+          if (lost > 0) sw.setComponent(i, kT, sw.getComponent(i, kT) + lost); }
+        else sw.setComponent(i, kP, sw.getComponent(i, kP) + move);
+      }
+    }
+    si.needsUpdate = true; sw.needsUpdate = true; window.__wfix = (window.__wfix || 0) + 1;
+  }
+
   {
     body.skeleton.update(); body.updateMatrixWorld(true);
     const g = body.geometry, pos = g.attributes.position, si = g.attributes.skinIndex, sw = g.attributes.skinWeight, n = pos.count;
@@ -144,7 +178,7 @@ export async function createFigure(canvas, {base = '', poses, model = 'female', 
     const y = n => wp(B[n]).y;
     /* полосы по высоте: [низ, верх] — майка/топ и легинсы */
     const male = model === 'male';
-    const top = male ? [y('pelvis') + .06, shY + .2] : [y('spine_02') - .015, shY + .2];
+    const top = male ? [y('pelvis') + .06, shY + .2] : [y('spine_01') - .035, shY + .2];
     const low = [y('foot_l') + .07, male ? y('pelvis') + .09 : y('spine_01') - .005];
     const sleeve = male ? .16 : 0;
     const mats = [].concat(body.material);

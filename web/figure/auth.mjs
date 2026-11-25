@@ -70,7 +70,7 @@ P.pranam = {root: [0, 0, 0], sp: [0, 0, 0], nk: [0, 0, 0], hL: [0, 2, 0], hR: [0
 P.hastaut = {root: [-6, 0, 0], sp: [-22, 0, 0], nk: [-14, 0, 0], hL: [-4, 2, 0], hR: [-4, 2, 0], kL: 4, kR: 4, aL: 4, aR: 4,
   sL: [172, 6, 0], sR: [172, 6, 0], eL: 4, eR: 4, hands: {L: 'open', R: 'open'}};
 /* наклон: таз сильно вперёд, грудь вниз к ногам, колени мягкие, ладони у стоп */
-P.padah = W({P: 128, C: 168, H: 182, tL: -18, sL: 10, tR: -18, sR: 10, uL: -12, aL: -12, uR: -12, aR: -12, hands: {L: 'floor', R: 'floor'}, pins: ['handL', 'handR'], fit: 'C'});
+P.padah = W({P: 104, C: 166, H: 182, tL: -16, sL: 10, tR: -16, sR: 10, uL: -12, aL: -12, uR: -12, aR: -12, hands: {L: 'floor', R: 'floor'}, pins: ['handL', 'handR'], fit: 'C'});
 /* выпад: левая стопа впереди (голень вертикально), правое колено на полу, подъём стопы на полу; корпус наклонён, грудь раскрыта, взгляд вперёд-вверх */
 P.ashwaR = W({P: 30, C: 34, H: -6, tL: -104, sL: -6, fL: 0, tR: 38, sR: 90, fR: 180, uL: 0, aL: 0, uR: 0, aR: 0, hands: {L: 'floor', R: 'floor'}, pins: ['handL', 'handR', 'footL'], fit: 'P'});
 /* собака: таз вверх, руки и спина одной линией, ноги прямые, пятки тянутся к полу */
@@ -84,7 +84,7 @@ P.ashwaL = W(mirW(P.ashwaR.w));
 
 const K = {};
 K.flatHalf = W({P: 62, C: 60, H: 58, tL: 0, tR: 0, uL: -118, aL: -118, uR: -118, aR: -118, hands: {L: 'open', R: 'open'}});
-K.squatFold = W({P: 105, C: 140, H: 150, tL: -48, sL: 22, tR: -48, sR: 22, uL: -14, aL: -14, uR: -14, aR: -14, hands: {L: 'floor', R: 'floor'}, pins: ['handL', 'handR'], fit: 'C'});
+K.squatFold = W({P: 88, C: 140, H: 150, tL: -48, sL: 22, tR: -48, sR: 22, uL: -14, aL: -14, uR: -14, aR: -14, hands: {L: 'floor', R: 'floor'}, pins: ['handL', 'handR'], fit: 'C'});
 K.highLungeR = W({P: 50, C: 52, H: 30, tL: -96, sL: -4, fL: 0, tR: 58, sR: 58, fR: 60, uL: -2, aL: -2, uR: -2, aR: -2, hands: {L: 'floor', R: 'floor'}, pins: ['handL', 'handR'], fit: 'P'});
 K.plank = W({P: 76, C: 76, H: 80, tL: 76, tR: 76, sL: 76, sR: 76, fL: 68, fR: 68, uL: 0, aL: 0, uR: 0, aR: 0, line: true, hands: {L: 'floor', R: 'floor'}, pins: ['handL', 'handR', 'footL', 'footR'], fit: 'P'});
 K.kneesDown = W({P: 104, C: 110, H: 118, tL: 4, sL: 90, fL: 90, tR: 4, sR: 90, fR: 90, uL: -24, aL: -24, uR: -24, aR: -24, hands: {L: 'floor', R: 'floor'}, pins: ['handL', 'handR'], fit: 'C'});
