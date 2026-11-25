@@ -1,7 +1,7 @@
 /* Мост для приложения и сайта: window.Mudrya — тот же интерфейс, что у прежнего эмулятора. */
 import {createFigure} from './fig2.mjs';
 import {makeAuthView} from './authview.mjs';
-import {OVR} from './overrides.mjs';
+import {OVR, CATMAP, CATFB} from './overrides.mjs';
 import {catTW} from './catpose.mjs';
 import {MV} from './mv.mjs';
 import {twToJP, limitJP, roundJP, jpToTW, mirrorJP} from './conv.mjs';
@@ -91,6 +91,7 @@ async function boot() {
     'PRONE>SIT': ['cat|0|', 'mv:sideSit'], 'SIT>PRONE': ['mv:sideSit', 'cat|0|'], 'PRONE>STAND': ['cat|0|', 'A-0004'], 'STAND>PRONE': ['A-0004', 'cat|0|'], 'PRONE>LIE': ['mv:sideSit'], 'LIE>PRONE': ['mv:sideSit'], 'STAND>LIE ': []};
   function autoVia(a, b) { if (a.jp.prop === 'chair' || b.jp.prop === 'chair') return []; const r = VIA[cls(a) + '>' + cls(b)] || []; return r.map(k => infoOf(k)).filter(v => v && v.jp && v.name !== a.name && v.name !== b.name); }
   window.__cls = k => cls(infoOf(k));
+  window.__geo = k => { const jp = window.__prepJP(k); AV.keyInfo({jp}); const B = fig.B, p = fig.wp(B.pelvis), c = fig.wp(B.spine_03), h = fig.wp(B.Head); const d = c.clone().sub(p).normalize(); const f = new T3.Vector3(0, 0, 1).applyQuaternion(fig.wq(B.spine_03)); return [+d.y.toFixed(2), +p.y.toFixed(2), +h.y.toFixed(2), +(h.y - p.y).toFixed(2), +f.y.toFixed(2)]; };
   function play(k, ms) {
     const it = infoOf(k);
     if (PA) { const e = PA; PA = null; PC = {it: e.to, x: e.end.x, z: e.end.z}; }
@@ -137,6 +138,7 @@ async function boot() {
     for (const s of ['L','R']) { const o = s === 'L' ? 'R' : 'L'; const kn = fig.wp(fig.B['calf_' + s.toLowerCase()]).y;
       if (jp['k' + s] > 70 && kn < mins['foot' + s] + .06 && kn > .07 && mins['foot' + o] < .03 && !jp.armBal) { jp.drop = Math.min(.25, kn - .055); if (!pins.includes('foot' + o)) pins.push('foot' + o); break; } }
     jp.pins = pins; return jp; }
+  window.__OVR = OVR;
   window.__prepJP = k => { if (k.startsWith('A-')) return window.__prepCat(k);
     if (k.startsWith('mv:')) { const [id, mm] = k.slice(3).split('|'); const src = MV[id]; if (!src) return null; let o = JSON.parse(JSON.stringify(src)); o.cam = o.cam || 0; return +mm ? mirrorJP(o) : o; } const p = poses[k]; const [fid, mm] = k.split('|');
     const TWa = {}; for (const n in p.q) { const a = p.q[n]; TWa[n] = new T3.Quaternion(a[0],a[1],a[2],a[3]); }
@@ -148,6 +150,8 @@ async function boot() {
   let CAT = null; window.__catLoad = async () => { if (!CAT) CAT = await fetch('catalog.json' + (q.get('v') ? '?v=' + encodeURIComponent(q.get('v')) : '')).then(r => r.json()); return Object.keys(CAT).length; };
   window.__prepCat = k => { const [id, mm] = k.split('|'); const c = CAT[id]; if (!c) return null;
     if (OVR[id]) { let o = AV.fit(OVR[id]); o = +mm ? mirrorJP(o) : o; o.cam = o.cam || 0; return o; }
+    if (CATFB[id]) { const o = window.__prepCat(CATFB[id] + (+mm ? '|1' : '')); if (o) return {...o, fb: CATFB[id]}; }
+    if (CATMAP[id]) { const kk = keyOf(CATMAP[id], +mm, ''); const o = kk ? window.__prepJP(kk) : null; if (o) return {...o, viol: ['MAP:' + CATMAP[id]]}; }
     const L = limitJP(twToJP(catTW(c.g))); let jp = roundJP(L.jp); jp.root[2] = 0; jp.hands = {L: 'open', R: 'open'}; jp.cam = c.g[13] ? 90 : 0;
     jp.armBal = c.fam === 'arm_balance' || /arm_balance|forearm_balance/.test((c.pos || []).join(' '));
     const f = c.c || 0, lotus = (c.tags || []).includes('lotus') || /лотос/i.test(c.n);

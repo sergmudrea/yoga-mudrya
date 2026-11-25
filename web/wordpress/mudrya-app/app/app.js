@@ -157,6 +157,7 @@
       const v = DESC[id], c = CATD[id] || {}, b = v.base ? DESC[v.base] : v, bn = v.base ? (CATD[v.base] || {}).n : null; let h = '';
       h += '<h2>' + esc(c.n || v.nm.ru) + '</h2><p class="muted">' + esc([v.nm.sanskrit, v.nm.en].filter(Boolean).join(' · ')) + '</p>';
       h += '<p><span class="chip">' + esc(LVN[c.lvl] || '') + '</span>' + (FAM[c.fam] ? '<span class="chip">' + esc(FAM[c.fam]) + '</span>' : '') + (v.rl && v.base ? '<span class="chip">' + esc(v.rl) + '</span>' : '') + '</p>';
+      if (c.fb) h += '<p class="note">Фигура показывает базовую позу «' + esc(bn || '') + '»: точной 3D-модели этой вариации пока нет. Чем вариация отличается — ниже.</p>';
       if (v.base) { h += '<p>Вариация позы <b>' + esc(bn || '') + '</b>.' + (v.rp ? ' ' + esc(v.rp) : '') + '</p>'; if (v.ch && v.ch.length) h += '<h3>Чем отличается</h3>' + ul(v.ch); }
       if (b.b) h += '<h3>Польза</h3><p>' + esc(b.b) + '</p>';
       if (b.st && b.st.length) h += '<h3>' + (v.base ? 'Как выполнять (основа — базовая поза)' : 'Как выполнять') + '</h3><ol>' + b.st.map(x => '<li>' + esc(x) + '</li>').join('') + '</ol>';
