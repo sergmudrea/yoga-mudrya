@@ -1,6 +1,9 @@
 /* Мост для приложения и сайта: window.Mudrya — тот же интерфейс, что у прежнего эмулятора. */
 import {createFigure} from './fig2.mjs';
 import {makeAuthView} from './authview.mjs';
+import {OVR} from './overrides.mjs';
+import {twToJP, limitJP, roundJP, jpToTW, mirrorJP} from './conv.mjs';
+import * as T3 from 'three';
 const host = document.getElementById('stage'), canvas = document.getElementById('c');
 const q = new URLSearchParams(location.search);
 let fig = null, poses = null, lastKey = '', theme = 'light', model = q.get('model') || (window.MUDRYA_MODEL || 'female');
@@ -14,11 +17,11 @@ async function boot() {
   window.Mudrya = {
     ready: true, loaded: true, version: 2,
     go(id, mirror, ms, hands) { const k = keyOf(id, mirror, hands); if (!k) { console.warn('pose', id); return; }
-      if (k === lastKey && ms > 0) return; lastKey = k; fig.go(k, ms || 0); },
+      if (k === lastKey && ms > 0) return; lastKey = k; play(k, ms || 0); },
     hands(id) { const k = keyOf(id, 0, ''); return k ? JSON.stringify(poses[k].h) : ''; },
     setTheme(t) { theme = t; fig.setTheme(t); document.body.style.background = t === 'dark' ? '#16171b' : '#f3f0ea'; },
-    resetView() { fig.view.userMoved = false; const f = fig.frameTarget(); fig.placeCam(f, fig.cur ? fig.cur.st.cam : 0, true); },
-    setYaw(d) { fig.view.yaw = d; fig.view.userMoved = false; const f = fig.frameTarget(); fig.placeCam(f, fig.cur ? fig.cur.st.cam : 0, true); },
+    resetView() { fig.view.userMoved = false; camTo(true, PC ? PC.it.jp.cam : 0); },
+    setYaw(d) { fig.view.yaw = d; fig.view.userMoved = false; camTo(true, PC ? PC.it.jp.cam : 0); },
     has(id) { return !!keyOf(id, 0, ''); },
     setFigure(k) { const m = /male|man|y/.test(k) && !/female/.test(k) ? 'male' : 'female'; if (m !== model) { const u = new URL(location.href); u.searchParams.set('model', m); location.replace(u); } },
     _fig: fig,
@@ -38,7 +41,51 @@ async function boot() {
     for (const s of ['l','r']) { const h = fig.B['hand_'+s], m = fig.B['middle_01_'+s], lo = fig.B['lowerarm_'+s]; const a = fig.wp(h), b = fig.wp(m), c = fig.wp(lo);
       const d = b.clone().sub(a).normalize(); o[s] = {fingerDir: d.toArray().map(v=>+v.toFixed(2)), wrist: a.toArray().map(v=>+v.toFixed(2)), elbow: c.toArray().map(v=>+v.toFixed(2)), sh: fig.wp(fig.B['upperarm_'+s]).toArray().map(v=>+v.toFixed(2))}; }
     return JSON.stringify(o); };
+
+  window.__conv = () => { const out = {}; const SG = ['pelvis','chest','head','thighL','shinL','footL','uarmL','farmL','thighR','shinR','footR','uarmR','farmR'];
+    for (const k in poses) { const TW = {}; for (const n in poses[k].q) { const a = poses[k].q[n]; TW[n] = new T3.Quaternion(a[0],a[1],a[2],a[3]); }
+      const jp = twToJP(TW); const TW2 = jpToTW(jp); let err = 0, ew = ''; for (const n of SG) { const e = (/^(pelvis|chest|head)$/.test(n) ? TW[n].angleTo(TW2[n]) : new T3.Vector3(0,-1,0).applyQuaternion(TW[n]).angleTo(new T3.Vector3(0,-1,0).applyQuaternion(TW2[n]))) * 57.3; if (e > err) { err = e; ew = n; } }
+      const L = limitJP(jp); out[k] = {jp: roundJP(jp), err: +err.toFixed(1), ew, viol: L.viol}; }
+    return JSON.stringify(out); };
   const AV = makeAuthView(fig); window.__AV = AV;
+
+  /* ---------- плеер: позы в суставных углах, переходы по кривой без изломов, опоры на месте ---------- */
+  const infoCache = new Map();
+  const infoOf = k => { if (!infoCache.has(k)) { const jp = window.__prepJP(k); infoCache.set(k, {name: k.split('|')[0], jp, info: AV.keyInfo({jp})}); } return infoCache.get(k); };
+  let PC = null, PA = null; /* текущая поза {it, x, z}; анимация */
+  function placeRest(it, x, z) { AV.show(it.jp, x, z); }
+  function camTo(snap, cy) { fig.view.camYaw = cy; const f = fig.frameTarget(); fig.placeCam(f, cy || 0, snap); }
+  function play(k, ms) {
+    const it = infoOf(k);
+    if (PA) { const e = PA; PA = null; PC = {it: e.to, x: e.end.x, z: e.end.z}; }
+    if (!PC || !ms) { const x = PC ? PC.x : 0, z = PC ? PC.z : 0; PC = {it, x, z}; placeRest(it, x, z); camTo(true, it.jp.cam); return; }
+    const tl = AV.timeline([{jp: PC.it.jp, name: PC.it.name, info: PC.it.info}, {jp: it.jp, name: it.name, info: it.info}], {seg: 1, poseSeg: 1, hold: 0, x0: PC.x, z0: PC.z});
+    const last = tl.keys[tl.keys.length - 1];
+    PA = {tl, t0: performance.now(), ms, to: it, from: PC.it, end: {x: last.x, z: last.z}};
+  }
+  function loop(now) {
+    if (PA) { const k = Math.min(1, (now - PA.t0) / PA.ms); AV.frameAt(PA.tl, k * PA.tl.T);
+      camTo(false, (PA.from.jp.cam || 0) + ((PA.to.jp.cam || 0) - (PA.from.jp.cam || 0)) * k);
+      if (k >= 1) { PC = {it: PA.to, x: PA.end.x, z: PA.end.z}; PA = null; placeRest(PC.it, PC.x, PC.z); } fig.render(); }
+    requestAnimationFrame(loop);
+  window.__strip = (ka, kb, ks, rel) => { PA = null; PC = null; play(ka, 0); play(kb, 1000); const A = PA; PA = null; const out = [];
+    fig.view.yaw = (A.to.jp.root[2] || 0) - (rel ?? 70); fig.view.pitch = 8;
+    for (const k of ks) { AV.frameAt(A.tl, k * A.tl.T); camTo(true, 0); fig.render(); out.push(fig.renderer.domElement.toDataURL('image/jpeg', .8)); } return out; };
+  }
+  requestAnimationFrame(loop);
+
+
+  /* подготовка позы атласа для нового движка: углы, пределы, опоры */
+  window.__prepJP = k => { const p = poses[k]; const [fid, mm] = k.split('|');
+    if (OVR[fid]) { let o = AV.fit(OVR[fid]); o = {...o, cam: p.c || 0, viol: ['OVR']}; return +mm ? mirrorJP(o) : o; } const TW = {}; for (const n in p.q) { const a = p.q[n]; TW[n] = new T3.Quaternion(a[0],a[1],a[2],a[3]); }
+    const L = limitJP(twToJP(TW)); const jp = roundJP(L.jp); jp.root[2] = Math.round(jp.root[2] - 90); jp.hands = p.h; if (p.h.L === 'namaste' && p.h.R === 'namaste') jp.pray = true; jp.armBal = !!p.a; jp.cam = p.c || 0;
+    /* опоры: стопы/голени из атласа; ладони формы «floor» у пола */
+    AV.show({...jp, pins: []}, 0, 0); const P = fig.sampleWorld(); const mins = {}; fig.samp.forEach((q, j) => { mins[q.reg] = Math.min(mins[q.reg] ?? 9, P[j * 3 + 1]); });
+    const pins = []; for (const r of ['footL','footR']) if ((p.k || []).includes(r) || mins[r] < .04) if (mins[r] < .12) pins.push(r);
+    if (!jp.armBal) for (const s of ['L','R']) if (p.h[s] === 'floor' && mins['hand' + s] < .25) pins.push('hand' + s);
+    jp.pins = pins; jp.viol = L.viol; return jp; };
+  window.__shotOld = (k, rel) => { const st = fig.stateOf(k); const yaw = (window.__prepJP(k).root[2]); fig.view.yaw = yaw - (rel ?? 55); fig.view.pitch = 8; fig.placeStatic(st, 0, 0); const f = fig.frameTarget(); fig.view.userMoved = false; fig.placeCam(f, 0, true); fig.render(); return fig.renderer.domElement.toDataURL('image/jpeg', .85); };
+  window.__shot = (jp, rel, w, h) => { fig.view.yaw = (jp.root ? jp.root[2] : 0) - (rel ?? 55); fig.view.pitch = 8; AV.show(jp, 0, 0); const f = fig.frameTarget(); fig.view.userMoved = false; fig.placeCam(f, 0, true); fig.render(); return fig.renderer.domElement.toDataURL('image/jpeg', .85); };
   window.__showA = (name, yaw, pitch, dofit) => { let jp = AV.POSES[name] || AV.PHASES[name]; if (dofit) jp = AV.fit(jp); fig.view.yaw = yaw ?? 90; fig.view.pitch = pitch ?? 6; const r = AV.show(jp, 0, 0); let f = fig.frameTarget(); if (window.__zoom) f = {c: fig.wp(fig.B.pelvis), s: window.__zoom}; fig.placeCam(f, 0, true); fig.render(); return JSON.stringify({fit: jp.fitted || null}); };
   /* съёмка ролика: неподвижная камера, переходы по шагам времени */
   let FILM = null;

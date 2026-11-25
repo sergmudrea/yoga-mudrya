@@ -29,7 +29,7 @@ export function makeAuthView(fig) {
   function show(jp, x = 0, z = 0, opt = {}) {
     const TW = build(jp); fig.pose(TW, jp.hands || {}); setPelvisPos(V(0, 1, 0));
     let P = sampleWorld(); let m = Infinity;
-    for (let j = 0; j < samp.length; j++) { const r = samp[j].reg; if (/^(hand|farm)/.test(r) && (jp.pins || []).some(p => p.startsWith('hand'))) continue; if (jp.fitT && opt.fitting && r === jp.fitT) continue; if (r.startsWith('hand')) continue; m = Math.min(m, P[j * 3 + 1]); }
+    for (let j = 0; j < samp.length; j++) { const r = samp[j].reg; if (!jp.armBal && /^(hand|farm)/.test(r) && (jp.pins || []).some(p => p.startsWith('hand'))) continue; if (jp.fitT && opt.fitting && r === jp.fitT) continue; if (r.startsWith('hand') && !jp.armBal) continue; m = Math.min(m, P[j * 3 + 1]); }
     const y = (opt.y != null ? opt.y : 1 - m); setPelvisPos(V(x, y, z));
     const fw = V(0, 0, 1).applyQuaternion(Q().setFromAxisAngle(V(0, 1, 0), ((jp.root || [])[2] || 0) * Math.PI / 180));
     const pins = opt.pins || jp.pins || [];
@@ -49,8 +49,16 @@ export function makeAuthView(fig) {
         const off = wp(hb).sub(wp(mid).lerp(wp(hb), .5)); /* центр ладони → запястье */
         ik2(CHAIN['hand' + s], c.clone().addScaledVector(lat, .018).add(off), lat.clone().add(V(0, -.7, 0)).add(f.clone().multiplyScalar(-.3))); }
     }
+    if (jp.hands && jp.hands.L === 'lock' && jp.hands.R === 'lock') joinHands();
     toes(); syncHair();
     return {y, pins: out};
+  }
+  /* «замок»: кисти сцеплены — сводим запястья к общей точке (IK, плоскость сгиба локтя сохраняется) */
+  function joinHands() {
+    const hl = wp(B.hand_l), hr = wp(B.hand_r); const d = hl.distanceTo(hr); if (d > .45) return;
+    const mid = hl.clone().add(hr).multiplyScalar(.5), ax = hl.clone().sub(hr).normalize();
+    for (let it = 0; it < 2; it++) for (const s of ['L', 'R']) { const b = s === 'L' ? B.hand_l : B.hand_r; const t = mid.clone().addScaledVector(ax, s === 'L' ? .035 : -.035);
+      ik2(CHAIN['hand' + s], t, wp(s === 'L' ? B.lowerarm_l : B.lowerarm_r).sub(wp(s === 'L' ? B.upperarm_l : B.upperarm_r))); }
   }
   /* подбор одного угла так, чтобы опорные кисти без IK оказались на полу (поза согласована с пропорциями модели) */
   function fit(jp) {
@@ -77,19 +85,19 @@ export function makeAuthView(fig) {
   const fitted = new Map();
   const get = n => { if (!fitted.has(n)) { const jp = POSES[n] || PHASES[n]; fitted.set(n, fit(jp)); } return fitted.get(n); };
   const CONTACT = ['footL', 'footR', 'handL', 'handR', 'shinL', 'shinR'];
-  function keyInfo(n) { const jp = get(n); show(jp, 0, 0); const P = sampleWorld(); const c = {};
+  function keyInfo(n) { const jp = typeof n === 'object' ? n.jp : get(n); show(jp, 0, 0); const P = sampleWorld(); const c = {};
     for (const r of CONTACT) { const [m, k] = regMin(P, r); if (m < .03 || (jp.pins || []).includes(r)) c[r] = k; }
     const pv = wp(B.pelvis); return {n, jp, c, P, pel: pv}; }
   /* seq: названия поз по порядку; между соседними — фазы из ROUTES */
-  function timeline(seq, {hold = .5, seg = .95, poseSeg = 1.15} = {}) {
+  function timeline(seq, {hold = .5, seg = .95, poseSeg = 1.15, x0 = 0, z0 = 0} = {}) {
     const names = [seq[0]];
-    for (let i = 1; i < seq.length; i++) { const r = ROUTES[seq[i - 1] + '>' + seq[i]] || []; names.push(...r, seq[i]); }
+    for (let i = 1; i < seq.length; i++) { const nm = x => typeof x === 'object' ? x.name : x; const r = ROUTES[nm(seq[i - 1]) + '>' + nm(seq[i])] || []; names.push(...r, seq[i]); }
     const keys = []; let t = 0;
     names.forEach((n, i) => { const main = POSES[n] && seq.includes(n);
       if (i > 0) t += main ? poseSeg : seg;
-      keys.push({n, t, info: keyInfo(n)}); if (main) { t += hold; keys.push({n, t, info: keys[keys.length - 1].info, holdDup: true}); } });
+      keys.push({n, t, info: n.info || keyInfo(n)}); if (main) { t += hold; keys.push({n, t, info: keys[keys.length - 1].info, holdDup: true}); } });
     /* положение каждой ключевой позы: общая опора остаётся на месте */
-    keys[0].x = 0; keys[0].z = 0;
+    keys[0].x = x0; keys[0].z = z0;
     for (let i = 1; i < keys.length; i++) {
       const A = keys[i - 1], Bk = keys[i];
       if (Bk.holdDup) { Bk.x = A.x; Bk.z = A.z; Bk.anchor = A.anchor; continue; }
@@ -134,5 +142,5 @@ export function makeAuthView(fig) {
     toes(); syncHair();
     return {x, z, i};
   }
-  return {build, show, fit, timeline, frameAt, POSES, PHASES, ROUTES, mixJP};
+  return {build, show, fit, timeline, frameAt, keyInfo, POSES, PHASES, ROUTES, mixJP};
 }
