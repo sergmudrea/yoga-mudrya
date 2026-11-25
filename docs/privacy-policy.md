@@ -1,6 +1,6 @@
 # Политика конфиденциальности «Мудря йога»
 
-_Действует с [ДАТА]. Разработчик: [ИМЯ ИЛИ НАЗВАНИЕ], контакт: [EMAIL]._
+_Действует с 25 ноября 2026 г. Разработчик: Мудря Сергей Викторович (Serghei Mudrea), контакт: schkyola@gmail.com._
 
 **Коротко: приложение не собирает и не передаёт ваши данные.**
 
@@ -18,4 +18,4 @@ _Действует с [ДАТА]. Разработчик: [ИМЯ ИЛИ НАЗ
 
 # Privacy Policy — Mudrya Yoga
 
-**In short: the app does not collect or share your data.** Onboarding answers, practice history, daily check-ins, test and health-check results (height, weight, waist, pulse), own sets and settings are stored only on your phone. An account is optional: if you create one, the email, name and a password hash (PBKDF2; the password itself is never stored) stay on this phone; Profile → Account → "Delete account" removes it with all its progress. No servers, no analytics, no ads. Payments are processed by Google Play or RuStore; the app only learns that a purchase happened. Notifications are scheduled locally. Backups are created only when you ask and saved where you choose. Profile → "Delete all data" or uninstalling the app removes everything. Contact: [EMAIL].
+**In short: the app does not collect or share your data.** Onboarding answers, practice history, daily check-ins, test and health-check results (height, weight, waist, pulse), own sets and settings are stored only on your phone. An account is optional: if you create one, the email, name and a password hash (PBKDF2; the password itself is never stored) stay on this phone; Profile → Account → "Delete account" removes it with all its progress. No servers, no analytics, no ads. Payments are processed by Google Play or RuStore; the app only learns that a purchase happened. Notifications are scheduled locally. Backups are created only when you ask and saved where you choose. Profile → "Delete all data" or uninstalling the app removes everything. Developer: Serghei Mudrea, contact: schkyola@gmail.com. Effective from 25 November 2026.
