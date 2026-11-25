@@ -1,0 +1,648 @@
+0	Postura de la montaña
+1	Inhalación abriendo el pecho
+2	Brazos arriba
+3	Flexión lateral a la derecha
+4	Flexión lateral a la izquierda
+5	Flexión hacia atrás de pie
+6	Media flexión con la espalda plana
+7	Flexión hacia delante de pie
+8	Media flexión, mirada al frente
+9	Flexión hacia delante sujetando las piernas
+10	Flexión hacia delante, manos entrelazadas detrás
+11	Salto a plancha
+12	Perro boca arriba deslizando
+13	Plancha baja deslizando
+14	Plancha baja (chaturanga)
+15	Plancha baja, pecho adelante
+16	Perro boca arriba
+17	Perro boca abajo
+18	Perro boca abajo con flexión hacia atrás
+19	Perro boca abajo profundo
+20	Zancada, brazos arriba
+21	Zancada en media luna
+22	Zancada, brazos abiertos al exhalar
+23	Zancada en media luna, paso 1
+24	Zancada en media luna, paso 2
+25	Perro de tres patas
+26	Perro boca arriba deslizando sobre una pierna
+27	Plancha baja sobre una pierna
+28	Perro de tres patas profundo
+29	Plancha, rodilla al hombro derecho
+30	Plancha, rodilla al hombro izquierdo
+31	Perro boca abajo abriendo hombros
+32	Gato: espalda hacia abajo
+33	Gato: espalda hacia arriba
+34	Gato con flexión hacia atrás, pierna atrás
+35	Gato, rodilla a la cabeza por el lado
+36	Gato, círculo lento con la pierna
+37	Gato: flexión profunda, pierna atrás
+38	Gato: espalda arriba, rodilla a la frente
+39	Gato, balanceo lento de la pierna hacia atrás
+40	Gato, balanceo lento de la pierna al lado
+41	Cuadrupedia con brazo y pierna estirados
+42	Medio camello de rodillas
+43	Cuadrupedia, brazo y pierna opuestos
+44	Medio camello, agarre cruzado
+45	Relajación sobre los talones
+46	Pranamasana — postura de oración
+47	Hasta Uttanasana — brazos arriba
+48	Padahastasana — flexión a los pies
+49	Ashwa Sanchalanasana — zancada, pierna derecha atrás
+50	Ashtanga Namaskara — ocho puntos
+51	Bhujangasana — cobra
+52	Ashwa Sanchalanasana — pie derecho adelante
+53	Ardha Chandrasana — media luna de rodillas
+54	Shishuasana — postura del niño
+55	Plancha horizontal ancha
+56	Arco de serpiente con apoyo ancho
+57	Cocodrilo: descanso boca abajo
+58	Langosta
+59	Esfinge
+60	Esfinge con pierna elevada
+61	Espalda de camello
+62	Esfinge estirada
+63	Esfinge estirada con pierna doblada
+64	Cobra, giro a la izquierda
+65	Cobra, giro a la derecha
+66	Cobra profunda
+67	Estiramiento bajo
+68	Torsión en el estiramiento bajo, izquierda
+69	Torsión en el estiramiento bajo, derecha
+70	Pirámide
+71	Perro boca arriba ancho
+72	Perro boca arriba ancho, giro a la izquierda
+73	Perro boca arriba ancho, giro a la derecha
+74	Perro boca arriba ancho de rodillas
+75	Estiramiento profundo de la espalda en perro boca arriba
+76	Perro boca arriba sobre los dedos de los pies
+77	Equilibrio sobre los brazos, rodillas al pecho
+78	Equilibrio sobre los brazos, piernas al frente
+79	Savasana — relajación tumbado
+80	Balanceos «de arado» con ambas piernas
+81	Elevación escalonada de piernas rectas: inicio
+82	Piernas a 30–35°
+83	Piernas a 60°
+84	Piernas verticales
+85	Torsión tumbado a la derecha, piernas rectas
+86	Torsión tumbado a la izquierda, piernas rectas
+87	Torsión tumbado a la derecha
+88	Torsión tumbado a la izquierda
+89	Arado sujetando los pies
+90	Arado, rodillas a las orejas
+91	Balanceos
+92	Puente sobre los hombros con agarre
+93	Medio puente sobre los hombros con agarre
+94	«Puente de hierro» sobre los hombros
+95	«Puente de hierro» sobre la nuca
+96	Preparación para la parada de cabeza
+97	Parada de cabeza, piernas en ángulo recto
+98	Parada de cabeza
+99	Parada de cabeza, plantas juntas
+100	Parada de cabeza, piernas abiertas
+101	Medio anillo en parada de cabeza
+102	Puente apoyado en la cabeza
+103	Puente sobre la cabeza a dos apoyos (apoyo izquierdo)
+104	Puente sobre la cabeza a dos apoyos, pierna arriba
+105	Puente sobre la cabeza a dos apoyos (apoyo derecho)
+106	Puente apoyado en la frente
+107	Pez
+108	Tumbado: piernas arriba, agarrando los dedos
+109	Tumbado: piernas a la cara, agarrando los pies
+110	Tumbado: piernas rectas al pecho
+111	Vela
+112	Media vela
+113	Arado vertical
+114	Estiramiento de caderas en vela
+115	Media vela, una pierna arriba
+116	Estiramiento del cuádriceps en media vela
+117	Medio puente con apoyo
+118	Puente sobre los hombros con apoyo
+119	Puente sobre los hombros con una pierna
+120	Puente sobre los hombros, una pierna arriba
+121	Postura invertida (viparita karani)
+122	Arado
+123	Arado estirado
+124	Relajación boca arriba
+125	Puente: subida
+126	Puente
+127	Puente con piernas rectas
+128	Puente, barbilla al esternón
+129	Estiramiento plano de la zona lumbar
+130	Flexión hacia delante sentado, preparación
+131	Flexión hacia delante sentado
+132	Flexión hacia delante sentado, espalda redonda
+133	Mesa invertida
+134	Triple estiramiento
+135	Plancha invertida
+136	Estiramiento profundo de hombros
+137	Flexión cerrada semiinvertida con estiramiento de hombros
+138	Flexión invertida abierta estirada
+139	Flexión hacia delante con piernas abiertas
+140	Araña
+141	Postura de cierre, tobillo derecho encima
+142	Postura de la mariposa en equilibrio
+143	Tortuga
+144	Flexión hacia delante sentado con piernas abiertas
+145	Sentado con piernas abiertas, espalda recta
+146	Sentado con piernas abiertas, flexión a la derecha
+147	Sentado con piernas abiertas, flexión a la izquierda
+148	Flexión con piernas abiertas, manos entrelazadas
+149	Sentado con piernas abiertas y flexión hacia atrás
+150	Mariposa, manos entrelazadas
+151	Mariposa
+152	Flexión hacia delante en mariposa
+153	Medio spagat, pierna izquierda delante
+154	Spagat con flexión, pierna izquierda delante
+155	Spagat con flexión, pierna de atrás en el suelo
+156	Spagat, pierna izquierda delante
+157	Spagat con flexión profunda
+158	Medio spagat, pierna derecha delante
+159	Spagat con flexión, pierna derecha delante
+160	Spagat, pierna derecha delante
+161	Rana
+162	Rana, torsión a la derecha
+163	Rana, torsión a la izquierda
+164	Rana con flexión hacia atrás
+165	Rana con flexión hacia delante
+166	Medio arco de rodillas
+167	Medio arco de rodillas: enderezarse
+168	Postura del héroe
+169	Héroe, manos entrelazadas detrás
+170	Héroe, brazos arriba
+171	Héroe, brazos abiertos
+172	Héroe con flexión hacia delante
+173	Héroe, flexión con espalda redonda
+174	Camello
+175	Puente rodillas-codos: brazos arriba
+176	Puente rodillas-codos: brazos atrás
+177	Puente rodillas-codos: manos en los muslos
+178	Puente rodillas-codos
+179	Puente rodillas-manos
+180	Héroe reclinado
+181	Héroe reclinado con flexión hacia atrás
+182	Héroe reclinado, manos detrás de la cabeza
+183	Estiramiento lumbar
+184	Estiramiento lumbar con rodillas elevadas
+185	Pavo real
+186	Pavo real con piernas dobladas
+187	Flexión hacia delante, palmas bajo los pies
+188	Tortuga dorada
+189	Tortuga dorada: brazos al frente
+190	Silla
+191	Silla de puntillas
+192	Silla, manos al pecho
+193	Flexión con espalda redonda, manos entrelazadas detrás
+194	Cruz recta
+195	Flexión a la derecha, manos entrelazadas detrás
+196	Flexión a la izquierda, manos entrelazadas detrás
+197	Águila
+198	Águila: enderezarse
+199	Postura del jinete, palmas entre los omóplatos
+200	Postura del jinete, manos en los muslos
+201	Manos detrás de la cabeza, rodillas dobladas
+202	Puente con pierna elevada
+203	Puente sobre los codos
+204	Escorpión sobre antebrazos
+205	Escorpión sobre antebrazos, pierna arriba
+206	Preparación para la parada de cabeza sobre las manos
+207	Parada de cabeza con apoyo de manos
+208	Parada de cabeza con loto
+209	Gallo lateral: plegado
+210	Gallo lateral alto
+211	Torsión en loto completo en parada de manos
+212	Torsión en medio loto en parada de manos
+213	Loto al vientre en parada de cabeza
+214	Loto sobre los codos
+215	Gallo alto
+216	Parada de manos estirada con loto
+217	Parada de manos con loto derecho
+218	Parada de manos vertical
+219	Escorpión alto
+220	Medio escorpión alto
+221	Flexión con piernas abiertas y torsión
+222	Flexión en anillo completo
+223	Lazo en parada de manos
+224	Lazo: cierre delante
+225	Cuervo
+226	Puente a tres apoyos
+227	Péndulo: talones a los dedos
+228	De pie: símbolo del flujo completado
+229	Flexión hacia delante sentado, manos entrelazadas detrás
+230	Estiramiento de hombros con espalda de «erizo»
+231	Flexión hacia delante, palmas juntas detrás
+232	Mariposa: respiración abdominal
+233	Siddhasana — postura perfecta
+234	Camello unilateral
+235	Camello unilateral con doble fijación
+236	Escorpión unilateral cerrado
+237	Escorpión unilateral estirado
+238	Escorpión unilateral con giro
+239	Parada de cabeza con giro y medio spagat
+240	Parada de cabeza con loto izquierdo
+241	Loto en parada de cabeza, giro a la derecha
+242	Flexión estirada en parada de cabeza con loto
+243	Escorpión con loto en parada de antebrazos
+244	Escorpión estirado en parada de codos
+245	Puente cerrado sobre codos
+246	Parada de antebrazos
+247	Símbolo del flujo inverso con loto
+248	Flexión invertida en vela con loto
+249	Vela con loto
+250	Flexión lateral, manos sujetando la espalda
+251	Arado con loto
+252	Medio puente lateral sobre los hombros con loto
+253	Superarado
+254	Vela, cierre invertido
+255	Vela sin apoyo
+256	Péndulo: palmas entre los omóplatos, arco
+257	Péndulo: manos en los muslos
+258	Puente cerrado sobre codos con pierna arriba
+259	Flexión en ángulo estirada
+260	Fijación horizontal en parada de manos
+261	Flexión estirada en plancha
+262	Escuadra (L-sit)
+263	Fijación de raíz: pelvis adelante
+264	Fijación de raíz: periné sobre los pies
+265	Spagat con anillo unilateral
+266	Media plancha invertida, pierna derecha arriba
+267	Media plancha invertida con medio loto
+268	Medio loto sentado
+269	Flexión hacia delante con medio loto
+270	Flexión con medio loto: agarre del pie
+271	Flexión hacia delante con medio loto atado
+272	Torsión en medio loto
+273	Loto
+274	Torsión en loto a la derecha
+275	Torsión en loto a la izquierda
+276	Giros de cuello en loto
+277	Loto, brazos arriba
+278	Flexión en loto, manos entrelazadas detrás
+279	Loto atado
+280	Flexión en loto atado
+281	Pez invertido en doble loto: balanceo
+282	Pez invertido en doble loto
+283	Pez invertido: palmas entre los omóplatos
+284	Pez invertido: arco
+285	Esfinge del pez
+286	León
+287	Pez invertido cerrado
+288	Pavo real con medio loto
+289	Camello unilateral con medio loto atado
+290	Relajación del pez invertido
+291	Puente colgante
+292	Flexión en loto
+293	Flexión en loto, palmas entre los omóplatos
+294	Arco en loto: preparación
+295	Arco en loto
+296	Tortuga en loto
+297	Loto elevado sobre las manos
+298	Escuadra sobre las manos
+299	Torsión en flexión sentado: brazo arriba
+300	Salto al cuervo
+301	Cuervo, una pierna atrás
+302	Cuervo, pierna estirada atrás
+303	Flexión de «erizo» con medio agrupado
+304	Medio arco en la flexión estirada, pierna izquierda arriba
+305	Flexión estirada, pierna izquierda arriba
+306	Flexión estirada con giro de pelvis
+307	Estiramiento de hombros en la flexión, pierna izquierda arriba
+308	«Grulla blanca en un torrente de rocío ámbar»
+309	«Empujar la tierra con el corazón de las palmas»
+310	«Tumbarse sobre el torrente de oro que llega del otro lado»
+311	«Paso volador atrás hacia el torrente dorado»
+312	Anillo unilateral en paso ancho
+313	Anillo unilateral, pie al hombro derecho
+314	Torsión con estiramiento del cuádriceps
+315	Anillo cruzado en paso ancho
+316	Anillo cruzado, pie al hombro izquierdo
+317	Estiramiento máximo del cuádriceps
+318	Estiramiento máximo del muslo con arco
+319	Camello alto unilateral estirado
+320	Camello alto unilateral
+321	Camello alto cruzado estirado
+322	Camello alto cruzado
+323	Medio arco en la flexión estirada, pierna derecha arriba
+324	Flexión estirada, pierna derecha arriba
+325	Estiramiento de hombros en la flexión, pierna derecha arriba
+326	Anillo unilateral, pie al hombro izquierdo
+327	Anillo cruzado, pie al hombro derecho
+328	Medio arco en la flexión cerrada estirada
+329	Parvatasana — postura de la montaña
+330	Ashwa Sanchalanasana — zancada, pierna izquierda atrás
+331	Ashwa Sanchalanasana — pie izquierdo adelante
+332	Dandasana — plancha
+333	Marjariasana — gato
+334	Pasar a plancha inclinada ancha
+335	Rodar a la derecha en plancha horizontal ancha
+336	Rodar a la izquierda
+337	Volver a la plancha horizontal ancha
+338	Arco de serpiente cerrado
+339	Relajación boca abajo
+340	Arco de serpiente abierto
+341	Plancha inclinada
+342	Perro boca abajo profundo sobre las yemas
+343	Piernas verticales, manos detrás de la cabeza
+344	Piernas a 30°
+345	Balanceos (fase de hombros)
+346	Rodar por encima de la cabeza
+347	Vela con apoyo
+348	Media plancha invertida abierta
+349	Flexión estirada sentado abierta
+350	Flexión estirada sentado abierta, completa
+351	Flexión de «erizo» sentado abierta
+352	Medio spagat lateral invertido
+353	Postura de cierre, tobillo izquierdo encima
+354	Mariposa cerrada con espalda de «erizo»
+355	Plancha horizontal sobre las yemas
+356	Plancha inclinada sobre las yemas
+357	Plancha arqueada deslizando sobre las yemas
+358	Plancha horizontal deslizando sobre las yemas
+359	Medio arco en plancha horizontal sobre las yemas
+360	Plancha arqueada sobre las yemas
+361	Perro boca abajo estirado sobre las yemas
+362	Medio arco en perro boca abajo sobre las yemas
+363	Perro boca abajo sobre las yemas
+364	Rana con flexión de «erizo»
+365	Estiramiento lumbar del lado derecho
+366	Estiramiento lumbar del lado derecho con giro
+367	Estiramiento lumbar del lado izquierdo
+368	Estiramiento lumbar del lado izquierdo con giro
+369	Pasar a la postura del héroe
+370	Plancha horizontal sobre los puños
+371	Plancha inclinada sobre los puños
+372	Plancha horizontal deslizando sobre los puños
+373	Plancha horizontal con medio arco sobre los puños
+374	Plancha arqueada sobre los puños
+375	Perro boca abajo estirado sobre los puños
+376	Perro boca abajo con medio arco sobre los puños
+377	Perro boca abajo sobre los puños
+378	Medio arco con los pies recogidos
+379	Flexión cerrada estirada
+380	Estiramiento firme de la parte trasera de las piernas
+381	Estiramiento firme, en espejo
+382	Flexión estirada abierta: medio arco
+383	Tortuga dorada: puños
+384	«Silla»: muñecas al frente
+385	Estiramiento de hombros en la flexión abierta
+386	Pasar a la cruz recta: horizontal
+387	Medio arco subiendo de puntillas
+388	Estiramiento final: brazos a lo largo del cuerpo
+389	Flexión a la derecha con cierre invertido
+390	Flexión a la izquierda con cierre invertido
+391	Flexión hacia delante, agarrando los tobillos
+392	Flexión hacia atrás con cierre invertido
+393	Inclinarse
+394	Palmas en el suelo junto a los talones
+395	Puente: aumentar la distancia
+396	Cabeza al suelo
+397	Gallo alto, profundizar
+398	Puente desde la parada de manos
+399	Flexión estirada
+400	Flexión en pirámide
+401	Lazo: espinillas sobre los hombros
+402	Lazo: cierre en espejo
+403	Lazo completo
+404	Estirar las piernas
+405	Escorpión en parada de manos
+406	Flexión, palmas en el suelo
+407	Estirarse, manos detrás de la cabeza
+408	Elevar la cabeza y los hombros
+409	Flexión cerrada sentado con agarre de muñecas
+410	Medio arco activo en la flexión
+411	Enderezar el torso, brazos al frente
+412	Flexión cerrada sentado
+413	Relajación en la flexión
+414	Medio spagat lateral con flexión
+415	Medio arco en medio spagat
+416	Flexión con estiramiento de hombros
+417	Relajación en medio spagat
+418	Flexión hacia atrás intensa
+419	Mariposa: símbolo del flujo completado
+420	Cierre abdominal
+421	Batido abdominal
+422	Relajación boca arriba en medio spagat
+423	Relajación final
+424	Torsión «de cuerda» en parada de cabeza
+425	Torsión «recta» en parada de cabeza
+426	Loto en parada de cabeza, giro a la izquierda
+427	Flexión de «erizo» en parada de cabeza con loto
+428	Escorpión en parada de codos
+429	Puente sobre codos
+430	Salida «inversa»: pies a las manos
+431	Salida «inversa»: subir las piernas
+432	Pies al suelo, cabeza al suelo
+433	Flexión invertida lateral con loto
+434	Medio puente lateral sobre los hombros con apoyo
+435	Pasar a la vela sin apoyo
+436	Péndulo: pies a las manos
+437	Péndulo: subir de pie
+438	Péndulo: flexión con estiramiento de hombros
+439	Péndulo: brazos atrás, rodillas dobladas
+440	Péndulo: puente
+441	Puente cerrado sobre codos fijo
+442	Puente cerrado sobre codos: pies a las manos
+443	Escorpión en parada de antebrazos
+444	Estiramiento intenso de la parte trasera de las piernas
+445	Parada de manos estirada
+446	Flexión estirada abierta en plancha
+447	Fijación de raíz: pies verticales
+448	Salto a plancha horizontal sobre las yemas
+449	Apoyo agrupado sobre las yemas
+450	Apoyo agrupado sobre los puños
+451	Flexión de «erizo» sentado
+452	Media plancha invertida
+453	Flexión en medio loto atado cruzado
+454	Doble cruz de loto: estiramiento
+455	Doble loto, brazos cruzados por los codos
+456	Doble loto: flujo ascendente
+457	Doble loto: cabeza atrás
+458	Flexión a la derecha, frente más allá de la rodilla derecha
+459	Flexión a la izquierda, frente más allá de la rodilla izquierda
+460	Flexión a la derecha
+461	Flexión a la izquierda
+462	Flexión de «erizo» en loto libre
+463	Torsión en la flexión en loto
+464	Gallo
+465	Equilibrio sujetando el loto
+466	Loto elevado sobre las yemas
+467	Loto elevado sobre los puños
+468	Ángulo sobre las yemas
+469	Ángulo sobre los puños
+470	Pies al suelo, pelvis arriba
+471	Flexión estirada sentado
+472	Torsión en flexión sentado
+473	Perro boca abajo a tres apoyos
+474	Salto a plancha baja
+475	Postura de la montaña. Fin de la primera ronda
+476	Segunda ronda: inhalación abriendo el pecho
+477	Postura de la montaña. Fin de la segunda ronda
+478	Tercera ronda: inhalación abriendo el pecho
+479	Postura de la montaña. Fin de la práctica
+480	Exhalación lenta, palmas al frente
+481	Mariposa, estirarse hacia arriba
+482	Mariposa: bombeo abdominal al exhalar
+483	Mariposa: bombeo abdominal al inhalar
+484	Mariposa: vientre recogido tras exhalar (uddiyana)
+485	Mariposa: vientre recogido al inhalar
+486	Mariposa, manos entrelazadas: descanso
+487	Loto, manos entrelazadas
+488	Loto: vientre recogido tras exhalar
+489	Loto: vientre recogido al inhalar
+490	Loto: ola abdominal (nauli)
+491	Loto: mantener los músculos abdominales centrales
+492	Loto, estirarse hacia arriba
+493	Escuadra, piernas más altas
+494	Arado con brazos estirados
+495	Arado, piernas a la derecha
+496	Arado, piernas a la izquierda
+497	Arado con piernas abiertas
+498	Media vela, piernas en ángulo
+499	Vela sin manos
+500	Vela, pierna derecha al suelo
+501	Vela, pierna izquierda al suelo
+502	Vela, pierna derecha al lado
+503	Vela, pierna izquierda al lado
+504	Vela, caderas al lado
+505	Medio puente lateral sobre los hombros
+506	Vela, caderas al otro lado
+507	Puente sobre los hombros, pierna derecha arriba
+508	Puente sobre los hombros, pierna izquierda arriba
+509	Vela en loto, pierna derecha encima
+510	Vela en loto, pierna izquierda encima
+511	Rodar hacia atrás por encima de la cabeza
+512	Estiramiento lateral intenso
+513	Triángulo
+514	Triángulo en torsión
+515	Triángulo en torsión, palmas juntas
+516	Estiramiento lateral, abrir los hombros
+517	Zancada con torsión
+518	Guerrero 2: brazos abiertos
+519	Zancada, torsión al otro lado
+520	Ángulo lateral extendido
+521	Ángulo lateral en torsión
+522	Ángulo lateral en torsión atado
+523	Equilibrio en torsión sobre los brazos, piernas separadas
+524	Equilibrio en torsión sobre los brazos, piernas juntas
+525	Guerrero 1, manos entrelazadas detrás
+526	Guerrero 1, brazos al frente
+527	Guerrero 1: estirarse hacia delante
+528	Guerrero 3
+529	Media luna
+530	Árbol
+531	Árbol en medio loto
+532	Flexión de pie con medio loto
+533	Media flexión de pie con medio loto
+534	Flexión con piernas abiertas, palmas en el suelo
+535	Media flexión con piernas abiertas
+536	Flexión con piernas abiertas, manos entrelazadas detrás
+537	Flexión con piernas abiertas, brazos al frente
+538	Torsión con piernas abiertas a la derecha
+539	Torsión con piernas abiertas a la izquierda
+540	Torsión profunda con piernas abiertas a la derecha
+541	Torsión profunda con piernas abiertas a la izquierda
+542	Plancha baja, bajar al vientre
+543	Cobra
+544	Bastón
+545	Torsión sentado, una rodilla arriba
+546	Flexión sentado, brazo alrededor de la pierna doblada
+547	Torsión sentado al otro lado
+548	Cabeza a la rodilla
+549	Cabeza a la rodilla en torsión
+550	Flexión sentado, una pierna doblada atrás
+551	Medio señor de los peces
+552	Cara de vaca, manos entrelazadas detrás
+553	Cara de vaca con flexión hacia delante
+554	Plancha invertida, pierna derecha arriba
+555	Plancha invertida, pierna izquierda arriba
+556	Mesa invertida, pierna derecha arriba
+557	Mesa invertida, pierna izquierda arriba
+558	Tumbado: piernas arriba y abiertas, agarrando los dedos
+559	Sentado con piernas abiertas
+560	Barco
+561	Medio barco
+562	Héroe, manos entrelazadas sobre la cabeza
+563	Pavo real
+564	Descanso boca arriba
+565	Montaña con manos atadas
+566	Saludo hacia arriba
+567	Media luna de pie
+568	Bailarín
+569	Árbol fácil
+570	Árbol con manos en oración
+571	Árbol en medio loto atado, una mano arriba
+572	Media luna
+573	Estiramiento intenso en medio loto atado, preparación
+574	Estiramiento intenso en medio loto atado
+575	Garuda
+576	Media flexión con piernas abiertas
+577	Flexión con piernas abiertas 1
+578	Flexión con piernas abiertas 4
+579	Media flexión con piernas abiertas en torsión
+580	Flexión con piernas abiertas en torsión atada
+581	Perro boca abajo
+582	Estiramiento lateral intenso, preparación
+583	Estiramiento lateral intenso
+584	Triángulo extendido
+585	Triángulo en torsión
+586	Ángulo lateral extendido
+587	Guerrero 2
+588	Ángulo lateral en torsión, preparación
+589	Ángulo lateral en torsión, manos libres
+590	Ángulo lateral en torsión
+591	Ángulo lateral en torsión atado
+592	Guerrero 1, preparación
+593	Guerrero 1
+594	Guerrero 1 atado
+595	Zancada del jinete, preparación
+596	Zancada del lagarto, brazos abiertos
+597	Postura poderosa (silla)
+598	Guirnalda
+599	Postura fácil
+600	Postura del sabio Marichi en torsión
+601	Medio señor de los peces 1
+602	Postura del sabio Marichi 3, preparación
+603	Ángulo atado
+604	Ángulo sentado
+605	Bastón
+606	Pinza sentado (paschimottanasana)
+607	Postura del sabio Marichi 1
+608	Flexión hacia delante de tres miembros
+609	Cabeza a la rodilla, manos al tobillo
+610	Cabeza a la rodilla, manos al pie
+611	Cabeza a la rodilla en torsión
+612	Cara de vaca
+613	Barco
+614	Barco completo
+615	Medio barco
+616	Postura del niño
+617	Niño en torsión lateral
+618	Vaca con estiramiento intenso de muñecas
+619	Bastón de cuatro apoyos extendido
+620	Bastón de makara
+621	Bastón de cuatro apoyos (chaturanga)
+622	Plancha lateral (vasishthasana)
+623	Grulla
+624	Postura de Koundinya a dos piernas
+625	Delfín
+626	Vela con una pierna
+627	Vela lateral con una pierna
+628	Arado lateral
+629	Langosta
+630	Media langosta
+631	Cobra
+632	Perro boca arriba
+633	Arco
+634	Cachorro estirado intenso
+635	Mesa invertida con una pierna
+636	Puente
+637	Ángulo atado reclinado
+638	Ojo de la aguja
+639	Niño reclinado
+640	Torsión tumbado, preparación
+641	Bebé feliz
+642	Ángulo reclinado
+643	Tumbado, ambas manos a la pierna
+644	Tumbado, una pierna estirada
+645	Tumbado, mano al dedo gordo 1
+646	Tumbado, piernas estiradas
+647	Cadáver de lado

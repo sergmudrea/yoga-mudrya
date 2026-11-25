@@ -1,0 +1,898 @@
+[
+ {
+  "n": 134,
+  "slot": "lb_B784",
+  "ru": "Скрученная поза посоха",
+  "en": "Revolved Staff Pose",
+  "step": "Скрутка сидя",
+  "weight": 18,
+  "sets": [
+   "ex_basic",
+   "ex_cyp",
+   "ex_mind",
+   "pl_back",
+   "pl_base"
+  ]
+ },
+ {
+  "n": 135,
+  "slot": "lb_B93",
+  "ru": "Дерево, руки вверх",
+  "en": "Also Known As: Upward Hands Tree Pose (Urdhva Hasta Vrikshasana) or Pose Dedicated to Royal Sage Bhagiratha",
+  "step": "Дерево",
+  "weight": 12,
+  "sets": [
+   "ex_basic",
+   "ex_cyp",
+   "ex_mind",
+   "ex_yang"
+  ]
+ },
+ {
+  "n": 136,
+  "slot": "at_legs90",
+  "ru": "Ноги вертикально",
+  "en": "Legs vertical",
+  "step": "Ноги вертикально (полуплуг)",
+  "weight": 12,
+  "sets": [
+   "ex_cyp",
+   "ex_mind",
+   "ex_pm2",
+   "ex_sh_gut",
+   "ex_sh_main1",
+   "ex_sh_main2",
+   "ex_sh_meno1",
+   "ex_sh_meno2",
+   "pl_back",
+   "pl_mat"
+  ]
+ },
+ {
+  "n": 137,
+  "slot": "lb_B1772",
+  "ru": "Поза освобождения ветров (павана муктасана)",
+  "en": "Wind-Relieving Pose",
+  "step": "Колени к груди",
+  "weight": 12,
+  "sets": [
+   "ex_basic",
+   "ex_cyp",
+   "ex_mind",
+   "ex_pm2",
+   "ex_sh_gut",
+   "ex_sh_main1",
+   "ex_sh_main2",
+   "ex_sh_start",
+   "ex_yin",
+   "pl_abs"
+  ]
+ },
+ {
+  "n": 138,
+  "slot": "lb_B1054",
+  "ru": "Подъём живота: голова и плечи над полом",
+  "en": "Abdominal Lift Pose",
+  "step": "Сотня: голова и плечи над полом, руки пружинят",
+  "weight": 12,
+  "sets": [
+   "pl_abs",
+   "pl_base",
+   "pl_flow",
+   "pl_mat"
+  ]
+ },
+ {
+  "n": 139,
+  "slot": "lb_B788",
+  "ru": "Поза бесконечности на боку, нога вверх",
+  "en": "Upward Side Infinity Pose",
+  "step": "Махи ногой лёжа на боку",
+  "weight": 12,
+  "sets": [
+   "pl_base",
+   "pl_glutes",
+   "pl_mat"
+  ]
+ },
+ {
+  "n": 140,
+  "slot": "lb_B214",
+  "ru": "Скрученная стойка с широко расставленными стопами",
+  "en": "Revolved Feet Spread Mountain Pose",
+  "step": "Повороты корпуса стоя",
+  "weight": 10,
+  "sets": [
+   "ex_cyp",
+   "ex_mind",
+   "ex_ybreak",
+   "pl_stand"
+  ]
+ },
+ {
+  "n": 141,
+  "slot": "lb_B887",
+  "ru": "Поза Бхарадваджи 1",
+  "en": "Pose Dedicated to Sage Bharadvaja 1",
+  "step": "Мягкая скрутка сидя",
+  "weight": 10,
+  "sets": [
+   "ex_sh_gut",
+   "ex_sh_main1",
+   "ex_sh_main2",
+   "ex_sh_meno1",
+   "ex_sh_meno2"
+  ]
+ },
+ {
+  "n": 142,
+  "slot": "lb_B1817",
+  "ru": "Вытянутая нога лёжа",
+  "en": "Reclining One Leg Extended Pose",
+  "step": "Круги ногой",
+  "weight": 10,
+  "sets": [
+   "pl_base",
+   "pl_glutes",
+   "pl_mat"
+  ]
+ },
+ {
+  "n": 143,
+  "slot": "lb_B1058",
+  "ru": "Скрученная поза живота с вытянутой ногой",
+  "en": "Revolved Stomach One Leg Extended Pose",
+  "step": "Перекрёстные скручивания",
+  "weight": 10,
+  "sets": [
+   "pl_abs",
+   "pl_base",
+   "pl_flow"
+  ]
+ },
+ {
+  "n": 144,
+  "slot": "at_full",
+  "ru": "Прогиб назад стоя",
+  "en": "Standing backbend",
+  "step": "Полуколесо: прогиб назад стоя, ладони на пояснице",
+  "weight": 8,
+  "sets": [
+   "ex_cyp",
+   "ex_rama",
+   "ex_ybreak",
+   "ex_yin"
+  ]
+ },
+ {
+  "n": 145,
+  "slot": "lb_B774",
+  "ru": "Скрученный сидячий угол: обе руки к стопе",
+  "en": "Both Hands to Foot Revolved Seated Angle Pose",
+  "step": "Пила",
+  "weight": 8,
+  "sets": [
+   "pl_base",
+   "pl_mat"
+  ]
+ },
+ {
+  "n": 146,
+  "slot": "lb_B1223",
+  "ru": "Верблюд",
+  "en": "Camel Pose",
+  "step": "Верблюд",
+  "weight": 6,
+  "sets": [
+   "ex_cyp",
+   "ex_flow",
+   "ex_mind",
+   "ex_vajra"
+  ]
+ },
+ {
+  "n": 147,
+  "slot": "lb_B890",
+  "ru": "Широкий герой",
+  "en": "Wide Hero Pose",
+  "step": "Колени широко, локти за головой: раскрыть грудь",
+  "weight": 6,
+  "sets": [
+   "ex_cyp",
+   "ex_ybreak"
+  ]
+ },
+ {
+  "n": 148,
+  "slot": "at_sarvanga",
+  "ru": "Стойка на плечах",
+  "en": "Shoulderstand",
+  "step": "Стойка на плечах",
+  "weight": 6,
+  "sets": [
+   "ex_basic",
+   "ex_mind",
+   "ex_sh_gut",
+   "ex_sh_main1",
+   "ex_sh_main2",
+   "ex_siva"
+  ]
+ },
+ {
+  "n": 149,
+  "slot": "lb_B1777",
+  "ru": "Рука к большому пальцу лёжа 2",
+  "en": "Reclining Big Toe Pose 2",
+  "step": "Нога в сторону лёжа",
+  "weight": 6,
+  "sets": [
+   "ex_sh_gut",
+   "ex_sh_joints",
+   "ex_sh_main1"
+  ]
+ },
+ {
+  "n": 150,
+  "slot": "at_legs60",
+  "ru": "Ноги на 60°",
+  "en": "Legs at 60°",
+  "step": "Ноги на 60°",
+  "weight": 6,
+  "sets": [
+   "ex_pm2",
+   "pl_abs",
+   "pl_base",
+   "pl_mat"
+  ]
+ },
+ {
+  "n": 151,
+  "slot": "lb_B1134",
+  "ru": "Планка на одной ноге",
+  "en": "One-Legged Extended Four Limbs Staff Pose",
+  "step": "Планка: нога вверх",
+  "weight": 6,
+  "sets": [
+   "pl_abs",
+   "pl_flow",
+   "pl_glutes"
+  ]
+ },
+ {
+  "n": 152,
+  "slot": "at_shavaring",
+  "ru": "Расслабление на спине",
+  "en": "Relaxation on the back",
+  "step": "Лёжа: руки за голову, потянуться",
+  "weight": 5,
+  "sets": [
+   "ex_sh_gut",
+   "ex_sh_joints",
+   "ex_sh_main1",
+   "ex_sh_main2",
+   "ex_sh_start"
+  ]
+ },
+ {
+  "n": 153,
+  "slot": "lb_B1001",
+  "ru": "Лёгкая лодка: руки обнимают голени",
+  "en": "Easy Boat Pose",
+  "step": "Перекаты «мячик»",
+  "weight": 5,
+  "sets": [
+   "pl_base",
+   "pl_mat"
+  ]
+ },
+ {
+  "n": 154,
+  "slot": "at_utkata",
+  "ru": "Стул",
+  "en": "Chair pose",
+  "step": "Приседания: колени работают",
+  "weight": 4,
+  "sets": [
+   "ex_cyp",
+   "ex_mind"
+  ]
+ },
+ {
+  "n": 155,
+  "slot": "at_legs30",
+  "ru": "Ноги на 30–35°",
+  "en": "Legs at 30–35°",
+  "step": "Прямые ноги на 30°",
+  "weight": 4,
+  "sets": [
+   "ex_cyp",
+   "ex_pm2"
+  ]
+ },
+ {
+  "n": 156,
+  "slot": "at_bok",
+  "ru": "Боковой наклон влево",
+  "en": "Side bend to the left",
+  "step": "Наклон в сторону",
+  "weight": 4,
+  "sets": [
+   "ex_rama",
+   "pl_stand"
+  ]
+ },
+ {
+  "n": 157,
+  "slot": "lb_B59",
+  "ru": "Стоячий «ветер»",
+  "en": "Standing Rising Wind Relieving Pose",
+  "step": "Колено вверх, затем бег на месте",
+  "weight": 4,
+  "sets": [
+   "ex_rama",
+   "pl_stand"
+  ]
+ },
+ {
+  "n": 158,
+  "slot": "lb_B898",
+  "ru": "Полный ваджрасана: кисти в замке вверху",
+  "en": "Complete Thunderbolt Pose—Raised Bound Hands",
+  "step": "Сидя, руки вверх в замке",
+  "weight": 4,
+  "sets": [
+   "ex_sh_joints",
+   "ex_sh_main2",
+   "ex_sh_start"
+  ]
+ },
+ {
+  "n": 159,
+  "slot": "at_zamk",
+  "ru": "Наклон вперёд с захватом ног",
+  "en": "Forward bend holding the legs",
+  "step": "Наклон вперёд, держась за локти",
+  "weight": 4,
+  "sets": [
+   "ex_sh_main1",
+   "ex_sh_main2"
+  ]
+ },
+ {
+  "n": 160,
+  "slot": "lb_B131",
+  "ru": "Полумесяц, подготовка с блоком",
+  "en": "Half Moon Pose Prep.",
+  "step": "Полумесяц с опорой",
+  "weight": 4,
+  "sets": [
+   "ex_sh_main1",
+   "ex_sh_main2"
+  ]
+ },
+ {
+  "n": 161,
+  "slot": "lb_B703",
+  "ru": "Поза Маричи 3, подготовка: спина прямая",
+  "en": "Pose Dedicated to Sage Marichi 3 Prep.",
+  "step": "Скрутка с коленом вверх",
+  "weight": 4,
+  "sets": [
+   "ex_sh_gut",
+   "ex_sh_main2"
+  ]
+ },
+ {
+  "n": 162,
+  "slot": "lb_B878",
+  "ru": "Поза героя: наклон, лодыжки скрещены",
+  "en": "Hero Pose",
+  "step": "Наклон вперёд, ноги скрещены",
+  "weight": 4,
+  "sets": [
+   "ex_sh_joints",
+   "ex_sh_meno1",
+   "ex_sh_meno2",
+   "ex_vajra"
+  ]
+ },
+ {
+  "n": 163,
+  "slot": "at_vsphinxknee",
+  "ru": "Вытянутый сфинкс с согнутой ногой",
+  "en": "Extended sphinx with bent leg",
+  "step": "Удар одной ногой",
+  "weight": 4,
+  "sets": [
+   "pl_base",
+   "pl_mat"
+  ]
+ },
+ {
+  "n": 164,
+  "slot": "lb_B1493",
+  "ru": "Поза саранчи, кисти в замке",
+  "en": "Hands Bound Locust Pose",
+  "step": "Удар двумя ногами, руки в замке",
+  "weight": 4,
+  "sets": [
+   "pl_base",
+   "pl_mat"
+  ]
+ },
+ {
+  "n": 165,
+  "slot": "lb_B1003",
+  "ru": "Лёгкая лодка: голени параллельно полу",
+  "en": "Easy Boat Pose",
+  "step": "Тизер: подготовка",
+  "weight": 4,
+  "sets": [
+   "pl_abs",
+   "pl_base"
+  ]
+ },
+ {
+  "n": 166,
+  "slot": "lb_B1227",
+  "ru": "Полуверблюд",
+  "en": "Half Camel Pose",
+  "step": "Полуверблюд: ладонь на пояснице, прогиб",
+  "weight": 3,
+  "sets": [
+   "ex_cyp"
+  ]
+ },
+ {
+  "n": 167,
+  "slot": "at_padma",
+  "ru": "Лотос",
+  "en": "Lotus",
+  "step": "Лотос",
+  "weight": 3,
+  "sets": [
+   "ex_hyp",
+   "ex_seats",
+   "ex_siva"
+  ]
+ },
+ {
+  "n": 168,
+  "slot": "at_cross",
+  "ru": "Прямой крест",
+  "en": "Straight cross",
+  "step": "Руки вперёд — в стороны, на носки",
+  "weight": 3,
+  "sets": [
+   "ex_rama",
+   "pl_stand"
+  ]
+ },
+ {
+  "n": 169,
+  "slot": "lb_B1676",
+  "ru": "Половина восточного вытяжения (обратный стол)",
+  "en": "Half Eastern Intense Stretch Pose",
+  "step": "Раскрытие груди с опорой (обратный стол)",
+  "weight": 3,
+  "sets": [
+   "ex_sh_main1",
+   "ex_sh_main2",
+   "ex_sh_tired"
+  ]
+ },
+ {
+  "n": 170,
+  "slot": "at_upavup",
+  "ru": "Широкий сед, спина прямая",
+  "en": "Wide-angle seat, straight back",
+  "step": "Широкий угол сидя",
+  "weight": 3,
+  "sets": [
+   "ex_pm3",
+   "ex_sh_main1",
+   "ex_sh_meno1"
+  ]
+ },
+ {
+  "n": 171,
+  "slot": "at_ugra",
+  "ru": "Наклон вперёд сидя, спина круглая",
+  "en": "Seated forward bend, rounded back",
+  "step": "Скручивание: позвонок за позвонком вверх и вниз",
+  "weight": 3,
+  "sets": [
+   "pl_base"
+  ]
+ },
+ {
+  "n": 172,
+  "slot": "at_hlseat",
+  "ru": "Полулотос сидя",
+  "en": "Seated half lotus",
+  "step": "Поза героя: стопа на бедре",
+  "weight": 2,
+  "sets": [
+   "ex_hyp",
+   "ex_seats"
+  ]
+ },
+ {
+  "n": 173,
+  "slot": "lb_B794",
+  "ru": "Поза лучника: стопа к уху",
+  "en": "Archer’s Pose",
+  "step": "Лучник: стопа к уху",
+  "weight": 2,
+  "sets": [
+   "ex_hyp"
+  ]
+ },
+ {
+  "n": 174,
+  "slot": "at_siddha",
+  "ru": "Сиддхасана — поза совершенства",
+  "en": "Siddhasana — accomplished pose",
+  "step": "Совершенная поза",
+  "weight": 2,
+  "sets": [
+   "ex_hyp",
+   "ex_seats"
+  ]
+ },
+ {
+  "n": 175,
+  "slot": "lb_B876",
+  "ru": "Поза льва в позе героя",
+  "en": "Lion Pose Dedicated to an Avatar of Lord Vishnu in Hero Pose",
+  "step": "Поза льва: язык наружу, взгляд вверх",
+  "weight": 2,
+  "sets": [
+   "ex_hyp",
+   "ex_vajra"
+  ]
+ },
+ {
+  "n": 176,
+  "slot": "lb_B339",
+  "ru": "Обратный воин",
+  "en": "Reverse Warrior Pose",
+  "step": "Обратный воин",
+  "weight": 2,
+  "sets": [
+   "ex_flow"
+  ]
+ },
+ {
+  "n": 177,
+  "slot": "lb_B6",
+  "ru": "Руки вверх, ладони вместе",
+  "en": "Upward Salute Pose",
+  "step": "Руки вверх, пальцы в замке",
+  "weight": 2,
+  "sets": [
+   "ex_sh_joints",
+   "ex_sh_main1"
+  ]
+ },
+ {
+  "n": 178,
+  "slot": "lb_B604",
+  "ru": "Полусвязанная скрученная гирлянда",
+  "en": "Half Bound Revolved Garland Pose",
+  "step": "Присед: колено к полу, скрутка",
+  "weight": 2,
+  "sets": [
+   "ex_pm3"
+  ]
+ },
+ {
+  "n": 179,
+  "slot": "at_cat3",
+  "ru": "Кошка с прогибом, нога назад",
+  "en": "Cat with a backbend, leg back",
+  "step": "Тигр: нога назад",
+  "weight": 2,
+  "sets": [
+   "ex_vajra"
+  ]
+ },
+ {
+  "n": 180,
+  "slot": "at_jathara",
+  "ru": "Скрутка лёжа вправо, ноги прямые",
+  "en": "Supine twist to the right, straight legs",
+  "step": "Штопор: ноги в сторону",
+  "weight": 2,
+  "sets": [
+   "pl_mat"
+  ]
+ },
+ {
+  "n": 181,
+  "slot": "at_crosscat",
+  "ru": "Кошка: разноимённые рука и нога вытянуты",
+  "en": "Bird-dog, opposite arm and leg",
+  "step": "Противоположные рука и нога",
+  "weight": 2,
+  "sets": [
+   "pl_back"
+  ]
+ },
+ {
+  "n": 182,
+  "slot": "lb_B1494",
+  "ru": "Поза саранчи: руки вперёд",
+  "en": "Locust Pose",
+  "step": "Плавание",
+  "weight": 2,
+  "sets": [
+   "pl_back",
+   "pl_flow"
+  ]
+ },
+ {
+  "n": 183,
+  "slot": "at_sbridgek1",
+  "ru": "Мост на плечах на одной ноге",
+  "en": "One-leg shoulder bridge",
+  "step": "Мост на одной ноге",
+  "weight": 2,
+  "sets": [
+   "pl_glutes"
+  ]
+ },
+ {
+  "n": 184,
+  "slot": "lb_B1828",
+  "ru": "Поза трупа на боку",
+  "en": "Side Corpse Pose",
+  "step": "Ракушка лёжа на боку: колено вверх",
+  "weight": 2,
+  "sets": [
+   "pl_glutes"
+  ]
+ },
+ {
+  "n": 185,
+  "slot": "at_shirsha",
+  "ru": "Стойка на голове",
+  "en": "Headstand",
+  "step": "Стойка на голове",
+  "weight": 1,
+  "sets": [
+   "ex_siva"
+  ]
+ },
+ {
+  "n": 186,
+  "slot": "lb_B758",
+  "ru": "Черепаха",
+  "en": "Tortoise Pose",
+  "step": "Черепаха",
+  "weight": 1,
+  "sets": [
+   "ex_hyp"
+  ]
+ },
+ {
+  "n": 187,
+  "slot": "lb_B1292",
+  "ru": "Поза петуха",
+  "en": "Rooster Pose",
+  "step": "Петух: руки сквозь лотос",
+  "weight": 1,
+  "sets": [
+   "ex_hyp"
+  ]
+ },
+ {
+  "n": 188,
+  "slot": "lb_B1448",
+  "ru": "Перевёрнутая черепаха",
+  "en": "Inverted Tortoise Pose",
+  "step": "Перевёрнутая черепаха",
+  "weight": 1,
+  "sets": [
+   "ex_hyp"
+  ]
+ },
+ {
+  "n": 189,
+  "slot": "at_hnak",
+  "ru": "Полунаклон с ровной спиной",
+  "en": "Flat-back half bend",
+  "step": "Руки на поясе: наклон вперёд, грудь вперёд",
+  "weight": 1,
+  "sets": [
+   "ex_rama"
+  ]
+ },
+ {
+  "n": 190,
+  "slot": "at_plech",
+  "ru": "Наклон вперёд, руки в замке за спиной",
+  "en": "Forward bend, hands clasped behind",
+  "step": "Наклон с махом рук назад и вверх",
+  "weight": 1,
+  "sets": [
+   "ex_rama"
+  ]
+ },
+ {
+  "n": 191,
+  "slot": "at_viparita",
+  "ru": "Перевёрнутая поза (випарита карани)",
+  "en": "Inverted pose (viparita karani)",
+  "step": "Ноги вверх",
+  "weight": 1,
+  "sets": [
+   "ex_flow"
+  ]
+ },
+ {
+  "n": 192,
+  "slot": "lb_B1685",
+  "ru": "Лёгкая рыба",
+  "en": "Easy Fish Pose",
+  "step": "Раскрытие груди лёжа на валиках",
+  "weight": 1,
+  "sets": [
+   "ex_sh_meno2"
+  ]
+ },
+ {
+  "n": 193,
+  "slot": "lb_B1687",
+  "ru": "Лёгкая рыба: голова назад",
+  "en": "Easy Fish Pose",
+  "step": "Прогиб на опоре: голова назад",
+  "weight": 1,
+  "sets": [
+   "ex_sh_meno2"
+  ]
+ },
+ {
+  "n": 194,
+  "slot": "lb_B3",
+  "ru": "Поза горы с ладонями вместе за спиной",
+  "en": "Reverse Prayer Mountain Pose",
+  "step": "Сидя на пятках: ладони вместе за спиной",
+  "weight": 1,
+  "sets": [
+   "ex_sh_joints"
+  ]
+ },
+ {
+  "n": 195,
+  "slot": "at_karna",
+  "ru": "Плуг, колени к ушам",
+  "en": "Ear-pressure pose",
+  "step": "Колени к ушам",
+  "weight": 1,
+  "sets": [
+   "ex_sh_gut"
+  ]
+ },
+ {
+  "n": 196,
+  "slot": "lb_B732",
+  "ru": "Связанный угол: наклон, руки вперёд",
+  "en": "Bound Angle Pose",
+  "step": "Бабочка: наклон",
+  "weight": 1,
+  "sets": [
+   "ex_pm1"
+  ]
+ },
+ {
+  "n": 197,
+  "slot": "at_rollball",
+  "ru": "Перекаты",
+  "en": "Rolls",
+  "step": "Перекаты на спине",
+  "weight": 1,
+  "sets": [
+   "ex_pm2"
+  ]
+ },
+ {
+  "n": 198,
+  "slot": "at_shishu",
+  "ru": "Шишуасана — поза ребёнка",
+  "en": "Shishuasana — child's pose",
+  "step": "Поза ребёнка",
+  "weight": 1,
+  "sets": [
+   "ex_vajra"
+  ]
+ },
+ {
+  "n": 199,
+  "slot": "lb_B217",
+  "ru": "Очень широкая стойка, руки вверх",
+  "en": "Feet Spread Upward Hands Pose",
+  "step": "Занять место: широко, руки в стороны",
+  "weight": 1,
+  "sets": [
+   "ex_yang"
+  ]
+ },
+ {
+  "n": 200,
+  "slot": "lb_B216",
+  "ru": "Широкая стойка, руки вверх",
+  "en": "Easy Feet Spread Upward Hands Pose",
+  "step": "Энтузиазм: руки вверх, на выдохе — «да!»",
+  "weight": 1,
+  "sets": [
+   "ex_yang"
+  ]
+ },
+ {
+  "n": 201,
+  "slot": "lb_B875",
+  "ru": "Поза героя: ладони вверх на коленях",
+  "en": "Hero Pose",
+  "step": "Принять: сидя, ладони вверх",
+  "weight": 1,
+  "sets": [
+   "ex_yin"
+  ]
+ },
+ {
+  "n": 202,
+  "slot": "lb_B638",
+  "ru": "Лёгкая поза: колени к груди",
+  "en": "Easy Pose",
+  "step": "Внутрь: сидя, колени к груди",
+  "weight": 1,
+  "sets": [
+   "ex_yin"
+  ]
+ },
+ {
+  "n": 203,
+  "slot": "at_legs0",
+  "ru": "Ступенчатое поднимание прямых ног: исходное",
+  "en": "Stepwise straight-leg raise: start",
+  "step": "Разминка лёжа: поочерёдные подъёмы ног",
+  "weight": 1,
+  "sets": [
+   "pl_mat"
+  ]
+ },
+ {
+  "n": 204,
+  "slot": "lb_B756",
+  "ru": "Поза сидячего угла вверх: захват больших пальцев",
+  "en": "Big Toe Upward Seated Angle Pose",
+  "step": "Перекаты с открытыми ногами",
+  "weight": 1,
+  "sets": [
+   "pl_mat"
+  ]
+ },
+ {
+  "n": 205,
+  "slot": "lb_B1004",
+  "ru": "Лёгкая лодка: захват пяток",
+  "en": "Easy Boat Pose",
+  "step": "Тюлень",
+  "weight": 1,
+  "sets": [
+   "pl_mat"
+  ]
+ },
+ {
+  "n": 206,
+  "slot": "lb_B1489",
+  "ru": "Поза саранчи: ладони у бёдер",
+  "en": "Locust Pose",
+  "step": "Дротик: грудь вверх, руки к стопам",
+  "weight": 1,
+  "sets": [
+   "pl_back"
+  ]
+ }
+]
