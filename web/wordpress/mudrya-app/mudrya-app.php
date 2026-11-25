@@ -2,13 +2,13 @@
 /**
  * Plugin Name: Мудря — практика (веб-версия приложения)
  * Description: Закрытый раздел для зарегистрированных: практики с объёмной фигурой, подбор, дыхание, прогресс. Работает на странице с пометкой <!--mudrya-app--> (и по адресу ?mp=app). Если плагин выключен, на странице остаётся её обычный текст.
- * Version: 1.1.0
+ * Version: 1.1.1
  * Author: Мудря йога
  * Requires PHP: 7.4
  */
 if (!defined('ABSPATH')) exit;
 
-define('MUDRYA_APP_VER', '1.1.0');
+define('MUDRYA_APP_VER', '1.1.1');
 define('MUDRYA_APP_URL', plugin_dir_url(__FILE__));
 
 /* Регистрация открыта с ролью «подписчик»; при выключении плагина возвращаем как было. */
@@ -52,6 +52,7 @@ add_action('template_redirect', function () {
     $u = wp_get_current_user();
     $cfg = [
         'base'   => MUDRYA_APP_URL . 'app/',
+        'ver'    => MUDRYA_APP_VER,
         'home'   => home_url('/'),
         'rest'   => esc_url_raw(add_query_arg('rest_route', '/mudrya/v1/', home_url('/'))),
         'nonce'  => wp_create_nonce('wp_rest'),

@@ -219,7 +219,7 @@
     w.appendChild(el('h1', '', esc(meta.name)));
     const pl = el('div', 'pl'); w.appendChild(pl);
     const stage = el('div', 'stage', '<div class="loading">Загружаем фигуру…</div><div class="step-no"></div><div class="breath"><div class="orb"></div><span></span></div>');
-    const ifr = el('iframe'); ifr.title = 'Фигура'; ifr.src = BASE + 'emulator/index.html'; stage.insertBefore(ifr, stage.firstChild); pl.appendChild(stage);
+    const ifr = el('iframe'); ifr.title = 'Фигура'; ifr.src = BASE + 'emulator/index.html?v=' + encodeURIComponent(CFG.ver || '1'); stage.insertBefore(ifr, stage.firstChild); pl.appendChild(stage);
     const side = el('div', 'side'); pl.appendChild(side);
     const now = el('div', 'card now', '<div class="muted blk"></div><h3 class="ttl">Приготовьтесь</h3><p class="cue muted">Встаньте на коврик. Начнём, когда будете готовы.</p><div class="bar"><i></i></div>');
     side.appendChild(now);
@@ -281,7 +281,7 @@
   /* ---------- старт ---------- */
   async function boot() {
     root.innerHTML = '<div class="my-wrap"><p class="muted">Загрузка…</p></div>';
-    DATA = await fetch(BASE + 'data.json').then(r => r.json());
+    DATA = await fetch(BASE + 'data.json?v=' + encodeURIComponent(CFG.ver || '1')).then(r => r.json());
     await loadProgress();
     const q = new URLSearchParams(location.search);
     if (q.get('set') && SETS.find(s => s.id === q.get('set'))) return player(q.get('set'));

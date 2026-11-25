@@ -6,7 +6,7 @@ let fig = null, poses = null, lastKey = '', theme = 'light', model = q.get('mode
 function keyOf(id, m, h) { const k = id + '|' + (m ? 1 : 0) + '|' + (h || ''); if (poses[k]) return k; const k2 = id + '|' + (m ? 1 : 0) + '|'; if (poses[k2]) return k2;
   for (const kk in poses) if (kk.startsWith(id + '|' + (m ? 1 : 0) + '|')) return kk; return null; }
 async function boot() {
-  poses = await fetch('poses.json').then(r => r.json());
+  poses = await fetch('poses.json' + (q.get('v') ? '?v=' + encodeURIComponent(q.get('v')) : '')).then(r => r.json());
   fig = await createFigure(canvas, {poses, model});
   const fit = () => fig.resize(host.clientWidth || 600, host.clientHeight || 600); fit(); new ResizeObserver(fit).observe(host);
   if (fig.controls) fig.controls.addEventListener('start', () => { fig.view.userMoved = true; });
