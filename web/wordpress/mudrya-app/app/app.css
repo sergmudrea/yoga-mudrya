@@ -1,0 +1,55 @@
+:root{--ink:#1d1b2e;--ink2:#4a4763;--sand:#f7f1e6;--card:#fffaf2;--line:#e8dcc6;--sun:#e8892b;--sun2:#f4b860;--moon:#5b5fa8;--moon2:#9aa0de;--sage:#6f9a7f;--rose:#c96f7c;--r:18px;font-family:'Manrope',system-ui,sans-serif}
+*{box-sizing:border-box}html,body{margin:0;background:var(--sand);color:var(--ink)}
+a{color:inherit}
+button{font:inherit;cursor:pointer}
+.my-top{display:flex;align-items:center;gap:14px;padding:12px 18px;border-bottom:1px solid var(--line);background:var(--card);position:sticky;top:0;z-index:5}
+.my-logo{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700;text-decoration:none;letter-spacing:.3px}
+.my-logo b{color:var(--sun)}
+.my-tabs{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
+.my-tabs button{border:0;background:transparent;padding:8px 12px;border-radius:999px;color:var(--ink2);font-weight:600}
+.my-tabs button.on{background:var(--ink);color:#fff}
+.my-user{font-size:13px;color:var(--ink2)}
+.my-wrap{max-width:1180px;margin:0 auto;padding:22px 18px 60px}
+h1,h2,h3{font-family:'Cormorant Garamond',serif;margin:.2em 0 .4em;line-height:1.1}
+h1{font-size:40px}h2{font-size:30px}h3{font-size:22px}
+.muted{color:var(--ink2)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px;position:relative}
+.card h3{margin-top:0}
+.chip{display:inline-block;font-size:12px;padding:3px 9px;border-radius:999px;background:#efe4d0;color:var(--ink2);margin-right:4px}
+.chip.sun{background:#fbe3c8;color:#8a4b0e}.chip.moon{background:#e2e3f6;color:#353886}.chip.free{background:#dcefe3;color:#2f6845}
+.btn{border:0;border-radius:999px;padding:11px 20px;font-weight:700;background:var(--ink);color:#fff}
+.btn.sun{background:linear-gradient(135deg,var(--sun),var(--sun2));color:#2a1604}
+.btn.moon{background:linear-gradient(135deg,var(--moon),var(--moon2))}
+.btn.ghost{background:transparent;border:1.5px solid var(--ink);color:var(--ink)}
+.btn.sm{padding:7px 14px;font-size:14px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.sec{margin:28px 0}
+/* плеер */
+.pl{display:grid;grid-template-columns:1fr 360px;gap:16px}
+@media(max-width:900px){.pl{grid-template-columns:1fr}}
+.stage{position:relative;border-radius:var(--r);overflow:hidden;background:#0F1115;aspect-ratio:4/3;min-height:300px}
+.stage iframe{border:0;width:100%;height:100%;display:block}
+.breath{position:absolute;left:16px;bottom:16px;display:flex;align-items:center;gap:12px;color:#fff;font-weight:700;font-size:20px;text-shadow:0 1px 6px #000}
+.orb{width:54px;height:54px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff7,var(--sun2));transform:scale(.6);transition:transform linear}
+.orb.ex{background:radial-gradient(circle at 35% 35%,#fff7,var(--moon2))}
+.step-no{position:absolute;right:14px;top:12px;color:#fff9;font-size:13px}
+.loading{position:absolute;inset:0;display:grid;place-items:center;color:#fffc}
+.side{display:flex;flex-direction:column;gap:12px}
+.now h3{font-size:26px}
+.bar{height:8px;border-radius:9px;background:#eadfcb;overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--sun),var(--moon));width:0}
+.ctrl{display:flex;gap:8px;flex-wrap:wrap}
+.ctrl button{border:1px solid var(--line);background:#fff;border-radius:12px;padding:9px 12px;font-weight:700}
+.list{max-height:300px;overflow:auto;font-size:14px}
+.list div{padding:6px 8px;border-radius:8px;cursor:pointer}.list div.on{background:#fbe3c8}
+.lbl{font-size:13px;color:var(--ink2);display:flex;align-items:center;gap:8px}
+/* дыхание */
+.bw{display:grid;place-items:center;gap:16px;padding:20px}
+.bw-orb{width:220px;height:220px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff,#cfd2f2 40%,var(--moon));display:grid;place-items:center;font-size:26px;font-weight:800;color:#fff;transition:transform linear;box-shadow:0 20px 60px #5b5fa855}
+/* опрос */
+.q-opts{display:flex;flex-wrap:wrap;gap:8px}
+.q-opts button{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:9px 14px;font-weight:600}
+.q-opts button.on{border-color:var(--ink);background:var(--ink);color:#fff}
+.stat{font-size:34px;font-weight:800;font-family:'Cormorant Garamond',serif}
+.days{display:flex;gap:4px;flex-wrap:wrap}.days span{width:16px;height:16px;border-radius:4px;background:#eadfcb}.days span.on{background:var(--sage)}
+.note{font-size:13px;color:var(--ink2);background:#fff4e2;border-radius:12px;padding:10px 12px}
