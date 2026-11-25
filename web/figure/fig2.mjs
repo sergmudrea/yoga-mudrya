@@ -37,7 +37,7 @@ const WIN = {L: [0, .82], T: [.06, .9], A: [.14, 1], H: [.18, 1]};
 
 /* кисти: сгиб фаланг по форме (как в атласе) */
 const CURL = {open: {c: [6, 10, 6], t: [8, 10]}, floor: {c: [3, 3, 0], t: [4, 0]}, fist: {c: [85, 95, 70], t: [35, 50]},
-  lock: {c: [62, 72, 40], t: [6, 12]}, namaste: {c: [0, 0, 0], t: [0, 4]}};
+  lock: {c: [62, 72, 40], t: [6, 12]}, namaste: {c: [0, 0, 0], t: [0, 4]}, spread: {c: [-6, 0, 0], t: [-10, 0]}};
 
 /* одежда: верх и легинсы по теме; кожа — текстура модели */
 const OUTFIT = {
@@ -251,7 +251,7 @@ export async function createFigure(canvas, {base = '', poses, model = 'female', 
       else {
         w = pw.clone().multiply(restLocal.get(b));
         const c = curl.get(b);
-        if (c) { const sh = CURL[(hands && hands[c.side]) || 'open'] || CURL.open; const deg = c.thumb ? (sh.t[Math.min(c.k, 1)] || 0) : sh.c[c.k];
+        if (c) { const hv = hands && hands[c.side]; const sh = (hv && typeof hv === 'object') ? hv : (CURL[hv || 'open'] || CURL.open); const deg = c.thumb ? (sh.t[Math.min(c.k, 1)] || 0) : sh.c[c.k];
           if (deg) w.multiply(tmp.setFromAxisAngle(c.ax, deg * DEG)); }
       }
       W.set(b, w);
@@ -539,5 +539,5 @@ export async function createFigure(canvas, {base = '', poses, model = 'female', 
   function shiftCenter() { const bb = bounds(); const c = bb.getCenter(V()); return {x: c.x, z: c.z}; }
 
   return {go, setTheme, resize, render, cam, controls, view, renderer, scene, stateOf, makeTransition, placeStatic, frameTarget, placeCam,
-    sampleWorld, samp, B, mat, handRest, applyTW, ik2, reachVertex, CHAIN, wp, wq, restW, lowest, get cur() { return cur; }, set cur(v) { cur = v; }, pose, setPelvisPos, toes, syncHair};
+    sampleWorld, samp, B, mat, handRest, CURL, applyTW, ik2, reachVertex, CHAIN, wp, wq, restW, lowest, get cur() { return cur; }, set cur(v) { cur = v; }, pose, setPelvisPos, toes, syncHair};
 }

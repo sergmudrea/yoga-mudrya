@@ -30,7 +30,7 @@ export function makeAuthView(fig) {
     const TW = build(jp); fig.pose(TW, jp.hands || {}); setPelvisPos(V(0, 1, 0));
     let P = sampleWorld(); let m = Infinity;
     for (let j = 0; j < samp.length; j++) { const r = samp[j].reg; if (!jp.armBal && /^(hand|farm)/.test(r) && (jp.pins || []).some(p => p.startsWith('hand'))) continue; if (jp.fitT && opt.fitting && r === jp.fitT) continue; if (r.startsWith('hand') && !jp.armBal) continue; m = Math.min(m, P[j * 3 + 1]); }
-    const y = (opt.y != null ? opt.y : 1 - m - (opt.fitting ? 0 : jp.drop || 0)); setPelvisPos(V(x, y, z));
+    const y = (opt.y != null ? opt.y : jp.seat ? jp.seat + .1 : 1 - m - (opt.fitting ? 0 : jp.drop || 0)); setPelvisPos(V(x, y, z));
     const fw = V(0, 0, 1).applyQuaternion(Q().setFromAxisAngle(V(0, 1, 0), ((jp.root || [])[2] || 0) * Math.PI / 180));
     const pins = opt.pins || jp.pins || [];
     P = sampleWorld();
@@ -112,6 +112,13 @@ export function makeAuthView(fig) {
     }
     return {keys, T: keys[keys.length - 1].t};
   }
+  /* форма кистей: сгиб пальцев плавно меняется между позами (кулак ↔ ладонь) */
+  const curlOf = h => (h && typeof h === 'object') ? h : (fig.CURL[h || 'open'] || fig.CURL.open);
+  function mixHands(a = {}, b = {}, u) { const o = {};
+    for (const s of ['L', 'R']) { const x = a[s] || 'open', y = b[s] || 'open';
+      if (x === 'floor' || y === 'floor' || x === 'namaste' || y === 'namaste') { o[s] = u < .5 ? x : y; continue; }
+      const p = curlOf(x), q = curlOf(y); o[s] = {c: p.c.map((v, i) => v + (q.c[i] - v) * u), t: p.t.map((v, i) => v + ((q.t[i] || 0) - v) * u)}; }
+    return o; }
   const cr = (p0, p1, p2, p3, u) => { const u2 = u * u, u3 = u2 * u; return .5 * ((2 * p1) + (-p0 + p2) * u + (2 * p0 - 5 * p1 + 4 * p2 - p3) * u2 + (-p0 + 3 * p1 - 3 * p2 + p3) * u3); };
   function frameAt(tl, t) {
     const K = tl.keys; let i = 0; while (i < K.length - 2 && K[i + 1].t <= t) i++;
@@ -120,7 +127,7 @@ export function makeAuthView(fig) {
     const P0 = vec(K[Math.max(0, i - 1)].info.jp), P1 = vec(A.info.jp), P2 = vec(Bk.info.jp), P3 = vec(K[Math.min(K.length - 1, i + 2)].info.jp);
     const v = P1.map((_, j) => (P1[j] === P2[j]) ? P1[j] : cr(K[i - 1] && !A.holdDup ? P0[j] : P1[j], P1[j], P2[j], (K[i + 2] && !Bk.holdDup) ? P3[j] : P2[j], u));
     const src = u < .5 ? A.info.jp : Bk.info.jp;
-    const jp = unvec(v, {hands: src.hands, pray: A.info.jp.pray && Bk.info.jp.pray, elbowUp: (A.info.jp.elbowUp || 0) * (1 - u) + (Bk.info.jp.elbowUp || 0) * u});
+    const jp = unvec(v, {hands: mixHands(A.info.jp.hands, Bk.info.jp.hands, u), wL: src.wL, wR: src.wR, pray: A.info.jp.pray && Bk.info.jp.pray, elbowUp: (A.info.jp.elbowUp || 0) * (1 - u) + (Bk.info.jp.elbowUp || 0) * u});
     /* поза без IK, потом: горизонталь — по опорной вершине, высота — самая низкая точка (кроме кистей) на полу */
     const TW = build(jp); fig.pose(TW, jp.hands || {}); setPelvisPos(V(0, 1, 0)); let P = sampleWorld();
     /* общая опора телом (таз, бёдра, голени, грудь, голова) в начале и в конце — по ней и держим высоту: сидя тело не «всплывает» */
@@ -134,7 +141,9 @@ export function makeAuthView(fig) {
     else m = mAll;
     let x, z; const an = Bk.anchor;
     if (an) { x = A.info.P[an.k * 3] + A.x - P[an.k * 3]; z = A.info.P[an.k * 3 + 2] + A.z - P[an.k * 3 + 2]; } else { x = A.x + (Bk.x - A.x) * u; z = A.z + (Bk.z - A.z) * u; }
-    setPelvisPos(V(x, 1 - m - ((A.info.jp.drop || 0) * (1 - u) + (Bk.info.jp.drop || 0) * u), z));
+    { const yf = 1 - m - ((A.info.jp.drop || 0) * (1 - u) + (Bk.info.jp.drop || 0) * u);
+      const ya = A.info.jp.seat ? A.info.jp.seat + .1 : yf, yb = Bk.info.jp.seat ? Bk.info.jp.seat + .1 : yf;
+      setPelvisPos(V(x, (A.info.jp.seat || Bk.info.jp.seat) ? ya + (yb - ya) * u : yf, z)); }
     /* кисти/стопы, стоящие на полу и в начале, и в конце сегмента, держатся на месте (IK) */
     const fw = V(0, 0, 1);
     for (const r of ['handL', 'handR', 'footL', 'footR']) {

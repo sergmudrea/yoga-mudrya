@@ -64,7 +64,13 @@
   }
 
   /* ---------- сборка сессии ---------- */
+  let PROGS = { levels: [] };
+  const progById = id => { for (const l of PROGS.levels) for (const p of l.programs) if (p.id === id && !p.ref) return p; return null; };
+  /* шаг программы → шаг плеера: b вдохов в позе или n повторов «вдох — в позу alt, выдох — обратно» */
+  const progSteps = p => p.steps.map(s => s.alt ? { p: s.p, m: s.m, alt: s.alt, t: s.t, c: s.c, e: [].concat(...Array(s.n || 4).fill([1, 0])), h: [] }
+    : { p: s.p, m: s.m, t: s.t, c: s.c, e: [1, 0], h: [].concat(...Array(Math.max(0, (s.b || 3) - 1)).fill([1, 0])) });
   function stepsOf(setId) {
+    const pr = progById(setId); if (pr) return progSteps(pr);
     const S = DATA.S.find(s => s.id === setId); if (!S) return [];
     const out = [];
     S.b.forEach(bid => { const B = DATA.B[bid]; if (B) B.s.forEach(st => out.push(Object.assign({ block: B.t }, st))); });
@@ -78,7 +84,7 @@
 
   /* ---------- экраны ---------- */
   const root = $('#mudrya-app');
-  const TABS = [['home', 'Сегодня'], ['sets', 'Практики'], ['pick', 'Подбор'], ['breath', 'Дыхание'], ['progress', 'Прогресс']];
+  const TABS = [['home', 'Сегодня'], ['levels', 'Уровни'], ['sets', 'Практики'], ['cat', 'Каталог поз'], ['pick', 'Подбор'], ['breath', 'Дыхание'], ['progress', 'Прогресс']];
   let tab = 'home';
   function shell() {
     root.innerHTML = '';
@@ -93,7 +99,7 @@
   }
   function render() {
     const w = shell();
-    ({ home, sets, pick, breath, progress })[tab](w);
+    ({ home, levels, sets, cat, pick, breath, progress })[tab](w);
     window.scrollTo(0, 0);
   }
   function setCard(s) {
@@ -114,9 +120,43 @@
     g.appendChild(setCard(SETS.find(s => s.id === (evening ? 'at_zs' : 'at_ns'))));
     const sos = el('div', 'card', '<span class="chip free">Помощь</span><h3>Тревожно прямо сейчас?</h3><p class="muted">Две минуты дыхания с длинным выдохом. Просто следуйте за кругом.</p>');
     const sb = el('button', 'btn sm moon', 'Дышать'); sb.onclick = () => { tab = 'breath'; render(); setTimeout(() => runBreath(BREATHS[0]), 50); }; sos.appendChild(sb); g.appendChild(sos);
+    const lv = el('div', 'card', '<span class="chip">Для всех</span><h3>Программы по уровням</h3><p class="muted">Малыши, дети, начинающие, опытные, 60+, на стуле, лёжа и самые маленькие движения.</p>');
+    const lb = el('button', 'btn sm', 'Выбрать уровень'); lb.onclick = () => { tab = 'levels'; render(); }; lv.appendChild(lb); g.appendChild(lv);
     w.appendChild(g);
     const st = stats();
     w.appendChild(el('div', 'sec', '<h2>Ваш путь</h2><div class="grid"><div class="card"><div class="stat">' + st.count + '</div><div class="muted">практик всего</div></div><div class="card"><div class="stat">' + st.minutes + '</div><div class="muted">минут на коврике</div></div><div class="card"><div class="stat">' + st.streak + '</div><div class="muted">дней подряд</div></div></div>'));
+  }
+  function levels(w) {
+    w.appendChild(el('h1', '', 'Программы по уровням'));
+    w.appendChild(el('p', 'muted', 'От малышей и полностью здоровых до тех, кому трудно пошевелить пальцем. Выберите свой уровень: фигура показывает каждое движение, темп — по вашему дыханию.'));
+    PROGS.levels.forEach(l => {
+      const s = el('div', 'sec'); s.appendChild(el('h2', '', esc(l.name))); s.appendChild(el('p', 'muted', esc(l.who)));
+      const g = el('div', 'grid');
+      l.programs.forEach(p => { const meta = SETS.find(x => x.id === p.id); if (meta) g.appendChild(setCard(Object.assign({}, meta, { name: p.name, desc: p.desc }))); });
+      s.appendChild(g); w.appendChild(s);
+    });
+    w.appendChild(el('p', 'note', 'Йога не заменяет лечение. При болезни, после травм и операций, при беременности, высоком давлении, а также для программ «Лёжа» и «Минимальная подвижность» согласуйте занятия с врачом или реабилитологом. Двигайтесь без боли.'));
+  }
+  /* каталог: все позы приложения (атлас и 2053 позы каталога) на объёмной фигуре */
+  let CATD = null;
+  async function cat(w) {
+    w.appendChild(el('h1', '', 'Каталог поз'));
+    w.appendChild(el('p', 'muted', 'Все позы приложения: 235 базовых асан и 1818 вариаций. Нажмите на название — фигура покажет позу. Позы с перекрещенными ногами и повороты в каталоге показаны упрощённо.'));
+    const pl = el('div', 'pl'); w.appendChild(pl);
+    const stage = el('div', 'stage', '<div class="loading">Загружаем фигуру…</div>'); const ifr = el('iframe'); ifr.title = 'Фигура'; ifr.src = BASE + 'emulator/index.html?v=' + encodeURIComponent(CFG.ver || '1'); stage.insertBefore(ifr, stage.firstChild); pl.appendChild(stage);
+    const side = el('div', 'side'); pl.appendChild(side);
+    const box = el('div', 'card', '<input type="search" placeholder="Поиск: собака, мост, лотос…" style="width:100%;padding:8px;border-radius:8px;border:1px solid #ccc"><select style="width:100%;margin-top:8px;padding:6px"><option value="">Все семейства</option></select><label class="lbl"><input type="checkbox"> только базовые</label><p class="muted cnt"></p>');
+    side.appendChild(box); const list = el('div', 'card list'); side.appendChild(list);
+    const ready = setInterval(() => { try { const M = ifr.contentWindow.Mudrya; if (M && M.loaded) { clearInterval(ready); const l = $('.loading', stage); if (l) l.remove(); M.setTheme('dark'); } } catch (e) {} }, 300);
+    if (!CATD) CATD = await fetch(BASE + 'emulator/catalog.json?v=' + encodeURIComponent(CFG.ver || '1')).then(r => r.json());
+    const FAM = { standing: 'Стоячие', standing_balance: 'Балансы на ногах', forward_bend: 'Наклоны вперёд', backbend: 'Прогибы', twist: 'Скрутки', side_bend: 'Боковые наклоны', inversion: 'Перевёрнутые', arm_balance: 'Балансы на руках', seated_hip: 'Сидячие', supine: 'Лёжа на спине', prone: 'Лёжа на животе', kneeling: 'На коленях', restorative: 'Расслабляющие' };
+    const sel = $('select', box); Object.keys(FAM).forEach(k => { const o = el('option', '', FAM[k]); o.value = k; sel.appendChild(o); });
+    const LV = { beginner: 'начальный', intermediate: 'средний', advanced: 'продвинутый' };
+    const draw = () => { const q = $('input[type=search]', box).value.trim().toLowerCase(), f = sel.value, base = $('input[type=checkbox]', box).checked;
+      const ids = Object.keys(CATD).filter(id => (!f || CATD[id].fam === f) && (!base || !id.includes('-V')) && (!q || (CATD[id].n + ' ' + (CATD[id].s || '')).toLowerCase().includes(q)));
+      $('.cnt', box).textContent = 'Найдено: ' + ids.length + (ids.length > 150 ? ' (показаны первые 150)' : ''); list.innerHTML = '';
+      ids.slice(0, 150).forEach(id => { const c = CATD[id]; const d = el('div', '', esc(c.n) + ' <span class="muted">· ' + (LV[c.lvl] || '') + '</span>'); d.onclick = () => { [...list.children].forEach(x => x.classList.remove('on')); d.classList.add('on'); try { ifr.contentWindow.Mudrya.go(id, 0, 900); } catch (e) {} }; list.appendChild(d); }); };
+    $('input[type=search]', box).oninput = draw; sel.onchange = draw; $('input[type=checkbox]', box).onchange = draw; draw();
   }
   function sets(w) {
     w.appendChild(el('h1', '', 'Практики'));
@@ -241,7 +281,9 @@
     const waitReady = setInterval(() => { const M = fig(); if (M && M.loaded) { clearInterval(waitReady); P && (P.ready = true); $('.loading', stage).remove(); try { M.setTheme('dark'); } catch (e) {} show(true); } }, 300);
     setTimeout(() => { if (P && !P.ready) { const l = $('.loading', stage); if (l) l.textContent = 'Фигура не загрузилась — следуйте подсказкам справа.'; } }, 20000);
     function pose(s, ms) {
-      const M = fig(); const a = DATA.A[s.a]; if (!M || !a || !M.go) return;
+      const M = fig(); if (!M || !M.go) return;
+      if (s.p) { try { M.go(s.p, s.m ? 1 : 0, ms); } catch (e) {} return; }
+      const a = DATA.A[s.a]; if (!a) return;
       try { M.go(a.f, a.m ? 1 : 0, ms, a.h || undefined); } catch (e) {}
     }
     function say(t) { if (!PROG.settings.voice || !window.speechSynthesis) return; try { speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(t); u.lang = 'ru-RU'; u.rate = 0.95; speechSynthesis.speak(u); } catch (e) {} }
@@ -262,6 +304,7 @@
       const seq = s.e.concat(s.h);
       if (k >= seq.length) { P.i++; return show(false); }
       const sec = PROG.settings.breath; const inh = seq[k] === 1;
+      if (s.alt) { const M = fig(); try { M && M.go(inh ? s.alt : s.p, s.m ? 1 : 0, sec * 900); } catch (e) {} }
       const orb = $('.orb', stage); const lab = $('.breath span', stage);
       orb.className = 'orb' + (inh ? '' : ' ex'); orb.style.transitionDuration = sec + 's'; orb.style.transform = inh ? 'scale(1.1)' : 'scale(.6)';
       lab.textContent = (inh ? 'Вдох' : 'Выдох') + (k >= s.e.length ? ' · удержание' : '');
@@ -288,6 +331,8 @@
   async function boot() {
     root.innerHTML = '<div class="my-wrap"><p class="muted">Загрузка…</p></div>';
     DATA = await fetch(BASE + 'data.json?v=' + encodeURIComponent(CFG.ver || '1')).then(r => r.json());
+    try { PROGS = await fetch(BASE + 'programs.json?v=' + encodeURIComponent(CFG.ver || '1')).then(r => r.json()); } catch (e) { PROGS = { levels: [] }; }
+    PROGS.levels.forEach(l => l.programs.forEach(p => { if (!p.ref && !SETS.find(x => x.id === p.id)) SETS.push({ id: p.id, name: p.name, kind: /kids|teen/.test(l.id) ? 'sun' : /bed|micro|chair|senior/.test(l.id) ? 'calm' : 'warm', tag: l.name, desc: p.desc, lvl: p.steps.length + ' шагов' }); }));
     await loadProgress();
     const q = new URLSearchParams(location.search);
     if (q.get('set') && SETS.find(s => s.id === q.get('set'))) return player(q.get('set'));

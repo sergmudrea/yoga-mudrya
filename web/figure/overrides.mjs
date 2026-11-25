@@ -6,6 +6,8 @@ const lat = (jp, sp, nk) => { jp.sp = [jp.sp[0], sp, 0]; if (nk != null) jp.nk =
 const floor = {L: 'floor', R: 'floor'}, open = {L: 'open', R: 'open'}, lock = {L: 'lock', R: 'lock'};
 const seat = {tL: -90, sL: -90, fL: -70, tR: -90, sR: -90, fR: -70};
 export const OVR = {
+  /* воин 1: задняя нога прямая, стопа на полу, руки вверх */
+  'A-0002': W({P: 2, C: -8, H: -12, tL: -64, sL: 2, fL: 0, tR: 34, sR: 34, fR: 0, uL: 176, aL: 178, uR: 176, aR: 178, hands: open, pins: ['footL', 'footR']}),
   /* на пятках, корпус к бёдрам, ладони широко на полу впереди, пальцы ног подогнуты */
   darnika: W({P: 52, C: 96, H: 104, tL: -80, sL: 92, fL: 90, tR: -80, sR: 92, fR: 90, uL: -128, aL: -136, uR: -128, aR: -136, shAbd: 26, hands: floor, pins: ['handL', 'handR'], fit: 'C'}),
   /* лёжа на животе, руки вдоль тела, голова повёрнута набок */

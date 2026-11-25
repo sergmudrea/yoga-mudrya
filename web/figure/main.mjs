@@ -2,12 +2,14 @@
 import {createFigure} from './fig2.mjs';
 import {makeAuthView} from './authview.mjs';
 import {OVR} from './overrides.mjs';
+import {catTW} from './catpose.mjs';
+import {MV} from './mv.mjs';
 import {twToJP, limitJP, roundJP, jpToTW, mirrorJP} from './conv.mjs';
 import * as T3 from 'three';
 const host = document.getElementById('stage'), canvas = document.getElementById('c');
 const q = new URLSearchParams(location.search);
 let fig = null, poses = null, lastKey = '', theme = 'light', model = q.get('model') || (window.MUDRYA_MODEL || 'female');
-function keyOf(id, m, h) { const k = id + '|' + (m ? 1 : 0) + '|' + (h || ''); if (poses[k]) return k; const k2 = id + '|' + (m ? 1 : 0) + '|'; if (poses[k2]) return k2;
+function keyOf(id, m, h) { if (/^A-\d/.test(id) || /^mv:/.test(id)) return id + (m ? '|1' : ''); const k = id + '|' + (m ? 1 : 0) + '|' + (h || ''); if (poses[k]) return k; const k2 = id + '|' + (m ? 1 : 0) + '|'; if (poses[k2]) return k2;
   for (const kk in poses) if (kk.startsWith(id + '|' + (m ? 1 : 0) + '|')) return kk; return null; }
 async function boot() {
   poses = await fetch('poses.json' + (q.get('v') ? '?v=' + encodeURIComponent(q.get('v')) : '')).then(r => r.json());
@@ -16,7 +18,7 @@ async function boot() {
   const fit = () => fig.resize(host.clientWidth || 600, host.clientHeight || 600); fit(); new ResizeObserver(fit).observe(host);
   if (fig.controls) fig.controls.addEventListener('start', () => { fig.view.userMoved = true; });
   window.Mudrya = {
-    ready: true, loaded: true, version: 2,
+    ready: true, loaded: false, version: 3,
     go(id, mirror, ms, hands) { const k = keyOf(id, mirror, hands); if (!k) { console.warn('pose', id); return; }
       if (k === lastKey && ms > 0) return; lastKey = k; play(k, ms || 0); },
     hands(id) { const k = keyOf(id, 0, ''); return k ? JSON.stringify(poses[k].h) : ''; },
@@ -52,24 +54,54 @@ async function boot() {
 
   /* ---------- плеер: позы в суставных углах, переходы по кривой без изломов, опоры на месте ---------- */
   const infoCache = new Map();
-  const infoOf = k => { if (!infoCache.has(k)) { const jp = window.__prepJP(k); const [id, mm] = k.split('|'); const name = id === 'ashwa' ? (+mm ? 'ashwaL' : 'ashwaR') : id === 'ardhach' ? (+mm ? 'ardhachL' : 'ardhachR') : id; infoCache.set(k, {name, jp, info: AV.keyInfo({jp})}); } return infoCache.get(k); };
+  const infoOf = k => { if (!infoCache.has(k)) { const jp = window.__prepJP(k); const [id, mm] = k.split('|'); const name = id === 'ashwa' ? (+mm ? 'ashwaL' : 'ashwaR') : id === 'ardhach' ? (+mm ? 'ardhachL' : 'ardhachR') : id; const info = AV.keyInfo({jp}); const B = fig.B; const geo = {pel: fig.wp(B.pelvis).y, ch: fig.wp(B.spine_03).y, kn: Math.min(fig.wp(B.calf_l).y, fig.wp(B.calf_r).y), hd: fig.wp(B.Head).y}; infoCache.set(k, {name, jp, info, geo}); } return infoCache.get(k); };
   let PC = null, PA = null; /* текущая поза {it, x, z}; анимация */
-  function placeRest(it, x, z) { AV.show(it.jp, x, z); }
+  function placeRest(it, x, z) { AV.show(it.jp, x, z); placeChair(it.jp); FOC = it.jp.focus ? it.jp : null; }
+  /* стул: показывается, когда поза сидит на стуле */
+  const chair = new T3.Group(); { const mt = new T3.MeshStandardMaterial({color: 0x9a7b5c, roughness: .8});
+    const box = (w, h, d, x, y, z) => { const b = new T3.Mesh(new T3.BoxGeometry(w, h, d), mt); b.position.set(x, y, z); b.castShadow = true; b.receiveShadow = true; chair.add(b); };
+    const S = .46; box(.46, .04, .44, 0, S - .02, 0); for (const sx of [-1, 1]) for (const sz of [-1, 1]) box(.035, S - .04, .035, sx * .2, (S - .04) / 2, sz * .19);
+    for (const sx of [-1, 1]) box(.035, .48, .035, sx * .2, S + .24, -.2); box(.44, .16, .03, 0, S + .36, -.2); }
+  chair.visible = false; fig.scene.add(chair);
+  function placeChair(jp) { chair.visible = !!(jp && jp.prop === 'chair'); if (!chair.visible) return; const p = fig.wp(fig.B.pelvis); chair.position.set(p.x, 0, p.z - .1);
+    const yaw = (jp.root ? jp.root[2] : 0) * Math.PI / 180; chair.rotation.y = yaw; }
+  /* камера: на мелких движениях (кисти, стопы) — крупнее */
+  function focusFrame(jp) { const reg = jp && jp.focus; if (!reg) return null; const want = reg === 'hands' ? /^(hand|farm)/ : reg === 'feet' ? /^(foot|shin)/ : /^(hand|farm|uarm)/;
+    const P = fig.sampleWorld(); const lo = [9, 9, 9], hi = [-9, -9, -9]; fig.samp.forEach((s, j) => { if (!want.test(s.reg)) return; for (let a = 0; a < 3; a++) { lo[a] = Math.min(lo[a], P[j * 3 + a]); hi[a] = Math.max(hi[a], P[j * 3 + a]); } });
+    const c = new T3.Vector3((lo[0] + hi[0]) / 2, (lo[1] + hi[1]) / 2, (lo[2] + hi[2]) / 2); return {c, s: Math.max(.55, hi[0] - lo[0], hi[1] - lo[1], hi[2] - lo[2]) * 1.4}; }
   /* камера: своё сглаживание кадра (центр, размер, поворот), в three — всегда точная установка */
   let FR = null, settle = 0;
-  function camTo(snap, cy) { const f = fig.frameTarget(); cy = cy || 0;
+  let FOC = null;
+  function camTo(snap, cy) { const f = (FOC && focusFrame(FOC)) || fig.frameTarget(); cy = cy || 0;
     if (snap || !FR) FR = {c: f.c.clone(), s: f.s, cy}; else { FR.c.lerp(f.c, .07); FR.s += (f.s - FR.s) * .07; FR.cy += (cy - FR.cy) * .07; }
     fig.placeCam({c: FR.c, s: FR.s}, FR.cy, true); }
+  /* класс позы по опорам: стоя, на руках и стопах, на коленях, сидя, лёжа, на стуле */
+  function cls(it) { const c = it.info.c, jp = it.jp, g = it.geo || {}; if (jp.prop === 'chair') return 'CHAIR';
+    const prone = jp.root && jp.root[0] > 40;
+    if (!prone && g.hd < .3 && g.hd < g.pel - .2 && g.pel < .8) return 'LIE';
+    if (g.pel < .3 && g.ch < .24) return prone ? 'PRONE' : 'LIE';
+    if (g.pel < .32) { if (prone) return 'PRONE'; if (g.kn < .09 && g.pel > .18) return 'KNEEL';
+      if (g.kn > .3 && g.pel > .22 && c.pelvis == null && c.thighL == null && c.thighR == null) return 'STAND'; return 'SIT'; }
+    if (g.kn < .09) return 'KNEEL';
+    if (c.handL != null && c.handR != null) return 'HANDS'; return 'STAND'; }
+  /* промежуточные позы, через которые человек на самом деле переходит */
+  const VIA = {'STAND>HANDS': ['A-0042'], 'HANDS>STAND': ['A-0042'], 'KNEEL>SIT': ['mv:sideSit'], 'SIT>KNEEL': ['mv:sideSit'],
+    'STAND>SIT': ['A-0004'], 'SIT>STAND': ['A-0004'], 'STAND>KNEEL': ['A-0004'], 'KNEEL>STAND': ['A-0004'], 'STAND>LIE': ['A-0004', 'mv:sideSit'], 'LIE>STAND': ['mv:sideSit', 'A-0004'],
+    'KNEEL>LIE': ['mv:sideSit'], 'LIE>KNEEL': ['mv:sideSit'], 'HANDS>SIT': ['mv:sideSit'], 'SIT>HANDS': ['mv:sideSit'],
+    'PRONE>SIT': ['cat|0|', 'mv:sideSit'], 'SIT>PRONE': ['mv:sideSit', 'cat|0|'], 'PRONE>STAND': ['cat|0|', 'A-0004'], 'STAND>PRONE': ['A-0004', 'cat|0|'], 'PRONE>LIE': ['mv:sideSit'], 'LIE>PRONE': ['mv:sideSit'], 'STAND>LIE ': []};
+  function autoVia(a, b) { if (a.jp.prop === 'chair' || b.jp.prop === 'chair') return []; const r = VIA[cls(a) + '>' + cls(b)] || []; return r.map(k => infoOf(k)).filter(v => v && v.jp && v.name !== a.name && v.name !== b.name); }
+  window.__cls = k => cls(infoOf(k));
   function play(k, ms) {
     const it = infoOf(k);
     if (PA) { const e = PA; PA = null; PC = {it: e.to, x: e.end.x, z: e.end.z}; }
     if (!PC || !ms) { const x = PC ? PC.x : 0, z = PC ? PC.z : 0; PC = {it, x, z}; placeRest(it, x, z); camTo(true, it.jp.cam); return; }
-    const tl = AV.timeline([{jp: PC.it.jp, name: PC.it.name, info: PC.it.info}, {jp: it.jp, name: it.name, info: it.info}], {seg: 1, poseSeg: 1, hold: 0, x0: PC.x, z0: PC.z});
+    const vias = AV.ROUTES[PC.it.name + '>' + it.name] ? [] : autoVia(PC.it, it);
+    const tl = AV.timeline([{jp: PC.it.jp, name: PC.it.name, info: PC.it.info}, ...vias.map(v => ({jp: v.jp, name: v.name, info: v.info})), {jp: it.jp, name: it.name, info: it.info}], {seg: 1, poseSeg: 1, hold: 0, x0: PC.x, z0: PC.z});
     const last = tl.keys[tl.keys.length - 1];
     PA = {tl, t0: performance.now(), ms, to: it, from: PC.it, end: {x: last.x, z: last.z}};
   }
   function loop(now) {
-    if (PA) { const k = Math.min(1, (now - PA.t0) / PA.ms); AV.frameAt(PA.tl, k * PA.tl.T);
+    if (PA) { const k = Math.min(1, (now - PA.t0) / PA.ms); AV.frameAt(PA.tl, k * PA.tl.T); placeChair(k < .5 ? PA.from.jp : PA.to.jp); FOC = (PA.to.jp.focus && PA.from.jp.focus) ? PA.to.jp : null;
       camTo(false, (PA.from.jp.cam || 0) + ((PA.to.jp.cam || 0) - (PA.from.jp.cam || 0)) * k);
       if (k >= 1) { settle = 90; PC = {it: PA.to, x: PA.end.x, z: PA.end.z}; PA = null; placeRest(PC.it, PC.x, PC.z); } fig.render(); }
     else if (PC && FR && settle > 0) { settle--; if (!fig.view.userMoved) camTo(false, PC.it.jp.cam);
@@ -97,22 +129,30 @@ async function boot() {
 
 
   /* подготовка позы атласа для нового движка: углы, пределы, опоры */
-  window.__prepJP = k => { const p = poses[k]; const [fid, mm] = k.split('|');
-    const TWa = {}; for (const n in p.q) { const a = p.q[n]; TWa[n] = new T3.Quaternion(a[0],a[1],a[2],a[3]); }
-    const yawA = Math.round(new T3.Euler().setFromQuaternion(TWa.pelvis, 'YXZ').y * 57.2958) - 90; /* поворот, с которым атлас показывал позу */
-    if (OVR[fid]) { let o = AV.fit(OVR[fid]); o = {...o, cam: -yawA * (+mm ? -1 : 1), viol: ['OVR']}; o = +mm ? mirrorJP(o) : o; o.cam = -yawA; return o; } const TW = {}; for (const n in p.q) { const a = p.q[n]; TW[n] = new T3.Quaternion(a[0],a[1],a[2],a[3]); }
-    const L = limitJP(twToJP(TW)); const jp = roundJP(L.jp); jp.root[2] = 0; jp.hands = p.h; if (p.h.L === 'namaste' && p.h.R === 'namaste') jp.pray = true; jp.armBal = !!p.a; jp.cam = -yawA;
-    /* опоры: стопы/голени из атласа; ладони формы «floor» у пола */
+  /* опоры позы: стопы у пола, ладони у пола (форма «floor»), колено на полу */
+  function support(jp, hint = {}) {
     AV.show({...jp, pins: []}, 0, 0); const P = fig.sampleWorld(); const mins = {}; fig.samp.forEach((q, j) => { mins[q.reg] = Math.min(mins[q.reg] ?? 9, P[j * 3 + 1]); });
-    const pins = []; for (const r of ['footL','footR']) if ((p.k || []).includes(r) || mins[r] < .04) if (mins[r] < .12) pins.push(r);
-    if (!jp.armBal) for (const s of ['L','R']) if (p.h[s] === 'floor' && mins['hand' + s] < .25) pins.push('hand' + s);
-    /* колено на полу: сильно согнутое колено ниже стопы той же ноги, другая стопа стоит — опускаем таз до касания коленом,
-       стоящая нога сгибается сильнее (IK) */
+    const pins = []; for (const r of ['footL','footR']) if (((hint.k || []).includes(r) || mins[r] < .04) && mins[r] < .12) pins.push(r);
+    if (!jp.armBal) for (const s of ['L','R']) { if (hint.autoHands && mins['hand' + s] < .14) jp.hands[s] = 'floor'; if (jp.hands[s] === 'floor' && mins['hand' + s] < .25) pins.push('hand' + s); }
     for (const s of ['L','R']) { const o = s === 'L' ? 'R' : 'L'; const kn = fig.wp(fig.B['calf_' + s.toLowerCase()]).y;
       if (jp['k' + s] > 70 && kn < mins['foot' + s] + .06 && kn > .07 && mins['foot' + o] < .03 && !jp.armBal) { jp.drop = Math.min(.25, kn - .055); if (!pins.includes('foot' + o)) pins.push('foot' + o); break; } }
-    jp.pins = pins; jp.viol = L.viol; return jp; };
+    jp.pins = pins; return jp; }
+  window.__prepJP = k => { if (k.startsWith('A-')) return window.__prepCat(k);
+    if (k.startsWith('mv:')) { const [id, mm] = k.slice(3).split('|'); const src = MV[id]; if (!src) return null; let o = JSON.parse(JSON.stringify(src)); o.cam = o.cam || 0; return +mm ? mirrorJP(o) : o; } const p = poses[k]; const [fid, mm] = k.split('|');
+    const TWa = {}; for (const n in p.q) { const a = p.q[n]; TWa[n] = new T3.Quaternion(a[0],a[1],a[2],a[3]); }
+    const yawA = Math.round(new T3.Euler().setFromQuaternion(TWa.pelvis, 'YXZ').y * 57.2958) - 90; /* поворот, с которым атлас показывал позу */
+    if (OVR[fid]) { let o = AV.fit(OVR[fid]); o = {...o, viol: ['OVR']}; o = +mm ? mirrorJP(o) : o; o.cam = -yawA; return o; }
+    const L = limitJP(twToJP(TWa)); const jp = roundJP(L.jp); jp.root[2] = 0; jp.hands = {...p.h}; if (p.h.L === 'namaste' && p.h.R === 'namaste') jp.pray = true; jp.armBal = !!p.a; jp.cam = -yawA;
+    support(jp, {k: p.k}); jp.viol = L.viol; return jp; };
+  /* поза каталога: id вида A-0071 или A-0071-V03; суффикс «|1» — другая сторона */
+  let CAT = null; window.__catLoad = async () => { if (!CAT) CAT = await fetch('catalog.json' + (q.get('v') ? '?v=' + encodeURIComponent(q.get('v')) : '')).then(r => r.json()); return Object.keys(CAT).length; };
+  window.__prepCat = k => { const [id, mm] = k.split('|'); const c = CAT[id]; if (!c) return null;
+    if (OVR[id]) { let o = AV.fit(OVR[id]); o = +mm ? mirrorJP(o) : o; o.cam = o.cam || 0; return o; }
+    const L = limitJP(twToJP(catTW(c.g))); let jp = roundJP(L.jp); jp.root[2] = 0; jp.hands = {L: 'open', R: 'open'}; jp.cam = c.g[13] ? 90 : 0;
+    jp.armBal = c.fam === 'arm_balance' || /arm_balance|forearm_balance/.test((c.pos || []).join(' '));
+    if (+mm) jp = mirrorJP(jp); support(jp, {autoHands: true}); jp.viol = L.viol; return jp; };
   window.__shotOld = (k, rel) => { const st = fig.stateOf(k); const yaw = (window.__prepJP(k).root[2]); fig.view.yaw = yaw - (rel ?? 55); fig.view.pitch = 8; fig.placeStatic(st, 0, 0); const f = fig.frameTarget(); fig.view.userMoved = false; fig.placeCam(f, 0, true); fig.render(); return fig.renderer.domElement.toDataURL('image/jpeg', .85); };
-  window.__shot = (jp, rel, w, h) => { fig.view.yaw = (jp.root ? jp.root[2] : 0) - (rel ?? 55); fig.view.pitch = 8; AV.show(jp, 0, 0); const f = fig.frameTarget(); fig.view.userMoved = false; fig.placeCam(f, 0, true); fig.render(); return fig.renderer.domElement.toDataURL('image/jpeg', .85); };
+  window.__shot = (jp, rel, w, h) => { fig.view.yaw = (jp.root ? jp.root[2] : 0) - (rel ?? 55); fig.view.pitch = 8; AV.show(jp, 0, 0); placeChair(jp); const f = focusFrame(jp) || fig.frameTarget(); fig.view.userMoved = false; fig.placeCam(f, 0, true); fig.render(); return fig.renderer.domElement.toDataURL('image/jpeg', .85); };
   window.__showA = (name, yaw, pitch, dofit) => { let jp = AV.POSES[name] || AV.PHASES[name]; if (dofit) jp = AV.fit(jp); fig.view.yaw = yaw ?? 90; fig.view.pitch = pitch ?? 6; const r = AV.show(jp, 0, 0); let f = fig.frameTarget(); if (window.__zoom) f = {c: fig.wp(fig.B.pelvis), s: window.__zoom}; fig.placeCam(f, 0, true); fig.render(); return JSON.stringify({fit: jp.fitted || null}); };
   /* съёмка ролика: неподвижная камера, переходы по шагам времени */
   let FILM = null;
@@ -128,6 +168,7 @@ async function boot() {
   window.__miny = (a,b,k) => { __tr(a,b,k); const P = fig.sampleWorld(); const o={}; fig.samp.forEach((q,j)=>{o[q.reg]=Math.min(o[q.reg]??9,P[j*3+1]);}); return JSON.stringify(Object.fromEntries(Object.entries(o).map(([a,b])=>[a,+b.toFixed(3)]))); };
   window.__hmin = k => { const st = fig.stateOf(k); fig.placeStatic(st,0,0); const P = fig.sampleWorld(); const o={}; fig.samp.forEach((q,j)=>{o[q.reg]=Math.min(o[q.reg]??9,P[j*3+1]);}); return JSON.stringify(Object.fromEntries(Object.entries(o).map(([a,b])=>[a,+b.toFixed(3)]))); };
   window.__touch = k => { const st = fig.stateOf(k); return Object.keys(st.touch).join(',') + ' pelY=' + st.pelvisY.toFixed(3); };
+  await window.__catLoad(); window.Mudrya.loaded = true;
   window.Mudrya.go(q.get('pose') || 'tad', 0, 0);
   if (window.AndroidBridge && AndroidBridge.onReady) AndroidBridge.onReady();
 }
